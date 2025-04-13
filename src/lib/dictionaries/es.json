@@ -1,0 +1,56 @@
+{
+  "home": {
+    "aboutMe": {
+      "title": "Sobre Mí",
+      "name": "Franco Mangone",
+      "bio": "Soy un desarrollador de software y escritor apasionado por las tecnologías web, los sistemas de diseño y la creación de experiencias amigables para el usuario."
+    },
+    "featuredPosts": {
+      "title": "Publicaciones Destacadas",
+      "viewAll": "Ver todas las publicaciones"
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "readingTime": "min de lectura",
+    "filterByTag": "Filtrar por etiqueta",
+    "allPosts": "Todas las Publicaciones",
+    "noPosts": "No se encontraron publicaciones",
+    "tryDifferentTag": "Prueba con una etiqueta diferente o ve todas las publicaciones",
+    "viewAllPosts": "Ver todas las publicaciones",
+    "relatedPosts": "Publicaciones Relacionadas",
+    "postLiked": "¡Publicación gustada!",
+    "thanksForLiking": "Gracias por dar me gusta a esta publicación",
+    "postSaved": "¡Publicación guardada!",
+    "addedToReadingList": "Añadida a tu lista de lectura",
+    "error": "Error",
+    "errorSavingPost": "Hubo un error al guardar esta publicación",
+    "linkCopied": "¡Enlace copiado!",
+    "linkCopiedToClipboard": "Enlace copiado al portapapeles",
+    "likes": "me gusta",
+    "save": "Guardar",
+    "saved": "Guardado",
+    "share": "Compartir"
+  },
+  "readingLists": {
+    "title": "Listas de Lectura",
+    "posts": "publicaciones",
+    "create": "Crear Lista",
+    "creating": "Creando...",
+    "createNew": "Crear Nueva Lista de Lectura",
+    "createDescription": "Crea una nueva lista de lectura para organizar tus publicaciones favoritas",
+    "title": "Título",
+    "titlePlaceholder": "Mi increíble lista de lectura",
+    "description": "Descripción",
+    "descriptionPlaceholder": "Una colección de publicaciones sobre...",
+    "titleRequired": "El título es obligatorio",
+    "listCreated": "¡Lista de lectura creada!",
+    "listCreatedDescription": "Tu lista de lectura ha sido creada con éxito",
+    "error": "Error",
+    "errorCreatingList": "Hubo un error al crear tu lista de lectura",
+    "noLists": "No se encontraron listas de lectura",
+    "createFirst": "Crea tu primera lista de lectura para organizar tus publicaciones favoritas",
+    "noPosts": "No hay publicaciones en esta lista de lectura",
+    "browseToAdd": "Navega por el blog y guarda publicaciones para añadirlas a esta lista"
+  }
+}

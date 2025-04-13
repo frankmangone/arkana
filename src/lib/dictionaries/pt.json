@@ -1,0 +1,56 @@
+{
+  "home": {
+    "aboutMe": {
+      "title": "Sobre Mim",
+      "name": "Franco Mangone",
+      "bio": "Sou um desenvolvedor de software e escritor apaixonado por tecnologias web, sistemas de design e criação de experiências amigáveis para o usuário."
+    },
+    "featuredPosts": {
+      "title": "Postagens em Destaque",
+      "viewAll": "Ver todas as postagens"
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "readingTime": "min de leitura",
+    "filterByTag": "Filtrar por tag",
+    "allPosts": "Todas as Postagens",
+    "noPosts": "Nenhuma postagem encontrada",
+    "tryDifferentTag": "Tente uma tag diferente ou veja todas as postagens",
+    "viewAllPosts": "Ver todas as postagens",
+    "relatedPosts": "Postagens Relacionadas",
+    "postLiked": "Postagem curtida!",
+    "thanksForLiking": "Obrigado por curtir esta postagem",
+    "postSaved": "Postagem salva!",
+    "addedToReadingList": "Adicionada à sua lista de leitura",
+    "error": "Erro",
+    "errorSavingPost": "Houve um erro ao salvar esta postagem",
+    "linkCopied": "Link copiado!",
+    "linkCopiedToClipboard": "Link copiado para a área de transferência",
+    "likes": "curtidas",
+    "save": "Salvar",
+    "saved": "Salvo",
+    "share": "Compartilhar"
+  },
+  "readingLists": {
+    "title": "Listas de Leitura",
+    "posts": "postagens",
+    "create": "Criar Lista",
+    "creating": "Criando...",
+    "createNew": "Criar Nova Lista de Leitura",
+    "createDescription": "Crie uma nova lista de leitura para organizar suas postagens favoritas",
+    "title": "Título",
+    "titlePlaceholder": "Minha incrível lista de leitura",
+    "description": "Descrição",
+    "descriptionPlaceholder": "Uma coleção de postagens sobre...",
+    "titleRequired": "O título é obrigatório",
+    "listCreated": "Lista de leitura criada!",
+    "listCreatedDescription": "Sua lista de leitura foi criada com sucesso",
+    "error": "Erro",
+    "errorCreatingList": "Houve um erro ao criar sua lista de leitura",
+    "noLists": "Nenhuma lista de leitura encontrada",
+    "createFirst": "Crie sua primeira lista de leitura para organizar suas postagens favoritas",
+    "noPosts": "Não há postagens nesta lista de leitura",
+    "browseToAdd": "Navegue pelo blog e salve postagens para adicioná-las a esta lista"
+  }
+}

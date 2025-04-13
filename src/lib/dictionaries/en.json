@@ -1,0 +1,56 @@
+{
+  "home": {
+    "aboutMe": {
+      "title": "About Me",
+      "name": "Frank Mangone",
+      "bio": "I'm a software developer and writer passionate about web technologies, design systems, and creating user-friendly experiences."
+    },
+    "featuredPosts": {
+      "title": "Featured Posts",
+      "viewAll": "View all posts"
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "readingTime": "min read",
+    "filterByTag": "Filter by tag",
+    "allPosts": "All Posts",
+    "noPosts": "No posts found",
+    "tryDifferentTag": "Try a different tag or view all posts",
+    "viewAllPosts": "View all posts",
+    "relatedPosts": "Related Posts",
+    "postLiked": "Post liked!",
+    "thanksForLiking": "Thanks for liking this post",
+    "postSaved": "Post saved!",
+    "addedToReadingList": "Added to your reading list",
+    "error": "Error",
+    "errorSavingPost": "There was an error saving this post",
+    "linkCopied": "Link copied!",
+    "linkCopiedToClipboard": "Link copied to clipboard",
+    "likes": "likes",
+    "save": "Save",
+    "saved": "Saved",
+    "share": "Share"
+  },
+  "readingLists": {
+    "title": "Reading Lists",
+    "posts": "posts",
+    "create": "Create List",
+    "creating": "Creating...",
+    "createNew": "Create New Reading List",
+    "createDescription": "Create a new reading list to organize your favorite posts",
+    "title": "Title",
+    "titlePlaceholder": "My awesome reading list",
+    "description": "Description",
+    "descriptionPlaceholder": "A collection of posts about...",
+    "titleRequired": "Title is required",
+    "listCreated": "Reading list created!",
+    "listCreatedDescription": "Your reading list has been created successfully",
+    "error": "Error",
+    "errorCreatingList": "There was an error creating your reading list",
+    "noLists": "No reading lists found",
+    "createFirst": "Create your first reading list to organize your favorite posts",
+    "noPosts": "No posts in this reading list",
+    "browseToAdd": "Browse the blog and save posts to add them to this list"
+  }
+}
