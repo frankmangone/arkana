@@ -1,24 +1,14 @@
 export interface Post {
-  id: string;
-  title: string;
-  slug: string;
-  date: string;
-  excerpt: string;
   content: string;
-  coverImage?: string;
-  tags: string[];
-  author: {
-    name: string;
-    image?: string;
-  };
-  readingTime: number;
-  likes?: number;
-  featured?: boolean;
+  metadata: PostMetadata;
 }
 
-export interface ReadingList {
-  id: string;
+export interface PostMetadata {
   title: string;
+  date: string;
+  author: string;
+  tags: string[];
+  image?: string;
   description?: string;
-  posts: Post[];
+  readingTime?: string;
 }
