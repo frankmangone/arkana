@@ -51,7 +51,7 @@ export function PostContent({ post }: PostContentProps) {
 
             if (isInternal) {
               const newHref = `${
-                process.env.NODE_ENV === "production" ? "/personal-blog" : ""
+                process.env.NEXT_PUBLIC_BASE_PATH ?? ""
               }${href}`;
               return (
                 <Link className="text-blue-500" href={newHref} {...props} />
