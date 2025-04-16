@@ -69,7 +69,7 @@ export function PostContent({ post }: PostContentProps) {
           // Add image handling
           img: ({ src, alt }) => (
             <Image
-              src={src ?? ""}
+              src={(src as string) ?? ""}
               alt={alt ?? ""}
               className="w-full rounded-lg"
               width={1000}
