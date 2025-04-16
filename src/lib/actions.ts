@@ -17,8 +17,8 @@ export async function addToReadingList(postId: string) {
 
 export async function createReadingList({
   title,
-  description,
-}: {
+}: // description,
+{
   title: string;
   description: string;
 }) {

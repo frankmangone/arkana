@@ -7,6 +7,7 @@ import rehypePrism from "rehype-prism-plus";
 import rehypeRaw from "rehype-raw";
 import "katex/dist/katex.min.css";
 import Link from "next/link";
+import Image from "next/image";
 
 interface PostContentProps {
   post: Post;
@@ -64,12 +65,14 @@ export function PostContent({ post }: PostContentProps) {
 
           // Add image handling
           img: ({ src, alt }) => (
-            <img
+            <Image
               src={`${
                 process.env.NODE_ENV === "production" ? "/personal-blog" : ""
               }${src}`}
-              alt={alt}
+              alt={alt ?? ""}
               className="w-full rounded-lg"
+              width={1000}
+              height={1000}
             />
           ),
         }}

@@ -1,5 +1,5 @@
 import { AboutMe } from "@/features/home/components/about-me";
-import { FeaturedPosts } from "@/features/home/components/featured-posts";
+// import { FeaturedPosts } from "@/features/home/components/featured-posts";
 import { getDictionary } from "@/lib/dictionaries";
 
 interface HomePageProps {
@@ -14,7 +14,7 @@ export async function HomePage(props: HomePageProps) {
   return (
     <div className="container py-8 space-y-12">
       <AboutMe lang={lang} dictionary={dict} />
-      <FeaturedPosts lang={lang} dictionary={dict} />
+      {/* <FeaturedPosts lang={lang} dictionary={dict} /> */}
     </div>
   );
 }

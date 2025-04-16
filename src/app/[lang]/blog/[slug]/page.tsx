@@ -4,11 +4,14 @@ import { Metadata } from "next";
 import fs from "fs/promises";
 import path from "path";
 
-interface PostPageProps {
-  params: {
-    lang: string;
-    slug: string;
-  };
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+interface PageParams extends Promise<any> {
+  lang: string;
+  slug: string;
+}
+
+interface PageProps {
+  params: PageParams;
 }
 
 // This function is required for static export
@@ -52,8 +55,9 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({
   params,
-}: PostPageProps): Promise<Metadata> {
-  const post = await getPostBySlug(params.slug, params.lang);
+}: PageProps): Promise<Metadata> {
+  const { slug, lang } = params;
+  const post = await getPostBySlug(slug, lang);
 
   if (!post) {
     return {
@@ -70,6 +74,7 @@ export async function generateMetadata({
   };
 }
 
-export default function Page({ params }: PostPageProps) {
-  return <PostPage lang={params.lang} slug={params.slug} />;
+export default async function Page({ params }: PageProps) {
+  const { lang, slug } = params;
+  return <PostPage lang={lang} slug={slug} />;
 }
