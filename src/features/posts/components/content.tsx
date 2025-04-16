@@ -50,8 +50,11 @@ export function PostContent({ post }: PostContentProps) {
               href && !href.startsWith("http") && !href.startsWith("#");
 
             if (isInternal) {
+              const newHref = `${
+                process.env.NODE_ENV === "production" ? "/personal-blog" : ""
+              }${href}`;
               return (
-                <Link className="text-blue-500" href={href ?? ""} {...props} />
+                <Link className="text-blue-500" href={newHref} {...props} />
               );
             }
 

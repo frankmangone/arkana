@@ -6,8 +6,10 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true, // Required for static export
   },
-  basePath: "",
+  basePath: "/personal-blog", // For production
+  assetPrefix: "/personal-blog/", // For production
   trailingSlash: true, // Add trailing slashes for GitHub Pages compatibility
+  transpilePackages: ["tw-animate-css"],
   // appDir: true,
 };
 
