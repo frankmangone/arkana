@@ -1,6 +1,7 @@
 import { HomePage } from "@/features/home";
 import fs from "fs/promises";
 import path from "path";
+import matter from "gray-matter";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 interface HomeParams extends Promise<any> {
@@ -9,6 +10,63 @@ interface HomeParams extends Promise<any> {
 
 interface HomeProps {
   params: HomeParams;
+}
+
+interface PostPreview {
+  slug: string;
+  title: string;
+  date: string;
+  description: string;
+  author: string;
+  tags: string[];
+  readingTime?: string;
+}
+
+// Function to get latest posts for a specific language
+async function getLatestPosts(lang: string, limit = 5): Promise<PostPreview[]> {
+  const contentPath = path.join(process.cwd(), "src", "content", lang);
+
+  try {
+    const files = await fs.readdir(contentPath);
+
+    // Get all markdown files
+    const markdownFiles = files.filter((file) => file.endsWith(".md"));
+
+    // Read and parse frontmatter from each file
+    const posts = await Promise.all(
+      markdownFiles.map(async (filename) => {
+        const filePath = path.join(contentPath, filename);
+        const fileContent = await fs.readFile(filePath, "utf8");
+
+        // Parse frontmatter
+        const { data } = matter(fileContent);
+
+        // Extract slug from filename
+        const slug = filename.replace(".md", "");
+
+        return {
+          slug,
+          title: data.title || "Untitled",
+          date: data.date || new Date().toISOString(),
+          description: data.description || "",
+          author: data.author || "Unknown",
+          tags: data.tags || [],
+          readingTime: data.readingTime || "",
+        };
+      })
+    );
+
+    // Sort posts by date (newest first)
+    const sortedPosts = posts.sort(
+      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    );
+
+    // Return only the requested number of posts
+    return sortedPosts.slice(0, limit);
+  } catch (error) {
+    console.error(`Error getting posts for ${lang}:`, error);
+    return [];
+  }
 }
 
 // Add generateStaticParams function for static export
@@ -41,5 +99,63 @@ export async function generateStaticParams() {
 export default async function Home(props: HomeProps) {
   const { lang } = await props.params;
 
-  return <HomePage lang={lang} />;
+  // Get latest posts for this language
+  const latestPosts = await getLatestPosts(lang);
+
+  return (
+    <div>
+      <HomePage lang={lang} />
+
+      {/* Latest Articles Section */}
+      <section className="container mx-auto px-4 py-12">
+        <h2 className="text-3xl font-bold mb-8">Latest Articles</h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {latestPosts.map((post) => (
+            <div
+              key={post.slug}
+              className="border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div className="p-6">
+                <p className="text-sm text-gray-500 mb-2">
+                  {new Date(post.date).toLocaleDateString()} •{" "}
+                  {post.readingTime}
+                </p>
+                <h3 className="text-xl font-semibold mb-2">
+                  <a
+                    href={`/${lang}/blog/${post.slug}`}
+                    className="hover:underline"
+                  >
+                    {post.title}
+                  </a>
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                  {post.description}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {post.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-sm"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="text-center mt-8">
+          <a
+            href={`/${lang}/blog`}
+            className="inline-block px-6 py-3 bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors"
+          >
+            <span className="text-white">View All Articles</span>
+          </a>
+        </div>
+      </section>
+    </div>
+  );
 }

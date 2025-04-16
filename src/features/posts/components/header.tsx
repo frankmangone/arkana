@@ -37,7 +37,7 @@ export function PostHeader(props: PostHeaderProps) {
         <div>
           <div className="font-medium">{metadata.author}</div>
           <div className="text-sm text-muted-foreground">
-            {formatDate(metadata.date, lang)} · {metadata.readingTime} min read
+            {formatDate(metadata.date, lang)} · {metadata.readingTime} read
           </div>
         </div>
       </div>

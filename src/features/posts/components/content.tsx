@@ -50,11 +50,8 @@ export function PostContent({ post }: PostContentProps) {
               href && !href.startsWith("http") && !href.startsWith("#");
 
             if (isInternal) {
-              const newHref = `${
-                process.env.NODE_ENV === "production" ? "/personal-blog" : ""
-              }${href}`;
               return (
-                <Link className="text-blue-500" href={newHref} {...props} />
+                <Link className="text-blue-500" href={href ?? ""} {...props} />
               );
             }
 
@@ -72,9 +69,7 @@ export function PostContent({ post }: PostContentProps) {
           // Add image handling
           img: ({ src, alt }) => (
             <Image
-              src={`${
-                process.env.NODE_ENV === "production" ? "/personal-blog" : ""
-              }${src}`}
+              src={src ?? ""}
               alt={alt ?? ""}
               className="w-full rounded-lg"
               width={1000}
