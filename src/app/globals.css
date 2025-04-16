@@ -121,16 +121,20 @@
   }
 }
 
+a {
+  color: #a777ff !important;
+}
+
 /* KaTeX block equation styling */
 .katex-display {
   margin-top: 3rem !important;
   margin-bottom: 3rem !important;
-  color: #f3d0b5 !important;
+  color: #b79cea !important;
 }
 
 /* KaTeX inline expression styling */
 .katex:not(.katex-display .katex) {
-  color: #f3d0b5 !important;
+  color: #b79cea !important;
   font-weight: 500;
 }
 
@@ -147,19 +151,19 @@ figure img {
 
 figure figcaption {
   text-align: center;
-  color: #6b7280;
+  color: #5c5b5f;
   font-size: 0.875rem;
   margin-top: 0.5rem;
 }
 
 /* Blockquote styling */
 blockquote {
-  border-left: 4px solid #3b82f6; /* Blue accent border */
+  border-left: 4px solid #8041f4;
   padding-left: 1rem;
   font-style: italic;
   margin: 1.5rem 0;
-  color: #4b5563; /* Gray text for contrast */
-  background-color: #f9fafb; /* Light background */
+  color: #37343d;
+  background-color: #f0edf7;
   padding: 1rem 1.5rem;
   border-radius: 0.25rem;
 }
@@ -167,9 +171,9 @@ blockquote {
 /* Dark mode version */
 @media (prefers-color-scheme: dark) {
   blockquote {
-    border-left-color: #63aef8; /* Lighter blue for dark mode */
-    background-color: #1f2937; /* Dark background */
-    color: #d1d5db; /* Lighter text for dark mode */
+    border-left-color: #8041f4;
+    background-color: #37343d;
+    color: #f0edf7;
   }
 }
 
@@ -180,4 +184,53 @@ blockquote cite {
   font-size: 0.875rem;
   font-style: normal;
   opacity: 0.8;
+}
+
+/* Big quote styling */
+.big-quote {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  margin: 2.5rem 0;
+  font-weight: 500;
+  color: #e9deff;
+  background-color: var(--background);
+  overflow-wrap: break-word;
+}
+
+@media (min-width: 768px) {
+  .big-quote {
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+    padding: 3rem 2rem;
+  }
+}
+
+.fancy-divider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 4rem 0;
+  text-align: center;
+}
+
+.fancy-divider span {
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--foreground);
+  opacity: 0.6;
+}
+
+.fancy-divider span:nth-child(1) {
+  --i: 0;
+}
+
+.fancy-divider span:nth-child(2) {
+  --i: 1;
+}
+
+.fancy-divider span:nth-child(3) {
+  --i: 2;
 }

@@ -14,6 +14,12 @@ interface PostContentProps {
 }
 
 export function PostContent({ post }: PostContentProps) {
+  // Process the content to handle custom syntax for big quotes
+  const processedContent = post.content.replace(
+    /:::\s*big-quote\s*([\s\S]*?)\s*:::/g,
+    '<div class="big-quote">$1</div>'
+  );
+
   return (
     <div className="prose prose-gray dark:prose-invert max-w-none mb-8">
       <ReactMarkdown
@@ -75,9 +81,17 @@ export function PostContent({ post }: PostContentProps) {
               height={1000}
             />
           ),
+
+          hr: () => (
+            <div className="fancy-divider">
+              <span>•</span>
+              <span>•</span>
+              <span>•</span>
+            </div>
+          ),
         }}
       >
-        {post.content}
+        {processedContent}
       </ReactMarkdown>
     </div>
   );
