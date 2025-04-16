@@ -6,9 +6,9 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true, // Required for static export
   },
-  basePath: process.env.NEXT_PUBLIC_BASE_PATH ?? "",
+  basePath: "",
   trailingSlash: true, // Add trailing slashes for GitHub Pages compatibility
-  transpilePackages: ["tw-animate-css"],
+  // transpilePackages: ["@tailwindcss/postcss", "tw-animate-css"],
   // appDir: true,
 };
 

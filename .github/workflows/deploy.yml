@@ -40,16 +40,6 @@ jobs:
       - name: Check pnpm version
         run: pnpm --version
 
-      - name: Check if lockfile exists (debug)
-        run: |
-          if [ -f "pnpm-lock.yaml" ]; then
-            echo "Lockfile exists"
-            cat pnpm-lock.yaml | head -n 20
-          else
-            echo "Lockfile does not exist"
-            find . -name "pnpm-lock.yaml"
-          fi
-
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
