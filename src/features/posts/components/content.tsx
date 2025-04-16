@@ -44,7 +44,7 @@ export function PostContent({ post }: PostContentProps) {
 
             if (isInternal) {
               const newHref = `${
-                process.env.NODE_ENV === "production" ? "/your-repo-name" : ""
+                process.env.NODE_ENV === "production" ? "/personal-blog" : ""
               }${href}`;
               return (
                 <Link className="text-blue-500" href={newHref} {...props} />
@@ -66,7 +66,7 @@ export function PostContent({ post }: PostContentProps) {
           img: ({ src, alt }) => (
             <img
               src={`${
-                process.env.NODE_ENV === "production" ? "/your-repo-name" : ""
+                process.env.NODE_ENV === "production" ? "/personal-blog" : ""
               }${src}`}
               alt={alt}
               className="w-full rounded-lg"

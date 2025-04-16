@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true, // Required for static export
   },
-  basePath: process.env.NODE_ENV === "production" ? "/your-repo-name" : "", // Replace with your GitHub repo name
+  basePath: process.env.NODE_ENV === "production" ? "/personal-blog" : "", // Replace with your GitHub repo name
   trailingSlash: true, // Add trailing slashes for GitHub Pages compatibility
   appDir: true,
 };
