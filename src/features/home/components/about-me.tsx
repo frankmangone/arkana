@@ -16,13 +16,13 @@ export function AboutMe({ dictionary }: AboutMeProps) {
       <Card>
         <CardContent className="p-6">
           <div className="flex flex-col md:flex-row gap-8 items-center">
-            <div className="relative w-48 h-48 rounded-full overflow-hidden">
+            <div className="relative w-48 h-48 rounded-full overflow-hidden flex justify-center">
               <Image
-                src="/placeholder.svg?height=192&width=192"
+                src="/images/me.jpg"
                 alt="Profile"
-                width={192}
+                width={300}
                 height={192}
-                className="object-cover"
+                className="max-w-none object-cover"
               />
             </div>
             <div className="flex-1 space-y-4">
