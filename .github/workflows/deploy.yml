@@ -21,6 +21,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: List files (debug)
+        run: ls -la
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -32,24 +35,24 @@ jobs:
           version: 8
           run_install: false
 
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+      - name: Check pnpm version
+        run: pnpm --version
 
-      - name: Setup pnpm cache
-        uses: actions/cache@v4
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+      - name: Check if lockfile exists (debug)
+        run: |
+          if [ -f "pnpm-lock.yaml" ]; then
+            echo "Lockfile exists"
+            cat pnpm-lock.yaml | head -n 20
+          else
+            echo "Lockfile does not exist"
+            find . -name "pnpm-lock.yaml"
+          fi
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+      - name: Install dependencies without frozen lockfile
+        run: pnpm install --no-frozen-lockfile
 
       - name: Build with Next.js
         run: pnpm build
