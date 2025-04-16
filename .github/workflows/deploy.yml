@@ -17,6 +17,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      BASE_PATH: /personal-blog
+      NEXT_PUBLIC_BASE_PATH: /personal-blog
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -56,14 +59,11 @@ jobs:
 
       - name: Print environment variables (debug)
         run: |
-          echo "NODE_ENV: $NODE_ENV"
-          echo "GITHUB_ACTIONS: $GITHUB_ACTIONS"
+          echo "BASE_PATH: $BASE_PATH"
+          echo "NEXT_PUBLIC_BASE_PATH: $NEXT_PUBLIC_BASE_PATH"
 
       - name: Build with Next.js
         run: pnpm build
-        env:
-          BASE_PATH: /personal-blog
-          NEXT_PUBLIC_BASE_PATH: /personal-blog
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
