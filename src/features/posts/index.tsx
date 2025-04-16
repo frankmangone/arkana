@@ -35,7 +35,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function PostPage(props: PostPageProps) {
+export async function PostPage(props: PostPageProps) {
   const { lang, slug } = props;
 
   // const dict = await getDictionary(lang);

@@ -43,8 +43,11 @@ export function PostContent({ post }: PostContentProps) {
               href && !href.startsWith("http") && !href.startsWith("#");
 
             if (isInternal) {
+              const newHref = `${
+                process.env.NODE_ENV === "production" ? "/your-repo-name" : ""
+              }${href}`;
               return (
-                <Link className="text-blue-500" href={href || ""} {...props} />
+                <Link className="text-blue-500" href={newHref} {...props} />
               );
             }
 
@@ -58,6 +61,17 @@ export function PostContent({ post }: PostContentProps) {
               />
             );
           },
+
+          // Add image handling
+          img: ({ src, alt }) => (
+            <img
+              src={`${
+                process.env.NODE_ENV === "production" ? "/your-repo-name" : ""
+              }${src}`}
+              alt={alt}
+              className="w-full rounded-lg"
+            />
+          ),
         }}
       >
         {post.content}
