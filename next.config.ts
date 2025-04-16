@@ -6,9 +6,8 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true, // Required for static export
   },
-  basePath: "",
+  basePath: process.env.NODE_ENV === "production" ? "/personal-blog" : "", // Replace with your GitHub repo name
   trailingSlash: true, // Add trailing slashes for GitHub Pages compatibility
-  // transpilePackages: ["@tailwindcss/postcss", "tw-animate-css"],
   // appDir: true,
 };
 
