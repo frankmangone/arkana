@@ -65,15 +65,23 @@ export function PostContent({ post }: PostContentProps) {
           },
 
           // Add image handling
-          img: ({ src, alt }) => (
-            <Image
-              src={(src as string) ?? ""}
-              alt={alt ?? ""}
-              className="w-full rounded-lg"
-              width={1000}
-              height={1000}
-            />
-          ),
+          img: ({ src, alt }) => {
+            const fullSrc = `${
+              process.env.NEXT_PUBLIC_BASE_PATH
+                ? `${process.env.NEXT_PUBLIC_BASE_PATH}/`
+                : ""
+            }${(src as string) ?? ""}`;
+
+            return (
+              <Image
+                src={fullSrc}
+                alt={alt ?? ""}
+                className="w-full rounded-lg"
+                width={1000}
+                height={1000}
+              />
+            );
+          },
 
           hr: () => (
             <div className="fancy-divider">
