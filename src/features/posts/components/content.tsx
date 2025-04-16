@@ -50,7 +50,9 @@ export function PostContent({ post }: PostContentProps) {
               href && !href.startsWith("http") && !href.startsWith("#");
 
             if (isInternal) {
-              const newHref = `${process.env.BASE_PATH ?? ""}${href}`;
+              const newHref = `${
+                process.env.NEXT_PUBLIC_BASE_PATH ?? ""
+              }${href}`;
               return (
                 <Link className="text-blue-500" href={newHref} {...props} />
               );

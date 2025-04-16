@@ -6,7 +6,8 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true, // Required for static export
   },
-  basePath: "",
+  basePath: process.env.BASE_PATH ?? "",
+  assetPrefix: process.env.BASE_PATH ? `${process.env.BASE_PATH}/` : "",
   trailingSlash: true, // Add trailing slashes for GitHub Pages compatibility
   // appDir: true,
 };
