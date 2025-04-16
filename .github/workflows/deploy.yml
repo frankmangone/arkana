@@ -17,8 +17,6 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      NODE_ENV: production
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -55,8 +53,6 @@ jobs:
 
       - name: Install dependencies without frozen lockfile
         run: pnpm install --no-frozen-lockfile
-        env:
-          NODE_ENV: production
 
       - name: Print environment variables (debug)
         run: |
@@ -66,7 +62,8 @@ jobs:
       - name: Build with Next.js
         run: pnpm build
         env:
-          NODE_ENV: production
+          BASE_PATH: /personal-blog
+          NEXT_PUBLIC_BASE_PATH: /personal-blog
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
