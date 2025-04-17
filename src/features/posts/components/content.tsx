@@ -33,9 +33,20 @@ function createHeadingComponent(level: number) {
     }
 
     const slug = slugify(children);
-    const className = `group flex items-center text-${level}xl font-bold mt-${
-      level + 5
-    } mb-${Math.max(1, 4 - level)}`;
+
+    // Map heading levels directly to appropriate classes
+    const headingClasses = {
+      1: "text-4xl font-bold mt-8 mb-4",
+      2: "text-3xl font-bold mt-7 mb-3",
+      3: "text-2xl font-semibold mt-8 mb-2",
+      4: "text-xl font-semibold mt-5 mb-2",
+      5: "text-lg font-medium mt-4 mb-1",
+      6: "text-base font-medium mt-3 mb-1",
+    };
+
+    const className = `group flex items-center ${
+      headingClasses[level as keyof typeof headingClasses] || ""
+    }`;
 
     return React.createElement(`h${level}`, { id: slug, className, ...props }, [
       children,
