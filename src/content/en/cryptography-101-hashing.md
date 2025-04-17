@@ -79,8 +79,11 @@ There are many well-known hashing algorithms out there, like the previously ment
 There are _many applications_ for hashes. We’ll see that they are useful to build cryptographic protocols, but there are other scenarios where hashing comes in handy. The list below is merely illustrative; keep in mind that hashing is a tremendously powerful tool with widespread application.
 
 - **Data-integrity checks**: as previously mentioned, a hashing function can be used to _digest_ a large file into a small chunk of information. Even the slightest change in the original file causes the hash to change dramatically — so it can be used to check that a file _has not been altered_.
+
 - **Content-driven indexing**: we can generate an identifier for some content, by using a hashing function. If the function is _collision-resistant_, then the identifier is most likely _unique_, and could even be used in database applications as an index.
+
 - **Hash-based data structures**: some data structures rely on the power of hashes. For example, a _hash list_ may use the hash of the previous element as a pointer — very similar to what happens in a _Blockchain_. There are other important hash-based data structures such as [hash tables](https://en.wikipedia.org/wiki/Hash_table). We’ll look at one such structure later in this article.
+
 - **Commitment schemes**: some situations require information not to be revealed _ahead of time_. Imagine I want to play rock-paper-scissors over correspondence. If I send “rock” to my opponent, they can just answer “paper”, and win. But what if we send a _hash_ of “rock” instead? We’ll explore this more in depth in the next article, but hash functions are helpful in these situations.
 
 Alright, we now know what _hashing functions_ are, and we’ve covered some of their applications. Let’s circle back to group-based cryptography, and discuss the importance of hashes in that context.

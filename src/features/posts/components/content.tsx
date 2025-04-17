@@ -38,7 +38,7 @@ export function PostContent({ post }: PostContentProps) {
             <h2 className="text-2xl font-bold mt-6 mb-3" {...props} />
           ),
           h3: (props) => (
-            <h3 className="text-xl font-semibold mt-4 mb-2" {...props} />
+            <h3 className="text-xl font-semibold mt-8 mb-2" {...props} />
           ),
 
           // Add proper spacing to paragraphs
@@ -80,6 +80,25 @@ export function PostContent({ post }: PostContentProps) {
               />
             );
           },
+
+          // Add list handling
+          ul: ({ children, ...props }) => (
+            <ul className="list-disc pl-6 my-4 space-y-2" {...props}>
+              {children}
+            </ul>
+          ),
+
+          ol: ({ children, ...props }) => (
+            <ol className="list-decimal pl-6 my-4 space-y-2" {...props}>
+              {children}
+            </ol>
+          ),
+
+          li: ({ children, ...props }) => (
+            <li className="pl-1 mb-1" {...props}>
+              {children}
+            </li>
+          ),
 
           hr: () => (
             <div className="fancy-divider">
