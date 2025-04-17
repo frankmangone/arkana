@@ -65,13 +65,20 @@ function createHeadingComponent(level: number) {
 /* eslint-enable */
 
 export function PostContent({ post }: PostContentProps) {
-  // Process the content for big quotes and YouTube links
+  // More precise regex for matching video-embed tags
+  // This uses a non-greedy approach and explicitly looks for the closing />
   const processedContent = post.content
-    // Process big quotes
     .replace(
       /:::\s*big-quote\s*([\s\S]*?)\s*:::/g,
       '<div class="big-quote">$1</div>'
-    );
+    )
+    .replace(/<video-embed\s+src="([^"]+)"\s*\/>/g, (match, src) => {
+      console.log("Found video embed:", match, "Source:", src);
+      return `<div class="video-embed" data-src="${src}"></div>`;
+    });
+
+  // Add debugging to see what ReactMarkdown is receiving
+  console.log("Processed content:", processedContent);
 
   return (
     <div className="prose prose-gray dark:prose-invert max-w-none mb-8">
@@ -162,6 +169,63 @@ export function PostContent({ post }: PostContentProps) {
           // @ts-expect-error - VideoEmbed is a custom component
           "video-embed": ({ src }) => {
             return src ? <VideoEmbed src={src} /> : null;
+          },
+
+          // Handle the video-embed div
+          div: ({ className, ...props }) => {
+            if (className === "video-embed") {
+              // @ts-expect-error - VideoEmbed is a custom component
+              const src = props["data-src"];
+              if (!src) return null;
+
+              // Extract video ID
+              let videoId = "";
+              try {
+                if (src.includes("youtu.be/")) {
+                  videoId = src.split("youtu.be/")[1]?.split("?")[0] || "";
+                } else if (src.includes("youtube.com/watch")) {
+                  const match = src.match(/[?&]v=([^&#]+)/);
+                  videoId = match ? match[1] : "";
+                } else if (src.includes("youtube.com/embed/")) {
+                  videoId =
+                    src.split("youtube.com/embed/")[1]?.split("?")[0] || "";
+                } else if (/^[a-zA-Z0-9_-]{11}$/.test(src)) {
+                  videoId = src;
+                }
+              } catch (err) {
+                console.error("Error extracting video ID:", err);
+              }
+
+              if (!videoId) {
+                console.error("Could not extract video ID from:", src);
+                return (
+                  <div className="bg-red-100 p-4 my-4 rounded">
+                    Invalid YouTube URL: {src}
+                  </div>
+                );
+              }
+
+              return (
+                <div className="my-8">
+                  <div
+                    className="relative w-full rounded-lg overflow-hidden"
+                    style={{ paddingBottom: "56.25%" }}
+                  >
+                    <iframe
+                      className="absolute top-0 left-0 w-full h-full"
+                      src={`https://www.youtube.com/embed/${videoId}`}
+                      title="YouTube video"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+                </div>
+              );
+            }
+
+            // Default div handling
+            return <div className={className} {...props} />;
           },
         }}
       >

@@ -204,4 +204,103 @@ What we’re about to describe is called the [Schnorr protocol](https://en.wikip
 
 <video-embed src="https://www.youtube.com/watch?v=qVyuYQGQ-_0" />
 
-> Copy in progress!
+This is how the protocol goes: Alice, which we’ll call the _prover_, wants to prove that she knows $x$. Bob, the _verifier_, knows $Y$. Of course, Alice could disclose the value of $x$, and Bob could verify that it’s indeed the discrete logarithm of $Y$ ($Y = [x]G$). But for whatever reason, let’s say $x$ must _remain private_.
+
+Alice and Bob interact in the following way:
+
+- Alice first chooses some random integer $r$, and computes $R = [r]G$. This is a _commitment_ that she then sends to Bob.
+- Bob chooses some other integer $c$ at random, and sends it to Alice.
+- Alice then computes:
+
+$$
+s = (r + c.x) \ \textrm{mod} \ n
+$$
+
+- Bob receives $s$, and checks whether if:
+
+$$
+[s]G = R + [c]Y
+$$
+
+> I'll leave the math for you to check!
+
+What’s interesting is that, if for some reason Bob is not convinced after this, he can send a _fresh value_ of $c$ to Alice, and repeat the process. In fact, he can do this _as many times as he wants_ until he’s satisfied. This hints at the idea of some cryptographic protocols being _interactive_, a fact to which we’ll come back to later on in the series.
+
+---
+
+## Verifiable Random Functions
+
+Another cool thing we can do is to generate _random numbers_ in a _verifiable way_.
+
+_What?_
+
+This one sounds crazy. I believe an analogy may help.
+
+> Suppose you buy a lottery ticket. You go to a store, choose some random combination of numbers, and you receive the associated ticket.
+>
+> Then the lottery winner is selected, and it so happens to be your number! How do you prove that you’re the winner? Well of course, you have the ticket! So you just present it at the lottery house, and you get your prize!
+
+<figure className="my-8">
+  <img
+    src="/images/cryptography-101/protocols-galore/lucky.webp" 
+    alt="A guy holding a lottery prize" 
+  />
+  <figcaption className="text-center text-sm text-gray-500 mt-2">
+    Lucky me!
+  </figcaption>
+</figure>
+
+Although this analogy is not perfect, it conveys an important message: there may be things to _prove_ about randomly-generated numbers.
+
+_Verifiable random functions_ (or _VRFs_ for short) do exactly that: they generate a pseudorandom number based on some input from a user, and also provide a _proof_ that the generation process was _honest and correct_. We’ll discuss this in more detail in later articles, so for now, let’s just focus on an implementation of VRFs using only elliptic curves.
+
+So, the intention when crafting a VRF is the following: Alice wants to _generate_ a pseudorandom number, that Bob can _verify_. They agree on an elliptic curve generator $G$ for a group of order $n$, and also agree on two algorithms: $h$ and $h’$. The former hashes to a number, as usual, but the latter hashes to a [point on the elliptic curve](/en/blog/cryptography-101/hashing/#getting-elliptic-curve-points).
+
+The setup does not diverge too much from the usual: Alice has a private key $d$, and a public key $Q = [d]G$. However, there’s an extra element here: the input $a$ to the VRF is _publicly known_. Everyone will run the same number through their independent VRFs, and produce different outputs.
+
+Now, there are two steps to the algorithm: an _evaluation_ step, where the random number is produced along with a _proof_, and the _verification_ step. Alice performs _evaluation_ as follows:
+
+- She calculates $H = h’(Q, a)$. This is a point on the elliptic curve.
+- Then she calculates $Z = [d]H$, the _VRF output_.
+- Now she has to produce a _proof_. She chooses a random number $r$, and computes $U = [r]G$, and $V = [r]H$.
+- She hashes _everything_ into a number $c$:
+
+$$
+c = h(H || Z || U || V)
+$$
+
+- Finally, she computes $s$:
+
+$$
+s = r + d.c \ \textrm{mod} \ n
+$$
+
+The result of the VRF evaluation is $\pi = (Z, c, s)$, where $Z$ is the actual pseudorandom output, and the other values work as a _proof of correctness_ of $Z$.
+
+Finally, Bob needs to _verify_ the proof. This is what he does:
+
+- He calculates the same hash Alice calculated, $H = h’(Q, a)$. He can do this because both $Q$ and $a$ are public.
+- Then he calculates $U’$ and $V’$ as shown below. You can check that these result in the same $U$ and $V$ from before.
+
+$$
+// U' = [s]G - [c]Q
+// V' = [s]H - [c]Z
+$$
+
+- Finally, he computes $c' = h(H || Z || U' || V')$, and accepts the proof if $c = c'$.
+
+Oof. Okay. That was a lot. Let’s unpack.
+
+The idea is that the output $Z$ is _unpredictable_ due to the nature of the hashing function, but it is _deterministic_ nonetheless. Because of this, we’re able to produce a short signature that can only work with knowledge of the private key, $d$.
+
+The usefulness of VRFs may not be immediately evident, but they can be a powerful tool for the right application. For example, [Algorand](https://developer.algorand.org/docs/get-details/algorand_consensus/) uses VRFs as part of their core consensus mechanism. And who knows what crazy applications you may find for them! The world is your oyster, as long as you have the right tools.
+
+---
+
+## Summary
+
+As you can see in the methods we have explored, some ideas repeat over and over. In most cases, we perform two operations that yield the _same result_. We also start from a _private/public_ key pair most of the time. We use _hash functions_ to map data into sets of interest.
+
+Combining these basic ideas allows for the crafting of interesting and useful protocols, and that’s just about it. More complex applications may require more complex cryptographic “games”.
+
+And of course, there are even _more fun things_ we can do with elliptic curves. For instance, more sophisticated signature schemes exist — such as [blind signatures](https://www.educative.io/answers/what-is-a-blind-signature), [ring signatures](https://en.wikipedia.org/wiki/Ring_signature), [threshold signatures](https://bitcoinops.org/en/topics/threshold-signature/), among others. We’ll cover those in the next article.
