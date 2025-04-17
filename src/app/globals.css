@@ -142,10 +142,12 @@ a {
 figure {
   margin: 2rem 0;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 figure img {
-  width: 100%;
   border-radius: 0.5rem;
 }
 
@@ -160,7 +162,6 @@ figure figcaption {
 blockquote {
   border-left: 4px solid #8041f4;
   padding-left: 1rem;
-  font-style: italic;
   margin: 1.5rem 0;
   color: #37343d;
   background-color: #f0edf7;

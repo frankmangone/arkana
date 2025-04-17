@@ -65,7 +65,7 @@ export function PostContent({ post }: PostContentProps) {
           },
 
           // Add image handling
-          img: ({ src, alt }) => {
+          img: ({ src, alt, width, className }) => {
             const fullSrc = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${
               (src as string) ?? ""
             }`;
@@ -74,8 +74,8 @@ export function PostContent({ post }: PostContentProps) {
               <Image
                 src={fullSrc}
                 alt={alt ?? ""}
-                className="w-full rounded-lg"
-                width={1000}
+                className={`${className} rounded-lg`}
+                width={width ? Number(width) : 1000}
                 height={1000}
               />
             );

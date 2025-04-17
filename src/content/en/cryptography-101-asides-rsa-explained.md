@@ -88,8 +88,8 @@ Apparently, there's a certain magical number $$\varphi(n) + 1$$ which seems to a
 <figure className="my-8">
   <img 
     src="/images/cryptography-101/rsa-explained/batman.webp" 
-    alt="Batman thinking" 
-    className="w-full rounded-lg"
+    alt="Batman thinking"
+    width="600"
   />
   <figcaption className="text-center text-sm text-gray-500 mt-2">
     I think I know where this is going...
@@ -149,8 +149,7 @@ And there you have it! That’s how RSA encryption works.
 <figure className="my-8">
   <img 
     src="/images/cryptography-101/rsa-explained/dumbledore-applaudes.webp" 
-    alt="Dumbledore slow claps" 
-    className="w-full rounded-lg"
+    alt="Dumbledore slow claps"
   />
   <figcaption className="text-center text-sm text-gray-500 mt-2">
     Dumbledore approves
@@ -164,8 +163,7 @@ Nevertheless, there are some particularly sensitive points in RSA that can becom
 <figure className="my-8">
   <img 
     src="/images/cryptography-101/rsa-explained/dumbledore-scared.webp" 
-    alt="Dumbledore slightly concerned" 
-    className="w-full rounded-lg"
+    alt="Dumbledore slightly concerned"
   />
   <figcaption className="text-center text-sm text-gray-500 mt-2">
     Shocked

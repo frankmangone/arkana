@@ -50,8 +50,7 @@ What happens? A black hole? Stack overflow?
 <figure className="my-8">
   <img 
     src="/images/cryptography-101/where-to-start/aaaaa.webp" 
-    alt="Goat screaming" 
-    className="w-full rounded-lg"
+    alt="Goat screaming"
   />
   <figcaption className="text-center text-sm text-gray-500 mt-2">
     Aaaaaaaaa!
