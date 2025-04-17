@@ -122,7 +122,11 @@
 }
 
 a {
-  color: #a777ff !important;
+  color: #a777ff;
+}
+
+a.nav-bar {
+  color: #f8f5ff;
 }
 
 /* KaTeX block equation styling */

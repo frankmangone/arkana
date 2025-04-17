@@ -33,24 +33,14 @@
     "share": "Compartilhar"
   },
   "readingLists": {
-    "title": "Listas de Leitura",
-    "posts": "postagens",
-    "create": "Criar Lista",
-    "creating": "Criando...",
-    "createNew": "Criar Nova Lista de Leitura",
-    "createDescription": "Crie uma nova lista de leitura para organizar suas postagens favoritas",
-    "title": "Título",
-    "titlePlaceholder": "Minha incrível lista de leitura",
-    "description": "Descrição",
-    "descriptionPlaceholder": "Uma coleção de postagens sobre...",
-    "titleRequired": "O título é obrigatório",
-    "listCreated": "Lista de leitura criada!",
-    "listCreatedDescription": "Sua lista de leitura foi criada com sucesso",
-    "error": "Erro",
-    "errorCreatingList": "Houve um erro ao criar sua lista de leitura",
-    "noLists": "Nenhuma lista de leitura encontrada",
-    "createFirst": "Crie sua primeira lista de leitura para organizar suas postagens favoritas",
-    "noPosts": "Não há postagens nesta lista de leitura",
-    "browseToAdd": "Navegue pelo blog e salve postagens para adicioná-las a esta lista"
+    "list": {
+      "title": "Listas de Leitura",
+      "description": "Coleção curada de artigos organizados por temática, para ajudar você na sua jornada de aprendizagem.",
+      "noLists": "Oops!",
+      "noListsDescription": "Nenhuma lista de leitura encontrada"
+    },
+    "view": {
+      "back": "← Voltar para as listas de leitura"
+    }
   }
 }

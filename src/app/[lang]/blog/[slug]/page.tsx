@@ -3,6 +3,7 @@ import { PostPage } from "@/features/posts";
 import { Metadata } from "next";
 import fs from "fs/promises";
 import path from "path";
+import { MainLayout } from "@/components/layouts/main-layout";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 interface PageParams extends Promise<any> {
@@ -76,5 +77,9 @@ export async function generateMetadata({
 
 export default async function Page({ params }: PageProps) {
   const { lang, slug } = params;
-  return <PostPage lang={lang} slug={slug} />;
+  return (
+    <MainLayout lang={lang}>
+      <PostPage lang={lang} slug={slug} />
+    </MainLayout>
+  );
 }

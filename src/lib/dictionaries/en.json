@@ -33,24 +33,14 @@
     "share": "Share"
   },
   "readingLists": {
-    "title": "Reading Lists",
-    "posts": "posts",
-    "create": "Create List",
-    "creating": "Creating...",
-    "createNew": "Create New Reading List",
-    "createDescription": "Create a new reading list to organize your favorite posts",
-    "title": "Title",
-    "titlePlaceholder": "My awesome reading list",
-    "description": "Description",
-    "descriptionPlaceholder": "A collection of posts about...",
-    "titleRequired": "Title is required",
-    "listCreated": "Reading list created!",
-    "listCreatedDescription": "Your reading list has been created successfully",
-    "error": "Error",
-    "errorCreatingList": "There was an error creating your reading list",
-    "noLists": "No reading lists found",
-    "createFirst": "Create your first reading list to organize your favorite posts",
-    "noPosts": "No posts in this reading list",
-    "browseToAdd": "Browse the blog and save posts to add them to this list"
+    "list": {
+      "title": "Reading Lists",
+      "description": "Curated collections of articles organized by topic to help guide your learning journey.",
+      "noLists": "Oops!",
+      "noListsDescription": "No reading lists found"
+    },
+    "view": {
+      "back": "← Back to Reading Lists"
+    }
   }
 }
