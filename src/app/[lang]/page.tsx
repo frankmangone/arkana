@@ -27,39 +27,46 @@ interface PostPreview {
 // Function to get latest posts for a specific language
 async function getLatestPosts(lang: string, limit = 5): Promise<PostPreview[]> {
   const contentPath = path.join(process.cwd(), "src", "content", lang);
+  const allPosts: PostPreview[] = [];
 
   try {
-    const files = await fs.readdir(contentPath);
+    // Function to process files in a directory
+    const processDirectory = async (dirPath: string, baseSlug = "") => {
+      const files = await fs.readdir(dirPath);
 
-    // Get all markdown files
-    const markdownFiles = files.filter((file) => file.endsWith(".md"));
+      for (const file of files) {
+        const filePath = path.join(dirPath, file);
+        const stat = await fs.stat(filePath);
 
-    // Read and parse frontmatter from each file
-    const posts = await Promise.all(
-      markdownFiles.map(async (filename) => {
-        const filePath = path.join(contentPath, filename);
-        const fileContent = await fs.readFile(filePath, "utf8");
+        if (stat.isDirectory()) {
+          // If it's a directory, process its files with the directory name as a prefix
+          await processDirectory(filePath, file);
+        } else if (file.endsWith(".md")) {
+          // If it's a markdown file
+          const slug = file.replace(".md", "");
+          const fullSlug = baseSlug ? `${baseSlug}/${slug}` : slug;
 
-        // Parse frontmatter
-        const { data } = matter(fileContent);
+          const fileContent = await fs.readFile(filePath, "utf8");
+          const { data } = matter(fileContent);
 
-        // Extract slug from filename
-        const slug = filename.replace(".md", "");
+          allPosts.push({
+            slug: fullSlug,
+            title: data.title || "Untitled",
+            date: data.date || new Date().toISOString(),
+            description: data.description || "",
+            author: data.author || "Unknown",
+            tags: data.tags || [],
+            readingTime: data.readingTime || "",
+          });
+        }
+      }
+    };
 
-        return {
-          slug,
-          title: data.title || "Untitled",
-          date: data.date || new Date().toISOString(),
-          description: data.description || "",
-          author: data.author || "Unknown",
-          tags: data.tags || [],
-          readingTime: data.readingTime || "",
-        };
-      })
-    );
+    // Start processing from the language directory
+    await processDirectory(contentPath);
 
     // Sort posts by date (newest first)
-    const sortedPosts = posts.sort(
+    const sortedPosts = allPosts.sort(
       (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
     );
 

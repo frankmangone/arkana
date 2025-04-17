@@ -7,9 +7,9 @@ description: "An introductory dive into the world of elliptic curves, forming th
 readingTime: "7 min"
 ---
 
-> This is part of a larger series of articles about cryptography. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/cryptography-101-where-to-start).
+> This is part of a larger series of articles about cryptography. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/cryptography-101/where-to-start).
 
-In the [previous article](/en/blog/cryptography-101-where-to-start), we briefly discussed some of the ideas that underpin a good portion of the most widely used cryptographic techniques out there.
+In the [previous article](/en/blog/cryptography-101/where-to-start), we briefly discussed some of the ideas that underpin a good portion of the most widely used cryptographic techniques out there.
 
 We haven't yet discussed _why_ groups and modular arithmetic are useful for cryptography. But as you may guess, the general idea is that they allow us to craft problems that are _so hard to solve_, that it's practically impossible to crack them even at the expense of astounding amounts of computational resources. So for example, why does a digital signature work? Well, because producing a valid signature is _fairly simple_ with knowledge of a secret key, but _unfathomably hard_ without it.
 
@@ -172,4 +172,4 @@ All I can say is that this can be hard to wrap your head around upon first conta
 
 > Also, you can play around with elliptic curves in [this website](https://andrea.corbellini.name/ecc/interactive/modk-add.html).
 
-Our basic groundwork is in place. In the [next article](/en/blog/cryptography-101-encryption-and-digital-signatures), we'll examine what we can do with our knowledge of elliptic curves. We'll look at a scheme for _asymmetric encryption_, and another one for _digital signatures_. Stay tuned!
+Our basic groundwork is in place. In the [next article](/en/blog/cryptography-101/encryption-and-digital-signatures), we'll examine what we can do with our knowledge of elliptic curves. We'll look at a scheme for _asymmetric encryption_, and another one for _digital signatures_. Stay tuned!

@@ -7,9 +7,9 @@ description: "Hashing functions are an essential cryptographic primitive. Join m
 readingTime: "10 min"
 ---
 
-> This is part of a larger series of articles about cryptography. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/cryptography-101-where-to-start).
+> This is part of a larger series of articles about cryptography. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/cryptography-101/where-to-start).
 
-[Last time](/en/blog/cryptography-101-encryption-and-digital-signatures), we went through a couple techniques involving elliptic curve groups — namely, _digital signatures_ and _asymmetric encryption_.
+[Last time](/en/blog/cryptography-101/encryption-and-digital-signatures), we went through a couple techniques involving elliptic curve groups — namely, _digital signatures_ and _asymmetric encryption_.
 
 Both methods were based on the premise that the _message_, or a message _mask_, were _integers_. But how can this be? For instance, a message is much more likely to be some secret string like “super-secret-and-safe-string”, or more realistically, some JSON data like:
 
@@ -120,7 +120,7 @@ Again, the way in which this is achieved is irrelevant to us, and we’re mostly
 
 ## The Weakest Link
 
-Let’s go back to the digital signature (ECDSA) scheme from the [previous article](/en/blog/cryptography-101-encryption-and-digital-signatures/#digital-signatures). We now know that the message M can be processed into a number through the use of a hash function, $H(M)$.
+Let’s go back to the digital signature (ECDSA) scheme from the [previous article](/en/blog/cryptography-101/encryption-and-digital-signatures/#digital-signatures). We now know that the message M can be processed into a number through the use of a hash function, $H(M)$.
 
 <figure className="my-8">
   <img
@@ -152,7 +152,7 @@ Firstly, this is a clear example that not every hashing function is suitable for
 
 So yeah, it’s important to keep these things in mind when designing cryptographic techniques. You should always analyze the security of each component of your protocol, and not just focus on one aspect of it.
 
-> If you want more insights on security-related matters, try reading [this aside](/en/blog/cryptography-101-aside-evaluating-security) in the series.
+> If you want more insights on security-related matters, try reading [this aside](/en/blog/cryptography-101/aside-evaluating-security) in the series.
 
 ---
 
@@ -246,4 +246,4 @@ This just goes to show how hashes can be utilized in clever ways to accomplish s
 
 Slowly but surely, we’re building a solid cryptographic toolset. We now have _hashing_ at our disposal, along with groups, modular arithmetic, and elliptic curves. Sweet!
 
-After this short detour from our development on elliptic curves, we’ll jump right back into the action in the [next article](/en/blog/cryptography-101-protocols-galore), and explore what else we can do with our current knowledge.
+After this short detour from our development on elliptic curves, we’ll jump right back into the action in the [next article](/en/blog/cryptography-101/protocols-galore), and explore what else we can do with our current knowledge.

@@ -14,9 +14,9 @@ description: "Building upon our previous knowledge of elliptic curves, we explor
 readingTime: "9 min"
 ---
 
-> This is part of a larger series of articles about cryptography. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/cryptography-101-where-to-start).
+> This is part of a larger series of articles about cryptography. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/cryptography-101/where-to-start).
 
-In the [previous installment](/en/blog/cryptography-101-elliptic-curves-somewhat-demystified), we expanded upon our basic knowledge of groups by defining _elliptic curve groups_. And we briefly mentioned that these concepts would allow us to construct some useful cryptographic mechanisms.
+In the [previous installment](/en/blog/cryptography-101/elliptic-curves-somewhat-demystified), we expanded upon our basic knowledge of groups by defining _elliptic curve groups_. And we briefly mentioned that these concepts would allow us to construct some useful cryptographic mechanisms.
 
 And as promised, we'll take a look at _two_ such basic technique examples: one for _digital signing_, and one for _encryption_. But before we do this, we need to define a couple gadgets that will be essential in our development. We'll be working in the context of elliptic curves, but these concepts can be generalized to other groups.
 
@@ -49,7 +49,7 @@ And of course, we learn _nothing_ about the mechanisms behind this. But there's 
   />
 </figure>
 
-> Remember [group generators](/en/blog/cryptography-101-where-to-start) from the very first article? Well, this is where they come in. Elliptic curves, being groups, also have generators and subgroups!
+> Remember [group generators](/en/blog/cryptography-101/where-to-start) from the very first article? Well, this is where they come in. Elliptic curves, being groups, also have generators and subgroups!
 
 Suppose Alice and some other guy Bob agree on a generator point $G$ on the elliptic curve. Alice then chooses some random number $d$ from the set of _integers modulo_ $q$, so $d < q$. Also, let's assume $d$ is a big number, not just $12$ or $35$. This will be her _private key_.
 
@@ -235,4 +235,4 @@ The good news is that there’s a lot we can do with the tools we have so far. M
 
 Moreover, there are some things we haven’t quite explained yet, like how to _turn a message into a number_, in the case of digital signatures, nor how to _obtain a mask from a point in the elliptic curve_, in the case of encryption.
 
-This can be done via _hashing_, a very powerful tool which will be the central topic of the [next article](/en/blog/cryptography-101-hashing)!
+This can be done via _hashing_, a very powerful tool which will be the central topic of the [next article](/en/blog/cryptography-101/hashing)!

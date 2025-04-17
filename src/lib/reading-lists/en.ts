@@ -13,27 +13,27 @@ export const readingLists: ReadingList[] = [
     // coverImage: "/images/reading-lists/cryptography-basics.jpg",
     items: [
       {
-        slug: "cryptography-101-where-to-start",
+        slug: "cryptography-101/where-to-start",
         order: 1,
       },
       {
-        slug: "cryptography-101-asides-rsa-explained",
+        slug: "cryptography-101/asides-rsa-explained",
         order: 2,
       },
       {
-        slug: "cryptography-101-elliptic-curves-somewhat-demystified",
+        slug: "cryptography-101/elliptic-curves-somewhat-demystified",
         order: 3,
       },
       {
-        slug: "cryptography-101-encryption-and-digital-signatures",
+        slug: "cryptography-101/encryption-and-digital-signatures",
         order: 4,
       },
       {
-        slug: "cryptography-101-hashing",
+        slug: "cryptography-101/hashing",
         order: 5,
       },
       {
-        slug: "cryptography-101-protocols-galore",
+        slug: "cryptography-101/protocols-galore",
         order: 6,
       },
     ],

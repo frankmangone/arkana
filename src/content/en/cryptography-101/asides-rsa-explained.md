@@ -7,7 +7,7 @@ description: "A short explanation on how RSA works"
 readingTime: "6 min"
 ---
 
-> This is part of a larger series of articles about cryptography. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/cryptography-101-where-to-start).
+> This is part of a larger series of articles about cryptography. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/cryptography-101/where-to-start).
 
 RSA encryption is one of the most widely used encryption algorithms out there — and it relies solely on the _additive group of integers modulo_ $$n$$. It's a great example of how much can be done without the need for elliptic curves, or any other more complex constructions.
 
@@ -170,4 +170,4 @@ Nevertheless, there are some particularly sensitive points in RSA that can becom
   </figcaption>
 </figure>
 
-This is one of the reasons why RSA is mostly considered obsolete, and has been replaced by [Elliptic Curve Cryptography (ECC)](/en/blog/cryptography-101-elliptic-curves-somewhat-demystified) for a lot of applications.
+This is one of the reasons why RSA is mostly considered obsolete, and has been replaced by [Elliptic Curve Cryptography (ECC)](/en/blog/cryptography-101/elliptic-curves-somewhat-demystified) for a lot of applications.

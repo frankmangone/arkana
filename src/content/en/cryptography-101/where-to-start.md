@@ -15,7 +15,7 @@ In this article, we’ll explore some of the basic concepts behind cryptographic
 
 ## Getting started
 
-In my case, I've been working at a company that uses [Blockchain](/en/blog/blockchain-101-how-it-all-began) technology. This requires a basic understanding of _digital signatures_ — you know, some user has a _private key_, uses that private key to _sign a message_, and the authenticity of the signature can be checked with a _public key_. This is fairly common jargon, and lots of libraries exist to perform the actions I just described.
+In my case, I've been working at a company that uses [Blockchain](/en/blog/blockchain-101/how-it-all-began) technology. This requires a basic understanding of _digital signatures_ — you know, some user has a _private key_, uses that private key to _sign a message_, and the authenticity of the signature can be checked with a _public key_. This is fairly common jargon, and lots of libraries exist to perform the actions I just described.
 
 But from my perspective, this looked no different than sorcery. How does this even work? What mechanism allows for such a particular process? This curiosity is what ultimately motivates this article.
 
@@ -102,4 +102,4 @@ Subgroups and their properties play an important role in group cryptography, so 
 
 In this brief introduction, some basic mathematical concepts were introduced. These will serve as a foundation for what’s to come in the next articles.
 
-By itself, understanding the modulo operation and _its properties_ is enough to describe some cryptographic techniques (like [RSA encryption](/en/blog/cryptography-101-asides-rsa-explained)) — but there are other groups of interest that we are still to define. In the [next article](/en/blog/cryptography-101-elliptic-curves-somewhat-demystified), we’ll dive into the world of elliptic curves, and later we’ll use them to devise some [cryptographic protocols](/en/blog/cryptography-101-encryption-and-digital-signatures).
+By itself, understanding the modulo operation and _its properties_ is enough to describe some cryptographic techniques (like [RSA encryption](/en/blog/cryptography-101/asides-rsa-explained)) — but there are other groups of interest that we are still to define. In the [next article](/en/blog/cryptography-101/elliptic-curves-somewhat-demystified), we’ll dive into the world of elliptic curves, and later we’ll use them to devise some [cryptographic protocols](/en/blog/cryptography-101/encryption-and-digital-signatures).
