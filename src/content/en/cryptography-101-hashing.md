@@ -97,7 +97,7 @@ At the beginning of this article, we noted that both _encryption_ and _signing_ 
 Recall that a hashing function will produce a _fixed-size sequence of bits_... And what is that, if not a _binary representation_ of an integer?
 
 $$
-(10010100010111100)_2 = (75964)_10
+(10010100010111100)_2 = (75964)_{10}
 $$
 
 > Same number, expressed in different bases.
@@ -106,7 +106,7 @@ Just like that, hashing provides a solution to our problem: all we need is to ru
 
 ### Getting Elliptic Curve Points
 
-When running a hashing function, the output will in general be a _binary number_ — another way to phrase this is to say that we _hash into_ an integer number. There are situations where this is not enough, though: we may require hashing into a* point on an elliptic curve*. In fact, we’ll be required to do this in the next article.
+When running a hashing function, the output will in general be a _binary number_ — another way to phrase this is to say that we _hash into_ an integer number. There are situations where this is not enough, though: we may require hashing into a _point on an elliptic curve_. In fact, we’ll be required to do this in the next article.
 
 One possible way to hash into an elliptic curve is to calculate $h = H(M)$ normally, and compute a point $[h]G$ as our output, with $G$ being a generator of the elliptic curve. More [sophisticated methods](https://eprint.iacr.org/2009/226.pdf) exist, but we won’t dive into further detail. The point is that we can expand the _definition_ of what a hash function is, by letting it _hash into_ some arbitrary set $A$, like this:
 
@@ -120,4 +120,130 @@ Again, the way in which this is achieved is irrelevant to us, and we’re mostly
 
 ## The Weakest Link
 
-Let’s go back to the digital signature (ECDSA) scheme from the previous article. We now know that the message M can be processed into a number through the use of a hash function, $H(M)$.
+Let’s go back to the digital signature (ECDSA) scheme from the [previous article](/en/blog/cryptography-101-encryption-and-digital-signatures/#digital-signatures). We now know that the message M can be processed into a number through the use of a hash function, $H(M)$.
+
+<figure className="my-8">
+  <img
+    src="/images/cryptography-101/hashing/hashing-example.webp" 
+    alt="Another hashing function visual" 
+    className="bg-white"
+  />
+</figure>
+
+We also said that the security of the digital signature lies on how hard it is to calculate the validation “key” $s$. But _hashing_ introduces a new problem. And we’ll explain by means of an example.
+
+> Charlie wants to tamper with the original message $M$. Evidently, changing the message will change the hash $H(M)$, and this renders the signature invalid.
+>
+> However, if $H$ happens to be a hashing function where it’s easy to find collisions, then Charlie could produce a new message $M’$ by changing the bank account to his, and then play around with the amount until the hash of the new message matches the original, $H(M’) = H(M)$.
+
+And boom! Just like that, Charlie has fooled our security. In this particular application, a non-collision-resistant hashing function would _break the algorithm_ completely.
+
+Firstly, this is a clear example that not every hashing function is suitable for every application. And secondly, the security of any scheme or protocol we can think of will be limited by its weakest part. There’s a wise proverb that says “a chain is no stronger than its weakest link”. And that certainly applies here.
+
+<figure className="my-8">
+  <img
+    src="/images/cryptography-101/hashing/chain.webp" 
+    alt="Image of a chain with a clipper" 
+  />
+  <figcaption className="text-center text-sm text-gray-500 mt-2">
+    “A chain is no stronger than its weakest link”
+  </figcaption>
+</figure>
+
+So yeah, it’s important to keep these things in mind when designing cryptographic techniques. You should always analyze the security of each component of your protocol, and not just focus on one aspect of it.
+
+> If you want more insights on security-related matters, try reading [this aside](/en/blog/cryptography-101-aside-evaluating-security) in the series.
+
+---
+
+## Merkle Trees
+
+Before rounding up, I want to talk about an important hash-based data structure, which is essential in Blockchain development: [Merkle trees](https://www.baeldung.com/cs/merkle-trees).
+
+In essence, it’s just a tree structure where the information contained in each node, is just the hash of the children nodes. Like this:
+
+<figure className="my-8">
+  <img
+    src="/images/cryptography-101/hashing/tree-nodes.webp" 
+    alt="Node construction in Merkle trees" 
+    className="bg-white"
+  />
+  <figcaption className="text-center text-sm text-gray-500 mt-2">
+    A node of a Merkle tree
+  </figcaption>
+</figure>
+
+Repeating this pattern will lead to a tree structure:
+
+<figure className="my-8">
+  <img
+    src="/images/cryptography-101/hashing/merkle-tree.webp" 
+    alt="A Merkle tree" 
+    className="bg-white"
+  />
+</figure>
+
+All this does is reduce (possibly) a lot of information into a single hash, which is the _root_ of the tree. But wait, doesn’t a hash function do the _same thing_? If we just hash:
+
+$$
+h = H(A || B || C || D || E || F || G || I)
+$$
+
+We also obtain a _single hash_ associated with the _same information_. Changing a single bit in any of the original inputs causes dramatic changes in the produced hash. Then... _Why bother_ creating a weird tree structure?
+
+> By the way, the $$||$$ operator means [bit concatenation](https://csrc.nist.gov/glossary/term/concatenation). It’s just pasting the bits of the inputs together. So for example if $A = 0101$ and $B = 1100$, then $A || B = 01011100$.
+
+As it turns out, using a tree unlocks _new superpowers_. Imagine this situation: someone (let’s say Andrew) claims that $h$ corresponds to the input $A$, but doesn’t want to reveal the other inputs $(B, C, D...)$. How can we check if $A$ effectively produces $h$?
+
+Our only option is to _hash the entire input_, and compare with $h$. And of course, for this, we need _all the original inputs_ used by Andrew. But he doesn’t want to share all the inputs, and sending a truckload of information (possibly _thousands of values_) over a network doesn’t sound very enticing...
+
+### The Merkle Tree Solution
+
+The strategy clearly becomes _inefficient_. Merkle trees allow for a more _elegant solution_. Imagine that Andrew has instead produced a Merkle root $R$ of all his inputs $(A, B, C...)$:
+
+$$
+R = Merkle(A, B, C...)
+$$
+
+He claims that $A$ is in the tree. How can he _prove_ this? And here’s where the magic happens: he can just send a _few nodes of the tree_ as proof, and we can check that $R$ is indeed produced with $A$. Take a look at this image:
+
+<figure className="my-8">
+  <img
+    src="/images/cryptography-101/hashing/merkle-copath.webp" 
+    alt="Merkle proof visualization, with only a few nodes needed for the proof" 
+    className="bg-white"
+  />
+</figure>
+
+See the nodes highlighted in _green_? That’s all the information we really need to _calculate the root_. See, we can calculate $m = H(a || b)$, and then $u = H(m || n)$, and finally $H(u || v)$, and we’re done. Instead of revealing all the _leaves_ of the tree $(A, B, C, D, E, F, G, I)$, we’re able to demonstrate that $A$ belongs to the tree by only revealing _three nodes_!
+
+This system is known as a [Merkle proof](https://www.youtube.com/watch?v=2kPFSoknlUU). And a very neat thing about it is how nicely it _scales_. As it so happens, the number of nodes $N$ we have to reveal scales _logarithmically_ with the number of inputs:
+
+$$
+N = \textrm{log}_2(\#\textrm{inputs})
+$$
+
+So for 1024 inputs, we just have to reveal _10 nodes_. For 32768, _15 nodes_ will suffice.
+
+<figure className="my-8">
+  <img
+    src="/images/cryptography-101/hashing/happy-seal.webp" 
+    alt="A picture of a happy seal"
+    width="620"
+  />
+  <figcaption className="text-center text-sm text-gray-500 mt-2">
+    Soothing
+  </figcaption>
+</figure>
+
+Merkle trees are one of the most used cryptographic data structures out there, powering Blockchains everywhere. There’s active research going on to possibly replace them with a new kid in the block, called the [Verkle tree](https://math.mit.edu/research/highschool/primes/materials/2018/Kuszmaul.pdf), but the idea is generally the same: proving something belongs to a dataset, without revealing the _entire dataset_.
+
+This just goes to show how hashes can be utilized in clever ways to accomplish some quite magical feats!
+
+---
+
+## Summary
+
+Slowly but surely, we’re building a solid cryptographic toolset. We now have _hashing_ at our disposal, along with groups, modular arithmetic, and elliptic curves. Sweet!
+
+After this short detour from our development on elliptic curves, we’ll jump right back into the action in the [next article](/en/blog/cryptography-101-protocols-galore), and explore what else we can do with our current knowledge.

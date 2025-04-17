@@ -115,7 +115,7 @@ $$
 And calculating $$d$$ in such a way ensures that the following is true (which is fairly simple to prove, so I leave that task to you):
 
 $$
-m^{e.d} \textrm{mod} \ n = m
+m^{e.d} \ \textrm{mod} \ n = m
 $$
 
 And the interesting part is, with knowledge of $$e$$ and $$n$$, it’s not easy to calculate $$\varphi(n)$$ because for that, you’d need the _prime factors of_ $$n$$! Which is a really hard problem! For this reason, $$e$$ can be made public — and will indeed be the _public key_ in RSA.
@@ -125,7 +125,7 @@ And the interesting part is, with knowledge of $$e$$ and $$n$$, it’s not easy 
 All that remains is to separate into two steps. We use the public key $$e$$ to calculate a _ciphertext_:
 
 $$
-m^e \textrm{mod} \ n = c
+m^e \ \textrm{mod} \ n = c
 $$
 
 Without knowledge of $$d$$, this cannot be converted back into $$m$$. So as long as $$d$$ is kept secret, then only whoever holds this value can decrypt $$c$$. And because of this, $$d$$ is going to be our _private key_.

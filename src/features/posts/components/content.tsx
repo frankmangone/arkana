@@ -8,10 +8,49 @@ import rehypeRaw from "rehype-raw";
 import "katex/dist/katex.min.css";
 import Link from "next/link";
 import Image from "next/image";
+import { LinkIcon } from "lucide-react";
 
 interface PostContentProps {
   post: Post;
 }
+
+// Function to generate slug from header text
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, "") // Remove special chars
+    .replace(/\s+/g, "-") // Replace spaces with hyphens
+    .replace(/--+/g, "-") // Replace multiple hyphens with single hyphen
+    .trim(); // Remove whitespace from ends
+}
+
+/* eslint-disable */
+function createHeadingComponent(level: number) {
+  return ({ children, ...props }: any) => {
+    // Skip if children isn't a string or doesn't exist
+    if (!children || typeof children !== "string") {
+      return React.createElement(`h${level}`, props, children);
+    }
+
+    const slug = slugify(children);
+    const className = `group flex items-center text-${level}xl font-bold mt-${
+      level + 5
+    } mb-${Math.max(1, 4 - level)}`;
+
+    return React.createElement(`h${level}`, { id: slug, className, ...props }, [
+      children,
+      <a
+        key="anchor"
+        href={`#${slug}`}
+        className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity"
+        aria-label={`Link to ${children}`}
+      >
+        <LinkIcon size={16} />
+      </a>,
+    ]);
+  };
+}
+/* eslint-enable */
 
 export function PostContent({ post }: PostContentProps) {
   // Process the content to handle custom syntax for big quotes
@@ -30,16 +69,13 @@ export function PostContent({ post }: PostContentProps) {
           [rehypePrism, { showLineNumbers: true }],
         ]}
         components={{
-          // Customize heading components
-          h1: (props) => (
-            <h1 className="text-3xl font-bold mt-8 mb-4" {...props} />
-          ),
-          h2: (props) => (
-            <h2 className="text-2xl font-bold mt-6 mb-3" {...props} />
-          ),
-          h3: (props) => (
-            <h3 className="text-xl font-semibold mt-8 mb-2" {...props} />
-          ),
+          // Customize heading components with anchor links
+          h1: createHeadingComponent(1),
+          h2: createHeadingComponent(2),
+          h3: createHeadingComponent(3),
+          h4: createHeadingComponent(4),
+          h5: createHeadingComponent(5),
+          h6: createHeadingComponent(6),
 
           // Add proper spacing to paragraphs
           p: (props) => <p className="my-4" {...props} />,

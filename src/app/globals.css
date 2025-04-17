@@ -235,3 +235,33 @@ blockquote cite {
 .fancy-divider span:nth-child(3) {
   --i: 2;
 }
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px; /* Adjust based on your header height */
+}
+
+/* Ensure anchor links work with fixed header */
+h1[id],
+h2[id],
+h3[id],
+h4[id],
+h5[id],
+h6[id] {
+  scroll-margin-top: 100px; /* Adjust based on your header height */
+}
+
+/* Optional: highlight the section that's being linked to */
+:target {
+  animation: highlight 2s ease;
+}
+
+@keyframes highlight {
+  0% {
+    background-color: rgba(255, 255, 100, 0.3);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
