@@ -7,10 +7,13 @@ import { MainLayout } from "@/components/layouts/main-layout";
 import { ReadingListsPage } from "@/features/reading-lists/list";
 import { getDictionary } from "@/lib/dictionaries";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+interface ReadingListsPageParams extends Promise<any> {
+  lang: string;
+}
+
 interface ReadingListsPageProps {
-  params: {
-    lang: string;
-  };
+  params: ReadingListsPageParams;
 }
 
 export const metadata: Metadata = {

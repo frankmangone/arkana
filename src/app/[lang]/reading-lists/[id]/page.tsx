@@ -5,11 +5,14 @@ import { getPostBySlug } from "@/features/posts/actions";
 import { MainLayout } from "@/components/layouts/main-layout";
 import { ReadingListPage } from "@/features/reading-lists/view";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+interface ReadingListPageParams extends Promise<any> {
+  lang: string;
+  id: string;
+}
+
 interface ReadingListPageProps {
-  params: {
-    lang: string;
-    id: string;
-  };
+  params: ReadingListPageParams;
 }
 
 export async function generateMetadata({
