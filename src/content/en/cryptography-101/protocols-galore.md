@@ -178,6 +178,30 @@ Essentially, a ZKP is a way to demonstrate or prove knowledge of _something_, wi
 
 > Here’s an excellent video that shows some great examples of ZKPs.
 
-https://www.youtube.com/watch?v=fOGdb1CTu5c
+<video-embed src="https://www.youtube.com/watch?v=fOGdb1CTu5c" />
+
+The one example I love the most is the _Where’s Waldo_ proof: what I want to prove is that I know where Waldo is. One option is simply to point at him — but this would effectively reveal his location!
+
+In order _not_ to reveal it, I can do the following: take a large piece of cardboard, punch a hole on it the size of Waldo, and place it over the book. You can see Waldo through the hole, but you can’t see _where he’s placed on the page_!
+
+<figure className="my-8">
+  <img
+    src="/images/cryptography-101/protocols-galore/waldo.webp" 
+    alt="Waldo" 
+  />
+  <figcaption className="text-center text-sm text-gray-500 mt-2">
+    There he is, the slippery son of a gun
+  </figcaption>
+</figure>
+
+### The Schnorr Protocol
+
+Clearly, we’re not about to build a Where’s Waldo location proving system with elliptic curves. We’ll have to content ourselves with something far simpler: proving knowledge of the _discrete logarithm_ of a point. This is, proving that we know some value $x$, such that $Y = [x]G$, with $G$ being a generator of an elliptic curve group. The group has order $n$.
+
+What we’re about to describe is called the [Schnorr protocol](https://en.wikipedia.org/wiki/Proof_of_knowledge#:~:text=%5Bedit%5D-,Schnorr%20protocol,-%5Bedit%5D), adapted to elliptic curves. It is a very simple and elegant protocol, and it provides a great foundation for more complex proofs of knowledge.
+
+> Here’s Claus P. Schnorr, by the way. Rocking his 80 years of age. What a legend.
+
+<video-embed src="https://www.youtube.com/watch?v=qVyuYQGQ-_0" />
 
 > Copy in progress!

@@ -9,6 +9,7 @@ import "katex/dist/katex.min.css";
 import Link from "next/link";
 import Image from "next/image";
 import { LinkIcon } from "lucide-react";
+import { VideoEmbed } from "@/components/video-embed";
 
 interface PostContentProps {
   post: Post;
@@ -64,11 +65,13 @@ function createHeadingComponent(level: number) {
 /* eslint-enable */
 
 export function PostContent({ post }: PostContentProps) {
-  // Process the content to handle custom syntax for big quotes
-  const processedContent = post.content.replace(
-    /:::\s*big-quote\s*([\s\S]*?)\s*:::/g,
-    '<div class="big-quote">$1</div>'
-  );
+  // Process the content for big quotes and YouTube links
+  const processedContent = post.content
+    // Process big quotes
+    .replace(
+      /:::\s*big-quote\s*([\s\S]*?)\s*:::/g,
+      '<div class="big-quote">$1</div>'
+    );
 
   return (
     <div className="prose prose-gray dark:prose-invert max-w-none mb-8">
@@ -154,6 +157,12 @@ export function PostContent({ post }: PostContentProps) {
               <span>•</span>
             </div>
           ),
+
+          // Add video-embed component handler
+          // @ts-expect-error - VideoEmbed is a custom component
+          "video-embed": ({ src }) => {
+            return src ? <VideoEmbed src={src} /> : null;
+          },
         }}
       >
         {processedContent}
