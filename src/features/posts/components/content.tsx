@@ -7,7 +7,6 @@ import rehypePrism from "rehype-prism-plus";
 import rehypeRaw from "rehype-raw";
 import "katex/dist/katex.min.css";
 import Link from "next/link";
-import Image from "next/image";
 import { LinkIcon } from "lucide-react";
 import { VideoEmbed } from "@/components/video-embed";
 import { ZoomableImage } from "@/components/zoomable-image";
