@@ -13,10 +13,8 @@ export const MainLayout = async (props: MainLayoutProps) => {
 
   const dict = await getDictionary(lang);
 
-  const homeUrl = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/${lang}`;
-  const readingListsUrl = `${
-    process.env.NEXT_PUBLIC_BASE_PATH ?? ""
-  }/${lang}/reading-lists`;
+  const homeUrl = `/${lang}`;
+  const readingListsUrl = `${lang}/reading-lists`;
 
   return (
     <div className="relative min-h-screen">
