@@ -303,4 +303,4 @@ As you can see in the methods we have explored, some ideas repeat over and over.
 
 Combining these basic ideas allows for the crafting of interesting and useful protocols, and that’s just about it. More complex applications may require more complex cryptographic “games”.
 
-And of course, there are even _more fun things_ we can do with elliptic curves. For instance, more sophisticated signature schemes exist — such as [blind signatures](https://www.educative.io/answers/what-is-a-blind-signature), [ring signatures](https://en.wikipedia.org/wiki/Ring_signature), [threshold signatures](https://bitcoinops.org/en/topics/threshold-signature/), among others. We’ll cover those in the next article.
+And of course, there are even _more fun things_ we can do with elliptic curves. For instance, more sophisticated signature schemes exist — such as [blind signatures](https://www.educative.io/answers/what-is-a-blind-signature), [ring signatures](https://en.wikipedia.org/wiki/Ring_signature), [threshold signatures](https://bitcoinops.org/en/topics/threshold-signature/), among others. We’ll cover those in the [next article](/en/blog/cryptography-101/signatures-recharged).
