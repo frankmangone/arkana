@@ -33,10 +33,8 @@ Notice that a polynomial can have _multiple different variables_. There’s no l
   <img
     src="/images/cryptography-101/polynomials/gandalf.webp" 
     alt="Gandalf from The Lord of the Rings, with a scared face" 
+    title="Again? Not that ring man!"
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    Again? Not that ring man!
-  </figcaption>
 </figure>
 
 Polynomials have applications in several areas of mathematics. They are also useful in cryptography, but under _a condition_: we must use integers _everywhere_. This means that variables will only ever be given _integer values_, and we cannot have polynomials with coefficients like $0.5$. This guarantees that the polynomial will _exclusively_ output integers.
@@ -71,10 +69,8 @@ Have you ever noticed how there’s only a _single_ possible line that goes thro
   <img
     src="/images/cryptography-101/polynomials/line-through-points.webp" 
     alt="A line going through two points A and B" 
+    title="[zoom] A line going through two points"
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    A line going through two points
-  </figcaption>
 </figure>
 
 Try as you may, there’s _no other line_ that goes though $A$ and $B$. And a line is really a _polynomial function_, $P(x) = m.x + n$. And this is _not_ a coincidence.
@@ -85,6 +81,7 @@ Let’s now try three points. They can either be _aligned_, in which case you ca
   <img
     src="/images/cryptography-101/polynomials/parabola.webp" 
     alt="Parabola going through two points" 
+    title="[zoom]"
   />
 </figure>
 
@@ -106,10 +103,8 @@ We still don’t know _how to calculate_ the interpolating polynomial, but that�
   <img
     src="/images/cryptography-101/polynomials/parabola-points.webp" 
     alt="Points in a parabola" 
+    title="[zoom] Points in a parabola"
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    Points in a parabola
-  </figcaption>
 </figure>
 
 And here’s what’s cool about this: any set of _three_ points or more from the drawing above yields the _same interpolated polynomial_.
@@ -135,10 +130,8 @@ Whenever you send a video through a messenger app, you expect the receiver to ge
   <img
     src="/images/cryptography-101/polynomials/amazon-delivery.webp" 
     alt="Amazon delivery guy" 
+    title="If only it was that simple..."
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    If only it was that simple...
-  </figcaption>
 </figure>
 
 What really happens is that the original video is sent in _little pieces_, called _packets_ of information. And in your device, your recipient’s device, and many places in between, there are process running (hello, TCP) that ensure every packet reaches its destination, while also taking care of the painstaking process of reconstructing the original video from its pieces.
@@ -152,10 +145,8 @@ But there’s another way to approach this problem, though: introducing _redunda
     src="/images/cryptography-101/polynomials/erasure-coding.webp" 
     alt="Erasure coding diagram"
     className="bg-white"
+    title="[zoom] We can reconstruct the data even if some packets are lost"
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    We can reconstruct the data even if some packets are lost
-  </figcaption>
 </figure>
 
 _Redundancy_ means that we’re effectively going to send more information than what’s really needed. Think of our video as being divisible into four small chunks of information — then we would send a number of chunks bigger than four. And even if information is lost in the way, the recipient _can still reconstruct the original data_.
@@ -168,10 +159,8 @@ _Polynomials_, that’s how!
   <img
     src="/images/cryptography-101/polynomials/science.webp" 
     alt="Jesse from Breaking Bad with his famous quote 'Yeah, science!'"
+    title="Yeah, science!"
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    Yeah, science!
-  </figcaption>
 </figure>
 
 As usual, everything starts with a simple idea: the original _pieces_ of data can be the _coefficients_ for a polynomial!

@@ -19,10 +19,8 @@ You may have heard about _homomorphisms_ and _isomorphisms_ already. But what ar
   <img
     src="/images/cryptography-101/homomorphisms-and-isomorphisms/transformer.webp" 
     alt="Optimus Prime from Transformers"
+    title="Sounds like something right out of a Transformers movie"
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    Sounds like something right out of a Transformers movie
-  </figcaption>
 </figure>
 
 ---
@@ -88,8 +86,11 @@ Huh. This doesn’t resemble our previous examples. How so?
 The key to understand this is to see things under the lens of _isomorphism_. Take a look at these two groups:
 
 $$
-\\ \mathbb{Z}_5 = \{0, 1, 2, 3, 4\}
-\\ G_5 = \{1, g, g^2, g^3, g^4\}
+\mathbb{Z}_5 = \{0, 1, 2, 3, 4\}
+$$
+
+$$
+G_5 = \{1, g, g^2, g^3, g^4\}
 $$
 
 If we just grab pen and paper and match element by element, we can clearly see that there’s a one-to-one correspondence. Formally, the relation has the form:
@@ -120,10 +121,8 @@ This is totally acceptable, since the operations in both groups are _not necessa
   <img
     src="/images/cryptography-101/homomorphisms-and-isomorphisms/muppet.webp" 
     alt="Muppet looking away meme"
+    title="Okay, sure."
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    Okay, sure.
-  </figcaption>
 </figure>
 
 ---
@@ -142,11 +141,9 @@ This is exactly the goal of _homomorphic encryption_: performing operations on _
   <img
     src="/images/cryptography-101/homomorphisms-and-isomorphisms/homomorphic-encryption.webp" 
     alt="Homomorphic encryption diagram"
+    title="[zoom] The general idea"
     className="bg-white"
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    The general idea
-  </figcaption>
 </figure>
 
 And that’s awesome, because we can save ourselves the time of executing decryption operations — which are expensive — , while also preserving privacy of the data.
@@ -207,10 +204,8 @@ Just like magic.
     src="/images/cryptography-101/homomorphisms-and-isomorphisms/snape-approves.webp" 
     alt="Snape clapping"
     width="498"
+    title="Not quite as good as potion-making, but still..."
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    Not quite as good as potion-making, but still…
-  </figcaption>
 </figure>
 
 ---

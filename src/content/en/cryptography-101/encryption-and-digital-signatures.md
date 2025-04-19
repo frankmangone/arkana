@@ -32,11 +32,9 @@ The story that's usually told when learning about digital signatures goes someth
   <img 
     src="/images/cryptography-101/encryption-and-digital-signatures/cool-story.webp" 
     alt="Cool story bro" 
+    title="Yeah, awesome"
     width="389"
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    Yeah, awesome
-  </figcaption>
 </figure>
 
 And of course, we learn _nothing_ about the mechanisms behind this. But there's an implicit message in there: it _shouldn't be possible_ to get a private key from a public key, for this would mean anyone holding Alice's public key could produce a signature in Alice's name (it's called _private_ for a reason, after all). With this to consider, let's see what these keys really are.
@@ -45,6 +43,7 @@ And of course, we learn _nothing_ about the mechanisms behind this. But there's 
   <img 
     src="/images/cryptography-101/encryption-and-digital-signatures/key-pairs.webp" 
     alt="Key pair relation" 
+    title="[zoom]"
     className="bg-white"
   />
 </figure>
@@ -56,12 +55,10 @@ Suppose Alice and some other guy Bob agree on a generator point $G$ on the ellip
 <figure className="my-8">
   <img
     src="/images/cryptography-101/encryption-and-digital-signatures/busted.webp" 
-    alt="Scooby-doo unmasking meme" 
+    alt="Scooby-doo unmasking meme"
+    title="Busted"
     width="400"
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    Busted
-  </figcaption>
 </figure>
 
 Alice proceeds to calculate $Q = [d]G$, leveraging the power of _point doubling_, and obtains _another point_ in the group — this will be her _public key_, and she can safely send it out to Bob.
@@ -88,11 +85,9 @@ How does this happen in a _real application_? Think about this: any message is j
   <img 
     src="/images/cryptography-101/encryption-and-digital-signatures/encryption.webp" 
     alt="Encryption visual representation" 
+    title="[zoom] Just like magic"
     className="bg-white"
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    Just like magic
-  </figcaption>
 </figure>
 
 > Here's a [simple implementation](https://gist.github.com/frankmangone/2ec7bff333a8d2ef7138bf0ac1e161d6) in case you want to play around with it.
@@ -128,11 +123,9 @@ Visuals tend to help a lot. All in all, the process looks like this:
   <img 
     src="/images/cryptography-101/encryption-and-digital-signatures/encryption-process.webp" 
     alt="Encryption & decryption cycle" 
+    title="[zoom] ECIES in action"
     className="bg-white"
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    ECIES in action
-  </figcaption>
 </figure>
 
 This process is called [Elliptic Curve Integrated Encryption Scheme](https://medium.com/asecuritysite-when-bob-met-alice/elliptic-curve-integrated-encryption-scheme-ecies-encrypting-using-elliptic-curves-dc8d0b87eaa), or ECIES for short. Other similar schemes exist, such as [ElGamal’s encryption system](https://en.wikipedia.org/wiki/ElGamal_encryption), which can be adapted to elliptic curves.
@@ -204,11 +197,9 @@ Working out the numbers and checking that $R’ = R$ is a nice exercise for the 
   <img 
     src="/images/cryptography-101/encryption-and-digital-signatures/ecdsa-in-action.webp" 
     alt="ECDSA visualization" 
+    title="[zoom] ECDSA in action"
     className="bg-white"
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    ECDSA in action
-  </figcaption>
 </figure>
 
 And again, just like magic, a signature is really just a _pair of numbers_! The idea here is that calculating s is really easy with knowledge of the private key, but really hard without it — you’d have to solve a DLP problem!

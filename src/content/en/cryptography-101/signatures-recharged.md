@@ -15,10 +15,8 @@ If you’ve been following the series, then you’ve already seen your fair shar
   <img
     src="/images/cryptography-101/signatures-recharged/iceberg.webp" 
     alt="An iceberg" 
+    title="Don’t worry, though. Our descent into the depths will be slow and steady"
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    Don’t worry, though. Our descent into the depths will be slow and steady
-  </figcaption>
 </figure>
 
 There’s _so much more_ to learn. We can do a lot more with elliptic curves (and groups in general, to be fair). In particular, _digital signatures_ have some _elegant variants_ that prove to be extremely useful in the right context. This will be the topic for today’s article.
@@ -42,10 +40,8 @@ Of course, even though this is technically possible, _blind signing_ should be i
     src="/images/cryptography-101/signatures-recharged/sign-here.webp" 
     alt="Spongebob requesting a signature" 
     width="480"
+    title="Not so fast, cowboy"
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    Not so fast, cowboy
-  </figcaption>
 </figure>
 
 Still, if blind signatures are needed, there are many ways to construct them. One possibility is to adapt existing signature schemes. In particular, adapting Schnorr signatures is fairly simple. Let’s try that!
@@ -57,10 +53,8 @@ The point is that Alice _doesn’t know_ what she’s signing — she’s going 
     src="/images/cryptography-101/signatures-recharged/blind-signature.webp" 
     alt="A blind signature diagram" 
     className="bg-white"
+    title="[zoom] A brief visual summary of the process"
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    A brief visual summary of the process
-  </figcaption>
 </figure>
 
 In short:
@@ -139,10 +133,8 @@ _Ring signatures_ offer such a functionality. The premise is that a single perso
     src="/images/cryptography-101/signatures-recharged/ring-signature.webp" 
     alt="A ring signature diagram" 
     className="bg-white"
+    title="[zoom] (This will make more sense when we’re finished explaining, I promise)"
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    (This will make more sense when we’re finished explaining, I promise)
-  </figcaption>
 </figure>
 
 Again, as a short preliminary summary:
@@ -159,10 +151,8 @@ In order to achieve this anonymity behavior, we must first _forge_ a new and sli
   <img
     src="/images/cryptography-101/signatures-recharged/ring.webp" 
     alt="The One Ring from Lord of the Rings" 
+    title="No Frodo, not that ring!"
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    No Frodo, not that ring!
-  </figcaption>
 </figure>
 
 The concept of a _ring_ is that of an _ordered set_ (in this case, of participants), and whose order determines a series of calculations starting from a value $A$, and ending in the _same value_ $A$. And as always, the idea is that crafting said sequence of computations is only feasible with knowledge of a private key.
@@ -243,6 +233,7 @@ Here’s a visual representation of the whole signing process, to help better un
   <img
     src="/images/cryptography-101/signatures-recharged/ring-flow.webp" 
     alt="General visualization of the flow explained before" 
+    title="[zoom]"
   />
 </figure>
 
@@ -279,6 +270,7 @@ The idea is simple: what if we require _multiple participants_ to sign something
   <img
     src="/images/cryptography-101/signatures-recharged/multisignature.webp" 
     alt="Multisignature schematics"
+    title="[zoom]"
     className="bg-white" 
   />
 </figure>
@@ -355,11 +347,9 @@ As always, we’re going to need a _private key_. But as before, the point is th
   <img
     src="/images/cryptography-101/signatures-recharged/one-does-not-simply.webp" 
     alt="One does not simply meme" 
+    title="One does not simply do threshold cryptography"
     width="560"
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    One does not simply do threshold cryptography
-  </figcaption>
 </figure>
 
 Indeed, _key generation_ is a crucial step for threshold signatures to work.

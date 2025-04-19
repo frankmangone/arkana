@@ -27,10 +27,8 @@ $$
   <img 
     src="/images/cryptography-101/elliptic-curves-somewhat-demystified/elliptic-curve.webp" 
     alt="An elliptic curve" 
+    title="[zoom] A plot of the curve y² = x³ - x"
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    A plot of the curve y² = x³ - x
-  </figcaption>
 </figure>
 
 But wait... What does this have to do with groups? This is just a curve after all!
@@ -53,10 +51,8 @@ The first time I saw this, I recall thinking “what a strange process”. I rem
   <img 
     src="/images/cryptography-101/elliptic-curves-somewhat-demystified/chord-and-tangent.webp" 
     alt="Chord-and-tangent diagram"
+    title="[zoom] The elliptic curve y² = x³ - x + 1 (red) with a representation of the operation P + Q = R"
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    The elliptic curve y² = x³ - x + 1 (red) with a representation of the operation P + Q = R
-  </figcaption>
 </figure>
 
 You can try this yourself in a graphical tool like [Desmos](https://www.desmos.com/calculator) or [GeoGebra](https://www.geogebra.org/graphing?lang=en).
@@ -78,10 +74,8 @@ There's a neat trick to turn an infinite amount of integers into a finite set, a
   <img 
     src="/images/cryptography-101/elliptic-curves-somewhat-demystified/discrete-curve.webp" 
     alt="How an elliptic curve over a the integers (modulo 23) looks like"
+    title="[zoom] The points of an elliptic curve, modulo 23"
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    The points of an elliptic curve, modulo 23
-  </figcaption>
 </figure>
 
 Formally, we say that the elliptic curve is defined over a _finite field_, so any point that's “out of range” is just mapped back into range with the modulo operation. This is denoted as:
@@ -100,6 +94,7 @@ Take a look at the following picture. What happens if we try adding $$P + Q$$ in
   <img 
     src="/images/cryptography-101/elliptic-curves-somewhat-demystified/cancelling-points.webp" 
     alt="Two vertically-alligned points being added together"
+    title="[zoom]"
   />
 </figure>
 
@@ -110,10 +105,8 @@ We can immediately see that _there's no third point of intersection_! Panic ensu
     src="/images/cryptography-101/elliptic-curves-somewhat-demystified/panic-cat.webp" 
     alt="A frightened cat"
     width="236"
+    title="*Panic"
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    *Panic
-  </figcaption>
 </figure>
 
 Luckily, the crisis is readily averted by defining a _new group element_, denoted $\mathcal{O}$. Think of it as the a _point at infinity_ — which is not really what happens, but may help conceptualization. This new element has an interesting property, given any point $$P$$ on the curve:
@@ -138,10 +131,8 @@ As before, we find another intersection point, flip it, and find $P + P$, which 
   <img 
     src="/images/cryptography-101/elliptic-curves-somewhat-demystified/point-doubling.webp" 
     alt="Point doubling in action"
+    title="[zoom] Point doubling in action"
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    Point doubling in action
-  </figcaption>
 </figure>
 
 Calculating $P + [2]P$ then proceeds as usual: draw a line through the two points, flip the third intersection point, and voilà! You just got $[3]P$. Do this again, and you'll get $[4]P$. And here, we can observe something peculiar: adding $P$ four times ($P + P + P + P$) yields the _same result_ as adding $[2]P + [2]P$!
@@ -162,10 +153,8 @@ If you feel like this right now:
   <img 
     src="/images/cryptography-101/elliptic-curves-somewhat-demystified/no-idea-what-im-doing.webp" 
     alt="I have no idea what I'm doing meme"
+    title="Me every morning"
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    Me every morning
-  </figcaption>
 </figure>
 
 All I can say is that this can be hard to wrap your head around upon first contact, but once it sinks in, it feels fairly natural. Give it some time, and don't hesitate to reach out if you have any questions!

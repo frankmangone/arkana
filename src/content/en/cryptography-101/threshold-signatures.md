@@ -43,10 +43,8 @@ This feels like an _upgrade_ to the [multisignature scheme](/en/blog/cryptograph
     src="/images/cryptography-101/threshold-signatures/threshold-signature.webp" 
     alt="Schematics showing the high level idea of threshold signatures"
     className="bg-white"
+    title="[zoom] A threshold signature where at least 3 out of 4 signers are required"
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    A threshold signature where at least 3 out of 4 signers are required
-  </figcaption>
 </figure>
 
 We can divide threshold signatures into _three major steps_ or _algorithms_ (just like most signature schemes):
@@ -141,10 +139,8 @@ And we can use _VRSS_ to build our algorithm. How convenient!
     src="/images/cryptography-101/threshold-signatures/key-generation.webp" 
     alt="Key generation procedure visualization"
     className="bg-white"
+    title="Construction of the share of the private key"
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    Construction of the share of the private key
-  </figcaption>
 </figure>
 
 The idea is that each participant will receive a _share_ from each of their peers, and they will use these _verified_ values to calculate their _private key share_:
@@ -164,10 +160,8 @@ The output of the DKG is a piece of a _shared private key_, $d$. None of the par
     src="/images/cryptography-101/threshold-signatures/key-interpolation.webp" 
     alt="Interpolation of key shares"
     className="bg-white"
+    title="[zoom] If we were to interpolate the private key shares, we’d get the shared private key"
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    If we were to interpolate the private key shares, we’d get the shared private key
-  </figcaption>
 </figure>
 
 Finally, we need a _public key_. And for this, each participant broadcasts their secret _independent_ or _zeroth_ coefficient, $a_{i,0}$. This secret cannot be disclosed as such, and therefore, it is transmitted as a _public key share_:
@@ -242,10 +236,8 @@ It seems only fair that we examine this expression and check that it works prope
   <img
     src="/images/cryptography-101/threshold-signatures/cry-on-floor.webp" 
     alt="'Lie down, try not to cry, cry a lot' meme"
+    title="Trust me, it’s not that bad!"
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    Trust me, it’s not that bad!
-  </figcaption>
 </figure>
 
 ### Interpolating Additions
@@ -278,6 +270,7 @@ Now,what happens if we _add_ the polynomials $a(x)$ and $b(x)$?
     src="/images/cryptography-101/threshold-signatures/poly-addition.webp" 
     alt="Diagram representing the addition of two polynomials"
     className="bg-white"
+    title="[zoom]"
   />
 </figure>
 
@@ -298,6 +291,7 @@ And that’s awesome! This means that we can essentially _add shares_ of a polyn
     src="/images/cryptography-101/threshold-signatures/public-key-summation.webp" 
     alt="Diagram with the derivation of the public"
     className="bg-white"
+    title="[zoom]"
   />
 </figure>
 
@@ -329,6 +323,7 @@ Also worth mentioning: when multiplying shares by a _constant_, the resulting in
   <img
     src="/images/cryptography-101/threshold-signatures/constant-multiplication.webp" 
     alt="Multiplication by constant"
+    title="[zoom]"
     className="bg-white"
   />
 </figure>
@@ -340,10 +335,8 @@ So if we take our shares to be $(i, k.a_i)$, then interpolation will yield $k.a$
     src="/images/cryptography-101/threshold-signatures/mr-bubz.webp" 
     alt="Mr Bubz meme"
     width="420"
+    title="Mr Bubz ain’t that happy about it"
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    Mr Bubz ain’t that happy about it
-  </figcaption>
 </figure>
 
 Alright, we only have one more case to analyze. The pain and suffering will end promptly, I promise.
@@ -392,10 +385,8 @@ And just like magic, we have built values that interpolate to the inverse of $k$
   <img
     src="/images/cryptography-101/threshold-signatures/wizard.webp" 
     alt="Hagrid from Harry Potter"
+    title="You're a wizard now, Harry"
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    You're a wizard now, Harry
-  </figcaption>
 </figure>
 
 That’s all we’re going to need! Let’s check back on our signature calculation with our freshly-found conclusions.

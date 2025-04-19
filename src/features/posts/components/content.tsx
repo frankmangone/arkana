@@ -10,6 +10,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { LinkIcon } from "lucide-react";
 import { VideoEmbed } from "@/components/video-embed";
+import { ZoomableImage } from "@/components/zoomable-image";
 
 interface PostContentProps {
   post: Post;
@@ -72,13 +73,9 @@ export function PostContent({ post }: PostContentProps) {
       /:::\s*big-quote\s*([\s\S]*?)\s*:::/g,
       '<div class="big-quote">$1</div>'
     )
-    .replace(/<video-embed\s+src="([^"]+)"\s*\/>/g, (match, src) => {
-      console.log("Found video embed:", match, "Source:", src);
+    .replace(/<video-embed\s+src="([^"]+)"\s*\/>/g, (_, src) => {
       return `<div class="video-embed" data-src="${src}"></div>`;
     });
-
-  // Add debugging to see what ReactMarkdown is receiving
-  console.log("Processed content:", processedContent);
 
   return (
     <div className="prose prose-gray dark:prose-invert max-w-none mb-8">
@@ -122,19 +119,39 @@ export function PostContent({ post }: PostContentProps) {
           },
 
           // Add image handling
-          img: ({ src, alt, width, className }) => {
+          img: ({ src, alt, width, className, title }) => {
             const fullSrc = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${
               (src as string) ?? ""
             }`;
 
+            // Check if this image is within a figure with a figcaption
+            // We'll pass the title attribute as the caption for our ZoomableImage
             return (
-              <Image
+              <ZoomableImage
                 src={fullSrc}
                 alt={alt ?? ""}
-                className={`${className} rounded-lg`}
+                className={className ?? ""}
                 width={width ? Number(width) : 1000}
                 height={1000}
+                caption={title ?? ""}
               />
+            );
+          },
+
+          // Handle figure and figcaption to work with ZoomableImage
+          figure: ({ children, ...props }) => (
+            <figure className="w-full my-6" {...props}>
+              {children}
+            </figure>
+          ),
+
+          figcaption: ({ children }) => {
+            // The figcaption will be handled by ZoomableImage
+            // This is a fallback for any figure not containing our ZoomableImage
+            return (
+              <figcaption className="text-center text-sm text-gray-500 dark:text-gray-400 mt-2">
+                {children}
+              </figcaption>
             );
           },
 

@@ -39,6 +39,7 @@ Luckily, there are mechanisms to _generate shared keys_ in a safe way. The most 
     src="/images/cryptography-101/protocols-galore/diffie-hellman.webp" 
     alt="Diffie hellman hey exchange visualization"
     className="bg-white"
+    title="[zoom]"
   />
 </figure>
 
@@ -60,11 +61,9 @@ Just like that, they have safely created a _shared key_! Sensational. Just remem
 <figure className="my-8">
   <img
     src="/images/cryptography-101/protocols-galore/gandalf.webp" 
-    alt="Gandalf meme" 
+    alt="Keep it secret, keep it safe" 
+    title="And heed Gandalf's advice"
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    And heed Gandalf's advice
-  </figcaption>
 </figure>
 
 ---
@@ -83,11 +82,9 @@ Obviously, the problem here is that Alice _revealed_ her play ahead of time. Wha
   <img
     src="/images/cryptography-101/protocols-galore/rock-paper-scissor.webp" 
     alt="Async rock-paper-scissor" 
+    title="[zoom] An unusual game of rock-paper-scissors"
     className="bg-white"
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    An unusual game of rock-paper-scissors
-  </figcaption>
 </figure>
 
 Alice produces some value that’s _tied_ to her play (scissors), but which also _hides_ her decision. This is known as a _commitment_. Later, Alice _reveals_ the original value, and Bob _verifies_ that it matches the commitment. It’s really like putting your play on a sealed envelope, and _opening_ it when needed.
@@ -99,7 +96,7 @@ I know what you’re thinking: why on Earth would anyone play rock-paper-scissor
 Let’s build what’s called a [Pedersen commitment](https://www.rareskills.io/post/pedersen-commitment). This type of scheme requires a _setup_ step, which should return a generator $G$ of an elliptic curve, and some other point $H = [k]G$.
 
 $$
-\textrm{log}() \rightarrow (G, H)
+\textrm{setup}() \rightarrow (G, H)
 $$
 
 Then, if Alice wants to commit to some message $M$, she follows these steps:
@@ -139,10 +136,8 @@ In particular, there’s another protocol called the [Schnorr signature](https:/
   <img
     src="/images/cryptography-101/protocols-galore/harold.webp" 
     alt="Hide the pain meme" 
+    title="I'm sorry, Harold"
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    I'm sorry, Harold
-  </figcaption>
 </figure>
 
 Anyway, the Schnorr signature is often presented using the _additive group of integers modulo_ $q$, but as we previously mentioned, any construction with said group can be _adapted to elliptic curves_. And this is what we shall demonstrate now.
@@ -188,10 +183,8 @@ In order _not_ to reveal it, I can do the following: take a large piece of cardb
   <img
     src="/images/cryptography-101/protocols-galore/waldo.webp" 
     alt="Waldo" 
+    title="There he is, the slippery son of a gun"
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    There he is, the slippery son of a gun
-  </figcaption>
 </figure>
 
 ### The Schnorr Protocol
@@ -244,10 +237,8 @@ This one sounds crazy. I believe an analogy may help.
   <img
     src="/images/cryptography-101/protocols-galore/lucky.webp" 
     alt="A guy holding a lottery prize" 
+    title="Lucky me!"
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    Lucky me!
-  </figcaption>
 </figure>
 
 Although this analogy is not perfect, it conveys an important message: there may be things to _prove_ about randomly-generated numbers.

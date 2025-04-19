@@ -51,10 +51,8 @@ What happens? A black hole? Stack overflow?
   <img 
     src="/images/cryptography-101/where-to-start/aaaaa.webp" 
     alt="Goat screaming"
+    title="Aaaaaaaaa!"
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    Aaaaaaaaa!
-  </figcaption>
 </figure>
 
 Well... Kind of! We just _wrap around to the beginning_ of our set, yielding $$0$$. And this happens because I lied a bit: the group operation is not just standard addition, it's _modular addition_. So we must define what this is in order to continue.

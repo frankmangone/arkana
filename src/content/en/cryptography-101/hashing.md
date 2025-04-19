@@ -35,6 +35,8 @@ Simply put, a _hashing function_ or _algorithm_ takes some data as input, and ou
   <img
     src="/images/cryptography-101/hashing/hashing-function.webp" 
     alt="Hashing function representation as taking any input, and spitting a fix-length binary output" 
+    title="[zoom]"
+    className="bg-white"
   />
 </figure>
 
@@ -43,11 +45,9 @@ The output is usually called the _hash_ of the input. For our purposes, the algo
 <figure className="my-8">
   <img
     src="/images/cryptography-101/hashing/bosch.webp" 
-    alt="Image of a blender" 
+    alt="Image of a blender"
+    title=" I’m not sponsored by Bosch, by the way. Hope I’m not infringing any copyrights with this..."
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    I’m not sponsored by Bosch, by the way. Hope I’m not infringing any copyrights with this...
-  </figcaption>
 </figure>
 
 Again, we’re not that interested in _how_ hashing functions achieve this. It’s much more important to understand what _properties_ the algorithm and the hash have, and what we can do with them.
@@ -127,6 +127,7 @@ Let’s go back to the digital signature (ECDSA) scheme from the [previous artic
     src="/images/cryptography-101/hashing/hashing-example.webp" 
     alt="Another hashing function visual" 
     className="bg-white"
+    title="[zoom]"
   />
 </figure>
 
@@ -144,10 +145,8 @@ Firstly, this is a clear example that not every hashing function is suitable for
   <img
     src="/images/cryptography-101/hashing/chain.webp" 
     alt="Image of a chain with a clipper" 
+    title="”A chain is no stronger than its weakest link”"
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    “A chain is no stronger than its weakest link”
-  </figcaption>
 </figure>
 
 So yeah, it’s important to keep these things in mind when designing cryptographic techniques. You should always analyze the security of each component of your protocol, and not just focus on one aspect of it.
@@ -167,10 +166,8 @@ In essence, it’s just a tree structure where the information contained in each
     src="/images/cryptography-101/hashing/tree-nodes.webp" 
     alt="Node construction in Merkle trees" 
     className="bg-white"
+    title="A node of a Merkle tree"
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    A node of a Merkle tree
-  </figcaption>
 </figure>
 
 Repeating this pattern will lead to a tree structure:
@@ -180,6 +177,7 @@ Repeating this pattern will lead to a tree structure:
     src="/images/cryptography-101/hashing/merkle-tree.webp" 
     alt="A Merkle tree" 
     className="bg-white"
+    title="[zoom]"
   />
 </figure>
 
@@ -211,6 +209,7 @@ He claims that $A$ is in the tree. How can he _prove_ this? And here’s where t
   <img
     src="/images/cryptography-101/hashing/merkle-copath.webp" 
     alt="Merkle proof visualization, with only a few nodes needed for the proof" 
+    title="[zoom]"
     className="bg-white"
   />
 </figure>
@@ -230,10 +229,8 @@ So for 1024 inputs, we just have to reveal _10 nodes_. For 32768, _15 nodes_ wil
     src="/images/cryptography-101/hashing/happy-seal.webp" 
     alt="A picture of a happy seal"
     width="620"
+    title="Soothing"
   />
-  <figcaption className="text-center text-sm text-gray-500 mt-2">
-    Soothing
-  </figcaption>
 </figure>
 
 Merkle trees are one of the most used cryptographic data structures out there, powering Blockchains everywhere. There’s active research going on to possibly replace them with a new kid in the block, called the [Verkle tree](https://math.mit.edu/research/highschool/primes/materials/2018/Kuszmaul.pdf), but the idea is generally the same: proving something belongs to a dataset, without revealing the _entire dataset_.
