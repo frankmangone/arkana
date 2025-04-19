@@ -139,7 +139,7 @@ export function PostContent({ post }: PostContentProps) {
 
           // Handle figure and figcaption to work with ZoomableImage
           figure: ({ children, ...props }) => (
-            <figure className="w-full my-6" {...props}>
+            <figure className="w-full" {...props}>
               {children}
             </figure>
           ),

@@ -129,6 +129,15 @@ a.nav-bar {
   color: #f8f5ff;
 }
 
+p {
+  color: #e1dfe4;
+  line-height: 1.8rem;
+}
+
+strong {
+  color: #fff;
+}
+
 /* KaTeX block equation styling */
 .katex-display {
   margin-top: 3rem !important;
@@ -145,7 +154,6 @@ a.nav-bar {
 
 /* Full-width figures */
 figure {
-  margin: 1.5rem 0;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -158,7 +166,7 @@ figure div {
 
 figure figcaption {
   text-align: center;
-  color: #5c5b5f;
+  color: #7f7e84;
   font-size: 0.875rem;
   margin-top: 0.5rem;
 }
@@ -218,7 +226,7 @@ blockquote cite {
   justify-content: center;
   align-items: center;
   gap: 1.5rem;
-  margin: 4rem 0;
+  margin: 2rem 0;
   text-align: center;
 }
 
