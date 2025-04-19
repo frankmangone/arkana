@@ -174,7 +174,7 @@ $$
 But wait... How are the two masks equal to each other? **Clearly**, they don't look like the same thing... They are **different evaluations** of the pairing!
 
 $$
-e(Q_B,Q)^k \ \textrm{?=} \ e(S_B,U)
+e(Q_B,Q)^k \stackrel{?}{=} e(S_B,U)
 $$
 
 <figure>

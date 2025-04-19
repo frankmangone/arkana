@@ -141,4 +141,243 @@ $$
 
 In order to avoid long and cumbersome expressions, let’s introduce some **new notation**. Think of our number $v$ represented as a **binary vector**, each component being a **bit**:
 
+$$
+vec{a_l} = (a_{l,0}, a_{l,1}, a_{l,2}, ..., a_{l,n-1}) \in {\mathbb{Z}_q}^n
+$$
+
+And also, let's define this:
+
+$$
+\vec{W}^n = (W^0, W^1, W^2, ..., W^{n-1}) \in {\mathbb{Z}_q}^n
+$$
+
+We can plug in any value for $W$ — and in particular, plugging in either $0$ or $1$, results in a vector of zeros or ones, respectively.
+
+Now, we can see that the equation from before can be written as an [inner product](https://en.wikipedia.org/wiki/Dot_product):
+
+$$
+\langle \vec{a_l}, \vec{2}^n \rangle = a_{l,0}2^0 + a_{l,1}2^1 + a_{l,2}2^2 + ... a_{l,n-1}2^{n-1} = v
+$$
+
+> Ah, the flashbacks from linear algebra
+
+This notation is fairly compact, so we’ll be using similar expressions throughout this article.
+
+If this equation holds, it means that $a_l$ correctly represents $v$, and in consequence, that $v$ is in the expected range. Except, again, that’s **not the full story**.
+
+We’re missing one tiny detail: the values in $a_l$ might not be **zeros** and **ones**! The possible values for each **digit** or **vector component** can really range from $0$ to $q$, depending on which **finite field** we’re using. In other words: each component can be any element in the integers modulo $q$. And the equality might still hold.
+
+So we’ll require an **extra condition**. For this, we define:
+
+$$
+\vec{a_r} = \vec{a_l} - \vec{1}^n
+$$
+
+All we’re doing there, is subtracting $1$ from each element in our vector. Meaning that:
+
+- If some component $a_{l,i}$ has value $1$, then $a_{r,i}$ will have value $0$
+- If $a_{l,i}$ has value $0$, then $a_{r,i}$ will **wrap around** (kind of an **underflow**, if you will) to $q - 1$.
+- Otherwise, neither $a_{l,i}$ nor $a_{r,i}$ will have value $0$.
+
+This is important, because if $a_l$ **really** is a binary number, something like this should happen:
+
+<figure>
+  <img
+    src="/images/cryptography-101/zero-knowledge-proofs-part-1/bit-condition.webp" 
+    alt="a_l and a_r cancelling out"
+    title="[zoom]"
+    className="bg-white"
+  />
+</figure>
+
+Would you look at that! As long as our binary representation is correct, then the **inner product** of $a_l$ and $a_r$ will yield $0$!
+
+$$
+\langle \vec{a_l}, \vec{a_r} \rangle = 0
+$$
+
+Summarizing, we have a grand total of **two conditions** that conform our **statement** (remember, the statement is what want to prove).
+
+$$
+\left \{ \begin{matrix}
+\langle \vec{a_l}, \vec{2}^n \rangle = v
+\\
+\\ \langle \vec{a_l}, \vec{a_r} \rangle = 0
+\end{matrix}\right.
+$$
+
+---
+
+## The Protocol
+
+Our system is set. If we know the values of $v$ and $a_l$, then checking that the binary representation is correct is **pretty straightforward** — we just check that the system holds.
+
+However, since we’re going the **zero knowledge route**, then the verifier **will not know** these values. So in order to convince them, the prover will have to do some wizardry — nothing surprising, at this point in the series.
+
+<figure>
+  <img
+    src="/images/cryptography-101/zero-knowledge-proofs-part-1/wingardium-leviosa.webp" 
+    alt="Wingardium Leviosa scene from Harry Potter and the Philosopher's Stone"
+    title="Ron surely seems entertained"
+  />
+</figure>
+
+### The Commitments
+
+Everything starts with **commitments**. Remember that commitments can only be opened with **valid values** — so they **bind** the prover to the statement they want to prove.
+
+Let’s start by committing to the value $v$. For this, a [Pedersen commitment](/en/blog/cryptography-101/protocols-galore/#creating-the-commitment) is used. We’ll use a multiplicative group $\mathbb{G}$ of prime order $q$ (see the article about isomorphisms if you need a refresher, or check the [previous article](/en/blog/cryptography-101/commitment-schemes-revisited)), with generators $g$, $h$.
+
+The commitment looks like this:
+
+$$
+V = g^vh^{\gamma}
+$$
+
+Secondly, we want to commit to $a_l$ and $a_r$, which are also part of our system. Since these are **vectors**, we’ll need a slightly more complex commitment. We’ll use generators $g_k$, and $h_k$, with $k$ ranging from $0$ to $n$. Here, the amount of bits in our **range** will be $n + 1$. And here’s the commitment (drum roll please):
+
+$$
+A = h^{\alpha}\prod_{i=0}^n {g_i}^{a_{l,i}}{h_i}^{a_{r,i}} = h^{\alpha}{\vec{g}}^{\vec{a_l}}{\vec{h}}^{\vec{a_r}}
+$$
+
+> Woah woah, that’s a lot of symbols right there!. Let’s stop and examine the expression.
+>
+> The big $\Pi$ symbol is a [product](<https://simple.wikipedia.org/wiki/Product_(mathematics)>), which is like a summation, but instead of adding terms, we multiply them.
+>
+> In order to make the expression less daunting, we use **vector notation**. With it, we save ourselves the time of **writing** the product symbol, but in reality, both expressions represent the same thing.
+
+What’s interesting about Pedersen commitments is that we can combine many values into a single commitment, with just one **blinding factor**. Nice!
+
+We’ll also require **blinding factors** for the components of $a_l$ and $a_r$ — these will be two randomly-sampled vectors $s_l$ and $s_r$, to which we commit with:
+
+$$
+A = h^{\rho}\prod_{i=0}^n {g_i}^{s_{l,i}}{h_i}^{s_{r,i}} = h^{\rho}{\vec{g}}^{\vec{s_l}}{\vec{h}}^{\vec{s_r}}
+$$
+
+These commitments are sent to the verifier, so that the prover is bound to v, and its binary representation.
+
+### The Challenge
+
+Now that the verifier has some commitments, they can proceed to make a **challenge**. For this, they will pick two random numbers $y$ and $z$, and send them to the prover.
+
+> What the prover does now is quite convoluted and confusing, to be honest. And this is part of the point I want to make in this article: maybe trying to craft a more general framework for zero knowledge proofs could be an interesting idea.
+
+The prover will compute **three expressions**, that really represent a bunch of **polynomials** ($2n + 1$ in total, to be precise). We’ll try to understand in just a moment — for now, let’s just power through the definitions. These polynomials are:
+
+$$
+l(X) = (\vec{a_l} - z \cdot \vec{1}^n) + \vec{s_l} \cdot X \in {\mathbb{Z}_q}^n
+$$
+
+$$
+r(X) = \vec{y}^n \circ (\vec{a_r} + z \cdot \vec{1}^n + \vec{s_r}) + z^2 \cdot \vec{2}^n \in {\mathbb{Z}_q}^n
+$$
+
+$$
+t(X) = \langle l(X), r(X) \rangle = t_0 + t_1X + t_2X^2 \in {\mathbb{Z}_q}
+$$
+
+I know this is how I felt the first time I saw this:
+
+<figure>
+  <img
+    src="/images/cryptography-101/zero-knowledge-proofs-part-1/brain-damage.webp" 
+    alt="Someone with a severe headache"
+    title="*Brain damage*"
+  />
+</figure>
+
+Lots to unpack here. First, a couple clarifications on notation:
+
+- The **dot product** ($\circ$) will be interpreted as **component-wise multiplication**. This is if we write $a \circ b$, then the result will be a vector of the form $(a_0b_0, a_1b_1, a_2b_2, ...)$. This is used in the $r(X)$ expression.
+- The **scalar product** ($\cdot$) is used to multiply every component of a vector by a **scalar** (an **integer**, in our case). So for instance, $z \circ a$ (where $z$ is a scalar) will yield a vector of the form $(za_0, za_1, za_2, ...)$.
+
+In particular, let’s focus on the independent term from the very last polynomial, $t_0$. It can be calculated through this expression:
+
+$$
+t_0 = z^2.v + \delta(y,z)
+$$
+
+$$
+\delta(y,z) = (z - z^2).\langle \vec{1}^n, \vec{y}^n \rangle - z^3.\langle \vec{1}^n, \vec{2}^n \rangle
+$$
+
+Notice that $\delta$ is a quantity that the verifier can **easily calculate**, which will come in handy in a minute.
+
+Importantly, this term contains the value $v$, which is central to our original statement. In a way, proving knowledge of a “correct” $t_0$ is tied to proving knowledge of $v$. And this is exactly what’s coming next: providing a **correct evaluation** of the polynomials.
+
+So, the verifier commits to the remaining coefficients of $t(X)$, $t_1$ and $t_2$ — sampling some random blinding factors $\tau_1$ and $\tau_2$, and calculating:
+
+$$
+T_1 = g^{\tau_1}h^{t_1} \in \mathbb{G}
+$$
+
+$$
+T_2 = g^{\tau_2}h^{t_2} \in \mathbb{G}
+$$
+
+And these are sent to the verifier. But we’re not done yet…
+
+<figure>
+  <img
+    src="/images/cryptography-101/zero-knowledge-proofs-part-1/derp.webp" 
+    alt="Painting with eye protrusion"
+    title="I never said this was gonna be simple!"
+    width="500"
+  />
+</figure>
+
+### The Second Challenge
+
+For this to work, we’ll require **yet another challenge**. If you think about it, this makes sense because of how we’ve framed the protocol so far: we have a bunch of polynomials, so now we need to **evaluate them**.
+
+And thus, the verifier samples a new challenge $x$, and sends it to the verifier. With it, the verifier proceeds to calculate:
+
+$$
+\vec{l} = l(x), \ \vec{r} = r(x), \ \hat{t} = \langle \vec{l}, \vec{r} \rangle
+$$
+
+Two more gadgets are required for the proof to work. The verifier needs to calculate:
+
+$$
+\mu = \alpha + \rho x
+$$
+
+$$
+\tau_x = \tau_2 x^2 + \tau_1 x + z^2 \gamma
+$$
+
+Don’t worry too much about these — they are just needed for the math to work out. They act as composite blinding factors, in fact.
+
+Finally, all of these values (the vectors $\vec{l}$ and $\vec{r}$, $\hat{t}$, and the blinding factors) are sent to the verifier, who **finally** proceeds to the verification step. Hooray!
+
+---
+
+## Verification
+
+At this point, the verifier has received **several values** from the prover, namely:
+
+$$
+V, A, S, T_1, T_2, \mu, \tau_x, \vec{l}, \vec{r}, \hat{t}
+$$
+
+As previously mentioned, what the verifier wants to check is that the polynomial evaluations are correct. And in turn, this should convince the verifier that $v$ is in the specified range. The connection between these two statements is **not evident**, though — so I’ll try to give some context as we go.
+
+### Linking the Polynomials
+
+The first equality the verifier checks is this one:
+
+$$
+g^{\hat{t}}h^{\tau_x} \stackrel{?}{=} V^{z^2}g^{\delta(y,z)}{T_1}^x{T_2}^{x^2}
+$$
+
+If you’re interested, this makes sense because:
+
+$$
+V^{z^2}g^{\delta(y,z)}{T_1}^x{T_2}^{x^2} = (h^{\gamma}g^v)^{z^2}g^{\delta(y,z)}(g^{t_1}h^{\tau_1})^x(g^{t_2}h^{\tau_2})^{x^2}
+$$
+
+$$
+g^{vz^2 + t_1x + t_2x^2 + \delta(y,z)}h^{\tau_2x^2 + \tau_1x + z^2 \gamma} = g^{\hat{t}}h^{\tau_x}
+$$
+
 > Copy in progress!
