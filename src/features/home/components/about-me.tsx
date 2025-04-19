@@ -18,7 +18,7 @@ export function AboutMe({ dictionary }: AboutMeProps) {
           <div className="flex flex-col md:flex-row gap-8 items-center">
             <div className="relative w-48 h-48 rounded-full overflow-hidden flex justify-center">
               <Image
-                src="/images/me.jpg"
+                src={`${process.env.NEXT_PUBLIC_BASE_URL ?? ""}/images/me.jpg`}
                 alt="Profile"
                 width={300}
                 height={192}
