@@ -5,11 +5,14 @@ import { languages } from "@/lib/i18n-config";
 import { MainLayout } from "@/components/layouts/main-layout";
 import AuthorPage from "@/features/authors/view";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+interface AuthorPageParams extends Promise<any> {
+  lang: string;
+  slug: string;
+}
+
 interface AuthorPageProps {
-  params: {
-    lang: string;
-    slug: string;
-  };
+  params: AuthorPageParams;
 }
 
 export async function generateMetadata({
