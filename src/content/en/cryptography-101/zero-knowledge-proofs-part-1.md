@@ -142,7 +142,7 @@ $$
 In order to avoid long and cumbersome expressions, let’s introduce some **new notation**. Think of our number $v$ represented as a **binary vector**, each component being a **bit**:
 
 $$
-vec{a_l} = (a_{l,0}, a_{l,1}, a_{l,2}, ..., a_{l,n-1}) \in {\mathbb{Z}_q}^n
+\vec{a_l} = (a_{l,0}, a_{l,1}, a_{l,2}, ..., a_{l,n-1}) \in {\mathbb{Z}_q}^n
 $$
 
 And also, let's define this:
@@ -380,4 +380,72 @@ $$
 g^{vz^2 + t_1x + t_2x^2 + \delta(y,z)}h^{\tau_2x^2 + \tau_1x + z^2 \gamma} = g^{\hat{t}}h^{\tau_x}
 $$
 
-> Copy in progress!
+What does this all mean? If you pay close attention, you’ll see that on one side of the equality, we have the evaluation $t(X)$, and on the other side, the value $v$ (present in the commitment $V$). So what this equality effectively checks is that the value $t(x)$ is tied to the original value $v$. So, knowledge of $t(x)$ also means knowledge of $v$. This is what the verifier should be convinced about by this equality! In summary:
+
+::: big-quote
+This check convinces the verifier that v is correct so long as t(x) is also correct
+:::
+
+For the next check, we’ll need to define this new vector:
+
+$$
+h'_i = h_i^{y^{-i+1}} \rightarrow \vec{h'} = (h_1, h_2^{y^-1}, h_3^{y^-2}, ...)
+$$
+
+As convoluted as this may look, this actually makes the upcoming check work like a charm. The verifier first computes:
+
+$$
+P = AS^x(\vec{g})^{-z}(\vec{h'})^{z\vec{y}^n + z^2\vec{2}^n} \in \mathbb{G}
+$$
+
+And then evaluates:
+
+$$
+P \stackrel{?}{=} h^{\mu}(\vec{g})^{\vec{l}}(\vec{h'})^{\vec{r}}
+$$
+
+This time I won’t provide proof that the expressions should match — I think it’s a nice exercise in case you’re interested and don’t want to take my word for it!
+
+Whether if you choose to believe me or check for yourself, here’s what’s happening here: $P$ contains the values for all the $a_l$ and $a_r$ values, while on the other side of the equality, we have the evaluations of $l(X)$ and $r(X)$. Because the prover received a challenge from the verifier ($x$), it’s infeasible that $P$ will suffice the equality if the polynomials are **incorrectly evaluated**. All in all, this is what happens:
+
+::: big-quote
+This check convinces the verifier that the bit representation of v (the a vectors) are correct so long as l(x) and r(x) are correct
+:::
+
+So, finally, we need to check that the evaluations of the polynomials match. And this is very easy to check:
+
+$$
+\hat{t} \stackrel{?}{=} \langle \vec{l}, \vec{r} \rangle
+$$
+
+This check ensures that $\hat{t}(x)$ matches the expected value. While it’s simple to choose values of $t(x)$, $l(x)$, and $r(x)$ that conform to this expression, it’s **extremely unlikely** that they would also suffice the **previous two checks**. So, in conjunction with them, what this does is:
+
+::: big-quote
+This check convinces a verifier that the polynomial evaluations are correct
+:::
+
+Et voilà! That’s the complete proof. Piece o’ cake, right?
+
+<figure>
+  <img
+    src="/images/cryptography-101/zero-knowledge-proofs-part-1/cat-crying.webp" 
+    alt="Cat crying"
+    title="Not funny"
+  />
+</figure>
+
+I’ll say this again, since reaffirmation at this stage might be important: this is very convoluted and certainly **not** simple. But hey, it works!
+
+---
+
+## Summary
+
+I know this was not a light reading — probably quite the opposite. There aren’t many ways to circumvent the complexity of the protocol though, it is what it is! But in the end, we’re able to fulfill our purpose, and we have ourselves a way to prove that a number lies in a given range.
+
+Zooming out a bit, what we can see is that our statement was **fairly simple** to pose. Three simple equations, and we’re done. Still, we needed some elaborate cryptographic gymnastics to prove it.
+
+And this is completely fine, but it also triggers a certain itch: **can we be more general**? Is there a more general framework to prove statements?
+
+Indeed, there is. Don’t get me wrong — Bulletproofs and other kinds of tailor-made ZKPs are very cool, useful, and **perhaps** more performant than a generalized implementation. But if every statement requires specific research and complex implementations, then it may become a bottleneck for new applications.
+
+It is in this spirit that we’ll move on in the series — by exploring a certain framework for more general proofs: **SNARKs**. But we’ll need to lay some groundwork first — and that will be the topic for the [next article](/en/blog/cryptography-101/arithmetic-circuits)!
