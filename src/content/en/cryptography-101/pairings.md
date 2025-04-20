@@ -1,7 +1,7 @@
 ---
 title: "Cryptography 101: Pairings"
 date: "2024-05-20"
-author: "Frank Mangone"
+author: "frank-mangone"
 tags: ["Cryptography", "Elliptic Curves", "Pairing", "Mathematics"]
 description: "A brief introduction to pairings, an important tool in modern cryptography"
 readingTime: "11 min"

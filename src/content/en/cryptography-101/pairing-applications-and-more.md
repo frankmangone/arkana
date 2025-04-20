@@ -1,7 +1,7 @@
 ---
 title: "Cryptography 101: Pairing Applications & More"
 date: "2024-05-28"
-author: "Frank Mangone"
+author: "frank-mangone"
 tags:
   [
     "Cryptography",

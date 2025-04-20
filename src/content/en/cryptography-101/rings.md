@@ -1,7 +1,7 @@
 ---
 title: "Cryptography 101: Rings"
 date: "2024-08-27"
-author: "Frank Mangone"
+author: "frank-mangone"
 tags: ["Cryptography", "Abstract Algebra", "Mathematics", "Ring"]
 description: "Before moving onto the latest frontier of cryptography — post-quantum cryptography — , we need to lay down some more groundwork!"
 readingTime: "13 min"

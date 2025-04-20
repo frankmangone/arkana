@@ -1,7 +1,7 @@
 ---
 title: "Cryptography 101: STARKs"
 date: "2024-08-20"
-author: "Frank Mangone"
+author: "frank-mangone"
 tags: ["Cryptography", "Zero Knowledge Proofs", "Mathematics", "Scalability"]
 description: "Following from SNARKs, we now explore another type of knowledge proofs tailored for scalability"
 readingTime: "17 min"

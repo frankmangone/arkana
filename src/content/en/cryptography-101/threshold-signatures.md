@@ -1,7 +1,7 @@
 ---
 title: "Cryptography 101: Threshold Signatures"
 date: "2024-04-30"
-author: "Frank Mangone"
+author: "frank-mangone"
 tags:
   [
     "Cryptography",

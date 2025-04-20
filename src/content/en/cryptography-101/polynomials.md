@@ -1,7 +1,7 @@
 ---
 title: "Cryptography 101: Polynomials"
 date: "2024-04-24"
-author: "Frank Mangone"
+author: "frank-mangone"
 tags: ["Cryptography", "Polynomial", "Mathematics", "Interpolation"]
 description: "Polynomials play an important role in many cryptographic applications. This article is dedicated to giving a brief intro to the topic"
 readingTime: "8 min"

@@ -1,7 +1,7 @@
 ---
 title: "Cryptography 101: Signatures Recharged"
 date: "2024-04-09"
-author: "Frank Mangone"
+author: "frank-mangone"
 tags: ["Cryptography", "Digital Signatures", "Elliptic Curve", "Mathematics"]
 description: "A quick look at some slightly more elaborate signature schemes than usual"
 readingTime: "11 min"

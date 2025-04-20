@@ -42,7 +42,7 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }: ReadingListsPageProps) {
-  const { lang } = params;
+  const { lang } = await params;
   const localizedReadingLists = readingLists[lang].getAllReadingLists();
   const dict = await getDictionary(lang);
 

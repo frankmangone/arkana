@@ -1,7 +1,7 @@
 ---
 title: "Cryptography 101: Encryption and Digital Signatures"
 date: "2024-03-18"
-author: "Frank Mangone"
+author: "frank-mangone"
 tags:
   [
     "Cryptography",

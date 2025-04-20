@@ -1,7 +1,7 @@
 ---
 title: "Cryptography 101: Protocols Galore"
 date: "2024-04-02"
-author: "Frank Mangone"
+author: "frank-mangone"
 tags:
   [
     "Cryptography",

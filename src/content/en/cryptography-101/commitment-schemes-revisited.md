@@ -1,7 +1,7 @@
 ---
 title: "Cryptography 101: Commitment Schemes Revisited"
 date: "2024-06-04"
-author: "Frank Mangone"
+author: "frank-mangone"
 tags: ["Cryptography", "Polynomial", "Mathematics", "Commitment Scheme"]
 description: "An expansion upon the ideas behind simpler commitment schemes, providing important tools for more complex constructions down the road"
 readingTime: "10 min"

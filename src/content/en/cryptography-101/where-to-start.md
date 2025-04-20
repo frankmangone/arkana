@@ -1,7 +1,7 @@
 ---
 title: "Cryptography 101: Where to Start"
 date: "2024-03-07"
-author: "Frank Mangone"
+author: "frank-mangone"
 tags: ["Cryptography", "Groups", "Modular Arithmetic"]
 description: "A very gentle intro into the world of cryptography"
 readingTime: "6 min"

@@ -1,7 +1,7 @@
 ---
 title: "Cryptography 101: Fully Homomorphic Encryption"
 date: "2024-10-22"
-author: "Frank Mangone"
+author: "frank-mangone"
 tags:
   [
     "Cryptography",

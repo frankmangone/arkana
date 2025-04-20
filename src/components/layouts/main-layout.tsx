@@ -14,7 +14,7 @@ export const MainLayout = async (props: MainLayoutProps) => {
   const dict = await getDictionary(lang);
 
   const homeUrl = `/${lang}`;
-  const readingListsUrl = "/reading-lists";
+  const readingListsUrl = `/${lang}/reading-lists`;
 
   return (
     <div className="relative min-h-screen">

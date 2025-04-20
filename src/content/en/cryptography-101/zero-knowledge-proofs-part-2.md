@@ -1,7 +1,7 @@
 ---
 title: "Cryptography 101: Zero Knowledge Proofs (Part 2)"
 date: "2024-06-25"
-author: "Frank Mangone"
+author: "frank-mangone"
 tags:
   [
     "Cryptography",
