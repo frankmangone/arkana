@@ -8,6 +8,7 @@ export interface PostMetadata {
   date: string;
   author: string;
   tags: string[];
+  thumbnail?: string;
   image?: string;
   description?: string;
   readingTime?: string;

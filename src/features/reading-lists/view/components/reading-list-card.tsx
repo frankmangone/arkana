@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 interface ReadingListCardProps {
   // TODO: Improve this typing
@@ -11,45 +12,66 @@ interface ReadingListCardProps {
 export function ReadingListCard(props: ReadingListCardProps) {
   const { item, index, lang } = props;
 
+  // Check if post exists and extract metadata
+  if (!item.post) return null;
+
+  const { title, readingTime, date, description, tags, thumbnail } =
+    item.post.metadata;
+
+  // Default thumbnail if none is provided
+  const imageSrc = thumbnail || "/images/article-placeholder.webp";
+
   return (
-    <div
-      key={item.slug}
-      className="border rounded-lg p-6 transition-all hover:shadow-md"
-    >
-      <div className="flex flex-col md:flex-row gap-4">
-        <div className="md:w-16 text-center">
-          <div className="mt-1 text-white text-xl font-bold mx-auto">
+    <div className="border rounded-lg overflow-hidden transition-all hover:shadow-md mb-4">
+      <div className="flex">
+        {/* Left side: Number and Thumbnail */}
+        <div className="flex-shrink-0 w-[120px] relative">
+          <div className="absolute top-2 left-2 w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold z-10">
             {index + 1}
           </div>
+          <div className="w-[120px] h-full relative">
+            <Image
+              src={imageSrc}
+              alt={title}
+              fill
+              className="object-cover"
+              sizes="120px"
+            />
+          </div>
         </div>
-        <div className="flex-1">
-          {item.post && (
-            <>
-              <Link
-                href={`/${lang}/blog/${item.slug}`}
-                className="text-2xl font-semibold hover:text-blue-500 mb-2 block"
+
+        {/* Right side: Content */}
+        <div className="flex-1 p-4">
+          <Link
+            href={`/${lang}/blog/${item.slug}`}
+            className="text-lg font-semibold hover:text-primary line-clamp-2 mb-1"
+          >
+            {title}
+          </Link>
+
+          <p className="text-xs text-muted-foreground mb-2">
+            {readingTime} • {new Date(date).toLocaleDateString()}
+          </p>
+
+          <p className="text-sm text-muted-foreground line-clamp-2 mb-2">
+            {item.description || description}
+          </p>
+
+          <div className="flex flex-wrap gap-1">
+            {tags.slice(0, 3).map((tag: string) => (
+              <span
+                key={tag}
+                className="text-xs bg-secondary text-secondary-foreground px-2 py-0.5 rounded-full"
               >
-                {item.post.metadata.title}
-              </Link>
-              <p className="text-gray-500 mb-4">
-                {item.post.metadata.readingTime} read •{" "}
-                {new Date(item.post.metadata.date).toLocaleDateString()}
-              </p>
-              <p className="text-gray-600 dark:text-gray-300 mb-4">
-                {item.description || item.post.metadata.description}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {item.post.metadata.tags.map((tag: string) => (
-                  <span
-                    key={tag}
-                    className="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-sm"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </>
-          )}
+                {tag}
+              </span>
+            ))}
+            {tags.length > 3 && (
+              <span className="text-xs text-muted-foreground px-1">
+                +{tags.length - 3}
+              </span>
+            )}
+          </div>
         </div>
       </div>
     </div>

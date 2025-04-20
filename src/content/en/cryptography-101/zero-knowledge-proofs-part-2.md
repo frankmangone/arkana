@@ -2,6 +2,7 @@
 title: "Cryptography 101: Zero Knowledge Proofs (Part 2)"
 date: "2024-06-25"
 author: "frank-mangone"
+thumbnail: "/images/cryptography-101/zero-knowledge-proofs-part-2/pikachu.webp"
 tags:
   [
     "Cryptography",
@@ -36,11 +37,11 @@ In Plonk, we encode the computation of a circuit into a series of polynomials, w
 
 Getting to fully understand this will be a **wild ride**. And there are several elements that we'll need to cover. Here's an overview of the plan, which doubles up as a sort of **table of contents**:
 
-- Circuits as sets of constraints
-- Encoding the circuit into polynomials
-- Listing the requirements for verification
-- Techniques for verification
-- Verification
+- [Circuits as sets of constraints](/en/blog/cryptography-101/zero-knowledge-proofs-part-2/#revisiting-circuits)
+- [Encoding the circuit into polynomials](/en/blog/cryptography-101/zero-knowledge-proofs-part-2/#encoding-the-circuit)
+- [Listing the requirements for verification](/en/blog/cryptography-101/zero-knowledge-proofs-part-2/#verification-requirements)
+- [Techniques for verification](/en/blog/cryptography-101/zero-knowledge-proofs-part-2/#interactive-oracle-proofs)
+- [Verification](/en/blog/cryptography-101/zero-knowledge-proofs-part-2/#back-to-verification)
 
 > Also, I'm assuming you already checked out the article about [polynomial commitment schemes](/en/blog/cryptography-101/commitment-schemes-revisited), and also the one about [arithmetic circuits](/en/blog/cryptography-101/arithmetic-circuits). If you haven't, I strongly recommend reading them!
 
@@ -69,6 +70,8 @@ And so, the prover's goal will be to try and convince a verifier that they know 
 $$
 \exists \ x \in {\mathbb{F}_p}^m \ / \ C(x,w) = 0
 $$
+
+> This reads: "there exists some vector $x$ whose elements are in the finite field $\mathbb{F}_p$, such that $C(x, w) = 0$, where $w$ is publicly known.
 
 The prover doesn't want to reveal $x$, but also, we don't want the verifier to run the expensive computation of the circuit. And so, what will really happen is that the prover will **evaluate** the circuit, and then somehow **encode** both the inputs, and the results for each of the gates — also called the **computation trace**.
 
@@ -272,3 +275,352 @@ P(\omega^a) = P(\omega^b) = P(\omega^c) = ...
 $$
 
 If we analyze the **entire circuit**, we’ll end up having a set of this kind of constraints:
+
+$$
+\left\{\begin{matrix}
+P(\omega^{-1}) = P(\omega^1)
+\\ P(\omega^{-2}) = P(\omega^3)
+\\ P(\omega^{-3}) = P(\omega^0)
+\\ P(\omega^2) = P(\omega^4)
+\end{matrix}\right.
+$$
+
+> This is for the example above. But in general, the equalities may have more than $2$ members each
+
+**Each one** of these must be somehow encoded, of course, into polynomials. They way we do this is quite interesting: for each constraint, we define a polynomial that **permutates** or **rotates** the subset of roots whose **evaluation should match**. So for example, if the condition is:
+
+$$
+P(\omega^p) = P(\omega^q) = P(\omega^r) = P(\omega^s)
+$$
+
+Then we define the subset:
+
+$$
+H' = \{\omega^p, \omega^q, \omega^r, \omega^s\}
+$$
+
+And using $H’$, we create a polynomial $W(X)$ that has the following behavior:
+
+$$
+\\ W(\omega^p) = \omega^q
+\\ W(\omega^q) = \omega^r
+\\ W(\omega^r) = \omega^s
+\\ W(\omega^s) = \omega^p
+$$
+
+<figure>
+  <img
+    src="/images/cryptography-101/zero-knowledge-proofs-part-2/root-rotation.webp" 
+    alt="Rotation of powers of the involved roots"
+    title="[zoom] It essentially cycles through the subset. This is the part that gives Plonk its name, actually!"
+  />
+</figure>
+
+Because $W(X)$ always returns “the next” element in $H’$, and since all the values of $P(X)$ should be equal for the roots on $H’$, the way we prove that the wiring constraint holds is by proving that:
+
+$$
+P(x) = P(W(x)) \forall x \in H'
+$$
+
+This has to be done for every element in $H’$, thus covering **all the equalities** in a single constraint.
+
+---
+
+Okay! That was certainly a lot. Nevertheless, we’ve already covered a lot of ground with this.
+
+At this point, the prover has all these polynomials that encode the entire **computation trace**. What’s missing then? Only the most important part: **convincing a verifier that the trace is correct**. Once we understand how this happens, everything will finally be tied together.
+
+---
+
+## Verification Requirements
+
+Of course, the verifier **doesn’t know** the polynomials we just talked about. In particular, it’s critical that they **never learn** the full $P(X)$. The reason for this is that, if they do get ahold of it, then they could easily **uncover** the secret information $x$, by calculating:
+
+$$
+P(\omega^{-j})
+$$
+
+> The ability to never reveal these values by using polynomials is what gives Plonk its zero knowledge properties!
+
+If the verifier cannot know the polynomials, then how can we convince them of **anything**? Did we hit a dead end? Should we panic now?
+
+<figure>
+  <img
+    src="/images/cryptography-101/zero-knowledge-proofs-part-2/pikachu.webp" 
+    alt="Suspicious Pikachu"
+    title="I suspect you already know this narrative trick"
+  />
+</figure>
+
+While the verifier cannot ask for the full polynomials, they **for sure** can ask for single **evaluations** of them. They should be able to ask for **any value** of $P(X)$, $S(X)$, or the $W(X)$'s — meaning they should be able to **query any part** of the computation trace. Except for the secret inputs, of course.
+
+> It’s at this point that our [PCSs of choice](/en/blog/cryptography-101/commitment-schemes-revisited) comes in handy: when requesting the value of $P(X)$ at some point $b$ (so, $P(b)$), the verifier can check that it’s correctly computed by checking it against a **commitment**! Noooice.
+
+<video-embed src="https://www.youtube.com/watch?v=SAfq55aiqPc" />
+
+Why would they do that, though? To check that the **constraints** hold, that is!
+
+To be convinced that the computation trace is correct, the verifier needs to check that:
+
+- The output of the **last gate** is exactly $0$ (this is a convention),
+- The inputs (the public ones, or the **witness**) are **correctly encoded**,
+- The **evaluation** of each gate is correct (either **addition** or **multiplication** holds),
+- The **wiring** is correct.
+
+The first one is easy — the verifier just asks for the output at the **last gate**, which is:
+
+$$
+P(\omega^{3|C| - 1}) = 0
+$$
+
+For the other checks though, we’ll need to sprinkle in **some magic** (as usual, at this point).
+
+<figure>
+  <img
+    src="/images/cryptography-101/zero-knowledge-proofs-part-2/salt-bae.webp" 
+    alt="Salt bae meme"
+    title="I never really understood this guy, but hey, it makes for a good meme"
+  />
+</figure>
+
+### The Last Sprinkles of Cryptomagic
+
+We’ll need to sidetrack a little for a moment. Here’s a question: given some polynomial of degree **at most** $d$, and that is **not identically** $0$ (so $f(x) \neq 0$), how likely would it be that for a **random input** $r$ (sampled from the integers modulo $p$), we obtain that $f(r) = 0$?
+
+Because the polynomial has degree at most $d$, it will have at most $d$ _roots_. Then, the probability that $f(r) = 0$ is exactly the probability that $r$ happens to be a **root** of $f$:
+
+$$
+\mathcal{P}[f(r) = 0] \leq d/p
+$$
+
+And provided that $p$ is sufficiently larger than $d$, then this is a **negligible value** (very close to zero). This is important: if we randomly choose some $r$ and obtain that $f(r) = 0$, then we can say **with high probability** that $f(x)$ is **identically zero** (the zero function)!
+
+This is known as a **zero test**. It doesn’t seem to amount to much, but we’re gonna need this to make our **SNARK** work.
+
+> There are a couple more checks that we can perform, namely an **addition check**, and a **product check**. This is already quite a lot of information to digest, so let’s skip those for now.
+
+What interesting is that there are efficient **Interactive Oracle Proofs** to perform these tests.
+
+Sorry... **Interactive WHAT**?
+
+<figure>
+  <img
+    src="/images/cryptography-101/zero-knowledge-proofs-part-2/sanic.webp" 
+    alt="Sonic brain melting"
+    title="*Meltdown*"
+  />
+</figure>
+
+---
+
+## Interactive Oracle Proofs
+
+I warned you this wasn’t gonna be easy! Just a little bit more, and we’re done.
+
+**Interactive Oracle Proofs** (IOPs) are essentially a family of mechanisms, by which a prover and a verifier **interact** with each other, so that the prover can convince the verifier about the truth of a certain statement. Something like this:
+
+<figure>
+  <img
+    src="/images/cryptography-101/zero-knowledge-proofs-part-2/iop.webp" 
+    alt="Interactive Oracle Proof interaction diagram"
+    title="[zoom]"
+    className="bg-white"
+  />
+</figure>
+
+> I hope you can already see how this picture looks similar to the one we used to describe [Polynomial Commitment Schemes](/en/blog/cryptography-101/commitment-schemes-revisited) (PCSs)!
+
+And we’ll use this model to perform our tests. For illustrative purposes, let’s describe how a **zero test** would go.
+
+Imagine you want to prove that some set $S$ is a collection of **roots** of a given polynomial $P(X)$:
+
+$$
+S = \{s_0, s_1, s_2, ..., s_{n-1}\}
+$$
+
+What can you do about it? Well, since the values in $S$ are _roots_, you can divide the polynomial $P(X)$ by what’s called a **vanishing polynomial** for the set $S$:
+
+$$
+V(X) = \prod_{i=0}^{n-1} (X - s_i)
+$$
+
+> The term **vanishing** is due to the fact that the polynomial is zero only on the set $S$, so they are exactly its **roots**.
+
+If $S$ really are the roots of $P(X)$, then $P$ should be divisible by $V(X)$, with **no remainder**.
+
+$$
+Q(X) = P(X) / V(X)
+$$
+
+And now, we’re gonna have to use a [Polynomial Commitment Scheme](/en/blog/cryptography-101/commitment-schemes-revisited) to continue. You might have to read that article first!
+
+Essentially, what happens is that the prover commits to both $P(X)$ and $Q(X)$, and then, they request an evaluation at some random $s_i$. With these evaluations, they can check whether if the following is true:
+
+$$
+Q(s_i).V(s_i) - P(s_i) = 0
+$$
+
+If it happens to be zero, then we saw that they can conclude **with high probability** that this polynomial $Q(X)V(X) - P(X)\* is **exactly zero**! Meaning that:
+
+$$
+Q(X)V(X) = P(X)
+$$
+
+Thus, they can be convinced that, effectively, $S$ is a set of roots of $P(X)$. If for some reason they aren’t convinced though, they could ask for another set of evaluations of $P(s)$ and $Q(s)$, and run the check again.
+
+<figure>
+  <img
+    src="/images/cryptography-101/zero-knowledge-proofs-part-2/iop-first-step.webp" 
+    alt="Zero test in action"
+    title="[zoom]"
+    className="bg-white"
+  />
+</figure>
+
+> Similar IOPs exist for the **addition check** and the **product check**.
+>
+> Also worth mentioning, this does not ensure that the polynomial doesn’t have other roots that are not contained in $S$. But we’ll not go down that path this time around!
+
+### From Interactive to Non-interactive
+
+But wait... Didn’t we say that SNARKs were **non-interactive**? Then how is it possible that some **interactive protocol** is a key part of our construction?
+
+Turns out there’s a way to turn **interactivity** into **non-interactivity**: the [Fiat-Shamir transform](https://en.wikipedia.org/wiki/Fiat%E2%80%93Shamir_heuristic). It sounds more daunting than what it is, trust me.
+
+If we think about it, we may wonder “why are these protocols **interactive** in the first place?” The reason is that on each query, the verifier samples some **random number** $r_i$ from some set. And these values **cannot be predicted** by the prover — they only become available for them when the verifier chooses to execute a query. This **unpredictability** is sort of an **anti-cheat mechanism**.
+
+Instead of waiting for the verifier to send random values, we can **simulate** this randomness using a well-known cryptographic primitive that also has an unpredictable output: [hashing functions](/en/blog/cryptography-101/hashing)!
+
+> Let’s not focus on the details though — all you need to know is that the Fiat-Shamir heuristic is a powerful transformation, that can be very useful to turn any interactive protocol into a non-interactive one!
+
+---
+
+After what can only be categorized as torture, we have all the elements we need. Our excruciating journey is almost over — all that remains is putting the cherry on top of this pile of shenanigans.
+
+<figure>
+  <img
+    src="/images/cryptography-101/zero-knowledge-proofs-part-2/dumbledore-suffering.webp" 
+    alt="Dumbledore crying after drinking from the chalice to obtain Slytherin's Locket"
+    title="Just end my suffering already"
+  />
+</figure>
+
+---
+
+## Back to Verification
+
+Okay, let’s see. Remember, we’re trying to convince a verifier that we know $x$ such that:
+
+$$
+\exists \ x \in {\mathbb{F}_p}^m \ / \ C(x,w) = 0
+$$
+
+And we have to convince them of a few things:
+
+- Correct inputs
+- Correct gate computation
+- Correct wiring
+
+Let’s start with the **inputs**. The verifier has the **public witness**, $w$. Now, imagine the verifier encodes this witness into a **polynomial** $v(X)$, so that:
+
+$$
+v(\omega^{-j}) = w_j
+$$
+
+In this scenario, it should be true that values $v(x)$ and $P(x)$ match for the roots of unity that encode the **public witness**:
+
+$$
+P(\omega^{-j}) - v(w_j) = 0
+$$
+
+So what do we do? Why, of course, a **zero test** for the polynomial $P(X) - v(X)$ on the inputs that **encode the witness**!
+
+<figure>
+  <img
+    src="/images/cryptography-101/zero-knowledge-proofs-part-2/brain-explosion.webp" 
+    alt="Brain explosion"
+    width="540"
+  />
+</figure>
+
+Ahá! It’s starting to come together, isn’t it?
+
+### Checking the Gates
+
+Likewise, recall that the gates should suffice the expression:
+
+$$
+\alpha = \omega^{3k}
+$$
+
+$$
+S(\alpha)[P(\alpha) + P(\omega \alpha)] + (1 - S(\alpha))P(\alpha)P(\omega \alpha) = P(\omega^2 \alpha)
+$$
+
+So again, what do you do? A **zero test on this massive expression**, on every gate. Marvelous. Splendid.
+
+> For this of course, the verifier will need a commitment to $S(X)$.
+
+### Checking the Wires
+
+Lastly, we need to check the **wire constraints**. These were encoded into some polynomials $W(X)$ that **cycled through** a set of inputs $H’$, and we had to check that:
+
+$$
+P(x) = P(W(x)) \forall x \in H'
+$$
+
+For each element in $H’$. This is not really **efficient** to do with zero tests (although it can be done), so there’s an alternative way to do it through the use of a **product check**. Using this **casually dropped** expression:
+
+$$
+L(Y, Z) = \prod_{x \in H'} \frac{P(x) + Y.W(x) + Z}{P(x) + Y.x + Z}
+$$
+
+> Yeah
+
+The gist of this is that the whole expression **should equal** $1$! If you think about it, it makes perfect sense: all the $P(x)$ values should be the same, and since $W(X)$ **permutates** the elements of $H’$, and because the product covers all of $H’$, we just get:
+
+$$
+L(Y, Z) = \prod_{x \in H'} \frac{P(x) + Y.W(x) + Z}{P(x) + Y.x + Z} = \frac{\prod_{x \in H'} P(x) + Y.W(x) + Z}{\prod_{x \in H'} P(x) + Y.x + Z}
+$$
+
+$$
+= \frac{\prod_{x \in H'} P(x) + Y.x + Z}{\prod_{x \in H'} P(x) + Y.x + Z} = 1
+$$
+
+> There’s more to say about this, like why do we need to incorporate $Y$ and $Z$ into the mix? But honestly, I think that’s enough math for today.
+
+In short, and to wrap things up: we use some **IOPs** to verify the **constraints** in an arithmetic circuit, which were encoded into polynomials!
+
+---
+
+## Summary
+
+Ooof. That was a lot. I know.
+
+<figure>
+  <img
+    src="/images/cryptography-101/zero-knowledge-proofs-part-2/ross-internal-pain.webp" 
+    alt="Ross from Friends in the high pitch scene"
+    title="We know you’re not fine, Ross. It’s ok"
+  />
+</figure>
+
+Still, I find it amazing how all these things come together to form such a sophisticated protocol: we use **polynomial interpolation** to encode stuff, **polynomial commitment schemes** to query for information, **interactive oracle proofs** to create tests, and the **Fiat-Shamir heuristic** to turn all this mess into a **non-interactive proof**. **Un-be-lie-va-ble**.
+
+The final result, [Plonk](https://eprint.iacr.org/2019/953.pdf), achieves the generality we were looking for by allowing **any circuit** to be used. And since this reveals nothing about $x$, then this is really a **zero-knowledge SNARK** (**zkSNARK**)!
+
+> For the sake of completeness, I’ll say that there are some other details to be considered in order to make sure that the protocol is **zero-knowledge**, specifically around the **challenges**. Don’t worry too much though — unless, of course, you’re planning on implement Plonk yourself!
+
+For a more interactive look, you can check this excellent video lesson.
+
+<video-embed src="https://www.youtube.com/watch?v=vxyoPM2m7Yg" />
+
+And here’s [another stab at explaining the protocol](https://trapdoortech.medium.com/zkp-plonk-algorithm-introduction-834556a32a), in case you find it easier to follow!
+
+Hopefully, you can now better understand the brief description of Plonk I provided at the very beginning of the article:
+
+::: big-quote
+In Plonk, we encode the computation of a circuit into a series of polynomials, which represent the constraints imposed by the circuit, for which we can prove statements by using a series of tests, without ever revealing the polynomials themselves— and thus, not leaking the secret inputs.
+:::
+
+Given that we can now craft proofs for arbitrary circuits, I’d like to get more practical. So, [next time](/en/blog/cryptography-101/zero-knowledge-proofs-part-3), we’ll be building a couple circuits for some statements, which can then be the inputs for Plonk, turning them into **zkSNARKS**. See you soon!
