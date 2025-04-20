@@ -15,9 +15,7 @@ export async function ReadingListPage(props: ReadingListPageProps) {
 
   const dict = await getDictionary(lang);
 
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-
-  const backUrl = `${basePath}/${lang}/reading-lists`;
+  const backUrl = `/${lang}/reading-lists`;
 
   return (
     <div className="container py-12">

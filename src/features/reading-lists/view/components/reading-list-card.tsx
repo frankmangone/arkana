@@ -19,7 +19,9 @@ export function ReadingListCard(props: ReadingListCardProps) {
     item.post.metadata;
 
   // Default thumbnail if none is provided
-  const imageSrc = thumbnail || "/images/article-placeholder.webp";
+  const imageSrc =
+    `${process.env.NEXT_PUBLIC_BASE_PATH}${thumbnail}` ||
+    "/images/article-placeholder.webp";
 
   return (
     <div className="border rounded-lg overflow-hidden transition-all hover:shadow-md mb-4">

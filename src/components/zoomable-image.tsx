@@ -55,6 +55,10 @@ export function ZoomableImage({
   // Remove the [zoom] marker from the displayed caption
   const displayCaption = caption?.replace(/\[zoom\]/gi, "").trim();
 
+  // Extract any background color classes from the className
+  const bgColorClass =
+    className.split(" ").find((cls) => cls.startsWith("bg-")) || "";
+
   return (
     <>
       <figure className="w-full my-6">
@@ -72,7 +76,7 @@ export function ZoomableImage({
             className={`rounded-lg ${width ? "" : "w-full"}`}
           />
           {isZoomable && (
-            <div className="absolute top-2 right-2 bg-black/70 text-white p-1 rounded-md text-xs px-2">
+            <div className="absolute top-2 right-2 bg-black/70 text-white p-1 rounded-md text-xs px-2 zoom-indicator">
               Click to zoom
             </div>
           )}
@@ -86,38 +90,47 @@ export function ZoomableImage({
 
       {isZoomed && (
         <div
-          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center cursor-zoom-out"
+          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center cursor-zoom-out zoom-overlay"
           onClick={toggleZoom}
         >
-          <div className="relative max-w-[90vw] max-h-[90vh]">
-            <button
-              className="absolute top-4 right-4 text-white bg-black/50 rounded-full p-2 z-10"
-              onClick={toggleZoom}
-              aria-label="Close zoom"
+          {/* Close button moved to top-right corner of screen */}
+          <button
+            className="fixed top-6 right-6 text-white bg-black/50 hover:bg-black/70 rounded-full p-2 z-10"
+            onClick={(e) => {
+              e.stopPropagation(); // Prevent triggering the background click
+              toggleZoom();
+            }}
+            aria-label="Close zoom"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-              </svg>
-            </button>
-            <Image
-              src={src}
-              alt={alt}
-              width={2000}
-              height={2000}
-              className="max-h-[90vh] object-contain"
-            />
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+
+          <div className="relative max-w-[90vw] max-h-[90vh] zoom-content">
+            {/* Apply background color class to a wrapper div */}
+            <div className={`${bgColorClass} rounded-lg p-0 overflow-hidden`}>
+              <Image
+                src={src}
+                alt={alt}
+                width={2000}
+                height={2000}
+                className="max-h-[90vh] object-contain"
+              />
+            </div>
           </div>
+
           <div className="absolute bottom-4 left-0 right-0 text-center text-white">
             <p className="text-sm">ESC or click to close</p>
           </div>
