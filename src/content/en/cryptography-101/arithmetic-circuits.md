@@ -1,7 +1,7 @@
 ---
 title: "Cryptography 101: Arithmetic Circuits"
 date: "2024-06-18"
-author: "Frank Mangone"
+author: "frank-mangone"
 tags:
   [
     "Cryptography",
