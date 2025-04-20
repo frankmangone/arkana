@@ -4,7 +4,11 @@ export interface Writer {
   imageUrl: string;
   avatarUrl: string;
   bio?: Record<string, string>;
-  website?: string;
-  twitter?: string;
-  github?: string;
+  social?: {
+    website?: string;
+    twitter?: string;
+    linkedin?: string;
+    github?: string;
+    email?: string;
+  };
 }

@@ -13,8 +13,10 @@ export const writers: Record<string, Writer> = {
       es: "Creador de Episteme. Apasionado por las matemáticas, la criptografía y la informática.",
       pt: "Criador de Episteme. Apaixonado por matemática, criptografia e ciência da computação.",
     },
-    twitter: "https://x.com/0xfrankmangone",
-    github: "https://github.com/frankmangone",
+    social: {
+      twitter: "https://x.com/0xfrankmangone",
+      github: "https://github.com/frankmangone",
+    },
   },
 };
 

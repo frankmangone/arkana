@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import { getPostBySlug } from "@/features/posts/actions";
 import { MainLayout } from "@/components/layouts/main-layout";
 import { ReadingListPage } from "@/features/reading-lists/view";
+import { languages } from "@/lib/i18n-config";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 interface ReadingListPageParams extends Promise<any> {
@@ -35,8 +36,6 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams() {
-  const languages = ["en", "es", "pt"];
-
   const paths = [];
 
   for (const lang of languages) {
