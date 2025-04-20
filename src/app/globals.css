@@ -138,18 +138,63 @@ strong {
   color: #fff;
 }
 
-/* KaTeX block equation styling */
+/* KaTeX block equation styling - Add scrolling without changing other styles */
 .katex-display {
   margin-top: 3rem !important;
   margin-bottom: 3rem !important;
   color: #b79cea !important;
   font-size: 1.4rem;
+  overflow-x: auto; /* Make it scrollable */
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Custom scrollbar for display math */
+.katex-display::-webkit-scrollbar {
+  height: 4px;
+}
+
+.katex-display::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+}
+
+.katex-display::-webkit-scrollbar-thumb {
+  background: rgba(183, 156, 234, 0.5);
+  border-radius: 2px;
+}
+
+.katex-display::-webkit-scrollbar-thumb:hover {
+  background: rgba(183, 156, 234, 0.8);
 }
 
 /* KaTeX inline expression styling */
 .katex:not(.katex-display .katex) {
   color: #b79cea !important;
   font-weight: 500;
+  max-width: 100%; /* Prevent overflow */
+}
+
+/* Fix inline math for very long expressions */
+.katex-inline {
+  display: inline-block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  vertical-align: middle;
+}
+
+/* Custom scrollbar for inline math */
+.katex-inline::-webkit-scrollbar {
+  height: 2px;
+}
+
+.katex-inline::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.katex-inline::-webkit-scrollbar-thumb {
+  background: rgba(183, 156, 234, 0.3);
 }
 
 /* Full-width figures */

@@ -580,11 +580,11 @@ $$
 The gist of this is that the whole expression **should equal** $1$! If you think about it, it makes perfect sense: all the $P(x)$ values should be the same, and since $W(X)$ **permutates** the elements of $H’$, and because the product covers all of $H’$, we just get:
 
 $$
-L(Y, Z) = \prod_{x \in H'} \frac{P(x) + Y.W(x) + Z}{P(x) + Y.x + Z} = \frac{\prod_{x \in H'} P(x) + Y.W(x) + Z}{\prod_{x \in H'} P(x) + Y.x + Z}
+L(Y, Z) = \prod_{x \in H'} \frac{P(x) + Y.W(x) + Z}{P(x) + Y.x + Z}
 $$
 
 $$
-= \frac{\prod_{x \in H'} P(x) + Y.x + Z}{\prod_{x \in H'} P(x) + Y.x + Z} = 1
+= \frac{\prod_{x \in H'} P(x) + Y.W(x) + Z}{\prod_{x \in H'} P(x) + Y.x + Z} = \frac{\prod_{x \in H'} P(x) + Y.x + Z}{\prod_{x \in H'} P(x) + Y.x + Z} = 1
 $$
 
 > There’s more to say about this, like why do we need to incorporate $Y$ and $Z$ into the mix? But honestly, I think that’s enough math for today.
