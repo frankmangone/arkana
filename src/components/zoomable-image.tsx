@@ -69,7 +69,7 @@ export function ZoomableImage({
             alt={alt}
             width={width}
             height={height}
-            className="rounded-lg w-full"
+            className={`rounded-lg ${width ? "" : "w-full"}`}
           />
           {isZoomable && (
             <div className="absolute top-2 right-2 bg-black/70 text-white p-1 rounded-md text-xs px-2">
