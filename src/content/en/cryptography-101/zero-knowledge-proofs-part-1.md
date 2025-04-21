@@ -2,6 +2,7 @@
 title: "Cryptography 101: Zero Knowledge Proofs (Part 1)"
 date: "2024-06-11"
 author: "frank-mangone"
+thumbnail: "/images/cryptography-101/zero-knowledge-proofs-part-1/wingardium-leviosa.webp"
 tags:
   ["Cryptography", "Zero Knowledge Proofs", "Mathematics", "Commitment Scheme"]
 description: "We take a leap into the world of zero-knowledge proofs by exploring one of the many ZKP protocols out there: Bulletproofs"
