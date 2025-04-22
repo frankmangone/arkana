@@ -391,3 +391,81 @@ h6[id] {
 figure:hover .zoom-indicator {
   opacity: 1;
 }
+
+/* Table Styles */
+table {
+  width: auto; /* Allow tables to size to content */
+  margin: 2rem auto; /* Center tables */
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  border: 1px solid #5423b0;
+  color: #e1dfe4; /* Match text color */
+}
+
+th {
+  font-weight: 600;
+  text-align: center;
+  background-color: #36323d;
+  color: #fff;
+  padding: 0.8rem;
+}
+
+td {
+  padding: 0.8rem;
+  border: 1px solid #251444;
+  text-align: center;
+}
+
+/* First column often contains labels, align left */
+td:first-child,
+th:first-child {
+  text-align: left;
+}
+
+/* Add alternating row colors for better readability */
+tbody tr:nth-of-type(even) {
+  background-color: #1b1a1b;
+}
+
+tbody tr:hover {
+  background-color: #2a2837; /* Highlight on hover */
+}
+
+/* Table container for responsive handling */
+.table-container {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* For very small tables, ensure they don't look too tight */
+table.compact {
+  min-width: 200px;
+}
+
+/* Add a subtle shadow for some depth */
+table {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@media (prefers-color-scheme: light) {
+  table {
+    color: #37343d;
+    border-color: #e0e0e0;
+  }
+
+  th {
+    background-color: #f0edf7;
+    color: #37343d;
+  }
+
+  tbody tr:nth-of-type(even) {
+    background-color: #f9f8fc;
+  }
+
+  tbody tr:hover {
+    background-color: #f0edf7;
+  }
+}

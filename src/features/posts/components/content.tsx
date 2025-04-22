@@ -5,6 +5,7 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import rehypePrism from "rehype-prism-plus";
 import rehypeRaw from "rehype-raw";
+import remarkGfm from "remark-gfm";
 import "katex/dist/katex.min.css";
 import { CustomImage } from "./content-elements/images";
 import { CustomFigcaption, CustomFigure } from "./content-elements/figures";
@@ -32,12 +33,37 @@ export function PostContent({ post }: PostContentProps) {
     )
     .replace(/<video-embed\s+src="([^"]+)"\s*\/>/g, (_, src) => {
       return `<div class="video-embed" data-src="${src}"></div>`;
+    })
+    // This regex looks for ASCII tables and converts them to GFM tables
+    .replace(/\+-+\+[\s\S]*?\+-+\+/g, (match) => {
+      // Extract rows from the ASCII table
+      const rows = match.split("\n").filter((row) => row.trim().length > 0);
+      let gfmTable = "";
+
+      rows.forEach((row, index) => {
+        if (row.startsWith("|")) {
+          // This is a content row
+          const cells = row
+            .split("|")
+            .filter((cell) => cell.trim() !== "")
+            .map((cell) => cell.trim());
+
+          gfmTable += "| " + cells.join(" | ") + " |\n";
+
+          // If this is the header row, add the separator row
+          if (index === 0) {
+            gfmTable += "| " + cells.map(() => "---").join(" | ") + " |\n";
+          }
+        }
+      });
+
+      return gfmTable;
     });
 
   return (
     <div className="prose prose-gray dark:prose-invert max-w-none mb-8">
       <ReactMarkdown
-        remarkPlugins={[remarkMath]}
+        remarkPlugins={[remarkMath, remarkGfm]}
         rehypePlugins={[
           rehypeRaw,
           [rehypeKatex, { strict: false }],
@@ -72,6 +98,13 @@ export function PostContent({ post }: PostContentProps) {
           // @ts-expect-error - VideoEmbed is a custom component
           "video-embed": CustomVideoEmbed,
           div: CustomDiv,
+
+          // Add wrapper for tables to ensure proper overflow handling
+          table: (props) => (
+            <div className="table-container">
+              <table {...props} />
+            </div>
+          ),
         }}
       >
         {processedContent}

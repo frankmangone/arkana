@@ -88,21 +88,14 @@ Here's an example evaluation, using the field $\mathbb{F}_{113}$:
 
 And we could think of this evaluation as the following trace, visualized as a table:
 
-```
-+-----------+------+------+------+
-|           |  w1  |  x1  |  x2  |
-+-----------+--------------------+
-| inputs    |  20  |  13  |  5   |
-+-----------+--------------------+
+|        | $w_1$ | $x_1$ | $x_2$ |
+| ------ | ----- | ----- | ----- |
+| inputs | 20    | 13    | 5     |
 
-+-----------+--------------+---------------+----------+
-|           |  left input  |  right input  |  output  |
-+-----------+--------------+---------------+----------+
-| gate 0    |  5           |  20           |  100     |
-+-----------+--------------+---------------+----------+
-| gate 1    |  13          |  100          |  0       |
-+-----------+--------------+---------------+----------+
-```
+|        | left input | right input | output |
+| ------ | ---------- | ----------- | ------ |
+| gate 0 | 5          | 20          | 100    |
+| gate 1 | 13         | 100         | 0      |
 
 The fantastic idea behind modern SNARKs, including **Plonk**, is to encode this trace as **polynomials**, which will ultimately allow a verifier to check that the computation is valid. Valid here means that a specific set of **constraints** are followed. Namely:
 
