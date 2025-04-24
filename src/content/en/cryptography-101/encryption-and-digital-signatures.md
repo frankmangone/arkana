@@ -25,7 +25,7 @@ You've probably heard of **private** and **public keys**. Let's take a look at w
 
 ---
 
-## Keys Pairs
+## Key Pairs
 
 The story that's usually told when learning about digital signatures goes something like this: a user (let's say, Alice) with a private (or **secret**) key can **sign** a message, and then anyone can **verify** the signature with the associated public key.
 

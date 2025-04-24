@@ -2,6 +2,7 @@
 title: "Cryptography 101: Homomorphisms and Isomorphisms"
 date: "2024-04-16"
 author: "frank-mangone"
+thumbnail: "/images/cryptography-101/homomorphisms-and-isomorphisms/muppet.webp"
 tags: ["Cryptography", "Encryption", "Homomorphism", "Mathematics", "Privacy"]
 description: "A deeper dive into core concepts of groups, and a fascinating application: homomorphic encryption"
 readingTime: "9 min"

@@ -2,6 +2,7 @@
 title: "Cryptography 101: Hashing"
 date: "2024-03-24"
 author: "frank-mangone"
+thumbnail: "/images/cryptography-101/hashing/bosch.webp"
 tags: ["Cryptography", "Hashing", "Data Structures", "Merkle Tree"]
 description: "Hashing functions are an essential cryptographic primitive. Join me in a deep dive into what they are, and what they are used for!"
 readingTime: "10 min"

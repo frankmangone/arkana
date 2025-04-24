@@ -401,4 +401,4 @@ As you can probably tell, **rings** require a higher degree of **abstraction** t
 
 The main takeaway from this article, apart from some new abstract concepts, is the idea of **quotient polynomial rings**. As mentioned before, they were the missing foundation we needed to move onto some **PQC** methods (other than lattices, but we’ll cover those in the next installment).
 
-All that remains it’s time to **go post-quantum**. But to propose any PQC methods, we need more than just a mathematical structure — we need a **hard problem to crack**. Rings also have some of those, as we’ll see [next time](/en/blog/cryptography-101/post-quantum-cryptography)!
+All that remains it’s time to **go post-quantum**. But to propose any PQC methods, we need more than just a mathematical structure — we need a **hard problem to crack**. Rings also have some of those, as we’ll see [next time](/en/blog/cryptography-101/ring-learning-with-errors)!
