@@ -170,3 +170,235 @@ Let’s analyze the ring of integers $\mathbb{Z}$. We claim that the set of all 
 $$
 (q) = \{n \cdot q \ / \ n \in \mathbb{Z} \}
 $$
+
+> In the case of integers, commutativity holds, so this will indeed be a two-sided ideal.
+
+The way to check if this is true, is by evaluating the **conditions** in the ideal definition. These are:
+
+- Adding elements in $(q)$ will result in elements in $(q)$, so the set is **closed** under addition.
+
+$$
+a + b = m \cdot q + n \cdot q = (m + n) \cdot q
+$$
+
+- Multiplying any element in $(q)$ by some integer will result in another element in $(q)$:
+
+$$
+n.a \in (q), \forall n \in \mathbb{Z}, a \in (q)
+$$
+
+And so, $(q)$ is indeed a two-sided ideal of $\mathbb{Z}$. Not so scary after all, eh?
+
+---
+
+There are some other definitions to explore — for example, what the [characteristic](<https://en.wikipedia.org/wiki/Characteristic_(algebra)>) of a ring is, or what [kernels are in ring homomorphisms](<https://en.wikipedia.org/wiki/Ring_homomorphism#:~:text=The%20kernel%20of%20f%2C%20defined%20as%20ker(f)%20%3D%20%7Ba%20in%20R%20%7C%20f(a)%20%3D%200S%7D%2C%20is%20a%20two%2Dsided%20ideal%20in%20R.%20Every%20two%2Dsided%20ideal%20in%20a%20ring%20R%20is%20the%20kernel%20of%20some%20ring%20homomorphism.>). But I think it’s more fruitful to focus on the things that we’ll need to better understand cryptographic methods. I’ll leave those definitions for you to check. Let’s get to the good stuff.
+
+---
+
+## Quotient Rings
+
+We’re about to get into some murky waters, but this is the real **spice** we’re looking for in order to understand PQC methods.
+
+**Quotient rings**, also called **factor rings**, **difference rings**, or **residue class rings**, are a type of ring derived using **ideals**. And that’s part of the reason why ideals are important.
+
+Given a ring $R$ and a two-sided ideal $I$, the **quotient ring** $R / I$ is the ring whose elements are the **cosets** of $I$ in $R$.
+
+**Huh?**
+
+<figure>
+  <img
+    src="/images/cryptography-101/rings/mr-krabs-dizzy.webp" 
+    alt="Mr. Krabs from Spongebob looking dizzy"
+    title="What the fu-"
+  />
+</figure>
+
+And that’s english for…? Yeah, some translation is due. Let’s try to make some sense out of that.
+
+To do so, we must first understand what an **equivalence class** is.
+
+### Equivalence Relations and Classes
+
+Continuing with well-known examples, let’s focus on the **integers modulo** $q$. In this case, let’s treat them as a **ring**, so something like:
+
+$$
+\mathbb{Z}/q\mathbb{Z} = \{0,1,2,3,...,q-1\}
+$$
+
+> I promise this notation will make more sense in a minute!
+
+During our introduction to groups, we saw how the [modulo operation](/en/blog/cryptography-101/where-to-start/#the-modulo-operation) was used to map any integer outside of this set, into the set. So when we have something like this:
+
+$$
+a \ \textrm{mod} \ q = b
+$$
+
+We can naturally think of $a$ and $b$ as being **equivalent**. Equivalence can be given by any type of relation, not just the one defined by the modulo operation. Any such type of relation can be written as $a \sim b$, which reads "$a$ is **equivalent** to $b$".
+
+> An [equivalence relation](https://en.wikipedia.org/wiki/Equivalence_relation#:~:text=%22.-,Definition,-%5Bedit%5D) has a more formal definition that involves cartesian products of sets, and some weirdly-named properties (reflexivity, symmetry, and transitivity). But we don’t care too much about that — just the rough concept is fine.
+
+In the case of the integers modulo $q$, any number of the form $a = k.q + b$ will be equivalent to $b$ — and there are infinitely many such integers!
+
+We can group all those equivalent integers into a **set**. Such a set is called an [equivalence class](https://en.wikipedia.org/wiki/Equivalence_class). And in reality, each of the elements in our **ring of integers modulo** $q$ represents much more than a single value — it’s a representative for **the entire equivalence class**. When we mentioned **cosets** in our definition of quotient rings, we were referring to these **equivalence classes**.
+
+> If you think about it, the integers modulo q allow us to reduce a “bigger” ring — the ring of integers, into a smaller one, by providing a way to map each integer into its equivalent value. That’s the important bit!
+
+### Calculating the Quotient
+
+With equivalence classes at hand, it’s easier to understand **quotient rings**. Following our example, let’s take the ring $\mathbb{Z}$ and the two-sided ideal $(q)$.
+
+Here’s the plan: first, define an [equivalence relation](https://en.wikipedia.org/wiki/Equivalence_relation) as:
+
+$$
+a \sim b \iff a - b \in (q)
+$$
+
+In simple terms: two elements are equivalent if their difference is a multiple of $q$. Since we have an **equivalence relation**, we also have an equivalence class — the set of all elements equivalent to $a$ is:
+
+$$
+[a] = a + (q) = \{a+x \ / \ x \in (q) \}
+$$
+
+How many such classes are there? Well, let’s start counting from $0$! The equivalence class would be:
+
+$$
+[0] = \{0, q, -q, 2q, -2q, ... \}
+$$
+
+We can do the same for $1$:
+
+$$
+[1] = \{1, 1 + q, 1 - q, 1 + 2q, 1 - 2q, ... \}
+$$
+
+And in fact, we can do this with all integers up to $q - 1$. And when we reach $q$, something interesting happens:
+
+$$
+[q] = \{0, q, -q, 2q, -2q, ... \} = [0]
+$$
+
+Aha! We’ve stumbled upon a class that already existed! And so, the quotient ring $\mathbb{Z}/(q)$ is just:
+
+$$
+\mathbb{Z}/(q) = \{[0], [1], [2], ..., [q - 1]\}
+$$
+
+Taking a **single representative** of each equivalence class gives us:
+
+$$
+\mathbb{Z}/(q) = \{0, 1, 2, ..., q - 1\}
+$$
+
+> Wait... We’ve seen that one before! It’s the **ring of integers modulo** $q$! Would you look at that. All that mess just to get to this. I swear, sometimes math is so convoluted...
+
+In a way, it’s as if we took the integers and performed **modulo** over the integers modulo $q$. That’s the reason why we use the notation $\mathbb{Z}/q\mathbb{Z}$.
+
+### Revisiting the Definition
+
+A final formalization of our example is necessary to close things off here. The quotient of $R$ and a two-sided ideal $I$ can be found via the following process:
+
+- Defining the equivalence relation:
+
+$$
+a \sim b \iff a - b \in I
+$$
+
+- Finding all the equivalence classes of the form:
+
+$$
+[a] = a + (q) = \{a+x \ / \ x \in (q) \}
+$$
+
+The quotient ring $R/I$ will simply be the set of all such classes. Hopefully, the original definition makes more sense now:
+
+::: big-quote
+Given a ring R and a two-sided ideal I, the quotient ring R / I is the ring whose elements are the cosets of I in R
+:::
+
+---
+
+## Quotient Polynomial Rings
+
+Previously, I mentioned how **quotient rings** were important for PQC. When I said that, what I didn’t mention is that our interest lies **particularly** in **polynomial quotient rings**.
+
+At this point, it’s easier to imagine why they are important — they provide a way to **map** polynomials (which form a ring) into a **smaller ring**, just like a modulo operation would.
+
+> And hey, that ability was super important in order to develop most methods we’ve presented so far in the series! So, yeah, it’s probably pretty important!
+
+Let’s work our way through this slowly.
+
+<figure>
+  <img
+    src="/images/cryptography-101/rings/kermit-tea.webp" 
+    alt="Kermit having a tea"
+    title="Here, have a tea"
+  />
+</figure>
+
+We’ll start from a ring of polynomials with coefficients on a **finite field**. This, we’ll denote $\mathbb{F}[X]$. Such a field can be, for example, the **integers modulo** $q$ — and coefficients can be reduced using the modulo operation. So far, so good!
+
+Next, we’ll need a **two-sided ideal** of $\mathbb{F}[X]$. As it turns out, we can craft an ideal by selecting some polynomial $f(X)$ in $\mathbb{F}[X]$, and setting the ideal to be the set of **all multiples of it**.
+
+$$
+(f(X)) = \{g(X).f(X) \ / \ g(X) \in \mathbb{F}[X]}
+$$
+
+> Any polynomial in this ring is clearly divisible by $f(X)$. So it’s pretty simple to check that it’s an ideal indeed!
+
+Again, we define an equivalence class — two polynomials are **equivalent** if their difference is a multiple of $f(X)$:
+
+$$
+g(X) \sim h(X) \iff g(X) - h(X) \in (f(X))
+$$
+
+And finally, we find all the different equivalence classes under this relation. This one may be harder to imagine, but the concept is that any **possible remainder** of the division of a polynomial by $f(X)$ will be in the **quotient ring**, denoted by $\mathbb{F}[X]/(f(X))$.
+
+Remainders may not have a degree higher than $f(X)$. In consequence, we have both **bounded coefficients** (because we’re working with a **finite field**), and **bounded degree**, because we’re working with a quotient polynomial.
+
+In summary: we’ve found a way to map just about **any** integer-valued polynomial into a **finite set of polynomials**! Awesome!
+
+As we’ll see, this will be extremely useful for PQC methods.
+
+### A Practical Example
+
+To cement this idea, let’s look at a simple example. Say we choose the **modulus polynomial** to be $f(X) = X^2 + 1$, and set our finite field to $\mathbb{F}_7$.
+
+The polynomial $f(X)$ will be used to reduce higher-degree polynomials into a **bounded degree**. So, for instance, let’s choose $P(X) = X^5 - 3X^2 + 6$.
+
+Dividing $P(X)$ by $f(X)$ yields a **quotient** and a **remainder**:
+
+$$
+Q(X) = X^3 - X - 3
+$$
+
+$$
+R(X) = X + 9
+$$
+
+We need to focus on the remainder (just like the modulo operation!). Of course, since we’re working with a finite field, we need to reduce $R(X)$ modulo $7$. This yields:
+
+$$
+R(X) = X + 2
+$$
+
+With that, we’ve reduced the original $P(X)$ modulo $f(X)$! And it holds that $P(X)$ is equivalent to $R(X)$:
+
+$$
+P(X) \sim R(X)
+$$
+
+Any polynomial whose remainder when divided by $f(X)$ is $R(X)$, will be equivalent to $R(X)$! Thus, its represented in the quotient ring $mathbb{F}_7[X]/(X^2 + 1)$ by the element $R(X)$.
+
+---
+
+## Summary
+
+Dang, that was longer than I imagined.
+
+As you can probably tell, **rings** require a higher degree of **abstraction** to fully understand when compared to **groups**. This is the reason they were not introduced before in the series — we’re slowly building up in terms of complexity.
+
+> Well... “Slowly”. Nothing’s slow at this point anymore!
+
+The main takeaway from this article, apart from some new abstract concepts, is the idea of **quotient polynomial rings**. As mentioned before, they were the missing foundation we needed to move onto some **PQC** methods (other than lattices, but we’ll cover those in the next installment).
+
+All that remains it’s time to **go post-quantum**. But to propose any PQC methods, we need more than just a mathematical structure — we need a **hard problem to crack**. Rings also have some of those, as we’ll see [next time](/en/blog/cryptography-101/post-quantum-cryptography)!
