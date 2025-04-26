@@ -27,17 +27,17 @@ export function ReadingListCard(props: ReadingListCardProps) {
     <div className="border rounded-lg overflow-hidden transition-all hover:shadow-md mb-4">
       <div className="flex">
         {/* Left side: Number and Thumbnail */}
-        <div className="flex-shrink-0 w-[120px] relative">
+        <div className="flex-shrink-0 w-[160px] relative">
           <div className="absolute top-2 left-2 w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold z-10">
             {index + 1}
           </div>
-          <div className="w-[120px] h-full relative">
+          <div className="w-[160px] h-full relative">
             <Image
               src={imageSrc}
               alt={title}
               fill
-              className="object-cover"
-              sizes="120px"
+              className="object-cover bg-white"
+              sizes="160px"
             />
           </div>
         </div>
