@@ -13,7 +13,8 @@ interface BlogPageParams extends Promise<any> {
 
 interface BlogPageProps {
   params: BlogPageParams;
-  searchParams: { tag?: string };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  //   searchParams: { tag?: string } & Promise<any>;
 }
 
 export const metadata: Metadata = {
@@ -41,11 +42,11 @@ export async function generateStaticParams() {
   }
 }
 
-export default async function Page({ params, searchParams }: BlogPageProps) {
+export default async function Page({ params }: BlogPageProps) {
   const { lang } = await params;
   const dict = await getDictionary(lang);
   const allPosts = await getAllPosts(lang);
-  const selectedTag = searchParams?.tag || null;
+  //   const selectedTag = searchParams?.tag || null;
 
   return (
     <MainLayout lang={lang}>
@@ -53,7 +54,7 @@ export default async function Page({ params, searchParams }: BlogPageProps) {
         lang={lang}
         posts={allPosts}
         dictionary={dict}
-        selectedTag={selectedTag}
+        // selectedTag={selectedTag}
       />
     </MainLayout>
   );
