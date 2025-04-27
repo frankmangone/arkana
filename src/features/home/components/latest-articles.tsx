@@ -4,12 +4,20 @@ import { PostPreview } from "..";
 interface LatestArticlesProps {
   lang: string;
   latestPosts: PostPreview[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  dictionary?: any;
 }
 
-export function LatestArticles({ lang, latestPosts }: LatestArticlesProps) {
+export function LatestArticles({
+  lang,
+  latestPosts,
+  dictionary,
+}: LatestArticlesProps) {
   return (
-    <section className="container mx-auto px-4">
-      <h2 className="text-3xl font-bold mb-8">Latest Articles</h2>
+    <section className="container mx-auto px-4 mt-8">
+      <h2 className="text-3xl font-bold mb-8">
+        {dictionary?.blog?.title || "Latest Articles"}
+      </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {latestPosts.map((post) => (
@@ -24,7 +32,7 @@ export function LatestArticles({ lang, latestPosts }: LatestArticlesProps) {
               <h3 className="text-xl font-semibold mb-2">
                 <Link
                   href={`/${lang}/blog/${post.slug}`}
-                  className="hover:underline"
+                  className="hover:text-primary-500 transition-colors"
                 >
                   {post.title}
                 </Link>
@@ -50,9 +58,13 @@ export function LatestArticles({ lang, latestPosts }: LatestArticlesProps) {
       <div className="text-center mt-8">
         <Link
           href={`/${lang}/blog`}
-          className="inline-block px-6 py-3 bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors"
+          style={{
+            borderColor: "var(--primary-500)",
+            color: "var(--primary-500)",
+          }}
+          className="inline-block px-6 py-3 border-2 rounded-lg transition-colors hover:bg-[rgba(167,119,255,0.3)]"
         >
-          <span className="text-white">View All Articles</span>
+          {dictionary?.blog?.viewAllPosts || "View All Articles"}
         </Link>
       </div>
     </section>

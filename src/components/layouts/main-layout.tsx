@@ -24,19 +24,19 @@ export const MainLayout = async (props: MainLayoutProps) => {
           <div className="flex items-center space-x-6">
             <Link
               href={homeUrl}
-              className="text-2xl font-bold hover:text-blue-500 transition-colors"
+              className="text-2xl font-bold hover:text-primary-500 transition-colors"
             >
               Episteme
             </Link>
             <Link
               href={readingListsUrl}
-              className="nav-bar hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400 transition-colors"
+              className="nav-bar hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500 transition-colors"
             >
               {dict.readingLists.list.title}
             </Link>
             <Link
               href={writersUrl}
-              className="nav-bar hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400 transition-colors"
+              className="nav-bar hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500 transition-colors"
             >
               Writers
             </Link>

@@ -1,9 +1,10 @@
 // import { FeaturedPosts } from "@/features/home/components/featured-posts";
-// import { getDictionary } from "@/lib/dictionaries";
+import { getDictionary } from "@/lib/dictionaries";
 import fs from "fs/promises";
 import path from "path";
 import matter from "gray-matter";
 import { LatestArticles } from "./components/latest-articles";
+import { IntroSection } from "./components/intro-section";
 
 interface HomePageProps {
   lang: string;
@@ -20,7 +21,7 @@ export interface PostPreview {
 }
 
 // Function to get latest posts for a specific language
-async function getLatestPosts(lang: string, limit = 5): Promise<PostPreview[]> {
+async function getLatestPosts(lang: string, limit = 6): Promise<PostPreview[]> {
   const contentPath = path.join(process.cwd(), "src", "content", lang);
   const allPosts: PostPreview[] = [];
 
@@ -76,13 +77,14 @@ async function getLatestPosts(lang: string, limit = 5): Promise<PostPreview[]> {
 export async function HomePage(props: HomePageProps) {
   const { lang } = props;
 
-  // const dict = await getDictionary(lang);
+  const dict = await getDictionary(lang);
   // Get latest posts for this language
   const latestPosts = await getLatestPosts(lang);
 
   return (
     <div className="container py-8 space-y-12">
-      <LatestArticles lang={lang} latestPosts={latestPosts} />
+      <IntroSection lang={lang} dictionary={dict} />
+      <LatestArticles lang={lang} latestPosts={latestPosts} dictionary={dict} />
       {/* <FeaturedPosts lang={lang} dictionary={dict} /> */}
     </div>
   );
