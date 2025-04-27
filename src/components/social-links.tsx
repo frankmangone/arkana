@@ -8,9 +8,9 @@ interface SocialLinksProps {
 
 export function SocialLinks({ author }: SocialLinksProps) {
   const { social } = author;
-  const { twitter, github, linkedin, website, email } = social ?? {};
+  const { twitter, github, linkedin, website, email, medium } = social ?? {};
 
-  if (!twitter && !github && !linkedin && !website && !email) {
+  if (!twitter && !github && !linkedin && !website && !email && !medium) {
     return null;
   }
 

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { LanguageSwitcher } from "../language-switcher";
-import { BuyMeCoffeeButton } from "../buy-me-coffee-button";
 import { getDictionary } from "@/lib/dictionaries";
+// import { BuyMeCoffeeButton } from "../buy-me-coffee-button";
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -38,7 +38,7 @@ export const MainLayout = async (props: MainLayoutProps) => {
               href={writersUrl}
               className="nav-bar hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500 transition-colors"
             >
-              Writers
+              {dict.writers.title}
             </Link>
           </div>
           <LanguageSwitcher />
@@ -47,7 +47,7 @@ export const MainLayout = async (props: MainLayoutProps) => {
       <main className="container mx-auto px-4 py-8 md:px-6 lg:px-8 max-w-6xl">
         {children}
       </main>
-      <BuyMeCoffeeButton />
+      {/* <BuyMeCoffeeButton /> */}
     </div>
   );
 };

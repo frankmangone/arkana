@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { PostPreview } from "..";
+import { PostCard } from "@/components/post-card";
 
 interface LatestArticlesProps {
   lang: string;
@@ -21,37 +22,7 @@ export function LatestArticles({
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {latestPosts.map((post) => (
-          <div
-            key={post.slug}
-            className="border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
-          >
-            <div className="p-6">
-              <p className="text-sm text-gray-500 mb-2">
-                {new Date(post.date).toLocaleDateString()} • {post.readingTime}
-              </p>
-              <h3 className="text-xl font-semibold mb-2">
-                <Link
-                  href={`/${lang}/blog/${post.slug}`}
-                  className="hover:text-primary-500 transition-colors"
-                >
-                  {post.title}
-                </Link>
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-4">
-                {post.description}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {post.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-sm"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
+          <PostCard key={post.slug} article={post} lang={lang} />
         ))}
       </div>
 

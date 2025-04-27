@@ -8,6 +8,12 @@
     "featuredPosts": {
       "title": "Publicaciones Destacadas",
       "viewAll": "Ver todas las publicaciones"
+    },
+    "intro": {
+      "title": "Bienvenido a Episteme",
+      "description": "Un blog dedicado a explorar ideas en matemáticas, ciencia de la computación y criptografía. Únete a nosotros en un viaje de descubrimiento intelectual y aprende de nuestra comunidad de escritores.",
+      "meetWriters": "Conoce a los Escritores",
+      "exploreReadingLists": "Explorar Listas de Lectura"
     }
   },
   "blog": {
@@ -47,6 +53,8 @@
     "title": "Escritores",
     "description": "Conoce a las personas detrás del contenido",
     "noWriters": "¡Ups!",
-    "noWritersDescription": "No se encontraron escritores"
+    "noWritersDescription": "No se encontraron escritores",
+    "articlesBy": "Artículos de {name}",
+    "noArticles": "No se encontraron artículos para este escritor."
   }
 }

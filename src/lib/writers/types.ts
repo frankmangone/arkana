@@ -10,5 +10,6 @@ export interface Writer {
     linkedin?: string;
     github?: string;
     email?: string;
+    medium?: string;
   };
 }
