@@ -5,15 +5,14 @@ import fs from "fs/promises";
 import path from "path";
 import { MainLayout } from "@/components/layouts/main-layout";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-interface PageParams extends Promise<any> {
+interface PageParams {
   lang: string;
   folder: string;
   slug: string;
 }
 
 interface PageProps {
-  params: PageParams;
+  params: Promise<PageParams>;
 }
 
 // This function is required for static export

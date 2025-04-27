@@ -6,15 +6,13 @@ import { BlogPage } from "@/features/blog/list";
 import { getDictionary } from "@/lib/dictionaries";
 import { getAllPosts } from "@/lib/posts";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-interface BlogPageParams extends Promise<any> {
+interface BlogPageParams {
   lang: string;
 }
 
 interface BlogPageProps {
-  params: BlogPageParams;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  //   searchParams: { tag?: string } & Promise<any>;
+  params: Promise<BlogPageParams>;
+  // searchParams: { tag?: string } & Promise<any>;
 }
 
 export const metadata: Metadata = {
@@ -46,7 +44,7 @@ export default async function Page({ params }: BlogPageProps) {
   const { lang } = await params;
   const dict = await getDictionary(lang);
   const allPosts = await getAllPosts(lang);
-  //   const selectedTag = searchParams?.tag || null;
+  // const selectedTag = searchParams?.tag || null;
 
   return (
     <MainLayout lang={lang}>

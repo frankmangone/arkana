@@ -6,14 +6,13 @@ import { MainLayout } from "@/components/layouts/main-layout";
 import { ReadingListPage } from "@/features/reading-lists/view";
 import { languages } from "@/lib/i18n-config";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-interface ReadingListPageParams extends Promise<any> {
+interface ReadingListPageParams {
   lang: string;
   id: string;
 }
 
 interface ReadingListPageProps {
-  params: ReadingListPageParams;
+  params: Promise<ReadingListPageParams>;
 }
 
 export async function generateMetadata({
@@ -60,7 +59,6 @@ export default async function Page({ params }: ReadingListPageProps) {
     notFound();
   }
 
-  // Fetch post data for each item in the reading list
   const posts = await Promise.all(
     (readingList.items as ReadingListItem[])
       .sort((a, b) => (a.order || 0) - (b.order || 0))

@@ -9,7 +9,6 @@ export default function Home() {
   return null;
 }
 
-// Optional: Required for static export
 export function generateStaticParams() {
   // Empty params since this page will redirect
   return [];

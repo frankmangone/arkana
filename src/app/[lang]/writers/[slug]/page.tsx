@@ -7,20 +7,20 @@ import AuthorPage from "@/features/authors/view";
 import { getPostsByAuthor } from "@/lib/posts";
 import { getDictionary } from "@/lib/dictionaries";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-interface AuthorPageParams extends Promise<any> {
+interface AuthorPageParams {
   lang: string;
   slug: string;
 }
 
 interface AuthorPageProps {
-  params: AuthorPageParams;
+  params: Promise<AuthorPageParams>;
 }
 
 export async function generateMetadata({
   params,
 }: AuthorPageProps): Promise<Metadata> {
-  const author = await getWriter(params.slug);
+  const { slug } = await params;
+  const author = await getWriter(slug);
 
   if (!author) {
     return {
@@ -57,7 +57,6 @@ export default async function Page({ params }: AuthorPageProps) {
     notFound();
   }
 
-  // Get articles by the writer
   const articles = await getPostsByAuthor(slug, lang);
 
   return (

@@ -7,13 +7,12 @@ import { MainLayout } from "@/components/layouts/main-layout";
 import { WritersPage } from "@/features/writers/list";
 import { getDictionary } from "@/lib/dictionaries";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-interface WritersPageParams extends Promise<any> {
+interface WritersPageParams {
   lang: string;
 }
 
 interface WritersPageProps {
-  params: WritersPageParams;
+  params: Promise<WritersPageParams>;
 }
 
 export const metadata: Metadata = {
