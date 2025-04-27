@@ -47,7 +47,7 @@ export function createHeadingComponent(level: number) {
         className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity"
         aria-label={`Link to ${children}`}
       >
-        <LinkIcon size={16} />
+        <LinkIcon size={22} />
       </a>,
     ]);
   };

@@ -289,19 +289,33 @@ With the vectors in the image above, it’s pretty easy to spot a **pattern** in
 A question for you: is it **always** so easy?
 
 > Pause for thinking.
+>
 > .
+>
 > .
+>
 > .
+>
 > .
+>
 > .
+>
 > .
+>
 > . ☕️ A coffee always helps.
+>
 > .
+>
 > .
+>
 > .
+>
 > .
+>
 > .
+>
 > .
+>
 > Okay, that’s more than enough!
 
 ---

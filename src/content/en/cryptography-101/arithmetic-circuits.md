@@ -151,6 +151,7 @@ Although this is fair, there are some considerations to make — about **decompo
     src="/images/cryptography-101/arithmetic-circuits/grogu.webp" 
     alt="Baby yoda confused"
     title="Uh... Okay, sure"
+    width="550"
   />
 </figure>
 
@@ -191,6 +192,7 @@ Verification, as previously mentioned, happens by checking that numbers are not 
     src="/images/cryptography-101/arithmetic-circuits/robert-downey-jr.webp" 
     alt="Robert Downey Jr. rolling eyes meme"
     title="Hang in there, my friend"
+    width="550"
   />
 </figure>
 
@@ -241,6 +243,7 @@ Said problem could help us prove a myriad of statements: that a number is on a g
     src="/images/cryptography-101/arithmetic-circuits/excited.webp" 
     alt="Chris Pratt looking extremely excited"
     title="Okay maybe you don’t look THIS excited"
+    width="600"
   />
 </figure>
 
@@ -257,6 +260,7 @@ In **zero knowledge proofs**, we would like to avoid disclosing said inputs (or 
     src="/images/cryptography-101/arithmetic-circuits/pain-intensifies.webp" 
     alt="Human body with chest in red, signaling pain, as in commercials"
     title="*Pain intensifies*"
+    width="550"
   />
 </figure>
 
