@@ -10,7 +10,8 @@ export const readingLists: ReadingList[] = [
     id: "cryptography-101",
     title: "Cryptography 101",
     description: "A beginner-friendly introduction to cryptography concepts",
-    // coverImage: "/images/reading-lists/cryptography-basics.jpg",
+    coverImage:
+      "/images/cryptography-101/zero-knowledge-proofs-part-1/wingardium-leviosa.webp",
     items: [
       {
         slug: "cryptography-101/where-to-start",

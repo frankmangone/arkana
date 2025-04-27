@@ -42,5 +42,11 @@
     "view": {
       "back": "← Voltar para as listas de leitura"
     }
+  },
+  "writers": {
+    "title": "Escritores",
+    "description": "Conheça as pessoas por trás do conteúdo",
+    "noWriters": "Oops!",
+    "noWritersDescription": "Nenhum escritor encontrado"
   }
 }

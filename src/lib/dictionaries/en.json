@@ -42,5 +42,13 @@
     "view": {
       "back": "← Back to Reading Lists"
     }
+  },
+  "writers": {
+    "title": "Writers",
+    "description": "Meet the people behind the content",
+    "noWriters": "Oops!",
+    "noWritersDescription": "No writers found",
+    "articlesBy": "Articles by {name}",
+    "noArticles": "No articles found for this writer."
   }
 }

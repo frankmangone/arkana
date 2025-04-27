@@ -4,6 +4,8 @@ import { getWriter, writers } from "@/lib/writers";
 import { languages } from "@/lib/i18n-config";
 import { MainLayout } from "@/components/layouts/main-layout";
 import AuthorPage from "@/features/authors/view";
+import { getPostsByAuthor } from "@/lib/posts";
+import { getDictionary } from "@/lib/dictionaries";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 interface AuthorPageParams extends Promise<any> {
@@ -22,7 +24,7 @@ export async function generateMetadata({
 
   if (!author) {
     return {
-      title: "Author Not Found",
+      title: "Writer Not Found",
     };
   }
 
@@ -49,14 +51,23 @@ export async function generateStaticParams() {
 export default async function Page({ params }: AuthorPageProps) {
   const { lang, slug } = await params;
   const writer = await getWriter(slug);
+  const dict = await getDictionary(lang);
 
   if (!writer) {
     notFound();
   }
 
+  // Get articles by the writer
+  const articles = await getPostsByAuthor(slug, lang);
+
   return (
     <MainLayout lang={lang}>
-      <AuthorPage lang={lang} writer={writer} />
+      <AuthorPage
+        lang={lang}
+        writer={writer}
+        articles={articles}
+        dictionary={dict}
+      />
     </MainLayout>
   );
 }

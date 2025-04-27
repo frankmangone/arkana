@@ -1,20 +1,25 @@
 import { SocialLinks } from "@/components/social-links";
 import { Writer } from "@/lib/writers";
+import { PostPreview } from "@/lib/posts";
 import { Separator } from "@radix-ui/react-dropdown-menu";
 import Image from "next/image";
+import { WriterArticles } from "@/features/writers/view/components/writer-articles";
 
 interface AuthorPageProps {
   lang: string;
   writer: Writer;
+  articles: PostPreview[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  dictionary: any;
 }
 
 export default function AuthorPage(props: AuthorPageProps) {
-  const { lang, writer } = props;
+  const { lang, writer, articles, dictionary } = props;
   // const dict = await getDictionary(lang);
   // const posts = await getPostsByAuthor(author.id, params.lang);
 
   return (
-    <div className="container py-8 max-w-4xl mx-auto">
+    <div className="container py-8 max-w-6xl mx-auto">
       <div className="flex flex-col md:flex-row gap-8 items-start mb-12">
         <div className="relative w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden flex-shrink-0 mx-auto md:mx-0">
           <Image
@@ -38,6 +43,13 @@ export default function AuthorPage(props: AuthorPageProps) {
       </div>
 
       <Separator className="my-8" />
+
+      <WriterArticles
+        lang={lang}
+        articles={articles}
+        writerName={writer.name}
+        dictionary={dictionary}
+      />
 
       {/* <div>
           <h2 className="text-2xl font-bold mb-6">

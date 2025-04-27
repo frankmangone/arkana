@@ -14,7 +14,7 @@ export function ReadingListsPage(props: ReadingListsPageProps) {
   const { lang, dictionary, readingLists } = props;
 
   return (
-    <div className="container py-12">
+    <div className="container">
       <h1 className="text-4xl font-bold mb-8">
         {dictionary.readingLists.list.title}
       </h1>

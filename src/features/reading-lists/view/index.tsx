@@ -18,7 +18,7 @@ export async function ReadingListPage(props: ReadingListPageProps) {
   const backUrl = `/${lang}/reading-lists`;
 
   return (
-    <div className="container py-12">
+    <div className="container">
       <Link
         href={backUrl}
         className="text-blue-500 mb-6 inline-block hover:underline"

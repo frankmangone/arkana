@@ -15,6 +15,7 @@ export const MainLayout = async (props: MainLayoutProps) => {
 
   const homeUrl = `/${lang}`;
   const readingListsUrl = `/${lang}/reading-lists`;
+  const writersUrl = `/${lang}/writers`;
 
   return (
     <div className="relative min-h-screen">
@@ -32,6 +33,12 @@ export const MainLayout = async (props: MainLayoutProps) => {
               className="nav-bar hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400 transition-colors"
             >
               {dict.readingLists.list.title}
+            </Link>
+            <Link
+              href={writersUrl}
+              className="nav-bar hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400 transition-colors"
+            >
+              Writers
             </Link>
           </div>
           <LanguageSwitcher />
