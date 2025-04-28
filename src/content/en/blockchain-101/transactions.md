@@ -92,9 +92,7 @@ When Alice transfers a coin to Bob, she sets the receiver to be Bob's **public k
 
 In short:
 
-::: big-quote
-Identity on the Blockchain is given by public keys, which are a reflection of private keys, which in turn are the gadget that allows users to sign their own transactions.
-:::
+> Identity on the Blockchain is given by public keys, which are a reflection of private keys, which in turn are the gadget that allows users to sign their own transactions.
 
 ## Addresses and Wallets
 

@@ -10,6 +10,7 @@ export const readingLists: ReadingList[] = [
     id: "cryptography-101",
     title: "Criptografia 101",
     description: "Uma introdução acessível aos conceitos de criptografia",
+    ongoing: true,
     items: [],
   },
 ];

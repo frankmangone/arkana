@@ -115,7 +115,7 @@ Instead, what happens is that nodes keep a **short list** of other known nodes. 
   <img
     src="/images/blockchain-101/a-primer-on-consensus/gossiping.webp" 
     alt="Gossiping in action"
-    title="It’s easy to see how the number of receivers grows exponentially fast"
+    title="[zoom] It’s easy to see how the number of receivers grows exponentially fast"
     className="bg-white"
     width="600"
   />
@@ -137,7 +137,7 @@ Imagine this situation then:
   <img
     src="/images/blockchain-101/a-primer-on-consensus/two-valid-blocks.webp" 
     alt="Charlie receiving two valid blocks, and not knowing which one to accept"
-    title="Both the pink and purple blocks are valid — which one do we choose?"
+    title="[zoom] Both the pink and purple blocks are valid — which one do we choose?"
     className="bg-white"
   />
 </figure>
@@ -149,3 +149,139 @@ Just by looking at the block, there’s **no way to tell**. Consequently, **both
 This situation is known as a **temporary fork** or **chain split**.
 
 > Not to be confused with soft forks or hard forks. We’ll look at those in the future.
+
+### Fork Resolution
+
+Believe it or not, all Charlie needs to do in this scenario is to **wait**. Yeah.
+
+Some nodes in the network will append Alice’s block to their Blockchains, and some nodes will have appended Bob’s. Charlie is no exception — he will choose whichever he receives first, but also keep track of the other diverging fork.
+
+They will start working on finding the next valid block immediately after — there’s no time to lose, as we’ll see in just a minute.
+
+So this becomes a question of **which fork grows faster**. In similar fashion to the 51% attack, if the majority of the network has appended block $A$, then it’s highly likely that a new block will appear faster in that fork, and not in the one containing $B$.
+
+And if the majority is working on a fork and not on the other one, then said fork will eventually be the only one that’s growing, and the stale fork will naturally die out.
+
+::: big-quote
+In short: one fork will grow faster.
+:::
+
+Another way to put this is that one fork has more **computational work** in it, because more effort has been put into finding the correct hashes. This is the reason why this consensus mechanism is called **Proof of Work**.
+
+<figure>
+  <img
+    src="/images/blockchain-101/a-primer-on-consensus/longer-chain.webp" 
+    alt="The longer chain is the accepted one, because it has more work!"
+    title="[zoom]"
+    className="bg-white"
+  />
+</figure>
+
+Summarizing, after waiting for some time, Charlie will see that fork $A$ grows faster, and stick to it because it’s what the **majority of nodes** is working on. He sticks to what’s usually called the **canonical chain**.
+
+If Charlie was working on finding the next block in fork $B$, he’ll want to **switch to fork** $A$, and discard fork $B$. This is called a [reorg](https://learnmeabitcoin.com/technical/blockchain/chain-reorganisation/) (short for **reorganization**).
+
+> And in case you’re wondering, the transactions in fork $B$ are lost forever after a reorg. This can and **does** happen in Bitcoin.
+>
+> The good news is that all you have to do to remedy this situation is resubmit the transaction!
+
+This has a negative consequence: there’s no guarantee that a transaction will be effectively included in the Blockchain once it lives on a block, because reorgs can happen. We have to wait for enough blocks to exist **after** the one where the transaction is included.
+
+This is known as waiting for **block confirmations**, and it’s a very common pattern in some consensus mechanisms. We’ll probably come back to this when we discuss **block finality**.
+
+<figure>
+  <img
+    src="/images/blockchain-101/a-primer-on-consensus/confirmations.webp" 
+    alt="A block is less likely to be reorganized if there are many blocks after it"
+    title="[zoom] Once enough blocks are placed on top of our target block, the chances of reorgs become very dim!"
+    className="bg-white"
+  />
+</figure>
+
+---
+
+Marvelous! This **Proof of Work** (PoW) strategy allows us to resolve temporary forks, and keep growing the network. It also proves useful against people trying to do nasty things like controlling which transactions are included in the Blockchain or not — they simply don’t have enough computing power to beat the rest of the nodes altogether.
+
+But a question remains... Why would anyone want to spend their computing resources in finding new blocks? Why not use their powerful machines to play Fortnite in 4K?
+
+<figure>
+  <img
+    src="/images/blockchain-101/a-primer-on-consensus/shrek.webp" 
+    alt="Shrek pointing with his finger and smiling"
+    title="That's actually not a bad idea"
+    width="600"
+  />
+</figure>
+
+That’s where the last piece of the puzzle comes in: they must be able to **gain something** from doing this — they must have an **incentive**.
+
+---
+
+Incentives
+Bitcoin does have such an incentive. Finding the next valid block gives you a small reward in the form of — you probably guessed it — **Bitcoin**!
+
+<figure>
+  <img
+    src="/images/blockchain-101/a-primer-on-consensus/smaug.webp" 
+    alt="Smaug from The Hobbit, with lots of gold behind him"
+    title="Noice"
+    width="600"
+  />
+</figure>
+
+At this point, you may wonder **where the heck** that reward comes from. There’s no central authority who can pay for it. What’s it then, does it just generate from thin air?
+
+> At this point, you may wonder where the heck that reward comes from. There’s no central authority who can pay for it. What’s it then, does it just generate from thin air?
+
+Blocks include a bunch of “normal” transactions. What we didn’t mention so far is that they also include a **special one**, called the **coinbase transaction**.
+
+<figure>
+  <img
+    src="/images/blockchain-101/a-primer-on-consensus/coinbase.webp" 
+    alt="Coinbase transaction in a block"
+    title="[zoom]"
+    className="bg-white"
+    width="600"
+  />
+</figure>
+
+The coinbase transaction simply credits some Bitcoin (in the form of UTXOs) to the block creator’s address (or addresses), as a reward for their hard work. Not any arbitrary amount of Bitcoin, though — the **block reward** is comprised of:
+
+- A base amount called the **block subsidy**, which as of 2024, is [exactly 3.125 BTC](https://river.com/learn/terms/c/coinbase/#:~:text=which%20is%20currently%203.125%20BTC%20per%20block),
+- A **fee** for the transactions included in the block. We’ll get back to this in future articles, but this amount is variable.
+
+> By the way: BTC is short for Bitcoin. It’s often used as the currency symbol, in the same way USD is often used as the symbol for United States Dollars.
+
+In other words: yes, new Bitcoin is **magically generated** for every produced block.
+
+<figure>
+  <img
+    src="/images/blockchain-101/a-primer-on-consensus/stonks.webp" 
+    alt="Stonks meme"
+    width="600"
+  />
+</figure>
+
+And this is why the process of finding new valid blocks is called **mining**. It’s as if you’re mining for new Bitcoin!
+
+Notably, this doesn’t mean that the amount of Bitcoin will continue to grow boundlessly. At given moments in time, the subsidy is **halved**, in an event known as the [Bitcoin halving](https://www.coinbase.com/bitcoin-halving). This causes the total amount of Bitcoin that will ever be generated to be [capped at 21 million](https://www.kraken.com/learn/how-many-bitcoin-are-there-bitcoin-supply-explained).
+
+> This is because, mathematically, this behavior corresponds to a [geometric series](https://en.wikipedia.org/wiki/Geometric_series). Under certain conditions, geometric series converge to a finite value — that’s the case of Bitcoin, and that value is the maximum issuance there will ever be.
+
+---
+
+## Summary
+
+Okay, let’s recap real quick!
+
+By now, we know:
+
+- How the transactions are structured, how they are combined into blocks, and how blocks are linked to one another forming the Blockchain.
+- How a network of participants are incentivized to continue growing the network, using a system that doesn’t rely on **trust me bro** vibes, but on a powerful consensus mechanism.
+- What **mining** is: finding a new block and reaping its reward.
+
+I’d say we’ve come a long way in these three first articles! All that remains cover some gaps in how Bitcoin operates, and we’ll mostly be done with this Blockchain.
+
+It’s important to explain these missing details now, because these are all ideas that will mostly repeat in other systems. It’s a blessing that we can focus on these concepts now, before things become more complex.
+
+And so, I’ll meet you in the next article for the [finishing touches on Bitcoin](/en/blog/blockchain-101/wrapping-up-bitcoin)!

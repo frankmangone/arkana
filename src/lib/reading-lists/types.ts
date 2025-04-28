@@ -10,4 +10,5 @@ export interface ReadingList {
   description: string;
   items: ReadingListItem[];
   coverImage?: string;
+  ongoing?: boolean;
 }

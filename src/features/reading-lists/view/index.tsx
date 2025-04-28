@@ -26,7 +26,15 @@ export async function ReadingListPage(props: ReadingListPageProps) {
         {dict.readingLists.view.back}
       </Link>
 
-      <h1 className="text-4xl font-bold mb-4">{readingList.title}</h1>
+      <div className="flex items-center gap-3 mb-4">
+        <h1 className="text-4xl font-bold">{readingList.title}</h1>
+        {readingList.ongoing && (
+          <span className="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full dark:bg-blue-900 dark:text-blue-300">
+            {dict.readingLists.ongoing}
+          </span>
+        )}
+      </div>
+
       <p className="text-lg mb-10 text-gray-600 dark:text-gray-300">
         {readingList.description}
       </p>

@@ -47,7 +47,8 @@
     },
     "view": {
       "back": "← Back to Reading Lists"
-    }
+    },
+    "ongoing": "Ongoing"
   },
   "writers": {
     "title": "Writers",

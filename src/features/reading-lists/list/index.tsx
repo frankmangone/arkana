@@ -54,9 +54,16 @@ export function ReadingListsPage(props: ReadingListsPageProps) {
                 )}
               </div>
               <div className="p-6">
-                <h2 className="text-xl font-semibold mb-2 group-hover:text-blue-500">
-                  {list.title}
-                </h2>
+                <div className="flex items-center justify-between mb-2">
+                  <h2 className="text-xl font-semibold group-hover:text-blue-500">
+                    {list.title}
+                  </h2>
+                  {list.ongoing && (
+                    <span className="hidden sm:flex text-xs font-medium px-2 py-0.5 rounded-full dark:bg-[#8041f450] dark:text-[#9f79e7] ml-2">
+                      {dictionary.readingLists.ongoing}
+                    </span>
+                  )}
+                </div>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">
                   {list.description}
                 </p>

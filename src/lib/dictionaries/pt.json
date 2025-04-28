@@ -41,13 +41,14 @@
   "readingLists": {
     "list": {
       "title": "Listas de Leitura",
-      "description": "Coleção curada de artigos organizados por temática, para ajudar você na sua jornada de aprendizagem.",
-      "noLists": "Oops!",
+      "description": "Coleções selecionadas de artigos organizados por tópico para guiar sua jornada de aprendizado.",
+      "noLists": "Ops!",
       "noListsDescription": "Nenhuma lista de leitura encontrada"
     },
     "view": {
-      "back": "← Voltar para as listas de leitura"
-    }
+      "back": "← Voltar para Listas de Leitura"
+    },
+    "ongoing": "Em andamento"
   },
   "writers": {
     "title": "Escritores",
