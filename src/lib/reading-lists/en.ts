@@ -107,6 +107,54 @@ export const readingLists: ReadingList[] = [
       },
     ],
   },
+  {
+    id: "blockchain-101",
+    title: "Blockchain 101",
+    description: "A beginner-friendly introduction to blockchain concepts",
+    coverImage: "/images/blockchain-101/transactions/doge.webp",
+    items: [
+      {
+        slug: "blockchain-101/how-it-all-began",
+        order: 1,
+      },
+      {
+        slug: "blockchain-101/transactions",
+        order: 2,
+      },
+      {
+        slug: "blockchain-101/a-primer-on-consensus",
+        order: 3,
+      },
+      {
+        slug: "blockchain-101/wrapping-up-bitcoin",
+        order: 4,
+      },
+      {
+        slug: "blockchain-101/enter-ethereum",
+        order: 5,
+      },
+      {
+        slug: "blockchain-101/storage",
+        order: 6,
+      },
+      {
+        slug: "blockchain-101/smart-contracts",
+        order: 7,
+      },
+      {
+        slug: "blockchain-101/smart-contracts-part-2",
+        order: 8,
+      },
+      {
+        slug: "blockchain-101/consensus-revisited",
+        order: 9,
+      },
+      {
+        slug: "blockchain-101/wrapping-up-ethereum",
+        order: 10,
+      },
+    ],
+  },
 ];
 
 export const getReadingList = getReadingListFactory(readingLists);
