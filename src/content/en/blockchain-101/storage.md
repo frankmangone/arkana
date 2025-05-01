@@ -2,6 +2,7 @@
 title: "Blockchain 101: Storage"
 date: "2024-12-17"
 author: "frank-mangone"
+thumbnail: "/images/blockchain-101/storage/conspiracy.webp"
 tags: ["Ethereum", "Blockchain", "Patricia Merkle Trie", "Data Structures"]
 description: "Time to look at the machinery behind Ethereum’s storage!"
 readingTime: "11 min"

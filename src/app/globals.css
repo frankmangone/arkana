@@ -198,6 +198,26 @@ strong {
   background: rgba(183, 156, 234, 0.3);
 }
 
+/* Inline code styling */
+:not(pre) > code {
+  background-color: rgba(183, 156, 234, 0.1);
+  color: #b79cea;
+  padding: 0.2em 0.4em;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+  font-weight: 500;
+  font-family: Courier, "Courier New", monospace;
+  white-space: nowrap;
+}
+
+/* Dark mode adjustments for inline code */
+@media (prefers-color-scheme: dark) {
+  :not(pre) > code {
+    background-color: rgba(183, 156, 234, 0.15);
+    color: #c9b3f0;
+  }
+}
+
 /* Full-width figures */
 figure {
   width: 100%;
