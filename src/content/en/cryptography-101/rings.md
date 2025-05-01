@@ -340,7 +340,7 @@ We’ll start from a ring of polynomials with coefficients on a **finite field**
 Next, we’ll need a **two-sided ideal** of $\mathbb{F}[X]$. As it turns out, we can craft an ideal by selecting some polynomial $f(X)$ in $\mathbb{F}[X]$, and setting the ideal to be the set of **all multiples of it**.
 
 $$
-(f(X)) = \{g(X).f(X) \ / \ g(X) \in \mathbb{F}[X]}
+(f(X)) = \{g(X).f(X) \ / \ g(X) \in \mathbb{F}[X]\}
 $$
 
 > Any polynomial in this ring is clearly divisible by $f(X)$. So it’s pretty simple to check that it’s an ideal indeed!

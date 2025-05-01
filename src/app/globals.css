@@ -490,3 +490,46 @@ table {
     background-color: #f0edf7;
   }
 }
+
+/* List styling */
+ul,
+ol {
+  margin: 1.5rem 0;
+  padding-left: 1.5rem;
+}
+
+li {
+  margin: 0.75rem 0;
+  line-height: 1.8rem;
+}
+
+/* Numbered list styling */
+ol {
+  counter-reset: item;
+  list-style-type: none;
+}
+
+ol > li {
+  counter-increment: item;
+  position: relative;
+}
+
+ol > li:before {
+  content: counter(item) ".";
+  position: absolute;
+  left: -1.5rem;
+  color: var(--primary-500);
+  font-weight: 600;
+}
+
+/* Bullet list styling */
+ul > li {
+  position: relative;
+}
+
+ul > li:before {
+  content: "•";
+  position: absolute;
+  left: -1.5rem;
+  color: var(--primary-500);
+}

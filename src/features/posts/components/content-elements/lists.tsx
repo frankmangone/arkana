@@ -2,7 +2,7 @@ import { HTMLAttributes } from "react";
 
 export function CustomUl({ children, ...props }: HTMLAttributes<HTMLElement>) {
   return (
-    <ul className="list-disc pl-6 my-4 space-y-2" {...props}>
+    <ul className="my-6" {...props}>
       {children}
     </ul>
   );
@@ -10,7 +10,7 @@ export function CustomUl({ children, ...props }: HTMLAttributes<HTMLElement>) {
 
 export function CustomOl({ children, ...props }: HTMLAttributes<HTMLElement>) {
   return (
-    <ol className="list-decimal pl-6 my-4 space-y-2" {...props}>
+    <ol className="my-6" {...props}>
       {children}
     </ol>
   );
@@ -18,7 +18,7 @@ export function CustomOl({ children, ...props }: HTMLAttributes<HTMLElement>) {
 
 export function CustomLi({ children, ...props }: HTMLAttributes<HTMLElement>) {
   return (
-    <li className="pl-1 mb-1" {...props}>
+    <li className="mb-2" {...props}>
       {children}
     </li>
   );
