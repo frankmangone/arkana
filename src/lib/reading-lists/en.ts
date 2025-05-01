@@ -160,6 +160,19 @@ export const readingLists: ReadingList[] = [
       },
     ],
   },
+  {
+    id: "elliptic-curves-in-depth",
+    title: "Elliptic Curves In-Depth",
+    description: "A deeper dive into elliptic curves",
+    coverImage: "/images/elliptic-curves-in-depth/part-1/elliptic-curve.webp",
+    ongoing: true,
+    items: [
+      {
+        slug: "elliptic-curves-in-depth/part-1",
+        order: 1,
+      },
+    ],
+  },
 ];
 
 export const getReadingList = getReadingListFactory(readingLists);
