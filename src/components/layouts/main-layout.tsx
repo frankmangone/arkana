@@ -26,7 +26,7 @@ export const MainLayout = async (props: MainLayoutProps) => {
               href={homeUrl}
               className="text-2xl font-bold hover:text-primary-500 transition-colors"
             >
-              Episteme
+              Cognicity
             </Link>
             <Link
               href={readingListsUrl}
