@@ -93,7 +93,7 @@ However, if we choose a different $$q$$ instead, then not every element has to b
 
 There's an interesting property about subgroups, formulated in [Lagrange's theorem](<https://en.wikipedia.org/wiki/Lagrange%27s_theorem_(group_theory)>), which states:
 
-> Every subgroup S of a finite-order group G has an order that is a divisor of the order of G; that is, #S divides #G.
+> Every subgroup $S$ of a finite-order group $G$ has an order that is a divisor of the order of $G$; that is, $#S$ divides $#G$.
 
 Subgroups and their properties play an important role in group cryptography, so again, we'll come back to these facts later.
 
