@@ -18,7 +18,7 @@
   },
   "blog": {
     "title": "Blog",
-    "readingTime": "min read",
+    "readingTime": "read",
     "filterByTag": "Filter by tag",
     "allPosts": "All Posts",
     "noPosts": "No posts found",
@@ -53,7 +53,12 @@
     "view": {
       "back": "← Back to Reading Lists"
     },
-    "ongoing": "Ongoing"
+    "ongoing": "Ongoing",
+    "notFoundInLanguage": {
+      "title": "Reading List not available",
+      "description": "Sorry, this reading list is not available in your selected language yet.",
+      "button": "Back to Reading Lists"
+    }
   },
   "writers": {
     "title": "Writers",

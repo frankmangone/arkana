@@ -18,7 +18,7 @@
   },
   "blog": {
     "title": "Blog",
-    "readingTime": "min de leitura",
+    "readingTime": "de leitura",
     "filterByTag": "Filtrar por tag",
     "allPosts": "Todas as Postagens",
     "noPosts": "Nenhuma postagem encontrada",
@@ -53,7 +53,12 @@
     "view": {
       "back": "← Voltar para Listas de Leitura"
     },
-    "ongoing": "Em andamento"
+    "ongoing": "Em andamento",
+    "notFoundInLanguage": {
+      "title": "Lista de leitura não disponível",
+      "description": "Desculpe, esta lista de leitura ainda não está disponível no idioma selecionado.",
+      "button": "Voltar para Listas de Leitura"
+    }
   },
   "writers": {
     "title": "Escritores",

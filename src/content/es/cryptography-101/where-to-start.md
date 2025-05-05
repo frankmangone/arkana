@@ -91,7 +91,7 @@ También podemos observar que en el ejemplo anterior, **cada elemento** del grup
 
 Sin embargo, si elegimos un $$q$$ diferente, entonces no todos los elementos tienen que ser generadores. Por ejemplo, si $$q = 6$$, entonces el elemento $$2$$ **no** es un generador: solo produciremos el conjunto $$\{ 0, 2, 4 \}$$ — nos hemos topado con un **subgrupo cíclico** generado por $$g=2$$.
 
-Hay una propiedad interesante sobre los subgrupos, formulada en el [teorema de Lagrange](<https://es.wikipedia.org/wiki/Teorema_de_Lagrange_(teor%C3%ADa_de_grupos)>), que establece:
+Hay una propiedad interesante sobre los subgrupos, formulada en el [teorema de Lagrange](<https://en.wikipedia.org/wiki/Lagrange%27s_theorem_(group_theory)>), que establece:
 
 > Todo subgrupo $S$ de un grupo $G$ de orden finito tiene un orden que es un divisor del orden de $G$; es decir, $\#S$ divide a $\#G$.
 

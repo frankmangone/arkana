@@ -34,7 +34,7 @@ The story that's usually told when learning about digital signatures goes someth
     src="/images/cryptography-101/encryption-and-digital-signatures/cool-story.webp" 
     alt="Cool story bro" 
     title="Yeah, awesome"
-    width="389"
+    width="400"
   />
 </figure>
 
@@ -178,7 +178,7 @@ $$
 
 > The $k^{-1}$ in the calculation of $s$ is **not** the **reciprocal** of $k$ (this is, it's not $1/k$).
 >
-> Instead, $k^{-1}$ represents the [modular multiplicative inverse](https://en.wikipedia.org/wiki/Modular_multiplicative_inverse). Essentially, it's a number such that, when multiplied by k, yields the following result:
+> Instead, $k^{-1}$ represents the [modular multiplicative inverse](https://en.wikipedia.org/wiki/Modular_multiplicative_inverse). Essentially, it's a number such that, when multiplied by $k$, yields the following result:
 
 $$
 k.k^{-1} \ \textrm{mod} \ n = 1

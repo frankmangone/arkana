@@ -45,9 +45,12 @@ export async function PostPage(props: PostPageProps) {
     return <NotFoundInLanguage lang={lang} />;
   }
 
+  // Get the PostHeader component and await it
+  const header = await PostHeader({ post, lang });
+
   return (
     <article className="container py-8 max-w-3xl mx-auto">
-      <PostHeader post={post} lang={lang} />
+      {header}
       <PostContent post={post} />
       {/* <PostFooter post={post} lang={lang} dictionary={dict} /> */}
       {/* <RelatedPosts

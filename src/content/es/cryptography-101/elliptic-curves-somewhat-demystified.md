@@ -118,7 +118,7 @@ $$
 
 ¿No te suena familiar? ¿No es esto **exactamente** lo que sucede cuando sumamos **cero** a cualquier número?
 
-En efecto, este comportamiento es importante en la teoría de grupos: el papel que el **cero** juega en el grupo de los enteros, y el papel que $\mathcal{O}$ juega en las curvas elípticas es el de la [**identidad**](https://es.wikipedia.org/wiki/Elemento_neutro) de los respectivos grupos. Agregar este elemento a nuestro conjunto lo hace completo, y ahora podemos sumar dos puntos y siempre tener un resultado válido.
+En efecto, este comportamiento es importante en la teoría de grupos: el papel que el **cero** juega en el grupo de los enteros, y el papel que $\mathcal{O}$ juega en las curvas elípticas es el de la [**identidad**](https://en.wikipedia.org/wiki/Identity_element) de los respectivos grupos. Agregar este elemento a nuestro conjunto lo hace completo, y ahora podemos sumar dos puntos y siempre tener un resultado válido.
 
 Sin embargo, no hemos terminado. Hay un pequeño detalle más que debemos cubrir.
 

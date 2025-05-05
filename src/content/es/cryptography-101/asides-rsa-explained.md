@@ -72,7 +72,7 @@ $$
 
 ### Una Propiedad Importante
 
-¿Por qué nos importa la función totiente? Principalmente debido al [teorema de Euler](https://es.wikipedia.org/wiki/Teorema_de_Euler), que establece que si $a$ y $n$ son coprimos, entonces:
+¿Por qué nos importa la función totiente? Principalmente debido al [teorema de Euler](https://en.wikipedia.org/wiki/Euler%27s_theorem), que establece que si $a$ y $n$ son coprimos, entonces:
 
 $$
 a^{\varphi(n)} \ \textrm{mod} \ n = 1
@@ -153,7 +153,7 @@ $$
   />
 </figure>
 
-No hay mucho más que decir al respecto. Aún así, hay un par de puntos que no hemos tocado — a saber, cómo [calcular inversos multiplicativos modulares](https://es.wikipedia.org/wiki/Inverso_multiplicativo#Inverso_modular) o cómo [generar números primos grandes](https://crypto.stackexchange.com/questions/71/how-can-i-generate-large-prime-numbers-for-rsa). No los cubriremos aquí, pero por supuesto, estos también son componentes clave para el cifrado RSA.
+No hay mucho más que decir al respecto. Aún así, hay un par de puntos que no hemos tocado — a saber, cómo [calcular inversos multiplicativos modulares](https://en.wikipedia.org/wiki/Modular_multiplicative_inverse#:~:text=modular%20multiplicative%20inverses.-,Computation,-%5Bedit%5D) o cómo [generar números primos grandes](https://crypto.stackexchange.com/questions/71/how-can-i-generate-large-prime-numbers-for-rsa). No los cubriremos aquí, pero por supuesto, estos también son componentes clave para el cifrado RSA.
 
 Sin embargo, hay algunos puntos particularmente sensibles en RSA que pueden convertirse en grandes trampas para todo el criptosistema, como se explica fantásticamente [aquí](https://blog.trailofbits.com/2019/07/08/fuck-rsa/). La teoría está muy bien, pero implementar este esquema aparentemente simple por tu cuenta puede hacerlo muy vulnerable.
 

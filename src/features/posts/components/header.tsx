@@ -4,16 +4,17 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { formatDate } from "@/lib/utils";
 import type { Post } from "@/lib/types";
 import { getWriter } from "@/lib/writers";
+import { getDictionary } from "@/lib/dictionaries";
 
 interface PostHeaderProps {
   post: Post;
   lang: string;
 }
 
-export function PostHeader(props: PostHeaderProps) {
+export async function PostHeader(props: PostHeaderProps) {
   const { post, lang } = props;
   const { metadata } = post;
-
+  const dict = await getDictionary(lang);
   const writer = getWriter(metadata.author);
 
   return (
@@ -42,7 +43,8 @@ export function PostHeader(props: PostHeaderProps) {
         <div>
           <div className="font-medium">{writer.name}</div>
           <div className="text-sm text-muted-foreground">
-            {formatDate(metadata.date, lang)} · {metadata.readingTime} read
+            {formatDate(metadata.date, lang)} · {metadata.readingTime}{" "}
+            {dict.blog.readingTime}
           </div>
         </div>
       </div>
