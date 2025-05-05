@@ -299,7 +299,7 @@ Which would mean that security as we know it would be cooked.
 
 <figure>
   <img
-    src="/images/wtf-is/quantum-computing/sheldon-panic.webp" 
+    src="/images/wtf-is/quantum-computing/sheldon-anxiety.webp" 
     alt="Sheldon from The Big Bang Theory breathing into a bag"
     width="500"
   />
