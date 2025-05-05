@@ -4,7 +4,7 @@ date: "2024-03-07"
 author: "frank-mangone"
 thumbnail: "/images/cryptography-101/where-to-start/aaaaa.webp"
 tags: ["Criptografía", "Grupos", "Aritmética Modular"]
-description: "Una introducción muy amable al mundo de la criptografía"
+description: "Una introducción muy relajada al mundo de la criptografía"
 readingTime: "6 min"
 ---
 
@@ -93,7 +93,7 @@ Sin embargo, si elegimos un $$q$$ diferente, entonces no todos los elementos tie
 
 Hay una propiedad interesante sobre los subgrupos, formulada en el [teorema de Lagrange](<https://es.wikipedia.org/wiki/Teorema_de_Lagrange_(teor%C3%ADa_de_grupos)>), que establece:
 
-> Todo subgrupo $S$ de un grupo $G$ de orden finito tiene un orden que es un divisor del orden de $G$; es decir, $#S$ divide a $#G$.
+> Todo subgrupo $S$ de un grupo $G$ de orden finito tiene un orden que es un divisor del orden de $G$; es decir, $\#S$ divide a $\#G$.
 
 Los subgrupos y sus propiedades juegan un papel importante en la criptografía de grupos, así que, de nuevo, volveremos a estos hechos más adelante.
 
