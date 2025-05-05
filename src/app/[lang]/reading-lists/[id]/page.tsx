@@ -29,7 +29,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${readingList.title} - Reading List`,
+    title: `Cognicity | ${readingList.title}`,
     description: readingList.description,
   };
 }

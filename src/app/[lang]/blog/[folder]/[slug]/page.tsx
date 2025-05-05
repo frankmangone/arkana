@@ -98,7 +98,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: post.metadata.title,
+    title: `Cognicity | ${post.metadata.title}`,
     description: post.metadata.description,
     authors: [{ name: post.metadata.author }],
     keywords: post.metadata.tags,
