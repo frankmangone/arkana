@@ -28,7 +28,7 @@ export function ReadingListCard(props: ReadingListCardProps) {
       <div className="flex">
         {/* Left side: Number and Thumbnail */}
         <div className="flex-shrink-0 w-[160px] relative">
-          <div className="absolute top-2 left-2 w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold z-10">
+          <div className="absolute top-2 left-2 w-8 h-8 bg-primary-900 text-primary-300 rounded-full flex items-center justify-center text-sm font-bold z-10">
             {index + 1}
           </div>
           <div className="w-[160px] h-full relative">
@@ -46,7 +46,7 @@ export function ReadingListCard(props: ReadingListCardProps) {
         <div className="flex-1 p-4">
           <Link
             href={`/${lang}/blog/${item.slug}`}
-            className="text-lg font-semibold hover:text-primary line-clamp-2 mb-1"
+            className="text-lg font-semibold text-primary-500 hover:text-primary-600 line-clamp-2 mb-1"
           >
             {title}
           </Link>

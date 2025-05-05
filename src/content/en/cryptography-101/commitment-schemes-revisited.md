@@ -97,7 +97,7 @@ $$
 > To alleviate this issue, we can make use of an isomorphism into a multiplicative group, with similar reasoning as the one [explained here](/en/blog/cryptography-101/homomorphisms-and-isomorphisms/#isomorphisms).
 
 ::: big-quote
-So really, Gˢ will just mean [s]G.
+So really, $G^s$ will just mean $[s]G$.
 :::
 
 Cool, cool. With this we can really start setting things up.

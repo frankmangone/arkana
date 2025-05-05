@@ -136,7 +136,7 @@ Where $a \cot s$ is component-wise multiplication.
 The problem is now stated as follows:
 
 ::: big-quote
-Given a and b, find s.
+Given $a$ and $b$, find $s$.
 :::
 
 In the same vein as the previous discussion, this is really hard as long as e is carefully chosen — meaning that it’s randomly sampled from a specific **distribution**. Picture something akin to a [normal distribution](https://en.wikipedia.org/wiki/Normal_distribution).

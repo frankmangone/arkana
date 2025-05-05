@@ -79,7 +79,7 @@ $$
 So, instead of thinking in terms of division, let’s think of it in terms of finding a reciprocal number. We ask ourselves:
 
 ::: big-quote
-Given some number in our field, can we find another number (also in the field), so that when we multiply them together, the result is 1?
+Given some number in our field, can we find another number (also in the field), so that when we multiply them together, the result is $1$?
 :::
 
 In other words, we’re after a solution to this equation:

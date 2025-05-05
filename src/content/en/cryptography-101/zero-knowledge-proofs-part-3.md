@@ -30,7 +30,7 @@ And I see no better start to this, than to reversion **range proofs**! Let’s j
 During our not-so-brief look at [Bulletproofs](/en/blog/cryptography-101/zero-knowledge-proofs-part-1), we saw how hard it was to construct a range proof from scratch. But now, we have some new toys at our disposal. And as promised, we’ll see how we can build an arithmetic circuit to represent the statement:
 
 ::: big-quote
-There’s a valid N-bit representation for a number v
+There’s a valid N-bit representation for a number $v$
 :::
 
 Building such a circuit allows us to prove knowledge of said number $v$ using **Plonk**! So let’s try to put this into equations, again.

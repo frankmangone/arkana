@@ -118,7 +118,7 @@ And this is where techniques like **Bulletproofs** come into play. Now… How on
 Think of a number $v$ represented by a **byte** (8 bits). Then, this number can only be in the range of $0$ to $255$ ($2^8 - 1$). So, if we can prove the statement:
 
 ::: big-quote
-There’s a valid 8-bit representation of v
+There’s a valid 8-bit representation of $v$
 :::
 
 Then we have constructed a knowledge proof that $v$ lies between $0$ and $255$. And that’s all we’ll be doing, at its core.
@@ -384,7 +384,7 @@ $$
 What does this all mean? If you pay close attention, you’ll see that on one side of the equality, we have the evaluation $t(X)$, and on the other side, the value $v$ (present in the commitment $V$). So what this equality effectively checks is that the value $t(x)$ is tied to the original value $v$. So, knowledge of $t(x)$ also means knowledge of $v$. This is what the verifier should be convinced about by this equality! In summary:
 
 ::: big-quote
-This check convinces the verifier that v is correct so long as t(x) is also correct
+This check convinces the verifier that $v$ is correct so long as $t(x)$ is also correct
 :::
 
 For the next check, we’ll need to define this new vector:
@@ -410,7 +410,7 @@ This time I won’t provide proof that the expressions should match — I think 
 Whether if you choose to believe me or check for yourself, here’s what’s happening here: $P$ contains the values for all the $a_l$ and $a_r$ values, while on the other side of the equality, we have the evaluations of $l(X)$ and $r(X)$. Because the prover received a challenge from the verifier ($x$), it’s infeasible that $P$ will suffice the equality if the polynomials are **incorrectly evaluated**. All in all, this is what happens:
 
 ::: big-quote
-This check convinces the verifier that the bit representation of v (the a vectors) are correct so long as l(x) and r(x) are correct
+This check convinces the verifier that the bit representation of $v$ (the $a$ vectors) are correct so long as $l(x)$ and $r(x)$ are correct
 :::
 
 So, finally, we need to check that the evaluations of the polynomials match. And this is very easy to check:

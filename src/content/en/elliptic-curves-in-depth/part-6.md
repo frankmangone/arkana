@@ -352,7 +352,7 @@ $$
 With this, the Birch-Swinnerton Dyer conjecture can be reformulated as:
 
 ::: big-quote
-The rank of an elliptic curve E equals the order of vanishing of L(E,s) at s = 1.
+The rank of an elliptic curve $E$ equals the order of vanishing of $L(E,s)$ at $s = 1$.
 :::
 
 <figure>

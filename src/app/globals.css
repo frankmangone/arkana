@@ -41,6 +41,8 @@
   --color-primary-500: var(--primary-500);
   --color-primary-600: var(--primary-600);
   --color-primary-700: var(--primary-700);
+  --color-primary-800: var(--primary-800);
+  --color-primary-900: var(--primary-900);
   --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
@@ -103,6 +105,8 @@
   --primary-500: #a777ff;
   --primary-600: #b79cea;
   --primary-700: #c6b4e7;
+  --primary-800: #dad2ea;
+  --primary-900: #eae8ef;
   --secondary: oklch(0.274 0.006 286.033);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.274 0.006 286.033);
@@ -280,14 +284,13 @@ blockquote cite {
 
 /* Big quote styling */
 .big-quote {
+  display: block;
   font-size: 1.5rem;
   line-height: 2rem;
   text-align: center;
-  padding: 1.5rem 1.5rem;
-  margin: 2.5rem 0;
+  margin: 3.5rem 2.5rem;
   font-weight: 500;
   color: #e9deff;
-  background-color: var(--background);
   overflow-wrap: break-word;
 }
 
@@ -295,7 +298,6 @@ blockquote cite {
   .big-quote {
     font-size: 1.75rem;
     line-height: 2.25rem;
-    padding: 3rem 2rem;
   }
 }
 

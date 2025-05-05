@@ -21,7 +21,7 @@ export async function ReadingListPage(props: ReadingListPageProps) {
     <div className="container">
       <Link
         href={backUrl}
-        className="text-blue-500 mb-6 inline-block hover:underline"
+        className="text-primary-500 mb-6 inline-block hover:underline"
       >
         {dict.readingLists.view.back}
       </Link>
@@ -29,7 +29,7 @@ export async function ReadingListPage(props: ReadingListPageProps) {
       <div className="flex items-center gap-3 mb-4">
         <h1 className="text-4xl font-bold">{readingList.title}</h1>
         {readingList.ongoing && (
-          <span className="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full dark:bg-[#8041f450] dark:text-[#9f79e7]">
+          <span className="text-sm font-medium px-3 py-1 rounded-full dark:bg-[#8041f450] dark:text-[#9f79e7]">
             {dict.readingLists.ongoing}
           </span>
         )}

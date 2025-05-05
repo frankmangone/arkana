@@ -312,7 +312,7 @@ $$
 The quotient ring $R/I$ will simply be the set of all such classes. Hopefully, the original definition makes more sense now:
 
 ::: big-quote
-Given a ring R and a two-sided ideal I, the quotient ring R / I is the ring whose elements are the cosets of I in R
+Given a ring $R$ and a two-sided ideal $I$, the quotient ring $R \ / \ I$ is the ring whose elements are the cosets of $I$ in $R$
 :::
 
 ---

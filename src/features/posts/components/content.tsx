@@ -23,13 +23,19 @@ interface PostContentProps {
   post: Post;
 }
 
+// Custom component for rendering big quotes with LaTeX support
+const BigQuote: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  return <span className="big-quote">{children}</span>;
+};
+
 export function PostContent({ post }: PostContentProps) {
-  // More precise regex for matching video-embed tags
-  // This uses a non-greedy approach and explicitly looks for the closing />
+  // Extract big quotes and create specialized tags that ReactMarkdown can handle
+  // We'll use a special :::big-quote::: syntax and convert it to a custom component
   const processedContent = post.content
+    // First, convert :::big-quote::: syntax to a special HTML tag we can catch later
     .replace(
       /:::\s*big-quote\s*([\s\S]*?)\s*:::/g,
-      '<div class="big-quote">$1</div>'
+      (_, content) => `<big-quote>${content}</big-quote>`
     )
     .replace(/<video-embed\s+src="([^"]+)"\s*\/>/g, (_, src) => {
       return `<div class="video-embed" data-src="${src}"></div>`;
@@ -94,8 +100,11 @@ export function PostContent({ post }: PostContentProps) {
 
           hr: CustomSeparator,
 
+          // Big quote component with LaTeX support
+          // @ts-expect-error - BigQuote is a custom component
+          "big-quote": BigQuote,
+
           // Add video-embed component handler
-          // @ts-expect-error - VideoEmbed is a custom component
           "video-embed": CustomVideoEmbed,
           div: CustomDiv,
 

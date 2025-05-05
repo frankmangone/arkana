@@ -210,9 +210,9 @@ If Charlie wants to change the message, he has no other option than **brute forc
 Let's say this again, so that it sticks:
 
 ::: big-quote
-Signing involves calculating a sort of "challenge" R, and some "verification key" s. The pair (R, s) constitutes a signature.
+Signing involves calculating a sort of "challenge" $R$, and some "verification key" $s$. The pair $(R, s)$ constitutes a signature.
 
-The value s is special because, when put into a blender (i.e. some process) along with the public key Q, and the original message M, it yields back the challenge R. And the idea is that s can only be calculated with knowledge of the private key.
+The value $s$ is special because, when put into a blender (i.e. some process) along with the public key $Q$, and the original message $M$, it yields back the challenge $R$. And the idea is that $s$ can only be calculated with knowledge of the private key.
 :::
 
 ---
