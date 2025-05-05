@@ -11,7 +11,14 @@ export const readingLists: ReadingList[] = [
     title: "Criptografia 101",
     description: "Uma introdução acessível aos conceitos de criptografia",
     ongoing: true,
-    items: [],
+    coverImage:
+      "/images/cryptography-101/zero-knowledge-proofs-part-1/wingardium-leviosa.webp",
+    items: [
+      {
+        slug: "cryptography-101/where-to-start",
+        order: 1,
+      },
+    ],
   },
 ];
 

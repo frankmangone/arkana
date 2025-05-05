@@ -85,7 +85,7 @@ $$
 \\ 2 + 2 + 2 + 2 + 2 \ \textrm{mod} \ 5 = 0
 $$
 
-Observa que sucede algo interesante: hemos producido **todos los elementos del grupo** mediante la suma repetida de $$g$$. Esto hace que $$g = 2$$ sea "especial" de cierta manera — decimos que es un **generador** del grupo, ya que efectivamente hemos "generado" todo el conjunto asociado en este procedimiento. Normalmente denotamos el grupo generado por un elemento g con la expresión $$\langle g \rangle$$.
+Observa que sucede algo interesante: hemos producido **todos los elementos del grupo** mediante la suma repetida de $$g$$. Esto hace que $$g = 2$$ sea "especial" de cierta manera — decimos que es un **generador** del grupo, ya que efectivamente hemos "generado" todo el conjunto asociado en este procedimiento. Normalmente denotamos el grupo generado por un elemento $g$ con la expresión $$\langle g \rangle$$.
 
 También podemos observar que en el ejemplo anterior, **cada elemento** del grupo resulta ser un generador — puedes probarlo tú mismo. Esto no es coincidencia: tiene que ver con el hecho de que el número de elementos en el grupo (llamado el **orden** del grupo, y denotado con $$\#$$) es en realidad un **número primo**. Solo señalaremos esto, pero no le prestaremos atención por ahora.
 
