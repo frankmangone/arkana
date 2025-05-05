@@ -62,10 +62,10 @@ Where $R$ is the radius. How would we go about finding rational points on this c
 
 Let’s begin by trying to find at least **one**. It just so happens that all the points where the circle intersects the axes are rational: $(1,0)$, $(0,1)$, $(-1,0)$, and $(0,-1)$.
 
-Great start! Now, we’ll use these points as **seeds**. Take the point $(0,1)$, for example. Then, draw a line going through it, that has a rational slope $m$, which we can write as $frac{m_1}{m_2}$. If you work out the resulting line equation, you’ll get:
+Great start! Now, we’ll use these points as **seeds**. Take the point $(0,1)$, for example. Then, draw a line going through it, that has a rational slope $m$, which we can write as $m_1 \ / \ m_2$. If you work out the resulting line equation, you’ll get:
 
 $$
-y = frac{m_1}{m_2}x + 1
+y = \frac{m_1}{m_2}x + 1
 $$
 
 This line will intersect the circle at **another point**:

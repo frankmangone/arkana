@@ -1,7 +1,6 @@
-import Link from "next/link";
-import Image from "next/image";
 import { ReadingList } from "@/lib/reading-lists";
 import { EmptyState } from "@/components/empty-state";
+import { ReadingListCard } from "./components/reading-list-card";
 
 interface ReadingListsPageProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -31,49 +30,12 @@ export function ReadingListsPage(props: ReadingListsPageProps) {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {readingLists.map((list) => (
-          <Link
+          <ReadingListCard
             key={list.id}
-            href={`/${lang}/reading-lists/${list.id}`}
-            className="block group"
-          >
-            <div className="border rounded-lg overflow-hidden transition-all duration-300 group-hover:shadow-md">
-              <div className="relative h-48 w-full bg-gray-100 dark:bg-gray-800">
-                {list.coverImage ? (
-                  <Image
-                    src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${
-                      list.coverImage
-                    }`}
-                    alt={list.title}
-                    fill
-                    className="object-cover"
-                  />
-                ) : (
-                  <div className="flex items-center justify-center h-full text-gray-400">
-                    <span className="text-xl">No image</span>
-                  </div>
-                )}
-              </div>
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-2">
-                  <h2 className="text-xl font-semibold group-hover:text-blue-500">
-                    {list.title}
-                  </h2>
-                  {list.ongoing && (
-                    <span className="hidden sm:flex text-xs font-medium px-2 py-0.5 rounded-full dark:bg-[#8041f450] dark:text-[#9f79e7] ml-2">
-                      {dictionary.readingLists.ongoing}
-                    </span>
-                  )}
-                </div>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  {list.description}
-                </p>
-                <div className="text-sm text-gray-500">
-                  {list.items.length} article
-                  {list.items.length !== 1 ? "s" : ""}
-                </div>
-              </div>
-            </div>
-          </Link>
+            list={list}
+            lang={lang}
+            dictionary={dictionary}
+          />
         ))}
       </div>
     </div>

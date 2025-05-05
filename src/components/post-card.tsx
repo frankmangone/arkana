@@ -1,40 +1,63 @@
-import { PostPreview } from "@/features/home";
+import Image from "next/image";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
+import { PostPreview } from "@/lib/posts";
 
 interface PostCardProps {
   article: PostPreview;
   lang: string;
+  number?: number;
 }
 
-export function PostCard({ article, lang }: PostCardProps) {
+export function PostCard({ article, lang, number }: PostCardProps) {
   return (
     <div
       key={article.slug}
-      className="border rounded-lg overflow-hidden hover:shadow-md transition-shadow p-6"
+      className="relative border rounded-lg overflow-hidden hover:shadow-md hover:border-primary-100 transition-shadow group"
     >
-      <p className="text-sm text-gray-500 mb-2">
-        {new Date(article.date).toLocaleDateString()} • {article.readingTime}
-      </p>
-      <h3 className="text-xl font-semibold mb-2">
-        <Link
-          href={`/${lang}/blog/${article.slug}`}
-          className="hover:text-blue-500 transition-colors"
-        >
-          {article.title}
-        </Link>
-      </h3>
-      <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">
-        {article.description}
-      </p>
-      <div className="flex flex-wrap gap-2">
-        {article.tags.map((tag) => (
-          <span
-            key={tag}
-            className="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-sm"
+      {/* Optional number display */}
+      {number !== undefined && (
+        <div className="absolute top-4 left-4 z-20 w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-bold shadow-md">
+          {number}
+        </div>
+      )}
+
+      {/* Image with gradient overlay */}
+      {article.thumbnail && (
+        <div className="relative h-48 w-full">
+          <Image
+            src={article.thumbnail || "/placeholder.svg"}
+            alt={article.title}
+            fill
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background opacity-100 transition-opacity" />
+        </div>
+      )}
+
+      {/* Content */}
+      <div className={cn("p-6", article.thumbnail && "-mt-8 relative z-10")}>
+        <p className="text-sm text-muted-foreground mb-2">
+          {new Date(article.date).toLocaleDateString()} • {article.readingTime}
+        </p>
+        <h3 className="text-xl font-semibold mb-2">
+          <Link
+            href={`/${lang}/blog/${article.slug}`}
+            className="hover:text-primary transition-colors"
           >
-            {tag}
-          </span>
-        ))}
+            {article.title}
+          </Link>
+        </h3>
+        <p className="text-muted-foreground mb-4 line-clamp-2">
+          {article.description}
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {article.tags.map((tag) => (
+            <span key={tag} className="bg-muted px-2 py-1 rounded text-sm">
+              {tag}
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -29,7 +29,7 @@ export async function ReadingListPage(props: ReadingListPageProps) {
       <div className="flex items-center gap-3 mb-4">
         <h1 className="text-4xl font-bold">{readingList.title}</h1>
         {readingList.ongoing && (
-          <span className="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full dark:bg-blue-900 dark:text-blue-300">
+          <span className="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full dark:bg-[#8041f450] dark:text-[#9f79e7]">
             {dict.readingLists.ongoing}
           </span>
         )}

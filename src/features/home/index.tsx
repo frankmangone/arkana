@@ -5,19 +5,10 @@ import path from "path";
 import matter from "gray-matter";
 import { LatestArticles } from "./components/latest-articles";
 import { IntroSection } from "./components/intro-section";
+import { PostPreview } from "@/lib/posts";
 
 interface HomePageProps {
   lang: string;
-}
-
-export interface PostPreview {
-  slug: string;
-  title: string;
-  date: string;
-  description: string;
-  author: string;
-  tags: string[];
-  readingTime?: string;
 }
 
 // Function to get latest posts for a specific language
@@ -53,6 +44,7 @@ async function getLatestPosts(lang: string, limit = 6): Promise<PostPreview[]> {
             author: data.author || "Unknown",
             tags: data.tags || [],
             readingTime: data.readingTime || "",
+            thumbnail: data.thumbnail || "",
           });
         }
       }

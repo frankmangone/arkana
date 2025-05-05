@@ -10,6 +10,7 @@ export interface PostPreview {
   author: string;
   tags: string[];
   readingTime?: string;
+  thumbnail?: string;
 }
 
 // Function to get posts by author for a specific language
@@ -50,6 +51,7 @@ export async function getPostsByAuthor(
               author: data.author || "Unknown",
               tags: data.tags || [],
               readingTime: data.readingTime || "",
+              thumbnail: data.thumbnail || "",
             });
           }
         }
@@ -102,6 +104,7 @@ export async function getAllPosts(lang: string): Promise<PostPreview[]> {
             author: data.author || "Unknown",
             tags: data.tags || [],
             readingTime: data.readingTime || "",
+            thumbnail: data.thumbnail || "",
           });
         }
       }
