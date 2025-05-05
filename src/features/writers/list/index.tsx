@@ -54,7 +54,7 @@ export function WritersPage(props: WritersPageProps) {
                 href={`/${lang}/writers/${writer.slug}`}
                 className="block mb-2"
               >
-                <h2 className="text-xl font-semibold hover:text-blue-500 transition-colors">
+                <h2 className="text-xl font-semibold text-primary-500 hover:text-primary-600 transition-colors">
                   {writer.name}
                 </h2>
               </Link>

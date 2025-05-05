@@ -13,7 +13,7 @@ export function PostCard({ article, lang, number }: PostCardProps) {
   return (
     <div
       key={article.slug}
-      className="relative border rounded-lg overflow-hidden hover:shadow-md hover:border-primary-100 transition-shadow group"
+      className="relative border rounded-lg overflow-hidden hover:shadow-md transition-shadow group"
     >
       {/* Optional number display */}
       {number !== undefined && (
@@ -43,7 +43,7 @@ export function PostCard({ article, lang, number }: PostCardProps) {
         <h3 className="text-xl font-semibold mb-2">
           <Link
             href={`/${lang}/blog/${article.slug}`}
-            className="hover:text-primary transition-colors"
+            className="text-primary-500 hover:text-primary-600 transition-colors"
           >
             {article.title}
           </Link>

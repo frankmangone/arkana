@@ -24,7 +24,7 @@ export const MainLayout = async (props: MainLayoutProps) => {
           <div className="flex items-center space-x-6">
             <Link
               href={homeUrl}
-              className="text-2xl font-bold hover:text-primary-500 transition-colors"
+              className="text-2xl font-bold text-primary-500 transition-colors"
             >
               Cognicity
             </Link>

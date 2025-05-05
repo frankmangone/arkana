@@ -8,7 +8,7 @@ export function CustomLink({
   const isInternal = href && !href.startsWith("http") && !href.startsWith("#");
 
   if (isInternal) {
-    return <Link className="text-blue-500" href={href} {...props} />;
+    return <Link className="text-primary-500" href={href} {...props} />;
   }
 
   return (
@@ -16,7 +16,7 @@ export function CustomLink({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="text-blue-500"
+      className="text-primary-500"
       {...props}
     />
   );
