@@ -9,9 +9,9 @@ export const writers: Record<string, Writer> = {
     imageUrl: "/images/writers/frank-mangone/full-size.jpg",
     avatarUrl: "/images/writers/frank-mangone/avatar.png",
     bio: {
-      en: "Creator of Cognicity. Passionate about mathematics, cryptography, and computer science.",
-      es: "Creador de Cognicity. Apasionado por las matemáticas, la criptografía y la informática.",
-      pt: "Criador de Cognicity. Apaixonado por matemática, criptografia e ciência da computação.",
+      en: "Creator of Mindō. Passionate about mathematics, cryptography, and computer science.",
+      es: "Creador de Mindō. Apasionado por las matemáticas, la criptografía y la informática.",
+      pt: "Criador de Mindō. Apaixonado por matemática, criptografia e ciência da computação.",
     },
     social: {
       twitter: "https://x.com/0xfrankmangone",

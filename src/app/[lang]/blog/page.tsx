@@ -16,7 +16,7 @@ interface BlogPageProps {
 }
 
 export const metadata: Metadata = {
-  title: "Cognicity | All Posts",
+  title: "Mindō | All Posts",
   description: "Articles on mathematics, computer science, and cryptography",
 };
 

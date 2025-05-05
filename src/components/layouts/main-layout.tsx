@@ -37,7 +37,7 @@ export const MainLayout = async (props: MainLayoutProps) => {
                 href={homeUrl}
                 className="text-2xl font-bold text-primary-500 transition-colors"
               >
-                Cognicity
+                Mindō
               </Link>
 
               {/* Desktop navigation */}

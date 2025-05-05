@@ -16,7 +16,7 @@ interface ReadingListsPageProps {
 }
 
 export const metadata: Metadata = {
-  title: "Cognicity | Reading Lists",
+  title: "Mindō | Reading Lists",
   description: "Curated lists of articles on various topics",
 };
 
