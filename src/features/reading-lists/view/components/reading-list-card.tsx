@@ -24,7 +24,7 @@ export function ReadingListCard(props: ReadingListCardProps) {
     "/images/article-placeholder.webp";
 
   return (
-    <div className="border rounded-lg overflow-hidden transition-all hover:shadow-md mb-4">
+    <div className="border rounded-lg overflow-hidden transition-all bg-background hover:shadow-md mb-4">
       <div className="flex">
         {/* Left side: Number and Thumbnail */}
         <div className="flex-shrink-0 w-[160px] relative">

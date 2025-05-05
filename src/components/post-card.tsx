@@ -13,7 +13,7 @@ export function PostCard({ article, lang, number }: PostCardProps) {
   return (
     <div
       key={article.slug}
-      className="relative border rounded-lg overflow-hidden hover:shadow-md transition-shadow group"
+      className="relative border rounded-lg overflow-hidden hover:shadow-md bg-background transition-shadow group"
     >
       {/* Optional number display */}
       {number !== undefined && (

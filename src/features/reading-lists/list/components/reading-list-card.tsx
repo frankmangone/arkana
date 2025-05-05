@@ -18,7 +18,7 @@ export function ReadingListCard(props: ReadingListCardProps) {
       href={`/${lang}/reading-lists/${list.id}`}
       className="block group"
     >
-      <div className="border rounded-lg overflow-hidden transition-all duration-300 group-hover:shadow-md">
+      <div className="border rounded-lg overflow-hidden transition-all duration-300 bg-background group-hover:shadow-md">
         <div className="relative h-48 w-full bg-gray-100 dark:bg-gray-800">
           {list.coverImage ? (
             <Image
