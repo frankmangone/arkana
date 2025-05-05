@@ -37,7 +37,7 @@ export function ReadingListCard(props: ReadingListCardProps) {
         </div>
         <div className="p-6">
           <div className="flex items-start justify-between mb-2">
-            <h2 className="text-xl font-semibold group-hover:text-blue-500">
+            <h2 className="text-xl font-semibold text-primary-500 group-hover:text-primary-600">
               {list.title}
             </h2>
             {list.ongoing && (
