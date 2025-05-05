@@ -36,7 +36,12 @@
     "likes": "likes",
     "save": "Save",
     "saved": "Saved",
-    "share": "Share"
+    "share": "Share",
+    "notFoundInLanguage": {
+      "title": "Article not available",
+      "description": "Sorry, this article is not available in your selected language yet.",
+      "button": "Back to home"
+    }
   },
   "readingLists": {
     "list": {

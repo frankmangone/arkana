@@ -18,12 +18,17 @@ interface PageProps {
 // This function is required for static export
 export async function generateStaticParams() {
   const contentPath = path.join(process.cwd(), "src", "content");
-  const params: Partial<PageParams>[] = [];
+  const params: PageParams[] = [];
+  // Define supported languages
+  const supportedLanguages = ["en", "es", "pt"];
+  // Track unique folder/slug combinations across all languages
+  const uniqueArticles: { folder: string; slug: string }[] = [];
 
   try {
     // Get all language directories
     const languages = await fs.readdir(contentPath);
 
+    // First, collect all unique article paths across all languages
     for (const lang of languages) {
       const langPath = path.join(contentPath, lang);
       const langStat = await fs.stat(langPath);
@@ -31,42 +36,45 @@ export async function generateStaticParams() {
       // Skip if not a directory
       if (!langStat.isDirectory()) continue;
 
-      // Function to process files in a directory
-      const processDirectory = async (dirPath: string, folder = "") => {
-        const files = await fs.readdir(dirPath);
+      // Get all folders in language directory
+      const folders = await fs.readdir(langPath);
+
+      for (const folder of folders) {
+        const folderPath = path.join(langPath, folder);
+        const folderStat = await fs.stat(folderPath);
+
+        // Skip if not a directory
+        if (!folderStat.isDirectory()) continue;
+
+        // Get all markdown files in the folder
+        const files = await fs.readdir(folderPath);
 
         for (const file of files) {
-          const filePath = path.join(dirPath, file);
-          const stat = await fs.stat(filePath);
-
-          if (stat.isDirectory()) {
-            // If it's a directory, process its files with the directory name as the folder
-            await processDirectory(filePath, file);
-          } else if (file.endsWith(".md")) {
-            // If it's a markdown file
+          if (file.endsWith(".md")) {
             const slug = file.replace(".md", "");
 
-            if (folder) {
-              // If it's in a folder, use the folder/slug format
-              params.push({
-                lang,
-                folder,
-                slug,
-              });
-            } else {
-              // If it's at the root level, just use the slug
-              params.push({
-                lang,
-                folder,
-                slug,
-              });
+            // Check if this folder/slug combination is already tracked
+            const existingIndex = uniqueArticles.findIndex(
+              (article) => article.folder === folder && article.slug === slug
+            );
+
+            if (existingIndex === -1) {
+              uniqueArticles.push({ folder, slug });
             }
           }
         }
-      };
+      }
+    }
 
-      // Start processing from the language directory
-      await processDirectory(langPath);
+    // Now generate params for all supported languages and all unique articles
+    for (const lang of supportedLanguages) {
+      for (const article of uniqueArticles) {
+        params.push({
+          lang,
+          folder: article.folder,
+          slug: article.slug,
+        });
+      }
     }
   } catch (error) {
     console.error(`Error processing directories:`, error);

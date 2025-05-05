@@ -36,7 +36,12 @@
     "likes": "curtidas",
     "save": "Salvar",
     "saved": "Salvo",
-    "share": "Compartilhar"
+    "share": "Compartilhar",
+    "notFoundInLanguage": {
+      "title": "Artigo não disponível",
+      "description": "Desculpe, este artigo ainda não está disponível no idioma selecionado.",
+      "button": "Voltar ao início"
+    }
   },
   "readingLists": {
     "list": {

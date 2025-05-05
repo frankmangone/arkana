@@ -1,9 +1,9 @@
 // import { getDictionary } from "@/lib/dictionaries";
-import { notFound } from "next/navigation";
 import { PostContent } from "./components/content";
 import { getPostBySlug } from "./actions";
 import { PostHeader } from "./components/header";
 import { Metadata } from "next";
+import { NotFoundInLanguage } from "@/components/not-found-in-language";
 
 interface PostPageProps {
   lang: string;
@@ -42,7 +42,7 @@ export async function PostPage(props: PostPageProps) {
   const post = await getPostBySlug(slug, lang);
 
   if (!post) {
-    notFound();
+    return <NotFoundInLanguage lang={lang} />;
   }
 
   return (
