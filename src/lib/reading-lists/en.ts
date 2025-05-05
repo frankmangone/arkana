@@ -164,7 +164,7 @@ export const readingLists: ReadingList[] = [
     id: "elliptic-curves-in-depth",
     title: "Elliptic Curves In-Depth",
     description: "A deeper dive into elliptic curves",
-    coverImage: "/images/elliptic-curves-in-depth/part-1/elliptic-curve.webp",
+    coverImage: "/images/elliptic-curves-in-depth/part-4/yoda.webp",
     ongoing: true,
     items: [
       {
