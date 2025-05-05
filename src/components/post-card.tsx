@@ -26,7 +26,11 @@ export function PostCard({ article, lang, number }: PostCardProps) {
       {article.thumbnail && (
         <div className="relative h-48 w-full">
           <Image
-            src={article.thumbnail || "/placeholder.svg"}
+            src={
+              `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${
+                article.thumbnail
+              }` || "/placeholder.svg"
+            }
             alt={article.title}
             fill
             className="object-cover"

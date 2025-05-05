@@ -40,7 +40,7 @@ $$
 \mathbb{Z}_q = \{0, 1, 2, 3, ..., q-1\}
 $$
 
-Sem mergulhar no rigor matemático, chamaremos este conjunto de **inteiros módulo** $q$. E é muito natural pegar a **adição padrão** como a operação de grupo: $1 + 2$ resulta em $3$, que é um elemento do conjunto, $2 + 2$ resulta em $4$$ e assim por diante. Isso é verdade para muitos inteiros, sempre que $q$ seja grande o suficiente! Mas surge uma pergunta: o que acontece se sairmos do "intervalo"? Por exemplo, se tentarmos adicionar:
+Sem mergulhar no rigor matemático, chamaremos este conjunto de **inteiros módulo** $q$. E é muito natural pegar a **adição padrão** como a operação de grupo: $1 + 2$ resulta em $3$, que é um elemento do conjunto, $2 + 2$ resulta em $4$ e assim por diante. Isso é verdade para muitos inteiros, sempre que $q$ seja grande o suficiente! Mas surge uma pergunta: o que acontece se sairmos do "intervalo"? Por exemplo, se tentarmos adicionar:
 
 $$
 (q-1) + 1 = ?
