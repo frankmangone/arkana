@@ -16,7 +16,7 @@ This aside is dedicated to explaining the working principles and nuances of the 
 
 ---
 
-## The subjacent problem
+## The Subjacent Problem
 
 A lot of cryptographic mechanisms operate on the principle that it's really hard to perform a certain operation unless you know some **secret key**. In **encryption**, that's exactly the idea: an encrypted message is **undecipherable** without knowledge of said secret key.
 
@@ -56,7 +56,7 @@ For any natural number $$n$$, this function (denoted as $$\varphi(n)$$) counts h
 
 Being **coprime** means that the numbers **share no prime factors**. Another way to say this is that the **greatest common denominator** of coprime numbers is $$1$$.
 
-> For example, 6 and 25 are coprime.
+> For example, $6$ and $25$ are coprime.
 
 Notice that for a **prime number** $$p$$, every number lower than it is a **coprime** (because since $$p$$ is prime, it's only prime factor is $$p$$!). So we can write:
 
@@ -70,7 +70,7 @@ $$
 \varphi(n) = (p - 1)(q - 1)
 $$
 
-### An important property
+### An Important Property
 
 Why do we care about the totient function? Mostly because of [Euler's theorem](https://en.wikipedia.org/wiki/Euler%27s_theorem), which states that if $$a$$ and $$n$$ are coprime, then:
 
@@ -97,7 +97,7 @@ Apparently, there's a certain magical number $$\varphi(n) + 1$$ which seems to a
 
 ---
 
-## The algorithm
+## The Algorithm
 
 If we substitute $$a$$ in the previous equation by our message $$m$$, then we have a great primer for an encryption mechanism, because we have an operation on $$m$$ that allows us to **recover** $$m$$!
 
@@ -119,7 +119,7 @@ $$
 
 And the interesting part is, with knowledge of $$e$$ and $$n$$, it's not easy to calculate $$\varphi(n)$$ because for that, you'd need the **prime factors of** $$n$$! Which is a really hard problem! For this reason, $$e$$ can be made public — and will indeed be the **public key** in RSA.
 
-### The steps
+### The Steps
 
 All that remains is to separate into two steps. We use the public key $$e$$ to calculate a **ciphertext**:
 

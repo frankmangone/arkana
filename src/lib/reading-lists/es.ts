@@ -18,6 +18,14 @@ export const readingLists: ReadingList[] = [
         slug: "cryptography-101/where-to-start",
         order: 1,
       },
+      {
+        slug: "cryptography-101/asides-rsa-explained",
+        order: 2,
+      },
+      {
+        slug: "cryptography-101/elliptic-curves-somewhat-demystified",
+        order: 3,
+      },
     ],
   },
 ];
