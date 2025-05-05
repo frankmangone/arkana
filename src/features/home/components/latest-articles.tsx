@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { PostPreview } from "..";
 import { PostCard } from "@/components/post-card";
+import { PostPreview } from "@/lib/posts";
 
 interface LatestArticlesProps {
   lang: string;
