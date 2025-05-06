@@ -15,7 +15,7 @@ description: "Basándonos en nuestro conocimiento previo de curvas elípticas, e
 readingTime: "9 min"
 ---
 
-> Este artículo forma parte de una serie más amplia sobre criptografía. Si este es el primer artículo con el que te encuentras, te recomiendo comenzar desde el [principio de la serie](/es/blog/cryptography-101/where-to-start).
+> Este artículo forma parte de una serie más larga sobre criptografía. Si este es el primer artículo con el que te encuentras, te recomiendo comenzar desde el [principio de la serie](/es/blog/cryptography-101/where-to-start).
 
 En la [entrega anterior](/es/blog/cryptography-101/elliptic-curves-somewhat-demystified), ampliamos nuestro conocimiento básico de grupos definiendo **grupos de curvas elípticas**. Y mencionamos brevemente que estos conceptos nos permitirían construir algunos mecanismos criptográficos útiles.
 
@@ -147,7 +147,9 @@ Resumiendo:
 
 ::: big-quote
 Este método de encriptación funciona calculando una máscara y agregándola al mensaje original.
+:::
 
+::: big-quote
 En la encriptación simétrica, ambas partes necesitan conocer la máscara; en la encriptación asimétrica, el desenmascaramiento solo puede realizarse con el conocimiento de una clave privada por una de las partes.
 :::
 
@@ -211,7 +213,9 @@ Digamos esto de nuevo, para que quede claro:
 
 ::: big-quote
 Firmar implica calcular una especie de "desafío" $R$, y alguna "clave de verificación" $s$. El par $(R, s)$ constituye una firma.
+:::
 
+::: big-quote
 El valor $s$ es especial porque, cuando se pone en una licuadora (es decir, algún proceso) junto con la clave pública $Q$ y el mensaje original $M$, produce de vuelta el desafío $R$. Y la idea es que $s$ solo puede calcularse con conocimiento de la clave privada.
 :::
 

@@ -8,7 +8,7 @@ description: "Un vistazo rápido a algunos esquemas de firma un poco más elabor
 readingTime: "11 min"
 ---
 
-> Este artículo forma parte de una serie más amplia sobre criptografía. Si este es el primer artículo con el que te encuentras, te recomiendo comenzar desde el [principio de la serie](/es/blog/cryptography-101/where-to-start).
+> Este artículo forma parte de una serie más larga sobre criptografía. Si este es el primer artículo con el que te encuentras, te recomiendo comenzar desde el [principio de la serie](/es/blog/cryptography-101/where-to-start).
 
 Si has estado siguiendo la serie, entonces ya has visto una buena cantidad de locuras criptográficas. Especialmente en el [artículo anterior](/es/blog/cryptography-101/protocols-galore). Aun así... Eso es solo la punta del iceberg.
 
@@ -115,26 +115,26 @@ $$
 
 Como un reloj, vemos que un $s$ correctamente calculado debería de hecho verificar la firma (porque recuperamos el desafío original).
 
-> Por cierto, estoy omitiendo intencionalmente las operaciones módulo $n$, por simplicidad. Pero para un tratamiento riguroso, deberían incluirse en la demostración.
+> Vale aclarar que estoy omitiendo intencionalmente las operaciones módulo $n$, por simplicidad. Pero para un tratamiento riguroso, deberían incluirse en la demostración.
 
-Firma ciega, listo. No es tan loco, ¿verdad?
+Firmas ciegas, listo. No es tan loco, cierto?
 
-Ahora que nos hemos calentado, subamos el nivel...
+Ahora que ya hemos calentado, subamos el nivel...
 
 ---
 
 ## Firmas de Anillo {#ring-signatures}
 
-Cada vez que firmas digitalmente algo, la verificación ocurre con conocimiento de tu **clave pública**. Por lo tanto, no tienes **anonimato**: tu clave pública te identifica como un **individuo** que posee una clave privada. Pero, ¿y si te dijera que hay una manera de firmar cosas **anónimamente**?
+Cada vez que firmas digitalmente algo, la verificación ocurre con conocimiento de tu **clave pública**. Por lo tanto, no tienes **anonimato**: tu clave pública te identifica como un **individuo** que posee una clave privada. Pero, ¿y si te digo que hay una manera de firmar cosas **anónimamente**?
 
-Las **firmas en anillo** ofrecen tal funcionalidad. La premisa es que una sola persona en un grupo de personas genera una firma que no revela **quién en el grupo** fue el firmante original. Algo como esto:
+Las **firmas de anillo** ofrecen tal funcionalidad. La premisa es que una sola persona en un grupo de personas genera una firma que no revela **quién en el grupo** fue el firmante original. Algo como esto:
 
 <figure>
   <img
     src="/images/cryptography-101/signatures-recharged/ring-signature.webp" 
     alt="Diagrama de firma en anillo" 
     className="bg-white"
-    title="[zoom] (Esto tendrá más sentido cuando terminemos de explicar, lo prometo)"
+    title="[zoom] (Prometo que esto tendrá más sentido cuando terminemos de explicar)"
   />
 </figure>
 
@@ -156,7 +156,7 @@ Para lograr este comportamiento de anonimato, primero debemos **forjar** una est
   />
 </figure>
 
-El concepto de un **anillo** es el de un **conjunto ordenado** (en este caso, de participantes), y cuyo orden determina una serie de cálculos que comienzan desde un valor $A$, y terminan en el **mismo valor** $A$. Y como siempre, la idea es que elaborar dicha secuencia de cálculos solo es factible con el conocimiento de una clave privada.
+El concepto de un **anillo** es el de un **conjunto ordenado** (en este caso, de participantes), cuyo orden determina una serie de cálculos que comienzan desde un valor $A$, y terminan en el **mismo valor** $A$. Y como siempre, la idea es que elaborar dicha secuencia de cálculos solo es factible con el conocimiento de una clave privada.
 
 > Por cierto, esto **no** es un anillo como en la [estructura algebraica abstracta](/es/blog/cryptography-101/rings). Hablaremos de esos más adelante.
 
@@ -183,7 +183,7 @@ $$
 e_{i+1} = H(M || R_i)
 $$
 
-Eventualmente, Sara hace esto para **todos los participantes**, obteniendo un desafío final, que simplemente llamaremos $e$. Lo hace en orden, comenzando por ella misma (s), y luego calculando $e_{s+1}$. Continúa con este proceso, y al llegar al participante $p$, cuenta desde $1$ hasta $s$. Esto es **crucial**, porque la firma se evaluará en este mismo orden exacto.
+Eventualmente, Sara hace esto para **todos los participantes**, obteniendo así un desafío final, que simplemente llamaremos $e$. Lo hace en orden, comenzando por ella misma (s), y luego calculando $e_{s+1}$. Continúa con este proceso, y al llegar al participante $p$, cuenta desde $1$ hasta $s$. Esto es **crucial**, porque la firma se evaluará exactamente en este mismo orden.
 
 $$
 e_{s+1} \rightarrow e_{s+2} \rightarrow ... \rightarrow e_p \rightarrow e_1 \rightarrow ... \rightarrow e_{s-1} \rightarrow e_s

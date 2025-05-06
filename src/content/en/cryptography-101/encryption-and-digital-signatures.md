@@ -147,7 +147,9 @@ Summarizing:
 
 ::: big-quote
 This encryption method works by calculating a mask and adding it to the original message.
+:::
 
+::: big-quote
 In symmetric encryption, both parties need to know the mask; in asymmetric encryption, the masking can only be undone with knowledge of a private key by one party.
 :::
 
@@ -211,7 +213,9 @@ Let's say this again, so that it sticks:
 
 ::: big-quote
 Signing involves calculating a sort of "challenge" $R$, and some "verification key" $s$. The pair $(R, s)$ constitutes a signature.
+:::
 
+::: big-quote
 The value $s$ is special because, when put into a blender (i.e. some process) along with the public key $Q$, and the original message $M$, it yields back the challenge $R$. And the idea is that $s$ can only be calculated with knowledge of the private key.
 :::
 

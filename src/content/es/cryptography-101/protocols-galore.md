@@ -15,7 +15,7 @@ description: "Una introducción amigable a algunos esquemas muy útiles: interca
 readingTime: "11 min"
 ---
 
-> Este artículo forma parte de una serie más amplia sobre criptografía. Si este es el primer artículo con el que te encuentras, te recomiendo comenzar desde el [principio de la serie](/es/blog/cryptography-101/where-to-start).
+> Este artículo forma parte de una serie más larga sobre criptografía. Si este es el primer artículo con el que te encuentras, te recomiendo comenzar desde el [principio de la serie](/es/blog/cryptography-101/where-to-start).
 
 ¡Muy bien! Ya hemos avanzado bastante. Tenemos [grupos](/es/blog/cryptography-101/where-to-start) (y en particular [curvas elípticas](/es/blog/cryptography-101/elliptic-curves-somewhat-demystified)) y [hashing](/es/blog/cryptography-101/hashing) como herramientas a nuestra disposición, y ya hemos [visto cómo funcionan](/es/blog/cryptography-101/encryption-and-digital-signatures).
 

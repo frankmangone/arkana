@@ -16,9 +16,13 @@ And although there’s still much for us to explore in the ways of designing cry
 
 ::: big-quote
 How secure are the methods we’ve learned so far?
+:::
 
+::: big-quote
 What do we understand by security, anyway?
+:::
 
+::: big-quote
 How is it measured?
 :::
 
@@ -57,7 +61,7 @@ Everything was fine and dandy until a guy named Al-Kindi came along and cracked 
   />
 </figure>
 
-### The exploit
+### The Exploit
 
 In any language, some letters appear **more frequently** than others. If we analyze those frequencies over a vast amount of text, a **distribution** will emerge. For English, that distribution **roughly** looks like this:
 

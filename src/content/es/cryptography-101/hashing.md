@@ -4,11 +4,11 @@ date: "2024-03-24"
 author: "frank-mangone"
 thumbnail: "/images/cryptography-101/hashing/bosch.webp"
 tags: ["Criptografía", "Hashing", "Estructuras de Datos", "Árbol de Merkle"]
-description: "Las funciones de hash son un primitivo criptográfico esencial. ¡Acompáñame en una inmersión profunda sobre qué son y para qué se utilizan!"
+description: "Las funciones de hash son una primitiva criptográfica esencial. ¡Acompáñame en una exploración profunda sobre qué son y para qué se utilizan!"
 readingTime: "10 min"
 ---
 
-> Este artículo forma parte de una serie más amplia sobre criptografía. Si este es el primer artículo con el que te encuentras, te recomiendo comenzar desde el [principio de la serie](/es/blog/cryptography-101/where-to-start).
+> Este artículo forma parte de una serie más larga sobre criptografía. Si este es el primer artículo con el que te encuentras, te recomiendo comenzar desde el [principio de la serie](/es/blog/cryptography-101/where-to-start).
 
 [La última vez](/es/blog/cryptography-101/encryption-and-digital-signatures), analizamos un par de técnicas relacionadas con grupos de curvas elípticas, específicamente, **firmas digitales** y **cifrado asimétrico**.
 
