@@ -54,6 +54,18 @@ export const readingLists: ReadingList[] = [
         slug: "cryptography-101/polynomials",
         order: 10,
       },
+      {
+        slug: "cryptography-101/threshold-signatures",
+        order: 11,
+      },
+      {
+        slug: "cryptography-101/pairings",
+        order: 12,
+      },
+      {
+        slug: "cryptography-101/pairing-applications-and-more",
+        order: 13,
+      },
     ],
   },
 ];
