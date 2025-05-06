@@ -588,7 +588,7 @@ En resumen, y para concluir: ¡usamos algunas **IOPs** para verificar las **rest
 
 ## Resumen {#summary}
 
-Uff. Eso fue mucho. Lo sé.
+Uff. Eso fue un montón. Lo sé.
 
 <figure>
   <img

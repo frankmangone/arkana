@@ -82,6 +82,14 @@ export const readingLists: ReadingList[] = [
         slug: "cryptography-101/zero-knowledge-proofs-part-2",
         order: 17,
       },
+      {
+        slug: "cryptography-101/zero-knowledge-proofs-part-3",
+        order: 18,
+      },
+      {
+        slug: "cryptography-101/starks",
+        order: 19,
+      },
     ],
   },
 ];
