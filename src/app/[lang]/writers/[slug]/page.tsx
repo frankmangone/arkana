@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { getWriter, writers } from "@/lib/writers";
 import { languages } from "@/lib/i18n-config";
 import { MainLayout } from "@/components/layouts/main-layout";
-import AuthorPage from "@/features/authors/view";
+import WriterPage from "@/features/writers/view";
 import { getPostsByAuthor } from "@/lib/posts";
 import { getDictionary } from "@/lib/dictionaries";
 
@@ -61,7 +61,7 @@ export default async function Page({ params }: AuthorPageProps) {
 
   return (
     <MainLayout lang={lang}>
-      <AuthorPage
+      <WriterPage
         lang={lang}
         writer={writer}
         articles={articles}

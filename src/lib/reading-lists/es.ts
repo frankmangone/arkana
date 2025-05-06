@@ -66,6 +66,22 @@ export const readingLists: ReadingList[] = [
         slug: "cryptography-101/pairing-applications-and-more",
         order: 13,
       },
+      {
+        slug: "cryptography-101/commitment-schemes-revisited",
+        order: 14,
+      },
+      {
+        slug: "cryptography-101/zero-knowledge-proofs-part-1",
+        order: 15,
+      },
+      {
+        slug: "cryptography-101/arithmetic-circuits",
+        order: 16,
+      },
+      {
+        slug: "cryptography-101/zero-knowledge-proofs-part-2",
+        order: 17,
+      },
     ],
   },
 ];

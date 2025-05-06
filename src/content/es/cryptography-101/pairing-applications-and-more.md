@@ -210,7 +210,7 @@ $$
 = e([s]P, [k]Q_{ID} + [h]Q_{ID}) = e(Q, U + [h]Q_{ID})
 $$
 
-Como puedes ver, si $V$ es correcto y de hecho usa el secreto maestro s, ¡entonces estas ecuaciones deberían funcionar! De lo contrario, tendríamos que encontrar un valor válido V que por casualidad cumpla con la igualdad anterior, y eso debería ser **súper difícil**.
+Como puedes ver, si $V$ es correcto y de hecho usa el secreto maestro $s$, ¡entonces estas ecuaciones deberían funcionar! De lo contrario, tendríamos que encontrar un valor válido V que por casualidad cumpla con la igualdad anterior, y eso debería ser **súper difícil**.
 
 > Formalmente, esto se conoce como el **Problema de Diffie-Hellman Bilineal** (BDHP), que es lo que sustenta la seguridad de estos métodos basados en emparejamientos.
 

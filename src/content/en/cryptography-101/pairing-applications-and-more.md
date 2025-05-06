@@ -210,7 +210,7 @@ $$
 = e([s]P, [k]Q_{ID} + [h]Q_{ID}) = e(Q, U + [h]Q_{ID})
 $$
 
-As you can see, if $V$ is correct and indeed uses the master secret s, then these equations should work out! Otherwise, we'd have to find a valid value V that happens to suffice the equality above — and that should be **super hard**.
+As you can see, if $V$ is correct and indeed uses the master secret $s$, then these equations should work out! Otherwise, we'd have to find a valid value V that happens to suffice the equality above — and that should be **super hard**.
 
 > Formally, this is known as the **Bilinear Diffie-Hellman Problem** (BDHP), which is what underpins the security of these pairing-based methods.
 

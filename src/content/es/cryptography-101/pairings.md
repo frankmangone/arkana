@@ -278,7 +278,7 @@ $$
 
 Los números complejos son solo un ejemplo de un concepto más general, que son las **extensiones de cuerpo**.
 
-Un [cuerpo](<https://en.wikipedia.org/wiki/Field_(mathematics)>) (lo denotaremos $F$) es simplemente un conjunto con algunas operaciones asociadas. Esto probablemente te suena familiar — es una definición muy similar a la que dimos para [grupos](/es/blog/cryptography-101/where-to-start), al principio de la serie.
+Un [cuerpo](<https://en.wikipedia.org/wiki/Field_(mathematics)>) (o también llamado **campo** - lo denotaremos $F$) es simplemente un conjunto con algunas operaciones asociadas. Esto probablemente te suena familiar — es una definición muy similar a la que dimos para [grupos](/es/blog/cryptography-101/where-to-start), al principio de la serie.
 
 Independientemente de la formalidad, hay un campo muy importante del que debemos preocuparnos: los **enteros módulo** $q$, cuando $q$ es un número primo.
 
