@@ -201,7 +201,7 @@ Our only option is to **hash the entire input**, and compare with $h$. And of co
 The strategy clearly becomes **inefficient**. Merkle trees allow for a more **elegant solution**. Imagine that Andrew has instead produced a Merkle root $R$ of all his inputs $(A, B, C...)$:
 
 $$
-R = Merkle(A, B, C...)
+R = \textrm{Merkle}(A, B, C...)
 $$
 
 He claims that $A$ is in the tree. How can he **prove** this? And here's where the magic happens: he can just send a **few nodes of the tree** as proof, and we can check that $R$ is indeed produced with $A$. Take a look at this image:

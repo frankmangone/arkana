@@ -8,7 +8,7 @@ description: "Una introducción al mundo de las curvas elípticas, que forman la
 readingTime: "7 min"
 ---
 
-> Este artículo forma parte de una serie más amplia sobre criptografía. Si este es el primer artículo con el que te encuentras, te recomiendo encarecidamente comenzar desde el [principio de la serie](/es/blog/cryptography-101/where-to-start).
+> Este artículo forma parte de una serie más amplia sobre criptografía. Si este es el primer artículo con el que te encuentras, te recomiendo comenzar desde el [principio de la serie](/es/blog/cryptography-101/where-to-start).
 
 En el [artículo anterior](/es/blog/cryptography-101/where-to-start), discutimos brevemente algunas de las ideas que sustentan una buena parte de las técnicas criptográficas más utilizadas.
 

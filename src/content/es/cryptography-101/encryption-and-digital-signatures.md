@@ -15,7 +15,7 @@ description: "Basándonos en nuestro conocimiento previo de curvas elípticas, e
 readingTime: "9 min"
 ---
 
-> Este artículo forma parte de una serie más amplia sobre criptografía. Si este es el primer artículo con el que te encuentras, te recomiendo encarecidamente comenzar desde el [principio de la serie](/es/blog/cryptography-101/where-to-start).
+> Este artículo forma parte de una serie más amplia sobre criptografía. Si este es el primer artículo con el que te encuentras, te recomiendo comenzar desde el [principio de la serie](/es/blog/cryptography-101/where-to-start).
 
 En la [entrega anterior](/es/blog/cryptography-101/elliptic-curves-somewhat-demystified), ampliamos nuestro conocimiento básico de grupos definiendo **grupos de curvas elípticas**. Y mencionamos brevemente que estos conceptos nos permitirían construir algunos mecanismos criptográficos útiles.
 

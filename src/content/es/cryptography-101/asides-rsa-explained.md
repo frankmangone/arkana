@@ -8,7 +8,7 @@ description: "Una breve explicación sobre cómo funciona RSA"
 readingTime: "6 min"
 ---
 
-> Este artículo forma parte de una serie más amplia sobre criptografía. Si este es el primer artículo con el que te encuentras, te recomiendo encarecidamente comenzar desde el [principio de la serie](/es/blog/cryptography-101/where-to-start).
+> Este artículo forma parte de una serie más amplia sobre criptografía. Si este es el primer artículo con el que te encuentras, te recomiendo comenzar desde el [principio de la serie](/es/blog/cryptography-101/where-to-start).
 
 El cifrado RSA es uno de los algoritmos de cifrado más utilizados en todo el mundo — y se basa únicamente en el **grupo aditivo de enteros módulo** $n$. Es un gran ejemplo de cuánto se puede hacer sin necesidad de curvas elípticas o cualquier otra construcción más compleja.
 
