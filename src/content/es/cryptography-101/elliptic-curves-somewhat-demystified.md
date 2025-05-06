@@ -16,7 +16,7 @@ Aún no hemos discutido **por qué** los grupos y la aritmética modular son út
 
 Nos ocuparemos de estas consideraciones más adelante. Por ahora, creo que es más fructífero enfocarnos en **otros grupos** que ayudan a hacer que los problemas a resolver sean **aún más difíciles** — y aquí es donde las **curvas elípticas** entran en escena.
 
-### ¿Qué son las Curvas Elípticas?
+### ¿Qué son las Curvas Elípticas? {#what-are-elliptic-curves}
 
 Una **curva** generalmente se define mediante una **ecuación**. En el caso de las curvas elípticas, la ecuación $E$ (que en realidad es una forma reducida, pero la utilizaremos igualmente) se ve así:
 
@@ -40,7 +40,7 @@ Y cómo no, ¡**existe** una manera de hacer esto!
 
 ---
 
-## La Operación de Grupo
+## La Operación de Grupo {#the-group-operation}
 
 Toma dos puntos cualesquiera $P$ y $Q$ en la curva elíptica, luego dibuja una **línea** a través de esos puntos. Algunas sustituciones básicas muestran que (casi siempre) existirá un **tercer punto** de intersección. Luego toma ese punto, imagina que el eje $x$ es un espejo, y refléjalo verticalmente. ¡Felicidades, acabas de llegar al punto $R = P + Q$!
 
@@ -65,7 +65,7 @@ Un componente resuelto, pero todavía queda uno más — también necesitamos un
 
 Entonces, ¿cómo resolvemos estos problemas?
 
-### Encontrando un Conjunto Adecuado
+### Encontrando un Conjunto Adecuado {#finding-a-suitable-set}
 
 Resulta que algunas curvas elípticas tienen un número infinito de puntos con valores enteros, es decir, puntos como $P = (1,2)$. Debido a esto, nuestro primer problema desaparece de manera algo mágica con una **selección adecuada** de la curva elíptica. Asumamos que sabemos cómo hacer eso, y concentrémonos en el segundo problema.
 
@@ -87,7 +87,7 @@ $$
 
 ¡Y ahí lo tienes! Ahora tenemos un **conjunto** y una forma de calcular el resultado de **"sumar" dos puntos**. Pero, ¿y eso es todo? Algo parece faltar...
 
-### La Identidad del Grupo
+### La Identidad del Grupo {#the-group-identity}
 
 Mira la siguiente imagen. ¿Qué sucede si intentamos sumar $P + Q$ en este escenario?
 
@@ -122,7 +122,7 @@ En efecto, este comportamiento es importante en la teoría de grupos: el papel q
 
 Sin embargo, no hemos terminado. Hay un pequeño detalle más que debemos cubrir.
 
-### Duplicación de Puntos
+### Duplicación de Puntos {#point-doubling}
 
 ¿Qué sucede si intentamos sumar $$P + P$$? Para intentar seguir la regla de la **cuerda y la tangente**: necesitamos una línea a través de los dos puntos en la operación, pero aquí... **¡Solo hay uno**! Así que, como sugiere el nombre, necesitaremos considerar la línea **tangente** a la curva elíptica en $P$.
 
@@ -144,7 +144,7 @@ Esto es un pequeño guiño a los problemas **extremadamente difíciles** que se 
 
 ---
 
-## Resumen
+## Resumen {##summary}
 
 Acabamos de definir los grupos de **curvas elípticas**. Son simplemente un conjunto de puntos enteros, que podemos sumar, y que están dentro de un rango gracias a la operación módulo. Usualmente, cuando se mencionan curvas elípticas en la literatura, se refiere al **grupo**, no a la curva. Si la curva necesita una mención específica, a menudo se la llama **curva afín**.
 

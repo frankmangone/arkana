@@ -14,7 +14,7 @@ Pero es precisamente por esto que he tratado de destilar los conceptos complejos
 
 En este artículo, exploraremos algunos de los conceptos básicos detrás de las técnicas criptográficas, y construiremos sobre estos conceptos más adelante. Establecer estos fundamentos será importante para entender procesos como el **cifrado**, **compartición de secretos**, y otros.
 
-## Primeros pasos
+## Primeros pasos {#getting-started}
 
 En mi caso, he estado trabajando en una empresa que utiliza tecnología [Blockchain](/es/blog/blockchain-101/how-it-all-began). Esto requiere una comprensión básica de las **firmas digitales** — ya sabes, algún usuario tiene una **clave privada**, utiliza esa clave privada para **firmar un mensaje**, y la autenticidad de la firma puede verificarse con una **clave pública**. Esta jerga es bastante común, y existen muchas bibliotecas para realizar las acciones que acabo de describir.
 
@@ -24,7 +24,7 @@ Sin embargo, tal aventura no puede comenzar explicando cómo funciona un mecanis
 
 ---
 
-## Grupos
+## Grupos {#groups}
 
 Hay muchas técnicas criptográficas que se basan en **grupos matemáticos**. En esencia, un **grupo** es simplemente la combinación de un **conjunto** de elementos y una **operación binaria** (la denotaremos "+" por ahora) que toma dos elementos del conjunto y produce otro elemento en dicho conjunto. Esto es muy abstracto — y de hecho, nada nos impide usar un conjunto como:
 
@@ -58,7 +58,7 @@ $$
 
 Bueno... ¡Algo así! Simplemente **volvemos al principio** de nuestro conjunto, resultando en $0$. Y esto sucede porque mentí un poco: la operación de grupo no es solo la suma estándar, es la **suma modular**. Así que debemos definir qué es esto para continuar.
 
-## La Operación Módulo
+## La Operación Módulo {#the-modulo-operation}
 
 Realmente, cuando decimos **suma modular**, nos referimos a la operación **módulo**. Y esta operación es simplemente el resto de dividir un número $$a$$ por algún módulo $$q$$. En general, se cumple la siguiente relación:
 
@@ -74,7 +74,7 @@ $$
 
 ¡Genial! Con esto, podemos terminar de definir la operación de grupo que mencionamos anteriormente: es la suma estándar, más la aplicación de la operación módulo $$q$$. Lo que acabamos de definir es el grupo conocido como el **grupo aditivo de enteros módulo** $$q$$. Esta construcción simple estará detrás de la mayor parte de nuestros análisis posteriores, ya sea implícita o explícitamente, ¡así que es bueno tenerla en mente!
 
-## Generadores de Grupo y Subgrupos
+## Generadores de Grupo y Subgrupos {#group-generators-and-subgroups}
 
 Volvamos ahora nuestra atención a la comprensión de los grupos. Y en particular, examinemos el ejemplo donde $q = 5$. Elijamos ahora un elemento en el conjunto, por ejemplo $g = 2$. ¿Qué sucede si aplicamos la operación de grupo sobre $g$ consigo **mismo** una y otra vez?
 
@@ -97,7 +97,7 @@ Hay una propiedad interesante sobre los subgrupos, formulada en el [teorema de L
 
 Los subgrupos y sus propiedades juegan un papel importante en la criptografía de grupos, así que, de nuevo, volveremos a estos hechos más adelante.
 
-## Resumen
+## Resumen {#summary}
 
 En esta breve introducción, se presentaron algunos conceptos matemáticos básicos. Estos servirán como fundamento para lo que vendrá en los próximos artículos.
 

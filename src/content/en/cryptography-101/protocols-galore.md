@@ -275,8 +275,8 @@ Finally, Bob needs to **verify** the proof. This is what he does:
 - Then he calculates $U'$ and $V'$ as shown below. You can check that these result in the same $U$ and $V$ from before.
 
 $$
-// U' = [s]G - [c]Q
-// V' = [s]H - [c]Z
+\\ U' = [s]G - [c]Q
+\\ V' = [s]H - [c]Z
 $$
 
 - Finally, he computes $c' = h(H || Z || U' || V')$, and accepts the proof if $c = c'$.

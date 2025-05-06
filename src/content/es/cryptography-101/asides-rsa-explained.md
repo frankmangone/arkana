@@ -16,7 +16,7 @@ Este anexo está dedicado a explicar los principios de funcionamiento y los mati
 
 ---
 
-## El Problema Subyacente
+## El Problema Subyacente {#the-subjacent-problem}
 
 Muchos mecanismos criptográficos operan bajo el principio de que es realmente difícil realizar cierta operación a menos que conozcas alguna **clave secreta**. En el **cifrado**, esa es exactamente la idea: un mensaje cifrado es **indescifrable** sin el conocimiento de dicha clave secreta.
 
@@ -28,7 +28,7 @@ $$
 
 Donde $p$ y $q$ son números primos grandes. Si conoces $p$ y $q$, calcular $n$ es trivial — y también lo es calcular $p$ si conoces $n$ y $q$.
 
-### ¿Qué tan grande es lo suficientemente grande?
+### ¿Qué tan grande es lo suficientemente grande? {#how-big-is-big-enough}
 
 Por supuesto, todo esto es **inútil** si el problema es fácil de resolver. Por ejemplo, si $n = 7×11 = 77$, entonces la factorización realmente solo toma un instante. Sin embargo, a medida que los números primos se vuelven más grandes, la factorización comienza a tomar cada vez más tiempo.
 
@@ -46,11 +46,11 @@ Aún así, se teoriza que tomaría entre **cientos** y **miles** de años, inclu
 
 ---
 
-## Preliminares
+## Preliminares {#preliminaries}
 
 ¿Cómo usamos el problema anterior para cifrar datos? Para hacerlo, necesitaremos algunas definiciones. En particular, necesitaremos conocer la [función totiente de Euler](https://es.wikipedia.org/wiki/Funci%C3%B3n_%CF%86_de_Euler) y sus propiedades.
 
-### La Función Totiente de Euler
+### La Función Totiente de Euler {#eulers-totient-function}
 
 Para cualquier número natural $n$, esta función (denotada como $\varphi(n)$) cuenta cuántos números naturales menores que $n$ (sin contar el $0$) son **coprimos** con él.
 
@@ -70,7 +70,7 @@ $$
 \varphi(n) = (p - 1)(q - 1)
 $$
 
-### Una Propiedad Importante
+### Una Propiedad Importante {#an-important-property}
 
 ¿Por qué nos importa la función totiente? Principalmente debido al [teorema de Euler](https://en.wikipedia.org/wiki/Euler%27s_theorem), que establece que si $a$ y $n$ son coprimos, entonces:
 
@@ -97,7 +97,7 @@ Aparentemente, hay un cierto número mágico $\varphi(n) + 1$ que parece permiti
 
 ---
 
-## El Algoritmo
+## El Algoritmo {#the-algorithm}
 
 Si sustituimos $$a$$ en la ecuación anterior por nuestro mensaje $$m$$, entonces tenemos una excelente base para un mecanismo de cifrado, ¡porque tenemos una operación en $$m$$ que nos permite **recuperar** $$m$$!
 
@@ -119,7 +119,7 @@ $$
 
 Y la parte interesante es que, con el conocimiento de $$e$$ y $$n$$, no es fácil calcular $$\varphi(n)$$ porque para eso, ¡necesitarías los **factores primos de** $$n$$! ¡Lo cual es un problema realmente difícil! Por esta razón, $$e$$ puede hacerse público — y de hecho será la **clave pública** en RSA.
 
-### Los Pasos
+### Los Pasos {#the-steps}
 
 Todo lo que queda es separar en dos pasos. Usamos la clave pública $e$ para calcular un **texto cifrado**:
 
@@ -141,7 +141,7 @@ $$
 
 ---
 
-## Resumen
+## Resumen {#summary}
 
 ¡Y ahí lo tienes! Así es como funciona el cifrado RSA.
 
@@ -165,4 +165,4 @@ Sin embargo, hay algunos puntos particularmente sensibles en RSA que pueden conv
   />
 </figure>
 
-Esta es una de las razones por las que RSA se considera mayormente obsoleto y ha sido reemplazado por la [Criptografía de Curva Elíptica (ECC)](/es/blog/cryptography-101/elliptic-curves-somewhat-demystified) para muchas aplicaciones.
+Esta es una de las razones por las que RSA se considera mayormente obsoleto y ha sido reemplazado por la [Criptografía de Curvas Elípticas (ECC)](/es/blog/cryptography-101/elliptic-curves-somewhat-demystified) para muchas aplicaciones.

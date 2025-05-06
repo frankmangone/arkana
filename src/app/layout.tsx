@@ -29,6 +29,16 @@ export default async function RootLayout({
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css"
         />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+              })()
+            `,
+          }}
+        />
       </head>
       <body className={inter.className}>
         <ThemeProvider

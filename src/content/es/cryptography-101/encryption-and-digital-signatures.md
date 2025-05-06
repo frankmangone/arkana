@@ -25,7 +25,7 @@ Probablemente hayas oído hablar de claves **privadas** y **públicas**. Veamos 
 
 ---
 
-## Pares de Claves
+## Pares de Claves {#key-pairs}
 
 La historia que generalmente se cuenta cuando se aprende sobre firmas digitales va más o menos así: un usuario (digamos, Alicia) con una clave privada (o **secreta**) puede **firmar** un mensaje, y luego cualquiera puede **verificar** la firma con la clave pública asociada.
 
@@ -70,7 +70,7 @@ Por supuesto, si nuestro grupo resulta tener $1000$ elementos, o si el número q
 
 ---
 
-## Encriptación
+## Encriptación {#encryption}
 
 Alicia ahora tiene un número $d$ como su clave privada, y Bruno tiene la clave pública correspondiente $Q$, que es solo un punto en la curva elíptica. ¿Qué pueden hacer con esto?
 
@@ -95,7 +95,7 @@ Muy bien, ¡suena bastante simple!
 
 Solo para aclarar, la reversibilidad aquí está dada por la operación lógica XOR. No te preocupes por esto - el punto es que pudimos **enmascarar** el mensaje original, con una **clave secreta compartida**.
 
-### ¿Qué Hay de las Curvas Elípticas?
+### ¿Qué Hay de las Curvas Elípticas? {#what-about-elliptic-curves}
 
 Claramente, **no necesitamos** curvas elípticas en la construcción anterior. Y esto demuestra que la criptografía es **mucho más amplia** que solo una herramienta, y realmente se remonta a mucho antes de que las curvas elípticas fueran siquiera una cosa.
 
@@ -103,7 +103,7 @@ Pero, ¿qué pasa con la clave secreta? ¿Cómo **acuerdan** Alicia y Bruno una 
 
 No entremos en pánico todavía. Aunque hay formas de [compartir claves secretas de manera segura](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange), hay otra forma de abordar esto: podemos usar curvas elípticas para obtener el secreto compartido de manera **asimétrica**.
 
-### Encriptación Asimétrica
+### Encriptación Asimétrica {#asymmetric-encryption}
 
 Digamos que Bruno quiere encriptar un mensaje $M$ para Alicia. En lugar de acordar una clave, Alicia puede simplemente elegir una clave privada $d$ y compartir su clave pública $Q = [d]G$ con Bruno. Con esta configuración, podemos idear una forma para que Bruno encripte mensajes **solo para Alicia**. Así es como va:
 
@@ -153,7 +153,7 @@ En la encriptación simétrica, ambas partes necesitan conocer la máscara; en l
 
 ---
 
-## Firmas Digitales
+## Firmas Digitales {#digital-signatures}
 
 La encriptación asume que la información codificada **debe permanecer en secreto para lectores no deseados**. Esto no siempre es cierto: a veces la información puede ser **pública**, pero nuestro interés radica en probar su **autenticidad**. Por ejemplo:
 
@@ -217,7 +217,7 @@ El valor $s$ es especial porque, cuando se pone en una licuadora (es decir, alg�
 
 ---
 
-## Resumen
+## Resumen {#summary}
 
 Hay varias técnicas y construcciones más que exploraremos en los próximos artículos, pero este es un buen lugar para detenernos por ahora.
 

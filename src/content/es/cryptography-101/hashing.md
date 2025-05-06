@@ -28,7 +28,7 @@ A partir de ahora, nos desviaremos un poco de nuestro desarrollo de grupos y sus
 
 ---
 
-## Funciones de Hashing
+## Funciones de Hashing {#hashing-functions}
 
 En pocas palabras, una **función de hashing** o **algoritmo** toma algunos datos como entrada y produce información aparentemente aleatoria, como esta:
 
@@ -75,7 +75,7 @@ $$
 
 Hay muchos algoritmos de hashing conocidos, como el mencionado MD5, las familias [SHA-2](https://en.wikipedia.org/wiki/SHA-2) y [SHA-3](https://en.wikipedia.org/wiki/SHA-3), el algoritmo de hashing de Ethereum [Keccak256](https://www.linkedin.com/pulse/understanding-keccak256-cryptographic-hash-function-soares-m-sc-/), [Blake2](<https://en.wikipedia.org/wiki/BLAKE_(hash_function)>), que se usa en [Polkadot](https://wiki.polkadot.network/learn/learn-cryptography/), y otros.
 
-### ¿Para Qué Se Usan los Hashes?
+### ¿Para Qué Se Usan los Hashes? {#what-are-hashes-used-for}
 
 Hay **muchas aplicaciones** para los hashes. Veremos que son útiles para construir protocolos criptográficos, pero hay otros escenarios donde el hashing resulta práctico. La lista a continuación es meramente ilustrativa; ten en cuenta que el hashing es una herramienta tremendamente poderosa con aplicación generalizada.
 
@@ -91,7 +91,7 @@ Muy bien, ahora sabemos qué son las **funciones de hashing**, y hemos cubierto 
 
 ---
 
-## Los Hashes al Rescate
+## Los Hashes al Rescate {#hashes-to-the-rescue}
 
 Al principio de este artículo, notamos que tanto el **cifrado** como la **firma** requieren algún tipo de **procesamiento**. En el cifrado, necesitábamos procesar una **máscara**, y en la firma digital, un **mensaje**. Y en ambos escenarios, necesitábamos que la salida fuera algún **valor entero**. ¿Pueden las funciones de hashing ayudarnos en este esfuerzo?
 
@@ -105,7 +105,7 @@ $$
 
 Así de simple, el hashing proporciona una solución a nuestro problema: todo lo que necesitamos es ejecutar nuestro mensaje $M$ a través de una función de hashing adecuada. La salida, $H(M)$, será un **número**, justo lo que necesitábamos. Increíble. Las cosas están empezando a encajar.
 
-### Obteniendo Puntos de Curva Elíptica
+### Obteniendo Puntos de Curvas Elípticas {#getting-elliptic-curve-points}
 
 Al ejecutar una función de hashing, la salida será en general un **número binario**; otra forma de expresarlo es decir que **hasheamos hacia** un número entero. Sin embargo, hay situaciones en las que esto no es suficiente: podemos requerir hashear hacia un **punto en una curva elíptica**. De hecho, se nos requerirá hacer esto en el próximo artículo.
 
@@ -119,7 +119,7 @@ De nuevo, la forma en que esto se logra es irrelevante para nosotros, y estamos 
 
 ---
 
-## El Eslabón Más Débil
+## El Eslabón Más Débil {#the-weakest-link}
 
 Volvamos al esquema de firma digital (ECDSA) del [artículo anterior](/es/blog/cryptography-101/encryption-and-digital-signatures/#digital-signatures). Ahora sabemos que el mensaje M puede procesarse en un número mediante el uso de una función hash, $H(M)$.
 
@@ -156,7 +156,7 @@ Así que sí, es importante tener estas cosas en mente al diseñar técnicas cri
 
 ---
 
-## Árboles de Merkle
+## Árboles de Merkle {#merkle-trees}
 
 Antes de terminar, quiero hablar sobre una importante estructura de datos basada en hash, que es esencial en el desarrollo de Blockchain: los [árboles de Merkle](https://www.baeldung.com/cs/merkle-trees).
 
@@ -196,7 +196,7 @@ Resulta que usar un árbol desbloquea **nuevos superpoderes**. Imagina esta situ
 
 Nuestra única opción es **hashear toda la entrada** y comparar con $h$. Y, por supuesto, para esto, necesitamos **todas las entradas originales** utilizadas por Andrés. Pero él no quiere compartir todas las entradas, y enviar un camión lleno de información (posiblemente **miles de valores**) a través de una red no suena muy tentador...
 
-### La Solución del Árbol de Merkle
+### La Solución del Árbol de Merkle {#the-merkle-tree-solution}
 
 La estrategia claramente se vuelve **ineficiente**. Los árboles de Merkle permiten una solución más **elegante**. Imagina que Andrés ha producido en cambio una raíz de Merkle $R$ de todas sus entradas $(A, B, C...)$:
 
@@ -240,7 +240,7 @@ Los árboles de Merkle son una de las estructuras de datos criptográficas más 
 
 ---
 
-## Resumen
+## Resumen {#summary}
 
 Lentos pero seguros, estamos construyendo un sólido conjunto de herramientas criptográficas. Ahora tenemos el **hashing** a nuestra disposición, junto con los grupos, la aritmética modular, y las curvas elípticas. ¡Genial!
 

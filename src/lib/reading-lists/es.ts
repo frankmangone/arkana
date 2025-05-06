@@ -30,6 +30,14 @@ export const readingLists: ReadingList[] = [
         slug: "cryptography-101/encryption-and-digital-signatures",
         order: 4,
       },
+      {
+        slug: "cryptography-101/hashing",
+        order: 5,
+      },
+      {
+        slug: "cryptography-101/protocols-galore",
+        order: 6,
+      },
     ],
   },
 ];

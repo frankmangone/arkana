@@ -15,6 +15,28 @@ function slugify(text: string): string {
     .trim(); // Remove whitespace from ends
 }
 
+// Extracts a custom ID from text with format "Header text {#custom-id}"
+function extractCustomId(text: string): {
+  cleanText: string;
+  id: string | null;
+} {
+  const match = text.match(/\s*\{#([a-zA-Z0-9_-]+)\}\s*$/);
+
+  if (match) {
+    // Return the text without the ID part and the extracted ID
+    return {
+      cleanText: text.replace(match[0], ""),
+      id: match[1],
+    };
+  }
+
+  // No custom ID found
+  return {
+    cleanText: text,
+    id: null,
+  };
+}
+
 /* eslint-disable */
 export function createHeadingComponent(level: number) {
   return ({ children, ...props }: any) => {
@@ -23,7 +45,11 @@ export function createHeadingComponent(level: number) {
       return createElement(`h${level}`, props, children);
     }
 
-    const slug = slugify(children);
+    // Check for custom ID in the heading text
+    const { cleanText, id } = extractCustomId(children);
+
+    // Use custom ID if provided, otherwise generate a slug
+    const slug = id || slugify(cleanText);
 
     // Map heading levels directly to appropriate classes
     const headingClasses = {
@@ -40,12 +66,12 @@ export function createHeadingComponent(level: number) {
     }`;
 
     return createElement(`h${level}`, { id: slug, className, ...props }, [
-      children,
+      cleanText, // Use the text without the ID part
       <a
         key="anchor"
         href={`#${slug}`}
         className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity"
-        aria-label={`Link to ${children}`}
+        aria-label={`Link to ${cleanText}`}
       >
         <LinkIcon size={22} />
       </a>,
