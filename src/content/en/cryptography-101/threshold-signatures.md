@@ -171,7 +171,7 @@ $$
 Q_i = [a_{i,0}]G
 $$
 
-> I think it's fairly odd to see the public key share being calculated like this. I bet you expected to see dᵢ in there!
+> I think it's fairly odd to see the public key share being calculated like this. I bet you expected to see $d_i$ in there!
 >
 > There's good reason for it not being used, though. We'll return to this statement later, because we'll need to define a couple things in order to understand what's really happening.
 
@@ -209,7 +209,7 @@ $$
 s = k^{-1}(H(M) + d.r) \ \textrm{mod} \ n
 $$
 
-But as we've already seen, this is **not** how threshold cryptography tends to operate. Instead, a group of t signers will **communicate with each other** in order to produce a signature. And the first thing they'll need, is a **nonce**.
+But as we've already seen, this is **not** how threshold cryptography tends to operate. Instead, a group of $t$ signers will **communicate with each other** in order to produce a signature. And the first thing they'll need, is a **nonce**.
 
 Luckily, we already have a tool to generate a distributed value: **DKG**! Let's just say that signers execute a round of DKG, obtaining a share $k_i$, and an associated challenge:
 

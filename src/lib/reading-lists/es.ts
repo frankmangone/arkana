@@ -50,6 +50,10 @@ export const readingLists: ReadingList[] = [
         slug: "cryptography-101/homomorphisms-and-isomorphisms",
         order: 9,
       },
+      {
+        slug: "cryptography-101/polynomials",
+        order: 10,
+      },
     ],
   },
 ];

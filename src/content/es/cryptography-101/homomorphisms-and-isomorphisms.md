@@ -35,10 +35,10 @@ Recuerda que cuando trabajamos con grupos, solo tenemos un **conjunto** y una **
 Todo este trabalenguas se puede reducir a esto: si **a** y **b** son elementos de un grupo, entonces un homomorfismo **f** debería comportarse así:
 
 $$
-f(a+b) = f(a) + f(b)
+f(a + b) = f(a) + f(b)
 $$
 
-Un gran ejemplo de homomorfismo ocurre cuando tomamos un **grupo de curva elíptica** con generador $G$ y orden $n$, y el **grupo aditivo de enteros módulo** $n$. Y simplemente definimos:
+Un gran ejemplo de homomorfismo ocurre cuando tomamos un **grupo de una curva elíptica** con generador $G$ y orden $n$, y el **grupo aditivo de enteros módulo** $n$. Y simplemente definimos:
 
 $$
 f: \mathbb{Z}_n \rightarrow \langle G \rangle \ / \ f(x) = [x]G
