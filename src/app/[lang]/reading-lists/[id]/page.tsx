@@ -36,29 +36,21 @@ export async function generateMetadata({
 
 export async function generateStaticParams() {
   const paths = [];
-  // Track all unique reading list IDs
-  const allReadingListIds = new Set<string>();
 
-  // First collect all unique reading list IDs across all languages
+  // Generate params only for reading lists that actually exist in each language
   for (const lang of languages) {
     try {
       const localizedReadingLists = readingLists[lang].getAllReadingLists();
 
+      // Only generate paths for reading lists that exist in this language
       for (const list of localizedReadingLists) {
-        allReadingListIds.add(list.id);
+        paths.push({
+          id: list.id,
+          lang,
+        });
       }
     } catch (error) {
       console.error(`Error getting reading lists for language ${lang}:`, error);
-    }
-  }
-
-  // Generate params for all languages and all reading list IDs
-  for (const lang of languages) {
-    for (const id of allReadingListIds) {
-      paths.push({
-        id,
-        lang,
-      });
     }
   }
 
