@@ -33,7 +33,9 @@ export async function PostHeader(props: PostHeaderProps) {
       <div className="flex items-center gap-4">
         <Avatar className="w-[50px] h-[50px]">
           <AvatarImage
-            src={writer.avatarUrl}
+            src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${
+              writer.avatarUrl
+            }`}
             alt={writer.name}
             width={50}
             height={50}
