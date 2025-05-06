@@ -3,6 +3,11 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Force dark mode for all users */
+html {
+  @apply dark;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -226,12 +231,10 @@ strong {
   white-space: nowrap;
 }
 
-/* Dark mode adjustments for inline code */
-@media (prefers-color-scheme: dark) {
-  :not(pre) > code {
-    background-color: rgba(183, 156, 234, 0.15);
-    color: #c9b3f0;
-  }
+/* Dark mode adjustments for inline code - always apply regardless of user preference */
+:not(pre) > code {
+  background-color: rgba(183, 156, 234, 0.15);
+  color: #c9b3f0;
 }
 
 /* Full-width figures */
@@ -253,24 +256,14 @@ figure figcaption {
   margin-top: 0.5rem;
 }
 
-/* Blockquote styling */
+/* Blockquote styling - dark version by default */
 blockquote {
-  border-left: 4px solid #a277f2;
-  padding-left: 1rem;
-  margin: 1.5rem 0;
-  color: #37343d;
-  background-color: #f0edf7;
+  border-left: 4px solid #8041f4;
+  background-color: #37343d;
+  color: #f0edf7;
   padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
   border-radius: 0.25rem;
-}
-
-/* Dark mode version */
-@media (prefers-color-scheme: dark) {
-  blockquote {
-    border-left-color: #8041f4;
-    background-color: #37343d;
-    color: #f0edf7;
-  }
 }
 
 /* Add citation/attribution support */
@@ -427,7 +420,7 @@ figure:hover .zoom-indicator {
   opacity: 1;
 }
 
-/* Table Styles */
+/* Table Styles - default to dark theme styles */
 table {
   width: auto; /* Allow tables to size to content */
   margin: 2rem auto; /* Center tables */
@@ -438,6 +431,7 @@ table {
   border-radius: 0.5rem;
   border: 1px solid #5423b0;
   color: #e1dfe4; /* Match text color */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 th {
@@ -478,31 +472,6 @@ tbody tr:hover {
 /* For very small tables, ensure they don't look too tight */
 table.compact {
   min-width: 200px;
-}
-
-/* Add a subtle shadow for some depth */
-table {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-@media (prefers-color-scheme: light) {
-  table {
-    color: #37343d;
-    border-color: #e0e0e0;
-  }
-
-  th {
-    background-color: #f0edf7;
-    color: #37343d;
-  }
-
-  tbody tr:nth-of-type(even) {
-    background-color: #f9f8fc;
-  }
-
-  tbody tr:hover {
-    background-color: #f0edf7;
-  }
 }
 
 /* List styling */
