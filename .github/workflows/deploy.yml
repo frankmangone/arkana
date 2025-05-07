@@ -18,7 +18,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      BASE_PATH: /personal-blog
       NEXT_PUBLIC_BASE_PATH: /personal-blog
     steps:
       - name: Checkout
