@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
     unoptimized: true, // Required for static export
   },
   basePath: process.env.BASE_PATH ?? "",
+  assetPrefix: process.env.BASE_PATH ?? "",
   trailingSlash: true, // Add trailing slashes for GitHub Pages compatibility
   // appDir: true,
 };
