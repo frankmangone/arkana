@@ -9,7 +9,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Purpura | Home",
+  title: "Arkana | Home",
   description: "A personal blog with multilingual support",
 };
 

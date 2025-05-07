@@ -16,7 +16,7 @@ interface BlogPageProps {
 }
 
 export const metadata: Metadata = {
-  title: "Purpura | All Posts",
+  title: "Arkana | All Posts",
   description: "Articles on mathematics, computer science, and cryptography",
 };
 

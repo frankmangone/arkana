@@ -29,7 +29,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: `Purpura | ${readingList.title}`,
+    title: `Arkana | ${readingList.title}`,
     description: readingList.description,
   };
 }
