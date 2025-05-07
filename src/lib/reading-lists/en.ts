@@ -59,51 +59,51 @@ export const readingLists: ReadingList[] = [
       },
       {
         slug: "cryptography-101/pairings",
-        order: 11,
-      },
-      {
-        slug: "cryptography-101/pairing-applications-and-more",
         order: 12,
       },
       {
-        slug: "cryptography-101/commitment-schemes-revisited",
+        slug: "cryptography-101/pairing-applications-and-more",
         order: 13,
       },
       {
-        slug: "cryptography-101/zero-knowledge-proofs-part-1",
+        slug: "cryptography-101/commitment-schemes-revisited",
         order: 14,
       },
       {
-        slug: "cryptography-101/arithmetic-circuits",
+        slug: "cryptography-101/zero-knowledge-proofs-part-1",
         order: 15,
       },
       {
-        slug: "cryptography-101/zero-knowledge-proofs-part-2",
+        slug: "cryptography-101/arithmetic-circuits",
         order: 16,
       },
       {
-        slug: "cryptography-101/zero-knowledge-proofs-part-3",
+        slug: "cryptography-101/zero-knowledge-proofs-part-2",
         order: 17,
       },
       {
-        slug: "cryptography-101/starks",
+        slug: "cryptography-101/zero-knowledge-proofs-part-3",
         order: 18,
       },
       {
-        slug: "cryptography-101/rings",
+        slug: "cryptography-101/starks",
         order: 19,
       },
       {
-        slug: "cryptography-101/ring-learning-with-errors",
+        slug: "cryptography-101/rings",
         order: 20,
       },
       {
-        slug: "cryptography-101/post-quantum-cryptography",
+        slug: "cryptography-101/ring-learning-with-errors",
         order: 21,
       },
       {
-        slug: "cryptography-101/fully-homomorphic-encryption",
+        slug: "cryptography-101/post-quantum-cryptography",
         order: 22,
+      },
+      {
+        slug: "cryptography-101/fully-homomorphic-encryption",
+        order: 23,
       },
     ],
   },
