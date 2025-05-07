@@ -107,6 +107,20 @@ export const readingLists: ReadingList[] = [
       },
     ],
   },
+  {
+    id: "blockchain-101",
+    title: "Blockchain 101",
+    description:
+      "Una introducción amigable para principiantes a los conceptos de blockchain",
+    coverImage: "/images/blockchain-101/transactions/doge.webp",
+    ongoing: true,
+    items: [
+      {
+        slug: "blockchain-101/how-it-all-began",
+        order: 1,
+      },
+    ],
+  },
 ];
 
 export const getReadingList = getReadingListFactory(readingLists);
