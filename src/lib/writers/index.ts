@@ -15,6 +15,7 @@ export const writers: Record<string, Writer> = {
     },
     social: {
       twitter: "https://x.com/0xfrankmangone",
+      linkedin: "https://www.linkedin.com/in/frank-mangone/",
       github: "https://github.com/frankmangone",
       medium: "https://medium.com/@francomangone18",
     },

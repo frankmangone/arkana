@@ -23,7 +23,7 @@ export default function WriterPage(props: AuthorPageProps) {
       <div className="flex flex-col md:flex-row gap-8 items-start mb-12">
         <div className="relative w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden flex-shrink-0 mx-auto md:mx-0">
           <Image
-            src={`${process.env.NEXT_PUBLIC_BASE_URL}${writer.imageUrl}`}
+            src={`${process.env.NEXT_PUBLIC_BASE_URL ?? ""}${writer.imageUrl}`}
             alt={writer.name}
             fill
             className="object-cover"
