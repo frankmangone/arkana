@@ -32,19 +32,26 @@ export async function PostHeader(props: PostHeaderProps) {
       </div>
 
       <div className="flex items-center gap-4">
-        <Avatar className="w-[50px] h-[50px]">
-          <AvatarImage
-            src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${
-              writer.avatarUrl
-            }`}
-            alt={writer.name}
-            width={50}
-            height={50}
-          />
-          <AvatarFallback>{writer.name.charAt(0)}</AvatarFallback>
-        </Avatar>
+        <Link href={`/${lang}/writers/${writer.slug}`}>
+          <Avatar className="w-[50px] h-[50px]">
+            <AvatarImage
+              src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${
+                writer.avatarUrl
+              }`}
+              alt={writer.name}
+              width={50}
+              height={50}
+            />
+            <AvatarFallback>{writer.name.charAt(0)}</AvatarFallback>
+          </Avatar>
+        </Link>
         <div>
-          <div className="font-medium">{writer.name}</div>
+          <Link
+            href={`/${lang}/writers/${writer.slug}`}
+            className="font-medium text-primary-500 hover:text-primary-600 hover:underline"
+          >
+            {writer.name}
+          </Link>
           <div className="text-sm text-muted-foreground">
             {formatDate(metadata.date, lang)} · {metadata.readingTime}{" "}
             {dict.blog.readingTime}

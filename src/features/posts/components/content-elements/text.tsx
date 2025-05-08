@@ -70,10 +70,10 @@ export function createHeadingComponent(level: number) {
       <a
         key="anchor"
         href={`#${slug}`}
-        className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity"
+        className="ml-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity"
         aria-label={`Link to ${cleanText}`}
       >
-        <LinkIcon size={22} />
+        <LinkIcon className="text-primary-500" size={22} />
       </a>,
     ]);
   };
