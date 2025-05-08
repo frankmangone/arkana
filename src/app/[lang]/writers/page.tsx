@@ -16,7 +16,7 @@ interface WritersPageProps {
 }
 
 export const metadata: Metadata = {
-  title: "Writers",
+  title: "Arkana | Writers",
   description: "Meet the people behind the content",
 };
 

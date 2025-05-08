@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { PostPreview } from "@/lib/posts";
+import { getTagDisplayName } from "@/lib/tags";
 
 interface PostCardProps {
   article: PostPreview;
@@ -58,7 +59,7 @@ export function PostCard({ article, lang, number }: PostCardProps) {
         <div className="flex flex-wrap gap-2">
           {article.tags.map((tag) => (
             <span key={tag} className="bg-muted px-2 py-1 rounded text-sm">
-              {tag}
+              {getTagDisplayName(tag, lang)}
             </span>
           ))}
         </div>

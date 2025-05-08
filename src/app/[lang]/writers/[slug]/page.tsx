@@ -29,7 +29,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: author.name,
+    title: `Arkana | ${author.name}`,
   };
 }
 

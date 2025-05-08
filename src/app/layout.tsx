@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Arkana | Home",
-  description: "A personal blog with multilingual support",
+  description: "The place to where complex topics are simplified",
 };
 
 export default async function RootLayout({

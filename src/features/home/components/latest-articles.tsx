@@ -33,7 +33,7 @@ export function LatestArticles({
             borderColor: "var(--primary-500)",
             color: "var(--primary-500)",
           }}
-          className="inline-block px-6 py-3 border-2 rounded-lg transition-colors hover:bg-[rgba(167,119,255,0.3)]"
+          className="inline-block px-6 py-3 border-2 rounded-lg transition-colors hover:bg-[rgba(167,119,255,0.2)]"
         >
           {dictionary?.blog?.viewAllPosts || "View All Articles"}
         </Link>

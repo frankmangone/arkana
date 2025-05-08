@@ -2,6 +2,8 @@ import { ReadingList } from "@/lib/reading-lists";
 import Link from "next/link";
 import { ReadingListCard } from "./components/reading-list-card";
 import { getDictionary } from "@/lib/dictionaries";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft } from "lucide-react";
 
 interface ReadingListPageProps {
   lang: string;
@@ -19,14 +21,14 @@ export async function ReadingListPage(props: ReadingListPageProps) {
 
   return (
     <div className="container">
-      <Link
-        href={backUrl}
-        className="text-primary-500 mb-6 inline-block hover:underline"
-      >
-        {dict.readingLists.view.back}
-      </Link>
+      <Button asChild variant="outline" size="lg">
+        <Link href={backUrl} className="flex items-center gap-2">
+          <ArrowLeft size={16} />
+          {dict.readingLists.view.back}
+        </Link>
+      </Button>
 
-      <div className="flex items-center gap-3 mb-4">
+      <div className="flex items-center gap-3 mb-4 mt-6">
         <h1 className="text-4xl font-bold">{readingList.title}</h1>
         {readingList.ongoing && (
           <span className="text-sm font-medium px-3 py-1 rounded-full dark:bg-[#8041f450] dark:text-[#9f79e7]">
