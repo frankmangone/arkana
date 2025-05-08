@@ -3,7 +3,8 @@ title: "Criptografía 101: Aprendizaje con Errores en Anillos"
 date: "2024-09-17"
 author: "frank-mangone"
 thumbnail: "/images/cryptography-101/ring-learning-with-errors/lattice-generation.webp"
-tags: ["Criptografía", "Matemáticas", "Anillo", "RLWE", "Retículo"]
+tags:
+  ["cryptography", "mathematics", "ring", "ringLearningWithErrors", "lattice"]
 description: "Ahora que conocemos los anillos, necesitamos un problema difícil para desarrollar criptografía a partir de ellos — ¡entra Aprendizaje con Errores en Anillos!"
 readingTime: "11 min"
 ---

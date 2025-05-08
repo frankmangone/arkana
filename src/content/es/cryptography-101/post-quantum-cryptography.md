@@ -5,13 +5,12 @@ author: "frank-mangone"
 thumbnail: "/images/cryptography-101/post-quantum-cryptography/not-surprised.webp"
 tags:
   [
-    "Criptografía",
-    "Matemáticas",
-    "Criptografía Post-Cuántica",
-    "PQC",
-    "RLWE",
-    "Retículo",
-    "Anillos",
+    "cryptography",
+    "mathematics",
+    "postQuantumCryptography",
+    "ringLearningWithErrors",
+    "lattice",
+    "ring",
   ]
 description: "Es hora de construir algunos métodos criptográficos a partir de anillos y sus problemas difíciles asociados"
 readingTime: "14 min"

@@ -3,7 +3,7 @@ title: "Blockchain 101: Wrapping Up Bitcoin"
 date: "2024-10-15"
 author: "frank-mangone"
 thumbnail: "/images/blockchain-101/wrapping-up-bitcoin/inception.webp"
-tags: ["Blockchain", "Bitcoin", "Transactions", "Consensus"]
+tags: ["blockchain", "bitcoin", "transactions", "consensus"]
 description: "With this fourth article, we finish our brief pass through Bitcoin by looking at a couple missing key points."
 readingTime: "10 min"
 ---

@@ -5,11 +5,11 @@ author: "frank-mangone"
 thumbnail: "/images/cryptography-101/encryption-and-digital-signatures/cool-story.webp"
 tags:
   [
-    "Criptografía",
-    "Matemáticas",
-    "Curvas Elípticas",
-    "Encriptación",
-    "Firmas Digitales",
+    "cryptography",
+    "ellipticCurves",
+    "mathematics",
+    "encryption",
+    "digitalSignatures",
   ]
 description: "Basándonos en nuestro conocimiento previo de curvas elípticas, exploramos cómo encriptar y firmar información"
 readingTime: "9 min"

@@ -3,7 +3,7 @@ title: "Criptografía 101: Anillos"
 date: "2024-08-27"
 author: "frank-mangone"
 thumbnail: "/images/cryptography-101/rings/saurons-eye.webp"
-tags: ["Criptografía", "Álgebra Abstracta", "Matemáticas", "Anillo"]
+tags: ["cryptography", "abstractAlgebra", "mathematics", "ring"]
 description: "Antes de avanzar hacia la frontera más reciente de la criptografía — la criptografía post-cuántica —, ¡necesitamos establecer más fundamentos!"
 readingTime: "13 min"
 ---

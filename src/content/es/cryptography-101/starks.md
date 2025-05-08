@@ -5,10 +5,12 @@ author: "frank-mangone"
 thumbnail: "/images/cryptography-101/starks/state-transition.webp"
 tags:
   [
-    "Criptografía",
-    "Pruebas de Conocimiento Cero",
-    "Matemáticas",
-    "Escalabilidad",
+    "cryptography",
+    "zeroKnowledgeProofs",
+    "mathematics",
+    "polynomials",
+    "scalability",
+    "stark",
   ]
 description: "Siguiendo con los SNARKs, ahora exploramos otro tipo de pruebas de conocimiento diseñadas para la escalabilidad"
 readingTime: "17 min"

@@ -3,7 +3,7 @@ title: "Criptografía 101 (Anexo): Evaluando la Seguridad"
 date: "2024-05-13"
 author: "frank-mangone"
 thumbnail: "/images/cryptography-101/asides-evaluating-security/arnold-handshake.webp"
-tags: ["Criptografía", "Criptoanálisis", "Seguridad"]
+tags: ["cryptography", "cryptanalysis", "security"]
 description: "Breve resumen de algunos aspectos importantes de la seguridad en criptografía"
 readingTime: "8 min"
 ---

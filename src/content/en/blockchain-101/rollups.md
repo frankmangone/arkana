@@ -3,7 +3,7 @@ title: "Blockchain 101: Rollups"
 date: "2025-04-28"
 author: "frank-mangone"
 thumbnail: "/images/blockchain-101/rollups/sonic.webp"
-tags: ["Ethereum", "Blockchain", "Rollup", "Data Availability"]
+tags: ["ethereum", "blockchain", "rollup", "dataAvailability"]
 description: "Before we jump into other Blockchain solutions, let’s explore the ecosystem built around Ethereum"
 readingTime: "12 min"
 ---

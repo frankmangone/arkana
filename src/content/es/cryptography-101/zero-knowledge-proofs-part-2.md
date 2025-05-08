@@ -5,11 +5,13 @@ author: "frank-mangone"
 thumbnail: "/images/cryptography-101/zero-knowledge-proofs-part-2/pikachu.webp"
 tags:
   [
-    "Criptografía",
-    "Pruebas de Conocimiento Cero",
-    "Matemáticas",
-    "Polinomio",
-    "Plonk",
+    "cryptography",
+    "zeroKnowledgeProofs",
+    "mathematics",
+    "polynomials",
+    "arithmeticCircuits",
+    "plonk",
+    "snark",
   ]
 description: "Esta segunda ronda de pruebas de conocimiento cero nos llevará en un viaje para entender un marco más general. ¡Agárrate fuerte!"
 readingTime: "17 min"

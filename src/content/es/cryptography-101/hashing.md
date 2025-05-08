@@ -3,7 +3,7 @@ title: "Criptografía 101: Hashing"
 date: "2024-03-24"
 author: "frank-mangone"
 thumbnail: "/images/cryptography-101/hashing/bosch.webp"
-tags: ["Criptografía", "Hashing", "Estructuras de Datos", "Árbol de Merkle"]
+tags: ["cryptography", "hashing", "dataStructures", "merkleTree"]
 description: "Las funciones de hash son una primitiva criptográfica esencial. ¡Acompáñame en una exploración profunda sobre qué son y para qué se utilizan!"
 readingTime: "10 min"
 ---

@@ -5,11 +5,11 @@ author: "frank-mangone"
 thumbnail: "/images/cryptography-101/pairing-applications-and-more/rambo-thanks.webp"
 tags:
   [
-    "Criptografía",
-    "Emparejamiento",
-    "Matemáticas",
-    "Firmas Digitales",
-    "Intercambio de Claves",
+    "cryptography",
+    "pairings",
+    "mathematics",
+    "keyExchange",
+    "digitalSignatures",
   ]
 description: "Siguiendo nuestra presentación de los emparejamientos, veamos un par más de aplicaciones que esta nueva herramienta permite"
 readingTime: "8 min"

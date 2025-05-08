@@ -3,7 +3,7 @@ title: "Criptografía 101 (Anexo): RSA Explicado"
 date: "2024-03-31"
 author: "frank-mangone"
 thumbnail: "/images/cryptography-101/rsa-explained/batman.webp"
-tags: ["Criptografía", "RSA", "Aritmética Modular"]
+tags: ["cryptography", "rsa", "mathematics", "modularArithmetic"]
 description: "Una breve explicación sobre cómo funciona RSA"
 readingTime: "6 min"
 ---

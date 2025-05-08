@@ -5,11 +5,11 @@ author: "frank-mangone"
 thumbnail: "/images/cryptography-101/threshold-signatures/here-we-go-again.webp"
 tags:
   [
-    "Cryptography",
-    "Polynomial",
-    "Threshold Signature",
-    "Mathematics",
-    "Interpolation",
+    "cryptography",
+    "polynomials",
+    "thresholdSignature",
+    "interpolation",
+    "mathematics",
   ]
 description: "Combining polynomials and digital signatures brings forth a cool new functionality, in the form of Threshold Signatures!"
 readingTime: "14 min"

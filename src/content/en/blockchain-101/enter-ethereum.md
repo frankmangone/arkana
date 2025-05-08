@@ -3,7 +3,7 @@ title: "Blockchain 101: Enter Ethereum"
 date: "2024-11-09"
 author: "frank-mangone"
 thumbnail: "/images/blockchain-101/enter-ethereum/galaxy-brain.webp"
-tags: ["Ethereum", "Blockchain", "Smart Contracts"]
+tags: ["ethereum", "blockchain", "smartContracts"]
 description: "Time to move on to the second big milestone in Blockchain’s history: Ethereum"
 readingTime: "8 min"
 ---

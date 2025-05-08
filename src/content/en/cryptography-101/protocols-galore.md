@@ -5,11 +5,11 @@ author: "frank-mangone"
 thumbnail: "/images/cryptography-101/protocols-galore/waldo.webp"
 tags:
   [
-    "Cryptography",
-    "Zero Knowledge Proofs",
-    "Verifiable Randomness",
-    "Elliptic Curve",
-    "Key Exchange",
+    "cryptography",
+    "zeroKnowledgeProofs",
+    "verifiableRandomness",
+    "keyExchange",
+    "commitmentScheme",
   ]
 description: "A gentle introduction to some very useful schemes: key exchange, commitment schemes, zero-knowledge proofs, verifiable random functions"
 readingTime: "11 min"

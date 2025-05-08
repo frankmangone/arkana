@@ -3,7 +3,7 @@ title: "Blockchain 101: Smart Contracts"
 date: "2024-12-26"
 author: "frank-mangone"
 thumbnail: "/images/blockchain-101/smart-contracts/dump-spongebob.webp"
-tags: ["Ethereum", "Blockchain", "EVM", "Solidity", "Smart Contracts"]
+tags: ["ethereum", "blockchain", "evm", "solidity", "smartContracts"]
 description: "A peek into the architecture that makes Smart Contracts possible in Ethereum"
 readingTime: "12 min"
 ---

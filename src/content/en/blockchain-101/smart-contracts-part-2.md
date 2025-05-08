@@ -3,7 +3,7 @@ title: "Blockchain 101: Smart Contracts (Part 2)"
 date: "2025-02-24"
 author: "frank-mangone"
 thumbnail: "/images/blockchain-101/smart-contracts-part-2/destruction.webp"
-tags: ["Ethereum", "Blockchain", "EVM", "Solidity", "Smart Contracts"]
+tags: ["ethereum", "blockchain", "evm", "solidity", "smartContracts"]
 description: "A more functional approach to Smart Contracts, exploring Solidity in further detail"
 readingTime: "14 min"
 ---

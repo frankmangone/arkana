@@ -3,13 +3,7 @@ title: "Criptografía 101: Pruebas de Conocimiento Cero (Parte 1)"
 date: "2024-06-11"
 author: "frank-mangone"
 thumbnail: "/images/cryptography-101/zero-knowledge-proofs-part-1/wingardium-leviosa.webp"
-tags:
-  [
-    "Criptografía",
-    "Pruebas de Conocimiento Cero",
-    "Matemáticas",
-    "Esquema de Compromiso",
-  ]
+tags: ["cryptography", "zeroKnowledgeProofs", "mathematics", "commitmentScheme"]
 description: "Damos un salto al mundo de las pruebas de conocimiento cero explorando uno de los muchos protocolos ZKP que existen: Bulletproofs"
 readingTime: "14 min"
 ---

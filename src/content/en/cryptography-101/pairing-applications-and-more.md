@@ -5,11 +5,11 @@ author: "frank-mangone"
 thumbnail: "/images/cryptography-101/pairing-applications-and-more/rambo-thanks.webp"
 tags:
   [
-    "Cryptography",
-    "Pairing",
-    "Mathematics",
-    "Digital Signatures",
-    "Key Exchange",
+    "cryptography",
+    "pairings",
+    "mathematics",
+    "keyExchange",
+    "digitalSignatures",
   ]
 description: "Following our presentation of pairings, we look at a couple more applications enabled by this new tool"
 readingTime: "8 min"

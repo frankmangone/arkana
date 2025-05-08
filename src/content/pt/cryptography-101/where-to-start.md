@@ -3,7 +3,7 @@ title: "Criptografia 101: Por Onde Começar"
 date: "2024-03-07"
 author: "frank-mangone"
 thumbnail: "/images/cryptography-101/where-to-start/aaaaa.webp"
-tags: ["Criptografia", "Grupos", "Aritmética Modular"]
+tags: ["cryptography", "groups", "mathematics", "modularArithmetic"]
 description: "Uma introdução suave ao mundo da criptografia"
 readingTime: "6 min"
 ---

@@ -3,7 +3,15 @@ title: "Elliptic Curves In-Depth (Part 4)"
 date: "2025-03-03"
 author: "frank-mangone"
 thumbnail: "/images/elliptic-curves-in-depth/part-4/yoda.webp"
-tags: ["Cryptography", "Function", "Math", "Elliptic Curve"]
+tags:
+  [
+    "cryptography",
+    "function",
+    "homomorphism",
+    "isomorphism",
+    "mathematics",
+    "ellipticCurves",
+  ]
 description: "Let’s talk about functions on elliptic curves."
 readingTime: "14 min"
 ---

@@ -3,7 +3,7 @@ title: "Criptografía 101: Curvas Elípticas (Algo) Desmitificadas"
 date: "2024-03-11"
 author: "frank-mangone"
 thumbnail: "/images/cryptography-101/elliptic-curves-somewhat-demystified/elliptic-curve.webp"
-tags: ["Criptografía", "Curvas Elípticas", "Teoría de Grupos", "Matemáticas"]
+tags: ["cryptography", "ellipticCurves", "mathematics", "modularArithmetic"]
 description: "Una introducción al mundo de las curvas elípticas, que forman la base para entender mecanismos criptográficos útiles"
 readingTime: "7 min"
 ---

@@ -3,7 +3,7 @@ title: "Criptografía 101: Esquemas de Compromiso Revisitados"
 date: "2024-06-04"
 author: "frank-mangone"
 thumbnail: "/images/cryptography-101/commitment-schemes-revisited/hell-no.webp"
-tags: ["Criptografía", "Polinomio", "Matemáticas", "Esquema de Compromiso"]
+tags: ["cryptography", "polynomials", "mathematics", "commitmentScheme"]
 description: "Una ampliación de las ideas detrás de los esquemas de compromiso más simples, proporcionando herramientas importantes para construcciones más complejas en el futuro"
 readingTime: "10 min"
 ---

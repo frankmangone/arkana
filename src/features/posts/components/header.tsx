@@ -5,6 +5,7 @@ import { formatDate } from "@/lib/utils";
 import type { Post } from "@/lib/types";
 import { getWriter } from "@/lib/writers";
 import { getDictionary } from "@/lib/dictionaries";
+import { getTagDisplayName } from "@/lib/tags";
 
 interface PostHeaderProps {
   post: Post;
@@ -23,7 +24,7 @@ export async function PostHeader(props: PostHeaderProps) {
         <div className="flex flex-wrap gap-2">
           {metadata.tags.map((tag) => (
             <Link key={tag} href={`/${lang}/blog?tag=${tag}`}>
-              <Badge variant="secondary">{tag}</Badge>
+              <Badge variant="secondary">{getTagDisplayName(tag, lang)}</Badge>
             </Link>
           ))}
         </div>

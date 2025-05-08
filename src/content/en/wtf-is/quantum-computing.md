@@ -3,7 +3,8 @@ title: "WTF is Quantum Computing"
 date: "2025-03-24"
 author: "frank-mangone"
 thumbnail: "/images/wtf-is/quantum-computing/hitchhikers.webp"
-tags: ["Computer Science", "Quantum Mechanics", "Qubit", "PQC"]
+tags:
+  ["computerScience", "quantumMechanics", "qubit", "postQuantumCryptography"]
 description: "A short explainer on how quantum computers work, what they can do, and what to expect from them in the near future"
 readingTime: "11 min"
 ---

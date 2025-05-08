@@ -5,13 +5,12 @@ author: "frank-mangone"
 thumbnail: "/images/cryptography-101/post-quantum-cryptography/not-surprised.webp"
 tags:
   [
-    "Cryptography",
-    "Mathematics",
-    "Post Quantum Cryptography",
-    "PQC",
-    "RLWE",
-    "Lattice",
-    "Rings",
+    "cryptography",
+    "mathematics",
+    "postQuantumCryptography",
+    "ringLearningWithErrors",
+    "lattice",
+    "ring",
   ]
 description: "Time to build some cryptographic methods out of rings and their associated hard problems"
 readingTime: "14 min"

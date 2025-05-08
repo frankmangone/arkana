@@ -4,13 +4,7 @@ date: "2024-07-30"
 author: "frank-mangone"
 thumbnail: "/images/cryptography-101/zero-knowledge-proofs-part-3/thinking.webp"
 tags:
-  [
-    "Cryptography",
-    "Zero Knowledge Proofs",
-    "Mathematics",
-    "Arithmetic",
-    "Circuit",
-  ]
+  ["cryptography", "zeroKnowledgeProofs", "mathematics", "arithmeticCircuits"]
 description: "Let’s get practical, and build some arithmetic circuits!"
 readingTime: "10 min"
 ---

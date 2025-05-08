@@ -3,7 +3,7 @@ title: "Criptografía 101: Polinomios"
 date: "2024-04-24"
 author: "frank-mangone"
 thumbnail: "/images/cryptography-101/polynomials/parabola-points.webp"
-tags: ["Criptografía", "Polinomios", "Matemáticas", "Interpolación"]
+tags: ["cryptography", "polynomials", "interpolation", "mathematics"]
 description: "Los polinomios juegan un papel importante en muchas aplicaciones criptográficas. Este artículo está dedicado a dar una breve introducción al tema"
 readingTime: "8 min"
 ---

@@ -3,7 +3,7 @@ title: "Criptografía 101: Firmas Recargadas"
 date: "2024-04-09"
 author: "frank-mangone"
 thumbnail: "/images/cryptography-101/signatures-recharged/one-does-not-simply.webp"
-tags: ["Criptografía", "Firmas Digitales", "Curva Elíptica", "Matemáticas"]
+tags: ["cryptography", "digitalSignatures", "ellipticCurves", "mathematics"]
 description: "Un vistazo rápido a algunos esquemas de firma un poco más elaborados de lo habitual"
 readingTime: "11 min"
 ---

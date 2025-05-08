@@ -5,11 +5,11 @@ author: "frank-mangone"
 thumbnail: "/images/cryptography-101/encryption-and-digital-signatures/cool-story.webp"
 tags:
   [
-    "Cryptography",
-    "Mathematics",
-    "Elliptic Curves",
-    "Encryption",
-    "Digital Signatures",
+    "cryptography",
+    "ellipticCurves",
+    "mathematics",
+    "encryption",
+    "digitalSignatures",
   ]
 description: "Building upon our previous knowledge of elliptic curves, we explore how to encrypt and sign information"
 readingTime: "9 min"

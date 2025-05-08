@@ -5,11 +5,11 @@ author: "frank-mangone"
 thumbnail: "/images/cryptography-101/protocols-galore/waldo.webp"
 tags:
   [
-    "Criptografía",
-    "Pruebas de Conocimiento Cero",
-    "Aleatoriedad Verificable",
-    "Curva Elíptica",
-    "Intercambio de Claves",
+    "cryptography",
+    "zeroKnowledgeProofs",
+    "verifiableRandomness",
+    "keyExchange",
+    "commitmentScheme",
   ]
 description: "Una introducción amigable a algunos esquemas muy útiles: intercambio de claves, esquemas de compromiso, pruebas de conocimiento cero, funciones aleatorias verificables"
 readingTime: "11 min"

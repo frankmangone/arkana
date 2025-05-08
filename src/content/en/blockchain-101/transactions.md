@@ -3,7 +3,7 @@ title: "Blockchain 101: Transactions"
 date: "2024-09-10"
 author: "frank-mangone"
 thumbnail: "/images/blockchain-101/transactions/bills.webp"
-tags: ["Blockchain", "Bitcoin", "Transactions", "UTXO", "Digital Signatures"]
+tags: ["blockchain", "bitcoin", "transactions", "utxo", "digitalSignatures"]
 description: "Let's focus on the lifeblood of Blockchains early: Transactions!"
 readingTime: "9 min"
 ---

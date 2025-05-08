@@ -5,11 +5,11 @@ author: "frank-mangone"
 thumbnail: "/images/cryptography-101/threshold-signatures/here-we-go-again.webp"
 tags:
   [
-    "Criptografía",
-    "Polinomios",
-    "Firma de Umbral",
-    "Matemáticas",
-    "Interpolación",
+    "cryptography",
+    "polynomials",
+    "thresholdSignature",
+    "interpolation",
+    "mathematics",
   ]
 description: "¡Combinar polinomios y firmas digitales da lugar a una nueva y genial funcionalidad, en forma de Firmas de Umbral!"
 readingTime: "14 min"

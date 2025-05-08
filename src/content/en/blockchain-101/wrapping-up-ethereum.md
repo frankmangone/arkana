@@ -3,7 +3,7 @@ title: "Blockchain 101: Wrapping Up Ethereum"
 date: "2025-04-07"
 author: "frank-mangone"
 thumbnail: "/images/blockchain-101/wrapping-up-ethereum/ethereum-coin.webp"
-tags: ["Blockchain", "Bitcoin", "Hard Fork", "Ether", "Gas"]
+tags: ["blockchain", "ethereum", "hardFork", "ether", "gas"]
 description: "A few last comments on important architectural aspects of Ethereum, rounding up the section on this Blockchain!"
 readingTime: "11 min"
 ---

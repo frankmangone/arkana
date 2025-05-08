@@ -3,7 +3,7 @@ title: "Blockchain 101: Consensus Revisited"
 date: "2025-03-17"
 author: "frank-mangone"
 thumbnail: "/images/blockchain-101/consensus-revisited/slash.webp"
-tags: ["Ethereum", "Blockchain", "Consensus", "Proof Of Stake", "Validator"]
+tags: ["ethereum", "blockchain", "consensus", "proofOfStake", "validator"]
 description: "Exploring the consensus mechanism behind Ethereum: Proof of Stake"
 readingTime: "12 min"
 ---

@@ -3,7 +3,7 @@ title: "Cryptography 101 Aside: Evaluating Security"
 date: "2024-05-13"
 author: "frank-mangone"
 thumbnail: "/images/cryptography-101/asides-evaluating-security/arnold-handshake.webp"
-tags: ["Cryptography", "Cryptanalysis", "Security"]
+tags: ["cryptography", "cryptanalysis", "security"]
 description: "Short summary of some important aspect of security in cryptography"
 readingTime: "8 min"
 ---

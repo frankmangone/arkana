@@ -5,11 +5,11 @@ author: "frank-mangone"
 thumbnail: "/images/cryptography-101/arithmetic-circuits/polynomial-circuit.webp"
 tags:
   [
-    "Criptografía",
-    "Pruebas de Conocimiento Cero",
-    "Matemáticas",
-    "Polinomio",
-    "Circuito",
+    "cryptography",
+    "zeroKnowledgeProofs",
+    "mathematics",
+    "polynomials",
+    "arithmeticCircuits",
   ]
 description: "Antes de avanzar hacia pruebas de conocimiento cero más complejas, ¡necesitamos introducir un nuevo modelo: los circuitos aritméticos!"
 readingTime: "9 min"

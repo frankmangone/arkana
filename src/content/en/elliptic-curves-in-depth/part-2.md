@@ -3,7 +3,7 @@ title: "Elliptic Curves In-Depth (Part 2)"
 date: "2025-01-22"
 author: "frank-mangone"
 thumbnail: "/images/elliptic-curves-in-depth/part-2/monkey-head-scratching.webp"
-tags: ["Cryptography", "Finite Field", "Math", "Elliptic Curve"]
+tags: ["cryptography", "finiteField", "mathematics", "ellipticCurves"]
 description: "We now move from our familiar real number setting, to the realm of finite fields, where elliptic curves really shine."
 readingTime: "11 min"
 ---

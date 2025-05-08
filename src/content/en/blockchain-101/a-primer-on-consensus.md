@@ -3,7 +3,7 @@ title: "Blockchain 101: A Primer on Consensus"
 date: "2024-09-25"
 author: "frank-mangone"
 thumbnail: "/images/blockchain-101/a-primer-on-consensus/smaug.webp"
-tags: ["Blockchain", "Bitcoin", "Consensus", "Proof Of Work"]
+tags: ["blockchain", "bitcoin", "consensus", "proofOfWork", "mining"]
 description: "Let’s shift our focus to how a decentralized system can agree on a single truth: through consensus."
 readingTime: "10 min"
 ---

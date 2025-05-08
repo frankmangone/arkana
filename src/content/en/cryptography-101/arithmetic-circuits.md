@@ -5,11 +5,11 @@ author: "frank-mangone"
 thumbnail: "/images/cryptography-101/arithmetic-circuits/polynomial-circuit.webp"
 tags:
   [
-    "Cryptography",
-    "Zero Knowledge Proofs",
-    "Mathematics",
-    "Polynomial",
-    "Circuit",
+    "cryptography",
+    "zeroKnowledgeProofs",
+    "mathematics",
+    "polynomials",
+    "arithmeticCircuits",
   ]
 description: "Before moving on into more complex zero knowledge proofs, we need to introduce a new model: arithmetic circuits!"
 readingTime: "9 min"

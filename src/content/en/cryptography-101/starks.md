@@ -3,7 +3,15 @@ title: "Cryptography 101: STARKs"
 date: "2024-08-20"
 author: "frank-mangone"
 thumbnail: "/images/cryptography-101/starks/state-transition.webp"
-tags: ["Cryptography", "Zero Knowledge Proofs", "Mathematics", "Scalability"]
+tags:
+  [
+    "cryptography",
+    "zeroKnowledgeProofs",
+    "mathematics",
+    "polynomials",
+    "scalability",
+    "stark",
+  ]
 description: "Following from SNARKs, we now explore another type of knowledge proofs tailored for scalability"
 readingTime: "17 min"
 ---

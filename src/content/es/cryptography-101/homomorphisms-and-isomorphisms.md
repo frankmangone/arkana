@@ -3,7 +3,8 @@ title: "Criptografía 101: Homomorfismos e Isomorfismos"
 date: "2024-04-16"
 author: "frank-mangone"
 thumbnail: "/images/cryptography-101/homomorphisms-and-isomorphisms/muppet.webp"
-tags: ["Criptografía", "Cifrado", "Homomorfismo", "Matemáticas", "Privacidad"]
+tags:
+  ["cryptography", "encryption", "homomorphism", "isomorphism", "mathematics"]
 description: "Una inmersión más profunda en conceptos básicos de grupos, y una aplicación fascinante: el cifrado homomórfico"
 readingTime: "9 min"
 ---

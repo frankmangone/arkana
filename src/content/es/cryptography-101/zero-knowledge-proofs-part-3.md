@@ -4,13 +4,7 @@ date: "2024-07-30"
 author: "frank-mangone"
 thumbnail: "/images/cryptography-101/zero-knowledge-proofs-part-3/thinking.webp"
 tags:
-  [
-    "Criptografía",
-    "Pruebas de Conocimiento Cero",
-    "Matemáticas",
-    "Aritmética",
-    "Circuito",
-  ]
+  ["cryptography", "zeroKnowledgeProofs", "mathematics", "arithmeticCircuits"]
 description: "¡Vamos a ser prácticos y construir algunos circuitos aritméticos!"
 readingTime: "10 min"
 ---

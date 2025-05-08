@@ -5,11 +5,13 @@ author: "frank-mangone"
 thumbnail: "/images/cryptography-101/zero-knowledge-proofs-part-2/pikachu.webp"
 tags:
   [
-    "Cryptography",
-    "Zero Knowledge Proofs",
-    "Mathematics",
-    "Polynomial",
-    "Plonk",
+    "cryptography",
+    "zeroKnowledgeProofs",
+    "mathematics",
+    "polynomials",
+    "arithmeticCircuits",
+    "plonk",
+    "snark",
   ]
 description: "This second round of zero knowledge proofs will take us on a journey to understand a more general framework. Hang tight!"
 readingTime: "17 min"

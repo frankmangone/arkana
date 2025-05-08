@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { getTagDisplayName } from "@/lib/tags";
 
 interface ReadingListCardProps {
   // TODO: Improve this typing
@@ -67,7 +68,7 @@ export function ReadingListCard(props: ReadingListCardProps) {
                 key={tag}
                 className="text-xs bg-secondary text-secondary-foreground px-2 py-0.5 rounded-full"
               >
-                {tag}
+                {getTagDisplayName(tag, lang)}
               </span>
             ))}
             {tags.length > 3 && (
