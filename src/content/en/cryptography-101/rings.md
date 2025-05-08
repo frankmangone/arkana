@@ -6,6 +6,7 @@ thumbnail: "/images/cryptography-101/rings/saurons-eye.webp"
 tags: ["cryptography", "abstractAlgebra", "mathematics", "ring"]
 description: "Before moving onto the latest frontier of cryptography — post-quantum cryptography — , we need to lay down some more groundwork!"
 readingTime: "13 min"
+mediumUrl: "https://medium.com/@francomangone18/cryptography-101-rings-b9d1e0e5b6d0"
 ---
 
 > This is part of a larger series of articles about cryptography. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/cryptography-101/where-to-start).

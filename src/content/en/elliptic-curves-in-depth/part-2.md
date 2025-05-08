@@ -6,6 +6,7 @@ thumbnail: "/images/elliptic-curves-in-depth/part-2/monkey-head-scratching.webp"
 tags: ["cryptography", "finiteField", "mathematics", "ellipticCurves"]
 description: "We now move from our familiar real number setting, to the realm of finite fields, where elliptic curves really shine."
 readingTime: "11 min"
+mediumUrl: "https://medium.com/@francomangone18/elliptic-curves-in-depth-part-2-e3c675462001"
 ---
 
 [Last time around](/en/blog/elliptic-curves-in-depth/part-1), we defined what elliptic curves are, and we devised a (suspiciously convoluted) way to add points on the curve together. And we hinted at how this operation was key for cryptographic applications.

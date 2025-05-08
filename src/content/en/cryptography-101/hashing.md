@@ -6,6 +6,7 @@ thumbnail: "/images/cryptography-101/hashing/bosch.webp"
 tags: ["cryptography", "hashing", "dataStructures", "merkleTree"]
 description: "Hashing functions are an essential cryptographic primitive. Join me in a deep dive into what they are, and what they are used for!"
 readingTime: "10 min"
+mediumUrl: "https://medium.com/@francomangone18/cryptography-101-hashing-709347160f60"
 ---
 
 > This is part of a larger series of articles about cryptography. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/cryptography-101/where-to-start).

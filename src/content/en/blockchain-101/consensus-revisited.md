@@ -6,6 +6,7 @@ thumbnail: "/images/blockchain-101/consensus-revisited/slash.webp"
 tags: ["ethereum", "blockchain", "consensus", "proofOfStake", "validator"]
 description: "Exploring the consensus mechanism behind Ethereum: Proof of Stake"
 readingTime: "12 min"
+mediumUrl: "https://medium.com/@francomangone18/blockchain-101-consensus-revisited-3979b59d71a7"
 ---
 
 > This is part of a larger series of articles about Blockchain. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/blockchain-101/how-it-all-began).

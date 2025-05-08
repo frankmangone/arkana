@@ -6,6 +6,7 @@ thumbnail: "/images/cryptography-101/where-to-start/aaaaa.webp"
 tags: ["cryptography", "groups", "mathematics", "modularArithmetic"]
 description: "A very gentle intro into the world of cryptography"
 readingTime: "6 min"
+mediumUrl: "https://medium.com/@francomangone18/cryptography-101-where-to-start-df7d0791b189"
 ---
 
 I’ll preface this by saying that I’m by no means neither a mathematician, nor an expert in cryptography — I’m just a guy trying to learn the craft on my own.

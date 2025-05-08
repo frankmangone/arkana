@@ -13,6 +13,7 @@ tags:
   ]
 description: "Before moving on into more complex zero knowledge proofs, we need to introduce a new model: arithmetic circuits!"
 readingTime: "9 min"
+mediumUrl: "https://medium.com/@francomangone18/cryptography-101-arithmetic-circuits-351ca87647a9"
 ---
 
 > This is part of a larger series of articles about cryptography. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/cryptography-101/where-to-start).

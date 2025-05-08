@@ -14,6 +14,7 @@ tags:
   ]
 description: "Let’s talk about functions on elliptic curves."
 readingTime: "14 min"
+mediumUrl: "https://medium.com/@francomangone18/elliptic-curves-in-depth-part-4-5d5fb5638347"
 ---
 
 We’ve covered quite a few things up until now, so I believe a quick refresher will prove to be helpful.

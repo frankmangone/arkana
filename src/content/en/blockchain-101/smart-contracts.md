@@ -6,6 +6,7 @@ thumbnail: "/images/blockchain-101/smart-contracts/dump-spongebob.webp"
 tags: ["ethereum", "blockchain", "evm", "solidity", "smartContracts"]
 description: "A peek into the architecture that makes Smart Contracts possible in Ethereum"
 readingTime: "12 min"
+mediumUrl: "https://medium.com/@francomangone18/blockchain-101-smart-contracts-8092253cbdfa"
 ---
 
 > This is part of a larger series of articles about Blockchain. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/blockchain-101/how-it-all-began).

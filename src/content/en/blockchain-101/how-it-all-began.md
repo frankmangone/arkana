@@ -6,6 +6,7 @@ thumbnail: "/images/blockchain-101/how-it-all-began/el-zorro.webp"
 tags: ["blockchain", "bitcoin", "cryptocurrency", "cryptography"]
 description: "We embark on a new journey, where we explore the amazing technology of Blockchains"
 readingTime: "10 min"
+mediumUrl: "https://medium.com/@francomangone18/blockchain-101-how-it-all-began-f78a977cbe5b"
 ---
 
 I was very hesitant to write this first article about Blockchain. Mostly because it's one of those technologies that moves at **light speed**, with innovations popping out of nowhere very frequently. It's a world full of cool and diverse ideas — so it's really hard to do them justice in just a few short articles.

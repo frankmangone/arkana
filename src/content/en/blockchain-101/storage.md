@@ -6,6 +6,7 @@ thumbnail: "/images/blockchain-101/storage/conspiracy.webp"
 tags: ["ethereum", "blockchain", "merkleTree", "patriciaTrie", "dataStructures"]
 description: "Time to look at the machinery behind Ethereum’s storage!"
 readingTime: "11 min"
+mediumUrl: "https://medium.com/@francomangone18/blockchain-101-storage-12d84d0e2c8e"
 ---
 
 > This is part of a larger series of articles about Blockchain. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/blockchain-101/how-it-all-began).

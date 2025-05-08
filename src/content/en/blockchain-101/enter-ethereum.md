@@ -6,6 +6,7 @@ thumbnail: "/images/blockchain-101/enter-ethereum/galaxy-brain.webp"
 tags: ["ethereum", "blockchain", "smartContracts"]
 description: "Time to move on to the second big milestone in Blockchain’s history: Ethereum"
 readingTime: "8 min"
+mediumUrl: "https://medium.com/@francomangone18/blockchain-101-enter-ethereum-e24f5f6453ac"
 ---
 
 > This is part of a larger series of articles about Blockchain. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/blockchain-101/how-it-all-began).

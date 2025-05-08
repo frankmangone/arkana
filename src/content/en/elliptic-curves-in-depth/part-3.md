@@ -6,6 +6,7 @@ thumbnail: "/images/elliptic-curves-in-depth/part-3/hawk.webp"
 tags: ["cryptography", "groups", "mathematics", "ellipticCurves"]
 description: "Time to focus on the most relevant aspect about elliptic curves in cryptography: their group structure."
 readingTime: "10 min"
+mediumUrl: "https://medium.com/@francomangone18/elliptic-curve-in-depth-part-3-7ae583674b4d"
 ---
 
 If we had to define what an elliptic curve is only with what we’ve covered so far, we’d probably say something like:

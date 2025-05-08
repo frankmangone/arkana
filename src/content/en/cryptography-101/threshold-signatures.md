@@ -13,6 +13,7 @@ tags:
   ]
 description: "Combining polynomials and digital signatures brings forth a cool new functionality, in the form of Threshold Signatures!"
 readingTime: "14 min"
+mediumUrl: "https://medium.com/@francomangone18/cryptography-101-threshold-signatures-ac63c412122a"
 ---
 
 > This is part of a larger series of articles about cryptography. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/cryptography-101/where-to-start).

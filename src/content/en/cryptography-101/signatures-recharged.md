@@ -6,6 +6,7 @@ thumbnail: "/images/cryptography-101/signatures-recharged/one-does-not-simply.we
 tags: ["cryptography", "digitalSignatures", "ellipticCurves", "mathematics"]
 description: "A quick look at some slightly more elaborate signature schemes than usual"
 readingTime: "11 min"
+mediumUrl: "https://medium.com/@francomangone18/cryptography-101-signatures-recharged-43a9e0f7e461"
 ---
 
 > This is part of a larger series of articles about cryptography. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/cryptography-101/where-to-start).

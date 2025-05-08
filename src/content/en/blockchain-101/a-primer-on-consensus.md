@@ -6,6 +6,7 @@ thumbnail: "/images/blockchain-101/a-primer-on-consensus/smaug.webp"
 tags: ["blockchain", "bitcoin", "consensus", "proofOfWork", "mining"]
 description: "Let’s shift our focus to how a decentralized system can agree on a single truth: through consensus."
 readingTime: "10 min"
+mediumUrl: "https://medium.com/@francomangone18/blockchain-101-a-primer-on-consensus-505388eaee80"
 ---
 
 > This is part of a larger series of articles about Blockchain. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/blockchain-101/how-it-all-began).

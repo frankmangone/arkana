@@ -14,6 +14,7 @@ tags:
   ]
 description: "Time to build some cryptographic methods out of rings and their associated hard problems"
 readingTime: "14 min"
+mediumUrl: "https://medium.com/thecapital/cryptography-101-post-quantum-cryptography-7983d383db78"
 ---
 
 > This is part of a larger series of articles about cryptography. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/cryptography-101/where-to-start).

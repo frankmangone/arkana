@@ -6,6 +6,7 @@ thumbnail: "/images/cryptography-101/rsa-explained/batman.webp"
 tags: ["cryptography", "rsa", "mathematics", "modularArithmetic"]
 description: "A short explanation on how RSA works"
 readingTime: "6 min"
+mediumUrl: "https://medium.com/@francomangone18/cryptography-101-asides-rsa-explained-7f28fd28659d"
 ---
 
 > This is part of a larger series of articles about cryptography. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/cryptography-101/where-to-start).

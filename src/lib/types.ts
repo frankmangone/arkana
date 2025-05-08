@@ -12,4 +12,5 @@ export interface PostMetadata {
   image?: string;
   description?: string;
   readingTime?: string;
+  mediumUrl?: string;
 }

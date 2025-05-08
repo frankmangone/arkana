@@ -6,6 +6,7 @@ thumbnail: "/images/elliptic-curves-in-depth/part-1/hyperelliptic.webp"
 tags: ["cryptography", "mathematics", "ellipticCurves"]
 description: "A (kinda) gentle intro to elliptic curves"
 readingTime: "12 min"
+mediumUrl: "https://medium.com/@francomangone18/elliptic-curves-in-depth-part-1-a9c2d37bf484"
 ---
 
 Cryptography is always evolving.

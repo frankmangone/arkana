@@ -6,6 +6,7 @@ thumbnail: "/images/blockchain-101/rollups/sonic.webp"
 tags: ["ethereum", "blockchain", "rollup", "dataAvailability"]
 description: "Before we jump into other Blockchain solutions, let’s explore the ecosystem built around Ethereum"
 readingTime: "12 min"
+mediumUrl: "https://medium.com/@francomangone18/blockchain-101-rollups-8da114a51f32"
 ---
 
 > This is part of a larger series of articles about Blockchain. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/blockchain-101/how-it-all-began).

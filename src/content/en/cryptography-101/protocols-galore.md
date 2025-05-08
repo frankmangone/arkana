@@ -13,6 +13,7 @@ tags:
   ]
 description: "A gentle introduction to some very useful schemes: key exchange, commitment schemes, zero-knowledge proofs, verifiable random functions"
 readingTime: "11 min"
+mediumUrl: "https://medium.com/@francomangone18/cryptography-101-protocols-galore-7b858e6a38bf"
 ---
 
 > This is part of a larger series of articles about cryptography. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/cryptography-101/where-to-start).

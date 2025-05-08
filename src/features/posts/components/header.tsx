@@ -6,6 +6,7 @@ import type { Post } from "@/lib/types";
 import { getWriter } from "@/lib/writers";
 import { getDictionary } from "@/lib/dictionaries";
 import { getTagDisplayName } from "@/lib/tags";
+import { ExternalLink } from "lucide-react";
 
 interface PostHeaderProps {
   post: Post;
@@ -55,6 +56,19 @@ export async function PostHeader(props: PostHeaderProps) {
           <div className="text-sm text-muted-foreground">
             {formatDate(metadata.date, lang)} · {metadata.readingTime}{" "}
             {dict.blog.readingTime}
+            {metadata.mediumUrl && (
+              <>
+                {" · "}
+                <a
+                  href={metadata.mediumUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-primary-500 hover:text-primary-600 hover:underline"
+                >
+                  Medium <ExternalLink size={14} />
+                </a>
+              </>
+            )}
           </div>
         </div>
       </div>

@@ -6,6 +6,7 @@ thumbnail: "/images/cryptography-101/zero-knowledge-proofs-part-1/wingardium-lev
 tags: ["cryptography", "zeroKnowledgeProofs", "mathematics", "commitmentScheme"]
 description: "We take a leap into the world of zero-knowledge proofs by exploring one of the many ZKP protocols out there: Bulletproofs"
 readingTime: "14 min"
+mediumUrl: "https://medium.com/@francomangone18/cryptography-101-zero-knowledge-proofs-part-1-53516825479c"
 ---
 
 > This is part of a larger series of articles about cryptography. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/cryptography-101/where-to-start).

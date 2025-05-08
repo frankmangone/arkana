@@ -7,6 +7,7 @@ tags:
   ["cryptography", "zeroKnowledgeProofs", "mathematics", "arithmeticCircuits"]
 description: "Let’s get practical, and build some arithmetic circuits!"
 readingTime: "10 min"
+mediumUrl: "https://medium.com/@francomangone18/cryptography-101-zero-knowledge-proofs-part-3-23eeb501cc6e"
 ---
 
 > This is part of a larger series of articles about cryptography. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/cryptography-101/where-to-start).

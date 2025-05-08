@@ -6,6 +6,7 @@ thumbnail: "/images/cryptography-101/polynomials/parabola-points.webp"
 tags: ["cryptography", "polynomials", "interpolation", "mathematics"]
 description: "Polynomials play an important role in many cryptographic applications. This article is dedicated to giving a brief intro to the topic"
 readingTime: "8 min"
+mediumUrl: "https://medium.com/@francomangone18/cryptography-101-polynomials-c888f31a571e"
 ---
 
 > This is part of a larger series of articles about cryptography. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/cryptography-101/where-to-start).

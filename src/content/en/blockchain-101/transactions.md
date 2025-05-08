@@ -6,6 +6,7 @@ thumbnail: "/images/blockchain-101/transactions/bills.webp"
 tags: ["blockchain", "bitcoin", "transactions", "utxo", "digitalSignatures"]
 description: "Let's focus on the lifeblood of Blockchains early: Transactions!"
 readingTime: "9 min"
+mediumUrl: "https://medium.com/@francomangone18/blockchain-101-transactions-bbbc9e535374"
 ---
 
 > This is part of a larger series of articles about Blockchain. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/blockchain-101/how-it-all-began).

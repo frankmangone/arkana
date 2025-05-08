@@ -6,6 +6,7 @@ thumbnail: "/images/cryptography-101/pairings/what-now.webp"
 tags: ["cryptography", "ellipticCurves", "pairings", "mathematics"]
 description: "A brief introduction to pairings, an important tool in modern cryptography"
 readingTime: "11 min"
+mediumUrl: "https://medium.com/@francomangone18/cryptography-101-pairings-e50520deea6c"
 ---
 
 > This is part of a larger series of articles about cryptography. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/cryptography-101/where-to-start).

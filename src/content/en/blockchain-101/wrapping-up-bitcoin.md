@@ -6,6 +6,7 @@ thumbnail: "/images/blockchain-101/wrapping-up-bitcoin/inception.webp"
 tags: ["blockchain", "bitcoin", "transactions", "consensus"]
 description: "With this fourth article, we finish our brief pass through Bitcoin by looking at a couple missing key points."
 readingTime: "10 min"
+mediumUrl: "https://medium.com/@francomangone18/blockchain-101-wrapping-up-bitcoin-c01cb572021e"
 ---
 
 > This is part of a larger series of articles about Blockchain. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/blockchain-101/how-it-all-began).
