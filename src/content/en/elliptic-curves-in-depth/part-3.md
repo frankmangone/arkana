@@ -214,10 +214,10 @@ Of course, more efficient methods have been developed. One of the most famous al
 
 ---
 
-Another thing to be mindful about when dealing with group size is its **prime factorization**. The size of elliptic curve groups will more often than not be a **composite number** (a.k.a. not prime). This is, the size $#E(\mathbb{F}_p)$ of the group will be:
+Another thing to be mindful about when dealing with group size is its **prime factorization**. The size of elliptic curve groups will more often than not be a **composite number** (a.k.a. not prime). This is, the size $\#E(\mathbb{F}_p)$ of the group will be:
 
 $$
-#E(\mathbb{F}_p) = q = p_1.p_2.p_3...
+\#E(\mathbb{F}_p) = q = p_1.p_2.p_3...
 $$
 
 Where the $p_i$ are prime numbers.
