@@ -21,9 +21,9 @@ export default function WriterPage(props: AuthorPageProps) {
   return (
     <div className="container py-8 max-w-6xl mx-auto">
       <div className="flex flex-col md:flex-row gap-8 items-start mb-12">
-        <div className="relative w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden flex-shrink-0 mx-auto md:mx-0">
+        <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden flex-shrink-0 mx-auto md:mx-0">
           <Image
-            src={`${process.env.NEXT_PUBLIC_BASE_URL ?? ""}${writer.imageUrl}`}
+            src={`${process.env.NEXT_PUBLIC_BASE_URL ?? ""}${writer.avatarUrl}`}
             alt={writer.name}
             fill
             className="object-cover"

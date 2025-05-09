@@ -6,7 +6,7 @@ export const writers: Record<string, Writer> = {
   "frank-mangone": {
     slug: "frank-mangone",
     name: "Frank Mangone",
-    imageUrl: "/images/writers/frank-mangone/full-size.jpg",
+    imageUrl: "/images/writers/frank-mangone/full-size.png",
     avatarUrl: "/images/writers/frank-mangone/avatar.png",
     bio: {
       en: "Creator of Arkana. Passionate about mathematics, cryptography, and computer science.",
