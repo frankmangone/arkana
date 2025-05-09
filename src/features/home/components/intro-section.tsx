@@ -1,4 +1,4 @@
-import ArkanaStrip from "@/components/arkana-strip";
+import { ArkanaStrip } from "@/components/arkana-strip";
 import Link from "next/link";
 
 interface IntroSectionProps {
@@ -20,7 +20,7 @@ export function IntroSection({ lang, dictionary }: IntroSectionProps) {
 
       <ArkanaStrip />
 
-      <div className="flex flex-col sm:flex-row justify-center gap-4">
+      <div className="flex flex-col sm:flex-row justify-center gap-4 mt-12">
         <Link
           href={`/${lang}/writers`}
           className="inline-flex items-center justify-center px-6 py-3 border-2 border-primary-500 text-primary-500 rounded-lg transition-colors hover:bg-[rgba(167,119,255,0.2)]"

@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { createHash } from "crypto";
 import ArkanaPattern from "./arkana-pattern";
+import { useEffect, useState } from "react";
 
 export interface Pattern {
   digit: number;
@@ -30,40 +31,74 @@ export interface Pattern {
   };
 }
 
-const ArkanaStrip = () => {
-  const canvasSize = 55; // Smaller canvas size
+interface ArkanaStripProps {
+  content?: string;
+  randomSeed?: bigint;
+  className?: string;
+}
 
-  // Generate a proper 256-bit random number
-  const generate256BitNumber = () => {
-    // Create an array of 8 32-bit random numbers
-    const randomParts = new Uint32Array(8);
-    for (let i = 0; i < 8; i++) {
-      randomParts[i] = Math.floor(Math.random() * 0xffffffff);
-    }
+export function ArkanaStrip({
+  content,
+  randomSeed,
+  className,
+}: ArkanaStripProps) {
+  const [canvasSize, setCanvasSize] = useState(48);
 
-    // Combine them into a single BigInt
-    let result = BigInt(0);
-    for (let i = 0; i < 8; i++) {
-      result = (result << BigInt(32)) | BigInt(randomParts[i]);
-    }
-    return result;
-  };
-
-  const [randomNumber] = useState(generate256BitNumber());
-  const [patterns, setPatterns] = useState<Pattern[]>([]);
-
-  // Break down the number into digit patterns
   useEffect(() => {
-    // Convert number to binary string and pad to 256 bits
-    const binaryString = randomNumber.toString(2).padStart(256, "0");
+    const updateSize = () => {
+      // Four tiers:
+      // - 48px for large screens (>= 1024px)
+      // - 42px for medium screens (>= 768px)
+      // - 36px for small screens (>= 640px)
+      // - 28px for extra small screens (< 640px)
+      const size =
+        window.innerWidth >= 1024
+          ? 48
+          : window.innerWidth >= 768
+          ? 42
+          : window.innerWidth >= 640
+          ? 36
+          : 28;
+      setCanvasSize(size);
+    };
 
-    // Create pattern for each symbol (12 symbols total)
-    const newPatterns: Pattern[] = [];
+    updateSize();
+    window.addEventListener("resize", updateSize);
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
+
+  // Generate patterns based on content or random seed
+  const generatePatterns = (): Pattern[] => {
+    let binaryString: string;
+
+    if (content) {
+      // Generate SHA-256 hash of the content
+      const hash = createHash("sha256").update(content).digest("hex");
+      binaryString = BigInt("0x" + hash)
+        .toString(2)
+        .padStart(256, "0");
+    } else if (randomSeed) {
+      // Use provided random seed
+      binaryString = randomSeed.toString(2).padStart(256, "0");
+    } else {
+      // Generate a random 256-bit number if neither content nor seed is provided
+      const randomParts = new Uint32Array(8);
+      for (let i = 0; i < 8; i++) {
+        randomParts[i] = Math.floor(Math.random() * 0xffffffff);
+      }
+      let result = BigInt(0);
+      for (let i = 0; i < 8; i++) {
+        result = (result << BigInt(32)) | BigInt(randomParts[i]);
+      }
+      binaryString = result.toString(2).padStart(256, "0");
+    }
+
+    // Create 16 patterns from the 256-bit string
+    const patterns: Pattern[] = [];
     for (let i = 0; i < 16; i++) {
       const startBit = i * 16;
       const symbolBits = binaryString.slice(startBit, startBit + 16);
 
-      // Create a pattern based on the binary representation
       const pattern: Pattern = {
         digit: i,
         elements: {
@@ -87,33 +122,34 @@ const ArkanaStrip = () => {
           bottom_bottom_left_side: symbolBits[12] === "1",
           bottom_left_left_side: symbolBits[13] === "1",
 
-          // Central diamond
           central_diagonal_1: symbolBits[14] === "1",
           central_diagonal_2: symbolBits[15] === "1",
         },
       };
 
-      newPatterns.push(pattern);
+      patterns.push(pattern);
     }
 
-    setPatterns(newPatterns);
-  }, [randomNumber]);
+    return patterns;
+  };
+
+  const patterns = generatePatterns();
 
   return (
-    <div className="flex flex-col items-center justify-center mb-12">
-      <div className="flex flex-wrap justify-center min-h-[55px]">
-        {patterns.map((pattern, index) => (
-          <ArkanaPattern
-            key={index}
-            elements={pattern.elements}
-            canvasSize={canvasSize}
-            lineColor="#a777ff"
-            backgroundColor="transparent"
-          />
-        ))}
-      </div>
+    <div
+      className={`flex flex-wrap justify-center min-h-[28px] sm:min-h-[36px] md:min-h-[42px] lg:min-h-[48px] my-4 ${
+        className ?? ""
+      }`}
+    >
+      {patterns.map((pattern, index) => (
+        <ArkanaPattern
+          key={index}
+          elements={pattern.elements}
+          canvasSize={canvasSize}
+          lineColor="#a777ff"
+          backgroundColor="transparent"
+        />
+      ))}
     </div>
   );
-};
-
-export default ArkanaStrip;
+}
