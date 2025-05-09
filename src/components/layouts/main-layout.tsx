@@ -32,32 +32,30 @@ export const MainLayout = async (props: MainLayoutProps) => {
       <div className="relative min-h-screen">
         <header className="border-b">
           <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-6xl flex items-center justify-between py-4">
-            <div className="flex items-center space-x-6">
-              <Link
-                href={homeUrl}
-                className="text-2xl font-bold text-primary-500 transition-colors"
-              >
-                Arkana
-              </Link>
+            <Link
+              href={homeUrl}
+              className="text-2xl font-bold text-primary-500 transition-colors"
+            >
+              Arkana
+            </Link>
 
+            <div className="flex items-center">
               {/* Desktop navigation */}
-              <div className="hidden md:flex items-center space-x-6 ml-4 mt-1">
+              <div className="hidden md:flex items-center">
                 <Link
                   href={readingListsUrl}
-                  className="nav-bar hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500 transition-colors"
+                  className="px-4 py-2 inline-flex cursor-pointer items-center justify-center rounded-md text-base font-medium ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:text-gray-300 dark:hover:text-primary-500"
                 >
                   {dict.readingLists.list.title}
                 </Link>
                 <Link
                   href={writersUrl}
-                  className="nav-bar hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500 transition-colors"
+                  className="px-4 py-2 inline-flex cursor-pointer items-center justify-center rounded-md text-base font-medium ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:text-gray-300 dark:hover:text-primary-500"
                 >
                   {dict.writers.title}
                 </Link>
               </div>
-            </div>
 
-            <div className="flex items-center space-x-4">
               <LanguageSwitcher />
 
               {/* Mobile hamburger menu */}

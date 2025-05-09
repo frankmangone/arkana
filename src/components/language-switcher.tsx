@@ -34,7 +34,10 @@ export function LanguageSwitcher() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="sm" className="flex items-center gap-1">
+        <Button
+          variant="ghost"
+          className="flex cursor-pointer items-center gap-1 text-base hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500"
+        >
           <Globe className="h-4 w-4" />
           <span className="hidden sm:inline">
             {languageNames[currentLocale as keyof typeof languageNames]}

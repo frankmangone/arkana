@@ -1,0 +1,33 @@
+<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="60" height="60" fill="transparent"/>
+  
+  <!-- Set stroke properties -->
+  <g stroke="#8041f4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- Main lines -->
+    <line x1="0" y1="30" x2="15" y2="30"/>  <!-- left -->
+    <line x1="45" y1="30" x2="60" y2="30"/> <!-- right -->
+    <line x1="30" y1="0" x2="30" y2="15"/>  <!-- top -->
+    <line x1="30" y1="45" x2="30" y2="60"/> <!-- bottom -->
+    
+    <!-- Rays -->
+    <line x1="22.5" y1="22.5" x2="11.25" y2="11.25"/> <!-- top_left_ray -->
+    <line x1="22.5" y1="37.5" x2="11.25" y2="48.75"/> <!-- top_right_ray -->
+    <line x1="37.5" y1="22.5" x2="48.75" y2="11.25"/> <!-- bottom_left_ray -->
+    <line x1="37.5" y1="37.5" x2="48.75" y2="48.75"/> <!-- bottom_right_ray -->
+    
+    <!-- Side connections -->
+    <line x1="15" y1="30" x2="22.5" y2="22.5"/> <!-- top_left_left_side -->
+    <line x1="22.5" y1="22.5" x2="30" y2="15"/> <!-- top_top_left_side -->
+    <line x1="37.5" y1="22.5" x2="30" y2="15"/> <!-- top_top_right_side -->
+    <line x1="45" y1="30" x2="37.5" y2="22.5"/> <!-- top_right_right_side -->
+    
+    <line x1="15" y1="30" x2="22.5" y2="37.5"/> <!-- bottom_right_right_side -->
+    <line x1="22.5" y1="37.5" x2="30" y2="45"/> <!-- bottom_bottom_right_side -->
+    <line x1="37.5" y1="37.5" x2="30" y2="45"/> <!-- bottom_bottom_left_side -->
+    <line x1="45" y1="30" x2="37.5" y2="37.5"/> <!-- bottom_left_left_side -->
+    
+    <!-- Central diamond (filled) -->
+    <path d="M 30 26.25 L 26.25 30 L 30 33.75 L 33.75 30 Z" fill="#8041f4"/>
+  </g>
+</svg>

@@ -7,6 +7,7 @@ import { getWriter } from "@/lib/writers";
 import { getDictionary } from "@/lib/dictionaries";
 import { getTagDisplayName } from "@/lib/tags";
 import { ExternalLink } from "lucide-react";
+import { ArkanaStrip } from "./arkana-strip";
 
 interface PostHeaderProps {
   post: Post;
@@ -72,6 +73,8 @@ export async function PostHeader(props: PostHeaderProps) {
           </div>
         </div>
       </div>
+
+      <ArkanaStrip content={post.content} />
     </div>
   );
 }
