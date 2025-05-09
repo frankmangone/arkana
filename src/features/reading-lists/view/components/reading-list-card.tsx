@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getTagDisplayName } from "@/lib/tags";
+import { Badge } from "@/components/ui/badge";
 
 interface ReadingListCardProps {
   // TODO: Improve this typing
@@ -29,27 +30,29 @@ export function ReadingListCard(props: ReadingListCardProps) {
   return (
     <div className="border rounded-lg overflow-hidden transition-all bg-background hover:shadow-md mb-4">
       <div className="flex">
-        {/* Left side: Number and Thumbnail */}
-        <div className="flex-shrink-0 w-[160px] relative">
-          <div className="absolute top-2 left-2 w-8 h-8 bg-primary-900 text-primary-300 rounded-full flex items-center justify-center text-sm font-bold z-10">
-            {index + 1}
-          </div>
-          <div className="w-[160px] h-full relative">
+        {/* Left side: Thumbnail */}
+        <div className="flex-shrink-0 w-[220px] relative">
+          <div className="w-[220px] h-full relative">
             <Image
               src={imageSrc}
               alt={title}
               fill
               className="object-cover bg-white"
-              sizes="160px"
+              sizes="220px"
             />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent to-background opacity-100 transition-opacity" />
           </div>
         </div>
 
         {/* Right side: Content */}
-        <div className="flex-1 p-4">
+        <div className="flex-1 p-4 relative">
+          <div className="absolute top-4 right-4 w-8 h-8 text-primary-400 rounded-full flex items-center justify-center text-md font-bold shadow-sm">
+            {index + 1}
+          </div>
+
           <Link
             href={`/${lang}/blog/${item.slug}`}
-            className="text-lg font-semibold text-primary-500 hover:text-primary-600 line-clamp-2 mb-1"
+            className="text-lg font-semibold text-primary-500 hover:text-primary-600 line-clamp-2 mb-1 pr-12"
           >
             {title}
           </Link>
@@ -63,19 +66,11 @@ export function ReadingListCard(props: ReadingListCardProps) {
           </p>
 
           <div className="flex flex-wrap gap-1">
-            {tags.slice(0, 3).map((tag: string) => (
-              <span
-                key={tag}
-                className="text-xs bg-secondary text-secondary-foreground px-2 py-0.5 rounded-full"
-              >
+            {tags.map((tag: string) => (
+              <Badge key={tag} variant="secondary">
                 {getTagDisplayName(tag, lang)}
-              </span>
+              </Badge>
             ))}
-            {tags.length > 3 && (
-              <span className="text-xs text-muted-foreground px-1">
-                +{tags.length - 3}
-              </span>
-            )}
           </div>
         </div>
       </div>

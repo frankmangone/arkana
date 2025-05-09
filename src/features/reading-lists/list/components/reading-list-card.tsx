@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ReadingList } from "@/lib/reading-lists";
+import { cn } from "@/lib/utils";
 
 interface ReadingListCardProps {
   list: ReadingList;
@@ -21,21 +22,24 @@ export function ReadingListCard(props: ReadingListCardProps) {
       <div className="border rounded-lg overflow-hidden transition-all duration-300 bg-background group-hover:shadow-md">
         <div className="relative h-48 w-full bg-gray-100 dark:bg-gray-800">
           {list.coverImage ? (
-            <Image
-              src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${
-                list.coverImage
-              }`}
-              alt={list.title}
-              fill
-              className="object-cover"
-            />
+            <>
+              <Image
+                src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${
+                  list.coverImage
+                }`}
+                alt={list.title}
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background opacity-100 transition-opacity" />
+            </>
           ) : (
             <div className="flex items-center justify-center h-full text-gray-400">
               <span className="text-xl">No image</span>
             </div>
           )}
         </div>
-        <div className="p-6">
+        <div className={cn("p-6", list.coverImage && "-mt-8 relative z-10")}>
           <div className="flex items-start justify-between mb-2">
             <h2 className="text-xl font-semibold text-primary-500 group-hover:text-primary-600">
               {list.title}

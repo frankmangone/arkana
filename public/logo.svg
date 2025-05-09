@@ -3,7 +3,7 @@
   <rect width="60" height="60" fill="transparent"/>
   
   <!-- Set stroke properties -->
-  <g stroke="#8041f4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+  <g stroke="#a777ff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
     <!-- Main lines -->
     <line x1="0" y1="30" x2="15" y2="30"/>  <!-- left -->
     <line x1="45" y1="30" x2="60" y2="30"/> <!-- right -->
@@ -28,6 +28,6 @@
     <line x1="45" y1="30" x2="37.5" y2="37.5"/> <!-- bottom_left_left_side -->
     
     <!-- Central diamond (filled) -->
-    <path d="M 30 26.25 L 26.25 30 L 30 33.75 L 33.75 30 Z" fill="#8041f4"/>
+    <path d="M 30 26.25 L 26.25 30 L 30 33.75 L 33.75 30 Z" fill="#a777ff" />
   </g>
 </svg>

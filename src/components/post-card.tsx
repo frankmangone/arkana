@@ -3,6 +3,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { PostPreview } from "@/lib/posts";
 import { getTagDisplayName } from "@/lib/tags";
+import { Badge } from "@/components/ui/badge";
 
 interface PostCardProps {
   article: PostPreview;
@@ -58,9 +59,9 @@ export function PostCard({ article, lang, number }: PostCardProps) {
         </p>
         <div className="flex flex-wrap gap-2">
           {article.tags.map((tag) => (
-            <span key={tag} className="bg-muted px-2 py-1 rounded text-sm">
+            <Badge key={tag} variant="secondary">
               {getTagDisplayName(tag, lang)}
-            </span>
+            </Badge>
           ))}
         </div>
       </div>

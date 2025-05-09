@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { LanguageSwitcher } from "../language-switcher";
 import { getDictionary } from "@/lib/dictionaries";
 import { Button } from "@/components/ui/button";
@@ -34,9 +35,16 @@ export const MainLayout = async (props: MainLayoutProps) => {
           <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-6xl flex items-center justify-between py-4">
             <Link
               href={homeUrl}
-              className="text-2xl font-bold text-primary-500 transition-colors"
+              className="flex items-center gap-2 text-2xl text-primary-500 transition-colors"
             >
-              Arkana
+              <Image
+                src="/logo.svg"
+                alt="Arkana Logo"
+                width={32}
+                height={32}
+                className="h-8 w-8"
+              />
+              arkana
             </Link>
 
             <div className="flex items-center">
