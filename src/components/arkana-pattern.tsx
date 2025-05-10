@@ -78,6 +78,9 @@ const ArkanaPattern: React.FC<ArkanaPatternProps> = ({
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
+    // Clear the canvas before drawing
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
     // Clear canvas and set background
     ctx.fillStyle = backgroundColor;
     ctx.fillRect(0, 0, canvasSize, canvasSize);
