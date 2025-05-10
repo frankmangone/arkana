@@ -74,10 +74,10 @@ export async function HomePage(props: HomePageProps) {
   const latestPosts = await getLatestPosts(lang);
 
   return (
-    <div className="container py-8 space-y-12">
+    <>
       <IntroSection lang={lang} dictionary={dict} />
       <LatestArticles lang={lang} latestPosts={latestPosts} dictionary={dict} />
       {/* <FeaturedPosts lang={lang} dictionary={dict} /> */}
-    </div>
+    </>
   );
 }

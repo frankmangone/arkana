@@ -1,7 +1,7 @@
 import { HomePage } from "@/features/home";
 import fs from "fs/promises";
 import path from "path";
-import { MainLayout } from "@/components/layouts/main-layout";
+import { HomeLayout } from "@/components/layouts/home-layout";
 
 interface HomeParams {
   lang: string;
@@ -38,8 +38,8 @@ export default async function Home(props: HomeProps) {
   const { lang } = await props.params;
 
   return (
-    <MainLayout lang={lang}>
+    <HomeLayout lang={lang}>
       <HomePage lang={lang} />
-    </MainLayout>
+    </HomeLayout>
   );
 }

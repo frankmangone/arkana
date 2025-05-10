@@ -12,7 +12,8 @@
     "intro": {
       "title": "Welcome to Arkana",
       "meetWriters": "Meet the Writers",
-      "description": "Exploring the intersection of mathematics, computer science, and cryptography through clear, insightful articles. Join our community of writers in this journey of discovery.",
+      "descriptionBig": "Explore complex abstract topics like never before",
+      "descriptionSmall": "Discover the secrets of mathematics, cryptography, computer science, and much more, with the guidance of fun and engaging articles carefully crafted by our community of writers.",
       "exploreReadingLists": "Explore Reading Lists"
     }
   },

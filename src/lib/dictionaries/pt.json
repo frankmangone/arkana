@@ -11,7 +11,8 @@
     },
     "intro": {
       "title": "Bem-vindo à Arkana",
-      "description": "Explorando a interseção entre matemática, ciência da computação e criptografia através de artigos claros e perspicazes. Junte-se à nossa comunidade de escritores nesta jornada de descoberta.",
+      "descriptionBig": "Explore temas complexos e abstratos como nunca antes",
+      "descriptionSmall": "Descubra os segredos da matemática, criptografia, ciência da computação e muito mais, com a orientação de artigos divertidos e envolventes cuidadosamente criados por nossa comunidade de escritores.",
       "meetWriters": "Conheça os Escritores",
       "exploreReadingLists": "Explorar Listas de Leitura"
     }
