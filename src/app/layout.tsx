@@ -13,7 +13,7 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   title: "Arkana | Home",
-  description: "The place to where complex topics are simplified",
+  description: "Where technology meets clarity",
   icons: {
     icon: "/logo.svg",
     shortcut: "/logo.svg",

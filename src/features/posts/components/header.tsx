@@ -23,14 +23,17 @@ export async function PostHeader(props: PostHeaderProps) {
   return (
     <div className="mb-8 space-y-6">
       <div className="space-y-2">
-        <div className="flex flex-wrap gap-2">
+        <h1 className="text-4xl mb-6 font-bold">{metadata.title}</h1>
+
+        <ArkanaStrip content={post.content} />
+
+        <div className="flex flex-wrap gap-2 mt-6">
           {metadata.tags.map((tag) => (
             <Link key={tag} href={`/${lang}/blog?tag=${tag}`}>
               <Badge variant="secondary">{getTagDisplayName(tag, lang)}</Badge>
             </Link>
           ))}
         </div>
-        <h1 className="text-4xl font-bold">{metadata.title}</h1>
       </div>
 
       <div className="flex items-center gap-4">
@@ -73,8 +76,6 @@ export async function PostHeader(props: PostHeaderProps) {
           </div>
         </div>
       </div>
-
-      <ArkanaStrip content={post.content} />
     </div>
   );
 }

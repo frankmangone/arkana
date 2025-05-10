@@ -29,22 +29,22 @@ export function ReadingListCard(props: ReadingListCardProps) {
 
   return (
     <div className="border rounded-lg overflow-hidden transition-all bg-background hover:shadow-md mb-4">
-      <div className="flex">
-        {/* Left side: Thumbnail */}
-        <div className="flex-shrink-0 w-[220px] relative">
-          <div className="w-[220px] h-full relative">
+      <div className="flex flex-col sm:flex-row">
+        {/* Thumbnail - full width on mobile, fixed width on desktop */}
+        <div className="w-full sm:w-[220px] relative">
+          <div className="w-full h-[200px] sm:h-full relative">
             <Image
               src={imageSrc}
               alt={title}
               fill
               className="object-cover bg-white"
-              sizes="220px"
+              sizes="(max-width: 640px) 100vw, 220px"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent to-background opacity-100 transition-opacity" />
+            <div className="absolute inset-0 bg-gradient-to-b sm:bg-gradient-to-r from-transparent to-background opacity-100 transition-opacity" />
           </div>
         </div>
 
-        {/* Right side: Content */}
+        {/* Content */}
         <div className="flex-1 p-4 relative">
           <div className="absolute top-4 right-4 w-8 h-8 text-primary-400 rounded-full flex items-center justify-center text-md font-bold shadow-sm">
             {index + 1}

@@ -4,7 +4,7 @@ import { PostPreview } from "@/lib/posts";
 import { Separator } from "@radix-ui/react-dropdown-menu";
 import Image from "next/image";
 import { WriterArticles } from "@/features/writers/view/components/writer-articles";
-import { ArkanaStrip } from "@/components/arkana-strip";
+import { WriterArkanaStrip } from "@/features/writers/view/components/writer-arkana-strip";
 
 interface AuthorPageProps {
   lang: string;
@@ -33,7 +33,13 @@ export default function WriterPage(props: AuthorPageProps) {
         </div>
 
         <div className="flex-1 text-center md:text-left">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">{writer.name}</h1>
+          <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 mb-4">
+            <h1 className="text-3xl md:text-4xl font-bold">{writer.name}</h1>
+            <WriterArkanaStrip
+              content={writer.name}
+              className="flex-shrink-0"
+            />
+          </div>
 
           <div className="text-muted-foreground mb-6">
             <p className="mb-4">{writer.bio?.[lang]}</p>
@@ -42,8 +48,6 @@ export default function WriterPage(props: AuthorPageProps) {
           <SocialLinks author={writer} />
         </div>
       </div>
-
-      <ArkanaStrip content={writer.name} />
 
       <Separator className="my-8" />
 
