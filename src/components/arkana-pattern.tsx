@@ -118,7 +118,7 @@ const ArkanaPattern: React.FC<ArkanaPatternProps> = ({
       drawLine(ctx, 12, 8, 10, 10, canvasSize);
 
     // Draw central diamond
-    if (!elements.central_diagonal_1 && !elements.central_diagonal_2) {
+    if (elements.central_diagonal_1 && elements.central_diagonal_2) {
       drawFilledPolygon(
         ctx,
         [
@@ -133,11 +133,11 @@ const ArkanaPattern: React.FC<ArkanaPatternProps> = ({
       return;
     }
 
-    if (elements.central_diagonal_1) {
+    if (!elements.central_diagonal_1) {
       drawLine(ctx, 6, 6, 10, 10, canvasSize);
     }
 
-    if (elements.central_diagonal_2) {
+    if (!elements.central_diagonal_2) {
       drawLine(ctx, 10, 6, 6, 10, canvasSize);
     }
   }, [elements, canvasSize, lineWidth, lineColor, backgroundColor]);

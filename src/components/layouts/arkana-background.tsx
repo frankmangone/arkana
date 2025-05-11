@@ -21,8 +21,8 @@ export function ArkanaBackground() {
   const patterns = React.useMemo(
     () =>
       Array.from({ length: gridCols * gridRows }, () => ({
-        left: Math.random() > 0.5,
-        right: Math.random() > 0.5,
+        left: true,
+        right: true,
         top: Math.random() > 0.5,
         bottom: Math.random() > 0.5,
         top_left_ray: Math.random() > 0.5,
