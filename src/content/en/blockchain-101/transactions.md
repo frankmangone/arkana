@@ -21,7 +21,7 @@ Off we go!
 
 ---
 
-# Building a Transaction
+## Building a Transaction
 
 Transactions in Bitcoin are quite simple to understand. Again, it's a cash system — so transactions only **move money** from **A** to **B**.
 
@@ -59,7 +59,7 @@ So how does Alice tell the Blockchain that she wants to send a coin specifically
   />
 </figure>
 
-## Private and Public Keys
+### Private and Public Keys
 
 We've already discussed how a sender needs to **give consent** for a transaction to happen — Bob cannot force Alice to send her any money.
 
@@ -95,7 +95,7 @@ In short:
 
 > Identity on the Blockchain is given by public keys, which are a reflection of private keys, which in turn are the gadget that allows users to sign their own transactions.
 
-## Addresses and Wallets
+### Addresses and Wallets
 
 Often times, we don't talk about private and public keys. More commonly, the terms we use are **addresses** and **wallets**. Let's talk about those!
 
@@ -126,7 +126,7 @@ But wait… We were just sending a single coin, right? What if we want to send m
 
 ---
 
-# Modeling Money
+## Modeling Money
 
 Transferring a **single coin** was an intentional gimmick for us to focus on transaction signatures.
 
@@ -147,7 +147,7 @@ This approach is known as the **account-based model**, where each account has a 
 
 Bitcoin went a bit rouge on this one, and has a different model for cash. It uses something called the **Unspent Transaction Outputs** model, or **UTXO** for short. It's a little weird — so let's try to understand it through analogy.
 
-## Unspent Transaction Outputs
+### Unspent Transaction Outputs
 
 When you spend money in the physical world, you typically use **bills**. You know, these guys:
 
@@ -200,11 +200,11 @@ then this mechanism is **completely valid**! And you know what? This **box** is 
 
 > I hope you can appreciate why the fancy name — you can only spend bills that are the output of some transaction, so they are Unspent Transaction Outputs!
 
-## UTXO vs Accounts
+### UTXO vs Accounts
 
 At this point, it's only fair to ask **why the heck we'd use this model**. Don't worry, we've all been there.
 
-One reason is that in account-based models (such as your local bank), **order matters**. If you have a balance of **100**, and you try to pay **80** to Alice and **40** to Bob, one of those transactions **will fail**. It's important to keep track of which transaction the Blockchain should **process first**.
+One reason is that in account-based models (such as your local bank), **order matters**. If you have a balance of $100$, and you try to pay $80$ to Alice and $40$ to Bob, one of those transactions **will fail**. It's important to keep track of which transaction the Blockchain should **process first**.
 
 > Blockchains such as [Ethereum](/en/blog/blockchain-101/enter-ethereum) **do need** to keep track of the order of transactions.
 
@@ -216,7 +216,7 @@ Other differences include statelessness and fine-grained transaction control, bu
 
 ---
 
-# Summary
+## Summary
 
 In this installment, we learned how users are identified in the network, and how transactions should be formulated. Neat!
 

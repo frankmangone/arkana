@@ -13,11 +13,11 @@ export function HomeLayout({ children, lang }: HomeLayoutProps) {
     <>
       <ArkanaBackground />
       <Navbar lang={lang} />
-      <div className="hidden lg:block absolute top-10 xl:top-0 right-0 h-full flex items-center justify-end pointer-events-none z-0 ml-[200px]">
+      <div className="hidden lg:block absolute top-10 xl:top-0 right-0 h-full flex items-center justify-end pointer-events-none z-0 mt-[150px] ml-[200px]">
         <Image
           src="/render.png"
           alt="Arkana 3D Logo"
-          width={1400}
+          width={1100}
           height={400}
           className="drop-shadow-2xl select-none"
           priority

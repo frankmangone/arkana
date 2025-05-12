@@ -120,6 +120,10 @@ export const readingLists: ReadingList[] = [
         slug: "blockchain-101/how-it-all-began",
         order: 1,
       },
+      {
+        slug: "blockchain-101/transactions",
+        order: 2,
+      },
     ],
   },
 ];
