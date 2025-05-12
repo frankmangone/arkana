@@ -1,5 +1,5 @@
 ---
-title: "Blockchain 101: Cerrando el Capítulo de Bitcoin"
+title: "Blockchain 101: Redondeando de Bitcoin"
 date: "2024-10-15"
 author: "frank-mangone"
 thumbnail: "/images/blockchain-101/wrapping-up-bitcoin/inception.webp"
