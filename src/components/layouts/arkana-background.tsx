@@ -10,8 +10,11 @@ export function ArkanaBackground() {
     function updateGrid() {
       const width = window.innerWidth;
       const height = window.innerHeight;
-      setGridCols(Math.max(8, Math.floor(width / 70)));
-      setGridRows(Math.max(6, Math.floor(height / 90)));
+
+      const widthFraction = 3 / 5;
+
+      setGridCols(Math.max(6, Math.floor((width * widthFraction) / 60)));
+      setGridRows(Math.max(14, Math.floor(height / 80)));
     }
     updateGrid();
     window.addEventListener("resize", updateGrid);
@@ -44,7 +47,7 @@ export function ArkanaBackground() {
   );
 
   return (
-    <div className="absolute top-0 left-0 min-h-screen w-full overflow-hidden flex flex-col items-center">
+    <div className="absolute top-0 right-0 min-h-screen w-3/5 overflow-hidden flex flex-col items-center">
       <div
         className="grid w-full h-full"
         style={{

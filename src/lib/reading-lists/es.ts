@@ -124,6 +124,26 @@ export const readingLists: ReadingList[] = [
         slug: "blockchain-101/transactions",
         order: 2,
       },
+      {
+        slug: "blockchain-101/a-primer-on-consensus",
+        order: 3,
+      },
+      {
+        slug: "blockchain-101/wrapping-up-bitcoin",
+        order: 4,
+      },
+      {
+        slug: "blockchain-101/enter-ethereum",
+        order: 5,
+      },
+      {
+        slug: "blockchain-101/storage",
+        order: 6,
+      },
+      {
+        slug: "blockchain-101/smart-contracts",
+        order: 7,
+      },
     ],
   },
 ];
