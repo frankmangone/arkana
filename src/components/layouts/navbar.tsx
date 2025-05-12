@@ -10,13 +10,15 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Menu } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface NavbarProps {
   lang: string;
+  containerClassName?: string;
 }
 
 export const Navbar = async (props: NavbarProps) => {
-  const { lang } = props;
+  const { lang, containerClassName } = props;
 
   const dict = await getDictionary(lang);
 
@@ -26,7 +28,12 @@ export const Navbar = async (props: NavbarProps) => {
 
   return (
     <header className="relative z-10b">
-      <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-6xl flex items-center justify-between py-4">
+      <div
+        className={cn(
+          "container mx-auto px-4 md:px-6 lg:px-8 max-w-6xl flex items-center justify-between py-4",
+          containerClassName
+        )}
+      >
         <Link
           href={homeUrl}
           className="flex items-center gap-2 text-2xl text-primary-500 transition-colors"
@@ -64,19 +71,29 @@ export const Navbar = async (props: NavbarProps) => {
           <div className="md:hidden">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <Menu className="h-5 w-5" />
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-[50px] px-6 cursor-pointer"
+                >
+                  <Menu className="h-7 w-7" />
                   <span className="sr-only">Toggle menu</span>
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-48">
+              <DropdownMenuContent align="end" className="w-56">
                 <DropdownMenuItem asChild>
-                  <Link href={readingListsUrl} className="w-full">
+                  <Link
+                    href={readingListsUrl}
+                    className="w-full cursor-pointer py-3 text-base"
+                  >
                     {dict.readingLists.list.title}
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href={writersUrl} className="w-full">
+                  <Link
+                    href={writersUrl}
+                    className="w-full cursor-pointer py-3 text-base"
+                  >
                     {dict.writers.title}
                   </Link>
                 </DropdownMenuItem>

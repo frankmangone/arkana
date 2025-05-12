@@ -12,7 +12,7 @@ export function HomeLayout({ children, lang }: HomeLayoutProps) {
   return (
     <>
       <ArkanaBackground />
-      <Navbar lang={lang} />
+      <Navbar lang={lang} containerClassName="max-w-8xl" />
       <div className="hidden lg:block absolute top-10 xl:top-0 right-0 h-full flex items-center justify-end pointer-events-none z-0 mt-[150px] ml-[200px]">
         <Image
           src="/render.png"

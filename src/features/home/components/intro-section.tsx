@@ -9,7 +9,7 @@ interface IntroSectionProps {
 export function IntroSection({ lang, dictionary }: IntroSectionProps) {
   return (
     <section className="w-full min-h-[50vh] flex flex-col md:min-h-[70vh] md:flex-row mx-auto items-center">
-      <div className="z-10 flex-1 flex flex-col justify-center px-6 py-6 md:py-12 md:py-24 bg-transparent text-left w-full md:max-w-6/10 md:text-left xl:max-w-4/10">
+      <div className="z-10 flex-1 flex flex-col justify-center px-6 py-6 md:py-12 md:px-0 bg-transparent text-left w-full md:max-w-6/10 md:text-left xl:max-w-4/10">
         <h1 className="text-4xl md:text-5xl mb-6 text-white">
           {dictionary.home.intro.descriptionBig}
         </h1>

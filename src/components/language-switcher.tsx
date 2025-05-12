@@ -36,20 +36,22 @@ export function LanguageSwitcher() {
       <DropdownMenuTrigger asChild>
         <Button
           variant="ghost"
-          className="h-[40px] py-2 px-4 flex cursor-pointer items-center gap-1 text-base hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500"
+          className="h-[50px] py-2 px-6 flex cursor-pointer items-center gap-1 text-base hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500"
         >
-          <Globe className="h-4 w-4" />
+          <Globe className="h-7 w-7 sm:h-6 sm:w-6" />
           <span className="hidden sm:inline">
             {languageNames[currentLocale as keyof typeof languageNames]}
           </span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
+      <DropdownMenuContent align="end" className="min-w-[160px]">
         {languages.map((locale) => (
           <DropdownMenuItem
             key={locale}
             onClick={() => switchLanguage(locale)}
-            className={locale === currentLocale ? "bg-muted" : ""}
+            className={`${
+              locale === currentLocale ? "bg-muted" : ""
+            } cursor-pointer py-3 text-base`}
           >
             {languageNames[locale as keyof typeof languageNames]}
           </DropdownMenuItem>
