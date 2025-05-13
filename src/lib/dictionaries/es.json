@@ -9,6 +9,10 @@
       "title": "Publicaciones Destacadas",
       "viewAll": "Ver todas las publicaciones"
     },
+    "recentPosts": {
+      "title": "Publicaciones recientes",
+      "description": "Explora los últimos artículos y tutoriales de nuestro equipo"
+    },
     "intro": {
       "title": "Bienvenido a Arkana",
       "descriptionBig": "Explora temas complejos y abstractos como nunca antes",

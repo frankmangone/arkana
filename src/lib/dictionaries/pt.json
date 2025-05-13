@@ -9,6 +9,10 @@
       "title": "Postagens em Destaque",
       "viewAll": "Ver todas as postagens"
     },
+    "recentPosts": {
+      "title": "Postagens recentes",
+      "description": "Explore as últimas dicas e tutoriais da nossa equipe"
+    },
     "intro": {
       "title": "Bem-vindo à Arkana",
       "descriptionBig": "Explore temas complexos e abstratos como nunca antes",

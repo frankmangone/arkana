@@ -67,7 +67,7 @@ export function ReadingListCard(props: ReadingListCardProps) {
 
           <div className="flex flex-wrap gap-1">
             {tags.map((tag: string) => (
-              <Badge key={tag} variant="secondary">
+              <Badge key={tag} variant="outline">
                 {getTagDisplayName(tag, lang)}
               </Badge>
             ))}

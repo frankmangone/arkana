@@ -12,7 +12,7 @@ interface HomePageProps {
 }
 
 // Function to get latest posts for a specific language
-async function getLatestPosts(lang: string, limit = 6): Promise<PostPreview[]> {
+async function getLatestPosts(lang: string, limit = 4): Promise<PostPreview[]> {
   const contentPath = path.join(process.cwd(), "src", "content", lang);
   const allPosts: PostPreview[] = [];
 

@@ -23,9 +23,7 @@ export function HomeLayout({ children, lang }: HomeLayoutProps) {
           priority
         />
       </div>
-      <main className="container z-10 mx-auto px-4 py-8 md:px-6 lg:px-8 max-w-8xl">
-        {children}
-      </main>
+      <main className="relative z-10">{children}</main>
     </>
   );
 }

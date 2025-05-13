@@ -9,6 +9,10 @@
       "title": "Featured Posts",
       "viewAll": "View all posts"
     },
+    "recentPosts": {
+      "title": "Recent blog posts",
+      "description": "Explore the latest insights and tutorials from our team"
+    },
     "intro": {
       "title": "Welcome to Arkana",
       "meetWriters": "Meet the Writers",

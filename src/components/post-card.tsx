@@ -1,70 +1,103 @@
 import Image from "next/image";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
 import { PostPreview } from "@/lib/posts";
 import { getTagDisplayName } from "@/lib/tags";
 import { Badge } from "@/components/ui/badge";
+import { ArrowUpRight } from "lucide-react";
 
 interface PostCardProps {
-  article: PostPreview;
+  post: PostPreview;
   lang: string;
-  number?: number;
+  variant?: "default" | "large";
 }
 
-export function PostCard({ article, lang, number }: PostCardProps) {
+export function PostCard({ post, lang, variant = "default" }: PostCardProps) {
+  const isLarge = variant === "large";
+
   return (
-    <div
-      key={article.slug}
-      className="relative border rounded-lg overflow-hidden hover:shadow-md bg-background transition-shadow group"
-    >
-      {/* Optional number display */}
-      {number !== undefined && (
-        <div className="absolute top-4 left-4 z-20 w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-bold shadow-md">
-          {number}
-        </div>
-      )}
-
-      {/* Image with gradient overlay */}
-      {article.thumbnail && (
-        <div className="relative h-48 w-full">
-          <Image
-            src={
-              `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${
-                article.thumbnail
-              }` || "/placeholder.svg"
-            }
-            alt={article.title}
-            fill
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background opacity-100 transition-opacity" />
-        </div>
-      )}
-
-      {/* Content */}
-      <div className={cn("p-6", article.thumbnail && "-mt-8 relative z-10")}>
-        <p className="text-sm text-muted-foreground mb-2">
-          {new Date(article.date).toLocaleDateString()} • {article.readingTime}
-        </p>
-        <h3 className="text-xl font-semibold mb-2">
-          <Link
-            href={`/${lang}/blog/${article.slug}`}
-            className="text-primary-500 hover:text-primary-600 transition-colors"
-          >
-            {article.title}
-          </Link>
-        </h3>
-        <p className="text-muted-foreground mb-4 line-clamp-2">
-          {article.description}
-        </p>
-        <div className="flex flex-wrap gap-2">
-          {article.tags.map((tag) => (
-            <Badge key={tag} variant="secondary">
-              {getTagDisplayName(tag, lang)}
-            </Badge>
-          ))}
-        </div>
-      </div>
+    <div className="group">
+      <Link href={`/${lang}/blog/${post.slug}`} className="block">
+        {isLarge ? (
+          <>
+            <div className="relative h-80 mb-4 overflow-hidden">
+              <Image
+                src={
+                  `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${
+                    post.thumbnail
+                  }` || "/placeholder.svg"
+                }
+                alt={post.title}
+                fill
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+            </div>
+            <div className="mb-2 text-gray-400">
+              {new Date(post.date).toLocaleDateString("en-US", {
+                weekday: "long",
+                day: "numeric",
+                month: "short",
+                year: "numeric",
+              })}
+            </div>
+            <div className="flex items-start justify-between">
+              <h2 className="text-2xl font-bold mb-2 text-primary-500 group-hover:text-primary-600 transition-colors line-clamp-1">
+                {post.title}
+              </h2>
+              <ArrowUpRight className="h-5 w-5 mt-1 opacity-0 group-hover:opacity-100 transition-opacity" />
+            </div>
+            <p className="text-gray-400 mb-4 line-clamp-2">
+              {post.description}
+            </p>
+            <div className="flex flex-wrap gap-2 line-clamp-1 h-6 overflow-hidden">
+              {post.tags.map((tag) => (
+                <Badge key={tag} variant="outline">
+                  {getTagDisplayName(tag, lang)}
+                </Badge>
+              ))}
+            </div>
+          </>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-40">
+            <div className="relative overflow-hidden">
+              <Image
+                src={
+                  `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${
+                    post.thumbnail
+                  }` || "/placeholder.svg"
+                }
+                alt={post.title}
+                fill
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+            </div>
+            <div className="flex flex-col justify-between h-full">
+              <div>
+                <div className="mb-1 text-gray-400 text-sm">
+                  {new Date(post.date).toLocaleDateString("en-US", {
+                    weekday: "long",
+                    day: "numeric",
+                    month: "short",
+                    year: "numeric",
+                  })}
+                </div>
+                <h3 className="text-xl font-bold mb-2 text-primary-500 group-hover:text-primary-600 transition-colors line-clamp-1">
+                  {post.title}
+                </h3>
+                <p className="text-gray-400 text-sm mb-3 line-clamp-2">
+                  {post.description}
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-2 line-clamp-1 h-6 overflow-hidden">
+                {post.tags.map((tag) => (
+                  <Badge key={tag} variant="outline">
+                    {getTagDisplayName(tag, lang)}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+      </Link>
     </div>
   );
 }

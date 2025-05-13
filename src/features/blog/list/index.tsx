@@ -71,9 +71,9 @@ export function BlogPage({
 
       {/* Post grid */}
       {filteredPosts.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {filteredPosts.map((post) => (
-            <PostCard key={post.slug} article={post} lang={lang} />
+            <PostCard key={post.slug} post={post} lang={lang} />
           ))}
         </div>
       ) : (

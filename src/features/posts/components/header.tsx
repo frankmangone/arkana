@@ -30,7 +30,7 @@ export async function PostHeader(props: PostHeaderProps) {
         <div className="flex flex-wrap gap-2 mt-6">
           {metadata.tags.map((tag) => (
             <Link key={tag} href={`/${lang}/blog?tag=${tag}`}>
-              <Badge variant="secondary">{getTagDisplayName(tag, lang)}</Badge>
+              <Badge variant="outline">{getTagDisplayName(tag, lang)}</Badge>
             </Link>
           ))}
         </div>

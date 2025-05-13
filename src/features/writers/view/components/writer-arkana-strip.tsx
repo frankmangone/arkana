@@ -22,7 +22,7 @@ export function WriterArkanaStrip({
       // - 28px for medium screens (>= 768px)
       // - 24px for small screens (< 768px)
       const size =
-        window.innerWidth >= 1024 ? 28 : window.innerWidth >= 768 ? 28 : 24;
+        window.innerWidth >= 1024 ? 32 : window.innerWidth >= 768 ? 28 : 24;
       setCanvasSize(size);
     };
 
