@@ -27,7 +27,7 @@ export const Navbar = async (props: NavbarProps) => {
   const writersUrl = `/${lang}/writers`;
 
   return (
-    <header className="relative z-10b">
+    <header className="relative z-10">
       <div
         className={cn(
           "container mx-auto px-4 md:px-6 lg:px-8 max-w-6xl flex items-center justify-between py-4",

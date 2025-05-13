@@ -1,5 +1,5 @@
 ---
-title: "Blockchain 101: Una introducción al consenso"
+title: "Blockchain 101: Una Introducción al Consenso"
 date: "2024-09-25"
 author: "frank-mangone"
 thumbnail: "/images/blockchain-101/a-primer-on-consensus/smaug.webp"

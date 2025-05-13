@@ -1,5 +1,5 @@
 ---
-title: "Blockchain 101: Presentando - Ethereum"
+title: "Blockchain 101: Entrando en Ethereum"
 date: "2024-11-09"
 author: "frank-mangone"
 thumbnail: "/images/blockchain-101/enter-ethereum/galaxy-brain.webp"

@@ -1,5 +1,5 @@
 ---
-title: "Blockchain 101: Cómo Comenzó Todo"
+title: "Blockchain 101: Cómo Todo Empezó"
 date: "2024-08-31"
 author: "frank-mangone"
 thumbnail: "/images/blockchain-101/how-it-all-began/el-zorro.webp"
