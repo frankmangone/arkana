@@ -212,6 +212,11 @@ export const tags: TagDefinition = {
     es: "Plonk",
     pt: "Plonk",
   },
+  proofOfHistory: {
+    en: "Proof of History",
+    es: "Prueba de Historia",
+    pt: "Prova de História",
+  },
   proofOfStake: {
     en: "Proof of Stake",
     es: "Prueba de Participación",
@@ -276,6 +281,11 @@ export const tags: TagDefinition = {
     en: "Smart Contracts",
     es: "Contratos Inteligentes",
     pt: "Contratos Inteligentes",
+  },
+  solana: {
+    en: "Solana",
+    es: "Solana",
+    pt: "Solana",
   },
   solidity: {
     en: "Solidity",
