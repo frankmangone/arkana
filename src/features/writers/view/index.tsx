@@ -1,24 +1,30 @@
 import { SocialLinks } from "@/components/social-links";
 import { Writer } from "@/lib/writers";
 import { PostPreview } from "@/lib/posts";
-import { Separator } from "@radix-ui/react-dropdown-menu";
+import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
-import { WriterArticles } from "@/features/writers/view/components/writer-articles";
 import { WriterArkanaStrip } from "@/features/writers/view/components/writer-arkana-strip";
+import { PostCard } from "@/components/post-card";
+import { Pagination } from "@/components/pagination";
 
-interface AuthorPageProps {
+interface WriterPageProps {
   lang: string;
   writer: Writer;
   articles: PostPreview[];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   dictionary: any;
+  currentPage?: number;
+  totalPages?: number;
 }
 
-export default function WriterPage(props: AuthorPageProps) {
-  const { lang, writer, articles, dictionary } = props;
-  // const dict = await getDictionary(lang);
-  // const posts = await getPostsByAuthor(author.id, params.lang);
-
+export default function WriterPage({
+  lang,
+  writer,
+  articles,
+  dictionary,
+  currentPage = 1,
+  totalPages = 1,
+}: WriterPageProps) {
   return (
     <div className="container py-8 max-w-8xl mx-auto">
       <div className="flex flex-col lg:flex-row gap-8 items-start mb-12">
@@ -51,20 +57,30 @@ export default function WriterPage(props: AuthorPageProps) {
 
       <Separator className="my-8" />
 
-      <WriterArticles
-        lang={lang}
-        articles={articles}
-        writerName={writer.name}
-        dictionary={dictionary}
-      />
+      {articles.length > 0 ? (
+        <>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {articles.map((post) => (
+              <PostCard key={post.slug} post={post} lang={lang} />
+            ))}
+          </div>
 
-      {/* <div>
-          <h2 className="text-2xl font-bold mb-6">
-            {dict.author.articlesBy.replace("{name}", author.name)}
-          </h2>
-  
-          <PostList posts={posts} lang={params.lang} dictionary={dict} />
-        </div> */}
+          {/* Only show pagination if we have more than one page */}
+          {totalPages > 1 && (
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              basePath={`/${lang}/writers/${writer.slug}`}
+            />
+          )}
+        </>
+      ) : (
+        <div className="text-center py-12">
+          <h3 className="text-xl font-semibold mb-2">
+            {dictionary.writers.noPosts}
+          </h3>
+        </div>
+      )}
     </div>
   );
 }
