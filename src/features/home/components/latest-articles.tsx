@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { PostPreview } from "@/lib/posts";
-import { PostCard } from "@/components/post-card";
+import { FeaturedPostCard } from "@/components/featured-post-card";
 
 interface LatestArticlesProps {
   lang: string;
@@ -36,14 +36,18 @@ export function LatestArticles({
           {/* Featured posts grid */}
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Main featured post (left side) */}
-            <PostCard post={latestPosts[0]} lang={lang} variant="large" />
+            <FeaturedPostCard
+              post={latestPosts[0]}
+              lang={lang}
+              variant="large"
+            />
 
             {/* Secondary posts (right side) */}
             <div className="space-y-6">
               {[1, 2, 3].map(
                 (index) =>
                   latestPosts[index] && (
-                    <PostCard
+                    <FeaturedPostCard
                       key={index}
                       post={latestPosts[index]}
                       lang={lang}
