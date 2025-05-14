@@ -19,7 +19,7 @@ export const readingLists: ReadingList[] = [
         order: 1,
       },
       {
-        slug: "cryptography-101/rsa-explained",
+        slug: "cryptography-101/asides-rsa-explained",
         order: 2,
       },
       {
