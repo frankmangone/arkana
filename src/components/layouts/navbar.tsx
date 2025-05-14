@@ -30,7 +30,7 @@ export const Navbar = async (props: NavbarProps) => {
     <header className="relative z-10">
       <div
         className={cn(
-          "container mx-auto px-4 md:px-6 lg:px-8 max-w-6xl flex items-center justify-between py-4",
+          "container mx-auto px-4 md:px-6 lg:px-8 max-w-8xl flex items-center justify-between py-4",
           containerClassName
         )}
       >
@@ -53,13 +53,13 @@ export const Navbar = async (props: NavbarProps) => {
           <div className="hidden md:flex items-center">
             <Link
               href={readingListsUrl}
-              className="px-4 py-2 inline-flex cursor-pointer items-center justify-center rounded-md text-base font-medium ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:text-gray-300 dark:hover:text-primary-500"
+              className="px-4 py-2 inline-flex cursor-pointer items-center justify-center text-base font-medium ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:text-gray-300 dark:hover:text-primary-500"
             >
               {dict.readingLists.list.title}
             </Link>
             <Link
               href={writersUrl}
-              className="px-4 py-2 inline-flex cursor-pointer items-center justify-center rounded-md text-base font-medium ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:text-gray-300 dark:hover:text-primary-500"
+              className="px-4 py-2 inline-flex cursor-pointer items-center justify-center text-base font-medium ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:text-gray-300 dark:hover:text-primary-500"
             >
               {dict.writers.title}
             </Link>

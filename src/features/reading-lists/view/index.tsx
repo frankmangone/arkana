@@ -1,9 +1,9 @@
 import { ReadingList } from "@/lib/reading-lists";
 import Link from "next/link";
-import { ReadingListCard } from "./components/reading-list-card";
 import { getDictionary } from "@/lib/dictionaries";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
+import { PostCard } from "@/components/post-card";
 
 interface ReadingListPageProps {
   lang: string;
@@ -21,7 +21,7 @@ export async function ReadingListPage(props: ReadingListPageProps) {
 
   return (
     <div className="container">
-      <Button asChild variant="outline" size="lg">
+      <Button asChild variant="outline" size="lg" className="rounded-none">
         <Link href={backUrl} className="flex items-center gap-2">
           <ArrowLeft size={16} />
           {dict.readingLists.view.back}
@@ -41,15 +41,25 @@ export async function ReadingListPage(props: ReadingListPageProps) {
         {readingList.description}
       </p>
 
-      <div className="space-y-8">
-        {posts.map((item, index) => (
-          <ReadingListCard
-            dictionary={dict}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {posts.map((item) => (
+          <PostCard
             key={item.slug}
-            item={item}
-            index={index}
+            // TODO: Fix this definition, it should not be this convoluted
+            post={{
+              slug: item.slug,
+              content: item.post.content,
+              ...item.post.metadata,
+            }}
             lang={lang}
           />
+          // <ReadingListCard
+          //   dictionary={dict}
+          //   key={item.slug}
+          //   item={item}
+          //   index={index}
+          //   lang={lang}
+          // />
         ))}
       </div>
     </div>

@@ -20,7 +20,7 @@ export default function WriterPage(props: AuthorPageProps) {
   // const posts = await getPostsByAuthor(author.id, params.lang);
 
   return (
-    <div className="container py-8 max-w-6xl mx-auto">
+    <div className="container py-8 max-w-8xl mx-auto">
       <div className="flex flex-col lg:flex-row gap-8 items-start mb-12">
         <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden flex-shrink-0 mx-auto md:mx-0">
           <Image

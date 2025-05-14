@@ -14,24 +14,26 @@ export function ReadingListCard(props: ReadingListCardProps) {
   const { list, lang, dictionary } = props;
 
   return (
-    <Link
-      key={list.id}
-      href={`/${lang}/reading-lists/${list.id}`}
-      className="block group"
-    >
-      <div className="border rounded-lg overflow-hidden transition-all duration-300 bg-background group-hover:shadow-md">
-        <div className="relative h-48 w-full bg-gray-100 dark:bg-gray-800">
+    <div className="group border overflow-hidden transition-all duration-300 bg-background hover:shadow-md">
+      <Link
+        key={list.id}
+        href={`/${lang}/reading-lists/${list.id}`}
+        className="block"
+      >
+        <div className="relative h-48 w-full bg-gray-100 dark:bg-gray-800 overflow-hidden">
           {list.coverImage ? (
             <>
-              <Image
-                src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${
-                  list.coverImage
-                }`}
-                alt={list.title}
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background opacity-100 transition-opacity" />
+              <div className="absolute inset-0 scale-[1.01] transition-transform duration-300 group-hover:scale-105">
+                <Image
+                  src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${
+                    list.coverImage
+                  }`}
+                  alt={list.title}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background opacity-100 transition-opacity" />
+              </div>
             </>
           ) : (
             <div className="flex items-center justify-center h-full text-gray-400">
@@ -41,7 +43,7 @@ export function ReadingListCard(props: ReadingListCardProps) {
         </div>
         <div className={cn("p-6", list.coverImage && "-mt-8 relative z-10")}>
           <div className="flex items-start justify-between mb-2">
-            <h2 className="text-xl font-semibold text-primary-500 group-hover:text-primary-600">
+            <h2 className="text-xl font-semibold text-primary-500 group-hover:text-primary-600 transition-colors">
               {list.title}
             </h2>
             {list.ongoing && (
@@ -58,7 +60,7 @@ export function ReadingListCard(props: ReadingListCardProps) {
             {list.items.length !== 1 ? "s" : ""}
           </div>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 }

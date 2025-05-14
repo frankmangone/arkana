@@ -8,10 +8,13 @@ import { ArrowUpRight } from "lucide-react";
 interface PostCardProps {
   post: PostPreview;
   lang: string;
+  imageClassName?: string;
   variant?: "default" | "large";
 }
 
-export function PostCard({ post, lang, variant = "default" }: PostCardProps) {
+export function PostCard(props: PostCardProps) {
+  const { post, lang, variant = "default", imageClassName } = props;
+
   const isLarge = variant === "large";
 
   return (
@@ -19,7 +22,9 @@ export function PostCard({ post, lang, variant = "default" }: PostCardProps) {
       <Link href={`/${lang}/blog/${post.slug}`} className="block">
         {isLarge ? (
           <>
-            <div className="relative h-80 mb-4 overflow-hidden">
+            <div
+              className={`relative h-80 mb-4 overflow-hidden hidden md:block ${imageClassName}`}
+            >
               <Image
                 src={
                   `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${
@@ -58,7 +63,9 @@ export function PostCard({ post, lang, variant = "default" }: PostCardProps) {
           </>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-40">
-            <div className="relative overflow-hidden">
+            <div
+              className={`h-40 relative overflow-hidden hidden md:block ${imageClassName} `}
+            >
               <Image
                 src={
                   `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${
