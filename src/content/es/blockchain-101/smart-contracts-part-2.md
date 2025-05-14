@@ -35,6 +35,8 @@ La intención de esta serie es cubrir conceptos generales de Blockchain, pero aq
 
 Con esto en mente, ¡empecemos!
 
+---
+
 ## Patrones de Llamada {#call-patterns}
 
 Comencemos hablando de algo que hemos dejado de lado hasta ahora: cómo se puede interactuar con la Blockchain. Como hemos mencionado anteriormente, la forma de hacerlo es enviando **transacciones**. Estas están por un lado **firmadas** como medio para probar su autenticidad, proporcionando una manera de verificar que el remitente es quien dice ser.
@@ -171,6 +173,8 @@ En pocas palabras, es un **patrón proxy**, propuesto por primera vez en [EIP-19
   />
 </figure>
 
+---
+
 ## Patrones de Despliegue de Contratos {#contract-deployment-patterns}
 
 ¡Bien! Hemos cubierto un par de formas de interactuar con contratos existentes. Es hora de hablar sobre la **creación de contratos**.
@@ -215,3 +219,207 @@ Aquí es donde entra en juego otro opcode: [CREATE2](https://www.evm.codes/?fork
 ¡Con este simple ajuste, la dirección depende exclusivamente de cosas que podemos controlar! Podemos saber exactamente dónde se desplegará un contrato por adelantado, independientemente del nonce.
 
 > Esto presenta un conjunto de posibilidades interesantes. Como mencioné antes, te permite desplegar fácilmente el mismo contrato (con la misma dirección) en diferentes Blockchains. Pero también ayuda si necesitas coordinar despliegues complejos donde los contratos necesitan conocer las direcciones de los demás por adelantado.
+
+---
+
+## Características de los Contratos {#contract-features}
+
+Hemos cubierto las diversas formas de desplegar e interactuar con contratos. Cambiemos ahora de marcha y hablemos de algunas características especiales que pueden tener los contratos.
+
+> La mayor parte de esta sección será sobre [modificadores](https://mdjamilkashemporosh.medium.com/modifiers-in-solidity-public-private-internal-and-external-764d0aae9c#:~:text=Modifiers%20in%20Solidity%20are%20special,variables%20within%20a%20smart%20contract.). Son esencialmente como etiquetas que ponemos en las funciones para cambiar su comportamiento. También podemos construir modificadores personalizados, pero ahora nos centraremos en los proporcionados por el lenguaje.
+
+### Visibilidad de Funciones {#function-visibility}
+
+Nuestro primer tema se relaciona con el control de la visibilidad de las funciones — esto es, **quién puede llamar a una función**.
+
+Hay en total cuatro modificadores de visibilidad: `external`, `public`, `internal`, y `private`. De todos, `external` es el más interesante, así que dejémoslo para el final.
+
+Realmente, las funciones `internal` se comportan como funciones `protected` en la Programación Orientada a Objetos (POO) regular. Entonces, tenemos funciones `public`, visibles para cualquier llamador. Luego están las funciones `internal`, que solo pueden ser llamadas desde el contrato mismo o sus contratos **hijos** o **derivados**. Y finalmente, las funciones `private` solo pueden ser llamadas desde el contrato en el que están definidas.
+
+<figure>
+  <img
+    src="/images/blockchain-101/smart-contracts-part-2/oop.webp" 
+    alt="Programación Orientada a Objetos"
+    width="500"
+  />
+</figure>
+
+Con eso aclarado, hablemos de las funciones `external`. Estas están bastante obviamente destinadas a ser llamadas solo desde fuera del contrato.
+
+¿Qué tiene esto de interesante, si ya tenemos funciones `public`? La respuesta es que este conocimiento adicional permite a la EVM hacer **optimizaciones**.
+
+> Odio la palabra **optimizaciones**. Deberían llamarse **mejoras**. [Optimizar algo](https://en.wikipedia.org/wiki/Mathematical_optimization) se refiere al acto de encontrar extremos (mínimos o máximos), que **no** es lo que estamos haciendo aquí. Solo quería decir eso.
+
+Cada vez que se llama a una función, sus argumentos se copian a la **memoria**. Al igual que cualquier lenguaje de programación, la memoria es un espacio temporal que puede contener información, y puede ser leída y escrita.
+
+> Hay mucho que decir sobre la memoria, pero no lo cubriré esta vez. ¡Aquí hay un [artículo muy detallado sobre la memoria en EVM](https://medium.com/coinmonks/solidity-memory-how-does-it-work-d40e04b97cf0), si te interesa!
+
+Copiar cosas a memoria **consume gas**, lo que significa que hace las transacciones un poco más costosas.
+
+Las llamadas externas pueden evitar este paso de copiado, ¡porque los argumentos están disponibles en una ubicación especial: los **datos de llamada**! Debido a esto, agregar este modificador nos ahorra un poco de gas. ¡Bastante ingenioso!
+
+### Funciones Virtuales {#virtual-functions}
+
+Como ya se ha sugerido, los contratos a menudo extienden otros contratos, de manera similar a la herencia de clases (estilo POO).
+
+En este tipo de contexto, a veces solo queremos escribir un contrato para que otros contratos lo extiendan y modifiquen. Aquí es donde entran las **funciones virtuales**: son como un marcador que dice "¡hey, puedes sobrescribir esto!".
+
+La contraparte del modificador `virtual` es el modificador `override`, que específicamente (y obviamente) indica que una función sobrescribe la función virtual objetivo:
+
+```solidity
+contract Base {
+  function someOperation() public virtual returns (uint) {
+    return 42;
+  }
+}
+
+contract Extended is Base {
+  function someOperation() public override returns (uint) {
+    return super.someOperation() * 2;
+  }
+}
+```
+
+Las funciones virtuales pueden dejarse sin implementación — pero en ese caso, también necesitan tener el modificador `abstract`, lo que significa que una definición de función **debe** ser proporcionada por un contrato hijo. Si no usamos `abstract`, sin embargo, proporcionar una implementación es **opcional**. Si no sobrescribimos una función, simplemente estaremos usando la implementación predeterminada en la definición de la función `virtual`.
+
+### La Bandera Payable {#the-payable-flag}
+
+Cuando hablamos de qué claves componen una transacción, mencionamos que una de las cosas que se pueden especificar es `value`, que determina una cantidad de Ether (o Wei, realmente) a transferir.
+
+Usualmente, este valor se usa para transferir Ether de un EOA a otro. Aunque nada nos impide establecer un valor en una transacción que está destinada a ser una llamada a función de contrato. ¿Qué sucede entonces?
+
+Supongamos que llamamos a algún método `deposit` en un contrato. Por defecto, los contratos **no esperan** recibir Ether. Y así, una llamada a este método fallará si hay un `value` adjunto.
+
+> Esta es una característica de seguridad — no queremos que los contratos reciban accidentalmente Ether que pueden no saber cómo manejar.
+
+La transacción se revierte a menos que marquemos la función `deposit` como `payable`:
+
+```solidity
+function deposit() external payable {
+  // ...
+}
+```
+
+El modificador `payable` simplemente le dice a Solidity que un valor de Ether **es válido** en una llamada a la función marcada. Y como desarrolladores, tenemos acceso a ese valor en forma de `msg.value`. Por ejemplo, este contrato funciona como una **bóveda**, manteniendo el Ether transferido de las cuentas y llevando un registro de los saldos de las diferentes cuentas a través de un mapping:
+
+```solidity
+contract Vault {
+    mapping(address => uint256) balances;
+
+    function deposit() external payable {
+        balances[msg.sender] += msg.value;
+    }
+
+    function withdrawAll() external {
+        uint256 amount = balances[msg.sender];
+        balances[msg.sender] = 0;
+
+        // Enviar el ether de vuelta al llamador
+        (bool success,) = msg.sender.call{value: amount}("");
+        require(success, "Transfer failed");
+    }
+}
+```
+
+Solo un ejemplo rápido y divertido — pero aquí, ya puedes ver cómo tiene sentido que este contrato reciba Ether y realmente haga algo con él.
+
+> Payable también se aplica al constructor, por cierto. Si quieres que tu contrato pueda recibir Ether durante el despliegue, ¡solo marca el constructor como payable!
+
+Ahora, te podrías estar preguntando... ¿Pero qué pasa si llamo a un método que **no existe**? ¿O incluso llamo a un contrato sin un método! ¿Cómo funciona esto con `payable`?
+
+### Capturando Llamadas Desconocidas {#catching-unknown-calls}
+
+Solidity (y la EVM) proporcionan dos funciones especiales para manejar estos casos límite: las funciones **fallback** y **receive**.
+
+Es muy simple, realmente:
+
+- La función `fallback` se llama cuando alguien llama a un método que **no existe**, o los datos de la llamada no coinciden con ninguna función (lo que significa que las entradas proporcionadas no coinciden con las esperadas).
+- La función `receive` es aún más específica: solo se llama cuando alguien envía Ether a una dirección de contrato, sin adjuntar ningún dato de llamada.
+
+```solidity
+function fallback() external {
+  // Manejar llamadas desconocidas
+}
+
+function receive() external payable {
+ // Manejar transferencias simples de Ether
+}
+```
+
+> Como puedes ver, `receive` está marcada como `payable`, para que la transacción no se revierta y el contrato pueda recibir Ether.
+
+Estas son como redes de seguridad de un contrato. Capturan cualquier interacción inesperada con él. Y aunque este es su propósito principal, permiten algunos patrones bastante interesantes, como este [contrato Proxy](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/3bdc3a35c504396c7227cecc32f50ae07da7e5c1/contracts/proxy/Proxy.sol#L59) que delega todas las llamadas a otro contrato, ¡usando una herramienta que ya hemos cubierto: el opcode delegatecall!
+
+> Oh, y si un contrato no tiene una implementación para ninguna de las funciones, asume que su cuerpo está vacío, pero las ejecuta de todos modos si es necesario.
+
+Es agradable ver cómo las piezas encajan, ¿no?
+
+<video-embed src="https://www.youtube.com/watch?v=CpjH9M2SYsk" />
+
+### Destruyendo un Contrato {#destroying-a-contract}
+
+Una buena manera de continuar después de ese meme de Homelander es hablar sobre la destrucción de contratos. Sip.
+
+<figure>
+  <img
+    src="/images/blockchain-101/smart-contracts-part-2/destruction.webp" 
+    alt="Homelander usando su láser"
+    width="600"
+  />
+</figure>
+
+Hay un opcode especial para esto, llamado [SELFDESTRUCT](https://www.evm.codes/?fork=cancun#ff).
+
+```solidity
+function destroy() external {
+  require(msg.sender == owner);
+  selfdestruct(payable(someAddress));
+}
+```
+
+Cuando se llama a este opcode, suceden tres cosas:
+
+- Todo el Ether restante en el contrato se envía forzadamente a la dirección especificada, incluso si no tiene una función receive.
+- El código y almacenamiento del contrato se eliminan del estado de la blockchain.
+- Todas las llamadas futuras a la dirección del contrato fallarán.
+
+Esta funcionalidad — por cool que parezca — generalmente se considera **peligrosa**. En particular, cuando se combina con **CREATE2**. Imagina que alguien destruye un contrato que has estado usando y lo reemplaza con uno malicioso con la misma dirección. No es cool, hermano.
+
+<figure>
+  <img
+    src="/images/blockchain-101/smart-contracts-part-2/evil-woody.webp" 
+    alt="Meme de Woody malvado"
+    title="Así es como me imagino que se ve alguien cuando hace estas cosas."
+    width="500"
+  />
+</figure>
+
+La recomendación general es usar el patrón proxy que mencionamos antes para contratos actualizables, o usar una simple bandera booleana si tu intención es deshabilitar un contrato. Estos patrones son generalmente más seguros para todos los involucrados.
+
+> De hecho, ha habido [discusiones en la comunidad de Ethereum](https://ethereum-magicians.org/t/eip-6780-deactivate-selfdestruct-except-where-it-occurs-in-the-same-transaction-in-which-a-contract-was-created/13539/19) para eliminar el código selfdestruct por completo.
+
+---
+
+## Resumen {#summary}
+
+Bueno, eso fue mucho para digerir, sin duda.
+
+Hemos cubierto varios patrones de llamada, diferentes métodos de despliegue de transacciones, y funciones y modificadores especiales. Esto debería servir como un buen punto de partida, como mínimo.
+
+Me parece que después de leer este artículo, podrías reconocer algunas de las preguntas de ese [test de Rareskills](https://www.rareskills.io/test-yourself) — y ahora, realmente sabrás cómo responder algunas de ellas.
+
+> ¡No todas ellas, sin embargo!
+
+Realmente hay mucho que saber no solo sobre Solidity, sino también sobre Ethereum en su conjunto y sus diversos estándares (ERCs).
+
+La comunidad siempre está empujando para evolucionar la red, revisando no solo los estándares aceptados, sino cómo funciona la red en su conjunto. Por lo tanto, es importante mantenerse actualizado sobre los últimos desarrollos.
+
+Soy un firme creyente de que la mejor manera de aprender cosas es haciéndolas — ya sabes, ensuciándote un poco las manos. La teoría siempre es buena, pero seguramente nunca olvidarás una lucha de tres horas tratando de entender por qué tu Smart Contract no está haciendo lo que se supone que debe hacer.
+
+Así que métete en ello, juega con algunas ideas, y seguramente aprenderás mucho más de lo que este artículo solo puede proporcionar.
+
+---
+
+Después de pasar dos artículos cubriendo bastantes cosas sobre los entresijos de Solidity, sería bueno dar un paso atrás y mirar el panorama general. [La próxima vez](/es/blog/blockchain-101/consensus-revisited), revisitaremos un tema familiar — esta vez desde la perspectiva de Ethereum: el **consenso**.
+
+¡Nos vemos pronto!
