@@ -1,24 +1,6 @@
 import fs from "fs/promises";
 import path from "path";
-import { Metadata } from "next";
-import { MainLayout } from "@/components/layouts/main-layout";
-import { BlogPage } from "@/features/blog/list";
-import { getDictionary } from "@/lib/dictionaries";
-import { getAllPosts } from "@/lib/posts";
-
-interface BlogPageParams {
-  lang: string;
-}
-
-interface BlogPageProps {
-  params: Promise<BlogPageParams>;
-  // searchParams: { tag?: string } & Promise<any>;
-}
-
-export const metadata: Metadata = {
-  title: "Arkana | All Posts",
-  description: "Articles on mathematics, computer science, and cryptography",
-};
+import { redirect } from "next/navigation";
 
 export async function generateStaticParams() {
   const contentPath = path.join(process.cwd(), "src", "content");
@@ -40,20 +22,6 @@ export async function generateStaticParams() {
   }
 }
 
-export default async function Page({ params }: BlogPageProps) {
-  const { lang } = await params;
-  const dict = await getDictionary(lang);
-  const allPosts = await getAllPosts(lang);
-  // const selectedTag = searchParams?.tag || null;
-
-  return (
-    <MainLayout lang={lang}>
-      <BlogPage
-        lang={lang}
-        posts={allPosts}
-        dictionary={dict}
-        // selectedTag={selectedTag}
-      />
-    </MainLayout>
-  );
+export default async function Page({ params }: { params: { lang: string } }) {
+  redirect(`/${params.lang}/blog/page/1`);
 }
