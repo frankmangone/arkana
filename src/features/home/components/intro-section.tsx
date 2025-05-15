@@ -20,13 +20,13 @@ export function IntroSection({ lang, dictionary }: IntroSectionProps) {
           <div className="flex flex-col sm:flex-row justify-start gap-4 mt-12">
             <Link
               href={`/${lang}/writers`}
-              className="inline-flex items-center justify-center px-6 py-3 border-2 border-primary-500 text-primary-500 transition-colors hover:bg-[rgba(167,119,255,0.2)]"
+              className="inline-flex items-center justify-center px-6 py-3 text-white transition-colors bg-primary-500 hover:bg-primary-600"
             >
               {dictionary.home.intro.meetWriters}
             </Link>
             <Link
               href={`/${lang}/reading-lists`}
-              className="inline-flex items-center justify-center px-6 py-3 border-2 border-primary-500 text-primary-500 transition-colors hover:bg-[rgba(167,119,255,0.2)]"
+              className="inline-flex items-center justify-center px-6 py-3 text-white transition-colors bg-primary-500 hover:bg-primary-600"
             >
               {dictionary.home.intro.exploreReadingLists}
             </Link>

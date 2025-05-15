@@ -73,10 +73,10 @@ export function ZoomableImage({
             alt={alt}
             width={width}
             height={height}
-            className={`rounded-lg ${width ? "" : "w-full"}`}
+            className={`${width ? "" : "w-full"}`}
           />
           {isZoomable && (
-            <div className="absolute top-2 right-2 bg-black/70 text-white p-1 rounded-md text-xs px-2 zoom-indicator">
+            <div className="absolute top-2 right-2 bg-black/70 text-white p-1  text-xs px-2 zoom-indicator">
               Click to zoom
             </div>
           )}
@@ -95,7 +95,7 @@ export function ZoomableImage({
         >
           {/* Close button moved to top-right corner of screen */}
           <button
-            className="fixed top-6 right-6 text-white bg-black/50 hover:bg-black/70 rounded-full p-2 z-10"
+            className="fixed top-6 right-6 text-white bg-black/50 hover:bg-black/70 p-2 z-10"
             onClick={(e) => {
               e.stopPropagation(); // Prevent triggering the background click
               toggleZoom();
@@ -120,7 +120,7 @@ export function ZoomableImage({
 
           <div className="relative max-w-[90vw] max-h-[90vh] zoom-content">
             {/* Apply background color class to a wrapper div */}
-            <div className={`${bgColorClass} rounded-lg p-0 overflow-hidden`}>
+            <div className={`${bgColorClass}  p-0 overflow-hidden`}>
               <Image
                 src={src}
                 alt={alt}

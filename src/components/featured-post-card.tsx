@@ -36,6 +36,7 @@ export function FeaturedPostCard(props: FeaturedPostCardProps) {
                 fill
                 className="object-cover transition-transform duration-300 group-hover:scale-105"
               />
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background opacity-90" />
             </div>
             <div className="mb-2 text-gray-400">
               {formatDate(new Date(post.date), lang)}
@@ -72,6 +73,7 @@ export function FeaturedPostCard(props: FeaturedPostCardProps) {
                 fill
                 className="object-cover transition-transform duration-300 group-hover:scale-105"
               />
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background opacity-90" />
             </div>
             <div className="flex flex-col justify-between h-full">
               <div>

@@ -140,7 +140,7 @@ Alright, so let’s say you want to send a transaction in Solana. You submit it 
 
 <figure>
   <img
-    src="/images/blockchain-101/solana/transaction.webp" 
+    src="/images/blockchain-101/solana/transaction-embedding.webp" 
     alt="Transaction embedding into the chain of hashes"
     title="[zoom] Verifiable Delay Function construction"
   />

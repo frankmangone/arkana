@@ -60,11 +60,7 @@ export function LatestArticles({
           <div className="text-center mt-16">
             <Link
               href={`/${lang}/blog`}
-              style={{
-                borderColor: "var(--primary-500)",
-                color: "var(--primary-500)",
-              }}
-              className="inline-block px-12 py-3 border-2 transition-colors hover:bg-[rgba(167,119,255,0.2)]"
+              className="inline-block px-12 py-3 text-white transition-colors bg-primary-500 hover:bg-primary-600"
             >
               {dictionary?.blog?.viewAllPosts || "View All Articles"}
             </Link>
