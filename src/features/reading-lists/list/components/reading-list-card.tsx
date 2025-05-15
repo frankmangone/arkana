@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { BookOpen, List } from "lucide-react";
+import { ReadingListItem } from "@/lib/reading-lists";
 
 interface ReadingList {
   id: string;
@@ -8,7 +9,7 @@ interface ReadingList {
   description?: string;
   coverImage?: string;
   ongoing?: boolean;
-  items: Array<{ id: string }>;
+  items: Array<ReadingListItem>;
 }
 
 interface ReadingListCardProps {
