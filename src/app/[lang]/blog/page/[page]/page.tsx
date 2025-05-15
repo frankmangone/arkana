@@ -13,7 +13,7 @@ interface BlogPageParams {
 }
 
 interface BlogPageProps {
-  params: BlogPageParams;
+  params: Promise<BlogPageParams>;
 }
 
 export const metadata: Metadata = {
@@ -40,7 +40,7 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }: BlogPageProps) {
-  const { lang, page } = params;
+  const { lang, page } = await params;
   const pageNumber = parseInt(page, 10);
 
   // Validate page number

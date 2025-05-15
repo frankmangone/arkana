@@ -4,6 +4,7 @@ import { PostPreview } from "@/lib/posts";
 import { getTagDisplayName } from "@/lib/tags";
 import { Badge } from "@/components/ui/badge";
 import { ArrowUpRight } from "lucide-react";
+import { formatDate } from "@/lib/date-utils";
 
 interface FeaturedPostCardProps {
   post: PostPreview;
@@ -37,12 +38,7 @@ export function FeaturedPostCard(props: FeaturedPostCardProps) {
               />
             </div>
             <div className="mb-2 text-gray-400">
-              {new Date(post.date).toLocaleDateString("en-US", {
-                weekday: "long",
-                day: "numeric",
-                month: "short",
-                year: "numeric",
-              })}
+              {formatDate(new Date(post.date), lang)}
             </div>
             <div className="flex items-start justify-between">
               <h2 className="text-2xl font-bold mb-2 text-primary-500 group-hover:text-primary-600 transition-colors line-clamp-1">
@@ -80,12 +76,7 @@ export function FeaturedPostCard(props: FeaturedPostCardProps) {
             <div className="flex flex-col justify-between h-full">
               <div>
                 <div className="mb-1 text-gray-400 text-sm">
-                  {new Date(post.date).toLocaleDateString("en-US", {
-                    weekday: "long",
-                    day: "numeric",
-                    month: "short",
-                    year: "numeric",
-                  })}
+                  {formatDate(new Date(post.date), lang)}
                 </div>
                 <div className="flex items-start justify-between">
                   <h3 className="text-xl font-bold mb-2 text-primary-500 group-hover:text-primary-600 transition-colors line-clamp-1">

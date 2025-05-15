@@ -2,6 +2,14 @@ import fs from "fs/promises";
 import path from "path";
 import { redirect } from "next/navigation";
 
+interface PageProps {
+  params: Promise<PageParams>;
+}
+
+interface PageParams {
+  lang: string;
+}
+
 export async function generateStaticParams() {
   const contentPath = path.join(process.cwd(), "src", "content");
 
@@ -22,6 +30,7 @@ export async function generateStaticParams() {
   }
 }
 
-export default async function Page({ params }: { params: { lang: string } }) {
-  redirect(`/${params.lang}/blog/page/1`);
+export default async function Page({ params }: PageProps) {
+  const { lang } = await params;
+  redirect(`/${lang}/blog/page/1`);
 }

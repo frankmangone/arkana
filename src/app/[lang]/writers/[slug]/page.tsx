@@ -7,6 +7,10 @@ interface WriterPageParams {
   slug: string;
 }
 
+interface WriterPageProps {
+  params: Promise<WriterPageParams>;
+}
+
 export async function generateStaticParams() {
   const paths = [];
 
@@ -22,6 +26,7 @@ export async function generateStaticParams() {
   return paths;
 }
 
-export default async function Page({ params }: { params: WriterPageParams }) {
-  redirect(`/${params.lang}/writers/${params.slug}/page/1`);
+export default async function Page({ params }: WriterPageProps) {
+  const { lang, slug } = await params;
+  redirect(`/${lang}/writers/${slug}/page/1`);
 }

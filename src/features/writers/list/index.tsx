@@ -26,9 +26,14 @@ export function WritersPage(props: WritersPageProps) {
         />
       )}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
         {writers.map((writer) => (
-          <WriterCard key={writer.slug} writer={writer} lang={lang} />
+          <WriterCard
+            key={writer.slug}
+            writer={writer}
+            lang={lang}
+            dictionary={dictionary}
+          />
         ))}
       </div>
     </div>

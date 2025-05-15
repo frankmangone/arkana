@@ -4,6 +4,7 @@ import { PostPreview } from "@/lib/posts";
 import { getTagDisplayName } from "@/lib/tags";
 import { Badge } from "@/components/ui/badge";
 import { ArrowUpRight } from "lucide-react";
+import { formatDate } from "@/lib/date-utils";
 
 interface PostCardProps {
   post: PostPreview;
@@ -29,14 +30,10 @@ export function PostCard(props: PostCardProps) {
             fill
             className="object-cover transition-transform duration-300 group-hover:scale-105"
           />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background opacity-90" />
         </div>
         <div className="mb-2 text-sm text-gray-400">
-          {new Date(post.date).toLocaleDateString("en-US", {
-            weekday: "long",
-            day: "numeric",
-            month: "short",
-            year: "numeric",
-          })}
+          {formatDate(new Date(post.date), lang)}
         </div>
         <div className="flex items-start justify-between">
           <h2 className="text-xl font-bold mb-2 text-primary-500 group-hover:text-primary-600 transition-colors line-clamp-1">

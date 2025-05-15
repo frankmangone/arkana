@@ -16,13 +16,13 @@ interface WriterPageParams {
 }
 
 interface WriterPageProps {
-  params: WriterPageParams;
+  params: Promise<WriterPageParams>;
 }
 
 export async function generateMetadata({
   params,
 }: WriterPageProps): Promise<Metadata> {
-  const { slug } = params;
+  const { slug } = await params;
   const author = await getWriter(slug);
 
   if (!author) {
@@ -60,7 +60,7 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }: WriterPageProps) {
-  const { lang, slug, page } = params;
+  const { lang, slug, page } = await params;
   const pageNumber = parseInt(page, 10);
 
   // Validate page number
