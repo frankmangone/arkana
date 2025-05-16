@@ -3,6 +3,11 @@ export interface Writer {
   name: string;
   imageUrl: string;
   avatarUrl: string;
+  organization?: {
+    name: string;
+    url: string;
+    logoUrl?: string;
+  };
   bio?: Record<string, string>;
   social?: {
     website?: string;

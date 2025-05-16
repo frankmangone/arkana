@@ -6,7 +6,7 @@ import matter from "gray-matter";
 import { LatestArticles } from "./components/latest-articles";
 import { IntroSection } from "./components/intro-section";
 import { PostPreview } from "@/lib/posts";
-
+import { getWriter } from "@/lib/writers";
 interface HomePageProps {
   lang: string;
 }
@@ -35,13 +35,17 @@ async function getLatestPosts(lang: string, limit = 4): Promise<PostPreview[]> {
 
           const fileContent = await fs.readFile(filePath, "utf8");
           const { data } = matter(fileContent);
+          const author = getWriter(data.author || "");
 
           allPosts.push({
             slug: fullSlug,
             title: data.title || "Untitled",
             date: data.date || new Date().toISOString(),
             description: data.description || "",
-            author: data.author || "Unknown",
+            author: {
+              name: author.name,
+              slug: author.slug,
+            },
             tags: data.tags || [],
             readingTime: data.readingTime || "",
             thumbnail: data.thumbnail || "",

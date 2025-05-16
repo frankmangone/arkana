@@ -43,23 +43,7 @@ export async function ReadingListPage(props: ReadingListPageProps) {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {posts.map((item) => (
-          <PostCard
-            key={item.slug}
-            // TODO: Fix this definition, it should not be this convoluted
-            post={{
-              slug: item.slug,
-              content: item.post.content,
-              ...item.post.metadata,
-            }}
-            lang={lang}
-          />
-          // <ReadingListCard
-          //   dictionary={dict}
-          //   key={item.slug}
-          //   item={item}
-          //   index={index}
-          //   lang={lang}
-          // />
+          <PostCard key={item.slug} post={item} lang={lang} />
         ))}
       </div>
     </div>

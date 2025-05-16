@@ -19,10 +19,18 @@ export function WriterArkanaStrip({
   useEffect(() => {
     const updateSize = () => {
       // Three tiers:
+      // - 32px for large screens (>= 1024px)
       // - 28px for medium screens (>= 768px)
-      // - 24px for small screens (< 768px)
+      // - 24px for small screens (>= 640px)
+      // - 16px for mobile screens (< 640px)
       const size =
-        window.innerWidth >= 1024 ? 32 : window.innerWidth >= 768 ? 28 : 24;
+        window.innerWidth >= 1024
+          ? 32
+          : window.innerWidth >= 768
+          ? 28
+          : window.innerWidth >= 640
+          ? 24
+          : 16;
       setCanvasSize(size);
     };
 
@@ -78,7 +86,7 @@ export function WriterArkanaStrip({
 
   return (
     <div
-      className={`flex flex-wrap justify-center min-h-[24px] sm:min-h-[28px] lg:min-h-[32px] ${
+      className={`flex flex-wrap justify-center min-h-[16px] sm:min-h-[24px] md:min-h-[28px] lg:min-h-[32px] ${
         className ?? ""
       }`}
     >

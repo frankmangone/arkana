@@ -8,6 +8,11 @@ export const writers: Record<string, Writer> = {
     name: "Frank Mangone",
     imageUrl: "/images/writers/frank-mangone/full-size.png",
     avatarUrl: "/images/writers/frank-mangone/avatar.png",
+    organization: {
+      name: "SpaceDev",
+      url: "https://spacedev.io",
+      logoUrl: "/images/logos/spacedev.logo.webp",
+    },
     bio: {
       en: "Creator of Arkana. Passionate about mathematics, cryptography, and computer science.",
       es: "Creador de Arkana. Apasionado por las matemáticas, la criptografía y la informática.",

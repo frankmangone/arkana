@@ -1,11 +1,12 @@
 import { SocialLinks } from "@/components/social-links";
-import { Writer } from "@/lib/writers";
-import { PostPreview } from "@/lib/posts";
+import type { Writer } from "@/lib/writers";
+import type { PostPreview } from "@/lib/posts";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 import { WriterArkanaStrip } from "@/features/writers/view/components/writer-arkana-strip";
 import { PostCard } from "@/components/post-card";
 import { Pagination } from "@/components/pagination";
+import { OrganizationBadge } from "./components/organization-badge";
 
 interface WriterPageProps {
   lang: string;
@@ -25,6 +26,9 @@ export default function WriterPage({
   currentPage = 1,
   totalPages = 1,
 }: WriterPageProps) {
+  // Assuming the writer object might have an organization field
+  const hasOrganization = writer.organization?.name && writer.organization?.url;
+
   return (
     <div className="container py-8 max-w-8xl mx-auto">
       <div className="flex flex-col lg:flex-row gap-8 items-start mb-12">
@@ -38,18 +42,33 @@ export default function WriterPage({
           />
         </div>
 
-        <div className="flex-1 text-center md:text-left">
+        <div className="w-full flex-1 text-center md:text-left">
           <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 mb-4">
             <h1 className="text-3xl md:text-4xl font-bold">{writer.name}</h1>
-            <WriterArkanaStrip
-              content={writer.name}
-              className="flex-shrink-0"
-            />
+
+            {/* Organization badge - if writer has organization info */}
+            {hasOrganization && (
+              <OrganizationBadge
+                name={writer.organization?.name ?? ""}
+                url={writer.organization?.url ?? ""}
+                logoUrl={writer.organization?.logoUrl ?? ""}
+              />
+            )}
+
+            {/* Fallback for SpaceDev if no organization is specified */}
+            {!hasOrganization && (
+              <OrganizationBadge
+                name="SpaceDev"
+                url="https://spacedev.io"
+                logoUrl="/images/spacedev-logo.png" // You'll need to add this logo to your public folder
+              />
+            )}
           </div>
 
-          <div className="text-muted-foreground mb-6">
-            <p className="mb-4">{writer.bio?.[lang]}</p>
-          </div>
+          <WriterArkanaStrip
+            content={writer.name}
+            className="md:justify-start flex-shrink-0 mb-6"
+          />
 
           <SocialLinks author={writer} />
         </div>

@@ -1,13 +1,17 @@
 import fs from "fs/promises";
 import path from "path";
 import matter from "gray-matter";
+import { getWriter } from "../writers";
 
 export interface PostPreview {
   slug: string;
   title: string;
   date: string;
   description: string;
-  author: string;
+  author: {
+    name: string;
+    slug: string;
+  };
   tags: string[];
   readingTime?: string;
   thumbnail?: string;
@@ -41,6 +45,8 @@ export async function getPostsByAuthor(
           const fileContent = await fs.readFile(filePath, "utf8");
           const { data } = matter(fileContent);
 
+          const author = getWriter(data.author || "");
+
           // Only include posts by the specified author
           if (data.author === authorSlug) {
             allPosts.push({
@@ -48,7 +54,10 @@ export async function getPostsByAuthor(
               title: data.title || "Untitled",
               date: data.date || new Date().toISOString(),
               description: data.description || "",
-              author: data.author || "Unknown",
+              author: {
+                name: author.name,
+                slug: author.slug,
+              },
               tags: data.tags || [],
               readingTime: data.readingTime || "",
               thumbnail: data.thumbnail || "",
@@ -95,13 +104,17 @@ export async function getAllPosts(lang: string): Promise<PostPreview[]> {
 
           const fileContent = await fs.readFile(filePath, "utf8");
           const { data } = matter(fileContent);
+          const author = getWriter(data.author || "");
 
           allPosts.push({
             slug: fullSlug,
             title: data.title || "Untitled",
             date: data.date || new Date().toISOString(),
             description: data.description || "",
-            author: data.author || "Unknown",
+            author: {
+              name: author.name,
+              slug: author.slug,
+            },
             tags: data.tags || [],
             readingTime: data.readingTime || "",
             thumbnail: data.thumbnail || "",

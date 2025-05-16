@@ -5,6 +5,9 @@ import { MainLayout } from "@/components/layouts/main-layout";
 import { ReadingListPage } from "@/features/reading-lists/view";
 import { languages } from "@/lib/i18n-config";
 import { NotFoundReadingList } from "@/components/not-found-reading-list";
+import { PostPreview } from "@/lib/posts";
+import { getWriter } from "@/lib/writers";
+import { Post } from "@/lib/types";
 
 interface ReadingListPageParams {
   lang: string;
@@ -69,14 +72,25 @@ export default async function Page({ params }: ReadingListPageProps) {
     );
   }
 
-  const posts = await Promise.all(
+  const posts: PostPreview[] = await Promise.all(
     (readingList.items as ReadingListItem[])
       .sort((a, b) => (a.order || 0) - (b.order || 0))
       .map(async (item) => {
-        const post = await getPostBySlug(item.slug, lang);
+        const post = (await getPostBySlug(item.slug, lang)) as Post;
+        const author = await getWriter(post.metadata.author);
+
         return {
-          ...item,
-          post,
+          slug: item.slug,
+          description: post.metadata.description ?? "",
+          title: post.metadata.title,
+          date: post.metadata.date,
+          tags: post.metadata.tags,
+          author: {
+            name: author.name,
+            slug: author.slug,
+          },
+          readingTime: post.metadata.readingTime,
+          thumbnail: post.metadata.thumbnail,
         };
       })
   );
