@@ -47,6 +47,23 @@ export default async function RootLayout({
             `,
           }}
         />
+        <meta
+          property="og:title"
+          content="Arkana | Where complexity meets clarity"
+        />
+        <meta
+          property="og:description"
+          content="Where complexity meets clarity"
+        />
+        <meta property="og:url" content="https://arkana.blog/en/" />
+        <meta property="og:image" content="https://arkana.blog/og.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:locale:alternate" content="es_ES" />
+        <meta property="og:locale:alternate" content="pt_BR" />
+        <meta property="og:site_name" content="Arkana" />
       </head>
       <body className={spaceGrotesk.className}>
         <ThemeProvider
