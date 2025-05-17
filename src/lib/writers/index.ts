@@ -25,6 +25,28 @@ export const writers: Record<string, Writer> = {
       medium: "https://medium.com/@francomangone18",
     },
   },
+  "gonzalo-bustos": {
+    slug: "gonzalo-bustos",
+    name: "Gonzalo Bustos",
+    imageUrl: "/images/writers/gonzalo-bustos/full-size.jpeg",
+    avatarUrl: "/images/writers/gonzalo-bustos/avatar.png",
+    organization: {
+      name: "SpaceDev",
+      url: "https://spacedev.io",
+      logoUrl: "/images/logos/spacedev.logo.webp",
+    },
+    bio: {
+      en: "Computer Science student, passionate about technology and innovation.",
+      es: "Estudiante de Ciencias de la Computación, apasionado por la tecnología y la innovación.",
+      pt: "Estudante de Ciência da Computação, apaixonado por tecnologia e inovação.",
+    },
+    social: {
+      twitter: "https://x.com/gonzalombustos",
+      linkedin: "https://www.linkedin.com/in/gonzalo-bustos/",
+      github: "https://github.com/GonzaloMBustos",
+      medium: "https://medium.com/@bustosgonzalom",
+    },
+  },
 };
 
 export function getWriter(slug: string): Writer {

@@ -43,7 +43,6 @@ export function WriterCard({ writer, lang, dictionary }: WriterCardProps) {
                   fill
                   className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background opacity-90" />
               </div>
 
               {/* Writer icon */}
