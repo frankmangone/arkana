@@ -82,6 +82,11 @@ export const tags: TagDefinition = {
     es: "Divisor",
     pt: "Divisor",
   },
+  eip: {
+    en: "EIP",
+    es: "EIP",
+    pt: "EIP",
+  },
   ellipticCurves: {
     en: "Elliptic Curves",
     es: "Curvas Elípticas",
@@ -197,6 +202,11 @@ export const tags: TagDefinition = {
     es: "Trie de Patricia",
     pt: "Trie de Patricia",
   },
+  pectra: {
+    en: "Pectra",
+    es: "Pectra",
+    pt: "Pectra",
+  },
   polynomials: {
     en: "Polynomials",
     es: "Polinomios",
@@ -261,6 +271,11 @@ export const tags: TagDefinition = {
     en: "RSA",
     es: "RSA",
     pt: "RSA",
+  },
+  setCode: {
+    en: "SetCode",
+    es: "SetCode",
+    pt: "SetCode",
   },
   scalability: {
     en: "Scalability",

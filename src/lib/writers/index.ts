@@ -28,7 +28,7 @@ export const writers: Record<string, Writer> = {
   "gonzalo-bustos": {
     slug: "gonzalo-bustos",
     name: "Gonzalo Bustos",
-    imageUrl: "/images/writers/gonzalo-bustos/full-size.jpeg",
+    imageUrl: "/images/writers/gonzalo-bustos/full-size.png",
     avatarUrl: "/images/writers/gonzalo-bustos/avatar.png",
     organization: {
       name: "SpaceDev",
