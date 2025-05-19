@@ -41,12 +41,19 @@ export async function generateStaticParams() {
 
   for (const lang of languages) {
     for (const writerSlug of Object.keys(writers)) {
+      // Always generate at least page 1 for every writer in every language
+      paths.push({
+        slug: writerSlug,
+        lang,
+        page: "1",
+      });
+
       // Get writer's posts to calculate total pages
       const posts = await getPostsByAuthor(writerSlug, lang);
       const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
 
-      // Generate a path for each page
-      for (let page = 1; page <= Math.max(1, totalPages); page++) {
+      // Generate additional pages if there are more posts
+      for (let page = 2; page <= totalPages; page++) {
         paths.push({
           slug: writerSlug,
           lang,
@@ -80,8 +87,8 @@ export default async function Page({ params }: WriterPageProps) {
   // Calculate pagination values
   const totalPages = Math.ceil(allArticles.length / POSTS_PER_PAGE);
 
-  // Validate page number against total pages
-  if (pageNumber > totalPages) {
+  // Only return 404 if we're trying to access a page beyond page 1 when there are no articles
+  if (pageNumber > 1 && allArticles.length === 0) {
     return notFound();
   }
 
@@ -98,7 +105,7 @@ export default async function Page({ params }: WriterPageProps) {
         articles={paginatedArticles}
         dictionary={dict}
         currentPage={pageNumber}
-        totalPages={totalPages}
+        totalPages={Math.max(1, totalPages)}
       />
     </MainLayout>
   );

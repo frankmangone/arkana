@@ -71,6 +71,11 @@
     "noWriters": "¡Ups!",
     "noWritersDescription": "No se encontraron escritores",
     "articlesBy": "Artículos de {name}",
-    "noArticles": "No se encontraron artículos para este escritor."
+    "noArticles": "No se encontraron artículos para este escritor.",
+    "noArticlesInLanguage": {
+      "title": "No hay artículos disponibles",
+      "description": "Este escritor aún no tiene artículos publicados en el idioma seleccionado.",
+      "button": "Volver al inicio"
+    }
   }
 }

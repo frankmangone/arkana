@@ -7,6 +7,7 @@ import { WriterArkanaStrip } from "@/features/writers/view/components/writer-ark
 import { PostCard } from "@/components/post-card";
 import { Pagination } from "@/components/pagination";
 import { OrganizationBadge } from "./components/organization-badge";
+import Link from "next/link";
 
 interface WriterPageProps {
   lang: string;
@@ -96,8 +97,17 @@ export default function WriterPage({
       ) : (
         <div className="text-center py-12">
           <h3 className="text-xl font-semibold mb-2">
-            {dictionary.writers.noPosts}
+            {dictionary.writers.noArticlesInLanguage.title}
           </h3>
+          <p className="text-gray-500 mb-6">
+            {dictionary.writers.noArticlesInLanguage.description}
+          </p>
+          <Link
+            href={`/${lang}`}
+            className="inline-flex items-center justify-center px-6 py-3 text-white transition-colors bg-primary-500 hover:bg-primary-600"
+          >
+            {dictionary.writers.noArticlesInLanguage.button}
+          </Link>
         </div>
       )}
     </div>

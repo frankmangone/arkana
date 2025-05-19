@@ -71,6 +71,11 @@
     "noWriters": "Oops!",
     "noWritersDescription": "No writers found",
     "articlesBy": "Articles by {name}",
-    "noArticles": "No articles found for this writer."
+    "noArticles": "No articles found for this writer.",
+    "noArticlesInLanguage": {
+      "title": "No articles available",
+      "description": "This writer has no published articles in the selected language yet.",
+      "button": "Back to home"
+    }
   }
 }
