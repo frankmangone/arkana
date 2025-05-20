@@ -317,6 +317,11 @@ export const tags: TagDefinition = {
     es: "Firma de Umbral",
     pt: "Assinatura de Umbral",
   },
+  torsion: {
+    en: "Torsion Group",
+    es: "Grupo de Torsión",
+    pt: "Grupo de Torção",
+  },
   transactions: {
     en: "Transactions",
     es: "Transacciones",

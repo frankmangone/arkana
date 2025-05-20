@@ -411,6 +411,6 @@ Our goal lead us down a path of mathematical weirdness. There’s always more to
 
 > That’s what works for me, anyway!
 
-Well then! In the next article, we’ll continue with more crazy definitions, but with a more clear focus: understanding **pairings**.
+Well then! In the [next article](/en/blog/elliptic-curves-in-depth/part-7), we’ll continue with more crazy definitions, but with a more clear focus: understanding **pairings**.
 
 See you soon!
