@@ -109,7 +109,8 @@ So, how about instead of living in such a **Wild West** world, we try to put som
   />
 </figure>
 
-Validators
+### Validators
+
 In Proof of Stake, [miners](/en/blog/blockchain-101/a-primer-on-consensus/#incentives) are replaced by **validators**. The key idea here is that validators have a specific **role**: to **propose and validate** blocks. These validators don’t need to solve any cryptographic puzzles at all — so that inefficiency is out of the picture. Simple, right?
 
 Not quite! We need to define a few things for this to work. For instance:
@@ -255,7 +256,7 @@ This mechanism also enables something that was not possible in Proof of Work: **
   />
 </figure>
 
-So far, we’ve talked about blocks being **“accepted**”.
+So far, we’ve talked about blocks being **“accepted”**.
 
 In Bitcoin, we saw how the network could present [temporary forks](/en/blog/blockchain-101/a-primer-on-consensus/#fork-resolution). This had one unpleasant consequence: we cannot know if the latest block on the Blockchain will end up being a part of it, or if it will eventually be discarded. So we had to wait for **block confirmations** — blocks on top of the one we’re interested in.
 
