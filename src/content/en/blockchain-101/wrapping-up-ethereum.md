@@ -114,7 +114,7 @@ You’ll notice that after The Merge, the upgrades started using these funky nam
 
 > I don’t want to spoil all the fun, so for more information, check this [article out](https://medium.com/topic-crypto/how-ethereum-names-updates-why-its-confusing-b1a07f0de4d0).
 
-The next upgrade in line is Pectra, which comes packed with some cool new features, like a novel way to handle [account abstraction](https://medium.com/@bustosgonzalom/the-gem-of-pectra-eip-7702-the-setcode-transaction-e55593b0533a).
+The next upgrade in line is Pectra, which comes packed with some cool new features, like a novel way to handle [account abstraction](/en/blog/ethereum/the-gem-of-pectra/#a-short-story-about-ethereums-updates).
 
 ---
 
