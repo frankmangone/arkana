@@ -7,4 +7,5 @@ When you translate to other languages, make sure that:
 - The initial quote for articles in a series must be consistent with the one from other articles in the same series. Do not modify it if you can find it in a previous article belonging to the same list - which you can consult in the file `src/lib/reading-lists/[lang].ts`.
 - Do not use extremely formal language; try to maintain the friendly, approachable tone used in the english version.
 - Place the file in the same path you originally found it, except you change the `/en` prefix for `/[lang]`.
-- If you find the article in a reading list (english version), then add the file to the same reading list, but in the target language.
+
+After you do the translation, check the file `src/lib/reading-lists/en.ts`. If you find the article in a reading list, make sure to modify the corresponding `src/lib/reading-lists/[lang].ts` file to add the translated file to the same reading list, but in the target language.
