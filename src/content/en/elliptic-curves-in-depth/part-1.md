@@ -349,7 +349,7 @@ Also, we could think of slightly more complex degree-three curves, such as this 
   <img
     src="/images/elliptic-curves-in-depth/part-1/weird-elliptic-curve.webp" 
     alt="An exotic elliptic curve"
-    title="[zoom] The curve -5x³+ 4x²y + 14x - y³+ 12y = 0"
+    title="[zoom] The curve -5x³ + 4x²y + 14x - y³+ 12y = 0"
   />
 </figure>
 

@@ -34,7 +34,7 @@ Esta vez, quiero intentar una inmersión más profunda en el mundo de las curvas
 
 ## Curvas Elípticas {#elliptic-curves}
 
-Naturalmente, la primera pregunta que viene a la mente es **¿qué demonios es una curva elíptica**?
+Naturalmente, la primera pregunta que se nos viene a la mente es **¿qué es una curva elíptica**?
 
 Sin más preámbulos, te presento — esto es una curva elíptica:
 
@@ -56,12 +56,12 @@ Y así es como se ve una curva elíptica cuando se grafica en un plano cartesian
   <img
     src="/images/elliptic-curves-in-depth/part-1/elliptic-curve.webp" 
     alt="Una curva elíptica básica"
-    title="[zoom] ¡Hola!"
+    title="[zoom] ¡Hola, mundo!"
     width="500"
   />
 </figure>
 
-> Mirando esta figura, podrías preguntarte qué hay de "elíptico" en estas curvas. Resulta que esto es algo así como un **nombre inapropiado**, como se explica [aquí](https://medium.com/@youssef.housni21/why-elliptic-curves-are-called-elliptic-a8327d94e3d1).
+> Mirando esta figura, podrías preguntarte qué hay de "elíptico" en estas curvas. Resulta que esto es en realidad un **nombre inapropiado**, como se explica [aquí](https://medium.com/@youssef.housni21/why-elliptic-curves-are-called-elliptic-a8327d94e3d1).
 
 Lo que estamos representando aquí es la colección de puntos que satisfacen la ecuación $E$ que definimos anteriormente, al igual que una parábola satisface la ecuación $y = x^2$.
 
@@ -86,7 +86,7 @@ Podemos ver cómo parece haber un **punto de intersección**. Si intentas grafic
 
 Llamamos a este tipo de curvas **singulares**. Las curvas singulares serán problemáticas cuando intentemos usarlas para nuestros propósitos — porque la **derivada** en esos puntos no está bien definida. Por esta razón, las curvas no suaves como esta **no se consideran** curvas elípticas.
 
-¡Suficiente de presentaciones! ¿Para qué sirven estas cositas de todos modos?
+¡Suficientes presentaciones! ¿Para qué sirven estas cosas de todos modos?
 
 ---
 
@@ -100,7 +100,7 @@ Aun así, me gustaría proporcionar algo de contexto antes de continuar.
 
 ---
 
-La **operación de curva elíptica** que vamos a presentar tiene una definición algo extraña. Por favor, tenme paciencia por ahora. Va así:
+La **operación de curva elíptica** que vamos a presentar tiene una definición algo extraña. Por favor, tenme paciencia por ahora. Funciona así:
 
 1. Elige dos puntos $P$ y $Q$ en la curva, y traza una línea a través de ellos.
 2. Encontrarás que esta línea intersecta otro punto en la curva. Llamémoslo $-R$.
@@ -112,7 +112,7 @@ Todo el proceso se ve algo así:
   <img
     src="/images/elliptic-curves-in-depth/part-1/point-addition.webp" 
     alt="Suma de puntos como se describió anteriormente en acción"
-    title="[zoom] Esta también es una forma válida de curva elíptica, por cierto"
+    title="[zoom] Por cierto, esta también es una forma válida de curva elíptica"
     width="500"
   />
 </figure>
@@ -127,7 +127,7 @@ $$
 
 Sin embargo, ¿qué sucede si queremos sumar $P$ consigo mismo?
 
-Imagina, en cambio, que tenemos algún otro punto que está **muy cerca** de $P$ en la curva — llamémoslo $P'$. A medida que movemos $P'$ cada vez más cerca de $P$, la línea que pasa por ellos se acerca lentamente a la **tangente** de la curva en $P$. Muy naturalmente, podemos inferir que encontrar $P \oplus P$ se hace con el mismo proceso de antes, pero usando la **tangente** en $P$ como nuestra línea en el primer paso.
+Imaginemos, en cambio, que tenemos algún otro punto que está **muy cerca** de $P$ en la curva — llamémoslo $P'$. A medida que movemos $P'$ cada vez más cerca de $P$, la línea que pasa por ellos se acerca lentamente a la **tangente** de la curva en $P$. Muy naturalmente, podemos inferir que encontrar $P \oplus P$ se hace con el mismo proceso de antes, pero usando la **tangente** en $P$ como nuestra línea en el primer paso.
 
 > ¡Y por eso es importante tener una primera derivada bien definida!
 
@@ -184,7 +184,7 @@ $$
   />
 </figure>
 
-Al mover un par de términos a la derecha, hemos obtenido una expresión para la coordenada x de este tercer punto de intersección. Para encontrar $y$, todo lo que tenemos que hacer es introducirlo en la ecuación de la línea, y luego invertir el valor resultante. Y nos queda:
+Al mover un par de términos a la derecha, hemos obtenido una expresión para la coordenada $x$ de este tercer punto de intersección. Para encontrar $y$, todo lo que tenemos que hacer es introducirlo en la ecuación de la línea, y luego invertir el valor resultante. Y nos queda:
 
 $$
 x_R = m^2 - x_P - x_Q
@@ -200,7 +200,7 @@ $$
 
 Encontrar $R$ es un poco más complicado ahora, porque necesitamos encontrar la línea que pasa por $P$ que es **tangente** a la curva. La tangente es simplemente la línea que pasa por $P$ cuya pendiente es igual a la primera derivada de la curva con respecto a $x$.
 
-Dado que no tenemos una fórmula explícita en la forma de $E(x)$, tenemos que desempolvar nuestras habilidades de cálculo y usar un pequeño truco viejo llamado la [regla de la cadena](https://en.wikipedia.org/wiki/Chain_rule), tratando a $E(x)$ como una [función implícita](https://en.wikipedia.org/wiki/Implicit_function):
+Dado que no tenemos una fórmula explícita en la forma de $E(x)$, tenemos que desempolvar nuestras habilidades de cálculo y usar un pequeño viejo truco llamado la [regla de la cadena](https://en.wikipedia.org/wiki/Chain_rule), tratando a $E(x)$ como una [función implícita](https://en.wikipedia.org/wiki/Implicit_function):
 
 $$
 \frac{d}{dx}(y^2) = \frac{d}{dx}(x^3 + ax + b)
@@ -238,7 +238,7 @@ Sumar $P$ a sí mismo es como **duplicarlo**. Y entonces, en lugar de escribir $
 
 ¡Genial! Todo funcionando bien hasta ahora.
 
-Ahora podríamos intentar sumar $P$ y $-P$ (su reflejo sobre el eje x). Sin embargo, la línea que pasa por ellos es una **línea vertical**, definida por $x = x_P$. Esto significa que obtendremos:
+Ahora podríamos intentar sumar $P$ y $-P$ (su reflejo sobre el eje $x$). Sin embargo, la línea que pasa por ellos es una **línea vertical**, definida por $x = x_P$. Esto significa que obtendremos:
 
 $$
 y_P^2 = x_P^3 + ax_P + b
@@ -290,7 +290,7 @@ $$
 
 Observa que la expresión final requiere **dos duplicaciones** y **una suma**, en contraste con las **cuatro sumas** requeridas en la configuración inicial. Ahorrar una sola operación puede no parecer mucho, pero cuando multiplicamos por un $m$ mayor, los ahorros son sustanciales.
 
-El algoritmo general para la multiplicación funciona de manera **doble y suma**. Para cualquier entero positivo $m$ por el que queramos multiplicar, primero necesitamos encontrar su **representación binaria**, y hacer el siguiente proceso:
+El algoritmo general para la multiplicación funciona en forma de **duplicar y sumar**. Para cualquier entero positivo $m$ por el que queramos multiplicar, primero necesitamos encontrar su **representación binaria**, y hacer el siguiente proceso:
 
 1. Establecer el valor inicial del resultado en $W = P$.
 2. Luego, comenzando desde el segundo bit más significativo, asignar $W = [2]W$.
@@ -348,7 +348,7 @@ Además, podríamos pensar en curvas de grado tres ligeramente más complejas, c
   <img
     src="/images/elliptic-curves-in-depth/part-1/weird-elliptic-curve.webp" 
     alt="Una curva elíptica exótica"
-    title="[zoom] La curva -5x³+ 4x²y + 14x - y³+ 12y = 0"
+    title="[zoom] La curva -5x³ + 4x²y + 14x - y³+ 12y = 0"
   />
 </figure>
 
@@ -358,7 +358,7 @@ En este sentido, nuestra definición de curva elíptica se sitúa en una especie
 
 ---
 
-Y sobre esas fórmulas explícitas que sigo mencionando, vamos a necesitarlas al cien por cien si queremos construir cualquier algoritmo a partir de nuestras curvas. Verás, estas visualizaciones son geniales como una forma de construir una comprensión inicial, pero no representan cómo se verá **realmente** una curva elíptica para nosotros, que se asemeja más a esto:
+Y sobre esas fórmulas explícitas que sigo mencionando, vamos a necesitarlas con seguridad si queremos construir cualquier algoritmo a partir de nuestras curvas. Verás, estas visualizaciones son geniales como una forma de construir una comprensión inicial, pero no representan cómo se verá **realmente** una curva elíptica para nosotros, que se asemeja más a esto:
 
 <figure>
   <img
@@ -379,7 +379,7 @@ Tengo la sensación de que probablemente acabas de hacer:
   />
 </figure>
 
-¡No te preocupes — todo tendrá sentido pronto!
+No te preocupes — ¡todo tendrá sentido pronto!
 
 ---
 
@@ -391,4 +391,4 @@ Si ya leíste [esto](/es/blog/cryptography-101/elliptic-curves-somewhat-demystif
 
 ¡Pero apenas estamos comenzando! Tenemos muchas cosas divertidas por cubrir, desde problemas de millones de dólares hasta curvas en "dimensiones superiores".
 
-Mantente atento, ¡y te veré en la [próxima parte](/es/blog/elliptic-curves-in-depth/part-2)!
+Mantente despierto, ¡y te veré en la [próxima parte](/es/blog/elliptic-curves-in-depth/part-2)!

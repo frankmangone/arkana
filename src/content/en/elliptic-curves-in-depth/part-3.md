@@ -259,7 +259,7 @@ The BSD conjecture takes a hot minute to understand. If you’re interested, her
 
 <video-embed src="https://www.youtube.com/watch?v=9mR_h9ufs4E" />
 
-But that’s a rabbit hole for another time. Back to Earth we go.
+But that’s a rabbit hole for [another time](/en/blog/elliptic-curves-in-depth/part-6). Back to Earth we go.
 
 ---
 

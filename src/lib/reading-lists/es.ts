@@ -166,6 +166,27 @@ export const readingLists: ReadingList[] = [
       },
     ],
   },
+  {
+    id: "elliptic-curves-in-depth",
+    title: "Curvas Elípticas En Profundidad",
+    description: "Una inmersión más profunda en las curvas elípticas",
+    coverImage: "/images/elliptic-curves-in-depth/part-4/yoda.webp",
+    ongoing: true,
+    items: [
+      {
+        slug: "elliptic-curves-in-depth/part-1",
+        order: 1,
+      },
+      {
+        slug: "elliptic-curves-in-depth/part-2",
+        order: 2,
+      },
+      {
+        slug: "elliptic-curves-in-depth/part-3",
+        order: 3,
+      },
+    ],
+  },
 ];
 
 export const getReadingList = getReadingListFactory(readingLists);

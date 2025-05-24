@@ -63,7 +63,7 @@ $$
 5 = 3k + x
 $$
 
-And requiring x to be a value between $0$ and $4$ (an element of $\mathbb{F}_5$). This results in $k = 1$ and $x = 2$.
+And requiring $x$ to be a value between $0$ and $4$ (an element of $\mathbb{F}_5$). This results in $k = 1$ and $x = 2$.
 
 It’s clear, however, that **other solutions exist**. For example, $k = 2$ and $x = -1$. As you can probably tell by now, we can find **infinitely many** integer solutions to this equation.
 
@@ -305,6 +305,8 @@ What’s for sure is that it takes considerably more effort than simple multipli
 > In cryptography, where we need to perform thousands or millions of these operations, every little bit counts.
 
 ---
+
+## Summary
 
 We’ve covered quite a bit of ground today! We moved from real numbers to finite fields, saw how our curves transform in this new setting, and even found a way to properly represent our point at infinity.
 
