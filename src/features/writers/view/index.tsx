@@ -27,6 +27,8 @@ export default function WriterPage({
   currentPage = 1,
   totalPages = 1,
 }: WriterPageProps) {
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://arkana.blog";
+
   // Assuming the writer object might have an organization field
   const hasOrganization = writer.organization?.name && writer.organization?.url;
 
@@ -35,7 +37,11 @@ export default function WriterPage({
       <div className="flex flex-col lg:flex-row gap-8 items-start mb-12">
         <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden flex-shrink-0 mx-auto md:mx-0">
           <Image
-            src={`${process.env.NEXT_PUBLIC_BASE_URL ?? ""}${writer.avatarUrl}`}
+            src={
+              writer.avatarUrl
+                ? `${baseUrl}${writer.avatarUrl}`
+                : "/placeholder.svg"
+            }
             alt={writer.name}
             fill
             className="object-cover"
@@ -103,7 +109,7 @@ export default function WriterPage({
             {dictionary.writers.noArticlesInLanguage.description}
           </p>
           <Link
-            href={`/${lang}`}
+            href={`${baseUrl}/${lang}`}
             className="inline-flex items-center justify-center px-6 py-3 text-white transition-colors bg-primary-500 hover:bg-primary-600"
           >
             {dictionary.writers.noArticlesInLanguage.button}

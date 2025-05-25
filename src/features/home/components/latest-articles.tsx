@@ -14,6 +14,8 @@ export function LatestArticles({
   latestPosts,
   dictionary,
 }: LatestArticlesProps) {
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://arkana.blog";
+
   return (
     <div className="w-full">
       {/* Gradient overlay for the section above */}
@@ -59,7 +61,7 @@ export function LatestArticles({
 
           <div className="text-center mt-16">
             <Link
-              href={`/${lang}/blog`}
+              href={`${baseUrl}/${lang}/blog`}
               className="inline-block px-12 py-3 text-white transition-colors bg-primary-500 hover:bg-primary-600"
             >
               {dictionary?.blog?.viewAllPosts || "View All Articles"}

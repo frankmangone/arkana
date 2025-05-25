@@ -21,6 +21,8 @@ export function BlogPage({
   currentPage = 1,
   totalPages = 1,
 }: BlogPageProps) {
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://arkana.blog";
+
   // Get all unique tags from posts
   //   const allTags = Array.from(
   //     new Set(posts.flatMap((post) => post.tags))
@@ -101,7 +103,7 @@ export function BlogPage({
             {dictionary.blog.tryDifferentTag}
           </p>
           <Link
-            href={`/${lang}/blog`}
+            href={`${baseUrl}/${lang}/blog`}
             style={{
               borderColor: "var(--primary-500)",
               color: "var(--primary-500)",

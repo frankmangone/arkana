@@ -20,6 +20,7 @@ jobs:
     env:
       BASE_PATH: ""
       NEXT_PUBLIC_BASE_PATH: ""
+      NEXT_PUBLIC_SITE_URL: "https://arkana.blog"
     steps:
       - name: Checkout
         uses: actions/checkout@v4

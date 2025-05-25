@@ -26,9 +26,14 @@ interface WriterCardProps {
 }
 
 export function WriterCard({ writer, lang, dictionary }: WriterCardProps) {
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://arkana.blog";
+
   return (
     <div className="group">
-      <Link href={`/${lang}/writers/${writer.slug}`} className="block">
+      <Link
+        href={`${baseUrl}/${lang}/writers/${writer.slug}`}
+        className="block"
+      >
         {/* Writer image with portrait styling */}
         <div className="relative h-64 mb-4 hidden md:block">
           {writer.imageUrl ? (
@@ -36,9 +41,11 @@ export function WriterCard({ writer, lang, dictionary }: WriterCardProps) {
               {/* Background blur effect */}
               <div className="absolute inset-0 overflow-hidden">
                 <Image
-                  src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${
+                  src={
                     writer.imageUrl
-                  }`}
+                      ? `${baseUrl}${writer.imageUrl}`
+                      : "/placeholder.svg"
+                  }
                   alt=""
                   fill
                   className="object-cover object-top transition-transform duration-300 group-hover:scale-105"

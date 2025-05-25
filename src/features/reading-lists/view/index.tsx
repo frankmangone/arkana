@@ -16,8 +16,8 @@ export async function ReadingListPage(props: ReadingListPageProps) {
   const { lang, readingList, posts } = props;
 
   const dict = await getDictionary(lang);
-
-  const backUrl = `/${lang}/reading-lists`;
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://arkana.blog";
+  const backUrl = `${baseUrl}/${lang}/reading-lists`;
 
   return (
     <div className="container">

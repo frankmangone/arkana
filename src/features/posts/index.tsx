@@ -4,6 +4,8 @@ import { getPostBySlug } from "./actions";
 import { PostHeader } from "./components/header";
 import { Metadata } from "next";
 import { NotFoundInLanguage } from "@/components/not-found-in-language";
+import Script from "next/script";
+import { getWriter } from "@/lib/writers";
 
 interface PostPageProps {
   lang: string;
@@ -45,11 +47,56 @@ export async function PostPage(props: PostPageProps) {
     return <NotFoundInLanguage lang={lang} />;
   }
 
+  // Get the writer information
+  const writer = getWriter(post.metadata.author);
+
   // Get the PostHeader component and await it
   const header = await PostHeader({ post, lang });
 
+  // Base URL for absolute links
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://arkana.blog";
+  const postUrl = `${baseUrl}/${lang}/blog/${slug}`;
+  const imageUrl = post.metadata.thumbnail
+    ? `${baseUrl}${post.metadata.thumbnail}`
+    : `${baseUrl}/images/arkana-default-og.png`;
+
+  // Create structured data for the article
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.metadata.title,
+    description: post.metadata.description,
+    image: imageUrl,
+    datePublished: post.metadata.date,
+    author: {
+      "@type": "Person",
+      name: writer.name,
+      url: `${baseUrl}/${lang}/writers/${writer.slug}`,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Arkana",
+      logo: {
+        "@type": "ImageObject",
+        url: `${baseUrl}/images/logo.png`,
+      },
+    },
+    url: postUrl,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": postUrl,
+    },
+    keywords: post.metadata.tags.join(", "),
+    inLanguage: lang,
+  };
+
   return (
     <article className="container py-8 max-w-3xl mx-auto">
+      <Script
+        id="article-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {header}
       <PostContent post={post} />
       {/* <PostFooter post={post} lang={lang} dictionary={dict} /> */}

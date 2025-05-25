@@ -20,10 +20,14 @@ interface ReadingListCardProps {
 
 export function ReadingListCard(props: ReadingListCardProps) {
   const { list, lang, dictionary } = props;
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://arkana.blog";
 
   return (
     <div className="group">
-      <Link href={`/${lang}/reading-lists/${list.id}`} className="block">
+      <Link
+        href={`${baseUrl}/${lang}/reading-lists/${list.id}`}
+        className="block"
+      >
         {/* Image container with stacked appearance */}
         <div className="relative h-64 mb-4 hidden md:block">
           {list.coverImage ? (
@@ -31,9 +35,11 @@ export function ReadingListCard(props: ReadingListCardProps) {
               {/* Main image */}
               <div className="absolute inset-0 overflow-hidden">
                 <Image
-                  src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${
+                  src={
                     list.coverImage
-                  }`}
+                      ? `${baseUrl}${list.coverImage}`
+                      : "/placeholder.svg"
+                  }
                   alt={list.title}
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"

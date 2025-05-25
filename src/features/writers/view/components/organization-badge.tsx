@@ -13,6 +13,8 @@ export function OrganizationBadge({
   url,
   logoUrl,
 }: OrganizationBadgeProps) {
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://arkana.blog";
+
   return (
     <Link
       href={url}
@@ -23,7 +25,7 @@ export function OrganizationBadge({
       {logoUrl && (
         <div className="relative w-10 h-10 overflow-hidden">
           <Image
-            src={logoUrl || "/placeholder.svg"}
+            src={logoUrl ? `${baseUrl}${logoUrl}` : "/placeholder.svg"}
             alt={name}
             fill
             className="object-contain"

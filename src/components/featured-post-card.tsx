@@ -21,15 +21,15 @@ export function FeaturedPostCard(props: FeaturedPostCardProps) {
   const { post, lang, variant = "default", imageClassName } = props;
   const router = useRouter();
   const isLarge = variant === "large";
-
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://arkana.blog";
   const handleAuthorClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    router.push(`/${lang}/writers/${post.author.slug}`);
+    router.push(`${baseUrl}/${lang}/writers/${post.author.slug}`);
   };
 
   return (
     <div className="group flex flex-col items-center">
-      <Link href={`/${lang}/blog/${post.slug}`} className="block">
+      <Link href={`${baseUrl}/${lang}/blog/${post.slug}`} className="block">
         {isLarge ? (
           <>
             <div
@@ -84,9 +84,9 @@ export function FeaturedPostCard(props: FeaturedPostCardProps) {
             >
               <Image
                 src={
-                  `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${
-                    post.thumbnail
-                  }` || "/placeholder.svg"
+                  post.thumbnail
+                    ? `${baseUrl}${post.thumbnail}`
+                    : "/placeholder.svg"
                 }
                 alt={post.title}
                 fill

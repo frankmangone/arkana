@@ -108,11 +108,52 @@ export async function generateMetadata({
     };
   }
 
+  // Base URL para links absolutos
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://arkana.io";
+  const canonicalUrl = `${baseUrl}/${lang}/blog/${fullSlug}`;
+  const imageUrl = post.metadata.thumbnail
+    ? `${baseUrl}${post.metadata.thumbnail}`
+    : `${baseUrl}/images/arkana-default-og.png`;
+
   return {
     title: `Arkana | ${post.metadata.title}`,
     description: post.metadata.description,
     authors: [{ name: post.metadata.author }],
     keywords: post.metadata.tags,
+    metadataBase: new URL(baseUrl),
+    alternates: {
+      canonical: canonicalUrl,
+      languages: {
+        en: `${baseUrl}/en/blog/${fullSlug}`,
+        es: `${baseUrl}/es/blog/${fullSlug}`,
+        pt: `${baseUrl}/pt/blog/${fullSlug}`,
+      },
+    },
+    openGraph: {
+      title: post.metadata.title,
+      description: post.metadata.description || "",
+      url: canonicalUrl,
+      siteName: "Arkana Blog",
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: post.metadata.title,
+        },
+      ],
+      locale: lang,
+      type: "article",
+      publishedTime: post.metadata.date,
+      authors: [post.metadata.author],
+      tags: post.metadata.tags,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.metadata.title,
+      description: post.metadata.description || "",
+      images: [imageUrl],
+    },
   };
 }
 
