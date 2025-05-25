@@ -6,7 +6,6 @@ thumbnail: "/images/elliptic-curves-in-depth/part-2/monkey-head-scratching.webp"
 tags: ["cryptography", "finiteField", "mathematics", "ellipticCurves"]
 description: "Ahora nos movemos de nuestro familiar escenario de números reales al reino de los campos finitos, donde las curvas elípticas realmente brillan."
 readingTime: "11 min"
-mediumUrl: "https://medium.com/@francomangone18/elliptic-curves-in-depth-part-2-e3c675462001"
 ---
 
 [La última vez](/es/blog/elliptic-curves-in-depth/part-1), definimos qué son las curvas elípticas, y diseñamos una forma (sospechosamente complicada) de sumar puntos en la curva. Y dimos pistas sobre cómo esta operación era clave para aplicaciones criptográficas.

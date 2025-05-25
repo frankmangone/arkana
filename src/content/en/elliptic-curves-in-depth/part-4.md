@@ -48,7 +48,7 @@ Even though most of you will probably know what a function is, I think it’s wo
   <img
     src="/images/elliptic-curves-in-depth/part-4/function.webp" 
     alt="A function, taking an input, and spitting an output"
-    title="[zoom] This is the “intuitive” way to describe functions."
+    title="[zoom] This is the 'intuitive' way to describe functions."
   />
 </figure>
 
@@ -362,7 +362,7 @@ Oh boy, what a journey! The study of functions on elliptic curves is quite fasci
 
 And in the meanwhile, we also introduced the idea of **field extensions**, and allowed elliptic curves to be defined over these larger fields.
 
-> I’ll get to that at some point, I promise.
+> I’ll get to that soon, I promise.
 
 Each of these concepts gives us a different lens through which we can view and understand elliptic curves. And trust me — there’s still so, so much more to explore.
 

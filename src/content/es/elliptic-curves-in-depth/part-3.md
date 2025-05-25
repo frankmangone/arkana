@@ -6,7 +6,6 @@ thumbnail: "/images/elliptic-curves-in-depth/part-3/hawk.webp"
 tags: ["cryptography", "groups", "mathematics", "ellipticCurves"]
 description: "Es hora de centrarnos en el aspecto más relevante de las curvas elípticas en criptografía: su estructura de grupo."
 readingTime: "10 min"
-mediumUrl: "https://medium.com/@francomangone18/elliptic-curve-in-depth-part-3-7ae583674b4d"
 ---
 
 Si tuviéramos que definir qué es una curva elíptica solo con lo que hemos cubierto hasta ahora, probablemente diríamos algo como:
@@ -269,13 +268,13 @@ Después de leer este artículo, si nos vuelven a preguntar qué es una curva el
 
 Hay muchas aplicaciones para los grupos de curvas elípticas. Sugiero mirar la serie [Criptografía 101](/es/reading-lists/cryptography-101) para una lista larga (pero incompleta) de algoritmos que involucran curvas elípticas.
 
-Pero, ay, la historia no termina aquí. Hay mucho más que decir sobre las curvas elípticas. Consejos y trucos sobre cómo hacer los cálculos más rápidos, perspectivas sobre cómo elegir "buenas curvas elípticas", pasar a "dimensiones superiores" — sí, mucha diversión por delante.
+Pero esta historia no termina aquí. Hay mucho más que decir sobre las curvas elípticas. Consejos y trucos sobre cómo hacer los cálculos más rápidos, perspectivas sobre cómo elegir "buenas curvas elípticas", pasar a "dimensiones superiores" — sí, tenemos mucho entretenimiento por delante.
 
 <figure>
   <img
     src="/images/elliptic-curves-in-depth/part-3/happy-spongebob.webp" 
     alt="Bob Esponja de espaldas con una cara feliz dibujada en su espalda"
-    title="¡Yupi!"
+    title="¡Woohoo...!"
     width="400"
   />
 </figure>
