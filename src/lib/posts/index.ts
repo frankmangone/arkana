@@ -47,6 +47,11 @@ export async function getPostsByAuthor(
 
           const author = getWriter(data.author || "");
 
+          // Skip posts with visible: false
+          if (data.visible === false) {
+            continue;
+          }
+
           // Only include posts by the specified author
           if (data.author === authorSlug) {
             allPosts.push({
@@ -105,6 +110,11 @@ export async function getAllPosts(lang: string): Promise<PostPreview[]> {
           const fileContent = await fs.readFile(filePath, "utf8");
           const { data } = matter(fileContent);
           const author = getWriter(data.author || "");
+
+          // Skip posts with visible: false
+          if (data.visible === false) {
+            continue;
+          }
 
           allPosts.push({
             slug: fullSlug,

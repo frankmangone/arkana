@@ -13,4 +13,5 @@ export interface PostMetadata {
   description?: string;
   readingTime?: string;
   mediumUrl?: string;
+  visible?: boolean;
 }

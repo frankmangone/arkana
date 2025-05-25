@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import fs from "fs/promises";
 import path from "path";
 import { MainLayout } from "@/components/layouts/main-layout";
+import matter from "gray-matter";
 
 interface PageParams {
   lang: string;
@@ -52,6 +53,16 @@ export async function generateStaticParams() {
         for (const file of files) {
           if (file.endsWith(".md")) {
             const slug = file.replace(".md", "");
+
+            // Check if the article is visible before adding it
+            const filePath = path.join(folderPath, file);
+            const fileContent = await fs.readFile(filePath, "utf8");
+            const { data } = matter(fileContent);
+
+            // Skip articles with visible: false
+            if (data.visible === false) {
+              continue;
+            }
 
             // Check if this folder/slug combination is already tracked
             const existingIndex = uniqueArticles.findIndex(
