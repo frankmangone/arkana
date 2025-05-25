@@ -258,7 +258,7 @@ Los qubits están conectados a través de un fenómeno llamado **entrelazamiento
   <img
     src="/images/wtf-is/quantum-computing/entanglement.webp" 
     alt="Representación artística del entrelazamiento"
-    title="Guau"
+    title="Wow"
     width="600"
   />
 </figure>
