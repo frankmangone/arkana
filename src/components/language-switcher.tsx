@@ -14,11 +14,12 @@ import { Globe } from "lucide-react";
 export function LanguageSwitcher() {
   const pathname = usePathname();
   const router = useRouter();
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://arkana.blog";
 
   const switchLanguage = (locale: string) => {
     // Get the path without the locale
     const pathWithoutLocale = pathname.split("/").slice(2).join("/");
-    const newPath = `/${locale}/${pathWithoutLocale}`;
+    const newPath = `${baseUrl}/${locale}/${pathWithoutLocale}`;
     router.push(newPath);
   };
 

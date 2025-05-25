@@ -22,9 +22,10 @@ export const Navbar = async (props: NavbarProps) => {
 
   const dict = await getDictionary(lang);
 
-  const homeUrl = `/${lang}`;
-  const readingListsUrl = `/${lang}/reading-lists`;
-  const writersUrl = `/${lang}/writers`;
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://arkana.blog";
+  const homeUrl = `${baseUrl}/${lang}`;
+  const readingListsUrl = `${baseUrl}/${lang}/reading-lists`;
+  const writersUrl = `${baseUrl}/${lang}/writers`;
 
   return (
     <header className="relative z-10">
