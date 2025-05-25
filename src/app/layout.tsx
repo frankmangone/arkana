@@ -5,6 +5,7 @@ import "./globals.css";
 import "katex/dist/katex.min.css";
 import "prismjs/themes/prism-tomorrow.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import Script from "next/script";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -14,10 +15,46 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: "Arkana | Home",
   description: "Where technology meets clarity",
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "https://arkana.blog"
+  ),
   icons: {
-    icon: "/logo.svg",
-    shortcut: "/logo.svg",
-    apple: "/logo.svg",
+    icon: [
+      { url: "/favicon.ico", sizes: "32x32", type: "image/x-icon" },
+      { url: "/logo.svg", type: "image/svg+xml" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    other: [{ url: "/logo.png", sizes: "60x60", type: "image/png" }],
+  },
+  openGraph: {
+    type: "website",
+    siteName: "Arkana",
+    title: "Arkana | Where complexity meets clarity",
+    description: "Where complexity meets clarity",
+    url: "/",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Arkana Blog",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Arkana | Where complexity meets clarity",
+    description: "Where complexity meets clarity",
+    images: ["/og.png"],
+  },
+  alternates: {
+    languages: {
+      en: "/en",
+      es: "/es",
+      pt: "/pt",
+    },
   },
 };
 
@@ -29,6 +66,27 @@ export default async function RootLayout({
   params: Promise<{ lang: string }>;
 }) {
   const { lang } = await params;
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://arkana.blog";
+
+  // JSON-LD structured data for the organization
+  const organizationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": `${baseUrl}/#organization`,
+    name: "Arkana",
+    url: baseUrl,
+    logo: {
+      "@type": "ImageObject",
+      url: `${baseUrl}/logo.png`,
+      width: 60,
+      height: 60,
+    },
+    sameAs: [
+      "https://twitter.com/arkana_blog",
+      "https://github.com/arkana-blog",
+      // Add other social profiles as needed
+    ],
+  };
 
   return (
     <html lang={lang} suppressHydrationWarning>
@@ -47,25 +105,16 @@ export default async function RootLayout({
             `,
           }}
         />
-        <meta
-          property="og:title"
-          content="Arkana | Where complexity meets clarity"
-        />
-        <meta
-          property="og:description"
-          content="Where complexity meets clarity"
-        />
-        <meta property="og:url" content="https://arkana.blog/en/" />
-        <meta property="og:image" content="https://arkana.blog/og.png" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:type" content="website" />
-        <meta property="og:locale" content="en_US" />
-        <meta property="og:locale:alternate" content="es_ES" />
-        <meta property="og:locale:alternate" content="pt_BR" />
-        <meta property="og:site_name" content="Arkana" />
+        <link rel="manifest" href="/manifest.json" />
       </head>
       <body className={spaceGrotesk.className}>
+        <Script
+          id="organization-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd),
+          }}
+        />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

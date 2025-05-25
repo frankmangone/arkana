@@ -1,0 +1,17 @@
+{
+  "name": "Arkana Blog",
+  "short_name": "Arkana",
+  "description": "Where complexity meets clarity",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#a777ff",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "60x60",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
