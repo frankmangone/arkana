@@ -109,7 +109,7 @@ Torsion groups are the subgroups where, for some integer $r$, all its elements $
 
 Now we go back to finite fields. As previously mentioned, it's clear that the entire elliptic curve group is finite. However, it's worth remembering that it's highly non-trivial to find integer-valued points on an elliptic curve, as we explored in the [previous article](/en/blog/elliptic-curves-in-depth/part-5).
 
-It's also clear that since we have a limited amount of points to work with, we're guaranteed to have some cyclic subgroups. At most, the entire group will be a single cycle of some size r.
+It's also clear that since we have a limited amount of points to work with, we're guaranteed to have some cyclic subgroups. At most, the entire group will be a single cycle of some size $r$.
 
 What follows is quite perplexing. There's a theorem, called the [structure theorem for finite abelian groups](https://medium.com/r/?url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FFinitely_generated_abelian_group) (that's a long name), which states that:
 

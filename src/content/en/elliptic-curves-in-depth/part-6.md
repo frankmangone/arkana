@@ -22,7 +22,7 @@ Before that though, I want to take the time to really submerge ourselves into th
 
 I promise — this will be the final stretch of bizarre theory (before we get to pairings, at least!).
 
-That being said, this article is perhaps less practical than the others, and more focused on pure theory. Still, the ability to **count points** in elliptic curves is super important, but we’ll not be questioning why today.
+That being said, this article is perhaps less practical than the others, and more focused on pure theory. Still, today we'll talk about things that closely relate with the ability to **count points** in elliptic curves. Something super important that we'll not cover in this article.
 
 Without further ado, let’s go!
 
@@ -225,7 +225,7 @@ We have **clues**, though. And a famous **conjecture**, that’s hasn’t been p
 
 To understand the conjecture, we first need to introduce what the **rank** of a curve is.
 
-In the previous examples, there were some [generator elements](/en/blog/elliptic-curves-in-depth/part-3/#identity-and-generators) (the P points we used) that produced **finite** groups, while other produced **infinite** groups. Likewise, we say that $P$ has a **finite order** in the former case, or an **infinite order** in the latter.
+In the previous examples, there were some [generator elements](/en/blog/elliptic-curves-in-depth/part-3/#identity-and-generators) (the $P$ points we used) that produced **finite** groups, while other produced **infinite** groups. Likewise, we say that $P$ has a **finite order** in the former case, or an **infinite order** in the latter.
 
 Now, finite groups are easy to describe — we can simply list all their elements. But for infinite groups, much like for infinite sets, this is not possible.
 

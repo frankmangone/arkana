@@ -189,6 +189,18 @@ export const readingLists: ReadingList[] = [
         slug: "elliptic-curves-in-depth/part-4",
         order: 4,
       },
+      {
+        slug: "elliptic-curves-in-depth/part-5",
+        order: 5,
+      },
+      {
+        slug: "elliptic-curves-in-depth/part-6",
+        order: 6,
+      },
+      {
+        slug: "elliptic-curves-in-depth/part-7",
+        order: 7,
+      },
     ],
   },
 ];
