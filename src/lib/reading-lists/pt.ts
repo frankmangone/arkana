@@ -26,6 +26,10 @@ export const readingLists: ReadingList[] = [
         slug: "cryptography-101/elliptic-curves-somewhat-demystified",
         order: 3,
       },
+      {
+        slug: "cryptography-101/encryption-and-digital-signatures",
+        order: 4,
+      },
     ],
   },
 ];

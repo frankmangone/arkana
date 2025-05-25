@@ -20,7 +20,9 @@ Language-specific rules:
 - In SPANISH, translate `isomorphic to` as `es isomórfico a`. Make sure that the resulting sentence makes sense gramatically.
 - In SPANISH, translate `encryption` or similar words to `encriptación` or their corresponding word. Same for `decryption` and `desencriptación`.
 
+- In PORTUGUESE, keep in mind that we're translating to Brazilian portuguese, not portuguese from Portugal.
 - In PORTUGUESE, translate `encryption` or similar words to `encriptação` or their corresponding word. Same for `decryption` and `decriptação`.
 - In PORTUGUESE, you may use expressions around `jeito` for various things, sparingly. For example, `ajeitar` means `to organize or put in order`. `Desajeitar` means `to disorganize`, `dar um jeito em` means `to so something so that things are better`, `daquele jeito` means `that way!` referring to the current context. I assume you know these expressions - this is slang for brazilian portuguese. Remember not to force these expressions - only use them if they ever make sense, and the tone is adequate.
 - In PORTUGUESE, when the tone is appropriate, you can condense `não é?` to `né?`. Don't abuse the resource, though!
 - In PORTUGUESE, you may use `procurando` as a more informal synonym to `buscando`, if the context is right.
+- In PORTUGUESE, translate `Alice` to `André` and `Bob` to `Bruna`.
