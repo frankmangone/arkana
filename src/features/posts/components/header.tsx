@@ -25,7 +25,10 @@ export async function PostHeader(props: PostHeaderProps) {
       <div className="space-y-2">
         <h1 className="text-4xl mb-6 font-bold">{metadata.title}</h1>
 
-        <ArkanaStrip content={post.content} />
+        <ArkanaStrip
+          content={post.content}
+          preCalculatedHash={metadata.contentHash}
+        />
 
         <div className="flex flex-wrap gap-2 mt-6">
           {metadata.tags.map((tag) => (

@@ -35,12 +35,14 @@ interface ArkanaStripProps {
   content?: string;
   randomSeed?: bigint;
   className?: string;
+  preCalculatedHash?: string;
 }
 
 export function ArkanaStrip({
   content,
   randomSeed,
   className,
+  preCalculatedHash,
 }: ArkanaStripProps) {
   const [canvasSize, setCanvasSize] = useState(48);
 
@@ -71,7 +73,12 @@ export function ArkanaStrip({
   const generatePatterns = (): Pattern[] => {
     let binaryString: string;
 
-    if (content) {
+    // First check if we have a pre-calculated hash
+    if (preCalculatedHash) {
+      binaryString = BigInt("0x" + preCalculatedHash)
+        .toString(2)
+        .padStart(256, "0");
+    } else if (content) {
       // Generate SHA-256 hash of the content
       const hash = createHash("sha256").update(content).digest("hex");
       binaryString = BigInt("0x" + hash)

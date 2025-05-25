@@ -58,6 +58,9 @@ jobs:
       - name: Install dependencies without frozen lockfile
         run: pnpm install --no-frozen-lockfile
 
+      - name: Pre-calculate content hashes
+        run: node scripts/calculate-hashes.js
+
       - name: Print environment variables (debug)
         run: |
           echo "BASE_PATH: $BASE_PATH"

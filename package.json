@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "export": "next export"
+    "export": "next export",
+    "calculate-hashes": "node scripts/calculate-hashes.js",
+    "prebuild": "npm run calculate-hashes"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.4",
