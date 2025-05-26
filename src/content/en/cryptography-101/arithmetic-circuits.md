@@ -1,19 +1,21 @@
 ---
-title: "Cryptography 101: Arithmetic Circuits"
-date: "2024-06-18"
-author: "frank-mangone"
-thumbnail: "/images/cryptography-101/arithmetic-circuits/polynomial-circuit.webp"
+title: 'Cryptography 101: Arithmetic Circuits'
+date: '2024-06-18'
+author: frank-mangone
+thumbnail: /images/cryptography-101/arithmetic-circuits/polynomial-circuit.webp
 tags:
-  [
-    "cryptography",
-    "zeroKnowledgeProofs",
-    "mathematics",
-    "polynomials",
-    "arithmeticCircuits",
-  ]
-description: "Before moving on into more complex zero knowledge proofs, we need to introduce a new model: arithmetic circuits!"
-readingTime: "9 min"
-mediumUrl: "https://medium.com/@francomangone18/cryptography-101-arithmetic-circuits-351ca87647a9"
+  - cryptography
+  - zeroKnowledgeProofs
+  - mathematics
+  - polynomials
+  - arithmeticCircuits
+description: >-
+  Before moving on into more complex zero knowledge proofs, we need to introduce
+  a new model: arithmetic circuits!
+readingTime: 9 min
+mediumUrl: >-
+  https://medium.com/@francomangone18/cryptography-101-arithmetic-circuits-351ca87647a9
+contentHash: 968d47e5511d9b5540d72b7650a9dfa714cc0c65ae7b50a89832ddf031cf46c2
 ---
 
 > This is part of a larger series of articles about cryptography. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/cryptography-101/where-to-start).

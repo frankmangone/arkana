@@ -1,13 +1,21 @@
 ---
-title: "Cryptography 101: Homomorphisms and Isomorphisms"
-date: "2024-04-16"
-author: "frank-mangone"
-thumbnail: "/images/cryptography-101/homomorphisms-and-isomorphisms/muppet.webp"
+title: 'Cryptography 101: Homomorphisms and Isomorphisms'
+date: '2024-04-16'
+author: frank-mangone
+thumbnail: /images/cryptography-101/homomorphisms-and-isomorphisms/muppet.webp
 tags:
-  ["cryptography", "encryption", "homomorphism", "isomorphism", "mathematics"]
-description: "A deeper dive into core concepts of groups, and a fascinating application: homomorphic encryption"
-readingTime: "9 min"
-mediumUrl: "https://medium.com/@francomangone18/cryptography-101-homomorphism-and-isomorphisms-65ba2610f90a"
+  - cryptography
+  - encryption
+  - homomorphism
+  - isomorphism
+  - mathematics
+description: >-
+  A deeper dive into core concepts of groups, and a fascinating application:
+  homomorphic encryption
+readingTime: 9 min
+mediumUrl: >-
+  https://medium.com/@francomangone18/cryptography-101-homomorphism-and-isomorphisms-65ba2610f90a
+contentHash: 423f703521cf2e40e75e14b20467230a4e36c0fa3185763766065af473096a12
 ---
 
 > This is part of a larger series of articles about cryptography. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/cryptography-101/where-to-start).

@@ -1,12 +1,21 @@
 ---
-title: "Criptografia 101: Curvas Elípticas (Parcialmente) Desmistificadas"
-date: "2024-03-11"
-author: "frank-mangone"
-thumbnail: "/images/cryptography-101/elliptic-curves-somewhat-demystified/elliptic-curve.webp"
-tags: ["cryptography", "ellipticCurves", "mathematics", "modularArithmetic"]
-description: "Uma introdução ao mundo das curvas elípticas, formando a base para entender mecanismos criptográficos úteis"
-readingTime: "7 min"
-mediumUrl: "https://medium.com/@francomangone18/cryptography-101-elliptic-curves-somewhat-demystified-e835cce01e23"
+title: 'Criptografia 101: Curvas Elípticas (Parcialmente) Desmistificadas'
+date: '2024-03-11'
+author: frank-mangone
+thumbnail: >-
+  /images/cryptography-101/elliptic-curves-somewhat-demystified/elliptic-curve.webp
+tags:
+  - cryptography
+  - ellipticCurves
+  - mathematics
+  - modularArithmetic
+description: >-
+  Uma introdução ao mundo das curvas elípticas, formando a base para entender
+  mecanismos criptográficos úteis
+readingTime: 7 min
+mediumUrl: >-
+  https://medium.com/@francomangone18/cryptography-101-elliptic-curves-somewhat-demystified-e835cce01e23
+contentHash: 3f5a561e3f10634f4da5c535892d1af30c75466830b0d6ad96a9b4f88c197ecb
 ---
 
 > Este é parte de uma série maior de artigos sobre criptografia. Se este é o primeiro artigo que você encontra, recomendo fortemente começar pelo [início da série](/pt/blog/cryptography-101/where-to-start).

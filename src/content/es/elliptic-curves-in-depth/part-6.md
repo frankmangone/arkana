@@ -1,18 +1,20 @@
 ---
-title: "Curvas Elípticas En Profundidad (Parte 6)"
-date: "2025-04-14"
-author: "frank-mangone"
-thumbnail: "/images/elliptic-curves-in-depth/part-6/michael-scott-red.webp"
+title: Curvas Elípticas En Profundidad (Parte 6)
+date: '2025-04-14'
+author: frank-mangone
+thumbnail: /images/elliptic-curves-in-depth/part-6/michael-scott-red.webp
 tags:
-  [
-    "cryptography",
-    "conjecture",
-    "rationalPoints",
-    "mathematics",
-    "ellipticCurves",
-  ]
-description: "Una examinación de la acción detrás de escenas que permite la criptografía de curvas elípticas, acompañado de una breve mirada a un problema matemático de unos cuantos años."
-readingTime: "12 min"
+  - cryptography
+  - conjecture
+  - rationalPoints
+  - mathematics
+  - ellipticCurves
+description: >-
+  Una examinación de la acción detrás de escenas que permite la criptografía de
+  curvas elípticas, acompañado de una breve mirada a un problema matemático de
+  unos cuantos años.
+readingTime: 12 min
+contentHash: c45809cc9a7bd266b6b6eb2b1706fc3b72a5fcbe54f39307f696f01e6beca729
 ---
 
 [La última vez](/es/blog/elliptic-curves-in-depth/part-5), aprendimos a hablar el lenguaje de los divisores. Esto es extremadamente importante para obtener una comprensión más profunda de las curvas elípticas, y es crucial para entender los **emparejamientos** — una construcción que abordaremos en los próximos artículos.

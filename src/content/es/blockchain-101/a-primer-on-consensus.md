@@ -1,12 +1,21 @@
 ---
-title: "Blockchain 101: Una Introducción al Consenso"
-date: "2024-09-25"
-author: "frank-mangone"
-thumbnail: "/images/blockchain-101/a-primer-on-consensus/smaug.webp"
-tags: ["blockchain", "bitcoin", "consensus", "proofOfWork", "mining"]
-description: "Cambiemos nuestro enfoque a cómo un sistema descentralizado puede acordar una única verdad: a través del consenso."
-readingTime: "10 min"
-mediumUrl: "https://medium.com/@francomangone18/blockchain-101-a-primer-on-consensus-505388eaee80"
+title: 'Blockchain 101: Una Introducción al Consenso'
+date: '2024-09-25'
+author: frank-mangone
+thumbnail: /images/blockchain-101/a-primer-on-consensus/smaug.webp
+tags:
+  - blockchain
+  - bitcoin
+  - consensus
+  - proofOfWork
+  - mining
+description: >-
+  Cambiemos nuestro enfoque a cómo un sistema descentralizado puede acordar una
+  única verdad: a través del consenso.
+readingTime: 10 min
+mediumUrl: >-
+  https://medium.com/@francomangone18/blockchain-101-a-primer-on-consensus-505388eaee80
+contentHash: 72a2be44b34548f9a0965641019edffa6b72833cbeb7bcb7d6844611357add7f
 ---
 
 > Esto es parte de una serie más larga de artículos sobre Blockchain. Si este es el primer artículo que encuentras, te recomiendo comenzar desde el [inicio de la serie](/es/blog/blockchain-101/how-it-all-began).

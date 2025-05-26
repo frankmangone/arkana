@@ -1,20 +1,20 @@
 ---
-title: "Elliptic Curves In-Depth (Part 4)"
-date: "2025-03-03"
-author: "frank-mangone"
-thumbnail: "/images/elliptic-curves-in-depth/part-4/yoda.webp"
+title: Elliptic Curves In-Depth (Part 4)
+date: '2025-03-03'
+author: frank-mangone
+thumbnail: /images/elliptic-curves-in-depth/part-4/yoda.webp
 tags:
-  [
-    "cryptography",
-    "function",
-    "homomorphism",
-    "isomorphism",
-    "mathematics",
-    "ellipticCurves",
-  ]
-description: "Let’s talk about functions on elliptic curves, and their crazy properties."
-readingTime: "14 min"
-mediumUrl: "https://medium.com/@francomangone18/elliptic-curves-in-depth-part-4-5d5fb5638347"
+  - cryptography
+  - function
+  - homomorphism
+  - isomorphism
+  - mathematics
+  - ellipticCurves
+description: 'Let’s talk about functions on elliptic curves, and their crazy properties.'
+readingTime: 14 min
+mediumUrl: >-
+  https://medium.com/@francomangone18/elliptic-curves-in-depth-part-4-5d5fb5638347
+contentHash: f89b8f2305bf887a3c654191a9bcad3439a5b424ecb716e1c4f7bb03795f5ded
 ---
 
 We’ve covered quite a few things up until now, so I believe a quick refresher will prove to be helpful.

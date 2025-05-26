@@ -1,12 +1,20 @@
 ---
-title: "Elliptic Curves In-Depth (Part 3)"
-date: "2025-01-29"
-author: "frank-mangone"
-thumbnail: "/images/elliptic-curves-in-depth/part-3/hawk.webp"
-tags: ["cryptography", "groups", "mathematics", "ellipticCurves"]
-description: "Time to focus on the most relevant aspect about elliptic curves in cryptography: their group structure."
-readingTime: "10 min"
-mediumUrl: "https://medium.com/@francomangone18/elliptic-curve-in-depth-part-3-7ae583674b4d"
+title: Elliptic Curves In-Depth (Part 3)
+date: '2025-01-29'
+author: frank-mangone
+thumbnail: /images/elliptic-curves-in-depth/part-3/hawk.webp
+tags:
+  - cryptography
+  - groups
+  - mathematics
+  - ellipticCurves
+description: >-
+  Time to focus on the most relevant aspect about elliptic curves in
+  cryptography: their group structure.
+readingTime: 10 min
+mediumUrl: >-
+  https://medium.com/@francomangone18/elliptic-curve-in-depth-part-3-7ae583674b4d
+contentHash: 437f9257c6cdd4616eedb23d6e1eca51df6272642d0f1b01241103358e98400a
 ---
 
 If we had to define what an elliptic curve is only with what we’ve covered so far, we’d probably say something like:

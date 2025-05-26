@@ -1,12 +1,16 @@
 ---
-title: "Blockchain 101: Entrando en Ethereum"
-date: "2024-11-09"
-author: "frank-mangone"
-thumbnail: "/images/blockchain-101/enter-ethereum/galaxy-brain.webp"
-tags: ["ethereum", "blockchain", "smartContracts"]
-description: "Es hora de pasar al segundo gran hito en la historia de Blockchain: Ethereum"
-readingTime: "8 min"
-mediumUrl: "https://medium.com/@francomangone18/blockchain-101-enter-ethereum-e24f5f6453ac"
+title: 'Blockchain 101: Entrando en Ethereum'
+date: '2024-11-09'
+author: frank-mangone
+thumbnail: /images/blockchain-101/enter-ethereum/galaxy-brain.webp
+tags:
+  - ethereum
+  - blockchain
+  - smartContracts
+description: 'Es hora de pasar al segundo gran hito en la historia de Blockchain: Ethereum'
+readingTime: 8 min
+mediumUrl: 'https://medium.com/@francomangone18/blockchain-101-enter-ethereum-e24f5f6453ac'
+contentHash: 8b282e99f408c928143842f73b68b565d23b7a18de9e1778634778de560761de
 ---
 
 > Este artículo es parte de una serie más larga sobre Blockchain. Si este es el primer artículo que encuentras, te recomiendo comenzar por el [inicio de la serie](/es/blog/blockchain-101/how-it-all-began).

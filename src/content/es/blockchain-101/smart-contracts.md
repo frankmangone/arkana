@@ -1,12 +1,21 @@
 ---
-title: "Blockchain 101: Contratos Inteligentes"
-date: "2024-12-26"
-author: "frank-mangone"
-thumbnail: "/images/blockchain-101/smart-contracts/dump-spongebob.webp"
-tags: ["ethereum", "blockchain", "evm", "solidity", "smartContracts"]
-description: "Un vistazo a la arquitectura que hace posibles los Contratos Inteligentes en Ethereum"
-readingTime: "12 min"
-mediumUrl: "https://medium.com/@francomangone18/blockchain-101-smart-contracts-8092253cbdfa"
+title: 'Blockchain 101: Contratos Inteligentes'
+date: '2024-12-26'
+author: frank-mangone
+thumbnail: /images/blockchain-101/smart-contracts/dump-spongebob.webp
+tags:
+  - ethereum
+  - blockchain
+  - evm
+  - solidity
+  - smartContracts
+description: >-
+  Un vistazo a la arquitectura que hace posibles los Contratos Inteligentes en
+  Ethereum
+readingTime: 12 min
+mediumUrl: >-
+  https://medium.com/@francomangone18/blockchain-101-smart-contracts-8092253cbdfa
+contentHash: 46aecc0ee8bc6fec16b646fd34813adfd546c856ad170208a0c76955e85c5d15
 ---
 
 > Este artículo es parte de una serie más larga sobre Blockchain. Si este es el primer artículo que encuentras, te recomiendo comenzar por el [inicio de la serie](/es/blog/blockchain-101/how-it-all-began).

@@ -1,18 +1,19 @@
 ---
-title: "Criptografía 101: Circuitos Aritméticos"
-date: "2024-06-18"
-author: "frank-mangone"
-thumbnail: "/images/cryptography-101/arithmetic-circuits/polynomial-circuit.webp"
+title: 'Criptografía 101: Circuitos Aritméticos'
+date: '2024-06-18'
+author: frank-mangone
+thumbnail: /images/cryptography-101/arithmetic-circuits/polynomial-circuit.webp
 tags:
-  [
-    "cryptography",
-    "zeroKnowledgeProofs",
-    "mathematics",
-    "polynomials",
-    "arithmeticCircuits",
-  ]
-description: "Antes de avanzar hacia pruebas de conocimiento cero más complejas, ¡necesitamos introducir un nuevo modelo: los circuitos aritméticos!"
-readingTime: "9 min"
+  - cryptography
+  - zeroKnowledgeProofs
+  - mathematics
+  - polynomials
+  - arithmeticCircuits
+description: >-
+  Antes de avanzar hacia pruebas de conocimiento cero más complejas,
+  ¡necesitamos introducir un nuevo modelo: los circuitos aritméticos!
+readingTime: 9 min
+contentHash: 310942fa032b39df557391536be9b1a4853b75b277a8763d26a85b24ec3fd0d2
 ---
 
 > Este artículo forma parte de una serie más larga sobre criptografía. Si este es el primer artículo con el que te encuentras, te recomiendo encarecidamente comenzar desde el [principio de la serie](/es/blog/cryptography-101/where-to-start).

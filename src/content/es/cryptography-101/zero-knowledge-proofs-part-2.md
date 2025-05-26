@@ -1,20 +1,21 @@
 ---
-title: "Criptografía 101: Pruebas de Conocimiento Cero (Parte 2)"
-date: "2024-06-25"
-author: "frank-mangone"
-thumbnail: "/images/cryptography-101/zero-knowledge-proofs-part-2/pikachu.webp"
+title: 'Criptografía 101: Pruebas de Conocimiento Cero (Parte 2)'
+date: '2024-06-25'
+author: frank-mangone
+thumbnail: /images/cryptography-101/zero-knowledge-proofs-part-2/pikachu.webp
 tags:
-  [
-    "cryptography",
-    "zeroKnowledgeProofs",
-    "mathematics",
-    "polynomials",
-    "arithmeticCircuits",
-    "plonk",
-    "snark",
-  ]
-description: "Esta segunda ronda de pruebas de conocimiento cero nos llevará en un viaje para entender un marco más general. ¡Agárrate fuerte!"
-readingTime: "17 min"
+  - cryptography
+  - zeroKnowledgeProofs
+  - mathematics
+  - polynomials
+  - arithmeticCircuits
+  - plonk
+  - snark
+description: >-
+  Esta segunda ronda de pruebas de conocimiento cero nos llevará en un viaje
+  para entender un marco más general. ¡Agárrate fuerte!
+readingTime: 17 min
+contentHash: 106df041d202c4629e0cbaac782672a8e56a7bc48ae22a41ae24823f236017db
 ---
 
 > Este artículo forma parte de una serie más larga sobre criptografía. Si este es el primer artículo con el que te encuentras, te recomiendo encarecidamente comenzar desde el [principio de la serie](/es/blog/cryptography-101/where-to-start).

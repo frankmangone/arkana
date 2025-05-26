@@ -1,12 +1,20 @@
 ---
-title: "Cryptography 101: Zero Knowledge Proofs (Part 1)"
-date: "2024-06-11"
-author: "frank-mangone"
-thumbnail: "/images/cryptography-101/zero-knowledge-proofs-part-1/wingardium-leviosa.webp"
-tags: ["cryptography", "zeroKnowledgeProofs", "mathematics", "commitmentScheme"]
-description: "We take a leap into the world of zero-knowledge proofs by exploring one of the many ZKP protocols out there: Bulletproofs"
-readingTime: "14 min"
-mediumUrl: "https://medium.com/@francomangone18/cryptography-101-zero-knowledge-proofs-part-1-53516825479c"
+title: 'Cryptography 101: Zero Knowledge Proofs (Part 1)'
+date: '2024-06-11'
+author: frank-mangone
+thumbnail: /images/cryptography-101/zero-knowledge-proofs-part-1/wingardium-leviosa.webp
+tags:
+  - cryptography
+  - zeroKnowledgeProofs
+  - mathematics
+  - commitmentScheme
+description: >-
+  We take a leap into the world of zero-knowledge proofs by exploring one of the
+  many ZKP protocols out there: Bulletproofs
+readingTime: 14 min
+mediumUrl: >-
+  https://medium.com/@francomangone18/cryptography-101-zero-knowledge-proofs-part-1-53516825479c
+contentHash: 41593ee912cc5ea179c0a299c1f790e634e52825518e2c148bd53d2897258452
 ---
 
 > This is part of a larger series of articles about cryptography. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/cryptography-101/where-to-start).

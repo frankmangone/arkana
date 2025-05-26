@@ -1,12 +1,18 @@
 ---
-title: "Cryptography 101: Where to Start"
-date: "2024-03-07"
-author: "frank-mangone"
-thumbnail: "/images/cryptography-101/where-to-start/aaaaa.webp"
-tags: ["cryptography", "groups", "mathematics", "modularArithmetic"]
-description: "A very gentle intro into the world of cryptography"
-readingTime: "6 min"
-mediumUrl: "https://medium.com/@francomangone18/cryptography-101-where-to-start-df7d0791b189"
+title: 'Cryptography 101: Where to Start'
+date: '2024-03-07'
+author: frank-mangone
+thumbnail: /images/cryptography-101/where-to-start/aaaaa.webp
+tags:
+  - cryptography
+  - groups
+  - mathematics
+  - modularArithmetic
+description: A very gentle intro into the world of cryptography
+readingTime: 6 min
+mediumUrl: >-
+  https://medium.com/@francomangone18/cryptography-101-where-to-start-df7d0791b189
+contentHash: 0b9cf628f5e2d1580aca155dd600b3c36007e71cf1e47b5aec1b552eb204ad6f
 ---
 
 I’ll preface this by saying that I’m by no means neither a mathematician, nor an expert in cryptography — I’m just a guy trying to learn the craft on my own.

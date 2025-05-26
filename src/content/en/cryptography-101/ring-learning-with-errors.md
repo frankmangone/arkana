@@ -1,13 +1,21 @@
 ---
-title: "Cryptography 101: Ring Learning With Errors"
-date: "2024-09-17"
-author: "frank-mangone"
-thumbnail: "/images/cryptography-101/ring-learning-with-errors/lattice-generation.webp"
+title: 'Cryptography 101: Ring Learning With Errors'
+date: '2024-09-17'
+author: frank-mangone
+thumbnail: /images/cryptography-101/ring-learning-with-errors/lattice-generation.webp
 tags:
-  ["cryptography", "mathematics", "ring", "ringLearningWithErrors", "lattice"]
-description: "Now that we know about rings, we need a hard problem to work out some cryptography from them — enter Ring Learning With Errors!"
-readingTime: "11 min"
-mediumUrl: "https://medium.com/thecapital/cryptography-101-ring-learning-with-errors-ff2708a8a530"
+  - cryptography
+  - mathematics
+  - ring
+  - ringLearningWithErrors
+  - lattice
+description: >-
+  Now that we know about rings, we need a hard problem to work out some
+  cryptography from them — enter Ring Learning With Errors!
+readingTime: 11 min
+mediumUrl: >-
+  https://medium.com/thecapital/cryptography-101-ring-learning-with-errors-ff2708a8a530
+contentHash: 94a775694603064d4082c8f95137522d514c25b1b41373b5cf1b93e8a4776788
 ---
 
 > This is part of a larger series of articles about cryptography. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/cryptography-101/where-to-start).

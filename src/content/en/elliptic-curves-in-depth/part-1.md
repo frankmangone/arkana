@@ -1,12 +1,17 @@
 ---
-title: "Elliptic Curves In-Depth (Part 1)"
-date: "2025-01-14"
-author: "frank-mangone"
-thumbnail: "/images/elliptic-curves-in-depth/part-1/hyperelliptic.webp"
-tags: ["cryptography", "mathematics", "ellipticCurves"]
-description: "A (kinda) gentle intro to elliptic curves"
-readingTime: "12 min"
-mediumUrl: "https://medium.com/@francomangone18/elliptic-curves-in-depth-part-1-a9c2d37bf484"
+title: Elliptic Curves In-Depth (Part 1)
+date: '2025-01-14'
+author: frank-mangone
+thumbnail: /images/elliptic-curves-in-depth/part-1/hyperelliptic.webp
+tags:
+  - cryptography
+  - mathematics
+  - ellipticCurves
+description: A (kinda) gentle intro to elliptic curves
+readingTime: 12 min
+mediumUrl: >-
+  https://medium.com/@francomangone18/elliptic-curves-in-depth-part-1-a9c2d37bf484
+contentHash: 26cac763c0f929d97bf163cbd034941c02479a750314674ff109682e107c154e
 ---
 
 Cryptography is always evolving.

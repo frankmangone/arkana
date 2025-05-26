@@ -1,11 +1,18 @@
 ---
-title: "Curvas Elípticas En Profundidad (Parte 3)"
-date: "2025-01-29"
-author: "frank-mangone"
-thumbnail: "/images/elliptic-curves-in-depth/part-3/hawk.webp"
-tags: ["cryptography", "groups", "mathematics", "ellipticCurves"]
-description: "Es hora de centrarnos en el aspecto más relevante de las curvas elípticas en criptografía: su estructura de grupo."
-readingTime: "10 min"
+title: Curvas Elípticas En Profundidad (Parte 3)
+date: '2025-01-29'
+author: frank-mangone
+thumbnail: /images/elliptic-curves-in-depth/part-3/hawk.webp
+tags:
+  - cryptography
+  - groups
+  - mathematics
+  - ellipticCurves
+description: >-
+  Es hora de centrarnos en el aspecto más relevante de las curvas elípticas en
+  criptografía: su estructura de grupo.
+readingTime: 10 min
+contentHash: edbe627898a8088fd332c298efe92c85551956449fd5f4a7334713e0d826648c
 ---
 
 Si tuviéramos que definir qué es una curva elíptica solo con lo que hemos cubierto hasta ahora, probablemente diríamos algo como:

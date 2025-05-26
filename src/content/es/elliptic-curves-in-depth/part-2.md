@@ -1,11 +1,18 @@
 ---
-title: "Curvas Elípticas En Profundidad (Parte 2)"
-date: "2025-01-22"
-author: "frank-mangone"
-thumbnail: "/images/elliptic-curves-in-depth/part-2/monkey-head-scratching.webp"
-tags: ["cryptography", "finiteField", "mathematics", "ellipticCurves"]
-description: "Ahora nos movemos de nuestro familiar escenario de números reales al reino de los campos finitos, donde las curvas elípticas realmente brillan."
-readingTime: "11 min"
+title: Curvas Elípticas En Profundidad (Parte 2)
+date: '2025-01-22'
+author: frank-mangone
+thumbnail: /images/elliptic-curves-in-depth/part-2/monkey-head-scratching.webp
+tags:
+  - cryptography
+  - finiteField
+  - mathematics
+  - ellipticCurves
+description: >-
+  Ahora nos movemos de nuestro familiar escenario de números reales al reino de
+  los campos finitos, donde las curvas elípticas realmente brillan.
+readingTime: 11 min
+contentHash: 590fe4693f84c4a2ef5a21e11c0d99f96f46b2b34cc1fdd5e8b93311f742e260
 ---
 
 [La última vez](/es/blog/elliptic-curves-in-depth/part-1), definimos qué son las curvas elípticas, y diseñamos una forma (sospechosamente complicada) de sumar puntos en la curva. Y dimos pistas sobre cómo esta operación era clave para aplicaciones criptográficas.

@@ -1,13 +1,19 @@
 ---
-title: "WTF is Quantum Computing"
-date: "2025-03-24"
-author: "frank-mangone"
-thumbnail: "/images/wtf-is/quantum-computing/hitchhikers.webp"
+title: WTF is Quantum Computing
+date: '2025-03-24'
+author: frank-mangone
+thumbnail: /images/wtf-is/quantum-computing/hitchhikers.webp
 tags:
-  ["computerScience", "quantumMechanics", "qubit", "postQuantumCryptography"]
-description: "A short explainer on how quantum computers work, what they can do, and what to expect from them in the near future"
-readingTime: "11 min"
-mediumUrl: "https://medium.com/@francomangone18/wtf-is-quantum-computing-201cfb05ed66"
+  - computerScience
+  - quantumMechanics
+  - qubit
+  - postQuantumCryptography
+description: >-
+  A short explainer on how quantum computers work, what they can do, and what to
+  expect from them in the near future
+readingTime: 11 min
+mediumUrl: 'https://medium.com/@francomangone18/wtf-is-quantum-computing-201cfb05ed66'
+contentHash: 4480945f94d166304e708750d2feeb3ebe4df3007bf0398950885043f6f3dc2f
 ---
 
 This year is shaping up to be one of the big ones in the history books of quantum computing. Exciting news is hitting the headlines with the announcement of Microsoft’s [Majorana 1](https://medium.com/@servifyspheresolutions/microsofts-majorana-1-quantum-processor-a-leap-forward-in-quantum-computing-240350881e5d) chip and China’s [Zuchongzhi 3.0](https://www.forbes.com/sites/luisromero/2025/03/10/quantum-singularity-ahead-chinas-zuchongzhi-3-reshapes-quantum-race/).

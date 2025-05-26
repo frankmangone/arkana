@@ -1,18 +1,20 @@
 ---
-title: "Criptografía 101: Protocolos a Montones"
-date: "2024-04-02"
-author: "frank-mangone"
-thumbnail: "/images/cryptography-101/protocols-galore/waldo.webp"
+title: 'Criptografía 101: Protocolos a Montones'
+date: '2024-04-02'
+author: frank-mangone
+thumbnail: /images/cryptography-101/protocols-galore/waldo.webp
 tags:
-  [
-    "cryptography",
-    "zeroKnowledgeProofs",
-    "verifiableRandomness",
-    "keyExchange",
-    "commitmentScheme",
-  ]
-description: "Una introducción amigable a algunos esquemas muy útiles: intercambio de claves, esquemas de compromiso, pruebas de conocimiento cero, funciones aleatorias verificables"
-readingTime: "11 min"
+  - cryptography
+  - zeroKnowledgeProofs
+  - verifiableRandomness
+  - keyExchange
+  - commitmentScheme
+description: >-
+  Una introducción amigable a algunos esquemas muy útiles: intercambio de
+  claves, esquemas de compromiso, pruebas de conocimiento cero, funciones
+  aleatorias verificables
+readingTime: 11 min
+contentHash: 2ee7ab3dcdfd12128a87b43d8e8eb7fed1fd6e9cc14db19d9ebf3736eb592b32
 ---
 
 > Este artículo forma parte de una serie más larga sobre criptografía. Si este es el primer artículo con el que te encuentras, te recomiendo comenzar desde el [principio de la serie](/es/blog/cryptography-101/where-to-start).

@@ -1,12 +1,20 @@
 ---
-title: "Criptografía 101: Aprendizaje con Errores en Anillos"
-date: "2024-09-17"
-author: "frank-mangone"
-thumbnail: "/images/cryptography-101/ring-learning-with-errors/lattice-generation.webp"
+title: 'Criptografía 101: Aprendizaje con Errores en Anillos'
+date: '2024-09-17'
+author: frank-mangone
+thumbnail: /images/cryptography-101/ring-learning-with-errors/lattice-generation.webp
 tags:
-  ["cryptography", "mathematics", "ring", "ringLearningWithErrors", "lattice"]
-description: "Ahora que conocemos los anillos, necesitamos un problema difícil para desarrollar criptografía a partir de ellos — ¡entra Aprendizaje con Errores en Anillos!"
-readingTime: "11 min"
+  - cryptography
+  - mathematics
+  - ring
+  - ringLearningWithErrors
+  - lattice
+description: >-
+  Ahora que conocemos los anillos, necesitamos un problema difícil para
+  desarrollar criptografía a partir de ellos — ¡entra Aprendizaje con Errores en
+  Anillos!
+readingTime: 11 min
+contentHash: 10c087e2c98f649a1eec77e40dec49809e98a3842279c23df0474c5eeb52568e
 ---
 
 > Este artículo forma parte de una serie más larga sobre criptografía. Si este es el primer artículo con el que te encuentras, te recomiendo comenzar desde el [principio de la serie](/es/blog/cryptography-101/where-to-start).

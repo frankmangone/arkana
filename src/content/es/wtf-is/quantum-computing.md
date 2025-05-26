@@ -1,12 +1,18 @@
 ---
-title: "WTF es la Computación Cuántica"
-date: "2025-03-24"
-author: "frank-mangone"
-thumbnail: "/images/wtf-is/quantum-computing/hitchhikers.webp"
+title: WTF es la Computación Cuántica
+date: '2025-03-24'
+author: frank-mangone
+thumbnail: /images/wtf-is/quantum-computing/hitchhikers.webp
 tags:
-  ["computerScience", "quantumMechanics", "qubit", "postQuantumCryptography"]
-description: "Una breve explicación sobre cómo funcionan las computadoras cuánticas, qué pueden hacer y qué esperar de ellas en un futuro cercano"
-readingTime: "11 min"
+  - computerScience
+  - quantumMechanics
+  - qubit
+  - postQuantumCryptography
+description: >-
+  Una breve explicación sobre cómo funcionan las computadoras cuánticas, qué
+  pueden hacer y qué esperar de ellas en un futuro cercano
+readingTime: 11 min
+contentHash: c27aecbba2e1abb1f449e46d589dd8790e80721f15a6a0211bdddfbb21c4e353
 ---
 
 Este año se perfila como uno de los grandes en los libros de historia de la computación cuántica. Noticias emocionantes están llegando a los titulares con el anuncio del chip [Majorana 1](https://medium.com/@servifyspheresolutions/microsofts-majorana-1-quantum-processor-a-leap-forward-in-quantum-computing-240350881e5d) de Microsoft y el [Zuchongzhi 3.0](https://www.forbes.com/sites/luisromero/2025/03/10/quantum-singularity-ahead-chinas-zuchongzhi-3-reshapes-quantum-race/) de China.

@@ -1,12 +1,17 @@
 ---
-title: "Cryptography 101: Pairings"
-date: "2024-05-20"
-author: "frank-mangone"
-thumbnail: "/images/cryptography-101/pairings/what-now.webp"
-tags: ["cryptography", "ellipticCurves", "pairings", "mathematics"]
-description: "A brief introduction to pairings, an important tool in modern cryptography"
-readingTime: "11 min"
-mediumUrl: "https://medium.com/@francomangone18/cryptography-101-pairings-e50520deea6c"
+title: 'Cryptography 101: Pairings'
+date: '2024-05-20'
+author: frank-mangone
+thumbnail: /images/cryptography-101/pairings/what-now.webp
+tags:
+  - cryptography
+  - ellipticCurves
+  - pairings
+  - mathematics
+description: 'A brief introduction to pairings, an important tool in modern cryptography'
+readingTime: 11 min
+mediumUrl: 'https://medium.com/@francomangone18/cryptography-101-pairings-e50520deea6c'
+contentHash: 697854b1ec0ce33220c538ce5d6f47781ea70726a703c19c22a71f8722a2a41f
 ---
 
 > This is part of a larger series of articles about cryptography. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/cryptography-101/where-to-start).

@@ -1,19 +1,21 @@
 ---
-title: "Cryptography 101: Pairing Applications & More"
-date: "2024-05-28"
-author: "frank-mangone"
-thumbnail: "/images/cryptography-101/pairing-applications-and-more/rambo-thanks.webp"
+title: 'Cryptography 101: Pairing Applications & More'
+date: '2024-05-28'
+author: frank-mangone
+thumbnail: /images/cryptography-101/pairing-applications-and-more/rambo-thanks.webp
 tags:
-  [
-    "cryptography",
-    "pairings",
-    "mathematics",
-    "keyExchange",
-    "digitalSignatures",
-  ]
-description: "Following our presentation of pairings, we look at a couple more applications enabled by this new tool"
-readingTime: "8 min"
-mediumUrl: "https://medium.com/@francomangone18/cryptography-101-pairing-applications-more-1672665bff81"
+  - cryptography
+  - pairings
+  - mathematics
+  - keyExchange
+  - digitalSignatures
+description: >-
+  Following our presentation of pairings, we look at a couple more applications
+  enabled by this new tool
+readingTime: 8 min
+mediumUrl: >-
+  https://medium.com/@francomangone18/cryptography-101-pairing-applications-more-1672665bff81
+contentHash: 4d0a3c6bcb10b00a303c89791cb19bc9fb5d0bc1c4131f1057e052d3c006d5f5
 ---
 
 > This is part of a larger series of articles about cryptography. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/cryptography-101/where-to-start).

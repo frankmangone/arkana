@@ -1,19 +1,21 @@
 ---
-title: "Cryptography 101: Encryption and Digital Signatures"
-date: "2024-03-18"
-author: "frank-mangone"
-thumbnail: "/images/cryptography-101/encryption-and-digital-signatures/cool-story.webp"
+title: 'Cryptography 101: Encryption and Digital Signatures'
+date: '2024-03-18'
+author: frank-mangone
+thumbnail: /images/cryptography-101/encryption-and-digital-signatures/cool-story.webp
 tags:
-  [
-    "cryptography",
-    "ellipticCurves",
-    "mathematics",
-    "encryption",
-    "digitalSignatures",
-  ]
-description: "Building upon our previous knowledge of elliptic curves, we explore how to encrypt and sign information"
-readingTime: "9 min"
-mediumUrl: "https://medium.com/@francomangone18/cryptography-101-encryption-and-digital-signatures-210960778765"
+  - cryptography
+  - ellipticCurves
+  - mathematics
+  - encryption
+  - digitalSignatures
+description: >-
+  Building upon our previous knowledge of elliptic curves, we explore how to
+  encrypt and sign information
+readingTime: 9 min
+mediumUrl: >-
+  https://medium.com/@francomangone18/cryptography-101-encryption-and-digital-signatures-210960778765
+contentHash: 8263e2056bf35d2b14c7158adea3ecc933f4cf6c4ab8467142c5ee9e06a1d172
 ---
 
 > This is part of a larger series of articles about cryptography. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/cryptography-101/where-to-start).

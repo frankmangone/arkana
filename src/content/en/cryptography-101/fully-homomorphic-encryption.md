@@ -1,13 +1,21 @@
 ---
-title: "Cryptography 101: Fully Homomorphic Encryption"
-date: "2024-10-22"
-author: "frank-mangone"
-thumbnail: "/images/cryptography-101/fully-homomorphic-encryption/steed.webp"
+title: 'Cryptography 101: Fully Homomorphic Encryption'
+date: '2024-10-22'
+author: frank-mangone
+thumbnail: /images/cryptography-101/fully-homomorphic-encryption/steed.webp
 tags:
-  ["cryptography", "mathematics", "encryption", "ring", "homomorphicEncryption"]
-description: "To close things off, we look at homomorphic encryption again, this time on rings!"
-readingTime: "17 min"
-mediumUrl: "https://medium.com/@francomangone18/cryptography-101-fully-homomorphic-encryption-237ca2436b23"
+  - cryptography
+  - mathematics
+  - encryption
+  - ring
+  - homomorphicEncryption
+description: >-
+  To close things off, we look at homomorphic encryption again, this time on
+  rings!
+readingTime: 17 min
+mediumUrl: >-
+  https://medium.com/@francomangone18/cryptography-101-fully-homomorphic-encryption-237ca2436b23
+contentHash: f220ca129e549e26ee0829e4491fb71e24e741cc379da81f9c793b261d374d46
 ---
 
 > This is part of a larger series of articles about cryptography. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/cryptography-101/where-to-start).

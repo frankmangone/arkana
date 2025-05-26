@@ -1,18 +1,19 @@
 ---
-title: "Criptografía 101: Firmas de Umbral"
-date: "2024-04-30"
-author: "frank-mangone"
-thumbnail: "/images/cryptography-101/threshold-signatures/here-we-go-again.webp"
+title: 'Criptografía 101: Firmas de Umbral'
+date: '2024-04-30'
+author: frank-mangone
+thumbnail: /images/cryptography-101/threshold-signatures/here-we-go-again.webp
 tags:
-  [
-    "cryptography",
-    "polynomials",
-    "thresholdSignature",
-    "interpolation",
-    "mathematics",
-  ]
-description: "¡Combinar polinomios y firmas digitales da lugar a una nueva y genial funcionalidad, en forma de Firmas de Umbral!"
-readingTime: "14 min"
+  - cryptography
+  - polynomials
+  - thresholdSignature
+  - interpolation
+  - mathematics
+description: >-
+  ¡Combinar polinomios y firmas digitales da lugar a una nueva y genial
+  funcionalidad, en forma de Firmas de Umbral!
+readingTime: 14 min
+contentHash: a034c422952b5352d25ea5cadbfe1a094d8efefb24fbe36e46e65d994404879c
 ---
 
 > Este artículo forma parte de una serie más larga sobre criptografía. Si este es el primer artículo con el que te encuentras, te recomiendo comenzar desde el [principio de la serie](/es/blog/cryptography-101/where-to-start).

@@ -1,12 +1,21 @@
 ---
-title: "Blockchain 101: Consenso Revisitado"
-date: "2025-03-17"
-author: "frank-mangone"
-thumbnail: "/images/blockchain-101/consensus-revisited/slash.webp"
-tags: ["ethereum", "blockchain", "consensus", "proofOfStake", "validator"]
-description: "Explorando el mecanismo de consenso detrás de Ethereum: Prueba de Participación"
-readingTime: "12 min"
-mediumUrl: "https://medium.com/@francomangone18/blockchain-101-consensus-revisited-3979b59d71a7"
+title: 'Blockchain 101: Consenso Revisitado'
+date: '2025-03-17'
+author: frank-mangone
+thumbnail: /images/blockchain-101/consensus-revisited/slash.webp
+tags:
+  - ethereum
+  - blockchain
+  - consensus
+  - proofOfStake
+  - validator
+description: >-
+  Explorando el mecanismo de consenso detrás de Ethereum: Prueba de
+  Participación
+readingTime: 12 min
+mediumUrl: >-
+  https://medium.com/@francomangone18/blockchain-101-consensus-revisited-3979b59d71a7
+contentHash: d4b0bf3fe59999c166c47bb6a05a4c72905d422ddfc4c2f8149bd39a51aec478
 ---
 
 > Este artículo es parte de una serie más larga sobre Blockchain. Si este es el primer artículo que encuentras, te recomiendo comenzar por el [inicio de la serie](/es/blog/blockchain-101/how-it-all-began).

@@ -1,12 +1,19 @@
 ---
-title: "Blockchain 101: Consensus Revisited"
-date: "2025-03-17"
-author: "frank-mangone"
-thumbnail: "/images/blockchain-101/consensus-revisited/slash.webp"
-tags: ["ethereum", "blockchain", "consensus", "proofOfStake", "validator"]
-description: "Exploring the consensus mechanism behind Ethereum: Proof of Stake"
-readingTime: "12 min"
-mediumUrl: "https://medium.com/@francomangone18/blockchain-101-consensus-revisited-3979b59d71a7"
+title: 'Blockchain 101: Consensus Revisited'
+date: '2025-03-17'
+author: frank-mangone
+thumbnail: /images/blockchain-101/consensus-revisited/slash.webp
+tags:
+  - ethereum
+  - blockchain
+  - consensus
+  - proofOfStake
+  - validator
+description: 'Exploring the consensus mechanism behind Ethereum: Proof of Stake'
+readingTime: 12 min
+mediumUrl: >-
+  https://medium.com/@francomangone18/blockchain-101-consensus-revisited-3979b59d71a7
+contentHash: 16ac21f28871616c0b85533fd2fe8a48b749b8d5da3e2e4847968d64475f0019
 ---
 
 > This is part of a larger series of articles about Blockchain. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/blockchain-101/how-it-all-began).

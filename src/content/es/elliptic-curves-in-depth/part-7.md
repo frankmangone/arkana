@@ -1,11 +1,19 @@
 ---
-title: "Curvas Elípticas En Profundidad (Parte 7)"
-date: "2025-05-20"
-author: "frank-mangone"
-thumbnail: "/images/elliptic-curves-in-depth/part-7/sweaty-bear.jpg"
-tags: ["cryptography", "mathematics", "ellipticCurves", "pairings", "torsion"]
-description: "Estableciendo las bases para luego definir emparejamientos, ¡este artículo explora los grupos de torsión!"
-readingTime: "14 min"
+title: Curvas Elípticas En Profundidad (Parte 7)
+date: '2025-05-20'
+author: frank-mangone
+thumbnail: /images/elliptic-curves-in-depth/part-7/sweaty-bear.jpg
+tags:
+  - cryptography
+  - mathematics
+  - ellipticCurves
+  - pairings
+  - torsion
+description: >-
+  Estableciendo las bases para luego definir emparejamientos, ¡este artículo
+  explora los grupos de torsión!
+readingTime: 14 min
+contentHash: 4c109808908b57a3f357dcdbb109109c8050494047ab2444c603c0d9f97e1371
 ---
 
 No debe haber sido un viaje fácil para llegar hasta aquí.

@@ -1,11 +1,18 @@
 ---
-title: "Blockchain 101: Cómo Todo Empezó"
-date: "2024-08-31"
-author: "frank-mangone"
-thumbnail: "/images/blockchain-101/how-it-all-began/el-zorro.webp"
-tags: ["blockchain", "bitcoin", "cryptocurrency", "cryptography"]
-description: "Emprendemos un nuevo viaje, donde exploramos la increíble tecnología de las Blockchains"
-readingTime: "10 min"
+title: 'Blockchain 101: Cómo Todo Empezó'
+date: '2024-08-31'
+author: frank-mangone
+thumbnail: /images/blockchain-101/how-it-all-began/el-zorro.webp
+tags:
+  - blockchain
+  - bitcoin
+  - cryptocurrency
+  - cryptography
+description: >-
+  Emprendemos un nuevo viaje, donde exploramos la increíble tecnología de las
+  Blockchains
+readingTime: 10 min
+contentHash: a94f6790d1b10ae93907e523618fa4422dedcf73d4ded754aa9279eed34355cd
 ---
 
 Estaba muy indeciso sobre escribir este primer artículo sobre Blockchain. Principalmente porque es una de esas tecnologías que se mueve a **velocidad de la luz**, con innovaciones surgiendo de la nada muy frecuentemente. Es un mundo lleno de ideas geniales y diversas — así que es realmente difícil hacerles justicia en solo unos pocos artículos cortos.

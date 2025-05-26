@@ -1,11 +1,19 @@
 ---
-title: "Curvas Elípticas En Profundidad (Parte 5)"
-date: "2025-03-31"
-author: "frank-mangone"
-thumbnail: "/images/elliptic-curves-in-depth/part-5/mamushka.webp"
-tags: ["cryptography", "divisor", "groups", "mathematics", "ellipticCurves"]
-description: "Esta vez cubrimos los divisores, y analizamos cómo encajan en el mundo de las curvas elípticas, revelando algunos nuevos secretos."
-readingTime: "15 min"
+title: Curvas Elípticas En Profundidad (Parte 5)
+date: '2025-03-31'
+author: frank-mangone
+thumbnail: /images/elliptic-curves-in-depth/part-5/mamushka.webp
+tags:
+  - cryptography
+  - divisor
+  - groups
+  - mathematics
+  - ellipticCurves
+description: >-
+  Esta vez cubrimos los divisores, y analizamos cómo encajan en el mundo de las
+  curvas elípticas, revelando algunos nuevos secretos.
+readingTime: 15 min
+contentHash: 66ca84f5c769c9c6effd8104c05329c9ab3df491c5c1ebfe817bda1f7aa3a65f
 ---
 
 Durante nuestros [encuentros anteriores](/es/blog/elliptic-curves-in-depth/part-4), mencioné un par de veces cómo la operación de grupo para curvas elípticas (suma de puntos) se sentía un poco... Forzada. O quizás retorcida es una mejor descripción.

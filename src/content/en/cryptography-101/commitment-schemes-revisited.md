@@ -1,12 +1,20 @@
 ---
-title: "Cryptography 101: Commitment Schemes Revisited"
-date: "2024-06-04"
-author: "frank-mangone"
-thumbnail: "/images/cryptography-101/commitment-schemes-revisited/hell-no.webp"
-tags: ["cryptography", "polynomials", "mathematics", "commitmentScheme"]
-description: "An expansion upon the ideas behind simpler commitment schemes, providing important tools for more complex constructions down the road"
-readingTime: "10 min"
-mediumUrl: "https://medium.com/@francomangone18/cryptography-101-commitment-schemes-revisited-959a3bd94942"
+title: 'Cryptography 101: Commitment Schemes Revisited'
+date: '2024-06-04'
+author: frank-mangone
+thumbnail: /images/cryptography-101/commitment-schemes-revisited/hell-no.webp
+tags:
+  - cryptography
+  - polynomials
+  - mathematics
+  - commitmentScheme
+description: >-
+  An expansion upon the ideas behind simpler commitment schemes, providing
+  important tools for more complex constructions down the road
+readingTime: 10 min
+mediumUrl: >-
+  https://medium.com/@francomangone18/cryptography-101-commitment-schemes-revisited-959a3bd94942
+contentHash: e2b76462c6393ccd9a9a869b7fd4b2c64145567483a7359a3e856e25828ea02d
 ---
 
 > This is part of a larger series of articles about cryptography. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/cryptography-101/where-to-start).

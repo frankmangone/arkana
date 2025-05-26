@@ -1,12 +1,19 @@
 ---
-title: "Blockchain 101: Rollups"
-date: "2025-04-28"
-author: "frank-mangone"
-thumbnail: "/images/blockchain-101/rollups/sonic.webp"
-tags: ["ethereum", "blockchain", "rollup", "dataAvailability"]
-description: "Antes de pasar a otras soluciones Blockchain, exploremos el ecosistema construido alrededor de Ethereum"
-readingTime: "12 min"
-mediumUrl: "https://medium.com/@francomangone18/blockchain-101-rollups-8da114a51f32"
+title: 'Blockchain 101: Rollups'
+date: '2025-04-28'
+author: frank-mangone
+thumbnail: /images/blockchain-101/rollups/sonic.webp
+tags:
+  - ethereum
+  - blockchain
+  - rollup
+  - dataAvailability
+description: >-
+  Antes de pasar a otras soluciones Blockchain, exploremos el ecosistema
+  construido alrededor de Ethereum
+readingTime: 12 min
+mediumUrl: 'https://medium.com/@francomangone18/blockchain-101-rollups-8da114a51f32'
+contentHash: fe1396a08cd9046cf4eafc69e54e240033e4de98ad058e1957f4677ef73c3df1
 ---
 
 > Este artículo es parte de una serie más larga sobre Blockchain. Si este es el primer artículo que encuentras, te recomiendo comenzar desde el [inicio de la serie](/es/blog/blockchain-101/how-it-all-began).

@@ -1,12 +1,16 @@
 ---
-title: "Criptografía 101: Pruebas de Conocimiento Cero (Parte 3)"
-date: "2024-07-30"
-author: "frank-mangone"
-thumbnail: "/images/cryptography-101/zero-knowledge-proofs-part-3/thinking.webp"
+title: 'Criptografía 101: Pruebas de Conocimiento Cero (Parte 3)'
+date: '2024-07-30'
+author: frank-mangone
+thumbnail: /images/cryptography-101/zero-knowledge-proofs-part-3/thinking.webp
 tags:
-  ["cryptography", "zeroKnowledgeProofs", "mathematics", "arithmeticCircuits"]
-description: "¡Vamos a ser prácticos y construir algunos circuitos aritméticos!"
-readingTime: "10 min"
+  - cryptography
+  - zeroKnowledgeProofs
+  - mathematics
+  - arithmeticCircuits
+description: ¡Vamos a ser prácticos y construir algunos circuitos aritméticos!
+readingTime: 10 min
+contentHash: 0f5321155dc67883d54b38c99922f8523e8188cf1ab8b4b1d31459dfce70c745
 ---
 
 > Este artículo forma parte de una serie más larga sobre criptografía. Si este es el primer artículo con el que te encuentras, te recomiendo encarecidamente comenzar desde el [principio de la serie](/es/blog/cryptography-101/where-to-start).

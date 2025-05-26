@@ -1,11 +1,15 @@
 ---
-title: "Curvas Elípticas En Profundidad (Parte 1)"
-date: "2025-01-14"
-author: "frank-mangone"
-thumbnail: "/images/elliptic-curves-in-depth/part-1/hyperelliptic.webp"
-tags: ["cryptography", "mathematics", "ellipticCurves"]
-description: "Una introducción (más o menos) amigable a las curvas elípticas"
-readingTime: "12 min"
+title: Curvas Elípticas En Profundidad (Parte 1)
+date: '2025-01-14'
+author: frank-mangone
+thumbnail: /images/elliptic-curves-in-depth/part-1/hyperelliptic.webp
+tags:
+  - cryptography
+  - mathematics
+  - ellipticCurves
+description: Una introducción (más o menos) amigable a las curvas elípticas
+readingTime: 12 min
+contentHash: fc8efe8983425f193c92ef749eab99d437d206aafccb66500f5b62c87537797d
 ---
 
 La criptografía está en constante evolución.

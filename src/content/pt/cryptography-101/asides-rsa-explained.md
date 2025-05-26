@@ -1,11 +1,16 @@
 ---
-title: "Criptografia 101 (Anexo): RSA Explicado"
-date: "2024-03-31"
-author: "frank-mangone"
-thumbnail: "/images/cryptography-101/rsa-explained/batman.webp"
-tags: ["cryptography", "rsa", "mathematics", "modularArithmetic"]
-description: "Uma breve explicação sobre como o RSA funciona"
-readingTime: "6 min"
+title: 'Criptografia 101 (Anexo): RSA Explicado'
+date: '2024-03-31'
+author: frank-mangone
+thumbnail: /images/cryptography-101/rsa-explained/batman.webp
+tags:
+  - cryptography
+  - rsa
+  - mathematics
+  - modularArithmetic
+description: Uma breve explicação sobre como o RSA funciona
+readingTime: 6 min
+contentHash: 372e64222e7f33b139988e84ff2d133eaa3e9a653c08f57efc158288e185556a
 ---
 
 > Este é parte de uma série maior de artigos sobre criptografia. Se este é o primeiro artigo que você encontra, recomendo fortemente começar pelo [início da série](/pt/blog/cryptography-101/where-to-start).

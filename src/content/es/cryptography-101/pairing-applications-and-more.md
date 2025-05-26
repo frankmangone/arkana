@@ -1,18 +1,19 @@
 ---
-title: "Criptografía 101: Aplicaciones de Emparejamientos y Más"
-date: "2024-05-28"
-author: "frank-mangone"
-thumbnail: "/images/cryptography-101/pairing-applications-and-more/rambo-thanks.webp"
+title: 'Criptografía 101: Aplicaciones de Emparejamientos y Más'
+date: '2024-05-28'
+author: frank-mangone
+thumbnail: /images/cryptography-101/pairing-applications-and-more/rambo-thanks.webp
 tags:
-  [
-    "cryptography",
-    "pairings",
-    "mathematics",
-    "keyExchange",
-    "digitalSignatures",
-  ]
-description: "Siguiendo nuestra presentación de los emparejamientos, veamos un par más de aplicaciones que esta nueva herramienta permite"
-readingTime: "8 min"
+  - cryptography
+  - pairings
+  - mathematics
+  - keyExchange
+  - digitalSignatures
+description: >-
+  Siguiendo nuestra presentación de los emparejamientos, veamos un par más de
+  aplicaciones que esta nueva herramienta permite
+readingTime: 8 min
+contentHash: 2c967aae61cb68b3c688043528c323206ac3ab937911226940f147868df8cca8
 ---
 
 > Este artículo forma parte de una serie más larga sobre criptografía. Si este es el primer artículo con el que te encuentras, te recomiendo encarecidamente comenzar desde el [principio de la serie](/es/blog/cryptography-101/where-to-start).

@@ -1,12 +1,18 @@
 ---
-title: "Blockchain 101: Almacenamiento"
-date: "2024-12-17"
-author: "frank-mangone"
-thumbnail: "/images/blockchain-101/storage/conspiracy.webp"
-tags: ["ethereum", "blockchain", "merkleTree", "patriciaTrie", "dataStructures"]
-description: "¡Es hora de ver la maquinaria detrás del almacenamiento de Ethereum!"
-readingTime: "11 min"
-mediumUrl: "https://medium.com/@francomangone18/blockchain-101-storage-12d84d0e2c8e"
+title: 'Blockchain 101: Almacenamiento'
+date: '2024-12-17'
+author: frank-mangone
+thumbnail: /images/blockchain-101/storage/conspiracy.webp
+tags:
+  - ethereum
+  - blockchain
+  - merkleTree
+  - patriciaTrie
+  - dataStructures
+description: ¡Es hora de ver la maquinaria detrás del almacenamiento de Ethereum!
+readingTime: 11 min
+mediumUrl: 'https://medium.com/@francomangone18/blockchain-101-storage-12d84d0e2c8e'
+contentHash: 71d910692528dfe8c5fd805c710db784c19418897303c4f8bf75bd47ad02b3ed
 ---
 
 > Este artículo es parte de una serie más larga sobre Blockchain. Si este es el primer artículo que encuentras, te recomiendo comenzar por el [inicio de la serie](/es/blog/blockchain-101/how-it-all-began).

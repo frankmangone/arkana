@@ -1,12 +1,18 @@
 ---
-title: "Blockchain 101: Transacciones"
-date: "2024-09-10"
-author: "frank-mangone"
-thumbnail: "/images/blockchain-101/transactions/bills.webp"
-tags: ["blockchain", "bitcoin", "transactions", "utxo", "digitalSignatures"]
-description: "¡Centrémonos temprano en el alma de las Blockchains: las transacciones!"
-readingTime: "9 min"
-mediumUrl: "https://medium.com/@francomangone18/blockchain-101-transactions-bbbc9e535374"
+title: 'Blockchain 101: Transacciones'
+date: '2024-09-10'
+author: frank-mangone
+thumbnail: /images/blockchain-101/transactions/bills.webp
+tags:
+  - blockchain
+  - bitcoin
+  - transactions
+  - utxo
+  - digitalSignatures
+description: '¡Centrémonos temprano en el alma de las Blockchains: las transacciones!'
+readingTime: 9 min
+mediumUrl: 'https://medium.com/@francomangone18/blockchain-101-transactions-bbbc9e535374'
+contentHash: bf1a67dcdf6b0844b0d2acc53a9bdd57f3e77230f997e137c82814f8f6ab69fc
 ---
 
 > Esto es parte de una serie más larga de artículos sobre Blockchain. Si este es el primer artículo que encuentras, te recomiendo comenzar desde el [inicio de la serie](/es/blog/blockchain-101/how-it-all-began).

@@ -1,12 +1,19 @@
 ---
-title: "Criptografía 101: Encriptación Completamente Homomórfica"
-date: "2024-10-22"
-author: "frank-mangone"
-thumbnail: "/images/cryptography-101/fully-homomorphic-encryption/steed.webp"
+title: 'Criptografía 101: Encriptación Completamente Homomórfica'
+date: '2024-10-22'
+author: frank-mangone
+thumbnail: /images/cryptography-101/fully-homomorphic-encryption/steed.webp
 tags:
-  ["cryptography", "mathematics", "encryption", "ring", "homomorphicEncryption"]
-description: "¡Para cerrar, volvemos a mirar la encriptación homomórfica, esta vez en anillos!"
-readingTime: "17 min"
+  - cryptography
+  - mathematics
+  - encryption
+  - ring
+  - homomorphicEncryption
+description: >-
+  ¡Para cerrar, volvemos a mirar la encriptación homomórfica, esta vez en
+  anillos!
+readingTime: 17 min
+contentHash: 256cee58f79e3418ff637f7567259c53f8d78239c8e2f1a39a65dfd22e30d4a6
 ---
 
 > Este artículo forma parte de una serie más larga sobre criptografía. Si este es el primer artículo con el que te encuentras, te recomiendo comenzar desde el [principio de la serie](/es/blog/cryptography-101/where-to-start).

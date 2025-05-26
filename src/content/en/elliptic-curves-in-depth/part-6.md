@@ -1,19 +1,21 @@
 ---
-title: "Elliptic Curves In-Depth (Part 6)"
-date: "2025-04-14"
-author: "frank-mangone"
-thumbnail: "/images/elliptic-curves-in-depth/part-6/michael-scott-red.webp"
+title: Elliptic Curves In-Depth (Part 6)
+date: '2025-04-14'
+author: frank-mangone
+thumbnail: /images/elliptic-curves-in-depth/part-6/michael-scott-red.webp
 tags:
-  [
-    "cryptography",
-    "conjecture",
-    "rationalPoints",
-    "mathematics",
-    "ellipticCurves",
-  ]
-description: "An examination of some of the behind-the-scenes action that enables ECC, accompanied with brief look at a long-standing problem in math."
-readingTime: "12 min"
-mediumUrl: "https://medium.com/@francomangone18/elliptic-curves-in-depth-part-6-bb8f4055da23"
+  - cryptography
+  - conjecture
+  - rationalPoints
+  - mathematics
+  - ellipticCurves
+description: >-
+  An examination of some of the behind-the-scenes action that enables ECC,
+  accompanied with brief look at a long-standing problem in math.
+readingTime: 12 min
+mediumUrl: >-
+  https://medium.com/@francomangone18/elliptic-curves-in-depth-part-6-bb8f4055da23
+contentHash: 3cc90ac561db94134f93634ae45df28fbcc73bacc8ddc7ae81a51d4c5963de8c
 ---
 
 [Last time around](/en/blog/elliptic-curves-in-depth/part-5), we learned to speak the language of divisors. This is hugely important to gain a deeper understanding of elliptic curves, and is crucial to understand **pairings** — a construction we’ll tackle in the next couple articles.

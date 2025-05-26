@@ -1,20 +1,22 @@
 ---
-title: "Cryptography 101: Post Quantum Cryptography"
-date: "2024-10-07"
-author: "frank-mangone"
-thumbnail: "/images/cryptography-101/post-quantum-cryptography/not-surprised.webp"
+title: 'Cryptography 101: Post Quantum Cryptography'
+date: '2024-10-07'
+author: frank-mangone
+thumbnail: /images/cryptography-101/post-quantum-cryptography/not-surprised.webp
 tags:
-  [
-    "cryptography",
-    "mathematics",
-    "postQuantumCryptography",
-    "ringLearningWithErrors",
-    "lattice",
-    "ring",
-  ]
-description: "Time to build some cryptographic methods out of rings and their associated hard problems"
-readingTime: "14 min"
-mediumUrl: "https://medium.com/thecapital/cryptography-101-post-quantum-cryptography-7983d383db78"
+  - cryptography
+  - mathematics
+  - postQuantumCryptography
+  - ringLearningWithErrors
+  - lattice
+  - ring
+description: >-
+  Time to build some cryptographic methods out of rings and their associated
+  hard problems
+readingTime: 14 min
+mediumUrl: >-
+  https://medium.com/thecapital/cryptography-101-post-quantum-cryptography-7983d383db78
+contentHash: 351c90ad8f1a7a24de341d3d274fc237470f122b6a0ecccd2e4aaf1d27f0b403
 ---
 
 > This is part of a larger series of articles about cryptography. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/cryptography-101/where-to-start).

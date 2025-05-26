@@ -1,19 +1,20 @@
 ---
-title: "Criptografía 101: Criptografía Post-Cuántica"
-date: "2024-10-07"
-author: "frank-mangone"
-thumbnail: "/images/cryptography-101/post-quantum-cryptography/not-surprised.webp"
+title: 'Criptografía 101: Criptografía Post-Cuántica'
+date: '2024-10-07'
+author: frank-mangone
+thumbnail: /images/cryptography-101/post-quantum-cryptography/not-surprised.webp
 tags:
-  [
-    "cryptography",
-    "mathematics",
-    "postQuantumCryptography",
-    "ringLearningWithErrors",
-    "lattice",
-    "ring",
-  ]
-description: "Es hora de construir algunos métodos criptográficos a partir de anillos y sus problemas difíciles asociados"
-readingTime: "14 min"
+  - cryptography
+  - mathematics
+  - postQuantumCryptography
+  - ringLearningWithErrors
+  - lattice
+  - ring
+description: >-
+  Es hora de construir algunos métodos criptográficos a partir de anillos y sus
+  problemas difíciles asociados
+readingTime: 14 min
+contentHash: 8a2efb3d9832cda974e937fc7c1fa251ef7a4ed7d0bf7a977b7277bd715ac963
 ---
 
 > Este artículo forma parte de una serie más larga sobre criptografía. Si este es el primer artículo con el que te encuentras, te recomiendo comenzar desde el [principio de la serie](/es/blog/cryptography-101/where-to-start).

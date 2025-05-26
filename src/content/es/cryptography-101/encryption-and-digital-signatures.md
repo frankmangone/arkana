@@ -1,18 +1,19 @@
 ---
-title: "Criptografía 101: Encriptación y Firmas Digitales"
-date: "2024-03-18"
-author: "frank-mangone"
-thumbnail: "/images/cryptography-101/encryption-and-digital-signatures/cool-story.webp"
+title: 'Criptografía 101: Encriptación y Firmas Digitales'
+date: '2024-03-18'
+author: frank-mangone
+thumbnail: /images/cryptography-101/encryption-and-digital-signatures/cool-story.webp
 tags:
-  [
-    "cryptography",
-    "ellipticCurves",
-    "mathematics",
-    "encryption",
-    "digitalSignatures",
-  ]
-description: "Basándonos en nuestro conocimiento previo de curvas elípticas, exploramos cómo encriptar y firmar información"
-readingTime: "9 min"
+  - cryptography
+  - ellipticCurves
+  - mathematics
+  - encryption
+  - digitalSignatures
+description: >-
+  Basándonos en nuestro conocimiento previo de curvas elípticas, exploramos cómo
+  encriptar y firmar información
+readingTime: 9 min
+contentHash: d942cc468839415dd5e8fb76335b38f2513f8db64a90bd9b06b20bd041287625
 ---
 
 > Este artículo forma parte de una serie más larga sobre criptografía. Si este es el primer artículo con el que te encuentras, te recomiendo comenzar desde el [principio de la serie](/es/blog/cryptography-101/where-to-start).

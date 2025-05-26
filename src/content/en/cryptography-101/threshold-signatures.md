@@ -1,19 +1,21 @@
 ---
-title: "Cryptography 101: Threshold Signatures"
-date: "2024-04-30"
-author: "frank-mangone"
-thumbnail: "/images/cryptography-101/threshold-signatures/here-we-go-again.webp"
+title: 'Cryptography 101: Threshold Signatures'
+date: '2024-04-30'
+author: frank-mangone
+thumbnail: /images/cryptography-101/threshold-signatures/here-we-go-again.webp
 tags:
-  [
-    "cryptography",
-    "polynomials",
-    "thresholdSignature",
-    "interpolation",
-    "mathematics",
-  ]
-description: "Combining polynomials and digital signatures brings forth a cool new functionality, in the form of Threshold Signatures!"
-readingTime: "14 min"
-mediumUrl: "https://medium.com/@francomangone18/cryptography-101-threshold-signatures-ac63c412122a"
+  - cryptography
+  - polynomials
+  - thresholdSignature
+  - interpolation
+  - mathematics
+description: >-
+  Combining polynomials and digital signatures brings forth a cool new
+  functionality, in the form of Threshold Signatures!
+readingTime: 14 min
+mediumUrl: >-
+  https://medium.com/@francomangone18/cryptography-101-threshold-signatures-ac63c412122a
+contentHash: bd2b69a4d2b4b2145cf4c97b084a3c0a9cc76cf82a36a76c7f895a9c70805ee7
 ---
 
 > This is part of a larger series of articles about cryptography. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/cryptography-101/where-to-start).

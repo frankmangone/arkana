@@ -1,12 +1,21 @@
 ---
-title: "Blockchain 101: Contratos Inteligentes (Parte 2)"
-date: "2025-02-24"
-author: "frank-mangone"
-thumbnail: "/images/blockchain-101/smart-contracts-part-2/destruction.webp"
-tags: ["ethereum", "blockchain", "evm", "solidity", "smartContracts"]
-description: "Un enfoque más funcional de los Contratos Inteligentes, explorando Solidity en mayor detalle"
-readingTime: "14 min"
-mediumUrl: "https://medium.com/@francomangone18/blockchain-101-smart-contracts-part-2-c5211adcd24d"
+title: 'Blockchain 101: Contratos Inteligentes (Parte 2)'
+date: '2025-02-24'
+author: frank-mangone
+thumbnail: /images/blockchain-101/smart-contracts-part-2/destruction.webp
+tags:
+  - ethereum
+  - blockchain
+  - evm
+  - solidity
+  - smartContracts
+description: >-
+  Un enfoque más funcional de los Contratos Inteligentes, explorando Solidity en
+  mayor detalle
+readingTime: 14 min
+mediumUrl: >-
+  https://medium.com/@francomangone18/blockchain-101-smart-contracts-part-2-c5211adcd24d
+contentHash: a592eb47df19b2111628fc871d89ff635327b68d0157971e3d2aba04cdf2dc84
 ---
 
 > Este artículo es parte de una serie más larga sobre Blockchain. Si este es el primer artículo que encuentras, te recomiendo comenzar por el [inicio de la serie](/es/blog/blockchain-101/how-it-all-began).

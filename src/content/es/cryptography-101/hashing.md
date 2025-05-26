@@ -1,11 +1,18 @@
 ---
-title: "Criptografía 101: Hashing"
-date: "2024-03-24"
-author: "frank-mangone"
-thumbnail: "/images/cryptography-101/hashing/bosch.webp"
-tags: ["cryptography", "hashing", "dataStructures", "merkleTree"]
-description: "Las funciones de hash son una primitiva criptográfica esencial. ¡Acompáñame en una exploración profunda sobre qué son y para qué se utilizan!"
-readingTime: "10 min"
+title: 'Criptografía 101: Hashing'
+date: '2024-03-24'
+author: frank-mangone
+thumbnail: /images/cryptography-101/hashing/bosch.webp
+tags:
+  - cryptography
+  - hashing
+  - dataStructures
+  - merkleTree
+description: >-
+  Las funciones de hash son una primitiva criptográfica esencial. ¡Acompáñame en
+  una exploración profunda sobre qué son y para qué se utilizan!
+readingTime: 10 min
+contentHash: bd5856c6bc2e336017ceb2b4241ac43e601b77bd45c92c0678ba8e7942900494
 ---
 
 > Este artículo forma parte de una serie más larga sobre criptografía. Si este es el primer artículo con el que te encuentras, te recomiendo comenzar desde el [principio de la serie](/es/blog/cryptography-101/where-to-start).

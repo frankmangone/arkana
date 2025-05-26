@@ -1,11 +1,19 @@
 ---
-title: "Criptografía 101: Esquemas de Compromiso Revisitados"
-date: "2024-06-04"
-author: "frank-mangone"
-thumbnail: "/images/cryptography-101/commitment-schemes-revisited/hell-no.webp"
-tags: ["cryptography", "polynomials", "mathematics", "commitmentScheme"]
-description: "Una ampliación de las ideas detrás de los esquemas de compromiso más simples, proporcionando herramientas importantes para construcciones más complejas en el futuro"
-readingTime: "10 min"
+title: 'Criptografía 101: Esquemas de Compromiso Revisitados'
+date: '2024-06-04'
+author: frank-mangone
+thumbnail: /images/cryptography-101/commitment-schemes-revisited/hell-no.webp
+tags:
+  - cryptography
+  - polynomials
+  - mathematics
+  - commitmentScheme
+description: >-
+  Una ampliación de las ideas detrás de los esquemas de compromiso más simples,
+  proporcionando herramientas importantes para construcciones más complejas en
+  el futuro
+readingTime: 10 min
+contentHash: 5bd2ec58530476ce1094d5d06673915b64add4c4ede8ac919511b00310488fed
 ---
 
 > Este artículo forma parte de una serie más larga sobre criptografía. Si este es el primer artículo con el que te encuentras, te recomiendo encarecidamente comenzar desde el [principio de la serie](/es/blog/cryptography-101/where-to-start).

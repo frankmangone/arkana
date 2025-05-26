@@ -1,12 +1,19 @@
 ---
-title: "Blockchain 101: Solana"
-date: "2025-05-13"
-author: "frank-mangone"
-thumbnail: "/images/blockchain-101/solana/solana.webp"
-tags: ["solana", "blockchain", "proofOfHistory", "consensus"]
-description: "Nuestro viaje ahora nos lleva a otro gran jugador en el espacio Blockchain: Solana"
-readingTime: "10 min"
-mediumUrl: "https://medium.com/@francomangone18/blockchain-101-solana-177128bf1501"
+title: 'Blockchain 101: Solana'
+date: '2025-05-13'
+author: frank-mangone
+thumbnail: /images/blockchain-101/solana/solana.webp
+tags:
+  - solana
+  - blockchain
+  - proofOfHistory
+  - consensus
+description: >-
+  Nuestro viaje ahora nos lleva a otro gran jugador en el espacio Blockchain:
+  Solana
+readingTime: 10 min
+mediumUrl: 'https://medium.com/@francomangone18/blockchain-101-solana-177128bf1501'
+contentHash: e1839aeebfee4e8ef022a2fdcae35cdae88d592d4492347a321657e145179532
 ---
 
 > Este artículo es parte de una serie más larga sobre Blockchain. Si este es el primer artículo que encuentras, te recomiendo comenzar desde el [inicio de la serie](/es/blog/blockchain-101/how-it-all-began).

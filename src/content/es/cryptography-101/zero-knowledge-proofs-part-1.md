@@ -1,11 +1,18 @@
 ---
-title: "Criptografía 101: Pruebas de Conocimiento Cero (Parte 1)"
-date: "2024-06-11"
-author: "frank-mangone"
-thumbnail: "/images/cryptography-101/zero-knowledge-proofs-part-1/wingardium-leviosa.webp"
-tags: ["cryptography", "zeroKnowledgeProofs", "mathematics", "commitmentScheme"]
-description: "Damos un salto al mundo de las pruebas de conocimiento cero explorando uno de los muchos protocolos ZKP que existen: Bulletproofs"
-readingTime: "14 min"
+title: 'Criptografía 101: Pruebas de Conocimiento Cero (Parte 1)'
+date: '2024-06-11'
+author: frank-mangone
+thumbnail: /images/cryptography-101/zero-knowledge-proofs-part-1/wingardium-leviosa.webp
+tags:
+  - cryptography
+  - zeroKnowledgeProofs
+  - mathematics
+  - commitmentScheme
+description: >-
+  Damos un salto al mundo de las pruebas de conocimiento cero explorando uno de
+  los muchos protocolos ZKP que existen: Bulletproofs
+readingTime: 14 min
+contentHash: 155f3f65ad8277c38409dc8acbc7c0c9a2d003d618e80cb4628d20b6fb4df13c
 ---
 
 > Este artículo forma parte de una serie más larga sobre criptografía. Si este es el primer artículo con el que te encuentras, te recomiendo encarecidamente comenzar desde el [principio de la serie](/es/blog/cryptography-101/where-to-start).

@@ -1,12 +1,20 @@
 ---
-title: "Elliptic Curves In-Depth (Part 2)"
-date: "2025-01-22"
-author: "frank-mangone"
-thumbnail: "/images/elliptic-curves-in-depth/part-2/monkey-head-scratching.webp"
-tags: ["cryptography", "finiteField", "mathematics", "ellipticCurves"]
-description: "We now move from our familiar real number setting, to the realm of finite fields, where elliptic curves really shine."
-readingTime: "11 min"
-mediumUrl: "https://medium.com/@francomangone18/elliptic-curves-in-depth-part-2-e3c675462001"
+title: Elliptic Curves In-Depth (Part 2)
+date: '2025-01-22'
+author: frank-mangone
+thumbnail: /images/elliptic-curves-in-depth/part-2/monkey-head-scratching.webp
+tags:
+  - cryptography
+  - finiteField
+  - mathematics
+  - ellipticCurves
+description: >-
+  We now move from our familiar real number setting, to the realm of finite
+  fields, where elliptic curves really shine.
+readingTime: 11 min
+mediumUrl: >-
+  https://medium.com/@francomangone18/elliptic-curves-in-depth-part-2-e3c675462001
+contentHash: daf6c891ee28846ce037afcdc818c2dc4a07ac456bbf5c931d5d55e8b9123e16
 ---
 
 [Last time around](/en/blog/elliptic-curves-in-depth/part-1), we defined what elliptic curves are, and we devised a (suspiciously convoluted) way to add points on the curve together. And we hinted at how this operation was key for cryptographic applications.

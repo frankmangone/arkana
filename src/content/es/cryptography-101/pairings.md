@@ -1,11 +1,18 @@
 ---
-title: "Criptografía 101: Emparejamientos"
-date: "2024-05-20"
-author: "frank-mangone"
-thumbnail: "/images/cryptography-101/pairings/what-now.webp"
-tags: ["cryptography", "ellipticCurves", "pairings", "mathematics"]
-description: "Una breve introducción a los emparejamientos, una herramienta importante en la criptografía moderna"
-readingTime: "11 min"
+title: 'Criptografía 101: Emparejamientos'
+date: '2024-05-20'
+author: frank-mangone
+thumbnail: /images/cryptography-101/pairings/what-now.webp
+tags:
+  - cryptography
+  - ellipticCurves
+  - pairings
+  - mathematics
+description: >-
+  Una breve introducción a los emparejamientos, una herramienta importante en la
+  criptografía moderna
+readingTime: 11 min
+contentHash: 373dc5e4071b15ddb33b407ca2c420b9425eb32633d916a185a589ab2a021ecb
 ---
 
 > Este artículo forma parte de una serie más larga sobre criptografía. Si este es el primer artículo con el que te encuentras, te recomiendo encarecidamente comenzar desde el [principio de la serie](/es/blog/cryptography-101/where-to-start).

@@ -1,12 +1,20 @@
 ---
-title: "Blockchain 101: Redondeando Bitcoin"
-date: "2024-10-15"
-author: "frank-mangone"
-thumbnail: "/images/blockchain-101/wrapping-up-bitcoin/inception.webp"
-tags: ["blockchain", "bitcoin", "transactions", "consensus"]
-description: "Con este cuarto artículo, finalizamos nuestro breve recorrido por Bitcoin analizando algunos puntos clave faltantes."
-readingTime: "10 min"
-mediumUrl: "https://medium.com/@francomangone18/blockchain-101-wrapping-up-bitcoin-c01cb572021e"
+title: 'Blockchain 101: Redondeando Bitcoin'
+date: '2024-10-15'
+author: frank-mangone
+thumbnail: /images/blockchain-101/wrapping-up-bitcoin/inception.webp
+tags:
+  - blockchain
+  - bitcoin
+  - transactions
+  - consensus
+description: >-
+  Con este cuarto artículo, finalizamos nuestro breve recorrido por Bitcoin
+  analizando algunos puntos clave faltantes.
+readingTime: 10 min
+mediumUrl: >-
+  https://medium.com/@francomangone18/blockchain-101-wrapping-up-bitcoin-c01cb572021e
+contentHash: ed1f52069a92d4c6d192c0e04a24c9ff266bdc3ddbd4b3a9a01ec9025345f267
 ---
 
 > Esto es parte de una serie más larga de artículos sobre Blockchain. Si este es el primer artículo que encuentras, te recomiendo comenzar desde el [inicio de la serie](/es/blog/blockchain-101/how-it-all-began).

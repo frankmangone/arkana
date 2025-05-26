@@ -1,19 +1,18 @@
 ---
-title: "Curvas Elípticas En Profundidad (Parte 4)"
-date: "2025-03-03"
-author: "frank-mangone"
-thumbnail: "/images/elliptic-curves-in-depth/part-4/yoda.webp"
+title: Curvas Elípticas En Profundidad (Parte 4)
+date: '2025-03-03'
+author: frank-mangone
+thumbnail: /images/elliptic-curves-in-depth/part-4/yoda.webp
 tags:
-  [
-    "cryptography",
-    "function",
-    "homomorphism",
-    "isomorphism",
-    "mathematics",
-    "ellipticCurves",
-  ]
-description: "Hablemos sobre funciones en curvas elípticas y sus sorprendentes propiedades."
-readingTime: "14 min"
+  - cryptography
+  - function
+  - homomorphism
+  - isomorphism
+  - mathematics
+  - ellipticCurves
+description: Hablemos sobre funciones en curvas elípticas y sus sorprendentes propiedades.
+readingTime: 14 min
+contentHash: a48f324f801215584bae2432311f4710b23d974f6b9789f8924dc514ffb661c3
 ---
 
 Hemos cubierto bastantes cosas hasta ahora, así que creo que un repaso rápido será útil.

@@ -1,19 +1,20 @@
 ---
-title: "Criptografía 101: STARKs"
-date: "2024-08-20"
-author: "frank-mangone"
-thumbnail: "/images/cryptography-101/starks/state-transition.webp"
+title: 'Criptografía 101: STARKs'
+date: '2024-08-20'
+author: frank-mangone
+thumbnail: /images/cryptography-101/starks/state-transition.webp
 tags:
-  [
-    "cryptography",
-    "zeroKnowledgeProofs",
-    "mathematics",
-    "polynomials",
-    "scalability",
-    "stark",
-  ]
-description: "Siguiendo con los SNARKs, ahora exploramos otro tipo de pruebas de conocimiento diseñadas para la escalabilidad"
-readingTime: "17 min"
+  - cryptography
+  - zeroKnowledgeProofs
+  - mathematics
+  - polynomials
+  - scalability
+  - stark
+description: >-
+  Siguiendo con los SNARKs, ahora exploramos otro tipo de pruebas de
+  conocimiento diseñadas para la escalabilidad
+readingTime: 17 min
+contentHash: dedb2de2ac0d885d1364db4e9d8d3169b9d4c3df5ed65227473a656d76a29c0a
 ---
 
 > Este artículo forma parte de una serie más larga sobre criptografía. Si este es el primer artículo con el que te encuentras, te recomiendo encarecidamente comenzar desde el [principio de la serie](/es/blog/cryptography-101/where-to-start).

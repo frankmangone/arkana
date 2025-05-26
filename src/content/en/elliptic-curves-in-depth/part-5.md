@@ -1,12 +1,21 @@
 ---
-title: "Elliptic Curves In-Depth (Part 5)"
-date: "2025-03-31"
-author: "frank-mangone"
-thumbnail: "/images/elliptic-curves-in-depth/part-5/mamushka.webp"
-tags: ["cryptography", "divisor", "groups", "mathematics", "ellipticCurves"]
-description: "This time we cover divisors, and analyze how they play into the world of elliptic curves, revealing some new secrets."
-readingTime: "15 min"
-mediumUrl: "https://medium.com/@francomangone18/elliptic-curves-in-depth-part-5-b3091e6c752c"
+title: Elliptic Curves In-Depth (Part 5)
+date: '2025-03-31'
+author: frank-mangone
+thumbnail: /images/elliptic-curves-in-depth/part-5/mamushka.webp
+tags:
+  - cryptography
+  - divisor
+  - groups
+  - mathematics
+  - ellipticCurves
+description: >-
+  This time we cover divisors, and analyze how they play into the world of
+  elliptic curves, revealing some new secrets.
+readingTime: 15 min
+mediumUrl: >-
+  https://medium.com/@francomangone18/elliptic-curves-in-depth-part-5-b3091e6c752c
+contentHash: d8b204ea8e86ca305da39b98c329df0b4746969dcadf00facf991922767f07cb
 ---
 
 During our [previous encounters](/en/blog/elliptic-curves-in-depth/part-4), I mentioned a couple times how the group operation for elliptic curves (point addition) felt a little... Forced. Or perhaps convoluted is a better description.
