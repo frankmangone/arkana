@@ -35,6 +35,11 @@ async function getLatestPosts(lang: string, limit = 4): Promise<PostPreview[]> {
 
           const fileContent = await fs.readFile(filePath, "utf8");
           const { data } = matter(fileContent);
+
+          if (data.visible === false) {
+            continue;
+          }
+
           const author = getWriter(data.author || "");
 
           allPosts.push({
