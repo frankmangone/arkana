@@ -29,7 +29,10 @@ export function FeaturedPostCard(props: FeaturedPostCardProps) {
 
   return (
     <div className="group flex flex-col items-center">
-      <Link href={`${baseUrl}/${lang}/blog/${post.slug}`} className="block">
+      <Link
+        href={`${baseUrl}/${lang}/blog/${post.slug}`}
+        className="block w-full"
+      >
         {isLarge ? (
           <>
             <div
