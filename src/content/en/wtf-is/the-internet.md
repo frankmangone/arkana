@@ -3,12 +3,14 @@ title: WTF is the Internet
 date: "2025-05-26"
 author: frank-mangone
 tags:
+  - internet
+  - protocol
+  - history
   - computerScience
 thumbnail: /images/wtf-is/the-internet/telephone-operators.jpg
-description: PLACEHOLDER
+description: "A short exploration of what the Internet really is, and the machinery that makes such an ubiquitous thing work."
 readingTime: 13 min
-mediumUrl: PLACEHOLDER
-visible: false
+mediumUrl: "https://medium.com/@francomangone18/wtf-is-the-internet-eafa502c271d"
 ---
 
 I reckon this article might look a bit out of the ordinary. So to give you some context, I want to start this with a little story.

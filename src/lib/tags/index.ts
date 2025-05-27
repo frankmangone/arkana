@@ -142,6 +142,11 @@ export const tags: TagDefinition = {
     es: "Hashing",
     pt: "Hashing",
   },
+  history: {
+    en: "History",
+    es: "Historia",
+    pt: "História",
+  },
   homomorphicEncryption: {
     en: "Homomorphic Encryption",
     es: "Encriptación Homomórfica",
@@ -156,6 +161,11 @@ export const tags: TagDefinition = {
     en: "Interpolation",
     es: "Interpolación",
     pt: "Interpolação",
+  },
+  internet: {
+    en: "Internet",
+    es: "Internet",
+    pt: "Internet",
   },
   isomorphism: {
     en: "Isomorphism",
@@ -236,6 +246,11 @@ export const tags: TagDefinition = {
     en: "Proof of Work",
     es: "Prueba de Trabajo",
     pt: "Prova de Trabalho",
+  },
+  protocol: {
+    en: "Protocol",
+    es: "Protocolo",
+    pt: "Protocolo",
   },
   quantumMechanics: {
     en: "Quantum Mechanics",
