@@ -68,7 +68,13 @@ export function PostContent({ post }: PostContentProps) {
     })
     // Fix hyphen spacing issues by replacing spaced hyphens with non-breaking spaces
     // This preserves intended spacing around hyphens while keeping compound words intact
-    // BUT we need to avoid doing this inside math expressions
+    // BUT we need to avoid doing this inside math expressions or markdown lists
+
+    // First, let's protect markdown list items by temporarily replacing them
+    // Also protect list items that come after colons (common pattern: "text:\n\n- item")
+    .replace(/(:\s*\n\s*)-(\s)/g, "$1___LIST_ITEM_START___-$2")
+    .replace(/^(\s*)-(\s)/gm, "___LIST_ITEM_START___$1-$2")
+
     .replace(/\s-\s/g, (match, offset, string) => {
       // Check if we're inside a math expression
       const beforeMatch = string.substring(0, offset);
@@ -97,6 +103,9 @@ export function PostContent({ post }: PostContentProps) {
 
       return "&nbsp;-&nbsp;";
     })
+
+    // Restore the protected list items
+    .replace(/___LIST_ITEM_START___/g, "")
     .replace(/\s-,/g, (match, offset, string) => {
       // Same check for comma-separated hyphens
       const beforeMatch = string.substring(0, offset);
