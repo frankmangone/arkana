@@ -361,7 +361,7 @@ $$
 \mu_i = \alpha_i.k_i
 $$
 
-- Since $\mu_i$ is the result of a **multiplication**, upon receiving $2t - 1$ shares, anyone could **interpolate** this value:
+- Since $\mu_i$ is the result of a **multiplication**, upon receiving $2t-1$ shares, anyone could **interpolate** this value:
 
 $$
 \mu \leftarrow \textrm{interpolate}(\mu_1, ..., \mu_{2t-1})
@@ -411,7 +411,7 @@ $$
 
 also interpolated to $s$. And the answer is a resounding **yes**, because we're only dealing with **additions**, **products**, and **inverses** — and we already know how these behave.
 
-Perhaps the only problem here is that since we're dealing with a **product** of shares (the ${k_i}^{-1}d_ir$ term), we'll require like $3t - 2$ shares to interpolate. But leaving that aside, we're sure that interpolating the $s_i$ values will yield the expected value of $s$!
+Perhaps the only problem here is that since we're dealing with a **product** of shares (the ${k_i}^{-1}d_ir$ term), we'll require like $3t-2$ shares to interpolate. But leaving that aside, we're sure that interpolating the $s_i$ values will yield the expected value of $s$!
 
 > Different protocols may make use of various techniques to try and mitigate the need for extra points for interpolation — and ideally, we'd want to keep that number as close to $t$ as possible. Also, the fewer communication steps are needed, the better.
 

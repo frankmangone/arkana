@@ -68,8 +68,58 @@ export function PostContent({ post }: PostContentProps) {
     })
     // Fix hyphen spacing issues by replacing spaced hyphens with non-breaking spaces
     // This preserves intended spacing around hyphens while keeping compound words intact
-    .replace(/\s-\s/g, "&nbsp;-&nbsp;") // " - " becomes "&nbsp;-&nbsp;"
-    .replace(/\s-,/g, "&nbsp;-,"); // " -," becomes "&nbsp;-,"
+    // BUT we need to avoid doing this inside math expressions
+    .replace(/\s-\s/g, (match, offset, string) => {
+      // Check if we're inside a math expression
+      const beforeMatch = string.substring(0, offset);
+      const afterMatch = string.substring(offset + match.length);
+
+      // Count unmatched $ signs before this position (for inline math)
+      const dollarsBefore = (beforeMatch.match(/\$/g) || []).length;
+
+      // Check for display math delimiters
+      const displayMathBefore = beforeMatch.lastIndexOf("$$");
+      const displayMathAfter = afterMatch.indexOf("$$");
+      const inlineDisplayBefore = beforeMatch.lastIndexOf("\\[");
+      const inlineDisplayAfter = afterMatch.indexOf("\\]");
+
+      // If we're inside math (odd number of $ before us, or between $$ or \[ \])
+      if (
+        dollarsBefore % 2 === 1 ||
+        (displayMathBefore >
+          beforeMatch.lastIndexOf("$$", displayMathBefore - 1) &&
+          displayMathAfter !== -1) ||
+        (inlineDisplayBefore > beforeMatch.lastIndexOf("\\]") &&
+          inlineDisplayAfter !== -1)
+      ) {
+        return match; // Don't replace inside math
+      }
+
+      return "&nbsp;-&nbsp;";
+    })
+    .replace(/\s-,/g, (match, offset, string) => {
+      // Same check for comma-separated hyphens
+      const beforeMatch = string.substring(0, offset);
+      const dollarsBefore = (beforeMatch.match(/\$/g) || []).length;
+      const displayMathBefore = beforeMatch.lastIndexOf("$$");
+      const inlineDisplayBefore = beforeMatch.lastIndexOf("\\[");
+      const afterMatch = string.substring(offset + match.length);
+      const displayMathAfter = afterMatch.indexOf("$$");
+      const inlineDisplayAfter = afterMatch.indexOf("\\]");
+
+      if (
+        dollarsBefore % 2 === 1 ||
+        (displayMathBefore >
+          beforeMatch.lastIndexOf("$$", displayMathBefore - 1) &&
+          displayMathAfter !== -1) ||
+        (inlineDisplayBefore > beforeMatch.lastIndexOf("\\]") &&
+          inlineDisplayAfter !== -1)
+      ) {
+        return match; // Don't replace inside math
+      }
+
+      return "&nbsp;-,";
+    });
 
   return (
     <div className="prose prose-gray dark:prose-invert max-w-none mb-8">

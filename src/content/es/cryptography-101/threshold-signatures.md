@@ -276,7 +276,7 @@ Ahora, ¿qué sucede si **sumamos** los polinomios $a(x)$ y $b(x)$?
   />
 </figure>
 
-Podemos sumar **término por término**, y terminamos con un polinomio con el mismo grado que los originales ($t - 1$), pero donde el término independiente es $g = a + b$. Además, dado que $g(x) = a(x) + b(x)$, entonces todos los puntos que interpolan a $g$, que son $(i, g(i))$, se pueden calcular como $a_i + b_i$. Y así:
+Podemos sumar **término por término**, y terminamos con un polinomio con el mismo grado que los originales ($t-1$), pero donde el término independiente es $g = a + b$. Además, dado que $g(x) = a(x) + b(x)$, entonces todos los puntos que interpolan a $g$, que son $(i, g(i))$, se pueden calcular como $a_i + b_i$. Y así:
 
 $$
 g \leftarrow \textrm{interpolate}(a_1 + b_1, ..., a_t + b_t)
@@ -409,7 +409,7 @@ $$
 
 también se interpola a $s$. Y la respuesta es un rotundo **sí**, porque solo estamos tratando con **sumas**, **productos** e **inversos**, y ya sabemos cómo se comportan estos.
 
-Quizás el único problema aquí es que como estamos tratando con un **producto** de partes (el término ${k_i}^{-1}d_ir$), necesitaremos como $3t - 2$ partes para interpolar. Pero dejando eso de lado, ¡estamos seguros de que interpolar los valores $s_i$ producirá el valor esperado de $s$!
+Quizás el único problema aquí es que como estamos tratando con un **producto** de partes (el término ${k_i}^{-1}d_ir$), necesitaremos como $3t-2$ partes para interpolar. Pero dejando eso de lado, ¡estamos seguros de que interpolar los valores $s_i$ producirá el valor esperado de $s$!
 
 > Diferentes protocolos pueden hacer uso de varias técnicas para tratar de mitigar la necesidad de puntos adicionales para la interpolación, e idealmente, querríamos mantener ese número lo más cercano posible a $t$. Además, cuantos menos pasos de comunicación se necesiten, mejor.
 
