@@ -64,7 +64,11 @@ export function PostContent({ post }: PostContentProps) {
       });
 
       return gfmTable;
-    });
+    })
+    // Fix hyphen spacing issues by replacing spaced hyphens with non-breaking spaces
+    // This preserves intended spacing around hyphens while keeping compound words intact
+    .replace(/\s-\s/g, "&nbsp;-&nbsp;") // " - " becomes "&nbsp;-&nbsp;"
+    .replace(/\s-,/g, "&nbsp;-,"); // " -," becomes "&nbsp;-,"
 
   return (
     <div className="prose prose-gray dark:prose-invert max-w-none mb-8">

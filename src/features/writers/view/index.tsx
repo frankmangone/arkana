@@ -77,6 +77,15 @@ export default function WriterPage({
             className="md:justify-start flex-shrink-0 mb-6"
           />
 
+          {/* Writer's bio/description */}
+          {writer.bio && writer.bio[lang as keyof typeof writer.bio] && (
+            <div className="mb-6">
+              <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl">
+                {writer.bio[lang as keyof typeof writer.bio]}
+              </p>
+            </div>
+          )}
+
           <SocialLinks author={writer} />
         </div>
       </div>

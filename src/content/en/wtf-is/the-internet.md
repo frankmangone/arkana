@@ -126,7 +126,7 @@ Luckily for us, this **packet switching** idea was not shelved. Instead, the req
 
 In 1969, **Advanced Research Projects Agency** (ARPA) created the first packet-switched network, and dubbed it (drum roll please) the **ARPANET**.
 
-> Yeah…... Us engineers are not known for being most creative people out there.
+> Yeah... Us engineers are not known for being most creative people out there.
 
 Initially, it just connected four research institutions, but this was enough to demonstrate that the packet switching technology worked.
 

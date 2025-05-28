@@ -20,7 +20,7 @@ export function OrganizationBadge({
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group block inline-flex items-center gap-2 px-3 py-1.5 transition-colors"
+      className="group block inline-flex items-center gap-2 transition-colors"
     >
       {logoUrl && (
         <div className="relative w-10 h-10 overflow-hidden">
