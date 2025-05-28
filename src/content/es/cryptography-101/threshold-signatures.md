@@ -1,6 +1,6 @@
 ---
-title: 'Criptografía 101: Firmas de Umbral'
-date: '2024-04-30'
+title: "Criptografía 101: Firmas de Umbral"
+date: "2024-04-30"
 author: frank-mangone
 thumbnail: /images/cryptography-101/threshold-signatures/here-we-go-again.webp
 tags:
@@ -438,6 +438,7 @@ La verificación ocurre [como de costumbre](/es/blog/cryptography-101/encryption
 
 Creo que este es el artículo más técnicamente cargado que he escrito hasta ahora. Traté de mantenerlo lo más simple posible, pero hay algunas cosas que simplemente no podemos evitar explicar. Al menos, espero que esto arroje algo de luz sobre algunos aspectos que, según mi experiencia, no suelen explicarse en detalle.
 
+> [!WARNING]
 > 🔥 **Importante**: En realidad hay una **vulnerabilidad bastante grande** en el proceso que describí, donde las partes de la clave privada se filtran al compartir $s_i$.
 >
 > Esto se aborda en [el artículo](https://www.researchgate.net/publication/356900519_Efficient_Threshold-Optimal_ECDSA) que usé como guía, y la solución es bastante simple. Así que, por favor, no uses este artículo para construir tus firmas de umbral, ¡y tal vez consulta el artículo real en su lugar!

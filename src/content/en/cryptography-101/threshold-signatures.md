@@ -1,6 +1,6 @@
 ---
-title: 'Cryptography 101: Threshold Signatures'
-date: '2024-04-30'
+title: "Cryptography 101: Threshold Signatures"
+date: "2024-04-30"
 author: frank-mangone
 thumbnail: /images/cryptography-101/threshold-signatures/here-we-go-again.webp
 tags:
@@ -440,6 +440,7 @@ Verification happens [as usual](/en/blog/cryptography-101/encryption-and-digital
 
 I reckon this is the most technically-packed article I've written so far. I tried my best to keep it simple, but there are some things that we just can't avoid explaining. At the very least, I hope this sheds some light on some aspects that, from my experience, are not usually explained in detail.
 
+> [!WARNING]
 > 🔥 **Important**: There's actually a **pretty big vulnerability** in the process I described, where private key shares are leaked when sharing $s_i$.
 >
 > This is addressed in [the paper](https://www.researchgate.net/publication/356900519_Efficient_Threshold-Optimal_ECDSA) I used as a guide, and the solution is actually quite simple. So please, don't go using this article to construct your threshold signatures — and maybe refer to the actual paper instead!

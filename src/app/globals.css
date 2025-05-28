@@ -269,6 +269,47 @@ blockquote cite {
   opacity: 0.8;
 }
 
+/* Callout styles for GitHub-style callouts */
+.callout-note {
+  border-left: 4px solid #0969da;
+  background-color: #0969da1a;
+  color: #f0f6ff;
+  padding: 0.5rem 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.callout-tip {
+  border-left: 4px solid #1a7f37;
+  background-color: #1a7f371a;
+  color: #f0fff4;
+  padding: 0.5rem 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.callout-important {
+  border-left: 4px solid #8250df;
+  background-color: #8250df1a;
+  color: #fbf0ff;
+  padding: 0.5rem 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.callout-warning {
+  border-left: 4px solid #d1242f;
+  background-color: #d1242f1a;
+  color: #fff5f5;
+  padding: 0.5rem 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.callout-caution {
+  border-left: 4px solid #f85149;
+  background-color: #f851491a;
+  color: #fff5f5;
+  padding: 0.5rem 1.5rem;
+  margin: 1.5rem 0;
+}
+
 /* Big quote styling */
 .big-quote {
   display: block;

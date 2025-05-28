@@ -18,6 +18,7 @@ import {
 } from "./content-elements/text";
 import { CustomDiv } from "./content-elements/div";
 import { CustomVideoEmbed } from "./content-elements/video-embed";
+import { CustomBlockquote } from "./content-elements/blockquote";
 
 interface PostContentProps {
   post: Post;
@@ -103,6 +104,9 @@ export function PostContent({ post }: PostContentProps) {
           li: CustomLi,
 
           hr: CustomSeparator,
+
+          // Blockquotes with callout support
+          blockquote: CustomBlockquote,
 
           // Big quote component with LaTeX support
           // @ts-expect-error - BigQuote is a custom component
