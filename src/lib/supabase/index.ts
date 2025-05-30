@@ -2,9 +2,9 @@
 export { supabase } from "./client";
 export { createServerClient, supabaseAdmin } from "./server";
 
-// Search
-export { search } from "./services/search";
-export type { SearchResult } from "./services/search";
+// Services
+export { articlesService } from "./services/articles";
+export type { Article, ArticleListItem } from "./services/articles";
 
 // Types
 export type { Database } from "./types";
