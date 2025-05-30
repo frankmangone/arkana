@@ -5,6 +5,7 @@ import path from "path";
 import matter from "gray-matter";
 import { LatestArticles } from "./components/latest-articles";
 import { IntroSection } from "./components/intro-section";
+import { StandaloneSearch } from "./components/standalone-search";
 import { PostPreview } from "@/lib/posts";
 import { getWriter } from "@/lib/writers";
 interface HomePageProps {
@@ -85,6 +86,7 @@ export async function HomePage(props: HomePageProps) {
   return (
     <>
       <IntroSection lang={lang} dictionary={dict} />
+      <StandaloneSearch lang={lang} />
       <LatestArticles lang={lang} latestPosts={latestPosts} dictionary={dict} />
       {/* <FeaturedPosts lang={lang} dictionary={dict} /> */}
     </>
