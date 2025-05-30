@@ -28,16 +28,41 @@ export const articlesService = {
     currentLanguage: string,
     limit = 10
   ) {
-    const { data, error } = await supabase
-      .from("articles")
-      .select("slug, title, excerpt, language")
-      .textSearch("content", searchTerm)
-      .eq("language", currentLanguage)
-      .eq("published", true)
-      .limit(limit)
-      .order("created_at", { ascending: false });
+    // Option 1: Format search term for tsquery (words joined with &)
+    const formattedSearchTerm = searchTerm
+      .trim()
+      .split(/\s+/)
+      .filter((word) => word.length > 0)
+      .join(" & ");
 
-    if (error) throw error;
-    return data as ArticleListItem[];
+    try {
+      // Try with properly formatted tsquery first
+      const { data, error } = await supabase
+        .from("articles")
+        .select("slug, title")
+        .textSearch("content", formattedSearchTerm)
+        .eq("language", currentLanguage)
+        .limit(limit)
+        .order("created_at", { ascending: false });
+
+      if (error) {
+        // Fallback: use ilike for simpler text matching
+        const { data: fallbackData, error: fallbackError } = await supabase
+          .from("articles")
+          .select("slug, title")
+          .ilike("content", `%${searchTerm}%`)
+          .eq("language", currentLanguage)
+          .limit(limit)
+          .order("created_at", { ascending: false });
+
+        if (fallbackError) throw fallbackError;
+        return fallbackData as ArticleListItem[];
+      }
+
+      return data as ArticleListItem[];
+    } catch (err) {
+      console.error("❌ All search methods failed:", err);
+      throw err;
+    }
   },
 };
