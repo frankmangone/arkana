@@ -10,7 +10,8 @@
     "export": "next export",
     "calculate-hashes": "node scripts/calculate-hashes.js",
     "prebuild": "npm run calculate-hashes && npm run generate-favicon",
-    "build:search": "node scripts/extract-search-data.js"
+    "build:search": "node scripts/extract-search-data.js",
+    "sync": "node scripts/sync-to-supabase.js"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.4",

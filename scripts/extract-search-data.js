@@ -405,7 +405,7 @@ function processMarkdownFile(filePath, supabaseId = null) {
 
     // Add Supabase ID if provided
     if (supabaseId) {
-      result.supabase_id = supabaseId;
+      result.supabaseId = supabaseId;
     }
 
     return result;
@@ -488,8 +488,8 @@ function main() {
   console.log(`📝 Summary: ${result.search_summary.length} characters`);
   console.log(`🏷️  Headings: ${result.headings_structure.length} found`);
   console.log(`💬 Word count: ${result.word_count} words`);
-  if (result.supabase_id) {
-    console.log(`🔗 Supabase ID: ${result.supabase_id}`);
+  if (result.supabaseId) {
+    console.log(`🔗 Supabase ID: ${result.supabaseId}`);
   }
 }
 

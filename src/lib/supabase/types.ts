@@ -7,69 +7,51 @@ export interface HeadingStructure {
 export interface Database {
   public: {
     Tables: {
-      posts: {
+      articles: {
         Row: {
-          id: string;
-          title: string;
-          content: string;
-          slug: string;
-          author: string;
-          tags: string[];
-          date: string;
-          thumbnail: string | null;
-          description: string | null;
-          reading_time: string | null;
-          views: number;
+          id: number;
           created_at: string;
-          updated_at: string;
-          word_count: number | null;
-          headings_structure: HeadingStructure[] | null;
+          slug: string;
+          title: string;
+          language: string;
+          author_slug: string;
+          uuid: string;
           search_keywords: string | null;
-          search_summary: string | null;
+          search_headings: string | null;
           search_tags_expanded: string | null;
-          content_hash: string | null;
+          headings_structure: HeadingStructure[] | null;
+          word_count: number | null;
+          search_summary: string | null;
         };
         Insert: {
-          id?: string;
-          title: string;
-          content: string;
-          slug: string;
-          author: string;
-          tags: string[];
-          date: string;
-          thumbnail?: string | null;
-          description?: string | null;
-          reading_time?: string | null;
-          views?: number;
+          id?: number;
           created_at?: string;
-          updated_at?: string;
-          word_count?: number | null;
-          headings_structure?: HeadingStructure[] | null;
+          slug: string;
+          title: string;
+          language: string;
+          author_slug: string;
+          uuid?: string;
           search_keywords?: string | null;
-          search_summary?: string | null;
+          search_headings?: string | null;
           search_tags_expanded?: string | null;
-          content_hash?: string | null;
+          headings_structure?: HeadingStructure[] | null;
+          word_count?: number | null;
+          search_summary?: string | null;
         };
         Update: {
-          id?: string;
-          title?: string;
-          content?: string;
-          slug?: string;
-          author?: string;
-          tags?: string[];
-          date?: string;
-          thumbnail?: string | null;
-          description?: string | null;
-          reading_time?: string | null;
-          views?: number;
+          id?: number;
           created_at?: string;
-          updated_at?: string;
-          word_count?: number | null;
-          headings_structure?: HeadingStructure[] | null;
+          slug?: string;
+          title?: string;
+          language?: string;
+          author_slug?: string;
+          uuid?: string;
           search_keywords?: string | null;
-          search_summary?: string | null;
+          search_headings?: string | null;
           search_tags_expanded?: string | null;
-          content_hash?: string | null;
+          headings_structure?: HeadingStructure[] | null;
+          word_count?: number | null;
+          search_summary?: string | null;
         };
       };
       search_analytics: {
