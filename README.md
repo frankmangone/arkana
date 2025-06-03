@@ -105,13 +105,63 @@ npm run sync:all -- --no-continue
 
 ### 🔍 Search Features
 
-The sync pipeline creates optimized search data:
+The sync pipeline creates optimized search data for enhanced multilingual search:
 
-- **Multilingual Keywords**: Language-specific stop word filtering
-- **Smart Summaries**: Intro + conclusion + middle paragraphs
-- **Heading Structure**: Searchable heading hierarchy
-- **Tag Expansion**: Related terms in each language
+#### Multiple Search Strategies
+
+| Strategy     | Description                              | Use Case                       |
+| ------------ | ---------------------------------------- | ------------------------------ |
+| `hybrid`     | Multi-tier search with relevance scoring | Best overall results (default) |
+| `full_text`  | Comprehensive field search               | Broad content discovery        |
+| `similarity` | Fuzzy matching                           | Typo-tolerant search           |
+| `exact`      | Case-sensitive exact matching            | Precise term matching          |
+
+#### Search Implementation
+
+```typescript
+// Enhanced search with multiple strategies
+const results = await articlesService.searchArticles("blockchain", {
+  language: "es",
+  limit: 10,
+  searchType: "hybrid", // or 'full_text', 'similarity', 'exact'
+});
+
+// Advanced search with filters
+const advancedResults = await articlesService.advancedSearch({
+  searchTerm: "criptografía",
+  language: "es",
+  tags: ["blockchain", "bitcoin"],
+  minWordCount: 1000,
+  sortBy: "relevance",
+  limit: 20,
+});
+
+// Get related articles
+const related = await articlesService.getRelatedArticles(
+  "blockchain-101/consensus",
+  "en",
+  5
+);
+```
+
+#### Search Field Optimization
+
+- **Multilingual Keywords**: Language-specific stop word filtering (125+ EN, 80+ ES, 90+ PT)
+- **Smart Summaries**: Intro + conclusion + key paragraphs
+- **Heading Structure**: Searchable heading hierarchy with proper nesting
+- **Tag Expansion**: Original tags + related terms in appropriate language
 - **Content Metadata**: Word count, reading time, language detection
+- **Relevance Scoring**: Priority-based ranking across multiple search tiers
+
+#### Hybrid Search Strategy
+
+The default `hybrid` search uses a **multi-tier approach** with relevance scoring:
+
+1. **Title Matches** (Relevance: 3) - Exact title matching
+2. **Keywords Search** (Relevance: 2) - Search in extracted keywords
+3. **Content Search** (Relevance: 1) - Search in summaries and headings
+
+Results are automatically deduplicated and ranked by relevance score.
 
 ### 📁 Content Structure
 
