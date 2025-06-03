@@ -18,6 +18,7 @@ readingTime: 17 min
 mediumUrl: >-
   https://medium.com/@francomangone18/cryptography-101-zero-knowledge-proofs-part-2-9e14467ed0be
 contentHash: 63d049ab554f181cb3d145026112b0987b4827dc3812d99971abb1d105399680
+supabaseId: caf70779-5237-49e2-b46d-e4da352d8cc2
 ---
 
 > This is part of a larger series of articles about cryptography. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/cryptography-101/where-to-start).

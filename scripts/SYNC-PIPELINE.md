@@ -1,15 +1,78 @@
 # Supabase Sync Pipeline
 
-A comprehensive script that extracts search data from markdown files and syncs them with your Supabase database, automatically handling create/update operations and writing UUIDs back to the markdown files.
+A comprehensive **multilingual** script that extracts search data from markdown files and syncs them with your Supabase database, automatically handling create/update operations and writing UUIDs back to the markdown files.
 
 ## Features
 
+✅ **Multilingual Support** - Full support for English, Spanish, and Portuguese  
 ✅ **Automatic Language Detection** - Detects language from file path  
+✅ **Language-Specific Stop Words** - Uses appropriate stop words for each language  
 ✅ **Smart Create/Update** - Creates new records or updates existing ones  
 ✅ **UUID Injection** - Writes Supabase UUID back to markdown frontmatter  
 ✅ **Change Detection** - Skips updates if content hasn't changed  
 ✅ **Search Data Extraction** - Leverages the improved extract-search-data.js  
 ✅ **Intelligent Slug Generation** - Creates slugs in format `folder/filename`
+
+## Multilingual Support
+
+### Supported Languages
+
+| Language   | Code | Stop Words    | Tag Expansion       |
+| ---------- | ---- | ------------- | ------------------- |
+| English    | `en` | ✅ 125+ words | ✅ Tech terms       |
+| Spanish    | `es` | ✅ 80+ words  | ✅ Spanish terms    |
+| Portuguese | `pt` | ✅ 90+ words  | ✅ Portuguese terms |
+
+### Language-Specific Features
+
+**Spanish (`es`)**:
+
+- Stop words: `el`, `la`, `de`, `que`, `y`, `en`, `es`, `se`, `no`, etc.
+- Tech expansion: `blockchain` → `criptomoneda`, `web3`, `descentralizado`
+- Accented character support: `ñ`, `á`, `é`, `í`, `ó`, `ú`
+
+**Portuguese (`pt`)**:
+
+- Stop words: `o`, `a`, `de`, `que`, `e`, `do`, `da`, `em`, `não`, etc.
+- Tech expansion: `blockchain` → `criptomoeda`, `web3`, `descentralizado`
+- Accented character support: `ã`, `õ`, `ç`, `á`, `é`, `í`, `ó`, `ú`
+
+**English (`en`)**:
+
+- Stop words: `the`, `a`, `an`, `and`, `or`, `but`, `in`, `on`, etc.
+- Tech expansion: `blockchain` → `cryptocurrency`, `web3`, `decentralized`
+
+### Example Output Differences
+
+**English Article**:
+
+```json
+{
+  "language": "en",
+  "search_keywords": "blockchain cryptocurrency consensus proof work mining nodes...",
+  "search_tags_expanded": "blockchain bitcoin consensus cryptocurrency web3 decentralized"
+}
+```
+
+**Spanish Article**:
+
+```json
+{
+  "language": "es",
+  "search_keywords": "blockchain consenso prueba trabajo minería nodos bifurcación...",
+  "search_tags_expanded": "blockchain bitcoin consensus criptomoneda web3 descentralizado"
+}
+```
+
+**Portuguese Article**:
+
+```json
+{
+  "language": "pt",
+  "search_keywords": "blockchain consenso prova trabalho mineração nós bifurcação...",
+  "search_tags_expanded": "blockchain bitcoin consensus criptomoeda web3 descentralizado"
+}
+```
 
 ## Prerequisites
 
@@ -290,3 +353,128 @@ cat ./search/blog.problematic-file.en.json
 - **Efficient Extraction**: Reuses the optimized extract-search-data.js
 - **Smart Updates**: Skips unnecessary database operations
 - **Memory Efficient**: Processes one file at a time
+
+## 🚀 Bulk Sync
+
+The new `sync:all` script allows you to sync all markdown files across all languages in one command.
+
+### Basic Usage
+
+```bash
+# Sync all content files (93+ files)
+npm run sync:all
+
+# Preview all files without syncing
+npm run sync:all -- --dry-run
+
+# Sync with 2-second delay between files
+npm run sync:all -- --delay 2000
+
+# Stop on first error (default: continue)
+npm run sync:all -- --no-continue
+```
+
+### Language-Specific Sync
+
+```bash
+# Sync only English content
+npm run sync:all -- --content-dir src/content/en
+
+# Sync only Spanish content
+npm run sync:all -- --content-dir src/content/es
+
+# Sync only Portuguese content
+npm run sync:all -- --content-dir src/content/pt
+```
+
+### Bulk Sync Features
+
+✅ **Recursive Discovery** - Finds all `.md` files in content directory  
+✅ **Progress Tracking** - Shows `[2/93] Processing: file.md`  
+✅ **Rate Limiting** - Configurable delay between requests  
+✅ **Error Handling** - Continue or stop on errors  
+✅ **Comprehensive Summary** - Created/Updated/Skipped/Failed counts  
+✅ **Error Reporting** - Lists all files that failed with reasons
+
+### Example Bulk Sync Output
+
+```
+🌍 Multilingual Bulk Supabase Sync
+========================================
+📁 Content directory: ./src/content
+⏱️  Delay between files: 1000ms
+🔄 Continue on error: true
+👀 Dry run: false
+
+🔍 Scanning for markdown files in: ./src/content
+📚 Found 93 markdown files
+
+🚀 Starting bulk sync...
+
+[1/93] Processing: src/content/en/blockchain-101/consensus.md
+🚀 Starting sync pipeline for: src/content/en/blockchain-101/consensus.md
+🌍 Detected language: en
+🔗 Generated slug: blockchain-101/consensus
+📊 Extracting search data...
+   📊 Extracted 50 keywords
+   📝 Summary: 1,234 characters
+   🏷️ Headings: 6 found
+   💬 Word count: 2,500 words
+🔍 Checking if article exists in Supabase...
+✅ Created new article: Blockchain 101: Consensus (UUID: abc-123-def)
+📝 Updated markdown with Supabase ID
+   ✅ Created new article
+
+[2/93] Processing: src/content/es/blockchain-101/consenso.md
+   🔄 Updated existing article
+
+[3/93] Processing: src/content/pt/cryptography-101/where-to-start.md
+   ⏭️  Skipped (Content unchanged)
+
+...
+
+📊 BULK SYNC SUMMARY
+==================================================
+📁 Total files processed: 93
+➕ Created: 45
+🔄 Updated: 35
+⏭️  Skipped: 12
+❌ Failed: 1
+
+❌ ERRORS:
+   1. src/content/es/broken-file.md
+      Error: Invalid frontmatter
+
+⚠️  Completed with 1 error(s). Check the error list above.
+```
+
+### Bulk Sync Options
+
+| Option                | Description                   | Default         |
+| --------------------- | ----------------------------- | --------------- |
+| `--dry-run`           | Preview files without syncing | `false`         |
+| `--delay <ms>`        | Delay between file processing | `1000ms`        |
+| `--no-continue`       | Stop on first error           | Continue        |
+| `--content-dir <dir>` | Custom content directory      | `./src/content` |
+| `--help, -h`          | Show help message             | -               |
+
+### Performance Considerations
+
+- **Default Delay**: 1 second between files to avoid overwhelming Supabase
+- **Error Recovery**: Continues processing even if individual files fail
+- **Memory Efficient**: Processes one file at a time
+- **Change Detection**: Skips files that haven't changed
+
+### Use Cases
+
+1. **Initial Setup**: Sync all content when setting up the database
+2. **Bulk Updates**: After making changes to the extraction logic
+3. **Language Migration**: Sync specific languages after translations
+4. **Maintenance**: Regular syncing to ensure database is up to date
+
+### Safety Tips
+
+- Always run `--dry-run` first to preview what will be processed
+- Use `--delay 2000` for larger batches to be gentle on Supabase
+- Monitor the summary to catch any systematic issues
+- Keep backups of your database before bulk operations

@@ -11,6 +11,7 @@ tags:
 description: Uma breve explicação sobre como o RSA funciona
 readingTime: 6 min
 contentHash: 372e64222e7f33b139988e84ff2d133eaa3e9a653c08f57efc158288e185556a
+supabaseId: bf667ad2-1c08-49b0-a738-e2079e4bd7b2
 ---
 
 > Este é parte de uma série maior de artigos sobre criptografia. Se este é o primeiro artigo que você encontra, recomendo fortemente começar pelo [início da série](/pt/blog/cryptography-101/where-to-start).

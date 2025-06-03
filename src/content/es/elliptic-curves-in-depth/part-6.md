@@ -15,6 +15,7 @@ description: >-
   unos cuantos años.
 readingTime: 12 min
 contentHash: c45809cc9a7bd266b6b6eb2b1706fc3b72a5fcbe54f39307f696f01e6beca729
+supabaseId: f0fe6abf-dc7b-4f1b-9f63-5be154f0cd16
 ---
 
 [La última vez](/es/blog/elliptic-curves-in-depth/part-5), aprendimos a hablar el lenguaje de los divisores. Esto es extremadamente importante para obtener una comprensión más profunda de las curvas elípticas, y es crucial para entender los **emparejamientos** — una construcción que abordaremos en los próximos artículos.

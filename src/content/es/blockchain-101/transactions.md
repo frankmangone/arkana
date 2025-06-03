@@ -13,6 +13,7 @@ description: '¡Centrémonos temprano en el alma de las Blockchains: las transac
 readingTime: 9 min
 mediumUrl: 'https://medium.com/@francomangone18/blockchain-101-transactions-bbbc9e535374'
 contentHash: bf1a67dcdf6b0844b0d2acc53a9bdd57f3e77230f997e137c82814f8f6ab69fc
+supabaseId: 2d8cb16c-b977-4fee-aa0a-90527f8a816a
 ---
 
 > Esto es parte de una serie más larga de artículos sobre Blockchain. Si este es el primer artículo que encuentras, te recomiendo comenzar desde el [inicio de la serie](/es/blog/blockchain-101/how-it-all-began).

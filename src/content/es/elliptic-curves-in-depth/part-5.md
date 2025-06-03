@@ -14,6 +14,7 @@ description: >-
   curvas elípticas, revelando algunos nuevos secretos.
 readingTime: 15 min
 contentHash: 66ca84f5c769c9c6effd8104c05329c9ab3df491c5c1ebfe817bda1f7aa3a65f
+supabaseId: 8f5258c7-01d9-4b6a-abd5-e05d92c4e66e
 ---
 
 Durante nuestros [encuentros anteriores](/es/blog/elliptic-curves-in-depth/part-4), mencioné un par de veces cómo la operación de grupo para curvas elípticas (suma de puntos) se sentía un poco... Forzada. O quizás retorcida es una mejor descripción.

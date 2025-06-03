@@ -11,6 +11,7 @@ tags:
 description: Una introducción muy relajada al mundo de la criptografía
 readingTime: 6 min
 contentHash: 67d509d102babc9d50115aa20fd2c042927fa9a0c27886dae798cdde396d1d0c
+supabaseId: 1a8f7374-2b3a-4cca-bc0a-a7278f6c7018
 ---
 
 Empezaré diciendo que no soy de ninguna manera ni matemático ni experto en criptografía — soy solo alguien intentando aprender sobre criptografía por mi cuenta.

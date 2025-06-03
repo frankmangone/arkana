@@ -13,6 +13,7 @@ description: >-
   los muchos protocolos ZKP que existen: Bulletproofs
 readingTime: 14 min
 contentHash: 155f3f65ad8277c38409dc8acbc7c0c9a2d003d618e80cb4628d20b6fb4df13c
+supabaseId: f6f0cfcf-21f6-4f69-8110-99642c6caf1f
 ---
 
 > Este artículo forma parte de una serie más larga sobre criptografía. Si este es el primer artículo con el que te encuentras, te recomiendo encarecidamente comenzar desde el [principio de la serie](/es/blog/cryptography-101/where-to-start).

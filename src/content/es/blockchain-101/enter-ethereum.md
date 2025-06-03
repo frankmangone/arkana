@@ -11,6 +11,7 @@ description: 'Es hora de pasar al segundo gran hito en la historia de Blockchain
 readingTime: 8 min
 mediumUrl: 'https://medium.com/@francomangone18/blockchain-101-enter-ethereum-e24f5f6453ac'
 contentHash: 8b282e99f408c928143842f73b68b565d23b7a18de9e1778634778de560761de
+supabaseId: ec13525c-9870-43f6-8ff0-41eed18cdf76
 ---
 
 > Este artículo es parte de una serie más larga sobre Blockchain. Si este es el primer artículo que encuentras, te recomiendo comenzar por el [inicio de la serie](/es/blog/blockchain-101/how-it-all-began).

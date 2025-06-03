@@ -13,6 +13,7 @@ description: ¡Es hora de ver la maquinaria detrás del almacenamiento de Ethere
 readingTime: 11 min
 mediumUrl: 'https://medium.com/@francomangone18/blockchain-101-storage-12d84d0e2c8e'
 contentHash: 71d910692528dfe8c5fd805c710db784c19418897303c4f8bf75bd47ad02b3ed
+supabaseId: e8fa0bf1-cfd9-44ae-a686-d3c13877c385
 ---
 
 > Este artículo es parte de una serie más larga sobre Blockchain. Si este es el primer artículo que encuentras, te recomiendo comenzar por el [inicio de la serie](/es/blog/blockchain-101/how-it-all-began).

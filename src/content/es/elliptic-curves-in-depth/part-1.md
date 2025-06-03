@@ -10,6 +10,7 @@ tags:
 description: Una introducción (más o menos) amigable a las curvas elípticas
 readingTime: 12 min
 contentHash: fc8efe8983425f193c92ef749eab99d437d206aafccb66500f5b62c87537797d
+supabaseId: 84ad0e9c-7c03-4da5-a82a-a28eb7d14cc5
 ---
 
 La criptografía está en constante evolución.

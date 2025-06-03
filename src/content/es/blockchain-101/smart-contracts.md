@@ -16,6 +16,7 @@ readingTime: 12 min
 mediumUrl: >-
   https://medium.com/@francomangone18/blockchain-101-smart-contracts-8092253cbdfa
 contentHash: 46aecc0ee8bc6fec16b646fd34813adfd546c856ad170208a0c76955e85c5d15
+supabaseId: c165a12e-e99f-4083-9a1a-523fbca864b8
 ---
 
 > Este artículo es parte de una serie más larga sobre Blockchain. Si este es el primer artículo que encuentras, te recomiendo comenzar por el [inicio de la serie](/es/blog/blockchain-101/how-it-all-began).

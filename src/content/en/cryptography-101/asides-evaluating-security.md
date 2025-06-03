@@ -12,6 +12,7 @@ readingTime: 8 min
 mediumUrl: >-
   https://medium.com/@francomangone18/cryptography-101-asides-evaluating-security-9e2c54169b2a
 contentHash: c93a6ec0cab1f00996f1ad02994a47d509f2122b10934aaa37ea771754e871aa
+supabaseId: 77ba3dd5-79c2-4d4f-9b08-8872c57fc44e
 ---
 
 > This is part of a larger series of articles about cryptography. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/cryptography-101/where-to-start).

@@ -16,6 +16,7 @@ readingTime: 11 min
 mediumUrl: >-
   https://medium.com/@francomangone18/cryptography-101-protocols-galore-7b858e6a38bf
 contentHash: 7d4884a4cdc48e46f1896c7ee1d2e7a4c3db669b30ab2d7085395d097403ba90
+supabaseId: ab432967-5a08-4d15-9423-547f3a2b941d
 ---
 
 > This is part of a larger series of articles about cryptography. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/cryptography-101/where-to-start).

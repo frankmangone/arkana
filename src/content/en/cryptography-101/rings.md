@@ -14,6 +14,7 @@ description: >-
 readingTime: 13 min
 mediumUrl: 'https://medium.com/@francomangone18/cryptography-101-rings-b9d1e0e5b6d0'
 contentHash: b8770dda6309da4329cf236c946301b442bc180f348788b7c8c7301eaa72bf5d
+supabaseId: fe547813-3df0-46ba-9a96-5e3c228691ea
 ---
 
 > This is part of a larger series of articles about cryptography. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/cryptography-101/where-to-start).

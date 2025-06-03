@@ -14,6 +14,7 @@ description: >-
   fascinante: el cifrado homomórfico
 readingTime: 9 min
 contentHash: c7dc8137af461dc61a04bef68cf48a2b6653e5aa92547403c857195535acd36d
+supabaseId: 4a9da994-e0e7-4e51-ac96-f249f6f50307
 ---
 
 > Este artículo forma parte de una serie más larga sobre criptografía. Si este es el primer artículo con el que te encuentras, te recomiendo comenzar desde el [principio de la serie](/es/blog/cryptography-101/where-to-start).

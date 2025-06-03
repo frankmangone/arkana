@@ -14,6 +14,7 @@ description: >-
   ¡necesitamos introducir un nuevo modelo: los circuitos aritméticos!
 readingTime: 9 min
 contentHash: 310942fa032b39df557391536be9b1a4853b75b277a8763d26a85b24ec3fd0d2
+supabaseId: 8c921caf-911b-4fd0-a67c-f198d5ab9627
 ---
 
 > Este artículo forma parte de una serie más larga sobre criptografía. Si este es el primer artículo con el que te encuentras, te recomiendo encarecidamente comenzar desde el [principio de la serie](/es/blog/cryptography-101/where-to-start).

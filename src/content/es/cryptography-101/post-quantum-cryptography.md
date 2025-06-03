@@ -15,6 +15,7 @@ description: >-
   problemas difíciles asociados
 readingTime: 14 min
 contentHash: 8a2efb3d9832cda974e937fc7c1fa251ef7a4ed7d0bf7a977b7277bd715ac963
+supabaseId: f21b07b6-7825-46a3-b509-accd48ac60e1
 ---
 
 > Este artículo forma parte de una serie más larga sobre criptografía. Si este es el primer artículo con el que te encuentras, te recomiendo comenzar desde el [principio de la serie](/es/blog/cryptography-101/where-to-start).

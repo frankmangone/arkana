@@ -6,172 +6,473 @@ const path = require("path");
 const matter = require("gray-matter");
 const crypto = require("crypto");
 
-// Common stop words to filter out
-const STOP_WORDS = new Set([
-  "the",
-  "a",
-  "an",
-  "and",
-  "or",
-  "but",
-  "in",
-  "on",
-  "at",
-  "to",
-  "for",
-  "of",
-  "with",
-  "by",
-  "from",
-  "up",
-  "about",
-  "into",
-  "through",
-  "during",
-  "before",
-  "after",
-  "above",
-  "below",
-  "between",
-  "among",
-  "is",
-  "are",
-  "was",
-  "were",
-  "be",
-  "been",
-  "being",
-  "have",
-  "has",
-  "had",
-  "do",
-  "does",
-  "did",
-  "will",
-  "would",
-  "could",
-  "should",
-  "may",
-  "might",
-  "must",
-  "can",
-  "this",
-  "that",
-  "these",
-  "those",
-  "i",
-  "you",
-  "he",
-  "she",
-  "it",
-  "we",
-  "they",
-  "me",
-  "him",
-  "her",
-  "us",
-  "them",
-  "my",
-  "your",
-  "his",
-  "her",
-  "its",
-  "our",
-  "their",
-  "myself",
-  "yourself",
-  "himself",
-  "herself",
-  "itself",
-  "ourselves",
-  "yourselves",
-  "themselves",
-  "what",
-  "which",
-  "who",
-  "whom",
-  "whose",
-  "where",
-  "when",
-  "why",
-  "how",
-  "all",
-  "any",
-  "both",
-  "each",
-  "few",
-  "more",
-  "most",
-  "other",
-  "some",
-  "such",
-  "no",
-  "nor",
-  "not",
-  "only",
-  "own",
-  "same",
-  "so",
-  "than",
-  "too",
-  "very",
-  "just",
-  "now",
-  "here",
-  "there",
-  "then",
-  "also",
-  "well",
-  "back",
-  "even",
-  "still",
-  "way",
-  "get",
-  "go",
-  "know",
-  "take",
-  "see",
-  "come",
-  "think",
-  "look",
-  "want",
-  "give",
-  "use",
-  "find",
-  "tell",
-  "ask",
-  "work",
-  "seem",
-  "feel",
-  "try",
-  "leave",
-  "call",
-  "good",
-  "new",
-  "first",
-  "last",
-  "long",
-  "great",
-  "little",
-  "own",
-  "other",
-  "old",
-  "right",
-  "big",
-  "high",
-  "different",
-  "small",
-  "large",
-  "next",
-  "early",
-  "young",
-  "important",
-  "few",
-  "public",
-  "bad",
-  "same",
-  "able",
-]);
+// Multilingual stop words
+const STOP_WORDS = {
+  en: new Set([
+    "the",
+    "a",
+    "an",
+    "and",
+    "or",
+    "but",
+    "in",
+    "on",
+    "at",
+    "to",
+    "for",
+    "of",
+    "with",
+    "by",
+    "from",
+    "up",
+    "about",
+    "into",
+    "through",
+    "during",
+    "before",
+    "after",
+    "above",
+    "below",
+    "between",
+    "among",
+    "is",
+    "are",
+    "was",
+    "were",
+    "be",
+    "been",
+    "being",
+    "have",
+    "has",
+    "had",
+    "do",
+    "does",
+    "did",
+    "will",
+    "would",
+    "could",
+    "should",
+    "may",
+    "might",
+    "must",
+    "can",
+    "this",
+    "that",
+    "these",
+    "those",
+    "i",
+    "you",
+    "he",
+    "she",
+    "it",
+    "we",
+    "they",
+    "me",
+    "him",
+    "her",
+    "us",
+    "them",
+    "my",
+    "your",
+    "his",
+    "her",
+    "its",
+    "our",
+    "their",
+    "myself",
+    "yourself",
+    "himself",
+    "herself",
+    "itself",
+    "ourselves",
+    "yourselves",
+    "themselves",
+    "what",
+    "which",
+    "who",
+    "whom",
+    "whose",
+    "where",
+    "when",
+    "why",
+    "how",
+    "all",
+    "any",
+    "both",
+    "each",
+    "few",
+    "more",
+    "most",
+    "other",
+    "some",
+    "such",
+    "no",
+    "nor",
+    "not",
+    "only",
+    "own",
+    "same",
+    "so",
+    "than",
+    "too",
+    "very",
+    "just",
+    "now",
+    "here",
+    "there",
+    "then",
+    "also",
+    "well",
+    "back",
+    "even",
+    "still",
+    "way",
+    "get",
+    "go",
+    "know",
+    "take",
+    "see",
+    "come",
+    "think",
+    "look",
+    "want",
+    "give",
+    "use",
+    "find",
+    "tell",
+    "ask",
+    "work",
+    "seem",
+    "feel",
+    "try",
+    "leave",
+    "call",
+    "good",
+    "new",
+    "first",
+    "last",
+    "long",
+    "great",
+    "little",
+    "own",
+    "other",
+    "old",
+    "right",
+    "big",
+    "high",
+    "different",
+    "small",
+    "large",
+    "next",
+    "early",
+    "young",
+    "important",
+    "few",
+    "public",
+    "bad",
+    "same",
+    "able",
+  ]),
+  es: new Set([
+    "el",
+    "la",
+    "de",
+    "que",
+    "y",
+    "a",
+    "en",
+    "un",
+    "es",
+    "se",
+    "no",
+    "te",
+    "lo",
+    "le",
+    "da",
+    "su",
+    "por",
+    "son",
+    "con",
+    "para",
+    "al",
+    "una",
+    "ser",
+    "del",
+    "los",
+    "las",
+    "mi",
+    "tu",
+    "si",
+    "yo",
+    "él",
+    "ella",
+    "nos",
+    "han",
+    "hay",
+    "fue",
+    "muy",
+    "más",
+    "sin",
+    "pero",
+    "sus",
+    "todo",
+    "esta",
+    "este",
+    "como",
+    "donde",
+    "cuando",
+    "quien",
+    "porque",
+    "sobre",
+    "desde",
+    "hasta",
+    "entre",
+    "durante",
+    "antes",
+    "después",
+    "arriba",
+    "abajo",
+    "dentro",
+    "fuera",
+    "aquí",
+    "allí",
+    "ahora",
+    "entonces",
+    "también",
+    "bien",
+    "así",
+    "sólo",
+    "solo",
+    "otro",
+    "otra",
+    "otros",
+    "otras",
+    "mismo",
+    "misma",
+    "algunos",
+    "algunas",
+    "tanto",
+    "tanta",
+    "todos",
+    "todas",
+    "nada",
+    "algo",
+    "alguien",
+    "nadie",
+    "ningún",
+    "ninguna",
+    "cualquier",
+    "cada",
+    "tal",
+    "cual",
+    "cuál",
+    "cuales",
+    "cuáles",
+    "qué",
+    "cómo",
+    "dónde",
+    "cuándo",
+    "por qué",
+    "sí",
+    "no",
+    "ni",
+    "o",
+    "u",
+    "pero",
+    "mas",
+    "sino",
+    "aunque",
+    "como si",
+    "tan",
+    "tanto como",
+  ]),
+  pt: new Set([
+    "o",
+    "a",
+    "de",
+    "que",
+    "e",
+    "do",
+    "da",
+    "em",
+    "um",
+    "para",
+    "é",
+    "com",
+    "não",
+    "uma",
+    "os",
+    "no",
+    "se",
+    "na",
+    "por",
+    "mais",
+    "as",
+    "dos",
+    "como",
+    "mas",
+    "foi",
+    "ao",
+    "ele",
+    "das",
+    "tem",
+    "à",
+    "seu",
+    "sua",
+    "ou",
+    "ser",
+    "quando",
+    "muito",
+    "há",
+    "nos",
+    "já",
+    "está",
+    "eu",
+    "também",
+    "só",
+    "pelo",
+    "pela",
+    "até",
+    "isso",
+    "ela",
+    "entre",
+    "era",
+    "depois",
+    "sem",
+    "mesmo",
+    "aos",
+    "ter",
+    "seus",
+    "suas",
+    "numa",
+    "pelos",
+    "pelas",
+    "esse",
+    "esses",
+    "essa",
+    "essas",
+    "meu",
+    "minha",
+    "meus",
+    "minhas",
+    "nosso",
+    "nossa",
+    "nossos",
+    "nossas",
+    "dele",
+    "dela",
+    "deles",
+    "delas",
+    "este",
+    "esta",
+    "estes",
+    "estas",
+    "esse",
+    "essa",
+    "esses",
+    "essas",
+    "aquele",
+    "aquela",
+    "aqueles",
+    "aquelas",
+    "isto",
+    "isso",
+    "aquilo",
+    "aqui",
+    "aí",
+    "ali",
+    "lá",
+    "cá",
+    "onde",
+    "quando",
+    "como",
+    "porque",
+    "porquê",
+    "qual",
+    "quais",
+    "quem",
+    "quanto",
+    "quanta",
+    "quantos",
+    "quantas",
+    "que",
+    "qué",
+    "sim",
+    "não",
+    "nem",
+    "ou",
+    "mas",
+    "porém",
+    "contudo",
+    "todavia",
+    "entretanto",
+    "então",
+    "assim",
+    "antes",
+    "depois",
+    "durante",
+    "sobre",
+    "sob",
+    "dentro",
+    "fora",
+    "através",
+    "mediante",
+    "segundo",
+    "conforme",
+    "enquanto",
+    "embora",
+    "ainda",
+    "apenas",
+    "somente",
+    "tanto",
+    "tão",
+    "muito",
+    "pouco",
+    "bem",
+    "mal",
+    "melhor",
+    "pior",
+    "primeiro",
+    "último",
+    "outro",
+    "outra",
+    "outros",
+    "outras",
+    "mesmo",
+    "mesma",
+    "próprio",
+    "própria",
+    "todo",
+    "toda",
+    "todos",
+    "todas",
+    "algum",
+    "alguma",
+    "alguns",
+    "algumas",
+    "nenhum",
+    "nenhuma",
+    "qualquer",
+    "cada",
+    "tal",
+    "tais",
+  ]),
+};
+
+// Extract language from file path
+function extractLanguageFromPath(filePath) {
+  const pathParts = filePath.split("/");
+  const contentIndex = pathParts.findIndex((part) => part === "content");
+
+  if (contentIndex !== -1 && contentIndex + 1 < pathParts.length) {
+    const lang = pathParts[contentIndex + 1];
+    // Return the language if it's supported, otherwise default to English
+    return STOP_WORDS[lang] ? lang : "en";
+  }
+
+  // Fallback to English
+  return "en";
+}
 
 // Extract headings from markdown content
 function extractHeadings(content) {
@@ -187,7 +488,7 @@ function extractHeadings(content) {
       text,
       slug: text
         .toLowerCase()
-        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/[^a-z0-9\u00C0-\u017F]+/g, "-") // Support accented characters
         .replace(/^-|-$/g, ""),
     });
   }
@@ -195,8 +496,11 @@ function extractHeadings(content) {
   return headings;
 }
 
-// Extract keywords with frequency and filtering
-function extractKeywords(text, title = "", headings = []) {
+// Extract keywords with frequency and filtering (now language-aware)
+function extractKeywords(text, title = "", headings = [], language = "en") {
+  // Get stop words for the detected language
+  const stopWords = STOP_WORDS[language] || STOP_WORDS.en;
+
   // Combine title (3x weight), headings (2x weight), and content (1x weight)
   let weightedText = "";
   weightedText += (title + " ").repeat(3);
@@ -207,18 +511,18 @@ function extractKeywords(text, title = "", headings = []) {
       .repeat(2) + " ";
   weightedText += text;
 
-  // Clean and split text
+  // Clean and split text - improved for Spanish/Portuguese
   const words = weightedText
     .toLowerCase()
-    .replace(/[^\w\s-]/g, " ") // Keep hyphens for compound words
+    .replace(/[^\w\s\u00C0-\u017F-]/g, " ") // Keep accented characters and hyphens
     .split(/\s+/)
     .filter((word) => {
       return (
         word.length > 2 &&
-        !STOP_WORDS.has(word) &&
+        !stopWords.has(word) &&
         !/^\d+$/.test(word) && // Remove pure numbers
-        !/^[a-z]$/.test(word)
-      ); // Remove single letters
+        !/^[a-z\u00C0-\u017F]$/.test(word) // Remove single letters (including accented)
+      );
     });
 
   // Count word frequency
@@ -348,6 +652,9 @@ function processMarkdownFile(filePath, supabaseId = null) {
     const fileContent = fs.readFileSync(filePath, "utf8");
     const { data: frontMatter, content } = matter(fileContent);
 
+    // Detect language from file path
+    const language = extractLanguageFromPath(filePath);
+
     // Extract basic info
     const title = frontMatter.title || "";
     const tags = frontMatter.tags || [];
@@ -358,22 +665,60 @@ function processMarkdownFile(filePath, supabaseId = null) {
     // Process content
     const cleanedContent = cleanContent(content);
     const headings = extractHeadings(content);
-    const keywords = extractKeywords(cleanedContent, title, headings);
+    const keywords = extractKeywords(cleanedContent, title, headings, language);
     const summary = extractSummary(cleanedContent);
     const contentHash = generateContentHash(fileContent);
 
-    // Create expanded tags (original tags + related terms)
+    // Create expanded tags (original tags + related terms) - now language-aware
     const expandedTags = [...tags];
 
-    // Add some basic tag expansion based on content
-    if (keywords.includes("blockchain") || keywords.includes("crypto")) {
-      expandedTags.push("cryptocurrency", "web3", "decentralized");
-    }
-    if (keywords.includes("ethereum")) {
-      expandedTags.push("smart-contracts", "defi", "blockchain");
-    }
-    if (keywords.includes("javascript") || keywords.includes("typescript")) {
-      expandedTags.push("programming", "web-development", "coding");
+    // Add language-specific tag expansion based on content
+    if (language === "en") {
+      if (keywords.includes("blockchain") || keywords.includes("crypto")) {
+        expandedTags.push("cryptocurrency", "web3", "decentralized");
+      }
+      if (keywords.includes("ethereum")) {
+        expandedTags.push("smart-contracts", "defi", "blockchain");
+      }
+      if (keywords.includes("javascript") || keywords.includes("typescript")) {
+        expandedTags.push("programming", "web-development", "coding");
+      }
+    } else if (language === "es") {
+      if (
+        keywords.includes("blockchain") ||
+        keywords.includes("crypto") ||
+        keywords.includes("criptografía")
+      ) {
+        expandedTags.push("criptomoneda", "web3", "descentralizado");
+      }
+      if (keywords.includes("ethereum")) {
+        expandedTags.push("contratos-inteligentes", "defi", "blockchain");
+      }
+      if (
+        keywords.includes("javascript") ||
+        keywords.includes("typescript") ||
+        keywords.includes("programación")
+      ) {
+        expandedTags.push("programacion", "desarrollo-web", "codigo");
+      }
+    } else if (language === "pt") {
+      if (
+        keywords.includes("blockchain") ||
+        keywords.includes("crypto") ||
+        keywords.includes("criptografia")
+      ) {
+        expandedTags.push("criptomoeda", "web3", "descentralizado");
+      }
+      if (keywords.includes("ethereum")) {
+        expandedTags.push("contratos-inteligentes", "defi", "blockchain");
+      }
+      if (
+        keywords.includes("javascript") ||
+        keywords.includes("typescript") ||
+        keywords.includes("programação")
+      ) {
+        expandedTags.push("programacao", "desenvolvimento-web", "codigo");
+      }
     }
 
     // Remove duplicates
@@ -397,6 +742,7 @@ function processMarkdownFile(filePath, supabaseId = null) {
       headings_structure: headings,
       word_count: cleanedContent.split(/\s+/).length,
       content_hash: contentHash,
+      language: language, // Include detected language in output
 
       // Processing metadata
       processed_at: new Date().toISOString(),
@@ -481,6 +827,7 @@ function main() {
   fs.writeFileSync(outputPath, JSON.stringify(result, null, 2));
 
   console.log(`✅ Successfully processed ${inputPath}`);
+  console.log(`🌍 Language: ${result.language.toUpperCase()}`);
   console.log(`📄 Output written to: ${outputPath}`);
   console.log(
     `📊 Extracted ${result.search_keywords.split(" ").length} keywords`

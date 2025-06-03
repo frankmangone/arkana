@@ -15,6 +15,7 @@ description: >-
   Anillos!
 readingTime: 11 min
 contentHash: 10c087e2c98f649a1eec77e40dec49809e98a3842279c23df0474c5eeb52568e
+supabaseId: a8bf53ea-807b-4b93-89f8-591c59a48ace
 ---
 
 > Este artículo forma parte de una serie más larga sobre criptografía. Si este es el primer artículo con el que te encuentras, te recomiendo comenzar desde el [principio de la serie](/es/blog/cryptography-101/where-to-start).

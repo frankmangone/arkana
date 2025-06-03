@@ -15,6 +15,7 @@ description: >-
   conocimiento diseñadas para la escalabilidad
 readingTime: 17 min
 contentHash: dedb2de2ac0d885d1364db4e9d8d3169b9d4c3df5ed65227473a656d76a29c0a
+supabaseId: 2a2e5576-414b-4556-a3ff-6cfd07d887a2
 ---
 
 > Este artículo forma parte de una serie más larga sobre criptografía. Si este es el primer artículo con el que te encuentras, te recomiendo encarecidamente comenzar desde el [principio de la serie](/es/blog/cryptography-101/where-to-start).

@@ -16,6 +16,7 @@ readingTime: 12 min
 mediumUrl: >-
   https://medium.com/@francomangone18/elliptic-curves-in-depth-part-6-bb8f4055da23
 contentHash: 3cc90ac561db94134f93634ae45df28fbcc73bacc8ddc7ae81a51d4c5963de8c
+supabaseId: f0fe6abf-dc7b-4f1b-9f63-5be154f0cd16
 ---
 
 [Last time around](/en/blog/elliptic-curves-in-depth/part-5), we learned to speak the language of divisors. This is hugely important to gain a deeper understanding of elliptic curves, and is crucial to understand **pairings** — a construction we’ll tackle in the next couple articles.

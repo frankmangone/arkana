@@ -13,6 +13,7 @@ description: >-
   criptografía: su estructura de grupo.
 readingTime: 10 min
 contentHash: edbe627898a8088fd332c298efe92c85551956449fd5f4a7334713e0d826648c
+supabaseId: ce259af0-a5bc-40da-9f53-13e324af73ea
 ---
 
 Si tuviéramos que definir qué es una curva elíptica solo con lo que hemos cubierto hasta ahora, probablemente diríamos algo como:

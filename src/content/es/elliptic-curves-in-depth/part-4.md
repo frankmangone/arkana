@@ -13,6 +13,7 @@ tags:
 description: Hablemos sobre funciones en curvas elípticas y sus sorprendentes propiedades.
 readingTime: 14 min
 contentHash: a48f324f801215584bae2432311f4710b23d974f6b9789f8924dc514ffb661c3
+supabaseId: 4c01f843-e0a3-41fa-8520-0a0a9d790ba0
 ---
 
 Hemos cubierto bastantes cosas hasta ahora, así que creo que un repaso rápido será útil.

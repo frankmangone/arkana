@@ -16,6 +16,7 @@ description: >-
   para entender un marco más general. ¡Agárrate fuerte!
 readingTime: 17 min
 contentHash: 106df041d202c4629e0cbaac782672a8e56a7bc48ae22a41ae24823f236017db
+supabaseId: caf70779-5237-49e2-b46d-e4da352d8cc2
 ---
 
 > Este artículo forma parte de una serie más larga sobre criptografía. Si este es el primer artículo con el que te encuentras, te recomiendo encarecidamente comenzar desde el [principio de la serie](/es/blog/cryptography-101/where-to-start).
