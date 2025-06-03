@@ -9,7 +9,8 @@
     "lint": "next lint",
     "export": "next export",
     "calculate-hashes": "node scripts/calculate-hashes.js",
-    "prebuild": "npm run calculate-hashes && npm run generate-favicon"
+    "prebuild": "npm run calculate-hashes && npm run generate-favicon",
+    "build:search": "node scripts/extract-search-data.js"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.4",

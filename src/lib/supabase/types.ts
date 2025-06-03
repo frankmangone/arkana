@@ -1,3 +1,9 @@
+export interface HeadingStructure {
+  level: number;
+  text: string;
+  slug: string;
+}
+
 export interface Database {
   public: {
     Tables: {
@@ -16,6 +22,12 @@ export interface Database {
           views: number;
           created_at: string;
           updated_at: string;
+          word_count: number | null;
+          headings_structure: HeadingStructure[] | null;
+          search_keywords: string | null;
+          search_summary: string | null;
+          search_tags_expanded: string | null;
+          content_hash: string | null;
         };
         Insert: {
           id?: string;
@@ -31,6 +43,12 @@ export interface Database {
           views?: number;
           created_at?: string;
           updated_at?: string;
+          word_count?: number | null;
+          headings_structure?: HeadingStructure[] | null;
+          search_keywords?: string | null;
+          search_summary?: string | null;
+          search_tags_expanded?: string | null;
+          content_hash?: string | null;
         };
         Update: {
           id?: string;
@@ -46,6 +64,12 @@ export interface Database {
           views?: number;
           created_at?: string;
           updated_at?: string;
+          word_count?: number | null;
+          headings_structure?: HeadingStructure[] | null;
+          search_keywords?: string | null;
+          search_summary?: string | null;
+          search_tags_expanded?: string | null;
+          content_hash?: string | null;
         };
       };
       search_analytics: {

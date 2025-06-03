@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { articlesService, type ArticleListItem } from "@/lib/supabase";
-import Link from "next/link";
+import { SearchResultCard } from "./search-result-card";
 
 interface StandaloneSearchProps {
   lang: string;
@@ -20,13 +20,13 @@ export function StandaloneSearch({ lang }: StandaloneSearchProps) {
     if (!term.trim()) {
       setResults([]);
       setShowResults(false);
-      setLoading(false);
+      setLoading(false); // Make sure loading is false when clearing
       return;
     }
 
     setLoading(true);
     try {
-      const searchResults = await articlesService.searchArticles(term, lang, 8);
+      const searchResults = await articlesService.searchArticles(term, lang, 3);
       setResults(searchResults);
       setShowResults(true);
     } catch (error) {
@@ -93,12 +93,13 @@ export function StandaloneSearch({ lang }: StandaloneSearchProps) {
   }, []);
 
   return (
-    <>
-      {/* Search Bar - Matches intro text container width */}
-      <section className="w-full py-8">
-        <div className="container z-10 mx-auto px-4 md:px-6 lg:px-8 max-w-8xl">
-          <div className="z-10 flex-1 flex flex-col justify-center bg-transparent text-left w-full md:max-w-6/10 xl:max-w-4/10">
-            <form onSubmit={handleSearchSubmit} className="relative">
+    <section className="w-full py-8">
+      <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-8xl">
+        {/* Flex container for search and results */}
+        <div className="flex flex-col lg:flex-row gap-8 items-start">
+          {/* Search Bar - Narrower */}
+          <div className="w-full md:basis-6/10 lg:basis-4/10 flex-shrink-0">
+            <form onSubmit={handleSearchSubmit} className="lg:w-96 relative">
               <div className="relative">
                 <input
                   type="text"
@@ -181,78 +182,64 @@ export function StandaloneSearch({ lang }: StandaloneSearchProps) {
               </div>
             </form>
           </div>
-        </div>
-      </section>
 
-      {/* Search Results - Truly Full Width */}
-      {showResults && (
-        <section className="w-full bg-gray-950/50 py-12">
-          <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-8xl">
-            {loading && (
-              <div className="text-center py-12">
-                <div className="flex items-center justify-center mb-4">
-                  <svg
-                    className="w-8 h-8 text-primary-500 animate-spin"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <circle
-                      className="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      strokeWidth="4"
-                    />
-                    <path
-                      className="opacity-75"
-                      fill="currentColor"
-                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                    />
-                  </svg>
-                </div>
-                <div className="text-white text-lg">Searching articles...</div>
-              </div>
-            )}
-
-            {!loading && results.length === 0 && searchTerm.trim() && (
-              <div className="text-center py-12">
-                <div className="text-gray-400 text-lg">
-                  No articles found for &ldquo;{searchTerm}&rdquo;
-                </div>
-              </div>
-            )}
-
-            {!loading && results.length > 0 && (
-              <div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                  {results.map((article) => (
-                    <Link
-                      key={article.slug}
-                      href={`/${lang}/blog/${article.slug}`}
-                      className="group block bg-gray-900 hover:bg-gray-800 transition-colors"
+          {/* Search Results - Side by side on large screens */}
+          {showResults && (
+            <div className="flex-1 w-full">
+              {loading && (
+                <div className="text-center py-8">
+                  <div className="flex items-center justify-center mb-4">
+                    <svg
+                      className="w-8 h-8 text-primary-500 animate-spin"
+                      fill="none"
+                      viewBox="0 0 24 24"
                     >
-                      <div className="p-6">
-                        <h3 className="text-lg font-semibold text-white mb-3 group-hover:text-primary-400 transition-colors line-clamp-2">
-                          {article.title}
-                        </h3>
-                        {article.excerpt && (
-                          <p className="text-gray-400 text-sm line-clamp-3 mb-4">
-                            {article.excerpt}
-                          </p>
-                        )}
-                        <div className="text-primary-500 text-sm font-medium group-hover:text-primary-400 transition-colors">
-                          Read more →
-                        </div>
-                      </div>
-                    </Link>
-                  ))}
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      />
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      />
+                    </svg>
+                  </div>
+                  <div className="text-white text-lg">
+                    Searching articles...
+                  </div>
                 </div>
-              </div>
-            )}
-          </div>
-        </section>
-      )}
-    </>
+              )}
+
+              {!loading && results.length === 0 && searchTerm.trim() && (
+                <div className="text-center py-8">
+                  <div className="text-gray-400 text-lg">
+                    No articles found for &ldquo;{searchTerm}&rdquo;
+                  </div>
+                </div>
+              )}
+
+              {!loading && results.length > 0 && (
+                <div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                    {results.map((article) => (
+                      <SearchResultCard
+                        key={article.slug}
+                        article={article}
+                        lang={lang}
+                      />
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
   );
 }
