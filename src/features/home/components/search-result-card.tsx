@@ -34,12 +34,9 @@ export function SearchResultCard({ article, lang }: SearchResultCardProps) {
 
   return (
     <div className="group">
-      <Link
-        href={`${baseUrl}/${lang}/blog/${article.slug}`}
-        className="block bg-black/70"
-      >
+      <Link href={`${baseUrl}/${lang}/blog/${article.slug}`} className="block">
         {/* Compact image - smaller than PostCard */}
-        <div className="relative h-32 mb-3 overflow-hidden">
+        <div className="relative h-48 mb-3 overflow-hidden">
           {article.thumbnail ? (
             <Image
               src={

@@ -19,7 +19,7 @@ export function LatestArticles({
   return (
     <div className="w-full">
       {/* Gradient overlay for the section above */}
-      <div className="w-full -mt-[260px] h-60 bg-gradient-to-b from-transparent to-background/80" />
+      <div className="w-full h-60 bg-gradient-to-b from-transparent to-background/80" />
 
       {/* Articles section with full-width background */}
       {/*  bg-gradient-to-b from-black via-black to-[#0A0A0A] */}
