@@ -25,7 +25,12 @@ function findMarkdownFiles(dir, files = []) {
 
 // Process files with progress tracking
 async function syncAllFiles(contentDir, options = {}) {
-  const { dryRun = false, continueOnError = true, delay = 1000 } = options;
+  const {
+    dryRun = false,
+    continueOnError = true,
+    delay = 1000,
+    forceUpdate = false,
+  } = options;
 
   console.log(`🔍 Scanning for markdown files in: ${contentDir}`);
 
@@ -42,6 +47,9 @@ async function syncAllFiles(contentDir, options = {}) {
   }
 
   console.log(`📚 Found ${markdownFiles.length} markdown files`);
+  if (forceUpdate) {
+    console.log(`⚡ Force update mode enabled - will update all articles`);
+  }
   console.log("");
 
   if (dryRun) {
@@ -73,7 +81,7 @@ async function syncAllFiles(contentDir, options = {}) {
     console.log(`${progress} Processing: ${file}`);
 
     try {
-      const result = await syncMarkdownToSupabase(file);
+      const result = await syncMarkdownToSupabase(file, { forceUpdate });
 
       if (result.success) {
         switch (result.action) {
@@ -157,6 +165,7 @@ function parseArgs() {
     dryRun: false,
     continueOnError: true,
     delay: 1000,
+    forceUpdate: false,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -165,6 +174,9 @@ function parseArgs() {
     switch (arg) {
       case "--dry-run":
         options.dryRun = true;
+        break;
+      case "--force-update":
+        options.forceUpdate = true;
         break;
       case "--no-continue":
         options.continueOnError = false;
@@ -205,18 +217,24 @@ function showHelp() {
   console.log("");
   console.log("Usage:");
   console.log(
-    "  npm run sync:all                    # Sync all files in ./src/content"
+    "  npm run sync:all                       # Sync all files in ./src/content"
   );
   console.log(
-    "  npm run sync:all -- --dry-run       # Preview files without syncing"
+    "  npm run sync:all -- --dry-run          # Preview files without syncing"
   );
   console.log(
-    "  npm run sync:all -- --delay 2000    # 2 second delay between files"
+    "  npm run sync:all -- --force-update     # Force update all articles"
   );
-  console.log("  npm run sync:all -- --no-continue   # Stop on first error");
+  console.log(
+    "  npm run sync:all -- --delay 2000       # 2 second delay between files"
+  );
+  console.log("  npm run sync:all -- --no-continue      # Stop on first error");
   console.log("");
   console.log("Options:");
   console.log("  --dry-run           Preview files that would be processed");
+  console.log(
+    "  --force-update      Force update even if content hasn't changed"
+  );
   console.log(
     "  --delay <ms>        Delay between file processing (default: 1000ms)"
   );
@@ -228,6 +246,7 @@ function showHelp() {
   console.log("");
   console.log("Examples:");
   console.log("  npm run sync:all -- --dry-run");
+  console.log("  npm run sync:all -- --force-update");
   console.log("  npm run sync:all -- --delay 500");
   console.log("  npm run sync:all -- --content-dir ./my-content");
 }
@@ -243,6 +262,7 @@ async function main() {
     console.log(`⏱️  Delay between files: ${options.delay}ms`);
     console.log(`🔄 Continue on error: ${options.continueOnError}`);
     console.log(`👀 Dry run: ${options.dryRun}`);
+    console.log(`⚡ Force update: ${options.forceUpdate}`);
     console.log("");
 
     await syncAllFiles(options.contentDir, options);

@@ -661,6 +661,8 @@ function processMarkdownFile(filePath, supabaseId = null) {
     const author = frontMatter.author || "";
     const date = frontMatter.date || "";
     const description = frontMatter.description || frontMatter.excerpt || "";
+    const thumbnail =
+      frontMatter.thumbnail || frontMatter.image || frontMatter.cover || "";
 
     // Process content
     const cleanedContent = cleanContent(content);
@@ -731,6 +733,7 @@ function processMarkdownFile(filePath, supabaseId = null) {
       date,
       description,
       tags,
+      thumbnail,
 
       // Search-optimized fields
       search_keywords: keywords.join(" "),

@@ -6,9 +6,11 @@ import { SearchResultCard } from "./search-result-card";
 
 interface StandaloneSearchProps {
   lang: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  dictionary: any;
 }
 
-export function StandaloneSearch({ lang }: StandaloneSearchProps) {
+export function StandaloneSearch({ lang, dictionary }: StandaloneSearchProps) {
   const [searchTerm, setSearchTerm] = useState("");
   const [results, setResults] = useState<ArticleListItem[]>([]);
   const [loading, setLoading] = useState(false);
@@ -27,6 +29,7 @@ export function StandaloneSearch({ lang }: StandaloneSearchProps) {
     setLoading(true);
     try {
       const searchResults = await articlesService.searchArticles(term, {
+        searchType: "full_text",
         language: lang,
         limit: 3,
       });
@@ -96,10 +99,10 @@ export function StandaloneSearch({ lang }: StandaloneSearchProps) {
   }, []);
 
   return (
-    <section className="w-full py-8">
+    <section className="w-full py-2">
       <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-8xl">
         {/* Flex container for search and results */}
-        <div className="flex flex-col lg:flex-row gap-8 items-start">
+        <div className="flex flex-col lg:flex-row gap-6 items-start min-h-[200px]">
           {/* Search Bar - Narrower */}
           <div className="w-full md:basis-6/10 lg:basis-4/10 flex-shrink-0">
             <form onSubmit={handleSearchSubmit} className="lg:w-96 relative">
@@ -110,7 +113,9 @@ export function StandaloneSearch({ lang }: StandaloneSearchProps) {
                   onChange={handleSearchChange}
                   onFocus={handleFocus}
                   onBlur={handleBlur}
-                  placeholder="Search articles..."
+                  placeholder={
+                    dictionary.search.placeholder || "Search articles..."
+                  }
                   className={`w-full px-6 py-4 pr-16 text-lg bg-white text-gray-900 border-2 transition-colors focus:outline-none ${
                     isFocused ? "border-primary-500" : "border-white"
                   }`}
@@ -186,61 +191,64 @@ export function StandaloneSearch({ lang }: StandaloneSearchProps) {
             </form>
           </div>
 
-          {/* Search Results - Side by side on large screens */}
-          {showResults && (
-            <div className="flex-1 w-full">
-              {loading && (
-                <div className="text-center py-8">
-                  <div className="flex items-center justify-center mb-4">
-                    <svg
-                      className="w-8 h-8 text-primary-500 animate-spin"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    >
-                      <circle
-                        className="opacity-25"
-                        cx="12"
-                        cy="12"
-                        r="10"
-                        stroke="currentColor"
-                        strokeWidth="4"
-                      />
-                      <path
-                        className="opacity-75"
-                        fill="currentColor"
-                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                      />
-                    </svg>
-                  </div>
-                  <div className="text-white text-lg">
-                    Searching articles...
-                  </div>
-                </div>
-              )}
-
-              {!loading && results.length === 0 && searchTerm.trim() && (
-                <div className="text-center py-8">
+          {/* Search Results - Always rendered to prevent layout shifts */}
+          <div className="flex-1 w-full">
+            {!showResults ? (
+              // Empty state - invisible but maintains layout
+              <div className="opacity-0 pointer-events-none">
+                <div className="text-center py-6">
                   <div className="text-gray-400 text-lg">
-                    No articles found for &ldquo;{searchTerm}&rdquo;
+                    {dictionary.search.startTyping ||
+                      "Start typing to search articles..."}
                   </div>
                 </div>
-              )}
-
-              {!loading && results.length > 0 && (
-                <div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-                    {results.map((article) => (
-                      <SearchResultCard
-                        key={article.slug}
-                        article={article}
-                        lang={lang}
-                      />
-                    ))}
-                  </div>
+              </div>
+            ) : loading ? (
+              <div className="text-center py-6">
+                <div className="flex items-center justify-center mb-4">
+                  <svg
+                    className="w-8 h-8 text-primary-500 animate-spin"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    />
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    />
+                  </svg>
                 </div>
-              )}
-            </div>
-          )}
+                <div className="text-white text-lg">
+                  {dictionary.search.searching || "Searching articles..."}
+                </div>
+              </div>
+            ) : results.length === 0 && searchTerm.trim() ? (
+              <div className="text-center py-6">
+                <div className="text-gray-400 text-lg">
+                  {dictionary.search.noResults?.replace("{term}", searchTerm) ||
+                    `No articles found for "${searchTerm}"`}
+                </div>
+              </div>
+            ) : results.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                {results.map((article) => (
+                  <SearchResultCard
+                    key={article.slug}
+                    article={article}
+                    lang={lang}
+                  />
+                ))}
+              </div>
+            ) : null}
+          </div>
         </div>
       </div>
     </section>

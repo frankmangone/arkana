@@ -86,7 +86,7 @@ export async function HomePage(props: HomePageProps) {
   return (
     <>
       <IntroSection lang={lang} dictionary={dict} />
-      <StandaloneSearch lang={lang} />
+      <StandaloneSearch lang={lang} dictionary={dict} />
       <LatestArticles lang={lang} latestPosts={latestPosts} dictionary={dict} />
       {/* <FeaturedPosts lang={lang} dictionary={dict} /> */}
     </>

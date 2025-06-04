@@ -23,7 +23,9 @@ export interface ArticleListItem {
   search_summary: string;
   language: string;
   word_count: number | null;
-  relevance_score?: number; // For search relevance ranking
+  author?: string;
+  thumbnail?: string;
+  relevance_score?: number;
 }
 
 export interface SearchOptions {
@@ -81,7 +83,8 @@ export const articlesService = {
     language: string,
     limit: number
   ): Promise<ArticleListItem[]> {
-    const selectFields = "slug, title, search_summary, language, word_count";
+    const selectFields =
+      "slug, title, search_summary, language, word_count, author, thumbnail";
 
     // Search across title and summary fields
     const { data, error } = await supabase
@@ -110,7 +113,8 @@ export const articlesService = {
     language: string,
     limit: number
   ): Promise<ArticleListItem[]> {
-    const selectFields = "slug, title, search_summary, language, word_count";
+    const selectFields =
+      "slug, title, search_summary, language, word_count, author, thumbnail";
 
     // First get all potential matches
     const { data, error } = await supabase
@@ -187,7 +191,8 @@ export const articlesService = {
     language: string,
     limit: number
   ): Promise<ArticleListItem[]> {
-    const selectFields = "slug, title, search_summary, language, word_count";
+    const selectFields =
+      "slug, title, search_summary, language, word_count, author, thumbnail";
 
     // Fuzzy search in title and summary
     const { data, error } = await supabase
@@ -212,7 +217,8 @@ export const articlesService = {
     language: string,
     limit: number
   ): Promise<ArticleListItem[]> {
-    const selectFields = "slug, title, search_summary, language, word_count";
+    const selectFields =
+      "slug, title, search_summary, language, word_count, author, thumbnail";
 
     // Exact matching with LIKE (case-sensitive)
     const { data, error } = await supabase
@@ -237,7 +243,8 @@ export const articlesService = {
     language: string,
     limit: number
   ): Promise<ArticleListItem[]> {
-    const selectFields = "slug, title, search_summary, language, word_count";
+    const selectFields =
+      "slug, title, search_summary, language, word_count, author, thumbnail";
 
     // Multi-tier search strategy with broader reach
     const searches = [
@@ -484,7 +491,9 @@ export const articlesService = {
 
       const { data, error } = await supabase
         .from("articles")
-        .select("slug, title, search_summary, language, word_count")
+        .select(
+          "slug, title, search_summary, language, word_count, author, thumbnail"
+        )
         .neq("slug", articleSlug) // Exclude current article
         .eq("language", language)
         .or(

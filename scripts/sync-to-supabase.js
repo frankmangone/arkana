@@ -159,7 +159,8 @@ function mapToSupabaseArticle(extractedData, filePath, language) {
     title: extractedData.title,
     slug: slug,
     language: language,
-    author_slug: extractedData.author, // Map author to author_slug
+    author: extractedData.author,
+    thumbnail: extractedData.thumbnail,
     // Search and analysis fields
     word_count: extractedData.word_count,
     headings_structure: extractedData.headings_structure,
@@ -173,8 +174,15 @@ function mapToSupabaseArticle(extractedData, filePath, language) {
 }
 
 // Main pipeline function
-async function syncMarkdownToSupabase(filePath) {
+async function syncMarkdownToSupabase(filePath, options = {}) {
+  const { forceUpdate = false } = options;
+
   console.log(`🚀 Starting sync pipeline for: ${filePath}`);
+  if (forceUpdate) {
+    console.log(
+      `⚡ Force update mode enabled - will update regardless of changes`
+    );
+  }
 
   // Check if file exists
   if (!fs.existsSync(filePath)) {
@@ -211,6 +219,12 @@ async function syncMarkdownToSupabase(filePath) {
     `   🏷️ Headings: ${extractedData.headings_structure.length} found`
   );
   console.log(`   💬 Word count: ${extractedData.word_count} words`);
+  if (extractedData.author) {
+    console.log(`   👤 Author: ${extractedData.author}`);
+  }
+  if (extractedData.thumbnail) {
+    console.log(`   🖼️ Thumbnail: ${extractedData.thumbnail}`);
+  }
 
   // Check if article already exists
   console.log(`🔍 Checking if article exists in Supabase...`);
@@ -226,19 +240,45 @@ async function syncMarkdownToSupabase(filePath) {
       `📄 Found existing article: ${existingArticle.title} (UUID: ${existingArticle.uuid})`
     );
 
-    // Check if content has changed by comparing search summary or word count
+    // Check if content has changed or if new fields are missing
     const contentChanged =
       existingArticle.search_summary !== extractedData.search_summary ||
       existingArticle.word_count !== extractedData.word_count;
 
-    if (!contentChanged) {
-      console.log(`⏭️ Content unchanged, skipping update`);
+    const fieldsNeedUpdate =
+      (extractedData.author &&
+        existingArticle.author !== extractedData.author) ||
+      (extractedData.thumbnail &&
+        existingArticle.thumbnail !== extractedData.thumbnail) ||
+      (!existingArticle.author && extractedData.author) || // Missing author field
+      (!existingArticle.thumbnail && extractedData.thumbnail); // Missing thumbnail field
+
+    if (!forceUpdate && !contentChanged && !fieldsNeedUpdate) {
+      console.log(
+        `⏭️ Content unchanged and fields up-to-date, skipping update`
+      );
       return {
         success: true,
         action: "skipped",
         data: existingArticle,
-        message: "Content unchanged",
+        message: "Content unchanged and fields up-to-date",
       };
+    }
+
+    // Log what triggered the update
+    if (forceUpdate) {
+      console.log(`🔄 Force updating article...`);
+    } else if (contentChanged) {
+      console.log(`🔄 Content has changed, updating article...`);
+    }
+    if (fieldsNeedUpdate) {
+      console.log(`🔄 Author/thumbnail fields need update...`);
+      if (!existingArticle.author && extractedData.author) {
+        console.log(`   👤 Adding author: ${extractedData.author}`);
+      }
+      if (!existingArticle.thumbnail && extractedData.thumbnail) {
+        console.log(`   🖼️ Adding thumbnail: ${extractedData.thumbnail}`);
+      }
     }
 
     // Update existing article
@@ -283,18 +323,34 @@ async function syncMarkdownToSupabase(filePath) {
 async function main() {
   const args = process.argv.slice(2);
 
+  // Check for force update flag
+  const forceUpdateIndex = args.indexOf("--force-update");
+  const forceUpdate = forceUpdateIndex !== -1;
+
+  // Remove the flag from args to get the file path
+  if (forceUpdateIndex !== -1) {
+    args.splice(forceUpdateIndex, 1);
+  }
+
   if (args.length === 0) {
     console.log("📚 Supabase Sync Pipeline");
     console.log("");
     console.log("Usage:");
-    console.log("  node sync-to-supabase.js <markdown-file-path>");
+    console.log(
+      "  node sync-to-supabase.js <markdown-file-path> [--force-update]"
+    );
     console.log("");
     console.log("Examples:");
     console.log(
       "  node sync-to-supabase.js ./src/content/en/blockchain-101/consensus.md"
     );
     console.log(
-      "  node sync-to-supabase.js ./src/content/es/cryptography-101/hashing.md"
+      "  node sync-to-supabase.js ./src/content/es/cryptography-101/hashing.md --force-update"
+    );
+    console.log("");
+    console.log("Flags:");
+    console.log(
+      "  --force-update    Force update even if content hasn't changed"
     );
     console.log("");
     console.log("What this script does:");
@@ -310,7 +366,7 @@ async function main() {
   const filePath = args[0];
 
   try {
-    const result = await syncMarkdownToSupabase(filePath);
+    const result = await syncMarkdownToSupabase(filePath, { forceUpdate });
 
     if (result.success) {
       console.log("");

@@ -21,6 +21,12 @@
       "exploreReadingLists": "Explore Reading Lists"
     }
   },
+  "search": {
+    "placeholder": "Search articles...",
+    "startTyping": "Start typing to search articles...",
+    "searching": "Searching articles...",
+    "noResults": "No articles found for \"{term}\""
+  },
   "blog": {
     "title": "Blog",
     "readingTime": "read",
