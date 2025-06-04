@@ -10,9 +10,9 @@
     "export": "next export",
     "calculate-hashes": "node scripts/calculate-hashes.js",
     "prebuild": "npm run calculate-hashes && npm run generate-favicon",
-    "build:search": "node scripts/extract-search-data.js",
-    "sync": "node scripts/sync-to-supabase.js",
-    "sync:all": "node scripts/sync-all-to-supabase.js"
+    "build:search": "ts-node --project scripts/tsconfig.json scripts/extract-search-data/index.ts",
+    "sync": "ts-node --project scripts/tsconfig.json scripts/sync-to-supabase.ts",
+    "sync:all": "ts-node --project scripts/tsconfig.json scripts/sync-all-to-supabase.ts"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.4",
@@ -54,6 +54,7 @@
     "sharp": "^0.33.2",
     "tailwindcss": "^4.1.3",
     "to-ico": "^1.1.5",
+    "ts-node": "^10.9.2",
     "typescript": "^5"
   }
 }

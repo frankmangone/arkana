@@ -86,11 +86,13 @@ export const articlesService = {
     const selectFields =
       "slug, title, search_summary, language, word_count, author, thumbnail";
 
-    // Search across title and summary fields
+    // Search across all searchable fields
     const { data, error } = await supabase
       .from("articles")
       .select(selectFields)
-      .or(`title.ilike.%${searchTerm}%,search_summary.ilike.%${searchTerm}%`)
+      .or(
+        `title.ilike.%${searchTerm}%,search_summary.ilike.%${searchTerm}%,search_keywords.ilike.%${searchTerm}%,search_headings.ilike.%${searchTerm}%,search_tags_expanded.ilike.%${searchTerm}%`
+      )
       .eq("language", language)
       .limit(limit)
       .order("created_at", { ascending: false });
@@ -114,15 +116,17 @@ export const articlesService = {
     limit: number
   ): Promise<ArticleListItem[]> {
     const selectFields =
-      "slug, title, search_summary, language, word_count, author, thumbnail";
+      "slug, title, search_summary, language, word_count, author, thumbnail, search_keywords, search_headings, search_tags_expanded";
 
-    // First get all potential matches
+    // Search across all searchable fields
     const { data, error } = await supabase
       .from("articles")
       .select(selectFields)
-      .or(`title.ilike.%${searchTerm}%,search_summary.ilike.%${searchTerm}%`)
+      .or(
+        `title.ilike.%${searchTerm}%,search_summary.ilike.%${searchTerm}%,search_keywords.ilike.%${searchTerm}%,search_headings.ilike.%${searchTerm}%,search_tags_expanded.ilike.%${searchTerm}%`
+      )
       .eq("language", language)
-      .limit(limit * 2); // Get more results to rank
+      .limit(limit * 3); // Get more results to rank since we're searching more fields
 
     if (error) {
       console.error("❌ Ranked search failed:", error);
@@ -139,47 +143,77 @@ export const articlesService = {
         let score = 0;
         const searchLower = searchTerm.toLowerCase();
         const titleLower = article.title.toLowerCase();
-        const summaryLower = article.search_summary.toLowerCase();
+        const summaryLower = article.search_summary?.toLowerCase() || "";
+        const keywordsLower = article.search_keywords?.toLowerCase() || "";
+        const headingsLower = article.search_headings?.toLowerCase() || "";
+        const tagsLower = article.search_tags_expanded?.toLowerCase() || "";
 
-        // Title exact match (highest priority)
+        // Title matches (highest priority)
         if (titleLower.includes(searchLower)) {
-          score += 10;
-          // Bonus for exact title match
-          if (titleLower === searchLower) score += 15;
-          // Bonus for title starting with search term
-          if (titleLower.startsWith(searchLower)) score += 8;
+          score += 25;
+          if (titleLower === searchLower) score += 15; // Exact match bonus
+          if (titleLower.startsWith(searchLower)) score += 8; // Starts with bonus
         }
 
-        // Summary matches
+        // Summary matches (high priority)
         if (summaryLower.includes(searchLower)) {
-          score += 3;
+          score += 15;
         }
 
-        // Word boundary matches (more precise)
+        // Keywords matches (medium-high priority)
+        if (keywordsLower.includes(searchLower)) {
+          score += 12;
+        }
+
+        // Headings matches (medium priority)
+        if (headingsLower.includes(searchLower)) {
+          score += 10;
+        }
+
+        // Tags matches (medium priority)
+        if (tagsLower.includes(searchLower)) {
+          score += 8;
+        }
+
+        // Word boundary matches (more precise scoring)
         const wordBoundaryRegex = new RegExp(
           `\\b${searchTerm.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`,
           "i"
         );
-        if (wordBoundaryRegex.test(article.title)) score += 5;
-        if (wordBoundaryRegex.test(article.search_summary)) score += 2;
+        if (wordBoundaryRegex.test(article.title)) score += 8;
+        if (wordBoundaryRegex.test(article.search_summary || "")) score += 5;
+        if (wordBoundaryRegex.test(article.search_keywords || "")) score += 4;
+        if (wordBoundaryRegex.test(article.search_headings || "")) score += 3;
+        if (wordBoundaryRegex.test(article.search_tags_expanded || ""))
+          score += 2;
 
         // Multiple word matches
         const searchWords = searchTerm.toLowerCase().split(/\s+/);
         searchWords.forEach((word) => {
           if (word.length > 2) {
             // Skip very short words
-            if (titleLower.includes(word)) score += 2;
-            if (summaryLower.includes(word)) score += 1;
+            if (titleLower.includes(word)) score += 3;
+            if (summaryLower.includes(word)) score += 2;
+            if (keywordsLower.includes(word)) score += 2;
+            if (headingsLower.includes(word)) score += 1;
+            if (tagsLower.includes(word)) score += 1;
           }
         });
 
+        // Return only the fields needed for ArticleListItem
         return {
-          ...article,
+          slug: article.slug,
+          title: article.title,
+          search_summary: article.search_summary,
+          language: article.language,
+          word_count: article.word_count,
+          author: article.author,
+          thumbnail: article.thumbnail,
           relevance_score: score,
         };
       })
       .filter((article) => article.relevance_score > 0) // Only include matches
-      .sort((a, b) => b.relevance_score - a.relevance_score) // Sort by relevance
+      .sort((a, b) => (b.relevance_score || 0) - (a.relevance_score || 0)) // Sort by relevance
       .slice(0, limit); // Take top results
 
     return rankedResults;

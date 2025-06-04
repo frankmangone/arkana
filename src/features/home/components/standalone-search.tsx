@@ -30,7 +30,7 @@ export function StandaloneSearch({ lang, dictionary }: StandaloneSearchProps) {
     setLoading(true);
     try {
       const searchResults = await articlesService.searchArticles(term, {
-        searchType: "full_text",
+        searchType: "ranked",
         language: lang,
         limit: 4,
       });

@@ -1,14 +1,25 @@
 #!/usr/bin/env node
 
 /* eslint-disable @typescript-eslint/no-require-imports */
-const fs = require("fs");
-const path = require("path");
-const matter = require("gray-matter");
-const { processMarkdownFile } = require("./extract-search-data.js");
-require("dotenv").config();
 
-// Import Supabase client
-const { createClient } = require("@supabase/supabase-js");
+import * as fs from "fs";
+import * as path from "path";
+import { config } from "dotenv";
+import { createClient } from "@supabase/supabase-js";
+import {
+  ExtractedData,
+  ArticleData,
+  SyncResult,
+  SyncOptions,
+  SupabaseArticle,
+} from "./types";
+
+// Import CommonJS modules
+const matter = require("gray-matter");
+const { processMarkdownFile } = require("./extract-search-data/index");
+
+// Load environment variables
+config();
 
 // Initialize Supabase client
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -24,9 +35,11 @@ if (!supabaseUrl || !supabaseServiceKey) {
 const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
 // Extract language from file path
-function extractLanguage(filePath) {
+function extractLanguage(filePath: string): string {
   const pathParts = filePath.split("/");
-  const contentIndex = pathParts.findIndex((part) => part === "content");
+  const contentIndex = pathParts.findIndex(
+    (part: string) => part === "content"
+  );
 
   if (contentIndex !== -1 && contentIndex + 1 < pathParts.length) {
     return pathParts[contentIndex + 1]; // en, es, pt, etc
@@ -37,9 +50,11 @@ function extractLanguage(filePath) {
 }
 
 // Generate slug from file path
-function generateSlug(filePath) {
+function generateSlug(filePath: string): string {
   const pathParts = filePath.split("/");
-  const contentIndex = pathParts.findIndex((part) => part === "content");
+  const contentIndex = pathParts.findIndex(
+    (part: string) => part === "content"
+  );
 
   if (contentIndex !== -1 && contentIndex + 2 < pathParts.length) {
     // Get folder and filename
@@ -53,7 +68,10 @@ function generateSlug(filePath) {
 }
 
 // Check if article exists in Supabase by slug AND language
-async function findExistingArticle(slug, language) {
+async function findExistingArticle(
+  slug: string,
+  language: string
+): Promise<SupabaseArticle | null> {
   try {
     const { data, error } = await supabase
       .from("articles")
@@ -75,16 +93,22 @@ async function findExistingArticle(slug, language) {
     return data && data.length > 0 ? data[0] : null;
   } catch (error) {
     // Re-throw our custom errors, or wrap generic ones
-    if (error.message.includes("Articles table does not exist")) {
+    if (
+      error instanceof Error &&
+      error.message.includes("Articles table does not exist")
+    ) {
       throw error;
     }
-    console.error("❌ Error searching for existing article:", error.message);
+    console.error(
+      "❌ Error searching for existing article:",
+      error instanceof Error ? error.message : String(error)
+    );
     return null;
   }
 }
 
 // Create new article in Supabase
-async function createArticle(articleData) {
+async function createArticle(articleData: ArticleData): Promise<SyncResult> {
   try {
     const { data, error } = await supabase
       .from("articles")
@@ -100,13 +124,19 @@ async function createArticle(articleData) {
     console.log(`✅ Created new article: ${data.title} (UUID: ${data.uuid})`);
     return { success: true, data };
   } catch (error) {
-    console.error("❌ Error creating article:", error.message);
+    console.error(
+      "❌ Error creating article:",
+      error instanceof Error ? error.message : String(error)
+    );
     return { success: false, error };
   }
 }
 
 // Update existing article in Supabase
-async function updateArticle(articleUuid, articleData) {
+async function updateArticle(
+  articleUuid: string,
+  articleData: ArticleData
+): Promise<SyncResult> {
   try {
     const { data, error } = await supabase
       .from("articles")
@@ -125,13 +155,16 @@ async function updateArticle(articleUuid, articleData) {
     );
     return { success: true, data };
   } catch (error) {
-    console.error("❌ Error updating article:", error.message);
+    console.error(
+      "❌ Error updating article:",
+      error instanceof Error ? error.message : String(error)
+    );
     return { success: false, error };
   }
 }
 
 // Write UUID back to markdown file frontmatter
-function updateMarkdownWithUuid(filePath, uuid) {
+function updateMarkdownWithUuid(filePath: string, uuid: string): boolean {
   try {
     const fileContent = fs.readFileSync(filePath, "utf8");
     const { data: frontMatter, content } = matter(fileContent);
@@ -146,13 +179,20 @@ function updateMarkdownWithUuid(filePath, uuid) {
     console.log(`📝 Updated ${filePath} with Supabase ID: ${uuid}`);
     return true;
   } catch (error) {
-    console.error(`❌ Error updating markdown file:`, error.message);
+    console.error(
+      `❌ Error updating markdown file:`,
+      error instanceof Error ? error.message : String(error)
+    );
     return false;
   }
 }
 
 // Convert extracted data to Supabase article format
-function mapToSupabaseArticle(extractedData, filePath, language) {
+function mapToSupabaseArticle(
+  extractedData: ExtractedData,
+  filePath: string,
+  language: string
+): ArticleData {
   const slug = generateSlug(filePath);
 
   return {
@@ -174,7 +214,10 @@ function mapToSupabaseArticle(extractedData, filePath, language) {
 }
 
 // Main pipeline function
-async function syncMarkdownToSupabase(filePath, options = {}) {
+async function syncMarkdownToSupabase(
+  filePath: string,
+  options: SyncOptions = {}
+): Promise<SyncResult> {
   const { forceUpdate = false } = options;
 
   console.log(`🚀 Starting sync pipeline for: ${filePath}`);
@@ -200,7 +243,7 @@ async function syncMarkdownToSupabase(filePath, options = {}) {
 
   // Extract search data
   console.log(`📊 Extracting search data...`);
-  const extractedData = processMarkdownFile(filePath);
+  const extractedData = processMarkdownFile(filePath) as ExtractedData | null;
 
   if (!extractedData) {
     console.error(`❌ Failed to extract data from ${filePath}`);
@@ -233,7 +276,7 @@ async function syncMarkdownToSupabase(filePath, options = {}) {
   // Prepare article data
   const articleData = mapToSupabaseArticle(extractedData, filePath, language);
 
-  let result;
+  let result: SyncResult;
 
   if (existingArticle) {
     console.log(
@@ -283,11 +326,11 @@ async function syncMarkdownToSupabase(filePath, options = {}) {
 
     // Update existing article
     console.log(`🔄 Updating existing article...`);
-    result = await updateArticle(existingArticle.uuid, articleData);
+    result = await updateArticle(existingArticle.uuid!, articleData);
 
     if (result.success) {
       // Update markdown with existing UUID (in case it's missing)
-      updateMarkdownWithUuid(filePath, existingArticle.uuid);
+      updateMarkdownWithUuid(filePath, existingArticle.uuid!);
       return {
         success: true,
         action: "updated",
@@ -304,9 +347,9 @@ async function syncMarkdownToSupabase(filePath, options = {}) {
       created_at: new Date().toISOString(),
     });
 
-    if (result.success) {
+    if (result.success && result.data) {
       // Update markdown with new UUID
-      updateMarkdownWithUuid(filePath, result.data.uuid);
+      updateMarkdownWithUuid(filePath, result.data.uuid!);
       return {
         success: true,
         action: "created",
@@ -320,7 +363,7 @@ async function syncMarkdownToSupabase(filePath, options = {}) {
 }
 
 // Main execution
-async function main() {
+async function main(): Promise<void> {
   const args = process.argv.slice(2);
 
   // Check for force update flag
@@ -372,8 +415,8 @@ async function main() {
       console.log("");
       console.log("🎉 Sync completed successfully!");
       console.log(`   Action: ${result.action}`);
-      console.log(`   UUID: ${result.uuid || result.data.uuid}`);
-      console.log(`   Title: ${result.data.title}`);
+      console.log(`   UUID: ${result.uuid || result.data?.uuid}`);
+      console.log(`   Title: ${result.data?.title}`);
 
       if (result.action === "skipped") {
         console.log(`   Reason: ${result.message}`);
@@ -385,7 +428,10 @@ async function main() {
       process.exit(1);
     }
   } catch (error) {
-    console.error("❌ Unexpected error:", error.message);
+    console.error(
+      "❌ Unexpected error:",
+      error instanceof Error ? error.message : String(error)
+    );
     process.exit(1);
   }
 }
@@ -398,7 +444,7 @@ if (require.main === module) {
   });
 }
 
-module.exports = {
+export {
   syncMarkdownToSupabase,
   extractLanguage,
   generateSlug,

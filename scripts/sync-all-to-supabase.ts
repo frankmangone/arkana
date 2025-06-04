@@ -1,12 +1,14 @@
 #!/usr/bin/env node
 
 /* eslint-disable @typescript-eslint/no-require-imports */
-const fs = require("fs");
-const path = require("path");
-const { syncMarkdownToSupabase } = require("./sync-to-supabase.js");
+
+import * as fs from "fs";
+import * as path from "path";
+import { syncMarkdownToSupabase } from "./sync-to-supabase";
+import { BulkSyncOptions, BulkSyncResults } from "./types";
 
 // Recursively find all .md files in a directory
-function findMarkdownFiles(dir, files = []) {
+function findMarkdownFiles(dir: string, files: string[] = []): string[] {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
 
   for (const entry of entries) {
@@ -24,7 +26,10 @@ function findMarkdownFiles(dir, files = []) {
 }
 
 // Process files with progress tracking
-async function syncAllFiles(contentDir, options = {}) {
+async function syncAllFiles(
+  contentDir: string,
+  options: BulkSyncOptions = {}
+): Promise<BulkSyncResults> {
   const {
     dryRun = false,
     continueOnError = true,
@@ -43,7 +48,14 @@ async function syncAllFiles(contentDir, options = {}) {
 
   if (markdownFiles.length === 0) {
     console.log("📭 No markdown files found");
-    return;
+    return {
+      total: 0,
+      created: 0,
+      updated: 0,
+      skipped: 0,
+      failed: 0,
+      errors: [],
+    };
   }
 
   console.log(`📚 Found ${markdownFiles.length} markdown files`);
@@ -59,10 +71,17 @@ async function syncAllFiles(contentDir, options = {}) {
     });
     console.log("");
     console.log("To actually sync files, run without --dry-run");
-    return;
+    return {
+      total: markdownFiles.length,
+      created: 0,
+      updated: 0,
+      skipped: 0,
+      failed: 0,
+      errors: [],
+    };
   }
 
-  const results = {
+  const results: BulkSyncResults = {
     total: markdownFiles.length,
     created: 0,
     updated: 0,
@@ -110,8 +129,10 @@ async function syncAllFiles(contentDir, options = {}) {
       }
     } catch (error) {
       results.failed++;
-      results.errors.push({ file, error: error.message });
-      console.log(`   ❌ Error: ${error.message}`);
+      const errorMessage =
+        error instanceof Error ? error.message : String(error);
+      results.errors.push({ file, error: errorMessage });
+      console.log(`   ❌ Error: ${errorMessage}`);
 
       if (!continueOnError) {
         console.log("🛑 Stopping due to error (continueOnError = false)");
@@ -158,7 +179,13 @@ async function syncAllFiles(contentDir, options = {}) {
 }
 
 // Parse command line arguments
-function parseArgs() {
+function parseArgs(): {
+  contentDir: string;
+  dryRun: boolean;
+  continueOnError: boolean;
+  delay: number;
+  forceUpdate: boolean;
+} {
   const args = process.argv.slice(2);
   const options = {
     contentDir: "./src/content",
@@ -198,7 +225,6 @@ function parseArgs() {
       case "-h":
         showHelp();
         process.exit(0);
-        break;
       default:
         if (!arg.startsWith("--")) {
           options.contentDir = arg;
@@ -209,7 +235,7 @@ function parseArgs() {
   return options;
 }
 
-function showHelp() {
+function showHelp(): void {
   console.log("📚 Bulk Supabase Sync Tool");
   console.log("");
   console.log("Recursively finds all markdown files in the content directory");
@@ -252,7 +278,7 @@ function showHelp() {
 }
 
 // Main execution
-async function main() {
+async function main(): Promise<void> {
   try {
     const options = parseArgs();
 
@@ -267,7 +293,8 @@ async function main() {
 
     await syncAllFiles(options.contentDir, options);
   } catch (error) {
-    console.error("❌ Unexpected error:", error.message);
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    console.error("❌ Unexpected error:", errorMessage);
     process.exit(1);
   }
 }
@@ -280,7 +307,4 @@ if (require.main === module) {
   });
 }
 
-module.exports = {
-  syncAllFiles,
-  findMarkdownFiles,
-};
+export { syncAllFiles, findMarkdownFiles };
