@@ -14,7 +14,7 @@ description: >-
 readingTime: 8 min
 mediumUrl: 'https://medium.com/@francomangone18/cryptography-101-polynomials-c888f31a571e'
 contentHash: de861ca2aaaf9f0e4250d0bca46fad3b836ddbf2c21a30b75a254b7be3d7b320
-supabaseId: 4bfb4e45-3f1a-4f90-924f-dc645e9552b3
+supabaseId: 90cabede-a1f7-452a-a422-b34192fdb1bd
 ---
 
 > This is part of a larger series of articles about cryptography. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/cryptography-101/where-to-start).

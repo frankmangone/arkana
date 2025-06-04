@@ -16,7 +16,7 @@ readingTime: 14 min
 mediumUrl: >-
   https://medium.com/@francomangone18/elliptic-curves-in-depth-part-7-a62306e99089
 contentHash: a95e5059288649e74f1ec5aef0ae3c5f3f92c56b245140e764bc8952e2130455
-supabaseId: 2b3674b3-ec47-4164-ba73-1536fbed2b94
+supabaseId: 195db18e-c038-4462-8cb6-d5b97b8e60bd
 ---
 
 It must not have been an easy ride to get here.

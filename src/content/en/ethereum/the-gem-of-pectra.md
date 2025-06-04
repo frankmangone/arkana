@@ -15,7 +15,7 @@ readingTime: 7 min
 mediumUrl: >-
   https://medium.com/@bustosgonzalom/the-gem-of-pectra-eip-7702-the-setcode-transaction-e55593b0533a
 contentHash: afafca9cb276d156cb452b088f489a8657e9c10050b1603df09e9b2864e26858
-supabaseId: 7953d819-8edb-4709-a1ec-1b2b6cbbf7dc
+supabaseId: 539b5cec-e4fa-44e8-a5ae-4332ae15c054
 ---
 
 I was hesitant to write this article at first.

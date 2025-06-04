@@ -16,7 +16,7 @@ readingTime: 11 min
 mediumUrl: >-
   https://medium.com/thecapital/cryptography-101-ring-learning-with-errors-ff2708a8a530
 contentHash: 94a775694603064d4082c8f95137522d514c25b1b41373b5cf1b93e8a4776788
-supabaseId: a8bf53ea-807b-4b93-89f8-591c59a48ace
+supabaseId: 088344f4-7745-4ced-bd84-29581f654427
 ---
 
 > This is part of a larger series of articles about cryptography. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/cryptography-101/where-to-start).

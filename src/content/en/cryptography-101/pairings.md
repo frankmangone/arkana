@@ -12,7 +12,7 @@ description: 'A brief introduction to pairings, an important tool in modern cryp
 readingTime: 11 min
 mediumUrl: 'https://medium.com/@francomangone18/cryptography-101-pairings-e50520deea6c'
 contentHash: 697854b1ec0ce33220c538ce5d6f47781ea70726a703c19c22a71f8722a2a41f
-supabaseId: 827e46a1-3833-4d60-bbbc-33e4182c28f2
+supabaseId: abd00fd8-574e-47a6-88da-f7cb1650c8d4
 ---
 
 > This is part of a larger series of articles about cryptography. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/cryptography-101/where-to-start).

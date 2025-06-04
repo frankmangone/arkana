@@ -14,7 +14,7 @@ readingTime: 12 min
 mediumUrl: >-
   https://medium.com/@francomangone18/blockchain-101-consensus-revisited-3979b59d71a7
 contentHash: 16ac21f28871616c0b85533fd2fe8a48b749b8d5da3e2e4847968d64475f0019
-supabaseId: 29a571c1-e496-4b5e-a63c-f865ee09e83c
+supabaseId: 793dc85a-2351-44e2-a275-81bac63554e3
 ---
 
 > This is part of a larger series of articles about Blockchain. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/blockchain-101/how-it-all-began).

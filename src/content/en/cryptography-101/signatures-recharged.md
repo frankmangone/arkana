@@ -13,7 +13,7 @@ readingTime: 11 min
 mediumUrl: >-
   https://medium.com/@francomangone18/cryptography-101-signatures-recharged-43a9e0f7e461
 contentHash: cf88bb7aacb990c05f15b17ca6c277d99b0d0e762e069b4d359e4028cd4aa8cd
-supabaseId: 7f0d70db-f93a-4905-825d-7e02c947760a
+supabaseId: 57b32407-35d2-485c-8e11-8709fdca484c
 ---
 
 > This is part of a larger series of articles about cryptography. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/cryptography-101/where-to-start).

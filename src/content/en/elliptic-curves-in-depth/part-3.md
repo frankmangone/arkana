@@ -15,7 +15,7 @@ readingTime: 10 min
 mediumUrl: >-
   https://medium.com/@francomangone18/elliptic-curve-in-depth-part-3-7ae583674b4d
 contentHash: 437f9257c6cdd4616eedb23d6e1eca51df6272642d0f1b01241103358e98400a
-supabaseId: ce259af0-a5bc-40da-9f53-13e324af73ea
+supabaseId: a7d039e6-5cb5-440b-b17d-618ccaa258ea
 ---
 
 If we had to define what an elliptic curve is only with what we’ve covered so far, we’d probably say something like:

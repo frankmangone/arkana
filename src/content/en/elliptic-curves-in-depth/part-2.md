@@ -15,7 +15,7 @@ readingTime: 11 min
 mediumUrl: >-
   https://medium.com/@francomangone18/elliptic-curves-in-depth-part-2-e3c675462001
 contentHash: daf6c891ee28846ce037afcdc818c2dc4a07ac456bbf5c931d5d55e8b9123e16
-supabaseId: 54bf3852-2b62-4fca-b1e0-f52854931221
+supabaseId: 55824c1f-54d2-49d4-9d71-a6ef2b8f07be
 ---
 
 [Last time around](/en/blog/elliptic-curves-in-depth/part-1), we defined what elliptic curves are, and we devised a (suspiciously convoluted) way to add points on the curve together. And we hinted at how this operation was key for cryptographic applications.

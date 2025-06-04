@@ -26,7 +26,10 @@ export function StandaloneSearch({ lang }: StandaloneSearchProps) {
 
     setLoading(true);
     try {
-      const searchResults = await articlesService.searchArticles(term, lang, 3);
+      const searchResults = await articlesService.searchArticles(term, {
+        language: lang,
+        limit: 3,
+      });
       setResults(searchResults);
       setShowResults(true);
     } catch (error) {

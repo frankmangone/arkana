@@ -29,7 +29,7 @@ export interface ArticleListItem {
 export interface SearchOptions {
   language: string;
   limit?: number;
-  searchType?: "full_text" | "similarity" | "exact" | "hybrid";
+  searchType?: "full_text" | "similarity" | "exact" | "ranked" | "hybrid";
   includeContent?: boolean;
 }
 
@@ -39,7 +39,7 @@ export const articlesService = {
     searchTerm: string,
     options: SearchOptions
   ): Promise<ArticleListItem[]> {
-    const { language, limit = 10, searchType = "hybrid" } = options;
+    const { language, limit = 10, searchType = "ranked" } = options;
 
     if (!searchTerm?.trim()) {
       return [];
@@ -55,9 +55,19 @@ export const articlesService = {
           return await this.similaritySearch(cleanSearchTerm, language, limit);
         case "exact":
           return await this.exactSearch(cleanSearchTerm, language, limit);
+        case "ranked":
+          return await this.rankedFullTextSearch(
+            cleanSearchTerm,
+            language,
+            limit
+          );
         case "hybrid":
         default:
-          return await this.hybridSearch(cleanSearchTerm, language, limit);
+          return await this.hybridRankedSearch(
+            cleanSearchTerm,
+            language,
+            limit
+          );
       }
     } catch (err) {
       console.error("❌ Search method failed:", err);
@@ -82,12 +92,93 @@ export const articlesService = {
       .limit(limit)
       .order("created_at", { ascending: false });
 
+    if (data) {
+      console.log("🔍 First few results:", data.slice(0, 3));
+    }
+
     if (error) {
       console.error("❌ Full-text search failed:", error);
       throw error;
     }
 
     return data || [];
+  },
+
+  // Full-text search with PostgreSQL ranking (RECOMMENDED)
+  async rankedFullTextSearch(
+    searchTerm: string,
+    language: string,
+    limit: number
+  ): Promise<ArticleListItem[]> {
+    const selectFields = "slug, title, search_summary, language, word_count";
+
+    // First get all potential matches
+    const { data, error } = await supabase
+      .from("articles")
+      .select(selectFields)
+      .or(`title.ilike.%${searchTerm}%,search_summary.ilike.%${searchTerm}%`)
+      .eq("language", language)
+      .limit(limit * 2); // Get more results to rank
+
+    if (error) {
+      console.error("❌ Ranked search failed:", error);
+      return await this.fullTextSearch(searchTerm, language, limit);
+    }
+
+    if (!data || data.length === 0) {
+      return [];
+    }
+
+    // Calculate relevance score for each result
+    const rankedResults = data
+      .map((article) => {
+        let score = 0;
+        const searchLower = searchTerm.toLowerCase();
+        const titleLower = article.title.toLowerCase();
+        const summaryLower = article.search_summary.toLowerCase();
+
+        // Title exact match (highest priority)
+        if (titleLower.includes(searchLower)) {
+          score += 10;
+          // Bonus for exact title match
+          if (titleLower === searchLower) score += 15;
+          // Bonus for title starting with search term
+          if (titleLower.startsWith(searchLower)) score += 8;
+        }
+
+        // Summary matches
+        if (summaryLower.includes(searchLower)) {
+          score += 3;
+        }
+
+        // Word boundary matches (more precise)
+        const wordBoundaryRegex = new RegExp(
+          `\\b${searchTerm.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`,
+          "i"
+        );
+        if (wordBoundaryRegex.test(article.title)) score += 5;
+        if (wordBoundaryRegex.test(article.search_summary)) score += 2;
+
+        // Multiple word matches
+        const searchWords = searchTerm.toLowerCase().split(/\s+/);
+        searchWords.forEach((word) => {
+          if (word.length > 2) {
+            // Skip very short words
+            if (titleLower.includes(word)) score += 2;
+            if (summaryLower.includes(word)) score += 1;
+          }
+        });
+
+        return {
+          ...article,
+          relevance_score: score,
+        };
+      })
+      .filter((article) => article.relevance_score > 0) // Only include matches
+      .sort((a, b) => b.relevance_score - a.relevance_score) // Sort by relevance
+      .slice(0, limit); // Take top results
+
+    return rankedResults;
   },
 
   // Similarity search using fuzzy matching
@@ -141,14 +232,14 @@ export const articlesService = {
   },
 
   // Hybrid search with multiple approaches and relevance scoring
-  async hybridSearch(
+  async hybridRankedSearch(
     searchTerm: string,
     language: string,
     limit: number
   ): Promise<ArticleListItem[]> {
     const selectFields = "slug, title, search_summary, language, word_count";
 
-    // Multi-tier search strategy
+    // Multi-tier search strategy with broader reach
     const searches = [
       // 1. Exact title matches (highest priority)
       supabase
@@ -156,8 +247,7 @@ export const articlesService = {
         .select(selectFields)
         .ilike("title", `%${searchTerm}%`)
         .eq("language", language)
-        .limit(Math.ceil(limit / 2))
-        .order("created_at", { ascending: false }),
+        .limit(Math.ceil(limit * 1.5)),
 
       // 2. Summary search (medium priority)
       supabase
@@ -165,8 +255,7 @@ export const articlesService = {
         .select(selectFields)
         .ilike("search_summary", `%${searchTerm}%`)
         .eq("language", language)
-        .limit(limit)
-        .order("created_at", { ascending: false }),
+        .limit(limit * 2),
 
       // 3. Combined search (broad match)
       supabase
@@ -174,8 +263,7 @@ export const articlesService = {
         .select(selectFields)
         .or(`title.ilike.%${searchTerm}%,search_summary.ilike.%${searchTerm}%`)
         .eq("language", language)
-        .limit(limit)
-        .order("created_at", { ascending: false }),
+        .limit(limit * 2),
     ];
 
     try {
@@ -183,7 +271,7 @@ export const articlesService = {
       const allArticles: ArticleListItem[] = [];
       const seenSlugs = new Set<string>();
 
-      // Merge results with priority-based relevance scoring
+      // Merge results and calculate comprehensive relevance scores
       results.forEach((result, searchIndex) => {
         if (result.error) {
           console.warn(`Search tier ${searchIndex + 1} failed:`, result.error);
@@ -194,10 +282,47 @@ export const articlesService = {
           result.data.forEach((article) => {
             if (!seenSlugs.has(article.slug)) {
               seenSlugs.add(article.slug);
-              // Assign relevance score based on search tier
+
+              // Calculate detailed relevance score
+              let score = 0;
+              const searchLower = searchTerm.toLowerCase();
+              const titleLower = article.title.toLowerCase();
+              const summaryLower = article.search_summary.toLowerCase();
+
+              // Base tier score (which search found it)
+              score += (3 - searchIndex) * 2;
+
+              // Content-based scoring
+              if (titleLower.includes(searchLower)) {
+                score += 15;
+                if (titleLower === searchLower) score += 10; // Exact match bonus
+                if (titleLower.startsWith(searchLower)) score += 5; // Starts with bonus
+              }
+
+              if (summaryLower.includes(searchLower)) {
+                score += 5;
+              }
+
+              // Word boundary matches
+              const wordBoundaryRegex = new RegExp(
+                `\\b${searchTerm.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`,
+                "i"
+              );
+              if (wordBoundaryRegex.test(article.title)) score += 8;
+              if (wordBoundaryRegex.test(article.search_summary)) score += 3;
+
+              // Multiple word scoring
+              const searchWords = searchTerm.toLowerCase().split(/\s+/);
+              searchWords.forEach((word) => {
+                if (word.length > 2) {
+                  if (titleLower.includes(word)) score += 3;
+                  if (summaryLower.includes(word)) score += 1;
+                }
+              });
+
               const enhancedArticle: ArticleListItem = {
                 ...article,
-                relevance_score: 3 - searchIndex,
+                relevance_score: score,
               };
               allArticles.push(enhancedArticle);
             }
@@ -205,14 +330,15 @@ export const articlesService = {
         }
       });
 
-      // Sort by relevance score and return top results
+      // Sort by comprehensive relevance score
       return allArticles
+        .filter((article) => article.relevance_score! > 0)
         .sort((a, b) => (b.relevance_score || 0) - (a.relevance_score || 0))
         .slice(0, limit);
     } catch (error) {
-      console.error("❌ Hybrid search failed:", error);
-      // Fallback to simple search
-      return await this.similaritySearch(searchTerm, language, limit);
+      console.error("❌ Hybrid ranked search failed:", error);
+      // Fallback to simple ranked search
+      return await this.rankedFullTextSearch(searchTerm, language, limit);
     }
   },
 
@@ -309,7 +435,7 @@ export const articlesService = {
     return await this.searchArticles(searchTerm, {
       language: currentLanguage,
       limit,
-      searchType: "hybrid",
+      searchType: "ranked",
     });
   },
 

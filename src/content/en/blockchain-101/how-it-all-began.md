@@ -15,7 +15,7 @@ readingTime: 10 min
 mediumUrl: >-
   https://medium.com/@francomangone18/blockchain-101-how-it-all-began-f78a977cbe5b
 contentHash: 80c2ef7e97dbd6e9a9bb2cdb823c8b7c571dc90f2db50bf069a1f5d0e41f7a81
-supabaseId: c4c001f5-f436-4283-9003-a32b23cdc39c
+supabaseId: eed91c50-6b64-488b-9dd7-24eed353e90f
 ---
 
 I was very hesitant to write this first article about Blockchain. Mostly because it's one of those technologies that moves at **light speed**, with innovations popping out of nowhere very frequently. It's a world full of cool and diverse ideas — so it's really hard to do them justice in just a few short articles.

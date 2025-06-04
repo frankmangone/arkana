@@ -16,7 +16,7 @@ readingTime: 15 min
 mediumUrl: >-
   https://medium.com/@francomangone18/elliptic-curves-in-depth-part-5-b3091e6c752c
 contentHash: d8b204ea8e86ca305da39b98c329df0b4746969dcadf00facf991922767f07cb
-supabaseId: 8f5258c7-01d9-4b6a-abd5-e05d92c4e66e
+supabaseId: 86e70bba-4c10-4229-8c8d-67af79c23f62
 ---
 
 During our [previous encounters](/en/blog/elliptic-curves-in-depth/part-4), I mentioned a couple times how the group operation for elliptic curves (point addition) felt a little... Forced. Or perhaps convoluted is a better description.

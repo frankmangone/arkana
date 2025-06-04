@@ -52,13 +52,14 @@ function generateSlug(filePath) {
   return path.basename(filePath, path.extname(filePath));
 }
 
-// Check if article exists in Supabase by slug
-async function findExistingArticle(slug) {
+// Check if article exists in Supabase by slug AND language
+async function findExistingArticle(slug, language) {
   try {
     const { data, error } = await supabase
       .from("articles")
       .select("*")
       .eq("slug", slug)
+      .eq("language", language)
       .limit(1);
 
     if (error) {
@@ -213,7 +214,7 @@ async function syncMarkdownToSupabase(filePath) {
 
   // Check if article already exists
   console.log(`🔍 Checking if article exists in Supabase...`);
-  const existingArticle = await findExistingArticle(slug);
+  const existingArticle = await findExistingArticle(slug, language);
 
   // Prepare article data
   const articleData = mapToSupabaseArticle(extractedData, filePath, language);

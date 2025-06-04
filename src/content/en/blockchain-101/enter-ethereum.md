@@ -11,7 +11,7 @@ description: 'Time to move on to the second big milestone in Blockchain’s hist
 readingTime: 8 min
 mediumUrl: 'https://medium.com/@francomangone18/blockchain-101-enter-ethereum-e24f5f6453ac'
 contentHash: da0d2f20e435ac11062549b59d32355213e39c0fdbc3f9d817ad1c8efcbcd3af
-supabaseId: ec13525c-9870-43f6-8ff0-41eed18cdf76
+supabaseId: 5c756f7b-a9c8-446a-8f05-775ac3b44111
 ---
 
 > This is part of a larger series of articles about Blockchain. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/blockchain-101/how-it-all-began).

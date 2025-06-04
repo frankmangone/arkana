@@ -14,7 +14,7 @@ description: >-
 readingTime: 11 min
 mediumUrl: 'https://medium.com/@francomangone18/wtf-is-quantum-computing-201cfb05ed66'
 contentHash: 4480945f94d166304e708750d2feeb3ebe4df3007bf0398950885043f6f3dc2f
-supabaseId: ca85f062-dcbf-476d-9885-5395eea137ca
+supabaseId: c1625537-4005-422e-be70-b8adfa052f79
 ---
 
 This year is shaping up to be one of the big ones in the history books of quantum computing. Exciting news is hitting the headlines with the announcement of Microsoft’s [Majorana 1](https://medium.com/@servifyspheresolutions/microsofts-majorana-1-quantum-processor-a-leap-forward-in-quantum-computing-240350881e5d) chip and China’s [Zuchongzhi 3.0](https://www.forbes.com/sites/luisromero/2025/03/10/quantum-singularity-ahead-chinas-zuchongzhi-3-reshapes-quantum-race/).

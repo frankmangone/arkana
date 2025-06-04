@@ -13,7 +13,7 @@ readingTime: 6 min
 mediumUrl: >-
   https://medium.com/@francomangone18/cryptography-101-where-to-start-df7d0791b189
 contentHash: 0b9cf628f5e2d1580aca155dd600b3c36007e71cf1e47b5aec1b552eb204ad6f
-supabaseId: 1a8f7374-2b3a-4cca-bc0a-a7278f6c7018
+supabaseId: 24d35f2b-2b86-49cb-929f-01bec6fa7c90
 ---
 
 I’ll preface this by saying that I’m by no means neither a mathematician, nor an expert in cryptography — I’m just a guy trying to learn the craft on my own.
