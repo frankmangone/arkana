@@ -162,7 +162,7 @@ async function syncAllFiles(
     console.log("❌ ERRORS:");
     results.errors.forEach((error, index) => {
       console.log(`   ${index + 1}. ${error.file}`);
-      console.log(`      Error: ${error.error}`);
+      console.log(`      Error: ${JSON.stringify(error.error)}`);
     });
   }
 

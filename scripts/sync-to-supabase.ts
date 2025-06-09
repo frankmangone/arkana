@@ -424,7 +424,7 @@ async function main(): Promise<void> {
     } else {
       console.log("");
       console.log("❌ Sync failed!");
-      console.log(`   Error: ${result.error}`);
+      console.log(`   Error: ${JSON.stringify(result.error)}`);
       process.exit(1);
     }
   } catch (error) {
