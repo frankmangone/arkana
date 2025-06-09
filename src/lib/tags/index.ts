@@ -207,6 +207,11 @@ export const tags: TagDefinition = {
     es: "Emparejamientos",
     pt: "Emparelhamentos",
   },
+  parallelization: {
+    en: "Parallelization",
+    es: "Paralelización",
+    pt: "Paralelização",
+  },
   patriciaTrie: {
     en: "Patricia Trie",
     es: "Trie de Patricia",
