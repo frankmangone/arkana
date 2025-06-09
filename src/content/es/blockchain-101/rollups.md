@@ -1,6 +1,6 @@
 ---
-title: 'Blockchain 101: Rollups'
-date: '2025-04-28'
+title: "Blockchain 101: Rollups"
+date: "2025-04-28"
 author: frank-mangone
 thumbnail: /images/blockchain-101/rollups/sonic.webp
 tags:
@@ -12,7 +12,7 @@ description: >-
   Antes de pasar a otras soluciones Blockchain, exploremos el ecosistema
   construido alrededor de Ethereum
 readingTime: 12 min
-mediumUrl: 'https://medium.com/@francomangone18/blockchain-101-rollups-8da114a51f32'
+mediumUrl: "https://medium.com/@francomangone18/blockchain-101-rollups-8da114a51f32"
 contentHash: fe1396a08cd9046cf4eafc69e54e240033e4de98ad058e1957f4677ef73c3df1
 supabaseId: 9fa56e0d-4876-4577-9192-c5b53f89b465
 ---
@@ -261,7 +261,7 @@ Pero nuestro tema principal hoy son los rollups! ¿Qué pueden hacer estos siste
 Hay esencialmente tres razones (o mecanismos) que ayudan a los rollups a reducir dramáticamente las tarifas: **compresión de datos**, **distribución de costos** y **ejecución fuera de la cadena**.
 
 - Ya vimos cómo los rollups **comprimen datos de transacciones** antes de enviar una afirmación para ser liquidada en Ethereum. Esto significa que ahorramos espacio en los bloques — haciendo que las transacciones del rollup no compitan directamente por el recurso.
-- Luego, está el hecho de que al agrupar transacciones, el costo de la transacción de liquidación se distribuye entre todas las transacciones del lote. Si la transacción de liquidación cuesta $1 ETH$, y el lote contiene $1000$ transacciones, ¡cada transacción efectivamente costará $0.001 ETH$!
+- Luego, está el hecho de que al agrupar transacciones, el costo de la transacción de liquidación se distribuye entre todas las transacciones del lote. Si la transacción de liquidación cuesta $1 \ \textrm{ETH}$, y el lote contiene $1000$ transacciones, ¡cada transacción efectivamente costará $0.001 \ \textrm{ETH}$!
 - Finalmente, las tarifas de gas están relacionadas con la **computación** — y dado que los rollups ejecutan lógica **fuera de la cadena**, la computación es mucho más barata, y puede seguir otros modelos de tarifas.
 
 Tener tarifas más bajas es un punto de venta muy importante para estas redes. Las altas tarifas de transacción pueden (y lo hacen) alejar a los usuarios de las Blockchains, y una red sin usuarios es solo una pieza inútil de software altamente complejo.
@@ -292,7 +292,7 @@ Los rollups son excelentes para el objetivo general de aumentar el rendimiento y
 
 Sin embargo, cada rollup tiene **su propia historia de transacciones**. Los eventos que se registran en **Optimism** son completamente diferentes de los registrados en **Polygon**. No tienen recuerdo uno del otro.
 
-¿Por qué es esto un problema? Imagina esto: Tienes $1 ETH$ en **Arbitrum**, y quieres usar una nueva y genial aplicación DeFi que solo está disponible en **zkSync**. ¿Qué haces?
+¿Por qué es esto un problema? Imagina esto: Tienes $1 \ \textrm{ETH}$ en **Arbitrum**, y quieres usar una nueva y genial aplicación DeFi que solo está disponible en **zkSync**. ¿Qué haces?
 
 Necesitas **transferir** tus activos de un rollup a otro.
 

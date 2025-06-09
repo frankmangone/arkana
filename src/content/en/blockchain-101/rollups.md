@@ -1,6 +1,6 @@
 ---
-title: 'Blockchain 101: Rollups'
-date: '2025-04-28'
+title: "Blockchain 101: Rollups"
+date: "2025-04-28"
 author: frank-mangone
 thumbnail: /images/blockchain-101/rollups/sonic.webp
 tags:
@@ -12,7 +12,7 @@ description: >-
   Before we jump into other Blockchain solutions, let’s explore the ecosystem
   built around Ethereum
 readingTime: 12 min
-mediumUrl: 'https://medium.com/@francomangone18/blockchain-101-rollups-8da114a51f32'
+mediumUrl: "https://medium.com/@francomangone18/blockchain-101-rollups-8da114a51f32"
 contentHash: 74d1653698ab283253e433a032a032a9a38738f282fa56f3c2df676cec38e8c6
 supabaseId: b19f3765-3ca7-4440-b679-a2b9f2cd587d
 ---
@@ -261,7 +261,7 @@ But our main topic for today is rollups! What can these systems do to reduce cos
 There are essentially three reasons (or mechanisms) that help rollups dramatically reduce fees: **data compression**, **cost distribution**, and **off-chain execution**.
 
 - We already saw how rollups **compress transaction** data before sending a claim to be settled in Ethereum. This means that we save blockspace — making it so that the rollup transactions don’t directly compete for the resource.
-- Then, there’s the fact that when bundling transactions, the cost of the settlement transaction is spread across all the transaction in the batch. If the settlement transaction costs $1 ETH$, and the batch contains $1000$ transactions, each transaction will effectively cost $0.001 ETH$!
+- Then, there’s the fact that when bundling transactions, the cost of the settlement transaction is spread across all the transaction in the batch. If the settlement transaction costs $1 \ \textrm{ETH}$, and the batch contains $1000$ transactions, each transaction will effectively cost $0.001 \ \textrm{ETH}$!
 - Finally, gas fees are related to **computation** — and since rollups execute logic **off-chain**, computation is much cheaper, and can follow other fee models.
 
 Having lower fees is a very important selling point for these networks. High transaction fees might (and do) drive users away from Blockchains, and a network without users is just a useless piece of highly complex software.
@@ -292,7 +292,7 @@ Rollups are great for the overall goal of increasing throughput and reducing cos
 
 However, each rollup has **its own history of transactions**. The events that are recorded in **Optimism** are completely different from the ones registered in **Polygon**. They have no recollection of each other.
 
-Why is this a problem? Picture this: You have $1 ETH$ on **Arbitrum**, and want to use a cool new DeFi app that’s only available on **zkSync**. What do you do?
+Why is this a problem? Picture this: You have $1 \ \textrm{ETH}$ on **Arbitrum**, and want to use a cool new DeFi app that’s only available on **zkSync**. What do you do?
 
 You need to **bridge** your assets from one rollup to another.
 
