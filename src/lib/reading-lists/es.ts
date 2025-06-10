@@ -164,6 +164,10 @@ export const readingLists: ReadingList[] = [
         slug: "blockchain-101/solana",
         order: 12,
       },
+      {
+        slug: "blockchain-101/solana-programs",
+        order: 13,
+      },
     ],
   },
   {

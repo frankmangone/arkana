@@ -1,6 +1,6 @@
 ---
-title: 'Blockchain 101: Solana Programs'
-date: '2025-06-09'
+title: "Blockchain 101: Solana Programs"
+date: "2025-06-09"
 author: frank-mangone
 thumbnail: /images/blockchain-101/solana-programs/joey-shocked.webp
 tags:
@@ -19,7 +19,7 @@ supabaseId: 3cae6d17-1a24-4a61-86c4-2c1052cd2528
 
 > This is part of a larger series of articles about Blockchain. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/blockchain-101/how-it-all-began).
 
-In the [last episode](/en/blog/blockchain-101/solana), we started venturing into Solana territory, addressing how **this** Blockchain incorporates the concept of time into the mix, providing a simple but smart way to timestamp transactions.
+In the [last episode](/en/blog/blockchain-101/solana), we started venturing into Solana territory, addressing how this Blockchain incorporates the concept of **time** into the mix, providing a simple but smart way to timestamp transactions.
 
 But this is not the only novel idea Solana brings to the table for the purposes of this series.
 
@@ -273,9 +273,9 @@ My goal isn’t to cover every single detail about each protocol — otherwise, 
 
 Nevertheless, we’ve covered quite a lot of ground in these past two articles. I believe we’ve touched upon the two most critical developments Solana brings to the table: its [Proof of History](/en/blog/blockchain-101/solana/#timestamping-in-action), and now its account model, which marks our first departure from the EVM model.
 
-> Perhaps because it matches the initials of the well-established technique of [Support Vector Machines](https://en.wikipedia.org/wiki/Support_vector_machine)? Who knows.
+Sometimes, this account architecture and all the surrounding suite of programs is called the [Solana Virtual Machine](https://solana.com/developers/evm-to-svm/smart-contracts), or SVM. I think the term did not hit as hard as EVM did, but still, it does reflect the completely different architecture.
 
-And we saw some of its advantages: allowing some native parallel execution when a program interacts with independent states, stored in independent accounts. This is key, as parallelization is an important feature for scalability. We’ll get to that soon.
+> Perhaps because it matches the initials of the well-established technique of [Support Vector Machines](https://en.wikipedia.org/wiki/Support_vector_machine)? Who knows.
 
 And we saw some of its advantages: allowing some native parallel execution when a program interacts with independent states, stored in independent accounts. This is key, as parallelization is an important feature for **scalability**. We’ll get to that soon.
 
