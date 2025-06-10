@@ -20,6 +20,8 @@ Language-specific rules:
 - In SPANISH, translate `isomorphic to` as `es isomórfico a`. Make sure that the resulting sentence makes sense gramatically.
 - In SPANISH, translate `encryption` or similar words to `encriptación` or their corresponding word. Same for `decryption` and `desencriptación`.
 - In SPANISH, translate `Smart Contracts` to `Contratos Inteligentes`.
+- In SPANISH, translate the titles of articles starting with `WTF is` as `WTF es`. I want to prpeserve the anglicism!
+- In SPANISH, translate `a lot to gain` (or similar expressions) to `mucho para ganar`, not `mucho que ganar`.
 
 - In PORTUGUESE, keep in mind that we're translating to Brazilian portuguese, not portuguese from Portugal.
 - In PORTUGUESE, translate `encryption` or similar words to `encriptação` or their corresponding word. Same for `decryption` and `decriptação`.
