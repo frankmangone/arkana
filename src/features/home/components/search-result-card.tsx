@@ -21,10 +21,20 @@ interface ArticleListItem {
 interface SearchResultCardProps {
   article: ArticleListItem;
   lang: string;
+  onNavigate?: () => void;
 }
 
-export function SearchResultCard({ article, lang }: SearchResultCardProps) {
+export function SearchResultCard({
+  article,
+  lang,
+  onNavigate,
+}: SearchResultCardProps) {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://arkana.blog";
+
+  const handleClick = () => {
+    // Call the onNavigate callback to close the popover
+    onNavigate?.();
+  };
 
   // const handleAuthorClick = (e: React.MouseEvent) => {
   //   e.preventDefault();
@@ -34,8 +44,11 @@ export function SearchResultCard({ article, lang }: SearchResultCardProps) {
 
   return (
     <div className="group">
-      <Link href={`${baseUrl}/${lang}/blog/${article.slug}`} className="block">
-        {/* Compact image - smaller than PostCard */}
+      <Link
+        href={`${baseUrl}/${lang}/blog/${article.slug}`}
+        className="block"
+        onClick={handleClick}
+      >
         <div className="relative h-48 mb-3 overflow-hidden">
           {article.thumbnail ? (
             <Image

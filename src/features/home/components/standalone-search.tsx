@@ -18,6 +18,7 @@ export function StandaloneSearch({ lang, dictionary }: StandaloneSearchProps) {
   const [isFocused, setIsFocused] = useState(false);
   const searchTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const searchContainerRef = useRef<HTMLDivElement>(null);
+  const popoverRef = useRef<HTMLDivElement>(null);
 
   const performSearch = async (term: string) => {
     if (!term.trim()) {
@@ -88,6 +89,8 @@ export function StandaloneSearch({ lang, dictionary }: StandaloneSearchProps) {
     }
   };
 
+  const handleBlur = () => setIsFocused(false);
+
   const handleFocus = () => {
     setIsFocused(true);
     // Show results if we have a search term and results
@@ -96,22 +99,17 @@ export function StandaloneSearch({ lang, dictionary }: StandaloneSearchProps) {
     }
   };
 
-  const handleBlur = () => {
-    setIsFocused(false);
-    // Delay hiding results to allow clicking on them
-    setTimeout(() => {
-      setShowResults(false);
-    }, 150);
-  };
-
   // Close popover when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        searchContainerRef.current &&
-        !searchContainerRef.current.contains(event.target as Node)
-      ) {
+      const target = event.target as Node;
+      const isInsideSearchContainer =
+        searchContainerRef.current?.contains(target);
+      const isInsidePopover = popoverRef.current?.contains(target);
+
+      if (!isInsideSearchContainer && !isInsidePopover) {
         setShowResults(false);
+        setIsFocused(false);
       }
     };
 
@@ -133,7 +131,7 @@ export function StandaloneSearch({ lang, dictionary }: StandaloneSearchProps) {
     <section className="w-full py-2">
       <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-8xl relative">
         {/* Search Container with Popover */}
-        <div className="flex justify-start w-[30%]">
+        <div className="flex justify-start w-full md:w-[80%] lg:w-[60%] xl:w-[30%]">
           <div ref={searchContainerRef} className="relative w-full max-w-2xl">
             {/* Search Bar */}
             <form onSubmit={handleSearchSubmit} className="relative">
@@ -226,6 +224,7 @@ export function StandaloneSearch({ lang, dictionary }: StandaloneSearchProps) {
         {/* Search Results Popover - Full Width */}
         {showResults && (
           <div
+            ref={popoverRef}
             className="absolute top-[100%] left-4 right-4 md:left-6 md:right-6 lg:left-8 lg:right-8 mt-2 bg-background border-2 border-primary-500/20 shadow-xl z-50 max-h-[600px] overflow-y-auto"
             // style={{ top: "calc(100% + 1rem)" }}
           >
@@ -267,10 +266,7 @@ export function StandaloneSearch({ lang, dictionary }: StandaloneSearchProps) {
               <div className="p-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                   {results.map((article) => (
-                    <div
-                      key={article.slug}
-                      onMouseDown={(e) => e.preventDefault()} // Prevent blur when clicking results
-                    >
+                    <div key={article.slug}>
                       <SearchResultCard article={article} lang={lang} />
                     </div>
                   ))}
