@@ -1,6 +1,6 @@
 ---
-title: "Blockchain 101: Solana"
-date: "2025-05-13"
+title: 'Blockchain 101: Solana'
+date: '2025-05-13'
 author: frank-mangone
 thumbnail: /images/blockchain-101/solana/solana.webp
 tags:
@@ -12,8 +12,8 @@ description: >-
   Our journey now leads us into another big player in the Blockchain space:
   Solana
 readingTime: 10 min
-mediumUrl: "https://medium.com/@francomangone18/blockchain-101-solana-177128bf1501"
-contentHash: d2472b30c0aa5ee50c073715d67363d700a55b6ceac0a582849c2559fffe77fd
+mediumUrl: 'https://medium.com/@francomangone18/blockchain-101-solana-177128bf1501'
+contentHash: 7446812b3363b22bce18a9eb62123bca65c4883e1a3264ce11906fb3c2480549
 supabaseId: 0df229eb-4656-4cdf-9ae8-f4eb2312eed7
 ---
 

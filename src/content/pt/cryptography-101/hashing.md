@@ -1,6 +1,6 @@
 ---
-title: "Criptografia 101: Hashing"
-date: "2024-03-24"
+title: 'Criptografia 101: Hashing'
+date: '2024-03-24'
 author: frank-mangone
 thumbnail: /images/cryptography-101/hashing/bosch.webp
 tags:
@@ -9,10 +9,10 @@ tags:
   - dataStructures
   - merkleTree
 description: >-
-  As funções de hash são uma primitiva criptográfica essencial. Venha comigo em uma 
-  exploração profunda sobre o que elas são e para que são usadas!
+  As funções de hash são uma primitiva criptográfica essencial. Venha comigo em
+  uma  exploração profunda sobre o que elas são e para que são usadas!
 readingTime: 10 min
-contentHash: 1a2898dcf5f7ce50d315743f79a91c075b9c5144adc1ec4d2ca8e91ff6089af8
+contentHash: 4e2c09a7f9da60b4552e5cf99644b3305273ac659e993ea6e6968a07e62d1981
 supabaseId: ed60dd70-4124-43af-8023-fd7923ffa0c3
 ---
 

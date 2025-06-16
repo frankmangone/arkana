@@ -14,6 +14,7 @@ description: >-
 readingTime: 13 min
 mediumUrl: 'https://medium.com/@francomangone18/wtf-is-the-internet-eafa502c271d'
 supabaseId: f2c61821-5c8f-4a81-80cf-94a5cf1dedbc
+contentHash: 9e742c7fa8dfd9d7f8e2c70794f08921bbb383fc74f7e5449ca6ee2ecdf4a670
 ---
 
 I reckon this article might look a bit out of the ordinary. So to give you some context, I want to start this with a little story.

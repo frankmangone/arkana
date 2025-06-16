@@ -1,6 +1,6 @@
 ---
-title: "Blockchain 101: Programas en Solana"
-date: "2025-06-09"
+title: 'Blockchain 101: Programas en Solana'
+date: '2025-06-09'
 author: frank-mangone
 thumbnail: /images/blockchain-101/solana-programs/joey-shocked.webp
 tags:
@@ -8,9 +8,10 @@ tags:
   - blockchain
   - parallelization
 description: >-
-  Después de ver algunos matices en el consenso de Solana, ¡ahora nos enfocamos en su capa de ejecución!
+  Después de ver algunos matices en el consenso de Solana, ¡ahora nos enfocamos
+  en su capa de ejecución!
 readingTime: 11 min
-contentHash: d2472b30c0aa5ee50c073715d67363d700a55b6ceac0a582849c2559fffe77fd
+contentHash: e85b3801606ec3a32885a55a214bd64c428e4778a32adc8d1a7970d1a7b28b16
 supabaseId: 3cae6d17-1a24-4a61-86c4-2c1052cd2528
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: WTF es el Internet
-date: "2025-05-26"
+date: '2025-05-26'
 author: frank-mangone
 tags:
   - internet
@@ -13,6 +13,7 @@ description: >-
   hace que algo tan ubicuo funcione.
 readingTime: 13 min
 supabaseId: f2c61821-5c8f-4a81-80cf-94a5cf1dedbc
+contentHash: 69bb593a6471f60b642b7cd0b2c74a957a48ec4e23d5926c4f09fdfcf4ba2a9b
 ---
 
 Supongo que este artículo puede parecer un poco fuera de lo común. Así que para darles algo de contexto, quiero empezar esto con una pequeña historia.

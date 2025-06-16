@@ -1,6 +1,6 @@
 ---
-title: "Criptografia 101: Protocolos à Vontade"
-date: "2024-04-02"
+title: 'Criptografia 101: Protocolos à Vontade'
+date: '2024-04-02'
 author: frank-mangone
 thumbnail: /images/cryptography-101/protocols-galore/waldo.webp
 tags:
@@ -13,7 +13,7 @@ description: >-
   Uma introdução gentil a alguns esquemas muito úteis: troca de chaves, esquemas
   de compromisso, provas de conhecimento zero, funções aleatórias verificáveis
 readingTime: 11 min
-contentHash: 7d4884a4cdc48e46f1896c7ee1d2e7a4c3db669b30ab2d7085395d097403ba90
+contentHash: b7a12749a91412e16b2181eef33cb8894b94628f723806ae98eadfca45ad9024
 supabaseId: 8470a1cb-2a39-4bca-8e95-be5a52cdee0d
 ---
 

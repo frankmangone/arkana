@@ -1,6 +1,6 @@
 ---
-title: "Blockchain 101: Rollups"
-date: "2025-04-28"
+title: 'Blockchain 101: Rollups'
+date: '2025-04-28'
 author: frank-mangone
 thumbnail: /images/blockchain-101/rollups/sonic.webp
 tags:
@@ -12,8 +12,8 @@ description: >-
   Before we jump into other Blockchain solutions, let’s explore the ecosystem
   built around Ethereum
 readingTime: 12 min
-mediumUrl: "https://medium.com/@francomangone18/blockchain-101-rollups-8da114a51f32"
-contentHash: 74d1653698ab283253e433a032a032a9a38738f282fa56f3c2df676cec38e8c6
+mediumUrl: 'https://medium.com/@francomangone18/blockchain-101-rollups-8da114a51f32'
+contentHash: f207915dc934e9c350ec93114e6a70bd4189b79da9d1042cda2ed381da70d1f7
 supabaseId: b19f3765-3ca7-4440-b679-a2b9f2cd587d
 ---
 

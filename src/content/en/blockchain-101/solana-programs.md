@@ -1,6 +1,6 @@
 ---
-title: "Blockchain 101: Solana Programs"
-date: "2025-06-09"
+title: 'Blockchain 101: Solana Programs'
+date: '2025-06-09'
 author: frank-mangone
 thumbnail: /images/blockchain-101/solana-programs/joey-shocked.webp
 tags:
@@ -13,7 +13,7 @@ description: >-
 readingTime: 11 min
 mediumUrl: >-
   https://medium.com/@francomangone18/blockchain-101-solana-programs-ca1615c22c8b
-contentHash: d2472b30c0aa5ee50c073715d67363d700a55b6ceac0a582849c2559fffe77fd
+contentHash: 3bceecc86c0d8a5cc0147e8afa32e816cc1cc618588da7c41f7f3fcef1a8b06e
 supabaseId: 3cae6d17-1a24-4a61-86c4-2c1052cd2528
 ---
 

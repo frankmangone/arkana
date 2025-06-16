@@ -13,7 +13,7 @@ description: >-
   ¡Combinar polinomios y firmas digitales da lugar a una nueva y genial
   funcionalidad, en forma de Firmas de Umbral!
 readingTime: 14 min
-contentHash: a034c422952b5352d25ea5cadbfe1a094d8efefb24fbe36e46e65d994404879c
+contentHash: 1de8a475ccd3eef66dbd775a6cb86a23a637a71f929361def11ab67ed8473acd
 supabaseId: d9cedc55-b08b-43dd-9cac-311dc4c5513d
 ---
 

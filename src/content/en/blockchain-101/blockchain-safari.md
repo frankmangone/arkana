@@ -1,6 +1,6 @@
 ---
-title: "Blockchain 101: Blockchain Safari"
-date: "2025-06-16"
+title: 'Blockchain 101: Blockchain Safari'
+date: '2025-06-16'
 author: frank-mangone
 thumbnail: /images/blockchain-101/blockchain-safari/cheetah.webp
 tags:
@@ -10,10 +10,12 @@ tags:
   - consensus
   - utxo
 description: >-
-  To mark our departure into new horizons, we take a short detour to look at some other cool ideas proposed by other Blockchains.
+  To mark our departure into new horizons, we take a short detour to look at
+  some other cool ideas proposed by other Blockchains.
 readingTime: 16 min
 mediumUrl: >-
   https://medium.com/@francomangone18/blockchain-101-blockchain-safari-19062a05d5c1
+contentHash: 6dea9bc133ef83a8f402393d1047cf4c0f1b0df6bb9cf3dda5482390a88f2813
 ---
 
 > This is part of a larger series of articles about Blockchain. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/blockchain-101/how-it-all-began).
