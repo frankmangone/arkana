@@ -12,7 +12,7 @@ description: >-
   Una breve exploración de lo que realmente es el Internet, y la maquinaria que
   hace que algo tan ubicuo funcione.
 readingTime: 13 min
-supabaseId: f2c61821-5c8f-4a81-80cf-94a5cf1dedbc
+supabaseId: 47c85aec-3331-4781-9aeb-e38ade353470
 contentHash: 69bb593a6471f60b642b7cd0b2c74a957a48ec4e23d5926c4f09fdfcf4ba2a9b
 ---
 

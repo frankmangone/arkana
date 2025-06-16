@@ -13,7 +13,7 @@ description: >-
   uma  exploração profunda sobre o que elas são e para que são usadas!
 readingTime: 10 min
 contentHash: 4e2c09a7f9da60b4552e5cf99644b3305273ac659e993ea6e6968a07e62d1981
-supabaseId: ed60dd70-4124-43af-8023-fd7923ffa0c3
+supabaseId: 7cb81645-7feb-4305-970b-4b7ff99f9697
 ---
 
 > Este artigo faz parte de uma série maior sobre criptografia. Se este é o primeiro artigo que você encontra, recomendo fortemente começar desde o [início da série](/pt/blog/cryptography-101/where-to-start).

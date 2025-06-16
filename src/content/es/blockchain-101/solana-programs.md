@@ -12,7 +12,7 @@ description: >-
   en su capa de ejecución!
 readingTime: 11 min
 contentHash: e85b3801606ec3a32885a55a214bd64c428e4778a32adc8d1a7970d1a7b28b16
-supabaseId: 3cae6d17-1a24-4a61-86c4-2c1052cd2528
+supabaseId: ea24291d-4895-47e7-879b-eb64fbf09a68
 ---
 
 > Esto es parte de una serie más amplia de artículos sobre Blockchain. Si este es el primer artículo que encuentras, recomiendo encarecidamente empezar desde el [comienzo de la serie](/es/blog/blockchain-101/how-it-all-began).
