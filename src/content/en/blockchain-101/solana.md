@@ -1,6 +1,6 @@
 ---
-title: 'Blockchain 101: Solana'
-date: '2025-05-13'
+title: "Blockchain 101: Solana"
+date: "2025-05-13"
 author: frank-mangone
 thumbnail: /images/blockchain-101/solana/solana.webp
 tags:
@@ -12,7 +12,7 @@ description: >-
   Our journey now leads us into another big player in the Blockchain space:
   Solana
 readingTime: 10 min
-mediumUrl: 'https://medium.com/@francomangone18/blockchain-101-solana-177128bf1501'
+mediumUrl: "https://medium.com/@francomangone18/blockchain-101-solana-177128bf1501"
 contentHash: d2472b30c0aa5ee50c073715d67363d700a55b6ceac0a582849c2559fffe77fd
 supabaseId: 0df229eb-4656-4cdf-9ae8-f4eb2312eed7
 ---
@@ -271,4 +271,4 @@ The focus for today was the innovations to consensus spearheaded by Solana — a
 
 Though we’ve covered quite a lot today, this is far from being the end of our journey through Solana. Because this network is also **programmable**, just like Ethereum — but it’s not **EVM compatible**!
 
-This means that Solana has its own way to define executable programs, different from what we’ve seen so far. And we’ll cover how these programs work in the next article!
+This means that Solana has its own way to define executable programs, different from what we’ve seen so far. And we’ll cover how these programs work in the [next article](/en/blog/blockchain-101/solana-programs)!

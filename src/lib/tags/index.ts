@@ -237,6 +237,11 @@ export const tags: TagDefinition = {
     es: "Plonk",
     pt: "Plonk",
   },
+  privacy: {
+    en: "Privacy",
+    es: "Privacidad",
+    pt: "Privacidade",
+  },
   proofOfHistory: {
     en: "Proof of History",
     es: "Prueba de Historia",
@@ -306,6 +311,11 @@ export const tags: TagDefinition = {
     en: "Security",
     es: "Seguridad",
     pt: "Segurança",
+  },
+  sidechain: {
+    en: "Sidechain",
+    es: "Sidechain",
+    pt: "Sidechain",
   },
   snark: {
     en: "SNARK",

@@ -285,6 +285,6 @@ All in all, Solana introduces some interesting ideas, that keep nurturing us in 
 
 Although we’ll be leaving this ecosystem for now, I encourage you to keep doing some research, as this is one of the [biggest Blockchains out there](https://www.coingecko.com/en/chains) — so it’s definitely worth keeping an eye on!
 
-Speaking of new ideas, I want to dedicate the next article to briefly looking at some other players in the industry that have pioneered new concepts, in search for improvements to this ever-developing world of Blockchain.
+Speaking of new ideas, I want to dedicate the [next article](/en/blog/blockchain-101/blockchain-safari) to briefly looking at some other players in the industry that have pioneered new concepts, in search for improvements to this ever-developing world of Blockchain.
 
 I’ll see you soon!
