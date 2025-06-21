@@ -3,12 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { User } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
 import { ArrowUpRight } from "lucide-react";
 import { formatDate } from "@/lib/date-utils";
-import { getTagDisplayName } from "@/lib/tags";
 import { PostPreview } from "@/lib/posts";
 import { useRouter } from "next/navigation";
+import { Tag } from "./tag";
 
 interface FeaturedPostCardProps {
   post: PostPreview;
@@ -74,9 +73,7 @@ export function FeaturedPostCard(props: FeaturedPostCardProps) {
             </p>
             <div className="flex flex-wrap gap-2 line-clamp-1 h-6 overflow-hidden">
               {post.tags.map((tag) => (
-                <Badge key={tag} variant="outline">
-                  {getTagDisplayName(tag, lang)}
-                </Badge>
+                <Tag key={tag} tag={tag} lang={lang} />
               ))}
             </div>
           </>
@@ -125,9 +122,7 @@ export function FeaturedPostCard(props: FeaturedPostCardProps) {
               </div>
               <div className="flex flex-wrap gap-2 line-clamp-1 h-6 overflow-hidden">
                 {post.tags.map((tag) => (
-                  <Badge key={tag} variant="outline">
-                    {getTagDisplayName(tag, lang)}
-                  </Badge>
+                  <Tag key={tag} tag={tag} lang={lang} />
                 ))}
               </div>
             </div>

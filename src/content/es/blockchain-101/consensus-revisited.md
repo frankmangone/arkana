@@ -1,6 +1,6 @@
 ---
-title: 'Blockchain 101: Consenso Revisitado'
-date: '2025-03-17'
+title: "Blockchain 101: Consenso Revisitado"
+date: "2025-03-17"
 author: frank-mangone
 thumbnail: /images/blockchain-101/consensus-revisited/slash.webp
 tags:
@@ -142,7 +142,7 @@ Fundamentalmente, es solo un bloque que contiene transacciones que no siguen las
 - Intentos de doble gasto (utilizar los mismos fondos dos veces).
 - Firmas inválidas (alguien tratando de gastar fondos que no controla).
 - Ejecución de contrato inteligente que viola las reglas de la EVM.
-- Transacciones con [gas](/es/blog/blockchain-101/enter-ethereum/#gas) insuficiente.
+- Transacciones con [gas](/es/blog/blockchain-101/ethereum/#gas) insuficiente.
 
 La diferencia clave está en cómo se manejan estos bloques inválidos. Los bloques inválidos **pueden** ser propuestos, pero hay un incentivo para no hacerlo: los validadores (los proponentes) tienen **piel en el juego**.
 

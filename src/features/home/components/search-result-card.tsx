@@ -3,9 +3,8 @@ import type React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { /* User, */ ArrowUpRight } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
 // import { formatDate } from "@/lib/date-utils";
-import { getTagDisplayName } from "@/lib/tags";
+import { Tag } from "@/components/tag";
 
 // Assuming ArticleListItem has these fields - adjust as needed
 interface ArticleListItem {
@@ -115,13 +114,7 @@ export function SearchResultCard({
         {article.tags && article.tags.length > 0 && (
           <div className="flex flex-wrap gap-1 line-clamp-1 h-5 overflow-hidden">
             {article.tags.slice(0, 3).map((tag) => (
-              <Badge
-                key={tag}
-                variant="outline"
-                className="text-xs py-0 px-2 h-5"
-              >
-                {getTagDisplayName(tag, lang)}
-              </Badge>
+              <Tag key={tag} tag={tag} lang={lang} />
             ))}
             {article.tags.length > 3 && (
               <span className="text-xs text-gray-500 self-center">

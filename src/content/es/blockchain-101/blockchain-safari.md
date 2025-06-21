@@ -1,6 +1,6 @@
 ---
-title: 'Blockchain 101: Safari de Blockchain'
-date: '2025-06-16'
+title: "Blockchain 101: Safari de Blockchain"
+date: "2025-06-16"
 author: frank-mangone
 thumbnail: /images/blockchain-101/blockchain-safari/cheetah.webp
 tags:
@@ -17,9 +17,9 @@ contentHash: 71a9547f7ef0c3e11c43cf5c698027f41e893e23231202e3b13d9c1e71c38dc3
 supabaseId: df5fb4b4-7608-42d4-a83a-f6600e43100d
 ---
 
-> Este es parte de una serie más grande de artículos sobre Blockchain. Si este es el primer artículo que encuentras, te recomiendo fuertemente comenzar desde el [inicio de la serie](/es/blog/blockchain-101/how-it-all-began).
+> Este artículo es parte de una serie más larga sobre Blockchain. Si este es el primer artículo que encuentras, te recomiendo comenzar por el [inicio de la serie](/es/blog/blockchain-101/how-it-all-began).
 
-Nuestro viaje ya nos ha llevado a través del funcionamiento interno de algunas de las Blockchains más grandes que existen — [Bitcoin](/es/blog/blockchain-101/how-it-all-began), [Ethereum](/es/blog/blockchain-101/enter-ethereum), y [Solana](/es/blog/blockchain-101/solana).
+Nuestro viaje ya nos ha llevado a través del funcionamiento interno de algunas de las Blockchains más grandes que existen — [Bitcoin](/es/blog/blockchain-101/how-it-all-began), [Ethereum](/es/blog/blockchain-101/ethereum), y [Solana](/es/blog/blockchain-101/solana).
 
 Es mucho para asimilar, sí... Pero el panorama web3 es enorme, y tenemos mucho, **mucho** más por cubrir todavía.
 

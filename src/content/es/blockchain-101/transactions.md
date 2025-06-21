@@ -1,6 +1,6 @@
 ---
-title: 'Blockchain 101: Transacciones'
-date: '2024-09-10'
+title: "Blockchain 101: Transacciones"
+date: "2024-09-10"
 author: frank-mangone
 thumbnail: /images/blockchain-101/transactions/bills.webp
 tags:
@@ -9,14 +9,14 @@ tags:
   - transactions
   - utxo
   - digitalSignatures
-description: '¡Centrémonos temprano en el alma de las Blockchains: las transacciones!'
+description: "¡Centrémonos temprano en el alma de las Blockchains: las transacciones!"
 readingTime: 9 min
-mediumUrl: 'https://medium.com/@francomangone18/blockchain-101-transactions-bbbc9e535374'
+mediumUrl: "https://medium.com/@francomangone18/blockchain-101-transactions-bbbc9e535374"
 contentHash: bf1a67dcdf6b0844b0d2acc53a9bdd57f3e77230f997e137c82814f8f6ab69fc
 supabaseId: 2d8cb16c-b977-4fee-aa0a-90527f8a816a
 ---
 
-> Esto es parte de una serie más larga de artículos sobre Blockchain. Si este es el primer artículo que encuentras, te recomiendo comenzar desde el [inicio de la serie](/es/blog/blockchain-101/how-it-all-began).
+> Este artículo es parte de una serie más larga sobre Blockchain. Si este es el primer artículo que encuentras, te recomiendo comenzar por el [inicio de la serie](/es/blog/blockchain-101/how-it-all-began).
 
 En la [entrega anterior](/es/blog/blockchain-101/how-it-all-began), vimos qué es una Blockchain y también hablamos de algunos conceptos relacionados con esta tecnología. Esencialmente, nos centramos en los aspectos **estructurales** del modelo: no es más que una **cadena de bloques**.
 
@@ -213,7 +213,7 @@ En este punto, es justo preguntar **por qué demonios usaríamos este modelo**. 
 
 Una razón es que en los modelos basados en cuentas (como tu banco local), **el orden importa**. Si tienes un saldo de $100$, e intentas pagar $80$ a Alicia y $40$ a Bruno, una de esas transacciones **fallará**. Es importante llevar un registro de qué transacción debería **procesar primero** la Blockchain.
 
-> Blockchains como [Ethereum](/es/blog/blockchain-101/enter-ethereum) **sí necesitan** mantener un registro del orden de las transacciones.
+> Blockchains como [Ethereum](/es/blog/blockchain-101/ethereum) **sí necesitan** mantener un registro del orden de las transacciones.
 
 El modelo UTXO evita esto por diseño: simplemente seleccionas qué billetes gastar. Una vez que un billete entra en una transacción, desaparece. Boom. No puede usarse de nuevo. ¡No hay necesidad de llevar un registro del orden de las transacciones!
 

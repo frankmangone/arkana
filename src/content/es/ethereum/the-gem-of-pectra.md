@@ -1,6 +1,6 @@
 ---
-title: 'La Joya de Pectra: EIP-7702, la Transacción SetCode'
-date: '2025-03-31'
+title: "La Joya de Pectra: EIP-7702, la Transacción SetCode"
+date: "2025-03-31"
 author: gonzalo-bustos
 thumbnail: /images/ethereum/the-gem-of-pectra/7702.webp
 tags:
@@ -89,7 +89,7 @@ Si quieres entender más sobre cómo funciona la nomenclatura de las actualizaci
 
 Ahora que entendemos un poco mejor dónde estamos parados, deberíamos estar conscientes del concepto que ha **impulsado** la existencia del EIP: [Abstracción de Cuentas](https://ethereum.org/en/roadmap/account-abstraction/).
 
-Cuando hablamos de abstracción de cuentas, nos referimos principalmente a **abstraer** la necesidad de que los usuarios usen una [Cuenta de Propiedad Externa](/es/blog/blockchain-101/enter-ethereum/#account-types) (EOA) para interactuar con la blockchain.
+Cuando hablamos de abstracción de cuentas, nos referimos principalmente a **abstraer** la necesidad de que los usuarios usen una [Cuenta de Propiedad Externa](/es/blog/blockchain-101/ethereum/#account-types) (EOA) para interactuar con la blockchain.
 
 Actualmente, la única manera de "hacer cosas" en Ethereum es a través de EOAs, lo que puede llevar a una experiencia de incorporación **frustrante** de usuarios Web2 a Web3, quienes **no saben** o **no les importa** manejar billeteras y claves privadas, y a soluciones no estandarizadas que tienden a ser excesivamente complejas.
 

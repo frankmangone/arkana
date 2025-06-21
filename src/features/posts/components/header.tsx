@@ -1,13 +1,12 @@
 import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { formatDate } from "@/lib/utils";
 import type { Post } from "@/lib/types";
 import { getWriter } from "@/lib/writers";
 import { getDictionary } from "@/lib/dictionaries";
-import { getTagDisplayName } from "@/lib/tags";
 import { ExternalLink } from "lucide-react";
 import { ArkanaStrip } from "@/components/arkana-strip";
+import { Tag } from "@/components/tag";
 
 interface PostHeaderProps {
   post: Post;
@@ -32,9 +31,7 @@ export async function PostHeader(props: PostHeaderProps) {
 
         <div className="flex flex-wrap gap-2 mt-6">
           {metadata.tags.map((tag) => (
-            <Link key={tag} href={`/${lang}/blog?tag=${tag}`}>
-              <Badge variant="outline">{getTagDisplayName(tag, lang)}</Badge>
-            </Link>
+            <Tag key={tag} tag={tag} lang={lang} />
           ))}
         </div>
       </div>

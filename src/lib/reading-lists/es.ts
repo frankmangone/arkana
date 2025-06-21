@@ -133,7 +133,7 @@ export const readingLists: ReadingList[] = [
         order: 4,
       },
       {
-        slug: "blockchain-101/enter-ethereum",
+        slug: "blockchain-101/ethereum",
         order: 5,
       },
       {

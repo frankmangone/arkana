@@ -1,6 +1,6 @@
 ---
-title: 'Blockchain 101: Wrapping Up Ethereum'
-date: '2025-04-07'
+title: "Blockchain 101: Wrapping Up Ethereum"
+date: "2025-04-07"
 author: frank-mangone
 thumbnail: /images/blockchain-101/wrapping-up-ethereum/ethereum-coin.webp
 tags:
@@ -13,7 +13,7 @@ description: >-
   A few last comments on important architectural aspects of Ethereum, rounding
   up the section on this Blockchain!
 readingTime: 11 min
-mediumUrl: 'https://medium.com/@francomangone18/blockchain-101-ro-ethereum-8493b8072862'
+mediumUrl: "https://medium.com/@francomangone18/blockchain-101-ro-ethereum-8493b8072862"
 contentHash: 28b3a4b6167352c5aebe25de1b3c5bbf636ede97f2b3004d427498249d61d19d
 supabaseId: 8dc10fe7-32f1-46a6-b156-681fd097c00b
 ---
@@ -22,7 +22,7 @@ supabaseId: 8dc10fe7-32f1-46a6-b156-681fd097c00b
 
 Since we’ve already covered quite a few key concepts of Ethereum, I believe we should start this one off with a quick recap.
 
-- We started by presenting some of the biggest and most revolutionary [ideas introduced by Ethereum](/en/blog/blockchain-101/enter-ethereum) – and crucially, **Smart Contracts**.
+- We started by presenting some of the biggest and most revolutionary [ideas introduced by Ethereum](/en/blog/blockchain-101/ethereum) – and crucially, **Smart Contracts**.
 - Then, we took a nosedive into the inner workings of these Smart Contract thingies, exploring how they handle [storage](/en/blog/blockchain-101/storage), and how they’re able to [execute complex user-defined logic](/en/blog/blockchain-101/smart-contracts).
 - Finally, we briefly talked about the current [consensus mechanism](/en/blog/blockchain-101/consensus-revisited) that’s responsible for securing the history of the network.
 
@@ -222,7 +222,7 @@ And the Ether issuance has a tight relationship with another key concept: **gas*
 
 ### Understanding Gas
 
-We’ve talked about this “fuel” dynamic [earlier in the series](/en/blog/blockchain-101/enter-ethereum/#gas). In short, it’s a measure of computational effort, and allows us to put a limit to how much computation a single program can execute.
+We’ve talked about this “fuel” dynamic [earlier in the series](/en/blog/blockchain-101/ethereum/#gas). In short, it’s a measure of computational effort, and allows us to put a limit to how much computation a single program can execute.
 
 > Which in turn helps avoid infinite loops.
 

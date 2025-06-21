@@ -1,15 +1,15 @@
 ---
-title: 'Blockchain 101: Enter Ethereum'
-date: '2024-11-09'
+title: "Blockchain 101: Ethereum"
+date: "2024-11-09"
 author: frank-mangone
-thumbnail: /images/blockchain-101/enter-ethereum/galaxy-brain.webp
+thumbnail: /images/blockchain-101/ethereum/galaxy-brain.webp
 tags:
   - ethereum
   - blockchain
   - smartContracts
-description: 'Time to move on to the second big milestone in Blockchain’s history: Ethereum'
+description: "Time to move on to the second big milestone in Blockchain’s history: Ethereum"
 readingTime: 8 min
-mediumUrl: 'https://medium.com/@francomangone18/blockchain-101-enter-ethereum-e24f5f6453ac'
+mediumUrl: "https://medium.com/@francomangone18/blockchain-101-ethereum-e24f5f6453ac"
 contentHash: da0d2f20e435ac11062549b59d32355213e39c0fdbc3f9d817ad1c8efcbcd3af
 supabaseId: 5c756f7b-a9c8-446a-8f05-775ac3b44111
 ---
@@ -46,7 +46,7 @@ If you think about it, the entire Blockchain is just a recipe on how to get from
 
 <figure>
   <img
-    src="/images/blockchain-101/enter-ethereum/state-evolution.webp" 
+    src="/images/blockchain-101/ethereum/state-evolution.webp" 
     alt="State evolving as the blockchain grows"
     title="[zoom]"
     className="bg-white"
@@ -59,7 +59,7 @@ But what if there was a way to represent **other types of states**? We’d begin
 
 <figure>
   <img
-    src="/images/blockchain-101/enter-ethereum/state-machine.webp" 
+    src="/images/blockchain-101/ethereum/state-machine.webp" 
     alt="A simple example of a state machine"
     title="[zoom] States depicted in grey, and transitions in purple"
     className="bg-white"
@@ -74,7 +74,7 @@ And here’s the galaxy brain idea: how about we let users submit **custom state
 
 <figure>
   <img
-    src="/images/blockchain-101/enter-ethereum/galaxy-brain.webp" 
+    src="/images/blockchain-101/ethereum/galaxy-brain.webp" 
     alt="Brain expansion meme, galaxy edition"
     title="Damn. That’s clever."
   />
@@ -104,7 +104,7 @@ This balance is measured in Ethereum’s **native currency** or **token**, calle
 
 <figure>
   <img
-    src="/images/blockchain-101/enter-ethereum/accounts.webp" 
+    src="/images/blockchain-101/ethereum/accounts.webp" 
     alt="Accounts with balances"
     title="[zoom]"
     className="bg-white"
@@ -123,7 +123,7 @@ Then, we have **Contract Accounts** — and this is where the magic happens.
 
 <figure>
   <img
-    src="/images/blockchain-101/enter-ethereum/interested-snape.webp" 
+    src="/images/blockchain-101/ethereum/interested-snape.webp" 
     alt="Snape from Harry Potter, interested in learning more"
     title="Tell me more"
     width="600"
@@ -140,7 +140,7 @@ Contract accounts work fundamentally differently from EOAs: they are controlled 
 
 <figure>
   <img
-    src="/images/blockchain-101/enter-ethereum/contract-call-flow.webp" 
+    src="/images/blockchain-101/ethereum/contract-call-flow.webp" 
     alt="The flow of smart contract execution"
     title="[zoom]"
     className="bg-white"
@@ -169,7 +169,7 @@ Any node trying to run this code would **get stuck on this loop**, rendering it 
 
 <figure>
   <img
-    src="/images/blockchain-101/enter-ethereum/kill-yourself.webp" 
+    src="/images/blockchain-101/ethereum/kill-yourself.webp" 
     alt="Kill yourself meme"
     title="Yeah, nah, thanks."
     width="350"
@@ -188,7 +188,7 @@ Our goal is to avoid excessive execution, or infinite loops in Smart Contract co
 
 <figure>
   <img
-    src="/images/blockchain-101/enter-ethereum/borat.webp" 
+    src="/images/blockchain-101/ethereum/borat.webp" 
     alt="Borat meme, with legend 'Great success'"
     width="500"
   />
@@ -218,7 +218,7 @@ And that’s just about enough for this short, high-level introduction, folks! T
 
 <figure>
   <img
-    src="/images/blockchain-101/enter-ethereum/gandalf.webp" 
+    src="/images/blockchain-101/ethereum/gandalf.webp" 
     alt="Gandalf smiling"
     title="Okay!"
     width="600"
@@ -239,7 +239,7 @@ To do so, **we have to go deeper**.
 
 <figure>
   <img
-    src="/images/blockchain-101/enter-ethereum/deeper-inception.webp" 
+    src="/images/blockchain-101/ethereum/deeper-inception.webp" 
     alt="Leo DiCaprio shocked in an Inception scene"
     width="600"
   />

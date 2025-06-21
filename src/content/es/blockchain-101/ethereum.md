@@ -1,15 +1,15 @@
 ---
-title: 'Blockchain 101: Entrando en Ethereum'
-date: '2024-11-09'
+title: "Blockchain 101: Ethereum"
+date: "2024-11-09"
 author: frank-mangone
-thumbnail: /images/blockchain-101/enter-ethereum/galaxy-brain.webp
+thumbnail: /images/blockchain-101/ethereum/galaxy-brain.webp
 tags:
   - ethereum
   - blockchain
   - smartContracts
-description: 'Es hora de pasar al segundo gran hito en la historia de Blockchain: Ethereum'
+description: "Es hora de pasar al segundo gran hito en la historia de Blockchain: Ethereum"
 readingTime: 8 min
-mediumUrl: 'https://medium.com/@francomangone18/blockchain-101-enter-ethereum-e24f5f6453ac'
+mediumUrl: "https://medium.com/@francomangone18/blockchain-101-ethereum-e24f5f6453ac"
 contentHash: 8b282e99f408c928143842f73b68b565d23b7a18de9e1778634778de560761de
 supabaseId: ec13525c-9870-43f6-8ff0-41eed18cdf76
 ---
@@ -46,7 +46,7 @@ Si lo piensas, toda la Blockchain es simplemente una receta de cómo llegar desd
 
 <figure>
   <img
-    src="/images/blockchain-101/enter-ethereum/state-evolution.webp" 
+    src="/images/blockchain-101/ethereum/state-evolution.webp" 
     alt="Estado evolucionando a medida que crece la blockchain"
     title="[zoom]"
     className="bg-white"
@@ -59,7 +59,7 @@ Pero ¿qué pasaría si hubiera una forma de representar **otros tipos de estado
 
 <figure>
   <img
-    src="/images/blockchain-101/enter-ethereum/state-machine.webp" 
+    src="/images/blockchain-101/ethereum/state-machine.webp" 
     alt="Un ejemplo simple de una máquina de estados"
     title="[zoom] Estados representados en gris, y transiciones en púrpura"
     className="bg-white"
@@ -74,7 +74,7 @@ Y aquí está la idea brillante: ¿qué tal si permitimos a los usuarios enviar 
 
 <figure>
   <img
-    src="/images/blockchain-101/enter-ethereum/galaxy-brain.webp" 
+    src="/images/blockchain-101/ethereum/galaxy-brain.webp" 
     alt="Meme de expansión cerebral, edición galaxia"
     title="Vaya. Eso es inteligente."
   />
@@ -104,7 +104,7 @@ Este balance se mide en la **moneda** o **token nativo** de Ethereum, llamado **
 
 <figure>
   <img
-    src="/images/blockchain-101/enter-ethereum/accounts.webp" 
+    src="/images/blockchain-101/ethereum/accounts.webp" 
     alt="Cuentas con balances"
     title="[zoom]"
     className="bg-white"
@@ -123,7 +123,7 @@ Luego, tenemos **Cuentas de Contrato** — y aquí es donde ocurre la magia.
 
 <figure>
   <img
-    src="/images/blockchain-101/enter-ethereum/interested-snape.webp" 
+    src="/images/blockchain-101/ethereum/interested-snape.webp" 
     alt="Snape de Harry Potter, interesado en aprender más"
     title="Cuéntame más"
     width="600"
@@ -140,7 +140,7 @@ Las cuentas de contrato funcionan fundamentalmente diferente de las EOAs: están
 
 <figure>
   <img
-    src="/images/blockchain-101/enter-ethereum/contract-call-flow.webp" 
+    src="/images/blockchain-101/ethereum/contract-call-flow.webp" 
     alt="El flujo de ejecución de contratos inteligentes"
     title="[zoom]"
     className="bg-white"
@@ -169,7 +169,7 @@ Cualquier nodo que intente ejecutar este código se **quedaría atascado en este
 
 <figure>
   <img
-    src="/images/blockchain-101/enter-ethereum/kill-yourself.webp" 
+    src="/images/blockchain-101/ethereum/kill-yourself.webp" 
     alt="Meme de matarse"
     title="Sí, no, gracias."
     width="350"
@@ -188,7 +188,7 @@ Nuestro objetivo es evitar la ejecución excesiva o bucles infinitos en el códi
 
 <figure>
   <img
-    src="/images/blockchain-101/enter-ethereum/borat.webp" 
+    src="/images/blockchain-101/ethereum/borat.webp" 
     alt="Meme de Borat, con la leyenda 'Gran éxito'"
     width="500"
   />
@@ -218,7 +218,7 @@ Este precio se mide en **Ether por unidad de gas** (en realidad, en [wei](<https
 
 <figure>
   <img
-    src="/images/blockchain-101/enter-ethereum/gandalf.webp" 
+    src="/images/blockchain-101/ethereum/gandalf.webp" 
     alt="Gandalf sonriendo"
     title="¡De acuerdo!"
     width="600"
@@ -239,7 +239,7 @@ Para hacerlo, **tenemos que ir más profundo**.
 
 <figure>
   <img
-    src="/images/blockchain-101/enter-ethereum/deeper-inception.webp" 
+    src="/images/blockchain-101/ethereum/deeper-inception.webp" 
     alt="Leo DiCaprio sorprendido en una escena de Inception"
     width="600"
   />

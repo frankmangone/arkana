@@ -1,6 +1,6 @@
 ---
-title: 'Blockchain 101: Programas en Solana'
-date: '2025-06-09'
+title: "Blockchain 101: Programas en Solana"
+date: "2025-06-09"
 author: frank-mangone
 thumbnail: /images/blockchain-101/solana-programs/joey-shocked.webp
 tags:
@@ -15,7 +15,7 @@ contentHash: e85b3801606ec3a32885a55a214bd64c428e4778a32adc8d1a7970d1a7b28b16
 supabaseId: ea24291d-4895-47e7-879b-eb64fbf09a68
 ---
 
-> Esto es parte de una serie más amplia de artículos sobre Blockchain. Si este es el primer artículo que encuentras, recomiendo encarecidamente empezar desde el [comienzo de la serie](/es/blog/blockchain-101/how-it-all-began).
+> Este artículo es parte de una serie más larga sobre Blockchain. Si este es el primer artículo que encuentras, te recomiendo comenzar por el [inicio de la serie](/es/blog/blockchain-101/how-it-all-began).
 
 En el [último episodio](/es/blog/blockchain-101/solana), comenzamos a aventurarnos en el territorio de Solana, abordando cómo esta Blockchain incorpora el concepto de **tiempo** en la ecuación, proporcionando una forma simple pero inteligente de ubicar en el tiempo (timestamp) a las transacciones.
 

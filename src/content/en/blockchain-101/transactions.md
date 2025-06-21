@@ -1,6 +1,6 @@
 ---
-title: 'Blockchain 101: Transactions'
-date: '2024-09-10'
+title: "Blockchain 101: Transactions"
+date: "2024-09-10"
 author: frank-mangone
 thumbnail: /images/blockchain-101/transactions/bills.webp
 tags:
@@ -9,9 +9,9 @@ tags:
   - transactions
   - utxo
   - digitalSignatures
-description: 'Let''s focus on the lifeblood of Blockchains early: Transactions!'
+description: "Let's focus on the lifeblood of Blockchains early: Transactions!"
 readingTime: 9 min
-mediumUrl: 'https://medium.com/@francomangone18/blockchain-101-transactions-bbbc9e535374'
+mediumUrl: "https://medium.com/@francomangone18/blockchain-101-transactions-bbbc9e535374"
 contentHash: d7b0f89cf013e1eb46218fd60d39bb7d4569d60c8bb0555697372cf0bf0a8478
 supabaseId: 55e3dd97-795e-45da-adb8-b7e5afc4f3c3
 ---
@@ -213,7 +213,7 @@ At this point, it's only fair to ask **why the heck we'd use this model**. Don't
 
 One reason is that in account-based models (such as your local bank), **order matters**. If you have a balance of $100$, and you try to pay $80$ to Alice and $40$ to Bob, one of those transactions **will fail**. It's important to keep track of which transaction the Blockchain should **process first**.
 
-> Blockchains such as [Ethereum](/en/blog/blockchain-101/enter-ethereum) **do need** to keep track of the order of transactions.
+> Blockchains such as [Ethereum](/en/blog/blockchain-101/ethereum) **do need** to keep track of the order of transactions.
 
 The UTXO model avoids this by design: you just select which bills to spend. Once a bill goes into a transaction, it's gone. Boom. It cannot be used again. No need to keep track of the order of transactions!
 

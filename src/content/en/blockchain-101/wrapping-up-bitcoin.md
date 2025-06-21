@@ -1,6 +1,6 @@
 ---
-title: 'Blockchain 101: Wrapping Up Bitcoin'
-date: '2024-10-15'
+title: "Blockchain 101: Wrapping Up Bitcoin"
+date: "2024-10-15"
 author: frank-mangone
 thumbnail: /images/blockchain-101/wrapping-up-bitcoin/inception.webp
 tags:
@@ -269,4 +269,4 @@ We could design another type of transaction system tailored for any one of those
 
 To accommodate our needs, we’d need something like a **programmable Blockchain**. A system that solves consensus, but allows us to create diverse applications depending on our use-case. A system that can handle a **generalized state**.
 
-This is what the creators of [Ethereum](https://ethereum.org/en/) set out to solve [back in 2013](https://en.wikipedia.org/wiki/Ethereum#:~:text=Ethereum%20was%20conceived%20in%202013%20by%20programmer%20Vitalik%20Buterin) — and we’ll learn how they did it, and how they took the world by storm, starting in the [next article](/en/blog/blockchain-101/enter-ethereum)!
+This is what the creators of [Ethereum](https://ethereum.org/en/) set out to solve [back in 2013](https://en.wikipedia.org/wiki/Ethereum#:~:text=Ethereum%20was%20conceived%20in%202013%20by%20programmer%20Vitalik%20Buterin) — and we’ll learn how they did it, and how they took the world by storm, starting in the [next article](/en/blog/blockchain-101/ethereum)!

@@ -1,6 +1,6 @@
 ---
-title: 'Blockchain 101: Redondeando Bitcoin'
-date: '2024-10-15'
+title: "Blockchain 101: Redondeando Bitcoin"
+date: "2024-10-15"
 author: frank-mangone
 thumbnail: /images/blockchain-101/wrapping-up-bitcoin/inception.webp
 tags:
@@ -18,7 +18,7 @@ contentHash: ed1f52069a92d4c6d192c0e04a24c9ff266bdc3ddbd4b3a9a01ec9025345f267
 supabaseId: a628cad3-8835-4b22-93cd-3562846e9959
 ---
 
-> Esto es parte de una serie más larga de artículos sobre Blockchain. Si este es el primer artículo que encuentras, te recomiendo comenzar desde el [inicio de la serie](/es/blog/blockchain-101/how-it-all-began).
+> Este artículo es parte de una serie más larga sobre Blockchain. Si este es el primer artículo que encuentras, te recomiendo comenzar por el [inicio de la serie](/es/blog/blockchain-101/how-it-all-began).
 
 Hace algunos años, cuando no sabía mucho sobre Blockchain, recuerdo sentir que el conocimiento estaba envuelto en una especie de velo de misterio. Supongo que la razón era que una comprensión básica involucraba muchos conceptos y términos nuevos, y tenía que asimilar algunas ideas que no se sentían del todo naturales como usuario de sistemas más tradicionales.
 
@@ -269,4 +269,4 @@ Podríamos diseñar otro tipo de sistema de transacciones adaptado para cualquie
 
 Para acomodar nuestras necesidades, necesitaríamos algo como una **Blockchain programable**. Un sistema que resuelva el consenso, pero nos permita crear diversas aplicaciones dependiendo de nuestro caso de uso. Un sistema que pueda manejar un **estado generalizado**.
 
-Esto es lo que los creadores de [Ethereum](https://ethereum.org/en/) se propusieron resolver [allá por 2013](https://en.wikipedia.org/wiki/Ethereum#:~:text=Ethereum%20was%20conceived%20in%202013%20by%20programmer%20Vitalik%20Buterin) — ¡y aprenderemos cómo lo hicieron, y cómo tomaron el mundo por sorpresa, comenzando en el [próximo artículo](/es/blog/blockchain-101/enter-ethereum)!
+Esto es lo que los creadores de [Ethereum](https://ethereum.org/en/) se propusieron resolver [allá por 2013](https://en.wikipedia.org/wiki/Ethereum#:~:text=Ethereum%20was%20conceived%20in%202013%20by%20programmer%20Vitalik%20Buterin) — ¡y aprenderemos cómo lo hicieron, y cómo tomaron el mundo por sorpresa, comenzando en el [próximo artículo](/es/blog/blockchain-101/ethereum)!

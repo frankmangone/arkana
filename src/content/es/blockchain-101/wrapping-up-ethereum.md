@@ -1,6 +1,6 @@
 ---
-title: 'Blockchain 101: Cerrando con Ethereum'
-date: '2025-04-07'
+title: "Blockchain 101: Cerrando con Ethereum"
+date: "2025-04-07"
 author: frank-mangone
 thumbnail: /images/blockchain-101/wrapping-up-ethereum/ethereum-coin.webp
 tags:
@@ -13,7 +13,7 @@ description: >-
   Algunos comentarios finales sobre aspectos arquitectónicos importantes de
   Ethereum, ¡cerrando la sección sobre esta Blockchain!
 readingTime: 11 min
-mediumUrl: 'https://medium.com/@francomangone18/blockchain-101-ro-ethereum-8493b8072862'
+mediumUrl: "https://medium.com/@francomangone18/blockchain-101-ro-ethereum-8493b8072862"
 contentHash: adddb2615144a755632c8eed3a7d3a2c5f73b84d22aed109f1973ca3022fa2b5
 supabaseId: 1374493d-9cd5-4e7c-be21-b5711ef638a5
 ---
@@ -22,7 +22,7 @@ supabaseId: 1374493d-9cd5-4e7c-be21-b5711ef638a5
 
 Ya que hemos cubierto bastantes conceptos clave de Ethereum, creo que deberíamos comenzar este artículo con un rápido repaso.
 
-- Comenzamos presentando algunas de las ideas más grandes y revolucionarias [introducidas por Ethereum](/es/blog/blockchain-101/enter-ethereum) – y crucialmente, los **Contratos Inteligentes**.
+- Comenzamos presentando algunas de las ideas más grandes y revolucionarias [introducidas por Ethereum](/es/blog/blockchain-101/ethereum) – y crucialmente, los **Contratos Inteligentes**.
 - Luego, nos sumergimos en el funcionamiento interno de estos Contratos Inteligentes, explorando cómo manejan el [almacenamiento](/es/blog/blockchain-101/storage), y cómo son capaces de [ejecutar lógica compleja definida por el usuario](/es/blog/blockchain-101/smart-contracts).
 - Finalmente, hablamos brevemente sobre el actual [mecanismo de consenso](/es/blog/blockchain-101/consensus-revisited) que es responsable de asegurar la historia de la red.
 
@@ -222,7 +222,7 @@ Y la emisión de Ether tiene una estrecha relación con otro concepto clave: el 
 
 ### Entendiendo el Gas {#understanding-gas}
 
-Ya hemos hablado sobre esta dinámica de "combustible" [anteriormente en la serie](/es/blog/blockchain-101/enter-ethereum/#gas). En resumen, es una medida de esfuerzo computacional, y nos permite poner un límite a cuánta computación puede ejecutar un solo programa.
+Ya hemos hablado sobre esta dinámica de "combustible" [anteriormente en la serie](/es/blog/blockchain-101/ethereum/#gas). En resumen, es una medida de esfuerzo computacional, y nos permite poner un límite a cuánta computación puede ejecutar un solo programa.
 
 > Lo que a su vez ayuda a evitar bucles infinitos.
 

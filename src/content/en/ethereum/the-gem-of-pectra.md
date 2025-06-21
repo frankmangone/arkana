@@ -1,6 +1,6 @@
 ---
-title: 'The Gem of Pectra: EIP-7702, the SetCode Transaction'
-date: '2025-03-31'
+title: "The Gem of Pectra: EIP-7702, the SetCode Transaction"
+date: "2025-03-31"
 author: gonzalo-bustos
 thumbnail: /images/ethereum/the-gem-of-pectra/7702.webp
 tags:
@@ -90,7 +90,7 @@ If you want to understand more about how the naming of Ethereum updates work, I 
 
 Now that we understand a little bit better where we’re standing, we should be aware of the concept that has **driven** the EIP’s existence: [Account Abstraction](https://ethereum.org/en/roadmap/account-abstraction/).
 
-When we talk about account abstraction, we are mostly referring to **abstracting away** the need for users to use an [Externally Owned Account](/en/blog/blockchain-101/enter-ethereum/#account-types) (EOA) to interact with the blockchain.
+When we talk about account abstraction, we are mostly referring to **abstracting away** the need for users to use an [Externally Owned Account](/en/blog/blockchain-101/ethereum/#account-types) (EOA) to interact with the blockchain.
 
 Currently, the only way to “do things” in Ethereum is through EOAs, which can lead to a **frustrating** onboarding experience of Web2 users into Web3, who **don’t know** or **don’t care** about handling wallets and private keys, and to non-standardized solutions that tend to be overly complex.
 
