@@ -1,19 +1,111 @@
 import * as cheerio from "cheerio";
 import fs from "fs/promises";
+import { createWriteStream } from "fs";
 import path from "path";
+import https from "https";
+import { URL } from "url";
 
 interface ConvertHtmlOptions {
   outputDir: string;
   filename: string;
+  mediumUrl?: string;
+}
+
+// Helper function to download an image
+function downloadImage(url: string, filepath: string): Promise<void> {
+  return new Promise((resolve, reject) => {
+    const file = createWriteStream(filepath);
+
+    https
+      .get(url, (response) => {
+        if (response.statusCode !== 200) {
+          reject(new Error(`Failed to download image: ${response.statusCode}`));
+          return;
+        }
+
+        response.pipe(file);
+
+        file.on("finish", () => {
+          file.close();
+          resolve();
+        });
+
+        file.on("error", (err) => {
+          reject(err);
+        });
+      })
+      .on("error", (err) => {
+        reject(err);
+      });
+  });
+}
+
+// Helper function to get a filename from URL
+function getImageFilename(url: string, index: number): string {
+  try {
+    const parsedUrl = new URL(url);
+    const pathname = parsedUrl.pathname;
+    const filename = path.basename(pathname);
+
+    // If we can't get a good filename, create one
+    if (!filename || filename === "/") {
+      const extension = url.includes(".jpg")
+        ? ".jpg"
+        : url.includes(".png")
+        ? ".png"
+        : ".jpg";
+      return `image-${index}${extension}`;
+    }
+
+    // Add index to avoid conflicts
+    const ext = path.extname(filename);
+    const name = path.basename(filename, ext);
+    return `${name}-${index}${ext}`;
+  } catch {
+    // Fallback filename
+    const extension = url.includes(".jpg")
+      ? ".jpg"
+      : url.includes(".png")
+      ? ".png"
+      : ".jpg";
+    return `image-${index}${extension}`;
+  }
+}
+
+// Helper function to extract the best quality image URL from srcset
+function getBestImageUrl(srcset: string): string {
+  const sources = srcset.split(",").map((s) => s.trim());
+  let bestUrl = "";
+  let maxWidth = 0;
+
+  for (const source of sources) {
+    const parts = source.split(" ");
+    if (parts.length >= 2) {
+      const url = parts[0];
+      const widthStr = parts[1];
+      const width = parseInt(widthStr.replace("w", ""));
+
+      if (width > maxWidth) {
+        maxWidth = width;
+        bestUrl = url;
+      }
+    }
+  }
+
+  return bestUrl || sources[0]?.split(" ")[0] || "";
 }
 
 export async function convertHtmlToMarkdown(
   htmlContent: string,
   options: ConvertHtmlOptions
 ): Promise<void> {
-  const { outputDir, filename } = options;
+  const { outputDir, filename, mediumUrl } = options;
   // Convert and save Markdown
-  const markdownContent = await _convertHtmlToMarkdown(htmlContent);
+  const markdownContent = await _convertHtmlToMarkdown(
+    htmlContent,
+    outputDir,
+    mediumUrl
+  );
   const mdPath = path.join(outputDir, `${filename}.md`);
   await fs.writeFile(mdPath, markdownContent, "utf-8");
 
@@ -21,12 +113,43 @@ export async function convertHtmlToMarkdown(
 }
 
 // Helper function to convert HTML to Markdown
-async function _convertHtmlToMarkdown(htmlContent: string): Promise<string> {
+async function _convertHtmlToMarkdown(
+  htmlContent: string,
+  outputDir: string,
+  mediumUrl?: string
+): Promise<string> {
   const $ = cheerio.load(htmlContent);
 
   // Extract title - Medium uses h1 with class pw-post-title
   const title = $("h1.pw-post-title").first().text().trim();
   console.log("Found title:", title);
+
+  // Extract reading time
+  const readingTimeElement = $('[data-testid="storyReadTime"]');
+  const readingTime =
+    readingTimeElement.length > 0 ? readingTimeElement.text().trim() : "";
+  console.log("Found reading time:", readingTime);
+
+  // Extract publish date
+  const publishDateElement = $('[data-testid="storyPublishDate"]');
+  const publishDate =
+    publishDateElement.length > 0 ? publishDateElement.text().trim() : "";
+  console.log("Found publish date:", publishDate);
+
+  // Convert publish date to YYYY-MM-DD format
+  function formatDate(dateString: string): string {
+    if (!dateString) return "";
+    try {
+      const date = new Date(dateString);
+      return date.toISOString().split("T")[0];
+    } catch {
+      console.warn("Could not parse date:", dateString);
+      return dateString; // Return original if parsing fails
+    }
+  }
+
+  const formattedDate = formatDate(publishDate);
+  console.log("Formatted date:", formattedDate);
 
   // Helper function to process inline elements in text
   function processInlineElements(element: cheerio.Cheerio): string {
@@ -65,6 +188,9 @@ async function _convertHtmlToMarkdown(htmlContent: string): Promise<string> {
 
   // Extract body content
   const content: string[] = [];
+  const imageDownloads: Promise<void>[] = [];
+  let imageIndex = 0;
+  let isFirstHeading = true; // Flag to skip the first heading (article title)
 
   // Find the main content div
   const mainContent = $("div.m").first();
@@ -81,6 +207,12 @@ async function _convertHtmlToMarkdown(htmlContent: string): Promise<string> {
 
       // Process headings
       if (tagName.match(/^h[1-6]$/)) {
+        // Skip the first heading as it's the article title (already in frontmatter)
+        if (isFirstHeading) {
+          isFirstHeading = false;
+          return;
+        }
+
         const level = parseInt(tagName[1]);
         const headingText = processInlineElements($el);
         content.push(`\n${"#".repeat(level + 1)} ${headingText}\n`);
@@ -128,14 +260,51 @@ async function _convertHtmlToMarkdown(htmlContent: string): Promise<string> {
           const figcaption = $el.find("figcaption");
           const caption = figcaption.length > 0 ? figcaption.text().trim() : "";
 
-          content.push(
-            `\n<figure\n\tsrc=""\n\talt="" ${
-              caption ? `\n\ttitle="${caption.replace(/…/g, "...")}"` : ""
-            }\n/>\n`
-          );
+          // Find the best image source - prefer WebP format (first source) over fallback
+          const sources = $el.find("source");
+          if (sources.length > 0) {
+            // Use the first source (WebP format) instead of the fallback
+            const srcset = sources.first().attr("srcset");
+            if (srcset) {
+              const imageUrl = getBestImageUrl(srcset);
+              if (imageUrl) {
+                imageIndex++;
+                const filename = getImageFilename(imageUrl, imageIndex);
+                const filepath = path.join(outputDir, filename);
+
+                // Add download promise
+                imageDownloads.push(
+                  downloadImage(imageUrl, filepath).catch((err) => {
+                    console.error(`Failed to download image ${imageUrl}:`, err);
+                  })
+                );
+
+                // Add figure placeholder with local file reference
+                content.push(
+                  `\n<figure\n\tsrc="./${filename}"\n\talt="" ${
+                    caption ? `\n\ttitle="${caption.replace(/…/g, "...")}"` : ""
+                  }\n/>\n`
+                );
+              }
+            }
+          }
+
+          // Fallback if no image found
+          if (!$el.find("source").length) {
+            content.push(
+              `\n<figure\n\tsrc=""\n\talt="" ${
+                caption ? `\n\ttitle="${caption.replace(/…/g, "...")}"` : ""
+              }\n/>\n`
+            );
+          }
         }
       }
     });
+
+  // Wait for all image downloads to complete
+  console.log(`Starting download of ${imageDownloads.length} images...`);
+  await Promise.allSettled(imageDownloads);
+  console.log("Image downloads completed.");
 
   // Get the processed content
   const markdownContent = content
@@ -146,6 +315,27 @@ async function _convertHtmlToMarkdown(htmlContent: string): Promise<string> {
   console.log("Content length:", markdownContent.length);
   console.log("First 200 chars of content:", markdownContent.substring(0, 200));
 
-  // Combine title and content
-  return `# ${title}\n\n${markdownContent}`;
+  // Create frontmatter
+  const frontmatter = [
+    "---",
+    `title: '${title.replace(/'/g, "''")}'`, // Escape single quotes
+    formattedDate ? `date: '${formattedDate}'` : "",
+    "author: frank-mangone",
+    "thumbnail: # TODO: Add thumbnail path",
+    "tags:",
+    "  # TODO: Add tags",
+    "description: >-",
+    "  # TODO: Add description",
+    readingTime ? `readingTime: ${readingTime.replace("min read", "min")}` : "",
+    mediumUrl ? `mediumUrl: ${mediumUrl}` : "",
+    "contentHash: # TODO: Add content hash",
+    "supabaseId: # TODO: Add supabase ID",
+    "---",
+    "",
+  ]
+    .filter((line) => line !== "")
+    .join("\n");
+
+  // Combine frontmatter and content
+  return `${frontmatter}\n${markdownContent}`;
 }
