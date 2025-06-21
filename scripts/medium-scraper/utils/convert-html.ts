@@ -55,7 +55,12 @@ async function _convertHtmlToMarkdown(htmlContent: string): Promise<string> {
 
     // Load the processed HTML and extract text
     const tempElement = cheerio.load(html);
-    return tempElement.root().text().trim();
+    let text = tempElement.root().text().trim();
+
+    // Replace unicode ellipsis with three dots
+    text = text.replace(/…/g, "...");
+
+    return text;
   }
 
   // Extract body content
@@ -125,7 +130,7 @@ async function _convertHtmlToMarkdown(htmlContent: string): Promise<string> {
 
           content.push(
             `\n<figure\n\tsrc=""\n\talt="" ${
-              caption ? `\n\ttitle="${caption}"` : ""
+              caption ? `\n\ttitle="${caption.replace(/…/g, "...")}"` : ""
             }\n/>\n`
           );
         }
