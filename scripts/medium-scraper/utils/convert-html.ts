@@ -28,6 +28,18 @@ async function _convertHtmlToMarkdown(htmlContent: string): Promise<string> {
   const title = $("h1.pw-post-title").first().text().trim();
   console.log("Found title:", title);
 
+  // Helper function to process inline elements in text
+  function processInlineElements(element: cheerio.Cheerio): string {
+    let html = element.html() || "";
+
+    // Convert em tags with class "ni" to bold markdown
+    html = html.replace(/<em class="ni">(.*?)<\/em>/g, "**$1**");
+
+    // Load the processed HTML and extract text
+    const tempElement = cheerio.load(html);
+    return tempElement.root().text().trim();
+  }
+
   // Extract body content
   const content: string[] = [];
 
@@ -37,7 +49,7 @@ async function _convertHtmlToMarkdown(htmlContent: string): Promise<string> {
 
   // Process all elements in order
   mainContent
-    .find("h1, h2, h3, h4, h5, h6, p.pw-post-body-paragraph, pre, figure")
+    .find("h1, h2, p.pw-post-body-paragraph, pre, figure, blockquote")
     .each((_, el) => {
       const $el = $(el);
       const tagName = $el.prop("tagName").toLowerCase();
@@ -45,13 +57,26 @@ async function _convertHtmlToMarkdown(htmlContent: string): Promise<string> {
       // Process headings
       if (tagName.match(/^h[1-6]$/)) {
         const level = parseInt(tagName[1]);
-        content.push(`\n${"#".repeat(level)} ${$el.text().trim()}\n`);
+        const headingText = processInlineElements($el);
+        content.push(`\n${"#".repeat(level + 1)} ${headingText}\n`);
       }
       // Process paragraphs
       else if (tagName === "p" && $el.hasClass("pw-post-body-paragraph")) {
-        const text = $el.text().trim();
+        const text = processInlineElements($el);
         if (text) {
           content.push(`\n${text}\n`);
+        }
+      }
+      // Process blockquotes
+      else if (tagName === "blockquote") {
+        const text = processInlineElements($el);
+        if (text) {
+          // Split into lines and prefix each with > for markdown blockquote
+          const quotedText = text
+            .split("\n")
+            .map((line) => `> ${line}`)
+            .join("\n");
+          content.push(`\n${quotedText}\n`);
         }
       }
       // Process code blocks
