@@ -35,6 +35,24 @@ async function _convertHtmlToMarkdown(htmlContent: string): Promise<string> {
     // Convert em tags with class "ni" to bold markdown
     html = html.replace(/<em class="ni">(.*?)<\/em>/g, "**$1**");
 
+    // Convert links to markdown format
+    html = html.replace(
+      /<a[^>]*href="([^"]*)"[^>]*>(.*?)<\/a>/g,
+      (match, href, text) => {
+        // Check if the link is to Medium (contains medium.com or starts with /)
+        const isMediumLink =
+          href.includes("medium.com") ||
+          href.startsWith("/") ||
+          href.startsWith("#");
+
+        if (isMediumLink) {
+          return `[${text}]()`;
+        } else {
+          return `[${text}](${href})`;
+        }
+      }
+    );
+
     // Load the processed HTML and extract text
     const tempElement = cheerio.load(html);
     return tempElement.root().text().trim();
