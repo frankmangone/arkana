@@ -118,11 +118,16 @@ async function _convertHtmlToMarkdown(htmlContent: string): Promise<string> {
       }
       // Process images
       else if (tagName === "figure") {
-        const img = $el.find("img");
-        const src = img.attr("src");
-        const alt = img.attr("alt") || "";
-        if (src) {
-          content.push(`\n![${alt}](${src})\n`);
+        // Check if this is a paragraph-image figure
+        if ($el.hasClass("paragraph-image")) {
+          const figcaption = $el.find("figcaption");
+          const caption = figcaption.length > 0 ? figcaption.text().trim() : "";
+
+          content.push(
+            `\n<figure\n\tsrc=""\n\talt="" ${
+              caption ? `\n\ttitle="${caption}"` : ""
+            }\n/>\n`
+          );
         }
       }
     });
