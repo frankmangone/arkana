@@ -49,7 +49,9 @@ async function _convertHtmlToMarkdown(htmlContent: string): Promise<string> {
 
   // Process all elements in order
   mainContent
-    .find("h1, h2, p.pw-post-body-paragraph, pre, figure, blockquote")
+    .find(
+      "h1, h2, p.pw-post-body-paragraph, pre, figure, blockquote, div[role='separator']"
+    )
     .each((_, el) => {
       const $el = $(el);
       const tagName = $el.prop("tagName").toLowerCase();
@@ -78,6 +80,10 @@ async function _convertHtmlToMarkdown(htmlContent: string): Promise<string> {
             .join("\n");
           content.push(`\n${quotedText}\n`);
         }
+      }
+      // Process section separators (three dots)
+      else if (tagName === "div" && $el.attr("role") === "separator") {
+        content.push(`\n---\n`);
       }
       // Process code blocks
       else if (tagName === "pre") {
