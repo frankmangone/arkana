@@ -73,12 +73,18 @@ async function _convertHtmlToMarkdown(htmlContent: string): Promise<string> {
       else if (tagName === "blockquote") {
         const text = processInlineElements($el);
         if (text) {
-          // Split into lines and prefix each with > for markdown blockquote
-          const quotedText = text
-            .split("\n")
-            .map((line) => `> ${line}`)
-            .join("\n");
-          content.push(`\n${quotedText}\n`);
+          // Check if this is a big quote (class "pr") or regular blockquote
+          if ($el.hasClass("pr")) {
+            // Big quote format
+            content.push(`\n::: big-quote\n${text}\n:::\n`);
+          } else {
+            // Regular blockquote format
+            const quotedText = text
+              .split("\n")
+              .map((line) => `> ${line}`)
+              .join("\n");
+            content.push(`\n${quotedText}\n`);
+          }
         }
       }
       // Process section separators (three dots)
