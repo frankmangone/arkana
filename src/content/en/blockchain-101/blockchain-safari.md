@@ -428,6 +428,6 @@ Understanding these trade-offs is key to navigating the web3 landscape.
 
 Even after this compendium of new ideas, we still have a lot to cover.
 
-Next time, we’ll take a look at **parallelization** in Blockchain, and cover two modern solutions: **Aptos** and **Sui**.
+[Next time](/en/blog/blockchain-101/parallelizing-execution), we’ll take a look at **parallelization** in Blockchain, and cover two modern solutions: **Aptos** and **Sui**.
 
 Until then!

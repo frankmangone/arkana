@@ -12,6 +12,11 @@ export const tags: TagDefinition = {
     es: "Álgebra Abstracta",
     pt: "Álgebra Abstracta",
   },
+  aptos: {
+    en: "Aptos",
+    es: "Aptos",
+    pt: "Aptos",
+  },
   arithmeticCircuits: {
     en: "Arithmetic Circuits",
     es: "Circuitos Aritméticos",
@@ -341,6 +346,11 @@ export const tags: TagDefinition = {
     en: "STARK",
     es: "STARK",
     pt: "STARK",
+  },
+  sui: {
+    en: "Sui",
+    es: "Sui",
+    pt: "Sui",
   },
   thresholdSignature: {
     en: "Threshold Signature",
