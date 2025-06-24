@@ -1,6 +1,6 @@
 ---
-title: "Blockchain 101: Redondeando Bitcoin"
-date: "2024-10-15"
+title: 'Blockchain 101: Redondeando Bitcoin'
+date: '2024-10-15'
 author: frank-mangone
 thumbnail: /images/blockchain-101/wrapping-up-bitcoin/inception.webp
 tags:
@@ -14,7 +14,7 @@ description: >-
 readingTime: 10 min
 mediumUrl: >-
   https://medium.com/@francomangone18/blockchain-101-wrapping-up-bitcoin-c01cb572021e
-contentHash: ed1f52069a92d4c6d192c0e04a24c9ff266bdc3ddbd4b3a9a01ec9025345f267
+contentHash: 67e3c3a43ace0c68ac58dd27d045f6880599d2d8e43c5181127c217f6ecebd18
 supabaseId: a628cad3-8835-4b22-93cd-3562846e9959
 ---
 

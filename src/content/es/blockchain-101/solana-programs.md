@@ -1,6 +1,6 @@
 ---
-title: "Blockchain 101: Programas en Solana"
-date: "2025-06-09"
+title: 'Blockchain 101: Programas en Solana'
+date: '2025-06-09'
 author: frank-mangone
 thumbnail: /images/blockchain-101/solana-programs/joey-shocked.webp
 tags:
@@ -11,7 +11,7 @@ description: >-
   Después de ver algunos matices en el consenso de Solana, ¡ahora nos enfocamos
   en su capa de ejecución!
 readingTime: 11 min
-contentHash: e85b3801606ec3a32885a55a214bd64c428e4778a32adc8d1a7970d1a7b28b16
+contentHash: d40e603b46ec52af9dcd01aa63ffc3822907ec2746d1af8f10a3550b74da8da4
 supabaseId: ea24291d-4895-47e7-879b-eb64fbf09a68
 ---
 
@@ -283,6 +283,6 @@ En general, Solana introduce algunas ideas interesantes, que siguen nutriéndono
 
 Aunque estaremos dejando este ecosistema por ahora, los aliento a seguir investigando, ya que esta es una de las [Blockchains más grandes por ahí](https://www.coingecko.com/en/chains) — ¡así que definitivamente vale la pena mantener un ojo en ella!
 
-Hablando de nuevas ideas, quiero dedicar el siguiente artículo a ver brevemente algunos otros jugadores en la industria que han sido pioneros en nuevos conceptos, en busca de mejoras a este mundo de Blockchain en constante desarrollo.
+Hablando de nuevas ideas, quiero dedicar el [siguiente artículo](/es/blog/blockchain-101/blockchain-safari) a ver brevemente algunos otros jugadores en la industria que han sido pioneros en nuevos conceptos, en busca de mejoras a este mundo de Blockchain en constante desarrollo.
 
 ¡Los veo pronto!

@@ -1,6 +1,6 @@
 ---
-title: "Blockchain 101: Consenso Revisitado"
-date: "2025-03-17"
+title: 'Blockchain 101: Consenso Revisitado'
+date: '2025-03-17'
 author: frank-mangone
 thumbnail: /images/blockchain-101/consensus-revisited/slash.webp
 tags:
@@ -15,7 +15,7 @@ description: >-
 readingTime: 12 min
 mediumUrl: >-
   https://medium.com/@francomangone18/blockchain-101-consensus-revisited-3979b59d71a7
-contentHash: d4b0bf3fe59999c166c47bb6a05a4c72905d422ddfc4c2f8149bd39a51aec478
+contentHash: 0394bd5fab23b524bb93d52570133dfd2773ea93bde8a8b42a53c4cc72e8699d
 supabaseId: 29a571c1-e496-4b5e-a63c-f865ee09e83c
 ---
 

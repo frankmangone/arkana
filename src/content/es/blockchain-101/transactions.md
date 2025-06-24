@@ -1,6 +1,6 @@
 ---
-title: "Blockchain 101: Transacciones"
-date: "2024-09-10"
+title: 'Blockchain 101: Transacciones'
+date: '2024-09-10'
 author: frank-mangone
 thumbnail: /images/blockchain-101/transactions/bills.webp
 tags:
@@ -9,10 +9,10 @@ tags:
   - transactions
   - utxo
   - digitalSignatures
-description: "¡Centrémonos temprano en el alma de las Blockchains: las transacciones!"
+description: '¡Centrémonos temprano en el alma de las Blockchains: las transacciones!'
 readingTime: 9 min
-mediumUrl: "https://medium.com/@francomangone18/blockchain-101-transactions-bbbc9e535374"
-contentHash: bf1a67dcdf6b0844b0d2acc53a9bdd57f3e77230f997e137c82814f8f6ab69fc
+mediumUrl: 'https://medium.com/@francomangone18/blockchain-101-transactions-bbbc9e535374'
+contentHash: 078218092d560b5eef85ade83d94620122dfd1dbce025ab3fb628c7f5eb75038
 supabaseId: 2d8cb16c-b977-4fee-aa0a-90527f8a816a
 ---
 

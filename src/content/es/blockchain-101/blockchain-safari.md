@@ -1,6 +1,6 @@
 ---
-title: "Blockchain 101: Safari de Blockchain"
-date: "2025-06-16"
+title: 'Blockchain 101: Safari de Blockchain'
+date: '2025-06-16'
 author: frank-mangone
 thumbnail: /images/blockchain-101/blockchain-safari/cheetah.webp
 tags:
@@ -13,7 +13,7 @@ description: >-
   Para marcar nuestra partida hacia nuevos horizontes, hacemos una breve
   desviación para mirar algunas ideas geniales propuestas por otras Blockchains.
 readingTime: 16 min
-contentHash: 71a9547f7ef0c3e11c43cf5c698027f41e893e23231202e3b13d9c1e71c38dc3
+contentHash: dd7a561dab9a46af7fe286aef4530b9609161cd552e917f024b4478da1408efe
 supabaseId: df5fb4b4-7608-42d4-a83a-f6600e43100d
 ---
 

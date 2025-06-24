@@ -1,6 +1,6 @@
 ---
-title: "Blockchain 101: Cerrando con Ethereum"
-date: "2025-04-07"
+title: 'Blockchain 101: Cerrando con Ethereum'
+date: '2025-04-07'
 author: frank-mangone
 thumbnail: /images/blockchain-101/wrapping-up-ethereum/ethereum-coin.webp
 tags:
@@ -13,8 +13,8 @@ description: >-
   Algunos comentarios finales sobre aspectos arquitectónicos importantes de
   Ethereum, ¡cerrando la sección sobre esta Blockchain!
 readingTime: 11 min
-mediumUrl: "https://medium.com/@francomangone18/blockchain-101-ro-ethereum-8493b8072862"
-contentHash: adddb2615144a755632c8eed3a7d3a2c5f73b84d22aed109f1973ca3022fa2b5
+mediumUrl: 'https://medium.com/@francomangone18/blockchain-101-ro-ethereum-8493b8072862'
+contentHash: a6bc6a563d0ff681c240735f7085846eddbe2416ff2850e773eba3ab463aa5e7
 supabaseId: 1374493d-9cd5-4e7c-be21-b5711ef638a5
 ---
 

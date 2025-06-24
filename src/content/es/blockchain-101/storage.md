@@ -1,6 +1,6 @@
 ---
-title: "Blockchain 101: Almacenamiento"
-date: "2024-12-17"
+title: 'Blockchain 101: Almacenamiento'
+date: '2024-12-17'
 author: frank-mangone
 thumbnail: /images/blockchain-101/storage/conspiracy.webp
 tags:
@@ -11,8 +11,8 @@ tags:
   - dataStructures
 description: ¡Es hora de ver la maquinaria detrás del almacenamiento de Ethereum!
 readingTime: 11 min
-mediumUrl: "https://medium.com/@francomangone18/blockchain-101-storage-12d84d0e2c8e"
-contentHash: 71d910692528dfe8c5fd805c710db784c19418897303c4f8bf75bd47ad02b3ed
+mediumUrl: 'https://medium.com/@francomangone18/blockchain-101-storage-12d84d0e2c8e'
+contentHash: 7f537418d602461d86c913ee5dd1ddf95bf448fa3fea2ea2f937a05010d88011
 supabaseId: e8fa0bf1-cfd9-44ae-a686-d3c13877c385
 ---
 

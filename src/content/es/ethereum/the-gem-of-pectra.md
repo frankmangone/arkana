@@ -1,6 +1,6 @@
 ---
-title: "La Joya de Pectra: EIP-7702, la Transacción SetCode"
-date: "2025-03-31"
+title: 'La Joya de Pectra: EIP-7702, la Transacción SetCode'
+date: '2025-03-31'
 author: gonzalo-bustos
 thumbnail: /images/ethereum/the-gem-of-pectra/7702.webp
 tags:
@@ -13,7 +13,7 @@ description: >-
   Abstracción de Cuentas permitiendo que las EOAs adopten funcionalidad de
   contratos inteligentes.
 readingTime: 7 min
-contentHash: 2777b54781fc87b6ac0c08f5ba38d7e4becd7a0fc08948f22004dd18c3c482a1
+contentHash: fb99826e268e0f36081c979cb6d8cc541fba73d0ad552e5c0a3620e1d2319292
 supabaseId: 7953d819-8edb-4709-a1ec-1b2b6cbbf7dc
 ---
 

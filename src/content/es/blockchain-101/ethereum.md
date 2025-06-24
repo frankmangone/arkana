@@ -1,16 +1,16 @@
 ---
-title: "Blockchain 101: Ethereum"
-date: "2024-11-09"
+title: 'Blockchain 101: Ethereum'
+date: '2024-11-09'
 author: frank-mangone
 thumbnail: /images/blockchain-101/ethereum/galaxy-brain.webp
 tags:
   - ethereum
   - blockchain
   - smartContracts
-description: "Es hora de pasar al segundo gran hito en la historia de Blockchain: Ethereum"
+description: 'Es hora de pasar al segundo gran hito en la historia de Blockchain: Ethereum'
 readingTime: 8 min
-mediumUrl: "https://medium.com/@francomangone18/blockchain-101-ethereum-e24f5f6453ac"
-contentHash: 8b282e99f408c928143842f73b68b565d23b7a18de9e1778634778de560761de
+mediumUrl: 'https://medium.com/@francomangone18/blockchain-101-ethereum-e24f5f6453ac'
+contentHash: ac3c8bbd2bcfaa32fee162655c81d2805727e4f6bbc405b41e5c4bdd8ac03b3c
 supabaseId: ec13525c-9870-43f6-8ff0-41eed18cdf76
 ---
 

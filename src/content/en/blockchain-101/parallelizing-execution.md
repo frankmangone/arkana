@@ -1,17 +1,19 @@
 ---
 title: "Blockchain 101: Parallelizing Execution"
-author: "frank-mangone"
-thumbnail: "/images/blockchain-101/parallelizing-execution"
+date: "2025-06-24"
+author: frank-mangone
+thumbnail: /images/blockchain-101/parallelizing-execution/leap-of-faith.jpg
 tags:
   - blockchain
   - aptos
   - sui
   - parallelization
 description: >-
-  Moving on, we explore two modern Blockchains focused on parallel execution: Aptos and Sui
+  Moving on, we explore two modern Blockchains focused on parallel execution:
+  Aptos and Sui
 readingTime: 10 min
-contentHash: # TODO: Add content hash
-supabaseId: # TODO: Add supabase ID
+contentHash: 9a66e5ad63fe9c097b445ac459daf74346d7e9acc31e04efc3b78d786cb6e64c
+supabaseId: null
 ---
 
 > This is part of a larger series of articles about Blockchain. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/blockchain-101/how-it-all-began).
@@ -36,11 +38,13 @@ Today, we’ll talk about parallelization in the context of the **execution phas
 
 > It’s important to note that other processes in the system could be parallelized as well, but we’ll leave that discussion for a later article.
 
-<figure
-	src="/images/blockchain-101/parallelizing-execution/state-transition.png"
-	alt="Schematics of state transition"
-	title="[zoom] Transactions modifying state through a State Transition Function (STF)."
-/>
+<figure>
+	<img
+		src="/images/blockchain-101/parallelizing-execution/state-transition.png"
+		alt="Schematics of state transition"
+		title="[zoom] Transactions modifying state through a State Transition Function (STF)."
+	/>
+</figure>
 
 There are essentially** two ways** to go about execution: we can either process transactions **one by one**, or try to execute multiple of them **at the same time**.
 
@@ -50,11 +54,13 @@ Sequential (one by one) processing has one clear benefit: we ensure that **no co
 
 Sometimes though, two or more transactions can be **completely independent**, in the sense that they wouldn’t conflict with each other, even if executed at the same time. That’s the idea of **parallelization**: calculating this new state of the Blockchain by executing multiple transactions at once.
 
-<figure
-	src="/images/blockchain-101/parallelizing-execution/parallel-execution.png"
-	alt="Schematics of parallel execution"
-	title="[zoom] Something like this"
-/>
+<figure>
+	<img
+		src="/images/blockchain-101/parallelizing-execution/parallel-execution.png"
+		alt="Schematics of parallel execution"
+		title="[zoom] Something like this"
+	/>
+</figure>
 
 At this point, I guess it’s important to ask ourselves: how important is parallelization anyway? Should we care about it?
 
@@ -70,7 +76,7 @@ Achieving high processing speeds is challenging if we’re only allowed to execu
 
 The thing is, it’s not always easy to determine if multiple transactions are truly independent from each other.
 
-If we look at the paradigms we’ve already explored, account-based Blockchains such as most EVM-based ones have a harder time figuring out this independence, so they choose not to execute transactions in parallel, and they go for the sequential approach. Even [Solana](), which has some degree of parallelization thanks to the separation of logic and state, has its limitations.
+If we look at the paradigms we’ve already explored, account-based Blockchains such as most EVM-based ones have a harder time figuring out this independence, so they choose not to execute transactions in parallel, and they go for the sequential approach. Even [Solana](/en/blog/blockchain-101/solana), which has some degree of parallelization thanks to the separation of logic and state, has its limitations.
 
 On the other end of the spectrum, we have UTXOs, which are much better suited for parallelization. Each UTXO is a **completely independent** and **immutable** piece of state, which is only ever meant to be consumed. This is great, but makes adding logic into the mix complex — and while some solutions like Cardano have proposed improvements, they still have other limitations of their own.
 
@@ -96,10 +102,13 @@ More than the language itself, what we need to focus on is how it proposes a new
 
 Why is this important, you ask? Well, if every asset is a **distinct object** with **clear ownership**, then transactions involving different objects can be processed in parallel without conflicts!
 
-<figure
-	src="/images/blockchain-101/parallelizing-execution/giga-brain.png"
-	alt="Giga brain meme"
-/>
+<figure>
+	<img
+		src="/images/blockchain-101/parallelizing-execution/giga-brain.png"
+		alt="Giga brain meme"
+		width="600"
+	/>
+</figure>
 
 It was a really promising prospect... Until, in an unfortunate turn of events, the Diem project [crumbled under regulatory pressure in 2022](https://www.bbc.com/news/technology-60156682), and was shut down.
 
@@ -117,11 +126,13 @@ These projects are now called **Aptos** and **Sui**, and will be our protagonist
 
 Let’s start with the earliest one to launch: [Aptos](https://aptosfoundation.org/).
 
-<figure
-	src="/images/blockchain-101/parallelizing-execution/aptos.png"
-	alt="Aptos logo"
-	width="500"
-/>
+<figure>
+	<img
+		src="/images/blockchain-101/parallelizing-execution/aptos.png"
+		alt="Aptos logo"
+		width="500"
+	/>
+</figure>
 
 This first team didn’t stray too far from the ideas we’ve explored so far: Aptos is a Blockchain built with the familiar account-based model in mind.
 
@@ -129,11 +140,13 @@ This first team didn’t stray too far from the ideas we’ve explored so far: A
 
 But wait... Didn’t we say like 2 minutes ago that the accounts model **wasn’t good** for parallelization? And wasn’t Move all about replacing accounts with resources? What’s the catch?
 
-<figure
-	src="/images/blockchain-101/parallelizing-execution/suspicious-lizard.png"
-	alt="A lizard with a suspicious look"
-	width="500"
-/>
+<figure>
+	<img
+		src="/images/blockchain-101/parallelizing-execution/suspicious-lizard.png"
+		alt="A lizard with a suspicious look"
+		width="500"
+	/>
+</figure>
 
 Well... Aptos uses accounts, that’s a fact. It does leverage Move’s type system for better state management, but that’s more of a developer experience detail.
 
@@ -149,12 +162,14 @@ Aptos’ solution is simple in concept: instead of trying to prevent conflicts, 
 
 When a set of new transactions arrives, Aptos doesn’t carefully analyze which transactions might conflict and process them sequentially. Instead, it takes an **optimistic approach**: it simply executes all transactions at the same time, assuming **most** won’t step on each other. A small leap of faith.
 
-<figure
-	src="/images/blockchain-101/parallelizing-execution/leap-of-faith.jpg"
-	alt="Leap of Faith from Assassin's Creed"
-	title="Weee~"
-	width="500"
-/>
+<figure>
+	<img
+		src="/images/blockchain-101/parallelizing-execution/leap-of-faith.jpg"
+		alt="Leap of Faith from Assassin's Creed"
+		title="Weee~"
+		width="500"
+	/>
+</figure>
 
 Now, I bet your spidey senses are tingling: what happens when conflicts **do occur**?
 
@@ -174,11 +189,13 @@ I find it wonderful how such a property emerges from the simple choice of execut
 
 Let’s now switch gears, and talk about [Sui](https://sui.io/), the other project born from the ashes of Diem.
 
-<figure
-	src="/images/blockchain-101/parallelizing-execution/sui.png"
-	alt="Sui logo"
-	width="500"
-/>
+<figure>
+	<img
+		src="/images/blockchain-101/parallelizing-execution/sui.png"
+		alt="Sui logo"
+		width="500"
+	/>
+</figure>
 
 While Aptos decided to keep the familiar account model and make it work with parallelization, the Sui team took a **completely different approach**. They decided to **redesign everything** from the ground up for **maximum parallelization**.
 
@@ -203,12 +220,14 @@ And the cherry on top: [transactions in Sui](https://docs.sui.io/concepts/transa
 
 > If Alice’s transaction uses Object A and Bob’s transaction uses Object B, then they can run simultaneously without any conflicts!
 
-<figure
-	src="/images/blockchain-101/parallelizing-execution/clapping.jpg"
-	alt="Leonardo Di Caprio clapping in a Wolf of Wall Street scene" 
-	title="Impressive"
-	width="500"
-/>
+<figure>
+	<img
+		src="/images/blockchain-101/parallelizing-execution/clapping.jpg"
+		alt="Leonardo Di Caprio clapping in a Wolf of Wall Street scene" 
+		title="Impressive"
+		width="500"
+	/>
+</figure>
 
 In terms of ownership, Objects can either be:
 

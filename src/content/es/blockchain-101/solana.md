@@ -13,7 +13,7 @@ description: >-
   Solana
 readingTime: 10 min
 mediumUrl: 'https://medium.com/@francomangone18/blockchain-101-solana-177128bf1501'
-contentHash: e1839aeebfee4e8ef022a2fdcae35cdae88d592d4492347a321657e145179532
+contentHash: a0d8886001e45fcfa71fa2bd914a207b9432a019b75639f4091647a02dac9a50
 supabaseId: b3cb9a00-a261-4d8b-a08d-a127f6694592
 ---
 
@@ -271,4 +271,4 @@ El enfoque para hoy fueron las innovaciones en el consenso lideradas por Solana 
 
 Aunque hemos cubierto bastante hoy, esto está lejos de ser el final de nuestro viaje a través de Solana. Porque esta red también es **programable**, al igual que Ethereum — ¡pero no es **compatible con EVM**!
 
-Esto significa que Solana tiene su propia forma de definir programas ejecutables, diferente de lo que hemos visto hasta ahora. ¡Y cubriremos cómo funcionan estos programas en el próximo artículo!
+Esto significa que Solana tiene su propia forma de definir programas ejecutables, diferente de lo que hemos visto hasta ahora. ¡Y cubriremos cómo funcionan estos programas en el [próximo artículo](/es/blog/blockchain-101/solana-programs)!

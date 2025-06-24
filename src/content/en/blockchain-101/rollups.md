@@ -13,7 +13,7 @@ description: >-
   built around Ethereum
 readingTime: 12 min
 mediumUrl: 'https://medium.com/@francomangone18/blockchain-101-rollups-8da114a51f32'
-contentHash: f207915dc934e9c350ec93114e6a70bd4189b79da9d1042cda2ed381da70d1f7
+contentHash: c2a3a2e4d02355dbee8fcb0fd991be92e5360b06ae993e04f4b7b9e2830e8b55
 supabaseId: b19f3765-3ca7-4440-b679-a2b9f2cd587d
 ---
 
@@ -358,6 +358,6 @@ This is an ongoing story, and we’ll see it unfold in the coming years. It’s 
 
 All the while, there are **other ecosystems** trying to come up with their very own solutions.
 
-So next time, we’ll start slicing up another such Blockchain: **Solana**, one of the big contenders for that coveted third spot in the list of Blockchain giants. It’s another big model shift, so be ready for some new ideas!
+So [next time](/en/blog/blockchain-101/solana), we’ll start slicing up another such Blockchain: **Solana**, one of the big contenders for that coveted third spot in the list of Blockchain giants. It’s another big model shift, so be ready for some new ideas!
 
 Until then!
