@@ -1,6 +1,6 @@
 ---
-title: 'Criptografía 101: Encriptación y Firmas Digitales'
-date: '2024-03-18'
+title: "Criptografía 101: Encriptación y Firmas Digitales"
+date: "2024-03-18"
 author: frank-mangone
 thumbnail: /images/cryptography-101/encryption-and-digital-signatures/cool-story.webp
 tags:

@@ -1,6 +1,6 @@
 ---
-title: 'Cryptography 101: Encryption and Digital Signatures'
-date: '2024-03-18'
+title: "Cryptography 101: Encryption and Digital Signatures"
+date: "2024-03-18"
 author: frank-mangone
 thumbnail: /images/cryptography-101/encryption-and-digital-signatures/cool-story.webp
 tags:
@@ -194,7 +194,7 @@ $$
 
 Okay, that was a mouthful, but we have our signature. All that remains is **verifying it**. Since the message is public, Bob can **encode** it to the same number $M$ that Alice used. And then, he follows through these steps:
 
-- He calculates $w$ as the modular inverse of $s$, so $w = s^-1 \ \textrm{mod} \ n$.
+- He calculates $w$ as the modular inverse of $s$, so $w = s^{-1} \ \textrm{mod} \ n$.
 - Bob then takes this value and calculates $R' = [w.M]G + [w.r]Q$.
 - He accepts the signature if the x-coordinate of $R'$ matches the value $r$.
 

@@ -1,6 +1,6 @@
 ---
-title: 'Criptografia 101: Curvas Elípticas (Parcialmente) Desmistificadas'
-date: '2024-03-11'
+title: "Criptografia 101: Curvas Elípticas (Parcialmente) Desmistificadas"
+date: "2024-03-11"
 author: frank-mangone
 thumbnail: >-
   /images/cryptography-101/elliptic-curves-somewhat-demystified/elliptic-curve.webp
@@ -19,7 +19,7 @@ contentHash: 3f5a561e3f10634f4da5c535892d1af30c75466830b0d6ad96a9b4f88c197ecb
 supabaseId: 3e5b9cef-df20-4ada-9779-949bda0e4785
 ---
 
-> Este é parte de uma série maior de artigos sobre criptografia. Se este é o primeiro artigo que você encontra, recomendo fortemente começar pelo [início da série](/pt/blog/cryptography-101/where-to-start).
+> Este é parte de uma série de artigos sobre criptografia. Se este é o primeiro artigo que você encontra, eu recomendo começar do [início da série](/pt/blog/cryptography-101/where-to-start).
 
 No [artigo anterior](/pt/blog/cryptography-101/where-to-start), discutimos brevemente algumas das ideias que sustentam boa parte das técnicas criptográficas mais amplamente utilizadas.
 

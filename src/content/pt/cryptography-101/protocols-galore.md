@@ -1,6 +1,6 @@
 ---
-title: 'Criptografia 101: Protocolos à Vontade'
-date: '2024-04-02'
+title: "Criptografia 101: Protocolos à Vontade"
+date: "2024-04-02"
 author: frank-mangone
 thumbnail: /images/cryptography-101/protocols-galore/waldo.webp
 tags:
@@ -17,7 +17,7 @@ contentHash: b7a12749a91412e16b2181eef33cb8894b94628f723806ae98eadfca45ad9024
 supabaseId: e0559783-8a6e-43b1-bc18-9e8716f9d0c0
 ---
 
-> Este é parte de uma série maior de artigos sobre criptografia. Se este é o primeiro artigo que você encontra, eu fortemente recomendo começar do [início da série](/pt/blog/cryptography-101/where-to-start).
+> Este é parte de uma série de artigos sobre criptografia. Se este é o primeiro artigo que você encontra, eu recomendo começar do [início da série](/pt/blog/cryptography-101/where-to-start).
 
 Beleza! Já chegamos longe. Temos [grupos](/pt/blog/cryptography-101/where-to-start) (e em particular [curvas elípticas](/pt/blog/cryptography-101/elliptic-curves-somewhat-demystified)) e [hashing](/pt/blog/cryptography-101/hashing) como ferramentas à nossa disposição, e já [vimos eles em ação](/pt/blog/cryptography-101/encryption-and-digital-signatures).
 

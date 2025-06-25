@@ -38,6 +38,10 @@ export const readingLists: ReadingList[] = [
         slug: "cryptography-101/protocols-galore",
         order: 6,
       },
+      {
+        slug: "cryptography-101/signatures-recharged",
+        order: 7,
+      },
     ],
   },
 ];

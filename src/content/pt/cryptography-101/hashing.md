@@ -1,6 +1,6 @@
 ---
-title: 'Criptografia 101: Hashing'
-date: '2024-03-24'
+title: "Criptografia 101: Hashing"
+date: "2024-03-24"
 author: frank-mangone
 thumbnail: /images/cryptography-101/hashing/bosch.webp
 tags:
@@ -16,7 +16,7 @@ contentHash: 4e2c09a7f9da60b4552e5cf99644b3305273ac659e993ea6e6968a07e62d1981
 supabaseId: 7cb81645-7feb-4305-970b-4b7ff99f9697
 ---
 
-> Este artigo faz parte de uma série maior sobre criptografia. Se este é o primeiro artigo que você encontra, recomendo fortemente começar desde o [início da série](/pt/blog/cryptography-101/where-to-start).
+> Este é parte de uma série de artigos sobre criptografia. Se este é o primeiro artigo que você encontra, eu recomendo começar do [início da série](/pt/blog/cryptography-101/where-to-start).
 
 [Da última vez](/pt/blog/cryptography-101/encryption-and-digital-signatures), passamos por algumas técnicas envolvendo grupos de curvas elípticas — especificamente, **assinaturas digitais** e **encriptação assimétrica**.
 

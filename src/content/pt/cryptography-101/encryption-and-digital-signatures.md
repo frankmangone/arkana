@@ -1,6 +1,6 @@
 ---
-title: 'Criptografia 101: Encriptação e Assinaturas Digitais'
-date: '2024-03-18'
+title: "Criptografia 101: Encriptação e Assinaturas Digitais"
+date: "2024-03-18"
 author: frank-mangone
 thumbnail: /images/cryptography-101/encryption-and-digital-signatures/cool-story.webp
 tags:
@@ -17,7 +17,7 @@ contentHash: 45e34ba49a6be183880b67c1119410f616aaa197f4b776b4cd1e4878f7b2deba
 supabaseId: daffa2cf-527a-4b5e-8f2f-242bcb1110f3
 ---
 
-> Este é parte de uma série maior de artigos sobre criptografia. Se este é o primeiro artigo que você encontra, recomendo fortemente começar pelo [início da série](/pt/blog/cryptography-101/where-to-start).
+> Este é parte de uma série de artigos sobre criptografia. Se este é o primeiro artigo que você encontra, eu recomendo começar do [início da série](/pt/blog/cryptography-101/where-to-start).
 
 No [artigo anterior](/pt/blog/cryptography-101/elliptic-curves-somewhat-demystified), expandimos nosso conhecimento básico de grupos definindo **grupos de curva elíptica**. E mencionamos brevemente que esses conceitos nos permitiriam construir alguns mecanismos criptográficos úteis.
 

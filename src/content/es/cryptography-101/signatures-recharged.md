@@ -1,6 +1,6 @@
 ---
-title: 'Criptografía 101: Firmas Recargadas'
-date: '2024-04-09'
+title: "Criptografía 101: Firmas Recargadas"
+date: "2024-04-09"
 author: frank-mangone
 thumbnail: /images/cryptography-101/signatures-recharged/one-does-not-simply.webp
 tags:
@@ -170,7 +170,7 @@ El concepto de un **anillo** es el de un **conjunto ordenado** (en este caso, de
 
 Entonces, para la configuración: el anillo tiene $p$ participantes, que como se mencionó anteriormente, están **ordenados**. Es decir, Alicia es la participante $\#1$, Bruno es el participante $\#2$, y así sucesivamente.
 
-Sara, que es la participante $s^{th}$, tiene conocimiento de las claves públicas de **todos los demás participantes** — denotaremos esas como $Q_i$. También tiene su **propio par** de claves **privada** y **pública**, que van a ser $d_s$ y $Q_s = [d_s]G$.
+Sara, que es la participante $\#s$, tiene conocimiento de las claves públicas de **todos los demás participantes** — denotaremos esas como $Q_i$. También tiene su **propio par** de claves **privada** y **pública**, que van a ser $d_s$ y $Q_s = [d_s]G$.
 
 Para producir una firma para un mensaje $M$, Sara hace lo siguiente:
 

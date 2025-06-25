@@ -22,6 +22,7 @@ Language-specific rules:
 - In SPANISH, translate `Smart Contracts` to `Contratos Inteligentes`.
 - In SPANISH, translate the titles of articles starting with `WTF is` as `WTF es`. I want to prpeserve the anglicism!
 - In SPANISH, translate `a lot to gain` (or similar expressions) to `mucho para ganar`, not `mucho que ganar`.
+- In SPANISH, translate `threshold signatures` as `firmas de umbral`.
 
 - In PORTUGUESE, keep in mind that we're translating to Brazilian portuguese, not portuguese from Portugal.
 - In PORTUGUESE, translate `encryption` or similar words to `encriptação` or their corresponding word. Same for `decryption` and `decriptação`.
@@ -29,3 +30,4 @@ Language-specific rules:
 - In PORTUGUESE, when the tone is appropriate, you can condense `não é?` to `né?`. Don't abuse the resource, though!
 - In PORTUGUESE, you may use `procurando` as a more informal synonym to `buscando`, if the context is right.
 - In PORTUGUESE, translate `Alice` to `André` and `Bob` to `Bruna`.
+- In PORTUGUESE, translate `threshold signatures` to `Assinaturas de Limite`. And in general, translate `threshold` when talking about cryptographic schemes as `de limite`.
