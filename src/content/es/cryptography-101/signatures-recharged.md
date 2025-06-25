@@ -1,6 +1,6 @@
 ---
-title: "Criptografía 101: Firmas Recargadas"
-date: "2024-04-09"
+title: 'Criptografía 101: Firmas Recargadas'
+date: '2024-04-09'
 author: frank-mangone
 thumbnail: /images/cryptography-101/signatures-recharged/one-does-not-simply.webp
 tags:
@@ -12,7 +12,7 @@ description: >-
   Un vistazo rápido a algunos esquemas de firma un poco más elaborados de lo
   habitual
 readingTime: 11 min
-contentHash: ff400290aa025e90355e503144f07d950c42c58ab545f48e0f0b24c22642c24a
+contentHash: f33c8a6e71ea1ab0a6a3f59c58b20f8ba439340b5bf3cc3358c3cdd9f65fa452
 supabaseId: 7f0d70db-f93a-4905-825d-7e02c947760a
 ---
 

@@ -1,6 +1,6 @@
 ---
-title: "Criptografia 101: Encriptação e Assinaturas Digitais"
-date: "2024-03-18"
+title: 'Criptografia 101: Encriptação e Assinaturas Digitais'
+date: '2024-03-18'
 author: frank-mangone
 thumbnail: /images/cryptography-101/encryption-and-digital-signatures/cool-story.webp
 tags:
@@ -13,7 +13,7 @@ description: >-
   Construindo sobre nosso conhecimento prévio de curvas elípticas, exploramos
   como encriptar e assinar informações
 readingTime: 9 min
-contentHash: 45e34ba49a6be183880b67c1119410f616aaa197f4b776b4cd1e4878f7b2deba
+contentHash: 630d94f796e16a2d52a728afbf0a16e8cdf453b38e77aee63ca771c6f849793c
 supabaseId: daffa2cf-527a-4b5e-8f2f-242bcb1110f3
 ---
 

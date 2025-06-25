@@ -1,6 +1,6 @@
 ---
-title: "Cryptography 101: Encryption and Digital Signatures"
-date: "2024-03-18"
+title: 'Cryptography 101: Encryption and Digital Signatures'
+date: '2024-03-18'
 author: frank-mangone
 thumbnail: /images/cryptography-101/encryption-and-digital-signatures/cool-story.webp
 tags:
@@ -15,7 +15,7 @@ description: >-
 readingTime: 9 min
 mediumUrl: >-
   https://medium.com/@francomangone18/cryptography-101-encryption-and-digital-signatures-210960778765
-contentHash: 8263e2056bf35d2b14c7158adea3ecc933f4cf6c4ab8467142c5ee9e06a1d172
+contentHash: 3221c5dd85899d46efaeb6a8f6d092e6acd88a4280416421ffde337f02e8999b
 supabaseId: a27ea686-6262-4033-877b-fad9817e0aa8
 ---
 

@@ -1,6 +1,6 @@
 ---
-title: "Criptografia 101: Curvas Elípticas (Parcialmente) Desmistificadas"
-date: "2024-03-11"
+title: 'Criptografia 101: Curvas Elípticas (Parcialmente) Desmistificadas'
+date: '2024-03-11'
 author: frank-mangone
 thumbnail: >-
   /images/cryptography-101/elliptic-curves-somewhat-demystified/elliptic-curve.webp
@@ -15,7 +15,7 @@ description: >-
 readingTime: 7 min
 mediumUrl: >-
   https://medium.com/@francomangone18/cryptography-101-elliptic-curves-somewhat-demystified-e835cce01e23
-contentHash: 3f5a561e3f10634f4da5c535892d1af30c75466830b0d6ad96a9b4f88c197ecb
+contentHash: 18543cd240d83255ba8489f89cf5d28e6ccd3a19a2ecbd4375fee4a57bf498b6
 supabaseId: 3e5b9cef-df20-4ada-9779-949bda0e4785
 ---
 

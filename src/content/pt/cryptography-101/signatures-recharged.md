@@ -1,6 +1,6 @@
 ---
-title: "Criptografia 101: Assinaturas Turbinadas"
-date: "2024-04-09"
+title: 'Criptografia 101: Assinaturas Turbinadas'
+date: '2024-04-09'
 author: frank-mangone
 thumbnail: /images/cryptography-101/signatures-recharged/one-does-not-simply.webp
 tags:
@@ -8,10 +8,12 @@ tags:
   - digitalSignatures
   - ellipticCurves
   - mathematics
-description: Uma olhada rápida em alguns esquemas de assinatura um pouco mais elaborados que o usual
+description: >-
+  Uma olhada rápida em alguns esquemas de assinatura um pouco mais elaborados
+  que o usual
 readingTime: 11 min
-contentHash: cf88bb7aacb990c05f15b17ca6c277d99b0d0e762e069b4d359e4028cd4aa8cd
-supabaseId: 57b32407-35d2-485c-8e11-8709fdca484c
+contentHash: cc8dbb4415b8b074e18d34120c575397de302533ff80eeefee29ed8da1837b30
+supabaseId: 40388b52-51b3-4b54-92d4-4510b5535c78
 ---
 
 > Este é parte de uma série de artigos sobre criptografia. Se este é o primeiro artigo que você encontra, eu recomendo começar do [início da série](/pt/blog/cryptography-101/where-to-start).
