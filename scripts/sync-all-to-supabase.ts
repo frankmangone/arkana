@@ -120,7 +120,7 @@ async function syncAllFiles(
       } else {
         results.failed++;
         results.errors.push({ file, error: result.error });
-        console.log(`   ❌ Failed: ${result.error}`);
+        console.log(`   ❌ Failed: ${JSON.stringify(result.error)}`);
 
         if (!continueOnError) {
           console.log("🛑 Stopping due to error (continueOnError = false)");

@@ -13,7 +13,7 @@ description: >-
   paralela: Aptos y Sui
 readingTime: 10 min
 contentHash: 2bc78b592a218c1690800062f0de0c4dcb6a23276ef2619171ac604219c21e16
-supabaseId: null
+supabaseId: 2dc05bf6-8fc2-481c-81b9-b08c74d4f1b1
 ---
 
 > Este artículo es parte de una serie más larga sobre Blockchain. Si este es el primer artículo que encuentras, te recomiendo comenzar por el [inicio de la serie](/es/blog/blockchain-101/how-it-all-began).

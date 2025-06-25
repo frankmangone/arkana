@@ -11,7 +11,7 @@ description: 'Time to move on to the second big milestone in Blockchain’s hist
 readingTime: 8 min
 mediumUrl: 'https://medium.com/@francomangone18/blockchain-101-ethereum-e24f5f6453ac'
 contentHash: 1bac060da306de0353d6cfce1fc92ac02be990136f900147eda8bb61d6686a48
-supabaseId: 5c756f7b-a9c8-446a-8f05-775ac3b44111
+supabaseId: 0a8e6a63-200f-4641-8097-ab30475ffaa7
 ---
 
 > This is part of a larger series of articles about Blockchain. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/blockchain-101/how-it-all-began).

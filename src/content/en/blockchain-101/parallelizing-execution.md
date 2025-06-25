@@ -1,6 +1,6 @@
 ---
-title: "Blockchain 101: Parallelizing Execution"
-date: "2025-06-24"
+title: 'Blockchain 101: Parallelizing Execution'
+date: '2025-06-24'
 author: frank-mangone
 thumbnail: /images/blockchain-101/parallelizing-execution/leap-of-faith.jpg
 tags:
@@ -13,7 +13,7 @@ description: >-
   Aptos and Sui
 readingTime: 10 min
 contentHash: 9a66e5ad63fe9c097b445ac459daf74346d7e9acc31e04efc3b78d786cb6e64c
-supabaseId: null
+supabaseId: 4d976efd-31ae-4e19-b33e-59f5c6ec512e
 ---
 
 > This is part of a larger series of articles about Blockchain. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/blockchain-101/how-it-all-began).
