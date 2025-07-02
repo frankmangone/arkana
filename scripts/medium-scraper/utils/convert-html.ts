@@ -155,8 +155,12 @@ async function _convertHtmlToMarkdown(
   function processInlineElements(element: cheerio.Cheerio): string {
     let html = element.html() || "";
 
-    // Convert em tags with class "ni" to bold markdown
-    html = html.replace(/<em class="ni">(.*?)<\/em>/g, "**$1**");
+    // Convert em tags with various classes to bold markdown
+    // Medium uses different classes like "mj", "ni", etc. for italics that should become bold
+    html = html.replace(
+      /<em class="(?:mj|ni|[a-z]{1,3})"[^>]*>(.*?)<\/em>/g,
+      "**$1**"
+    );
 
     // Convert links to markdown format
     html = html.replace(

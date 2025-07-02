@@ -174,6 +174,10 @@ export const readingLists: ReadingList[] = [
         slug: "blockchain-101/parallelizing-execution",
         order: 15,
       },
+      {
+        slug: "blockchain-101/beyond-the-blockchain-part-1",
+        order: 16,
+      },
     ],
   },
   {

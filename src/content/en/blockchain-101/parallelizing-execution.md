@@ -12,7 +12,7 @@ description: >-
   Moving on, we explore two modern Blockchains focused on parallel execution:
   Aptos and Sui
 readingTime: 10 min
-contentHash: 9a66e5ad63fe9c097b445ac459daf74346d7e9acc31e04efc3b78d786cb6e64c
+contentHash: 22b642901614a46e4112475344c22ffabaabd374ab41bb815aa42cc84e45d26e
 supabaseId: 4d976efd-31ae-4e19-b33e-59f5c6ec512e
 ---
 
@@ -268,6 +268,6 @@ Both Aptos and Sui represent a significant advance in improving execution speed,
 
 Some projects focus on parallelization within a single chain, like we’ve seen today. Others ask **entirely different questions**.
 
-Thus, in our next encounter, posing these spicy questions, which will lead to some very exotic solutions.
+Thus, in our [next encounter](/en/blog/blockchain-101/beyond-the-blockchain-part-1), we’ll start working through these new spicy questions, which will lead us to some very exotic solutions.
 
 Cheers!

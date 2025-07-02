@@ -67,6 +67,11 @@ export const tags: TagDefinition = {
     es: "Criptografía",
     pt: "Criptografia",
   },
+  dag: {
+    en: "Directed Acyclic Graph",
+    es: "Grafo Dirigido Acíclico",
+    pt: "Grafo Direcionado Acíclico",
+  },
   dataAvailability: {
     en: "Data Availability",
     es: "Disponibilidad de Datos",
@@ -142,10 +147,20 @@ export const tags: TagDefinition = {
     es: "Hard Fork",
     pt: "Hard Fork",
   },
+  hashgraph: {
+    en: "Hashgraph",
+    es: "Hashgraph",
+    pt: "Hashgraph",
+  },
   hashing: {
     en: "Hashing",
     es: "Hashing",
     pt: "Hashing",
+  },
+  hedera: {
+    en: "Hedera",
+    es: "Hedera",
+    pt: "Hedera",
   },
   history: {
     en: "History",

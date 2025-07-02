@@ -6,7 +6,10 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function formatDate(date: string, lang: string) {
-  const dateObj = new Date(date);
+  // Parse as local date to avoid timezone issues
+  // Split the date string and create a date object with local timezone
+  const [year, month, day] = date.split("-").map(Number);
+  const dateObj = new Date(year, month - 1, day); // month is 0-indexed
 
   try {
     // Format the date based on the language
