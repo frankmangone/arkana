@@ -13,7 +13,7 @@ description: >-
   No todo necesita ser una Blockchain para calificar como una Tecnología de
   Libro Mayor Distribuido — ¡y hoy, comenzamos a mirar otras estructuras!
 readingTime: 13 min
-contentHash: 0b080e48dca5b655095547b197c4349fbf8965cdcad00087869a2e7dfc4d226c
+contentHash: 1171537de2b4e6b2b21215365674d1bc0d58ff3621735fffa4baf19714fd3fcd
 supabaseId: 94dbc661-f2f9-40da-97f6-825942ca2aa6
 ---
 
@@ -29,7 +29,7 @@ Recapitulando brevemente lo que hablamos cerca del inicio de la serie, sabemos q
 
 Suena bien — y la mayor parte del ecosistema está construido alrededor de esta estructura de datos. Pero quiero que nos detengamos por un momento y nos preguntemos: ¿podríamos usar **otra estructura de datos**?
 
-Hoy, abordaremos esta pregunta mirando un sistema que propone un modelo completamente diferente: **Hedera**.
+Hoy, abordaremos esta pregunta mirando un sistema con el cual hemos estado trabajando por un par de años en [SpaceDev](https://spacedev.io/), y que propone un modelo completamente diferente: **Hedera**.
 
 ---
 

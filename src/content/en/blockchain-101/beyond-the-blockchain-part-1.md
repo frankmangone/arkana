@@ -13,7 +13,7 @@ description: >-
   Not everything needs to be a Blockchain to qualify as a Distributed Ledger
   Technology — and today, we start looking at other structures!
 readingTime: 13 min
-contentHash: 6b34642176b642016920aa125d4e40f9e59801a86dedc594da24c7c5c9758b87
+contentHash: 708e35910e131d979dd98a8cee874120fd63df64ec542184866ef0335946988d
 supabaseId: 31a2db62-f310-4b2e-b863-da8c1c2ea8da
 mediumUrl: >-
   https://medium.com/@francomangone18/blockchain-101-beyond-the-blockchain-part-1-4e1f54b90312
@@ -31,7 +31,7 @@ Briefly recapping what we talked about closer to the beginning of the series, we
 
 Sounds good — and most of the ecosystem is indeed built around this data structure. But I want us to stop for a moment and ask ourselves: could we use **another data structure**?
 
-Today, we'll be tackling this question by looking at a system that proposes an entirely different model: **Hedera**.
+Today, we’ll be tackling this question by looking at a system we’ve been working with for a couple years at [SpaceDev](https://spacedev.io/), which proposes an entirely different model: **Hedera**.
 
 ---
 
