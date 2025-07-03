@@ -1,6 +1,6 @@
 ---
-title: 'Blockchain 101: Más Allá de la Blockchain (Parte 1)'
-date: '2025-07-01'
+title: "Blockchain 101: Más Allá de la Blockchain (Parte 1)"
+date: "2025-07-01"
 author: frank-mangone
 thumbnail: /images/blockchain-101/beyond-the-blockchain-part-1/dag.png
 tags:
@@ -73,7 +73,7 @@ Muy bien, tenemos la estructura en su lugar. ¿Qué usamos exactamente para qué
 
 Todo comienza con el **protocolo de chismes** (gossip protocol) de Hedera. Ya hemos hablado sobre esto [anteriormente en la serie](/es/blog/blockchain-101/a-primer-on-consensus/#a-bigger-network), y ya deberíamos estar familiarizados con la idea general: pasar mensajes entre pares, para que lleguen a cada miembro de la red **eventualmente**.
 
-Pero el protocolo de chismes de Hedera [ed diferente](https://docs.hedera.com/hedera/core-concepts/hashgraph-consensus-algorithms/gossip-about-gossip). Se comunican en **eventos**, que son estructuras de datos simples que contienen algunos elementos: una **marca temporal**, un **arreglo de transacciones**, una **firma** (probando la identidad del remitente), y **dos hashes** (apuntando a otros eventos), y por supuesto, su propio **hash**.
+Pero el protocolo de chismes de Hedera [es diferente](https://docs.hedera.com/hedera/core-concepts/hashgraph-consensus-algorithms/gossip-about-gossip). Se comunican en **eventos**, que son estructuras de datos simples que contienen algunos elementos: una **marca temporal**, un **arreglo de transacciones**, una **firma** (probando la identidad del remitente), y **dos hashes** (apuntando a otros eventos), y por supuesto, su propio **hash**.
 
 <figure>
     <img
@@ -158,9 +158,9 @@ El algoritmo se trata de **visibilidad**. Se basa en la idea de **eventos testig
 
 ### División de Rondas {#round-division}
 
-Cuando un nodo publica su primer evento, lo consideramos como su primer **evento testigo**, perteneciente a alguna ronda $r$. Las rondas servirán como una medida para dividir el tiempo en bloques discretos, y ayudar con el proceso de marcado temporal.
+Cuando un nodo publica su primer evento, lo consideramos como su primer **evento testigo**, indicando el inicio de la ronda $1$. Las rondas servirán como una medida para dividir el tiempo en bloques discretos, y ayudar con el proceso de marcado temporal.
 
-> ¡Por supuesto, esta ronda $r$ se determina del estado de la red. El nuevo nodo necesita consultar el sistema para determinar la ronda actual antes de unirse a la conversación!
+> Los eventos testigo son simplemente el primer evento creado por un nodo en cada ronda. Veremos cómo determinamos esto en un momento.
 
 Entonces, el nodo comenzará a participar en chismorrear, aprendiendo sobre más y más eventos. Eventualmente, tendrá visibilidad (al atravesar el Hashgraph) de los eventos testigo de **otros nodos** para la ronda actual, $r$.
 
@@ -180,13 +180,49 @@ Algo así:
 
 > En la imagen, el evento morado ve fuertemente al evento naranja, ya que podemos encontrar caminos independientes que pasan por los eventos testigo (en azul) de 3 de 5 participantes.
 
-Cuando un nodo ve fuertemente eventos testigo para la ronda $r - 1$ para 2/3 de los participantes de la red (a través de eventos testigo de la ronda $r$), entonces el siguiente evento que cree será un evento testigo para la ronda $r+1$, marcando el inicio de una nueva ronda para ese nodo.
-
-Es un poco complicado, sí. Dale tiempo para que se asiente.
+Cuando un nodo crea un evento que puede ver fuertemente eventos testigo para la ronda $r - 1$ para más de 2/3 de los participantes de la red, entonces ese evento se convierte en un evento testigo para la ronda $r + 1$, marcando el inicio de una nueva ronda para ese nodo.
 
 > La idea detrás de esto es que los nodos confirman que la ronda anterior está bien establecida antes de seguir adelante. Y pueden hacer esto cuando tienen suficiente conocimiento y observabilidad del estado de la red.
 
-Quiero señalar que los eventos testigo no tienen marcadores especiales en ellos — cualquiera puede determinar si un evento es un testigo puramente de la estructura del Hashgraph. Y sí los marcan, pero **localmente**.
+Como es un poco complicado, tratemos de ponerlo en práctica examinando un ejemplo simple, en forma de una red de juguete de tres participantes. Eso es suficiente para entender algunas advertencias aquí y allá.
+
+Supongamos que tenemos tres nodos $A$, $B$, y $C$, y cada uno de ellos crea su primer evento. Etiquetemos esos $A_1$, $B_1$, y $C_1$, ya que todos son testigos de ronda $1$. A continuación, sigamos algunos ciclos de sincronización:
+
+- **Sync 1: A + B**: $A$ crea $A_2$ (apuntando a $A_1$ y $B_1$), y $B$ crea $B_2$ (apuntando a $B_1$ y $A_1$)
+- **Sync 2: A + C**: $A$ crea $A_3$ (apuntando a $A_2$ y $C_1$), y $C$ crea $C_2$ (apuntando a $C_1$ y $A_2$)
+- **Sync 3: B + C**: $B$ crea $B_3$ (apuntando a $B_2$ y $C_2$), y $C$ crea $C_3$ (apuntando a $C_2$ y $B_3$)
+
+Todo eso se ve así:
+
+<figure>
+    <img
+        src="/images/blockchain-101/beyond-the-blockchain-part-1/three-participant.png"
+        alt="Primeras rondas de sincronización de una red de tres participantes"
+        title="[zoom]" 
+    />
+</figure>
+
+Ahora necesitamos desentrañar, y ver si podemos determinar quiénes son los eventos testigo para la ronda $2$.
+
+> Recuerda, la condición para avanzar a la siguiente ronda es que los eventos testigo sean vistos fuertemente.
+
+Desde la perspectiva de $A$, tenemos que $A_3$ es el primer evento que puede ver más de 2/3 de los eventos testigo de la ronda anterior. ¡Pero necesitamos ver fuertemente, no solo ver!
+
+Lo que significa que hay un problema - y esto requiere un caso especial: todos los eventos de la ronda $1$ se consideran vistos fuertemente. Esta es una condición importante de arranque - sin ella, la red no podría llegar a consenso en absoluto.
+
+Con esta consideración en mente, $A_3$ es el evento testigo para la ronda $2$ para $A$. Del mismo modo, $B_3$ y $C_3$ se convierten en testigos para la ronda $2$ para $B$ y $C$ respectivamente.
+
+Una vez que tenemos dos rondas, podemos continuar el proceso y avanzar exitosamente la red. Siguiendo la misma lógica, así es como se vería el Hashgraph después de algunas sincronizaciones más, con eventos testigo marcados en azul:
+
+<figure>
+    <img
+        src="/images/blockchain-101/beyond-the-blockchain-part-1/extended-3-participant.png"
+        alt="Algunas rondas más simuladas después del ejemplo anterior"
+        title="[zoom] ¡Trata de seguir las aristas tú mismo!" 
+    />
+</figure>
+
+Debo señalar que los eventos testigo no tienen marcadores especiales en ellos — cualquiera puede determinar si un evento es un testigo puramente de la estructura del Hashgraph. Y sí los marcan, pero **localmente**.
 
 Eventos testigo, listo. Ahora, ¿cómo los usamos?
 
@@ -216,7 +252,7 @@ Para determinar la fama de un testigo, miramos el Hashgraph, elegimos un testigo
     />
 </figure>
 
-> ¡Nota que requerimos **ver simple** aquí — **cualquier camino** entre los dos testigos servirá!
+> ¡Nota que requerimos solamente **ver** aquí — **cualquier camino** entre los dos testigos servirá!
 
 Conceptualmente, lo que estamos preguntando es si algún nodo **conoce** a un testigo, y si lo hace, cuenta como un voto por su fama.
 
@@ -246,12 +282,15 @@ Definimos el momento cuando un testigo **primero aprendió** de algún evento $A
 
 Habiendo definido esto, entonces el proceso es muy directo, y tiene solo dos pasos:
 
+- El algoritmo comienza determinando la ronda donde todos los testigos famosos pueden ver nuestro evento $A$. Esto es importante — necesitamos visibilidad completa del panel de jueces (es decir, el conjunto de testigos famosos) antes de poder tomar una decisión de marca temporal.
+- Luego, simplemente tomamos la media de los momentos cuando los testigos famosos **primero aprendieron** sobre el evento $A$.
+
 ¡Y eso es todo! Es como si cada testigo famoso **votara con una marca temporal**, y luego, para ser completamente justos, simplemente asignamos el mismo peso a cada voto.
 
 <figure>
     <img
         src="/images/blockchain-101/beyond-the-blockchain-part-1/tehc.webp"
-        alt="Meme de cara de stonks, leyendo 'Tehc'"
+        alt="Meme de cara de stonks, con leyenda 'Tehc'"
         width="500"
     />
 </figure>
