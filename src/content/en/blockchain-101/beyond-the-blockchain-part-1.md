@@ -13,7 +13,7 @@ description: >-
   Not everything needs to be a Blockchain to qualify as a Distributed Ledger
   Technology — and today, we start looking at other structures!
 readingTime: 13 min
-contentHash: 708e35910e131d979dd98a8cee874120fd63df64ec542184866ef0335946988d
+contentHash: 5c44131c238d0479296366158fb8d73e1604200596c86ed45f1466a2a9561b1a
 supabaseId: 31a2db62-f310-4b2e-b863-da8c1c2ea8da
 mediumUrl: >-
   https://medium.com/@francomangone18/blockchain-101-beyond-the-blockchain-part-1-4e1f54b90312
@@ -75,7 +75,7 @@ Alright, we've got the structure in place. What exactly do we use it for? And wh
 
 Everything starts with Hedera's **gossip protocol**. We've already talked about gossipping [earlier in the series](/en/blog/blockchain-101/a-primer-on-consensus/#a-bigger-network), and we should already be acquainted with the general idea: passing messages around between peers, so that they reach every member in the network **eventually**.
 
-But Hedera's gossip protocol [is built different](https://docs.hedera.com/hedera/core-concepts/hashgraph-consensus-algorithms/gossip-about-gossip). They communicate in **events**, which are simple data structures containing a few elements: a **timestamp**, an **array of transactions**, a **signature **(proving the sender's identity), and **two hashes **(pointing to other events), and of course, their own **hash**.
+But Hedera's gossip protocol [is built different](https://docs.hedera.com/hedera/core-concepts/hashgraph-consensus-algorithms/gossip-about-gossip). They communicate in **events**, which are simple data structures containing a few elements: a **timestamp**, an **array of transactions**, a **signature** (proving the sender's identity), and **two hashes** (pointing to other events), and of course, their own **hash**.
 
 <figure>
     <img
@@ -91,7 +91,7 @@ Events are exchanged between nodes at random as the result of **syncing** about 
 
 > Don't worry, it will make sense soon.
 
-So let's imagine Alice and Bob are about to sync. They exchange their **latest observed events**, meaning that they now possess two events each: their very own latest observed event, and the other party's latest observed event. These are the **self-parent event**, and the **other-parent event **respectively.
+So let's imagine Alice and Bob are about to sync. They exchange their **latest observed events**, meaning that they now possess two events each: their very own latest observed event, and the other party's latest observed event. These are the **self-parent event**, and the **other-parent event** respectively.
 
 And it's in the next step that things start coming together, **literally**: both Alice and Bob create a **new event** pointing to the two old events, through their hashes. This will become their new **latest observed event**, so in the next communication with another node, they will sync using this fresh event.
 
