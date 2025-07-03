@@ -12,7 +12,7 @@ description: >-
   Moving on, we explore two modern Blockchains focused on parallel execution:
   Aptos and Sui
 readingTime: 10 min
-contentHash: 22b642901614a46e4112475344c22ffabaabd374ab41bb815aa42cc84e45d26e
+contentHash: d2573e53dc75e0de846578e8f9c8ec693fb00c8df18b346c5adb38b87aaf5369
 supabaseId: 4d976efd-31ae-4e19-b33e-59f5c6ec512e
 ---
 
@@ -46,7 +46,7 @@ Today, we’ll talk about parallelization in the context of the **execution phas
 	/>
 </figure>
 
-There are essentially** two ways** to go about execution: we can either process transactions **one by one**, or try to execute multiple of them **at the same time**.
+There are essentially **two ways** to go about execution: we can either process transactions **one by one**, or try to execute multiple of them **at the same time**.
 
 Sequential (one by one) processing has one clear benefit: we ensure that **no conflicts exist**. And this is great, because we won’t end up with a mess of an inconsistent state.
 
