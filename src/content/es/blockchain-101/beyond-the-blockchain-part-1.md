@@ -1,6 +1,6 @@
 ---
-title: "Blockchain 101: Más Allá de la Blockchain (Parte 1)"
-date: "2025-07-01"
+title: 'Blockchain 101: Más Allá de la Blockchain (Parte 1)'
+date: '2025-07-01'
 author: frank-mangone
 thumbnail: /images/blockchain-101/beyond-the-blockchain-part-1/dag.png
 tags:
@@ -13,7 +13,7 @@ description: >-
   No todo necesita ser una Blockchain para calificar como una Tecnología de
   Libro Mayor Distribuido — ¡y hoy, comenzamos a mirar otras estructuras!
 readingTime: 13 min
-contentHash: f08ed860144f78e4db11098590407cdcf0f79cc7b361cddfa510479886992320
+contentHash: 0b080e48dca5b655095547b197c4349fbf8965cdcad00087869a2e7dfc4d226c
 supabaseId: 94dbc661-f2f9-40da-97f6-825942ca2aa6
 ---
 
