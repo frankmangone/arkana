@@ -49,10 +49,9 @@ export function FeaturedPostCard(props: FeaturedPostCardProps) {
               />
               <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background opacity-90" />
             </div>
-            <div className="flex items-center gap-3 mb-2 text-sm text-gray-400">
+            <div className="flex justify-between gap-3 mb-2 text-sm text-gray-400">
               <span>{formatDate(new Date(post.date), lang)}</span>
               <span className="inline-flex items-center">
-                <span className="w-1 h-1 rounded-full bg-gray-400 mx-1"></span>
                 <User className="h-3 w-3 mr-1" />
                 <button
                   onClick={handleAuthorClick}
@@ -96,10 +95,9 @@ export function FeaturedPostCard(props: FeaturedPostCardProps) {
             </div>
             <div className="flex flex-col justify-between h-full">
               <div>
-                <div className="flex items-center gap-3 mb-2 text-sm text-gray-400">
+                <div className="flex justify-between items-center gap-3 mb-2 text-sm text-gray-400">
                   <span>{formatDate(new Date(post.date), lang)}</span>
                   <span className="inline-flex items-center">
-                    <span className="w-1 h-1 rounded-full bg-gray-400 mx-1"></span>
                     <User className="h-3 w-3 mr-1" />
                     <button
                       onClick={handleAuthorClick}

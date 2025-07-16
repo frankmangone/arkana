@@ -7,7 +7,6 @@ export const langMap: Record<string, string> = {
 
 export function formatDate(date: Date, lang: string) {
   const dateString = date.toLocaleDateString(langMap[lang] || "en-US", {
-    weekday: "long",
     day: "numeric",
     month: "short",
     year: "numeric",

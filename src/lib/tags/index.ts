@@ -52,6 +52,11 @@ export const tags: TagDefinition = {
     es: "Consenso",
     pt: "Consenso",
   },
+  cpu: {
+    en: "CPU",
+    es: "CPU",
+    pt: "CPU",
+  },
   cryptanalysis: {
     en: "Cryptanalysis",
     es: "Criptoanálisis",
@@ -304,8 +309,13 @@ export const tags: TagDefinition = {
   },
   ringLearningWithErrors: {
     en: "Ring Learning with Errors",
-    es: "Aprendizaje con Anillos y Errores",
-    pt: "Aprendizado com Anéis e Erros",
+    es: "Aprendizaje sobre Anillos con Errores",
+    pt: "Aprendizado sobre Anéis com Erros",
+  },
+  riscv: {
+    en: "RISC-V",
+    es: "RISC-V",
+    pt: "RISC-V",
   },
   rollup: {
     en: "Rollup",
