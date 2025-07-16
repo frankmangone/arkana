@@ -1,6 +1,6 @@
 ---
 title: WTF es RISC-V
-date: "2025-07-15"
+date: '2025-07-15'
 author: frank-mangone
 thumbnail: /images/wtf-is/risc-v/cpu.jpg
 tags:

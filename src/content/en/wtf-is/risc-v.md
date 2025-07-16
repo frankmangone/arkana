@@ -1,15 +1,15 @@
 ---
 title: WTF is RISC-V
-date: "2025-07-15"
+date: '2025-07-15'
 author: frank-mangone
 thumbnail: /images/wtf-is/risc-v/cpu.jpg
 tags:
   - cpu
   - riscv
   - computerScience
-description: "A gentle intro to the world of open-source, modular processing units."
+description: 'A gentle intro to the world of open-source, modular processing units.'
 readingTime: 10 min
-mediumUrl: "https://medium.com/@francomangone18/wtf-is-risc-v-4cf8399059fb"
+mediumUrl: 'https://medium.com/@francomangone18/wtf-is-risc-v-4cf8399059fb'
 contentHash: a59a2def4d4bf7f9ac6b1fe552d0c87f5532cbf78863a3452f63fd0c7c68a98f
 supabaseId: 1f509bee-3152-4278-b0bf-f5d60bc34dd5
 ---
