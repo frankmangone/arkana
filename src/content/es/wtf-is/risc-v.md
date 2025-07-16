@@ -1,5 +1,6 @@
 ---
 title: WTF es RISC-V
+date: "2025-07-15"
 author: frank-mangone
 thumbnail: /images/wtf-is/risc-v/cpu.jpg
 tags:
@@ -10,7 +11,7 @@ description: >-
   Una introducción gentil al mundo de las unidades de procesamiento modulares de
   código abierto.
 readingTime: 10 min
-contentHash: 2d7c62df9d59cf050618eb0f041fc17bb28971398208b90ae39d8b719ef4b41a
+contentHash: addd194b86866e9ff4caac7c94bae117dace4f14e68add7c6721291361277cf0
 supabaseId: 89f46326-83bd-4359-b32e-4f298f2a4147
 ---
 

@@ -9,7 +9,7 @@
     "lint": "next lint",
     "export": "next export",
     "calculate-hashes": "node scripts/calculate-hashes.js",
-    "prebuild": "npm run calculate-hashes && npm run generate-favicon",
+    "prebuild": "npm run calculate-hashes",
     "build:search": "ts-node --project scripts/tsconfig.json scripts/extract-search-data/index.ts",
     "sync": "ts-node --project scripts/tsconfig.json scripts/sync-to-supabase.ts",
     "sync:all": "ts-node --project scripts/tsconfig.json scripts/sync-all-to-supabase.ts",
