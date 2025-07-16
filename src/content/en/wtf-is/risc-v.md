@@ -10,7 +10,7 @@ tags:
 description: 'A gentle intro to the world of open-source, modular processing units.'
 readingTime: 10 min
 mediumUrl: 'https://medium.com/@francomangone18/wtf-is-risc-v-4cf8399059fb'
-contentHash: 8208ac8342182ae1a8a9acbc9f4cc902d784fafc8d90c7d98d464904f05f7fb4
+contentHash: bfd791c9a8fbc7a676d10fc7e881a433a22f9b585a1a6b1c94fac414f49d3838
 supabaseId: 1f509bee-3152-4278-b0bf-f5d60bc34dd5
 ---
 
@@ -64,7 +64,7 @@ When we design a CPU, we must establish **exactly** what these instructions are,
 
 > Although, this usually happens behind the scenes. Seldom do we write these instructions directly. More on this further ahead!
 
-A set of instructions is called an **Instruction Set Architecture** (or **ISA** for short). And this is at the center of today’s discussion, because the choices we make when** design it** will have sizable consequences down the road.
+A set of instructions is called an **Instruction Set Architecture** (or **ISA** for short). And this is at the center of today’s discussion, because the choices we make when **design it** will have sizable consequences down the road.
 
 ---
 
@@ -78,7 +78,7 @@ But then, things might get trickier. What about more complex operations? Should 
 
 > Admittedly, that last one is almost absurd and I think no ISA includes an instruction for that!
 
-This very quickly becomes a complicated **design puzzle**. And as previously foreshadowed, the decisions we make have important consequences**.** You see, the more instructions we want to support, the more complex the CPU will need to be in order to interpret them.
+This very quickly becomes a complicated **design puzzle**. And as previously foreshadowed, the decisions we make have important consequences. You see, the more instructions we want to support, the more complex the CPU will need to be in order to interpret them.
 
 This translates into:
 
@@ -91,7 +91,7 @@ On the other end of the spectrum, if we have too few instructions, we might not 
 
 > And while this kind of CPUs are easier to build and optimize, longer programs might lead to more errors!
 
-All in all, this feels like a **balancing act — **one in which we need to be very mindful of our decisions.
+All in all, this feels like a **balancing act** — one in which we need to be very mindful of our decisions.
 
 Luckily though, we don’t need to solve this problem from scratch.
 
@@ -148,7 +148,7 @@ This led to another factor for the popularity of CISC: **software compatibility*
 
 As a consequence, CISC had a **firm grasp on the market**. Even as memory became cheaper and RISC’s advantages became clearer, customers kept using CISC processors. The market was locked because everyone depended on the same standard.
 
-Time went by, and memory became cheaper. New markets also emerged where a RISC could shine — for example, **mobile computers **(aka your smartphone) required more efficient processors so that they could run on batteries, and **massive server farms** (with the advent of the [Internet](/en/blog/wtf-is/the-internet)) were very concerned with keeping energy costs down.
+Time went by, and memory became cheaper. New markets also emerged where a RISC could shine — for example, **mobile computers** (aka your smartphone) required more efficient processors so that they could run on batteries, and **massive server farms** (with the advent of the [Internet](/en/blog/wtf-is/the-internet)) were very concerned with keeping energy costs down.
 
 Naturally, RISC quickly dominated the market in these areas. And again, a few companies swiftly set standards that locked customers into their technology once more. So while the resurgence of RISC was very interesting from a technological perspective, it seems clear that there was another problem.
 
@@ -220,11 +220,11 @@ A [compiler](https://en.wikipedia.org/wiki/Compiler) is essentially a translator
 
 Of course, different processor architectures need **different compilers**, to generate the right set of instruction. This seems to be somewhat problematic: since RISC-V is modular, the set of instructions depends on what modules you choose to use!
 
-But actually, this is **no problem at all — **the modularity offered by RISC-V can even make the compiler’s job **easier**. Since the set of instructions is clean and well-structured, compilers can be told exactly which extensions are available on the target processor, and take advantage of any specialized instructions to make your code faster.
+But actually, this is **no problem at all** — the modularity offered by RISC-V can even make the compiler’s job **easier**. Since the set of instructions is clean and well-structured, compilers can be told exactly which extensions are available on the target processor, and take advantage of any specialized instructions to make your code faster.
 
 Today, all the major compiler toolchains (like [GCC](https://gcc.gnu.org/), [LLVM/Clang](https://clang.llvm.org/), etc.) support RISC-V. This means that if you have a program written in C, C++, Rust, or one of many other languages, you can compile it to run on RISC-V processors with **minimal** or **no changes at all** to your code.
 
-This support is actually **crucial **for RISC-V’s success — it means it **doesn’t have to start from zero**. Existing software can potentially run on RISC-V without much of a problem.
+This support is actually **crucial** for RISC-V’s success — it means it **doesn’t have to start from zero**. Existing software can potentially run on RISC-V without much of a problem.
 
 > If you recall, this was one of the main reasons for the market dominance of proprietary architectures!
 
