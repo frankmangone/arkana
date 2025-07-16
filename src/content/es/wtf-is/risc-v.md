@@ -11,7 +11,7 @@ description: >-
   Una introducción gentil al mundo de las unidades de procesamiento modulares de
   código abierto.
 readingTime: 10 min
-contentHash: addd194b86866e9ff4caac7c94bae117dace4f14e68add7c6721291361277cf0
+contentHash: 45d1c6bdd6ae4dc5c1b4c926c6a4247ad98dc1159cbf465062ee4d1e07e7c56e
 supabaseId: 89f46326-83bd-4359-b32e-4f298f2a4147
 ---
 
@@ -159,7 +159,7 @@ Es esencialmente un problema alrededor del **control propietario**. Si querías 
 
 <figure>
   <img
-    src="/images/wtf-is/risc-v/pay-here.jpg" 
+    src="/images/wtf-is/risc-v/pay-here.png" 
     alt="Una pintura antigua de un hombre pidiendo pago"
     width="500"
   />

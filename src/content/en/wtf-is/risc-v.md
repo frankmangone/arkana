@@ -10,7 +10,7 @@ tags:
 description: 'A gentle intro to the world of open-source, modular processing units.'
 readingTime: 10 min
 mediumUrl: 'https://medium.com/@francomangone18/wtf-is-risc-v-4cf8399059fb'
-contentHash: a59a2def4d4bf7f9ac6b1fe552d0c87f5532cbf78863a3452f63fd0c7c68a98f
+contentHash: 8208ac8342182ae1a8a9acbc9f4cc902d784fafc8d90c7d98d464904f05f7fb4
 supabaseId: 1f509bee-3152-4278-b0bf-f5d60bc34dd5
 ---
 
@@ -158,7 +158,7 @@ It’s essentially an issue around **proprietary control**. If you wanted to use
 
 <figure>
   <img
-    src="/images/wtf-is/risc-v/pay-here.jpg" 
+    src="/images/wtf-is/risc-v/pay-here.png" 
     alt="An old painting of a man asking for payment"
     width="500"
   />
