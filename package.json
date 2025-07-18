@@ -11,6 +11,7 @@
     "calculate-hashes": "node scripts/calculate-hashes.js",
     "prebuild": "npm run calculate-hashes",
     "build:search": "ts-node --project scripts/tsconfig.json scripts/extract-search-data/index.ts",
+    "index:article": "ts-node --project scripts/tsconfig.json scripts/indexing/index.one.ts",
     "sync": "ts-node --project scripts/tsconfig.json scripts/sync-to-supabase.ts",
     "sync:all": "ts-node --project scripts/tsconfig.json scripts/sync-all-to-supabase.ts",
     "scrap:medium": "ts-node --project scripts/tsconfig.json scripts/medium-scraper/index.ts"
