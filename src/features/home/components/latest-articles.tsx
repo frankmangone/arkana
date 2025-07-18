@@ -1,17 +1,13 @@
 import Link from "next/link";
-import { PostPreview } from "@/lib/posts";
 import { FeaturedPostCard } from "@/components/custom/featured-post-card";
-import { getStoreDictionary, getStoreLanguage } from "../utils/store";
+import { store } from "../store";
 
-interface LatestArticlesProps {
-  latestPosts: PostPreview[];
-}
-
-export async function LatestArticles({ latestPosts }: LatestArticlesProps) {
+export async function LatestArticles() {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://arkana.blog";
 
-  const lang = await getStoreLanguage()!;
-  const d = await getStoreDictionary();
+  const lang = store.getLanguage();
+  const d = store.getDictionary();
+  const latestPosts = store.get("latestPosts")!;
 
   return (
     <div className="w-full">

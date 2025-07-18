@@ -1,7 +1,7 @@
-import { getStoreDictionary } from "../utils/store";
+import { store } from "../store";
 
-export async function IntroSection() {
-  const dict = await getStoreDictionary();
+export function IntroSection() {
+  const dict = store.getDictionary();
 
   return (
     <section className="w-full min-h-[30vh] flex flex-col md:flex-row items-center md:pt-12">
