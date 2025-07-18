@@ -2,6 +2,7 @@ import { HomePage } from "@/features/home";
 import fs from "fs/promises";
 import path from "path";
 import { HomeLayout } from "@/components/layouts/home-layout";
+import { Metadata } from "next";
 
 interface HomeParams {
   lang: string;
@@ -10,6 +11,11 @@ interface HomeParams {
 interface HomeProps {
   params: Promise<HomeParams>;
 }
+
+export const metadata: Metadata = {
+  title: "Arkana",
+  description: "Where complexity meets clarity",
+};
 
 export async function generateStaticParams() {
   const contentPath = path.join(process.cwd(), "src", "content");

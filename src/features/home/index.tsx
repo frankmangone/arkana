@@ -2,8 +2,8 @@
 import { LatestArticles } from "./components/latest-articles";
 import { IntroSection } from "./components/intro-section";
 import { getLatestPosts } from "./utils/fetch";
-import { store } from "./store";
 import { ClientSearch } from "./components/search";
+import { getDictionary } from "@/lib/dictionaries";
 
 interface HomePageProps {
   lang: string;
@@ -12,17 +12,14 @@ interface HomePageProps {
 export async function HomePage(props: HomePageProps) {
   const { lang } = props;
 
-  await store.initialize(lang);
-  const dict = store.getDictionary();
-
+  const dict = await getDictionary(lang);
   const latestPosts = await getLatestPosts(lang);
-  store.set("latestPosts", latestPosts);
 
   return (
     <>
-      <IntroSection />
+      <IntroSection dictionary={dict} />
       <ClientSearch lang={lang} dictionary={dict} />
-      <LatestArticles />
+      <LatestArticles lang={lang} dictionary={dict} latestPosts={latestPosts} />
       {/* <FeaturedPosts lang={lang} dictionary={dict} /> */}
     </>
   );
