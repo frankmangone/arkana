@@ -285,9 +285,11 @@ async function _convertHtmlToMarkdown(
 
                 // Add figure placeholder with local file reference
                 content.push(
-                  `\n<figure\n\tsrc="./${filename}"\n\talt="" ${
-                    caption ? `\n\ttitle="${caption.replace(/…/g, "...")}"` : ""
-                  }\n/>\n`
+                  `\n<figure>\n\t<img\n\t\tsrc="./${filename}"\n\t\talt="" ${
+                    caption
+                      ? `\n\t\ttitle="${caption.replace(/…/g, "...")}"`
+                      : ""
+                  }\n\t/>\n</figure>\n`
                 );
               }
             }
