@@ -24,15 +24,16 @@ export function FeaturedPostCard(props: FeaturedPostCardProps) {
   const isLarge = variant === "large";
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://arkana.blog";
 
+  const thumbnail = post.thumbnail
+    ? `${baseUrl}${post.thumbnail}`
+    : "/placeholder.svg";
+
+  const date = formatDate(new Date(post.date), lang);
+
   const handleAuthorClick = (e: React.MouseEvent) => {
     e.preventDefault();
     router.push(`${baseUrl}/${lang}/writers/${post.author.slug}`);
   };
-
-  const thumbnail = post.thumbnail
-    ? `${baseUrl}${post.thumbnail}`
-    : "/placeholder.svg";
-  const date = formatDate(new Date(post.date), lang);
 
   return (
     <div className="group flex flex-col items-center">
@@ -41,13 +42,13 @@ export function FeaturedPostCard(props: FeaturedPostCardProps) {
         className="block w-full"
       >
         <div
-          className={`grid grid-cols-1 ${
-            !isLarge ? "md:grid-cols-2 gap-4 h-40" : ""
+          className={`grid grid-cols-2 gap-4 ${
+            isLarge ? "md:grid-cols-1 md:gap-0" : "md:grid-cols-2 h-40"
           }`}
         >
           <div
-            className={`relative overflow-hidden hidden md:block ${imageClassName} ${
-              isLarge ? "h-80 mb-4" : "h-40"
+            className={`relative overflow-hidden ${imageClassName} h-40 ${
+              isLarge ? "md:h-80 md:mb-4" : "md:h-40"
             }`}
           >
             <Image
@@ -78,8 +79,8 @@ export function FeaturedPostCard(props: FeaturedPostCardProps) {
               </div>
               <div className="flex items-start justify-between">
                 <h2
-                  className={`font-bold mb-2 text-primary-500 group-hover:text-primary-600 transition-colors line-clamp-1 ${
-                    isLarge ? "text-2xl" : "text-xl"
+                  className={`font-bold mb-2 text-xl text-primary-500 group-hover:text-primary-600 transition-colors line-clamp-1 ${
+                    isLarge ? "md:text-2xl" : ""
                   }`}
                 >
                   {post.title}
@@ -87,8 +88,8 @@ export function FeaturedPostCard(props: FeaturedPostCardProps) {
                 <ArrowUpRight className="h-5 w-5 mt-1 opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
               <p
-                className={`text-gray-400 mb-4 line-clamp-2 ${
-                  !isLarge ? "text-sm mb-3" : ""
+                className={`text-gray-400 mb-3 line-clamp-2 text-sm ${
+                  isLarge ? "md:text-md md:mb-4" : ""
                 }`}
               >
                 {post.description}
