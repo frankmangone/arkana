@@ -7,7 +7,7 @@ import { loadFile } from "./load-file";
  * Process an article and extract clean, filtered words
  * @param {string} filePath - The path to the file
  */
-export function indexArticle(filePath: string) {
+export async function indexArticle(filePath: string) {
   console.log("Indexing article:", filePath);
 
   const { content, language } = loadFile(filePath);
@@ -17,12 +17,13 @@ export function indexArticle(filePath: string) {
   console.log("Processing article:", title);
   console.log("Language:", language);
 
-  const filteredWords = tokenizeAndFilter(cleanText, language);
+  const filteredWords = await tokenizeAndFilter(cleanText, language);
   const wordFrequencies = countWords(filteredWords);
 
   // console.log("Clean text:", cleanText);
-
-  console.log("Word frequencies:", wordFrequencies);
+  console.log("Word frequencies:", wordFrequencies.slice(0, 100));
+  console.log("Word frequencies:", wordFrequencies.slice(100, 200));
+  console.log("Word frequencies:", wordFrequencies.slice(200, 300));
 
   //   return {
   //     title: article.title,

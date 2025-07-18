@@ -1,12 +1,17 @@
 import { STOP_WORDS } from "../stop-words";
+import { filterVerbsFallback } from "./filter-verbs";
+import { filterVerbsPython } from "./filter-verbs";
 
 /**
  * Tokenize text into words and filter stop words
  * @param {string} text - The text to tokenize and filter
  * @param {string} language - The language of the text
- * @returns {string[]} The filtered words
+ * @returns {Promise<string[]>} The filtered words
  */
-export function tokenizeAndFilter(text: string, language: string): string[] {
+export async function tokenizeAndFilter(
+  text: string,
+  language: string
+): Promise<string[]> {
   // Convert to lowercase and split into words
   const words = text
     .toLowerCase()
@@ -21,7 +26,20 @@ export function tokenizeAndFilter(text: string, language: string): string[] {
     (word) => !stopWords.has(word) && word.length > 2
   );
 
-  console.log("Total filtered words:", filteredWords.length);
+  // Filter out verbs using Python spacy (with fallback)
+  let finalWords: string[];
 
-  return filteredWords;
+  try {
+    console.log("Filtering verbs with Python spacy...");
+    finalWords = await filterVerbsPython(filteredWords.join(" "), language);
+    console.log("Verb filtering completed with Python spacy");
+  } catch (error) {
+    console.log(
+      "Python verb filtering failed, using fallback:",
+      (error as Error).message
+    );
+    finalWords = filterVerbsFallback(filteredWords, language);
+  }
+
+  return finalWords;
 }
