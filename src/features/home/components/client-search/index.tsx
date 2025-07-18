@@ -4,13 +4,13 @@ import { useState, useEffect, useRef } from "react";
 import { articlesService, type ArticleListItem } from "@/lib/supabase";
 import { SearchResultCard } from "./search-result-card";
 
-interface StandaloneSearchProps {
+interface ClientSearchProps {
   lang: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   dictionary: any;
 }
 
-export function StandaloneSearch({ lang, dictionary }: StandaloneSearchProps) {
+export function ClientSearch({ lang, dictionary }: ClientSearchProps) {
   const [searchTerm, setSearchTerm] = useState("");
   const [results, setResults] = useState<ArticleListItem[]>([]);
   const [loading, setLoading] = useState(false);

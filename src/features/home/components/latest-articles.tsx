@@ -1,20 +1,17 @@
 import Link from "next/link";
 import { PostPreview } from "@/lib/posts";
 import { FeaturedPostCard } from "@/components/custom/featured-post-card";
+import { getStoreDictionary, getStoreLanguage } from "../utils/store";
 
 interface LatestArticlesProps {
-  lang: string;
   latestPosts: PostPreview[];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  dictionary?: any;
 }
 
-export function LatestArticles({
-  lang,
-  latestPosts,
-  dictionary,
-}: LatestArticlesProps) {
+export async function LatestArticles({ latestPosts }: LatestArticlesProps) {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://arkana.blog";
+
+  const lang = await getStoreLanguage()!;
+  const d = await getStoreDictionary();
 
   return (
     <div className="w-full">
@@ -27,10 +24,10 @@ export function LatestArticles({
         <div className="container z-10 mx-auto px-4 py-8 md:px-6 lg:px-8 max-w-8xl">
           <div className="mb-8">
             <h1 className="text-4xl font-bold mb-2">
-              {dictionary?.home?.recentPosts?.title || "Recent blog posts"}
+              {d?.home?.recentPosts?.title || "Recent blog posts"}
             </h1>
             <p className="text-gray-400">
-              {dictionary?.home?.recentPosts?.description ||
+              {d?.home?.recentPosts?.description ||
                 "Explore the latest insights and tutorials from our team"}
             </p>
           </div>
@@ -64,7 +61,7 @@ export function LatestArticles({
               href={`${baseUrl}/${lang}/blog`}
               className="inline-block px-12 py-3 text-white transition-colors bg-primary-500 hover:bg-primary-600"
             >
-              {dictionary?.blog?.viewAllPosts || "View All Articles"}
+              {d?.blog?.viewAllPosts || "View All Articles"}
             </Link>
           </div>
         </div>
