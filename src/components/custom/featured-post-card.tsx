@@ -42,14 +42,14 @@ export function FeaturedPostCard(props: FeaturedPostCardProps) {
         className="block w-full"
       >
         <div
-          className={`grid grid-cols-2 gap-4 ${
+          className={`grid gap-4 grid-cols-5 ${
             isLarge ? "md:grid-cols-1 md:gap-0" : "md:grid-cols-2 h-40"
           }`}
         >
           <div
-            className={`relative overflow-hidden ${imageClassName} h-40 ${
-              isLarge ? "md:h-80 md:mb-4" : "md:h-40"
-            }`}
+            className={`relative overflow-hidden col-span-2 md:col-span-1 ${
+              imageClassName ?? ""
+            } h-40 ${isLarge ? "md:h-80 md:mb-4" : "md:h-40"}`}
           >
             <Image
               src={thumbnail}
@@ -60,18 +60,18 @@ export function FeaturedPostCard(props: FeaturedPostCardProps) {
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background opacity-90" />
           </div>
           <div
-            className={`flex flex-col justify-between ${
-              !isLarge ? "h-full" : ""
+            className={`flex flex-col justify-between overflow-hidden col-span-3 md:col-span-1 ${
+              !isLarge ? "md:h-full" : ""
             }`}
           >
-            <div>
-              <div className="flex justify-between gap-3 mb-2 text-sm text-gray-400">
-                <span>{date}</span>
-                <span className="inline-flex items-center">
-                  <User className="h-3 w-3 mr-1" />
+            <div className="overflow-hidden">
+              <div className="flex justify-between gap-3 mb-2 text-sm text-gray-400 min-w-0">
+                <span className="flex-shrink-0">{date}</span>
+                <span className="inline-flex items-center min-w-0 flex-1 justify-end">
+                  <User className="h-3 w-3 mr-1 flex-shrink-0" />
                   <button
                     onClick={handleAuthorClick}
-                    className="hover:text-primary-500 cursor-pointer transition-colors"
+                    className="hover:text-primary-500 cursor-pointer transition-colors truncate"
                   >
                     {post.author.name}
                   </button>
@@ -79,21 +79,23 @@ export function FeaturedPostCard(props: FeaturedPostCardProps) {
               </div>
               <div className="flex items-start justify-between">
                 <h2
-                  className={`font-bold mb-2 text-xl text-primary-500 group-hover:text-primary-600 transition-colors line-clamp-1 ${
+                  className={`font-bold mb-2 text-xl text-primary-500 group-hover:text-primary-600 transition-colors line-clamp-2 md:line-clamp-1 flex-1 min-w-0 ${
                     isLarge ? "md:text-2xl" : ""
                   }`}
                 >
                   {post.title}
                 </h2>
-                <ArrowUpRight className="h-5 w-5 mt-1 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <ArrowUpRight className="h-5 w-5 mt-1 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0 ml-2" />
               </div>
-              <p
-                className={`text-gray-400 mb-3 line-clamp-2 text-sm ${
-                  isLarge ? "md:text-md md:mb-4" : ""
-                }`}
-              >
-                {post.description}
-              </p>
+              <div className="hidden md:block">
+                <p
+                  className={`text-gray-400 mb-3 text-sm line-clamp-2 ${
+                    isLarge ? "md:text-md md:mb-4" : ""
+                  }`}
+                >
+                  {post.description}
+                </p>
+              </div>
             </div>
             <div className="flex flex-wrap gap-2 line-clamp-1 h-6 overflow-hidden">
               {post.tags.map((tag) => (
