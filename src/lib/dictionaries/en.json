@@ -13,6 +13,11 @@
       "title": "Recent blog posts",
       "description": "Explore the latest insights and tutorials from our team"
     },
+    "readingLists": {
+      "title": "Reading Lists",
+      "description": "Curated collections of articles organized by topic to help guide your learning journey.",
+      "viewAll": "View reading lists"
+    },
     "intro": {
       "title": "Welcome to Arkana",
       "meetWriters": "Meet the Writers",

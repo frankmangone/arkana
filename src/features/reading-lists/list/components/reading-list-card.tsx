@@ -67,7 +67,7 @@ export function ReadingListCard(props: ReadingListCardProps) {
           </h2>
 
           {list.ongoing && (
-            <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-primary-500/20 text-primary-500">
+            <span className="text-xs font-medium px-2 py-0.5 rounded-none bg-primary-500/20 text-primary-500">
               {dictionary.readingLists.ongoing}
             </span>
           )}

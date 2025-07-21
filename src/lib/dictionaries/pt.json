@@ -13,6 +13,11 @@
       "title": "Postagens recentes",
       "description": "Explore as últimas dicas e tutoriais da nossa equipe"
     },
+    "readingLists": {
+      "title": "Listas de Leitura",
+      "description": "Coleções selecionadas de artigos organizados por tópico para guiar sua jornada de aprendizado.",
+      "viewAll": "Ver listas de leitura"
+    },
     "intro": {
       "title": "Bem-vindo à Arkana",
       "descriptionBig": "Explore temas complexos e abstratos como nunca antes",

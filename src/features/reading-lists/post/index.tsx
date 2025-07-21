@@ -4,7 +4,7 @@ import { Post } from "@/lib/types";
 import { getWriter } from "@/lib/writers";
 import { getReadingList } from "@/lib/reading-lists";
 import Script from "next/script";
-import { Navigation } from "./navigation";
+import { Navigation } from "./components/navigation";
 
 interface ReadingListPostPageProps {
   lang: string;
