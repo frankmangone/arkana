@@ -240,10 +240,6 @@ figure {
   align-items: center;
 }
 
-figure div {
-  border-radius: 0.5rem;
-}
-
 figure figcaption {
   text-align: center;
   color: #7f7e84;

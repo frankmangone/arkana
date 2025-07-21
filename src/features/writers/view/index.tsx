@@ -4,7 +4,7 @@ import type { PostPreview } from "@/lib/posts";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 import { WriterArkanaStrip } from "@/features/writers/view/components/writer-arkana-strip";
-import { PostCard } from "@/components/post-card";
+import { PostCard } from "@/components/custom/post-card";
 import { Pagination } from "@/components/pagination";
 import { OrganizationBadge } from "./components/organization-badge";
 import Link from "next/link";

@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { /* User, */ ArrowUpRight } from "lucide-react";
 // import { formatDate } from "@/lib/date-utils";
-import { Tag } from "@/components/tag";
+import { Tag } from "@/components/custom/tag";
 
 // Assuming ArticleListItem has these fields - adjust as needed
 interface ArticleListItem {

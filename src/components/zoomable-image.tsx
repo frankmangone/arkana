@@ -63,7 +63,7 @@ export function ZoomableImage({
     <>
       <figure className="w-full my-6">
         <div
-          className={`relative ${
+          className={`relative rounded-none ${
             isZoomable ? "cursor-zoom-in" : ""
           } ${className}`}
           onClick={isZoomable ? toggleZoom : undefined}
@@ -76,7 +76,7 @@ export function ZoomableImage({
             className={`${width ? "" : "w-full"}`}
           />
           {isZoomable && (
-            <div className="absolute top-2 right-2 bg-black/70 text-white p-1  text-xs px-2 zoom-indicator">
+            <div className="absolute top-2 right-2 bg-black/70 text-white p-1 text-xs px-2 zoom-indicator">
               Click to zoom
             </div>
           )}

@@ -1,5 +1,5 @@
 import { getTagDisplayName } from "@/lib/tags";
-import { Badge } from "./ui/badge";
+import { Badge } from "../ui/badge";
 
 interface TagProps {
   tag: string;
@@ -13,7 +13,9 @@ export function Tag(props: TagProps) {
 
   return (
     // <Link key={tag} href={`/${lang}/blog?tag=${tag}`}>
-    <Badge variant="outline">{getTagDisplayName(tag, lang)}</Badge>
+    <Badge variant="outline" className="rounded-none">
+      {getTagDisplayName(tag, lang)}
+    </Badge>
     // </Link>
   );
 }

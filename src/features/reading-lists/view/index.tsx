@@ -3,7 +3,7 @@ import Link from "next/link";
 import { getDictionary } from "@/lib/dictionaries";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
-import { PostCard } from "@/components/post-card";
+import { PostCard } from "@/components/custom/post-card";
 import { getPostsFromReadingList } from "./fetch";
 
 interface ReadingListPageProps {
