@@ -4,20 +4,21 @@ import { getDictionary } from "@/lib/dictionaries";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { PostCard } from "@/components/post-card";
+import { getPostsFromReadingList } from "./fetch";
 
 interface ReadingListPageProps {
   lang: string;
   readingList: ReadingList;
-  // TODO: Improve this type
-  posts: any[]; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 export async function ReadingListPage(props: ReadingListPageProps) {
-  const { lang, readingList, posts } = props;
+  const { lang, readingList } = props;
 
   const dict = await getDictionary(lang);
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://arkana.blog";
   const backUrl = `${baseUrl}/${lang}/reading-lists`;
+
+  const posts = await getPostsFromReadingList({ readingList, lang });
 
   return (
     <div className="container">
@@ -42,9 +43,19 @@ export async function ReadingListPage(props: ReadingListPageProps) {
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {posts.map((item) => (
-          <PostCard key={item.slug} post={item} lang={lang} />
-        ))}
+        {posts.map((item, index) => {
+          const readingListItem = readingList.items[index];
+          const url = `${baseUrl}/${lang}/reading-lists/${readingList.id}/${readingListItem.id}`;
+
+          return (
+            <PostCard
+              key={item.slug}
+              post={item}
+              lang={lang}
+              overrideUrl={url}
+            />
+          );
+        })}
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 export interface ReadingListItem {
+  id: string;
   slug: string;
   order?: number;
   description?: string;

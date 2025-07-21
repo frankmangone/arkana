@@ -2,7 +2,7 @@ import fs from "fs/promises";
 import path from "path";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { readingLists } from "@/lib/reading-lists";
+import { getAllReadingLists } from "@/lib/reading-lists";
 import { MainLayout } from "@/components/layouts/main-layout";
 import { ReadingListsPage } from "@/features/reading-lists/list";
 import { getDictionary } from "@/lib/dictionaries";
@@ -42,7 +42,7 @@ export async function generateStaticParams() {
 
 export default async function Page({ params }: ReadingListsPageProps) {
   const { lang } = await params;
-  const localizedReadingLists = readingLists[lang].getAllReadingLists();
+  const localizedReadingLists = getAllReadingLists(lang);
   const dict = await getDictionary(lang);
 
   if (!localizedReadingLists) {

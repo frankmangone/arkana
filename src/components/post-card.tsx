@@ -13,24 +13,23 @@ interface PostCardProps {
   post: PostPreview;
   lang: string;
   imageClassName?: string;
+  overrideUrl?: string;
 }
 
 export function PostCard(props: PostCardProps) {
-  const { post, lang, imageClassName } = props;
+  const { post, lang, imageClassName, overrideUrl } = props;
   const router = useRouter();
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://arkana.blog";
+  const url = overrideUrl ?? `${baseUrl}/${lang}/blog/${post.slug}`;
 
   const handleAuthorClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    router.push(`${baseUrl}/${lang}/writers/${post.author.slug}`);
+    router.push(url);
   };
 
   return (
     <div className="group flex flex-col items-center">
-      <Link
-        href={`${baseUrl}/${lang}/blog/${post.slug}`}
-        className="block my-2 md:my-0 w-full"
-      >
+      <Link href={url} className="block my-2 md:my-0 w-full">
         <div
           className={`relative h-64 mb-4 overflow-hidden hidden md:block ${imageClassName}`}
         >

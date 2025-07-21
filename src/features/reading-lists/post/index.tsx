@@ -1,51 +1,18 @@
-// import { getDictionary } from "@/lib/dictionaries";
-import { getPostBySlug } from "./actions";
-import { PostHeader } from "../../components/custom/post-header";
-import { Metadata } from "next";
-import { NotFoundInLanguage } from "@/components/not-found-in-language";
-import Script from "next/script";
-import { getWriter } from "@/lib/writers";
 import { PostContent } from "@/components/custom/post-content";
+import { PostHeader } from "@/components/custom/post-header";
+import { Post } from "@/lib/types";
+import { getWriter } from "@/lib/writers";
+import Script from "next/script";
 
-interface PostPageProps {
+interface ReadingListPostPageProps {
   lang: string;
+  id: string;
   slug: string;
+  post: Post;
 }
 
-interface MetadataParams {
-  params: PostPageProps;
-}
-
-export async function generateMetadata({
-  params,
-}: MetadataParams): Promise<Metadata> {
-  const { lang, slug } = await params;
-  const post = await getPostBySlug(slug, lang);
-
-  if (!post) {
-    return {
-      title: "Post Not Found",
-      description: "The requested post could not be found.",
-    };
-  }
-
-  return {
-    title: post.metadata.title,
-    description: post.metadata.description,
-    authors: [{ name: post.metadata.author }],
-    keywords: post.metadata.tags,
-  };
-}
-
-export async function PostPage(props: PostPageProps) {
-  const { lang, slug } = props;
-
-  // const dict = await getDictionary(lang);
-  const post = await getPostBySlug(slug, lang);
-
-  if (!post) {
-    return <NotFoundInLanguage lang={lang} />;
-  }
+export async function ReadingListPostPage(props: ReadingListPostPageProps) {
+  const { lang, slug, post } = props;
 
   // Get the writer information
   const writer = getWriter(post.metadata.author);

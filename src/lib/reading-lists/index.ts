@@ -1,11 +1,12 @@
-import * as en from "./en";
-import * as es from "./es";
-import * as pt from "./pt";
+import { readingLists as en } from "./en";
+import { readingLists as es } from "./es";
+import { readingLists as pt } from "./pt";
+import { ReadingList } from "./types";
 
 export * from "./types";
+export * from "./fetch";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const readingLists: Record<string, any> = {
+export const readingLists: Record<string, ReadingList[]> = {
   en,
   es,
   pt,
