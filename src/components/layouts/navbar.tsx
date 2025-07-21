@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { AuthButton } from "../auth/auth-button";
 
 interface NavbarProps {
   lang: string;
@@ -49,7 +50,7 @@ export const Navbar = async (props: NavbarProps) => {
           arkana
         </Link>
 
-        <div className="flex items-center">
+        <div className="flex items-center gap-2">
           {/* Desktop navigation */}
           <div className="hidden md:flex items-center">
             <Link
@@ -67,6 +68,7 @@ export const Navbar = async (props: NavbarProps) => {
           </div>
 
           <LanguageSwitcher />
+          {process.env.NEXT_PUBLIC_AUTH_ENABLED === "true" && <AuthButton />}
 
           {/* Mobile hamburger menu */}
           <div className="md:hidden">

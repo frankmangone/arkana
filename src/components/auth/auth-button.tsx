@@ -1,0 +1,64 @@
+"use client";
+
+import { Button } from "@/components/ui/button";
+import { supabase } from "@/lib/supabase/client";
+import { useAuth } from "../providers/auth-provider";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { User, User2 } from "lucide-react";
+
+export function AuthButton() {
+  const { user } = useAuth();
+
+  const handleLogin = async () => {
+    await supabase.auth.signInWithOAuth({
+      provider: "github",
+      options: {
+        redirectTo: `${window.location.origin}/auth/callback`,
+      },
+    });
+  };
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+  };
+
+  if (user) {
+    return (
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="ghost" size="icon" className="h-[50px] px-6">
+            <User2 className="h-5 w-5" />
+            <span className="sr-only">User menu</span>
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end" className="w-56">
+          <DropdownMenuItem className="py-3 text-base">
+            {user.email}
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            className="cursor-pointer py-3 text-base"
+            onClick={handleLogout}
+          >
+            Sign out
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    );
+  }
+
+  return (
+    <Button
+      variant="ghost"
+      onClick={handleLogin}
+      className="h-[40px] rounded-none py-2 px-4 flex cursor-pointer items-center gap-1 text-base hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500"
+    >
+      <User className="h-7 w-7 sm:h-6 sm:w-6" />
+      Sign in
+    </Button>
+  );
+}

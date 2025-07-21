@@ -5,6 +5,7 @@ import "./globals.css";
 import "katex/dist/katex.min.css";
 import "prismjs/themes/prism-tomorrow.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { AuthProvider } from "@/components/providers/auth-provider";
 import Script from "next/script";
 
 const spaceGrotesk = Space_Grotesk({
@@ -234,7 +235,7 @@ export default async function RootLayout({
           forcedTheme="dark"
           disableTransitionOnChange
         >
-          {children}
+          <AuthProvider>{children}</AuthProvider>
         </ThemeProvider>
       </body>
     </html>
