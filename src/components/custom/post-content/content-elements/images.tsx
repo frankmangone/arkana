@@ -1,4 +1,4 @@
-import { ZoomableImage } from "@/components/zoomable-image";
+import { ZoomableImage } from "./zoomable-image";
 import { ImgHTMLAttributes } from "react";
 
 export function CustomImage({

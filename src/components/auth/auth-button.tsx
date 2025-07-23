@@ -16,9 +16,13 @@ export function AuthButton() {
 
   const handleLogin = async () => {
     await supabase.auth.signInWithOAuth({
-      provider: "github",
+      provider: "google",
       options: {
         redirectTo: `${window.location.origin}/auth/callback`,
+        queryParams: {
+          access_type: "offline",
+          prompt: "consent",
+        },
       },
     });
   };
