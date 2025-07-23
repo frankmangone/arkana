@@ -15,7 +15,7 @@ description: >-
 readingTime: 14 min
 mediumUrl: >-
   https://medium.com/@francomangone18/elliptic-curves-in-depth-part-7-a62306e99089
-contentHash: a95e5059288649e74f1ec5aef0ae3c5f3f92c56b245140e764bc8952e2130455
+contentHash: 48433d216d079612c4bf11397c54b8697fa4ab3744233e7dcbbd990c5633ddeb
 supabaseId: 195db18e-c038-4462-8cb6-d5b97b8e60bd
 ---
 
@@ -35,7 +35,7 @@ Well, if you've felt things have been complicated so far... Well, grab onto what
 
 Because today, we'll be talking about **pairings**. And in stark contrast to my [previous article on the topic](/en/blog/cryptography-101/pairings), this time we'll get to the finer and nitty-gritty details.
 
-As a consequence, pairings will be tackled in **two consecutive deliveries**: the first one (this one) will focus on setting up some foundations upon which we'll later define pairings in the second part (next article).
+As a consequence, pairings will be tackled in **three consecutive deliveries**: the first one (this one) will focus on setting up some foundations upon which we'll later define pairings in the second part (next article), and then discuss some other details about computation to wrap things up in the third part.
 
 It's gonna be a long one. Take a deep breath. Grab a cup o' coffee. Ready? Let's get started.
 
@@ -395,4 +395,4 @@ Then we proceeded to present those groups, exploring the r-torsion in field exte
 
 Of course, we've missed the cherry on top: what role these things have in the construction of pairings.
 
-And that will be the topic for the next article. See you then!
+And that will be the topic for the [next article](/en/blog/elliptic-curves-in-depth/part-8). See you then!

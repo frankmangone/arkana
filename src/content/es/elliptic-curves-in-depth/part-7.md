@@ -13,7 +13,7 @@ description: >-
   Estableciendo las bases para luego definir emparejamientos, ¡este artículo
   explora los grupos de torsión!
 readingTime: 14 min
-contentHash: 4c109808908b57a3f357dcdbb109109c8050494047ab2444c603c0d9f97e1371
+contentHash: e76a3df082ecbd36a649e599d4f6280da5a77a77ab8f52c39b6ccf04ef4f509a
 supabaseId: 2b3674b3-ec47-4164-ba73-1536fbed2b94
 ---
 
@@ -33,7 +33,7 @@ Bueno, si has sentido que las cosas han sido complicadas hasta ahora... Agárrat
 
 Porque hoy, hablaremos de **emparejamientos**. Y en un fuerte contraste con mi [artículo anterior sobre el tema](/es/blog/cryptography-101/pairings), esta vez llegaremos a los detalles más finos y complejos.
 
-Como consecuencia, los emparejamientos serán abordados en **dos entregas consecutivas**: la primera (esta) se centrará en establecer algunos fundamentos sobre los que luego definiremos los emparejamientos en la segunda parte (próximo artículo).
+Como consecuencia, los emparejamientos serán abordados en **tres entregas consecutivas**: la primera (esta) se centrará en establecer algunos fundamentos sobre los que luego definiremos los emparejamientos en la segunda parte (próximo artículo), y luego discutiremos algunos otros detalles para cerrar este asunto en la tercera parte.
 
 Va a ser un artículo largo. Respira profundo. Toma una taza de café. ¿Listo? Comencemos.
 
@@ -376,7 +376,7 @@ Si has llegado a este punto, no hay manera de que no sientas que has sido golpea
   <img
     src="/images/elliptic-curves-in-depth/part-7/crash.png" 
     alt="Un hombre siendo golpeado por un coche"
-    title="Yupiiii~"
+    title="Weee~"
     width="500"
   />
 </figure>
@@ -393,4 +393,4 @@ Luego procedimos a presentar esos grupos, explorando la r-torsión en extensione
 
 Por supuesto, nos hemos perdido la cereza del pastel: qué papel tienen estas cosas en la construcción de emparejamientos.
 
-Y ese será el tema del próximo artículo. ¡Nos vemos entonces!
+Y ese será el tema del [próximo artículo](/es/blog/elliptic-curves-in-depth/part-8). ¡Nos vemos entonces!
