@@ -35,14 +35,17 @@ export function AuthButton() {
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="ghost" size="icon" className="h-[50px] px-6">
+          <Button
+            variant="ghost"
+            className="h-[40px] rounded-none py-2 px-4 flex cursor-pointer items-center gap-1 text-base hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500"
+          >
             <User2 className="h-5 w-5" />
             <span className="sr-only">User menu</span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-56">
           <DropdownMenuItem className="py-3 text-base">
-            {user.email}
+            <span className="truncate block w-full">{user.email}</span>
           </DropdownMenuItem>
           <DropdownMenuItem
             className="cursor-pointer py-3 text-base"

@@ -6,6 +6,7 @@ import { NotFoundInLanguage } from "@/components/not-found-in-language";
 import Script from "next/script";
 import { getWriter } from "@/lib/writers";
 import { PostContent } from "@/components/custom/post-content";
+import { PostActions } from "@/components/custom/post-actions";
 
 interface PostPageProps {
   lang: string;
@@ -98,6 +99,7 @@ export async function PostPage(props: PostPageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       {header}
+      {process.env.NEXT_PUBLIC_AUTH_ENABLED === "true" && <PostActions />}
       <PostContent post={post} />
       {/* <PostFooter post={post} lang={lang} dictionary={dict} /> */}
       {/* <RelatedPosts
