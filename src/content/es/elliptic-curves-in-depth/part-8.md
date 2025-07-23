@@ -1,6 +1,6 @@
 ---
 title: Curvas Elípticas En Profundidad (Parte 8)
-date: "2025-07-23"
+date: '2025-07-23'
 author: frank-mangone
 thumbnail: /images/elliptic-curves-in-depth/part-8/barassi.jpg
 tags:
@@ -14,7 +14,7 @@ description: >-
   de los pairings.
 readingTime: 11 min
 contentHash: 36ac4a90c78fd0159a98a169329c3cb8784f15a3a7bcae2a5ba710e285929c73
-supabaseId: null
+supabaseId: c1d33b47-b56a-48d7-99c5-117bce9880f6
 ---
 
 Después de nuestra expedición a través de las enmarañadas junglas de los [grupos de torsión](/es/blog/elliptic-curves-in-depth/part-7), continuamos nuestro viaje presentando los **pairings**.
