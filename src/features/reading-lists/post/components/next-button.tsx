@@ -28,7 +28,7 @@ export async function NextButton(props: NextButtonProps) {
       asChild
       variant="outline"
       size="lg"
-      className="flex h-28 basis-[280px] justify-between items-end gap-2 border-primary-400 dark:border-primary-400"
+      className="flex h-28 md:basis-[280px] justify-between items-end gap-2 border-primary-400 dark:border-primary-400"
     >
       <Link
         href={`/${lang}/reading-lists/${id}/${nextItem.id}`}

@@ -17,7 +17,7 @@ export function Navigation(props: NavigationProps) {
   }
 
   return (
-    <div className="flex gap-4 justify-between items-center mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
+    <div className="flex flex-col md:flex-row gap-4 justify-between items-center mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
       <PrevButton lang={lang} id={id} prevItem={prevItem} />
       <NextButton lang={lang} id={id} nextItem={nextItem} />
     </div>
