@@ -13,7 +13,7 @@ description: >-
   reemplazar la mismísima Blockchain — ¡con un DAG!
 readingTime: 10 min
 contentHash: b16168abf9ad429a6b496db2bcb7a0c7f75c4350583c161fb5b49e94e7c5a652
-supabaseId: null
+supabaseId: 9914da6e-c92e-4a5b-8970-7abcb11f2590
 ---
 
 > Esto es parte de una serie más larga de artículos sobre Blockchain. Si este es el primer artículo que encuentras, te recomiendo comenzar desde el [inicio de la serie](/es/blog/blockchain-101/how-it-all-began).

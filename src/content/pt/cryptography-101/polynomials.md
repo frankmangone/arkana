@@ -1,6 +1,6 @@
 ---
-title: 'Criptografia 101: Polinômios'
-date: '2024-04-24'
+title: "Criptografia 101: Polinômios"
+date: "2024-04-24"
 author: frank-mangone
 thumbnail: /images/cryptography-101/polynomials/parabola-points.webp
 tags:
@@ -13,7 +13,7 @@ description: >-
   criptográficas. Este artigo é dedicado a dar uma breve introdução ao tema
 readingTime: 8 min
 contentHash: ca3a68ea78e9d2a02a7822b273ed6a2a658fd4a98ac9911e2bf4787ce7ba0370
-supabaseId: 4bfb4e45-3f1a-4f90-924f-dc645e9552b3
+supabaseId: aff6e077-b026-4988-8957-adb8ea8a09a4
 ---
 
 > Este é parte de uma série de artigos sobre criptografia. Se este é o primeiro artigo que você encontra, eu recomendo começar do [início da série](/pt/blog/cryptography-101/where-to-start).

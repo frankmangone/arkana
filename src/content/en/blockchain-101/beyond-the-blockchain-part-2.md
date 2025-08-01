@@ -13,7 +13,7 @@ description: >-
   Blockchain itself — with a DAG!
 readingTime: 10 min
 contentHash: cde5aa9b8e036126a0914eab9c053077504774d136ea85db2242025fafe987c2
-supabaseId: null
+supabaseId: 21ab47ef-f058-449c-af49-a0a811556aee
 ---
 
 > This is part of a larger series of articles about Blockchain. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/blockchain-101/how-it-all-began).
