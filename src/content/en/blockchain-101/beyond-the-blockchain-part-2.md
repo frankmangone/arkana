@@ -1,7 +1,7 @@
 ---
-title: "Blockchain 101: Beyond The Blockchain (Part 2)"
+title: 'Blockchain 101: Beyond The Blockchain (Part 2)'
 author: frank-mangone
-date: "2025-08-01"
+date: '2025-08-01'
 thumbnail: /images/blockchain-101/beyond-the-blockchain-part-2/0*jZKjfpyF3KceIwko-1.jpg
 tags:
   - dag
@@ -9,10 +9,11 @@ tags:
   - blockchain
   - ghostdag
 description: >-
-  Continuing with the radical ideas, we know turn our attention to replacing the Blockchain itself — with a DAG!
+  Continuing with the radical ideas, we know turn our attention to replacing the
+  Blockchain itself — with a DAG!
 readingTime: 10 min
-contentHash: # TODO: Add content hash
-supabaseId: # TODO: Add supabase ID
+contentHash: cde5aa9b8e036126a0914eab9c053077504774d136ea85db2242025fafe987c2
+supabaseId: null
 ---
 
 > This is part of a larger series of articles about Blockchain. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/blockchain-101/how-it-all-began).

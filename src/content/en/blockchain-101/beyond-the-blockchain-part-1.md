@@ -1,6 +1,6 @@
 ---
-title: "Blockchain 101: Beyond The Blockchain (Part 1)"
-date: "2025-07-01"
+title: 'Blockchain 101: Beyond The Blockchain (Part 1)'
+date: '2025-07-01'
 author: frank-mangone
 thumbnail: /images/blockchain-101/beyond-the-blockchain-part-1/dag.png
 tags:
@@ -13,7 +13,7 @@ description: >-
   Not everything needs to be a Blockchain to qualify as a Distributed Ledger
   Technology — and today, we start looking at other structures!
 readingTime: 14 min
-contentHash: 5c44131c238d0479296366158fb8d73e1604200596c86ed45f1466a2a9561b1a
+contentHash: ebd66cc7738af29eaef936e741cac7f475da4a892e7bfb527f2a0a7a6eff6d38
 supabaseId: 31a2db62-f310-4b2e-b863-da8c1c2ea8da
 mediumUrl: >-
   https://medium.com/@francomangone18/blockchain-101-beyond-the-blockchain-part-1-4e1f54b90312
