@@ -1,6 +1,6 @@
 ---
-title: 'Blockchain 101: Beyond The Blockchain (Part 1)'
-date: '2025-07-01'
+title: "Blockchain 101: Beyond The Blockchain (Part 1)"
+date: "2025-07-01"
 author: frank-mangone
 thumbnail: /images/blockchain-101/beyond-the-blockchain-part-1/dag.png
 tags:
@@ -362,6 +362,6 @@ And just to clarify, I'm not trying to sell Hedera here, as I haven't really don
 
 Okay! That's enough preaching for a single article.
 
-In the next one, I want to keep exploring these departures from the standard model, but let's try to keep it more familiar. We'll look at a reversion of an old friend, Proof of Work, and what we can do to avoid wasting computational work.
+In the [next one](/en/blog/blockchain-101/beyond-the-blockchain-part-1), I want to keep exploring these departures from the standard model, but let's try to keep it more familiar. We'll look at a reversion of an old friend, Proof of Work, and what we can do to avoid wasting computational work.
 
 Until then, my friends!

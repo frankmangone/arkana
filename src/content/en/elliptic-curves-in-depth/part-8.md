@@ -1,6 +1,6 @@
 ---
 title: Elliptic Curves In-Depth (Part 8)
-date: '2025-07-23'
+date: "2025-07-23"
 author: frank-mangone
 thumbnail: /images/elliptic-curves-in-depth/part-8/barassi.jpg
 tags:

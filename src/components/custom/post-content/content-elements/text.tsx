@@ -54,11 +54,11 @@ export function createHeadingComponent(level: number) {
     // Map heading levels directly to appropriate classes
     const headingClasses = {
       1: "text-4xl font-bold mt-8 mb-4",
-      2: "text-3xl font-bold mt-7 mb-3",
-      3: "text-2xl font-semibold mt-8 mb-2",
-      4: "text-xl font-semibold mt-5 mb-2",
-      5: "text-lg font-medium mt-4 mb-1",
-      6: "text-base font-medium mt-3 mb-1",
+      2: "text-3xl font-bold mt-7 mb-4",
+      3: "text-2xl font-semibold mt-8 mb-3",
+      4: "text-xl font-semibold mt-5 mb-3",
+      5: "text-lg font-medium mt-4 mb-2",
+      6: "text-base font-medium mt-3 mb-2",
     };
 
     const className = `group flex items-center ${

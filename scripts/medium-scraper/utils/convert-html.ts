@@ -162,6 +162,9 @@ async function _convertHtmlToMarkdown(
       "**$1**"
     );
 
+    // Convert strong tags to bold markdown
+    html = html.replace(/<strong[^>]*>(.*?)<\/strong>/g, "**$1**");
+
     // Convert links to markdown format
     html = html.replace(
       /<a[^>]*href="([^"]*)"[^>]*>(.*?)<\/a>/g,
@@ -180,12 +183,18 @@ async function _convertHtmlToMarkdown(
       }
     );
 
+    // Convert code tags to inline code
+    html = html.replace(/<code[^>]*>(.*?)<\/code>/g, "`$1`");
+
     // Load the processed HTML and extract text
     const tempElement = cheerio.load(html);
     let text = tempElement.root().text().trim();
 
     // Replace unicode ellipsis with three dots
     text = text.replace(/…/g, "...");
+
+    // Clean up extra whitespace
+    text = text.replace(/\s+/g, " ");
 
     return text;
   }
@@ -203,7 +212,7 @@ async function _convertHtmlToMarkdown(
   // Process all elements in order
   mainContent
     .find(
-      "h1, h2, p.pw-post-body-paragraph, pre, figure, blockquote, div[role='separator']"
+      "h1, h2, p.pw-post-body-paragraph, pre, figure, blockquote, div[role='separator'], ul, ol"
     )
     .each((_, el) => {
       const $el = $(el);
@@ -226,6 +235,42 @@ async function _convertHtmlToMarkdown(
         const text = processInlineElements($el);
         if (text) {
           content.push(`\n${text}\n`);
+        }
+      }
+      // Process unordered lists
+      else if (tagName === "ul") {
+        console.log(
+          "Found unordered list with",
+          $el.find("li").length,
+          "items"
+        );
+        const listItems: string[] = [];
+        $el.find("li").each((_, liEl) => {
+          const $li = $(liEl);
+          const itemText = processInlineElements($li);
+          if (itemText) {
+            listItems.push(`- ${itemText}`);
+            console.log("List item:", itemText);
+          }
+        });
+        if (listItems.length > 0) {
+          content.push(`\n${listItems.join("\n")}\n`);
+        }
+      }
+      // Process ordered lists
+      else if (tagName === "ol") {
+        console.log("Found ordered list with", $el.find("li").length, "items");
+        const listItems: string[] = [];
+        $el.find("li").each((index, liEl) => {
+          const $li = $(liEl);
+          const itemText = processInlineElements($li);
+          if (itemText) {
+            listItems.push(`${index + 1}. ${itemText}`);
+            console.log("List item:", itemText);
+          }
+        });
+        if (listItems.length > 0) {
+          content.push(`\n${listItems.join("\n")}\n`);
         }
       }
       // Process blockquotes

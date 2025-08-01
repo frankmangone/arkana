@@ -217,6 +217,11 @@ export const readingLists: ReadingList[] = [
         slug: "blockchain-101/beyond-the-blockchain-part-1",
         order: 16,
       },
+      {
+        id: "beyond-the-blockchain-part-2",
+        slug: "blockchain-101/beyond-the-blockchain-part-2",
+        order: 17,
+      },
     ],
   },
   {

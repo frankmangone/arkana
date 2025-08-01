@@ -32,6 +32,11 @@ export const tags: TagDefinition = {
     es: "Blockchain",
     pt: "Blockchain",
   },
+  blockdag: {
+    en: "BlockDAG",
+    es: "BlockDAG",
+    pt: "BlockDAG",
+  },
   commitmentScheme: {
     en: "Commitment Scheme",
     es: "Esquema de Compromiso",
@@ -141,6 +146,11 @@ export const tags: TagDefinition = {
     en: "Gas",
     es: "Gas",
     pt: "Gas",
+  },
+  ghostdag: {
+    en: "GHOSTDAG",
+    es: "GHOSTDAG",
+    pt: "GHOSTDAG",
   },
   groups: {
     en: "Groups",
