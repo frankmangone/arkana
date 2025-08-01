@@ -48,7 +48,7 @@ That’s **wasteful**. All that computational effort put into the discarded bloc
 <figure>
 	<img
 		src="/images/blockchain-101/beyond-the-blockchain-part-2/0*jZKjfpyF3KceIwko-1.jpg"
-		alt=""
+		alt="A miner"
 		title="So you’re saying all that work was for nothing?"
 	/>
 </figure>
@@ -102,7 +102,9 @@ In order to make things work, the folks at Kaspa came up with a consensus algori
 	/>
 </figure>
 
-> GHOST stands for **Greedy Heaviest Observed Sub-Tree**. I don’t think it’s necessarily easy to make out what this is about just by that acronym. So to clarify, it’s essentially a way to give preference mechanisms for fork selection, by choosing the “heavier one”, usually in terms of computational work. This should sound familiar!And DAG, well... You already know what that means!
+> GHOST stands for **Greedy Heaviest Observed Sub-Tree**. I don’t think it’s necessarily easy to make out what this is about just by that acronym. So to clarify, it’s essentially a way to give preference mechanisms for fork selection, by choosing the “heavier one”, usually in terms of computational work. This should sound familiar!
+>
+> And DAG, well... You already know what that means!
 
 To give you a rough idea before we get into the details, what happens is that every single valid block is preserved, but blocks are **not** considered equal when it comes to transaction ordering. That’s really the secret sauce in a nutshell.
 
@@ -143,6 +145,14 @@ Let’s say we possess the current state of the network, in the form of a giant 
 - Calculate the total **weight** of said paths, and choose the **heaviest** one.
 - The tip of the DAG that has the **heaviest subDAG** will be part of the **selected chain**.
 
+<figure>
+	<img
+		src="/images/blockchain-101/beyond-the-blockchain-part-2/ghostdag.webp"
+		alt="A visualization of the DAG"
+		title="Selected chain in orange"
+	/>
+</figure>
+
 Okay, that was surely a mouthful. And as described, pretty much **infeasible**. So let’s unpack a bit, shall we?
 
 ### Block Weight
@@ -175,7 +185,7 @@ We do this is by sort of assigning a **score** to each possible chain, and the m
 
 Or in plain english: we have a **total ordering** of blocks, based on **accumulated weight**!
 
-When putting it all together, the consequence ends up being the same one as in traditional Proof of Work: the chain with the most work **still wins**. However, in this case **every single block** contributes to weight calculation. In this sense, we could say that no work is truly wasted.
+When putting it all together, the consequence ends up being the same one as in traditional Proof of Work: the chain with the most work **still wins**. However, in this case **every single block** can contribute to weight calculation. In this sense, we could say that no work is truly wasted.
 
 And that’s pretty much the bulk of it! We have obtained a deterministic way to determine the **selected chain**, and this one will be the one we interpret as the **history of events** in the network.
 
@@ -192,7 +202,7 @@ And here, GHOSTDAG does something really clever: it processes all transactions i
 <figure>
 	<img
 		src="/images/blockchain-101/beyond-the-blockchain-part-2/1*pKNVG7ljNX_xPnMOoBFfXg-5.png"
-		alt="" 
+		alt="Impressed meme" 
 		title="Woaaah"
 	/>
 </figure>

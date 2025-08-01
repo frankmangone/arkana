@@ -1,6 +1,6 @@
 ---
-title: 'Blockchain 101: Más Allá de la Blockchain (Parte 1)'
-date: '2025-07-01'
+title: "Blockchain 101: Más Allá de la Blockchain (Parte 1)"
+date: "2025-07-01"
 author: frank-mangone
 thumbnail: /images/blockchain-101/beyond-the-blockchain-part-1/dag.png
 tags:
@@ -358,6 +358,6 @@ Y solo para aclarar, no estoy tratando de vender Hedera aquí, como realmente no
 
 ¡Bueno! Eso es suficiente evangelización para un solo artículo.
 
-En el siguiente, quiero seguir explorando estas desviaciones del modelo estándar, pero tratemos de mantenerlo más familiar. Veremos una reversión de un viejo amigo, la Prueba de Trabajo, y qué podemos hacer para evitar desperdiciar trabajo computacional.
+En el [siguiente artículo](/es/blog/blockchain-101/beyond-the-blockchain-part-2), quiero seguir explorando estas desviaciones del modelo estándar, pero tratemos de mantenerlo más familiar. Veremos una reversión de un viejo amigo, la Prueba de Trabajo, y qué podemos hacer para evitar desperdiciar trabajo computacional.
 
 ¡Hasta entonces, mis amigos!

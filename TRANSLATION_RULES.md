@@ -23,6 +23,7 @@ Language-specific rules:
 - In SPANISH, translate the titles of articles starting with `WTF is` as `WTF es`. I want to prpeserve the anglicism!
 - In SPANISH, translate `a lot to gain` (or similar expressions) to `mucho para ganar`, not `mucho que ganar`.
 - In SPANISH, translate `threshold signatures` as `firmas de umbral`.
+- In SPANISH, assume Blockchain to be female. So it's not `un Blockchain`, but `una Blockchain`. Same with other gender-specific prepositions.
 
 - In PORTUGUESE, keep in mind that we're translating to Brazilian portuguese, not portuguese from Portugal.
 - In PORTUGUESE, translate `encryption` or similar words to `encriptação` or their corresponding word. Same for `decryption` and `decriptação`.
@@ -31,3 +32,4 @@ Language-specific rules:
 - In PORTUGUESE, you may use `procurando` as a more informal synonym to `buscando`, if the context is right.
 - In PORTUGUESE, translate `Alice` to `André` and `Bob` to `Bruna`.
 - In PORTUGUESE, translate `threshold signatures` to `Assinaturas de Limite`. And in general, translate `threshold` when talking about cryptographic schemes as `de limite`.
+- In PORTUGUESE, assume Blockchain to be female. So it's not `um Blockchain`, but `uma Blockchain`. Same with other gender-specific prepositions.
