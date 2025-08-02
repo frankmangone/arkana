@@ -10,9 +10,12 @@ interface UserSurveyProps {
 // TODO: Do something about background
 export function UserSurvey({ dictionary }: UserSurveyProps) {
   return (
-    <section className="relative w-full py-8 px-4 my-12 overflow-hidden">
+    <section className="relative w-full py-12 px-4 overflow-hidden">
       {/* Subtle background gradient */}
-      <div className="absolute bg-gradient-to-br from-primary-500/50 via-primary-500/5 to-transparent"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-primary-200/10 to-transparent"></div>
+
+      {/* Decorative gradient orbs */}
+      <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-60 bg-gradient-to-r from-purple-500/15 to-primary-500/15 rounded-full blur-2xl"></div>
 
       <div className="relative flex flex-col gap-8 items-center w-full z-10">
         <div className="w-[400px] relative">

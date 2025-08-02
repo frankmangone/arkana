@@ -14,18 +14,19 @@ export function ReadingLists({ lang, dictionary }: ReadingListsProps) {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://arkana.blog";
 
   return (
-    <section className="relative w-full py-20 mt-12 overflow-hidden">
+    <section className="relative flex flex-col justify-center w-full min-h-160 py-20 mt-12 overflow-hidden">
       {/* Background gradients */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-gray-900 to-background"></div>
-      <div className="absolute inset-0 bg-gradient-to-r from-primary-500/5 via-transparent to-orange-500/5"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-transparent via-primary-500/5 to-transparent"></div>
 
       {/* Decorative gradient orbs */}
-      <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-gradient-to-r from-primary-500/20 to-orange-500/20 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/4 left-1/4 w-48 h-48 bg-gradient-to-r from-purple-500/15 to-primary-500/15 rounded-full blur-2xl"></div>
+      <div className="absolute top-1/3 right-1/4 w-96 h-48 bg-gradient-to-r from-primary-500/20 to-orange-500/20 rounded-full blur-3xl"></div>
 
-      <div className="relative flex flex-row gap-8 container mx-auto px-12 lg:py-8 md:px-6 lg:px-8 max-w-8xl z-10">
-        <BookOpen className="ml-4 md:ml-0 shrink-0 w-12 h-12 text-primary-500" />
-        <div className="md:max-w-120">
+      <div className="relative flex flex-col-reverse md:flex-row gap-8 container mx-auto px-12 lg:py-8 md:px-6 lg:px-8 max-w-8xl z-10">
+        <BookOpen className="hidden lg:block md:ml-0 shrink-0 w-12 h-12 text-primary-500" />
+        <div className="md:max-w-70 lg:max-w-120 relative flex-shrink-0">
+          {/* Background gradient orb behind the button */}
+          <div className="absolute top-0 left-0 w-64 h-32 bg-gradient-to-r from-purple-500/15 to-primary-500/15 rounded-full blur-2xl -z-10"></div>
+
           <h1 className="text-4xl font-bold mb-2">
             {dictionary?.home?.readingLists?.title}
           </h1>
@@ -39,13 +40,13 @@ export function ReadingLists({ lang, dictionary }: ReadingListsProps) {
             {dictionary?.home?.readingLists?.viewAll}
           </Link>
         </div>
-        <div className="hidden lg:block lg:grow-1">
+        <div className="flex-1 min-w-0">
           <Image
             src="/reading-list-render.png"
             alt="Reading list interface preview"
             width={600}
             height={400}
-            className="w-full h-full object-cover object-left"
+            className="w-full h-auto object-contain"
             priority
           />
         </div>
