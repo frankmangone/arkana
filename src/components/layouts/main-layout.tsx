@@ -1,5 +1,6 @@
 import { Navbar } from "./navbar";
 import { ArkanaBackground } from "./arkana-background";
+import { Footer } from "../custom/footer";
 // import { BuyMeCoffeeButton } from "../buy-me-coffee-button";
 
 interface MainLayoutProps {
@@ -18,6 +19,7 @@ export const MainLayout = async (props: MainLayoutProps) => {
         <main className="container mx-auto px-4 py-8 md:px-6 lg:px-8 max-w-8xl">
           {children}
         </main>
+        <Footer lang={lang} />
         {/* <BuyMeCoffeeButton /> */}
       </div>
     </>

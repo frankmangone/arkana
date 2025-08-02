@@ -93,5 +93,11 @@
       "description": "Este escritor aún no tiene artículos publicados en el idioma seleccionado.",
       "button": "Volver al inicio"
     }
+  },
+  "footer": {
+    "copyright": "Arkana Blog",
+    "madeWith": "Hecho con",
+    "by": "por",
+    "author": "Franco Mangone"
   }
 }

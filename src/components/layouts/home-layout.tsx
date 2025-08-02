@@ -2,6 +2,7 @@ import React from "react";
 import { Navbar } from "./navbar";
 import { ArkanaBackground } from "./arkana-background";
 import Image from "next/image";
+import { Footer } from "../custom/footer";
 
 interface HomeLayoutProps {
   children: React.ReactNode;
@@ -24,6 +25,7 @@ export function HomeLayout({ children, lang }: HomeLayoutProps) {
         />
       </div>
       <main className="relative z-10">{children}</main>
+      <Footer lang={lang} />
     </>
   );
 }

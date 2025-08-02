@@ -93,5 +93,11 @@
       "description": "This writer has no published articles in the selected language yet.",
       "button": "Back to home"
     }
+  },
+  "footer": {
+    "copyright": "Arkana Blog",
+    "madeWith": "Made with",
+    "by": "by",
+    "author": "Frank Mangone"
   }
 }
