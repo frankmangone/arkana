@@ -140,6 +140,7 @@ const ArkanaPattern: React.FC<ArkanaPatternProps> = ({
     if (!elements.central_diagonal_2) {
       drawLine(ctx, 10, 6, 6, 10, canvasSize);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [elements, canvasSize, lineWidth, lineColor, backgroundColor]);
 
   return (

@@ -3,15 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 interface UserSurveyProps {
-  lang: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   dictionary: any;
 }
 
 // TODO: Do something about background
-export function UserSurvey({ lang, dictionary }: UserSurveyProps) {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://arkana.blog";
-
+export function UserSurvey({ dictionary }: UserSurveyProps) {
   return (
     <section className="relative w-full py-8 px-4 my-12 overflow-hidden">
       {/* Subtle background gradient */}
