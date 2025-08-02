@@ -14,7 +14,15 @@ export function ReadingLists({ lang, dictionary }: ReadingListsProps) {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://arkana.blog";
 
   return (
-    <section className="relative w-full py-8 mt-12">
+    <section className="relative w-full py-20 mt-12 overflow-hidden">
+      {/* Background gradients */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-gray-900 to-background"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-primary-500/5 via-transparent to-orange-500/5"></div>
+
+      {/* Decorative gradient orbs */}
+      <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-gradient-to-r from-primary-500/20 to-orange-500/20 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-1/4 left-1/4 w-48 h-48 bg-gradient-to-r from-purple-500/15 to-primary-500/15 rounded-full blur-2xl"></div>
+
       <div className="relative flex flex-row gap-8 container mx-auto px-12 lg:py-8 md:px-6 lg:px-8 max-w-8xl z-10">
         <BookOpen className="ml-4 md:ml-0 shrink-0 w-12 h-12 text-primary-500" />
         <div className="md:max-w-120">
@@ -42,10 +50,6 @@ export function ReadingLists({ lang, dictionary }: ReadingListsProps) {
           />
         </div>
       </div>
-
-      {/* <div className="absolute top-0 bottom-0 pointer-events-none">
-        
-      </div> */}
     </section>
   );
 }

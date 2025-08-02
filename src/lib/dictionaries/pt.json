@@ -24,6 +24,11 @@
       "descriptionSmall": "Redescubra a matemática, criptografia, ciência da computação e muito mais, com a orientação de artigos divertidos e envolventes cuidadosamente criados por nossa comunidade de escritores.",
       "meetWriters": "Nossos Escritores",
       "exploreReadingLists": "Listas de Leitura"
+    },
+    "userSurvey": {
+      "title": "Ajude-nos a melhorar o Arkana",
+      "description": "Estamos trabalhando em novas formas de experimentar o aprendizado.\nAjude-nos a melhorar respondendo apenas algumas perguntas.",
+      "button": "Fazer a Pesquisa"
     }
   },
   "search": {

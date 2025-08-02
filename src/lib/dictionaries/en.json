@@ -24,6 +24,11 @@
       "descriptionBig": "Explore complex abstract topics like never before",
       "descriptionSmall": "Rediscover mathematics, cryptography, computer science and much more, with the guidance of fun and engaging articles carefully crafted by our community of writers.",
       "exploreReadingLists": "Explore Reading Lists"
+    },
+    "userSurvey": {
+      "title": "Help us improve Arkana",
+      "description": "We're working on new ways to experience learning.\nHelp us improve by answering just a few questions.",
+      "button": "Take the Survey"
     }
   },
   "search": {
