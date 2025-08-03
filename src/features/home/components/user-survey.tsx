@@ -10,7 +10,7 @@ interface UserSurveyProps {
 // TODO: Do something about background
 export function UserSurvey({ dictionary }: UserSurveyProps) {
   return (
-    <section className="relative w-full py-12 px-4 overflow-hidden">
+    <section className="relative w-full min-h-[80vh] py-20 px-4 overflow-hidden">
       {/* Subtle background gradient */}
       <div className="absolute inset-0 bg-gradient-to-t from-primary-200/10 to-transparent"></div>
 
@@ -35,7 +35,7 @@ export function UserSurvey({ dictionary }: UserSurveyProps) {
             />
           </div>
         </div>
-        <h2 className="text-3xl text-center font-bold">
+        <h2 className="text-5xl text-center font-bold">
           {dictionary?.home?.userSurvey?.title}
         </h2>
         <p className="text-gray-400 text-center max-w-[700px]">
@@ -43,7 +43,7 @@ export function UserSurvey({ dictionary }: UserSurveyProps) {
         </p>
         <Link
           href="https://forms.gle/NLk49eNnu6jTwGMt8"
-          className="inline-block px-12 py-3 mt-4 text-white transition-colors bg-primary-500 hover:bg-primary-600"
+          className="inline-block px-12 py-3 my-8 text-white transition-colors bg-primary-500 hover:bg-primary-600"
         >
           {dictionary?.home?.userSurvey?.button}
         </Link>

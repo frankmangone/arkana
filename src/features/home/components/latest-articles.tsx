@@ -17,7 +17,7 @@ export async function LatestArticles({
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://arkana.blog";
 
   return (
-    <div className="w-full">
+    <div className="w-full min-h-[80vh]">
       {/* Gradient overlay for the section above */}
       <div className="w-full h-60 bg-gradient-to-b from-transparent to-background/80" />
 
@@ -26,7 +26,7 @@ export async function LatestArticles({
       <section className="relative w-full bg-background/80 py-8 z-5">
         <div className="container z-10 mx-auto px-4 py-8 md:px-6 lg:px-8 max-w-8xl">
           <div className="mb-8">
-            <h1 className="text-4xl font-bold mb-2">
+            <h1 className="text-5xl font-bold mb-2">
               {dictionary?.home?.recentPosts?.title || "Recent blog posts"}
             </h1>
             <p className="text-gray-400">

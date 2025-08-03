@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { PostPreview } from "@/lib/posts";
 import { useRouter } from "next/navigation";
-import { ArrowUpRight, User } from "lucide-react";
+import { ArrowUpRight, User, Clock } from "lucide-react";
 import { formatDate } from "@/lib/date-utils";
 import { Tag } from "@/components/custom/tag";
 
@@ -58,6 +58,12 @@ export function FeaturedPostCard(props: FeaturedPostCardProps) {
               className="object-cover transition-transform duration-300 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background opacity-90" />
+
+            {/* Reading time indicator */}
+            <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-sm text-white text-xs px-2 py-1 flex items-center">
+              <Clock className="w-3 h-3 mr-1" />
+              {post.readingTime || "5 min read"}
+            </div>
           </div>
           <div
             className={`flex flex-col justify-between overflow-hidden col-span-3 md:col-span-1 ${

@@ -14,7 +14,7 @@ export function ReadingLists({ lang, dictionary }: ReadingListsProps) {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://arkana.blog";
 
   return (
-    <section className="relative flex flex-col justify-center w-full min-h-160 py-20 mt-12 overflow-hidden">
+    <section className="relative flex flex-col justify-center w-full min-h-[80vh] py-20 mt-12 overflow-hidden">
       {/* Background gradients */}
       <div className="absolute inset-0 bg-gradient-to-br from-transparent via-primary-500/5 to-transparent"></div>
 
@@ -27,7 +27,7 @@ export function ReadingLists({ lang, dictionary }: ReadingListsProps) {
           {/* Background gradient orb behind the button */}
           <div className="absolute top-0 left-0 w-64 h-32 bg-gradient-to-r from-purple-500/15 to-primary-500/15 rounded-full blur-2xl -z-10"></div>
 
-          <h1 className="text-4xl font-bold mb-2">
+          <h1 className="text-5xl font-bold mb-6">
             {dictionary?.home?.readingLists?.title}
           </h1>
           <p className="text-gray-400 mb-12">
