@@ -26,7 +26,7 @@ export async function LatestArticles({
       <section className="relative w-full bg-background/80 py-8 z-5">
         <div className="container z-10 mx-auto px-4 py-8 md:px-6 lg:px-8 max-w-8xl">
           <div className="mb-8">
-            <h1 className="text-5xl font-bold mb-2">
+            <h1 className="text-4xl md:text-5xl font-bold mb-2">
               {dictionary?.home?.recentPosts?.title || "Recent blog posts"}
             </h1>
             <p className="text-gray-400">

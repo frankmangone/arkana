@@ -22,9 +22,11 @@ export async function Footer({ lang }: FooterProps) {
 
       <div className="relative container mx-auto max-w-6xl z-10">
         {/* Bottom section */}
-        <div className="border-t border-primary-500/20 mt-8 pt-8 text-center">
-          <p className="text-gray-500 text-sm">
-            © {currentYear} {dictionary?.footer?.copyright || "Arkana Blog"}.{" "}
+        <div className="flex flex-wrap justify-center gap-2 border-t border-primary-500/20 mt-8 pt-8 text-center">
+          <p className="text-gray-500 text-sm flex-shrink-0 min-w-0 break-words">
+            © {currentYear} {dictionary?.footer?.copyright || "Arkana Blog"}.
+          </p>
+          <p className="text-gray-500 text-sm flex-shrink-0 min-w-0 break-words">
             {dictionary?.footer?.madeWith || "Made with"}{" "}
             <Heart className="inline w-4 h-4 text-red-500" />{" "}
             {dictionary?.footer?.by || "by"}{" "}
