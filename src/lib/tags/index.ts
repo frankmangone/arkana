@@ -257,6 +257,11 @@ export const tags: TagDefinition = {
     es: "Pectra",
     pt: "Pectra",
   },
+  polkadot: {
+    en: "Polkadot",
+    es: "Polkadot",
+    pt: "Polkadot",
+  },
   polynomials: {
     en: "Polynomials",
     es: "Polinomios",
