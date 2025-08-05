@@ -1,0 +1,30 @@
+{
+    "name": "post-to-medium",
+    "version": "1.0.0",
+    "description": "Script to explore Medium's internal APIs for automated publishing",
+    "main": "dist/index.js",
+    "scripts": {
+        "build": "tsc",
+        "start": "node dist/index.js",
+        "dev": "ts-node src/index.ts",
+        "watch": "ts-node --watch src/index.ts"
+    },
+    "dependencies": {
+        "puppeteer": "^21.0.0",
+        "axios": "^1.6.0"
+    },
+    "devDependencies": {
+        "@types/node": "^20.0.0",
+        "typescript": "^5.0.0",
+        "ts-node": "^10.9.0",
+        "nodemon": "^3.0.0"
+    },
+    "keywords": [
+        "medium",
+        "automation",
+        "publishing",
+        "typescript"
+    ],
+    "author": "Franco Mangone",
+    "license": "MIT"
+}
