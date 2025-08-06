@@ -1,7 +1,7 @@
 ---
-title: "Blockchain 101: Polkadot"
+title: 'Blockchain 101: Polkadot'
 author: frank-mangone
-date: "2025-08-05"
+date: '2025-08-05'
 thumbnail: /images/blockchain-101/polkadot/0*2X_pmsJZlxGr-E_N-8.jpg
 tags:
   - polkadot
@@ -12,7 +12,7 @@ description: >-
   Polkadot
 readingTime: 11 min
 contentHash: 581f35a1b2672987e8c8a14b2aeaf0600ebe9afbb2cd3db69681bf229fa744a9
-supabaseId: null
+supabaseId: bfc88963-1a21-49ce-9f80-1e1de4fe49d6
 ---
 
 > Este artículo es parte de una serie más larga sobre Blockchain. Si este es el primer artículo que encuentras, te recomiendo comenzar desde el [inicio de la serie](/es/blog/blockchain-101/how-it-all-began).
