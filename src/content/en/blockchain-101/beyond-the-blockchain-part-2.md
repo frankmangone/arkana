@@ -12,7 +12,7 @@ description: >-
   Continuing with the radical ideas, we know turn our attention to replacing the
   Blockchain itself — with a DAG!
 readingTime: 10 min
-contentHash: cde5aa9b8e036126a0914eab9c053077504774d136ea85db2242025fafe987c2
+contentHash: bf01279c39bdd972e47d2b3d52d048e737f905d50e73d346cb1fda9ea280af1a
 supabaseId: 21ab47ef-f058-449c-af49-a0a811556aee
 ---
 
@@ -248,4 +248,4 @@ I honestly don’t know if this will be the future or not, but what I like is th
 
 Having said that, the next destination in our journey will again take us back into familiar grounds, as we’ll be exploring another Blockchain. You know, no crazy underlying structures. However, this next Blockchain brings very cool ideas to the table, and is perhaps **different** from what we’ve seen so far.
 
-I’m talking about a personal favorite: **Polkadot**. And we’ll start piecing it apart in the next article!
+I’m talking about a personal favorite: **Polkadot**. And we’ll start piecing it apart in the [next article](/en/blog/blockchain-101/polkadot)!

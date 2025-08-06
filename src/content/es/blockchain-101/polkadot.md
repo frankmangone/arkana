@@ -2,16 +2,17 @@
 title: "Blockchain 101: Polkadot"
 author: frank-mangone
 date: "2025-08-05"
-thumbnail: "/images/blockchain-101/polkadot/0*2X_pmsJZlxGr-E_N-8.jpg"
+thumbnail: /images/blockchain-101/polkadot/0*2X_pmsJZlxGr-E_N-8.jpg
 tags:
   - polkadot
   - blockchain
   - rollup
 description: >-
-  Finalmente es momento de descubrir los secretos de una favorita personal: Polkadot
+  Finalmente es momento de descubrir los secretos de una favorita personal:
+  Polkadot
 readingTime: 11 min
-contentHash: # TODO: Add content hash
-supabaseId: # TODO: Add supabase ID
+contentHash: 581f35a1b2672987e8c8a14b2aeaf0600ebe9afbb2cd3db69681bf229fa744a9
+supabaseId: null
 ---
 
 > Este artículo es parte de una serie más larga sobre Blockchain. Si este es el primer artículo que encuentras, te recomiendo comenzar desde el [inicio de la serie](/es/blog/blockchain-101/how-it-all-began).
@@ -227,7 +228,7 @@ Es un pensamiento extraño, sí, pero hay una buena razón para ello: **actualiz
 	/>
 </figure>
 
-Verás, como mencionamos antes, la lógica tradicionalmente está integrada directamente en el software del nodo. Esto significa que cuando quieres actualizar cómo se procesan las transacciones, necesitas ya sea un **hard** o **soft fork** — un proceso complejo y riesgoso que requiere que cada operador de nodo **actualice manualmente** el software que está ejecutando.
+Como mencionamos antes, la lógica suele estar integrada directamente en el software del nodo. Esto significa que cuando quieres actualizar cómo se procesan las transacciones, necesitas ya sea un **hard** o **soft fork** — un proceso complejo y riesgoso que requiere que cada operador de nodo **actualice manualmente** el software que está ejecutando.
 
 Ahora, debido a cómo está diseñada la arquitectura del nodo en el Polkadot SDK, podemos hacer algo bastante notable y francamente muy disruptivo aquí: podemos actualizar el código Runtime **sin cambiar la arquitectura del nodo**.
 

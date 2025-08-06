@@ -2,16 +2,15 @@
 title: "Blockchain 101: Polkadot"
 author: frank-mangone
 date: "2025-08-05"
-thumbnail: "/images/blockchain-101/polkadot/0*2X_pmsJZlxGr-E_N-8.jpg"
+thumbnail: /images/blockchain-101/polkadot/0*2X_pmsJZlxGr-E_N-8.jpg
 tags:
   - polkadot
   - blockchain
   - rollup
-description: >-
-  It’s finally time to uncover the secrets of a personal favorite: Polkadot
+description: "It’s finally time to uncover the secrets of a personal favorite: Polkadot"
 readingTime: 11 min
-contentHash: # TODO: Add content hash
-supabaseId: # TODO: Add supabase ID
+contentHash: 312b51b4c2cff3b0840757a4799561260e3d8cc34272423f3cd148ec7fd419ba
+supabaseId: null
 ---
 
 > This is part of a larger series of articles about Blockchain. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/blockchain-101/how-it-all-began).
