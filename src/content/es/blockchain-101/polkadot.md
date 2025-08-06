@@ -16,9 +16,9 @@ supabaseId: # TODO: Add supabase ID
 
 > Este artículo es parte de una serie más larga sobre Blockchain. Si este es el primer artículo que encuentras, te recomiendo comenzar desde el [inicio de la serie](/es/blog/blockchain-101/how-it-all-began).
 
-Este es muy especial para mí.
+Este es un artículo muy especial para mí.
 
-Soy un ex alumno de la [Polkadot Blockchain Academy](https://polkadot.academy/). Asistí a la academia cuando era completamente presencial, y cuando aún se estaban puliendo las asperezas.
+Soy ex alumno de la [Polkadot Blockchain Academy](https://polkadot.academy/). Asistí a la academia cuando era completamente presencial, y cuando aún se estaban puliendo algunas asperezas.
 
 <figure>
 	<img
@@ -28,43 +28,43 @@ Soy un ex alumno de la [Polkadot Blockchain Academy](https://polkadot.academy/).
 	/>
 </figure>
 
-Fue un tiempo increíble. Recuerdo estar fascinado por la tecnología. Y aunque fue una de las experiencias más difíciles de mi vida, el desafío fue realmente agradable.
+Fue un mes increíble. Recuerdo estar fascinado por la tecnología. Y aunque fue una de las experiencias más difíciles de mi vida, el desafío fue realmente interesane.
 
-> ¡Recomiendo de todo corazón a cualquiera que quiera aprender o consolidar su conocimiento en Blockchain que se inscriba!
+> ¡Recomiendo de todo corazón a cualquiera que quiera aprender o consolidar su conocimiento en Blockchain a que se inscriba!
 
-Algunos estudiantes continuaron trabajando en el ecosistema de Polkadot después de la academia, pero yo no. Inicialmente, el producto en el que estaba trabajando en ese momento estaba destinado a ser incorporado a Polkadot, pero al final no funcionó comercialmente. Así que con el tiempo, los detalles que había aprendido comenzaron a desvanecerse de mi memoria. Además, Polkadot siguió evolucionando, y simplemente no pude mantenerme al día en ese entonces.
+Algunos estudiantes continuaron trabajando en el ecosistema de Polkadot después de la academia, pero yo no. Inicialmente, el producto en el que estaba trabajando en ese momento iba a ser onboardeado a Polkadot, pero al final no hubo un acuerdo comercial. Así que con el tiempo, los detalles que había aprendido comenzaron a esfumarse de mi memoria. Además, Polkadot siguió evolucionando, y simplemente no pude mantenerme al día en ese entonces.
 
-Pero ahora sí puedo. Así que estos artículos son tanto para ti, querido lector, como para mí: este es mi esfuerzo por ponerme al día, mientras te cuento todo sobre esta fantástica Blockchain.
-
----
-
-Polkadot es una **bestia**. Esto tomará más de un solo artículo para una cobertura completa, así que comenzaremos con una introducción a las características geniales que esta Blockchain tiene para ofrecer.
-
-¡Suficiente de esta larga introducción! No perdamos más de tu valioso tiempo, ¡y saltemos directo al negocio!
+Pero ahora sí puedo. Así que estos artículos son tanto para ti, querido lector, como para mí: este es mi intento de ponerme al día, mientras te cuento todo sobre esta fantástica tecnología.
 
 ---
 
-## Revisitando los Rollups {#revisitando-rollups}
+Polkadot es una **bestia** de sistema. Esto va a tomar más de un solo artículo para una cobertura completa, así que comenzaremos con una introducción a las características geniales que esta Blockchain tiene para ofrecer.
 
-No hace mucho tiempo, exploramos la definición de [Rollups](/es/blog/blockchain-101/rollups), también conocidos como layer 2s, o L2s. Como recordatorio, un **Rollup** es una tecnología de libro mayor distribuido que delega la carga de trabajo de consenso a una Blockchain padre, a menudo llamada layer 1 (L1).
+¡Suficiente de esta larga introducción! No perdamos más de tu valioso tiempo, ¡y saltemos directo al asunto!
+
+---
+
+## Revisitando los Rollups {#revisiting-rollups}
+
+No hace mucho tiempo, exploramos la definición de [Rollups](/es/blog/blockchain-101/rollups), también conocidos como layer 2s, o L2s. Como recordatorio, un **Rollup** es una tecnología de ledger distribuido que delega la carga de trabajo de consenso a una Blockchain padre, a menudo llamada layer 1 (L1).
 
 > Y como [mencioné antes](/es/blog/blockchain-101/blockchain-safari/#sidechains), esto generalmente se expresa como que el L2 **hereda** la seguridad del L1.
 
 Tal vez sea solo yo, pero siento que la mayoría de las personas asociarían inmediatamente la idea de **Rollups** con el **ecosistema de Ethereum**. Quiero decir, no sería una suposición tan incorrecta, dado que la lista de Rollups en Ethereum es bastante larga.
 
-Sin embargo, un Rollup es en realidad un **concepto más general**. Bitcoin incluso tiene algunas soluciones L2 como [Rootstock](https://rootstock.io/) o [Lightning Network](https://lightning.network/), y leí no hace mucho que algunos sistemas L2 [también están apareciendo en el ecosistema de Solana](https://solanacompass.com/projects/category/infrastructure/scaling).
+Sin embargo, un Rollup es en realidad un **concepto más general**. Incluso Bitcoin tiene algunas soluciones L2 como [Rootstock](https://rootstock.io/) o [Lightning Network](https://lightning.network/), y leí no hace mucho que algunos sistemas L2 [también están apareciendo en el ecosistema de Solana](https://solanacompass.com/projects/category/infrastructure/scaling).
 
 Parece que la comunidad Blockchain hoy en día reconoce que los L2s son soluciones útiles... Pero no siempre fue así.
 
-Verás, ninguna de las tecnologías L1 que he mencionado hasta ahora fueron diseñadas **con Rollups en mente**. Fueron concebidas como sistemas aislados, de solución única. Y eso está bien — la idea simplemente no existía cuando fueron creadas por primera vez.
+El hecho es que ninguna de las tecnologías L1 que he mencionado hasta ahora fueron diseñadas **con los Rollups en mente**. Fueron concebidas como sistemas aislados; una solución única para todo. Y eso está bien — la idea simplemente no existía cuando fueron creados por primera vez.
 
-Esto ha llevado a algunas complicaciones, siendo la más importante lo que se llama **fragmentación del estado**. En pocas palabras, esto significa que el **estado global** de todos los L2s en un ecosistema está **disperso**, con cada L2 teniendo su propio estado independiente.
+Esto ha llevado a algunas complicaciones, siendo la más importante lo que se llama **fragmentación del estado**. En pocas palabras, esto significa que el **estado global** de todos los L2s en un ecosistema está **disperso**, con cada L2 teniendo su propio pedacito de estado independiente.
 
 Además, mover activos de un L2 a otro L2 es bastante problemático. Esto es lo que generalmente llamamos **interoperabilidad** — permitir que diferentes sistemas se entiendan entre sí, y transfieran activos de uno a otro. Pero como la mayoría de los Rollups también fueron concebidos como sistemas aislados, la interoperabilidad simplemente no era parte del plan, y en consecuencia, la fragmentación del estado siguió siendo un problema.
 
-Sé que [se está poniendo mucho esfuerzo](https://cointelegraph.com/magazine/ethereum-l2s-interoperability-roadmap-complete-guide/) en lograr esta interoperabilidad, y es realmente encomiable. Aún así, no puedo evitar preguntarme: si hubiéramos conocido la preponderancia que tendrían los Rollups hoy, ¿no habríamos querido crear una Blockchain diseñada para **soportarlos completamente** desde el inicio, con interoperabilidad completa y todo?
+Sé que [se está poniendo mucho esfuerzo](https://cointelegraph.com/magazine/ethereum-l2s-interoperability-roadmap-complete-guide/) en lograr esta interoperabilidad, y es algo realmente encomiable. Aún así, no puedo evitar preguntarme: si hubiéramos conocido la preponderancia que tendrían los Rollups hoy, ¿no habríamos querido crear una Blockchain diseñada para **soportarlos completamente** desde el inicio, con interoperabilidad completa y todo?
 
-Afortunadamente, esa pregunta **sí tiene una respuesta**. [Gavin Wood](https://en.wikipedia.org/wiki/Gavin_Wood), uno de los creadores de [Ethereum](/es/blog/blockchain-101/ethereum), tuvo esta misma previsión en los primeros días de Blockchain, y decidió dejar su equipo original para perseguir sus ideas sobre cómo construir un sistema capaz de sostener completamente estos Rollups satélite, y darles la infraestructura necesaria para una interoperabilidad perfecta.
+Afortunadamente, esa pregunta **sí tiene una respuesta**. [Gavin Wood](https://en.wikipedia.org/wiki/Gavin_Wood), uno de los creadores de [Ethereum](/es/blog/blockchain-101/ethereum), tuvo esta misma pregunta en los primeros días de Blockchain, y decidió dejar su equipo original para perseguir sus ideas sobre cómo construir un sistema capaz de soportar completamente estos Rollups satélite, y darles la infraestructura necesaria para una interoperabilidad perfecta.
 
 Y esas ideas se convirtieron en Polkadot.
 
@@ -77,28 +77,30 @@ Y esas ideas se convirtieron en Polkadot.
 
 ---
 
-## Empezando Desde Cero {#empezando-desde-cero}
+## Empezando Desde Cero {#starting-from-scratch}
 
 Entonces, ¿cómo diseñamos este sistema desde cero?
 
-Primero lo primero: queremos que los Rollups sean los **protagonistas**. Construiremos una capa base, pero no está destinada directamente para usuarios. Nuestra intención es que los Rollups sean los consumidores de esta capa base, y que los usuarios usen los Rollups. Por lo tanto, la capa base se enfoca en resolver el **consenso**, para que los Rollups puedan implementar lógica personalizada.
+Primero lo primero: queremos que los Rollups sean los **protagonistas**. Construiremos una capa base, pero no estará destinada directamente para usuarios. Nuestra intención es que los Rollups sean los consumidores de esta capa base, y que los usuarios usen los Rollups. Por lo tanto, la capa base se enfoca en resolver el **consenso**, para que los Rollups puedan implementar lógica personalizada.
 
 En otras palabras:
 
-> La capa base no necesita soportar Contratos Inteligentes
+::: big-quote
+La capa base no necesita soportar Contratos Inteligentes
+:::
 
-Sí, lo sé — suena un poco desalentador. La capacidad de crear programas es lo que hizo a Ethereum tan revolucionario, y aquí estoy, diciéndote que los fundamentos de Polkadot **deliberadamente los evitan**. Pero ese es exactamente el punto: no descartaremos completamente la capacidad de definir lógica personalizada — simplemente la colocaremos en otro lugar.
+Sí, lo sé — suena un poco extraño. La capacidad de crear programas es lo que hizo a Ethereum tan revolucionario, y acá estoy, diciéndote que los fundamentos de Polkadot **deliberadamente los evitan**. Pero ese es exactamente el punto: no descartaremos completamente la capacidad de definir lógica personalizada — simplemente la colocaremos en otro lugar.
 
 > Como si Ethereum no soportara Contratos Inteligentes, y solo los Rollups lo hicieran.
 
-Bueno, ese es un pensamiento interesante. Sin embargo, no resuelve el otro problema fundamental: **fragmentación del estado**.
+Bueno, esa es una idea interesante. Sin embargo, no resuelve el otro problema fundamental: la **fragmentación del estado**.
 
 La segunda pieza del rompecabezas es que deberíamos idear alguna forma para que los Rollups se comuniquen entre sí **nativamente**. Es decir, debería existir algún tipo de **protocolo** que sea entendido tanto por la capa base como por los Rollups, y que permita que las cosas se muevan de un Rollup a otro.
 
 No iremos más lejos en nuestro experimento mental, ya que ya tenemos algunas pautas importantes para nuestro diseño (¡y no tenemos el tiempo para inventar una Blockchain en este post!), a saber:
 
 - Capa base mínima
-- Comunicación nativa entre cadenas (o entre rollups)
+- Comunicación nativa entre Blockchains (o entre Rollups)
 
 Todo lo que queda es ver cómo Polkadot da vida a estas ideas.
 
@@ -111,7 +113,7 @@ Todo lo que queda es ver cómo Polkadot da vida a estas ideas.
 
 ---
 
-## Una Blockchain de Blockchains {#una-blockchain-de-blockchains}
+## Una Blockchain de Blockchains {#a-blockchain-of-blockchains}
 
 En Polkadot, la capa base de la que hemos estado hablando se llama **Relay chain**.
 
@@ -132,13 +134,13 @@ Respondamos uno a la vez. El resto de este artículo se dedicará a la primera p
 
 ---
 
-## Lógica en Rollups {#logica-en-rollups}
+## Lógica en Rollups {#logic-in-rollups}
 
 Normalmente, pensamos en la lógica en términos de **Contratos Inteligentes**, o artefactos similares — como [Programas en Solana](/es/blog/blockchain-101/solana-programs), o [Scripts de Validación en Cardano](/es/blog/blockchain-101/blockchain-safari/#cardano). Hay un patrón claro aquí: el usuario puede definir cualquier lógica personalizada, y la Blockchain está preparada para interpretar y ejecutar estas instrucciones.
 
-Pero rara vez nos detenemos a pensar en las implicaciones. Si recuerdas nuestro breve paso por el [almacenamiento](/es/blog/blockchain-101/storage) y los [contratos](/es/blog/blockchain-101/smart-contracts) en Ethereum, tuvimos que crear muchos dispositivos para permitir que las cosas fueran almacenadas ordenadamente, y procesadas a través de una lista de instrucciones (opcodes). Sin duda, la maquinaria es impresionante, pero está **diseñada para la generalidad**.
+Pero rara vez nos detenemos a pensar en las implicaciones. Si recuerdas nuestro breve paso por el [almacenamiento](/es/blog/blockchain-101/storage) y los [contratos](/es/blog/blockchain-101/smart-contracts) en Ethereum, tuvimos que crear muchas herramientas para permitir que las cosas fueran almacenadas ordenadamente, y procesadas a través de una lista de instrucciones (opcodes). Sin duda, la maquinaria es impresionante, pero está **diseñada para la generalidad**.
 
-> Lo cual es un poco como un oxímoron, ahora que lo pienso.
+> Lo cual es un oxímoron, ahora que lo pienso.
 
 <figure>
 	<img
@@ -148,9 +150,9 @@ Pero rara vez nos detenemos a pensar en las implicaciones. Si recuerdas nuestro 
 	/>
 </figure>
 
-Piénsalo. Significa que cada nodo en una red EVM o SVM necesita hablar el lenguaje de su respectiva máquina virtual — debe ejecutar sin fallas cada posible instrucción, manejar pilas virtuales, lidiar con diseños de memoria arbitrarios, y tratar con el consumo impredecible de recursos de cualquier código que alguien pueda desplegar.
+Piénsalo. Significa que cada nodo en una red EVM o SVM necesita hablar el lenguaje de su respectiva máquina virtual — debe ejecutar sin fallas cada posible instrucción, manejar pilas virtuales, lidiar con layouts de memoria arbitrarios, y tratar con el consumo impredecible de recursos de cualquier código que alguien pueda desplegar.
 
-Y toda esta generalidad **tiene un costo**. Ambos sistemas sufren de estar en el extremo más lento y costoso de la ejecución, porque tienen que estar **preparados para cualquier cosa**, y esto a menudo lleva a ineficiencias.
+Y toda esta generalidad **tiene un costo**. Ambos sistemas sufren de estar en el extremo un poco más lento y costoso de la ejecución, porque tienen que estar **preparados para cualquier cosa**, y esto a menudo lleva a ineficiencias.
 
 En algunos escenarios, sin embargo, esto podría no ser necesario. Imaginemos por un momento que queremos diseñar una Blockchain donde solo puedas crear y transferir tokens fungibles (palabra elegante para monedas).
 
@@ -162,7 +164,7 @@ De nuevo, otra idea poco familiar y curiosa. Pero ¿cómo hacemos eso?
 
 ### Runtime {#runtime}
 
-En Polkadot, en lugar de desplegar Contratos Inteligentes o Programas individuales a una VM de propósito general, defines **toda la lógica de tu Blockchain** como un solo programa, llamado [Runtime](https://docs.polkadot.com/polkadot-protocol/parachain-basics/node-and-runtime/#runtime).
+En Polkadot, en lugar de desplegar Contratos Inteligentes o Programas individuales a una VM de propósito general, se define **toda la lógica de tu Blockchain** como un solo programa, llamado [Runtime](https://docs.polkadot.com/polkadot-protocol/parachain-basics/node-and-runtime/#runtime).
 
 Un Runtime define **cada regla** que tu Blockchain debería seguir. Especifica las operaciones permitidas, cómo procesarlas, cómo manejar cuentas, cómo se calculan las comisiones — todo. ¡Así que es esencialmente **toda tu lógica de transición de estado**!
 
@@ -178,15 +180,15 @@ Hubo un impulso para un nuevo lenguaje de Contratos Inteligentes basado en Rust 
 
 Finalmente, este Runtime se compila a código binario. Tradicionalmente, el objetivo de compilación era [WebAssembly](https://webassembly.org/), aunque el ecosistema está evolucionando lentamente hacia arquitecturas [RISC-V](https://riscv.org/) para mejor rendimiento.
 
-Pero aún no hemos **terminado ni a la mitad**. Digamos que hemos logrado crear el binario para nuestra Blockchain. Genial. Pero ¿cómo continúa la historia? ¿Quién ejecuta este código, y cómo?
+Pero aún no hemos **terminado ni con la mitad**. Digamos que hemos logrado crear el binario para nuestra Blockchain. Genial. Pero ¿cómo continúa la historia? ¿Quién ejecuta este código, y cómo?
 
 ---
 
-## Arquitectura del Nodo {#arquitectura-del-nodo}
+## Arquitectura del Nodo {#node-architecture}
 
 Ya sabemos bien que una Blockchain está conformada por **nodos** que entienden la lógica de transición de estado. Y así, ¡será el trabajo de un nodo de nuestra Parachain (o Rollup) interpretar y ejecutar el código Runtime!
 
-Los nodos de Parachain consisten en un **cliente** (o **host**) que puede comunicarse con y ejecutar un Runtime. Es esencialmente un entorno de ejecución para nuestro binario compilado — una **mini VM**, si quieres.
+Los nodos de las Parachains consisten en un **cliente** (o **host**) que puede comunicarse con y ejecutar un Runtime. Es esencialmente un entorno de ejecución para nuestro binario compilado — una **mini VM**, si quieres.
 
 En otras palabras, maneja toda la **infraestructura**, mientras que el Runtime está a cargo de la **lógica**. Maneja cosas como:
 
@@ -196,7 +198,7 @@ En otras palabras, maneja toda la **infraestructura**, mientras que el Runtime e
 
 > Ya sabes, cosas estándar de nodos.
 
-Pero en lugar de la lógica de ejecución estática que encontrarías en otras Blockchains, estos nodos tienen una especie de **socket** donde **cualquier Runtime** puede ser insertado. A través de [Runtime APIs](https://paritytech.github.io/polkadot-sdk/book/runtime-api/index.html?highlight=host+function#runtime-apis), el host puede llamar funciones del Runtime, y a través de **funciones host**, el Runtime puede comunicarse con el host para usar algunas de sus funcionalidades, como acceder al almacenamiento de la base de datos.
+Pero en lugar de la lógica de ejecución estática que encontrarías en otras Blockchains, estos nodos tienen una especie de **ranura** donde **cualquier Runtime** puede ser insertado. A través de [Runtime APIs](https://paritytech.github.io/polkadot-sdk/book/runtime-api/index.html?highlight=host+function#runtime-apis), el host puede llamar funciones del Runtime, y a través de **funciones host**, el Runtime puede comunicarse con el host para usar algunas de sus funcionalidades, como acceder al almacenamiento de la base de datos.
 
 <figure>
 	<img
@@ -207,7 +209,7 @@ Pero en lugar de la lógica de ejecución estática que encontrarías en otras B
 
 Este es un concepto genial, porque nos permite **reutilizar nodos** para todo tipo de Runtimes. Hablando de eso... ¿Dónde se almacena el Runtime?
 
-### Almacenando el Runtime {#almacenando-el-runtime}
+### Almacenando el Runtime {#storing-the-runtime}
 
 En principio, el Runtime podría almacenarse en cualquier lugar. Una solución simple sería distribuirlo junto con el código fuente de un nodo. Para cada Parachain, simplemente dirías "oye, usa el código cliente estándar, y usa este Runtime en particular".
 
@@ -249,7 +251,7 @@ Problemas potenciales aparte, es un concepto indiscutiblemente interesante. ¡Su
 
 ---
 
-## Resumen {#resumen}
+## Resumen {#summary}
 
 Creo que este es un buen lugar para parar por ahora.
 

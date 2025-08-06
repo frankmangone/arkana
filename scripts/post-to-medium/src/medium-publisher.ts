@@ -116,7 +116,7 @@ export class MediumPublisher {
               responseBody.substring(0, 500) +
               (responseBody.length > 500 ? "..." : ""),
           });
-        } catch (error) {
+        } catch {
           console.log("❌ Could not capture response body for:", url);
         }
       }
@@ -125,11 +125,11 @@ export class MediumPublisher {
 
   private isInterestingRequest(url: string): boolean {
     return (
-      url.includes("/_/") ||
+      // url.includes("/_/") ||
       url.includes("/graphql") ||
       url.includes("deltas") ||
       url.includes("batch") ||
-      url.includes("/p/") ||
+      // url.includes("/p/") ||
       url.includes("/drafts/")
     );
   }
@@ -179,9 +179,9 @@ export class MediumPublisher {
       .map((cookie) => `${cookie.name}=${cookie.value}`)
       .join("; ");
 
-    const userAgent = await this.page.evaluate(
-      () => (window as any).navigator.userAgent
-    );
+    // Use a standard Chrome user agent string
+    const userAgent =
+      "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36";
 
     this.headers = {
       Cookie: cookieString,
@@ -239,7 +239,7 @@ export class MediumPublisher {
         `,
           },
           {
-            headers: this.headers as Record<string, string>,
+            headers: this.headers as unknown as Record<string, string>,
             timeout: 10000,
           }
         );
@@ -262,6 +262,118 @@ export class MediumPublisher {
         console.log("❌ GraphQL test failed:", error);
       }
       return false;
+    }
+  }
+
+  async introspectSchema(): Promise<void> {
+    console.log("🔍 Introspecting GraphQL schema...");
+
+    if (!this.headers) {
+      console.log("❌ No headers available. Please capture credentials first.");
+      return;
+    }
+
+    try {
+      // Simple introspection to see available operations
+      const queryResponse = await axios.post(
+        "https://medium.com/_/graphql",
+        {
+          query: `
+            query {
+              __type(name: "Query") {
+                fields {
+                  name
+                  description
+                  args {
+                    name
+                    type {
+                      name
+                      kind
+                    }
+                  }
+                }
+              }
+            }
+          `,
+        },
+        {
+          headers: this.headers as unknown as Record<string, string>,
+          timeout: 10000,
+        }
+      );
+
+      const mutationResponse = await axios.post(
+        "https://medium.com/_/graphql",
+        {
+          query: `
+            query {
+              __type(name: "Mutation") {
+                fields {
+                  name
+                  description
+                  args {
+                    name
+                    type {
+                      name
+                      kind
+                    }
+                  }
+                }
+              }
+            }
+          `,
+        },
+        {
+          headers: this.headers as unknown as Record<string, string>,
+          timeout: 10000,
+        }
+      );
+
+      // Save the schema data
+      const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
+      const schemaPath = path.join(
+        this.config.outputDir,
+        `schema-${timestamp}.json`
+      );
+
+      const schemaData = {
+        queries: queryResponse.data.data,
+        mutations: mutationResponse.data.data,
+        timestamp: new Date().toISOString(),
+      };
+
+      fs.writeFileSync(schemaPath, JSON.stringify(schemaData, null, 2));
+
+      console.log("✅ Schema introspection complete!");
+      console.log("📄 Available Queries:");
+      queryResponse.data.data?.__type?.fields?.forEach(
+        (field: { name: string; description?: string }) => {
+          console.log(
+            `  - ${field.name}: ${field.description || "No description"}`
+          );
+        }
+      );
+
+      console.log("📄 Available Mutations:");
+      mutationResponse.data.data?.__type?.fields?.forEach(
+        (field: { name: string; description?: string }) => {
+          console.log(
+            `  - ${field.name}: ${field.description || "No description"}`
+          );
+        }
+      );
+
+      console.log(`💾 Full schema saved to: ${schemaPath}`);
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.log(
+          "❌ Schema introspection failed:",
+          error.response?.status,
+          error.response?.data || error.message
+        );
+      } else {
+        console.log("❌ Schema introspection failed:", error);
+      }
     }
   }
 
