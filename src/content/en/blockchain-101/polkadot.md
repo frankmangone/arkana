@@ -59,7 +59,7 @@ You see, neither of the L1 technologies I’ve mentioned so far were designed **
 
 This has led to some complications, the most important one being what’s called **state fragmentation**. In a nutshell, this means that the **global state** of all the L2s in an ecosystem is **scattered**, with each L2 having its own independent state.
 
-What’s more, moving assets from one L2 to another L2 is quite a problem. This is what we generally call **interoperability — **allowing different systems to understand each other, and transfer assets between one another. But because most Rollups were also conceived as isolated systems, interoperability was simply not part of the plan, and in consequence, state fragmentation remained a problem.
+What’s more, moving assets from one L2 to another L2 is quite a problem. This is what we generally call **interoperability** — allowing different systems to understand each other, and transfer assets between one another. But because most Rollups were also conceived as isolated systems, interoperability was simply not part of the plan, and in consequence, state fragmentation remained a problem.
 
 I know [a lot of effort](https://cointelegraph.com/magazine/ethereum-l2s-interoperability-roadmap-complete-guide/) is being put into achieving this interoperability, and it’s really commendable. Still, I can’t help but to ask: if we had known the preponderance Rollups would have today, wouldn’t we have wanted to create a Blockchain designed to **fully support them** from the get go, with full interoperability and everything?
 
@@ -118,7 +118,7 @@ It’s exactly what you would expect: intentionally minimal, focusing solely on 
 
 We’ll talk about the Relay chain in the next article. For now, let’s just focus on the other components: the Rollups, which is **where logic lives.**
 
-We\*\* \*\*can divide them into two categories:
+We can divide them into two categories:
 
 - The [System chains](https://docs.polkadot.com/polkadot-protocol/architecture/system-chains/), which provide essential functionality.
 - And the other **custom** Rollups, originally called [Parachains](https://docs.polkadot.com/polkadot-protocol/architecture/parachains/).
@@ -165,7 +165,7 @@ In Polkadot, instead of deploying individual Smart Contracts or Programs to a ge
 
 A Runtime defines **every single rule** your Blockchain should follow. It specifies the allowed operations, how to process them, how to manage accounts, how fees are calculated — everything. So it’s essentially your **entire state transition logic!**
 
-Naturally, you may be wondering how to even** begin** writing that kind of code.
+Naturally, you may be wondering how to even **begin** writing that kind of code.
 
 Don’t worry, you don’t have to start from scratch — there’s an entire suite of tools to do this, called the [Polkadot SDK](https://polkadot.com/platform/sdk/) (previously known as [Substrate](https://github.com/paritytech/substrate)). In there, you’ll find modular building blocks called **pallets** — pre-built, carefully crafted and optimized (but opinionated) components ready to use in your Blockchain logic.
 
@@ -185,7 +185,7 @@ Parachain nodes consists of a **client** (or **host**) that can communicate with
 
 In other words, it handles all the **infrastructure**, while the Runtime is in charge of the **logic**. It manages things such as:
 
-- a **database **for storage
+- a **database** for storage
 - **networking** with other nodes
 - the **transaction pool**
 
