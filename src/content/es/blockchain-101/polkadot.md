@@ -11,7 +11,7 @@ description: >-
   Finalmente es momento de descubrir los secretos de una favorita personal:
   Polkadot
 readingTime: 11 min
-contentHash: 581f35a1b2672987e8c8a14b2aeaf0600ebe9afbb2cd3db69681bf229fa744a9
+contentHash: 32820ce9181349b000f4e6c0ab3d820873165f945a2bb51afccec7d31d044e7d
 supabaseId: bfc88963-1a21-49ce-9f80-1e1de4fe49d6
 ---
 
@@ -272,4 +272,4 @@ Ciertamente fue mucho... Pero créelo o no, apenas estamos **arañando la superf
 
 Muchas preguntas siguen sin respuesta. En particular no hemos hablado sobre el rol de la **Relay chain**. Dijimos antes que proporciona **consenso** — pero ¿cómo? ¿Qué tipo de comunicación necesita ocurrir entre los Rollups y la Relay chain? ¿Qué información necesita ser compartida?
 
-Intentaré responder estas preguntas y más en nuestro próximo encuentro. ¡Nos vemos pronto!
+Intentaré responder estas preguntas y más en nuestro [próximo encuentro](/es/blog/blockchain-101/polkadot-consensus). ¡Nos vemos pronto!

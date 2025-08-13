@@ -422,6 +422,11 @@ export const tags: TagDefinition = {
     es: "Aleatoriedad Verificable",
     pt: "Aleatoriedade Verificável",
   },
+  xcm: {
+    en: "XCM",
+    es: "XCM",
+    pt: "XCM",
+  },
   zeroKnowledgeProofs: {
     en: "Zero Knowledge Proofs",
     es: "Pruebas de Conocimiento Cero",
