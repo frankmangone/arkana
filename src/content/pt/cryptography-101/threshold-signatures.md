@@ -1,6 +1,6 @@
 ---
-title: "Criptografia 101: Assinaturas de Limite"
-date: "2024-04-30"
+title: 'Criptografia 101: Assinaturas de Limite'
+date: '2024-04-30'
 author: frank-mangone
 thumbnail: /images/cryptography-101/threshold-signatures/here-we-go-again.webp
 tags:
@@ -13,8 +13,8 @@ description: >-
   Combinar polinômios e assinaturas digitais traz uma nova funcionalidade
   interessante, na forma de Assinaturas de Limite!
 readingTime: 14 min
-contentHash: # TODO: Add content hash
-supabaseId: # TODO: Add supabase ID
+contentHash: bd04970e9c989b166e5f2034ef68ebc9f0f77cd30f7d7c8962a6deaa540d844e
+supabaseId: 90386f4c-452c-41b9-a048-d7284dbe760f
 ---
 
 > Este é parte de uma série de artigos sobre criptografia. Se este é o primeiro artigo que você encontra, eu recomendo começar do [início da série](/pt/blog/cryptography-101/where-to-start).
