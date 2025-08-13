@@ -1,7 +1,7 @@
 ---
-title: "Blockchain 101: Polkadot Consensus"
+title: 'Blockchain 101: Polkadot Consensus'
 author: frank-mangone
-date: "2025-08-13"
+date: '2025-08-13'
 thumbnail: /images/blockchain-101/polkadot-consensus/diagram.png
 tags:
   - polkadot
@@ -13,8 +13,8 @@ description: >-
   Next in our Polkadot exploration, we focus on its rich consensus
   mechanism — and its satellite features.
 readingTime: 14 min
-contentHash: a94bc8703d2eb85b0e4637be174076b0e3ed53fe33380dac8569c7f51a6980c3
-supabaseId: null
+contentHash: 789e4bed5efb174ac81f0750aee53939ddaef1aaa4760d85b00e8d4a0742012b
+supabaseId: 11eb8839-8f1e-40e3-bd96-b4ca87a7bf27
 ---
 
 > This is part of a larger series of articles about Blockchain. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/blockchain-101/how-it-all-began).

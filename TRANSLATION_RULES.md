@@ -1,6 +1,6 @@
 When you translate to other languages, make sure that:
 
-- Slugs are added to headings, so that they match the english title. They should be added in the format `{#heading-slug}` right beside the slug.
+- Slugs are added to headings in the format `{#heading-slug}` right beside the heading. **IMPORTANT: The slug itself must always be in English (the slugified version of the English heading), NOT translated to the target language.** For example, when translating "## Consensus" to Spanish as "## Consenso", the slug should be `{#consensus}`, NOT `{#consenso}`.
 - Remove the medium link in the translated version. This is because the link is to the english version.
 - Do not translate tags in the heading. These should be kept the same because they are internationalized.
 - Internal links should be kept the same, only changing the `/en` prefix to the corresponding language's
