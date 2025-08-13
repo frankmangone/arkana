@@ -14,9 +14,9 @@ export const MainLayout = async (props: MainLayoutProps) => {
   return (
     <>
       <ArkanaBackground />
-      <div className="relative min-h-screen">
+      <div className="relative min-h-screen flex flex-col">
         <Navbar lang={lang} />
-        <main className="container mx-auto px-4 py-8 md:px-6 lg:px-8 max-w-8xl">
+        <main className="flex-1 container mx-auto px-4 py-8 md:px-6 lg:px-8 max-w-8xl">
           {children}
         </main>
         <Footer lang={lang} />
