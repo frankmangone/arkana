@@ -50,6 +50,7 @@ export async function generateStaticParams() {
       }
     } catch (error) {
       console.error(`Error getting reading lists for language ${lang}:`, error);
+      // Continue with other languages even if one fails
     }
   }
 

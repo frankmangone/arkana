@@ -5,7 +5,7 @@ import {
 } from "@/lib/reading-lists";
 
 export function getAllReadingLists(lang: string): ReadingList[] {
-  return readingLists[lang];
+  return readingLists[lang] || [];
 }
 
 interface GetReadingListParams {
@@ -18,7 +18,10 @@ export function getReadingList(
 ): ReadingList | null {
   const { lang, id } = params;
 
-  const readingList = readingLists[lang].find((list) => list.id === id);
+  const langReadingLists = readingLists[lang];
+  if (!langReadingLists) return null;
+
+  const readingList = langReadingLists.find((list) => list.id === id);
 
   if (!readingList) return null;
 

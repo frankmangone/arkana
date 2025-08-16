@@ -14,11 +14,17 @@ export async function getPostsFromReadingList(
 ) {
   const { readingList, lang } = params;
 
-  const posts: PostPreview[] = await Promise.all(
+  const postsWithNulls = await Promise.all(
     (readingList.items as ReadingListItem[])
       .sort((a, b) => (a.order || 0) - (b.order || 0))
       .map(async (item) => {
         const post = (await getPostBySlug(item.slug, lang)) as Post;
+
+        // Skip posts that don't exist
+        if (!post) {
+          return null;
+        }
+
         const author = await getWriter(post.metadata.author);
 
         return {
@@ -33,9 +39,10 @@ export async function getPostsFromReadingList(
           },
           readingTime: post.metadata.readingTime,
           thumbnail: post.metadata.thumbnail,
-        };
+        } as PostPreview;
       })
   );
 
-  return posts;
+  // Filter out null posts
+  return postsWithNulls.filter((post): post is PostPreview => post !== null);
 }
