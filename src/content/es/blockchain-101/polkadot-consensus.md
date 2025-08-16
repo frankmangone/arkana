@@ -13,7 +13,7 @@ description: >-
   Siguiendo con nuestra exploración de Polkadot, nos enfocamos en su rico
   mecanismo de consenso — y las características satélite del mismo.
 readingTime: 14 min
-contentHash: ea9e3b0319fd121634c474f4a7c537889ef7871d032d1eb2b1c0b56832eff0e0
+contentHash: c6de97c83a238cab1985f6a6c3ea8dd9172e807b3122e5fea84b19683ddf2c8b
 supabaseId: 40b61448-ad46-4b5c-8bc8-df914f0cbee4
 ---
 
@@ -128,7 +128,9 @@ Con esto, hemos terminado principalmente con el rol de los Collators en esta his
 
 En lugar de pensar en términos de "la Relay chain" validando estos bloques, será útil abordar esta próxima sección en términos de **actores individuales**, y el proceso general que ocurre inmediatamente después de la presentación de estos bloques — un protocolo conocido como [ELVES](https://eprint.iacr.org/2024/961.pdf).
 
-> Dato curioso: el paper original dice que ELVES significa **Endorsing Light Validity Evaluator System**, mientras que la [documentación oficial](https://docs.polkadot.com/polkadot-protocol/architecture/parachains/overview/#cryptoeconomic-security-elves-protocol) establece que significa **Economic Last Validation Enforcement System**. ¡Supongo que puedes decidir cuál es más adecuado después de verlo en acción!
+> Dato curioso: el paper original dice que ELVES significa **Endorsing Light Validity Evaluator System**, mientras que la [documentación oficial](https://docs.polkadot.com/polkadot-protocol/architecture/parachains/overview/#cryptoeconomic-security-elves-protocol) establece que significa **Economic Last Validation Enforcement System**.
+>
+> ¡Supongo que puedes decidir cuál es más adecuado después de verlo en acción!
 
 ---
 
