@@ -13,7 +13,7 @@ description: >-
   Next in our Polkadot exploration, we focus on its rich consensus
   mechanism — and its satellite features.
 readingTime: 14 min
-contentHash: a0ad8954e9152f87144bc6cae38eb528060951525f02c8070080f1b240b19a44
+contentHash: 5130759b35ebf4120defdfaae76cff3d226f6ee22b6c2869ba9674566d4c3dca
 supabaseId: 11eb8839-8f1e-40e3-bd96-b4ca87a7bf27
 ---
 
@@ -350,6 +350,6 @@ Time will tell how successful this vision becomes. If anything, the amazing tech
 
 Speaking of technical innovations, Polkadot still has a few surprises under its sleeve. For one, we haven’t answered how Rollups **gain access** to the validation power of the Relay chain. I mean, validators shouldn’t work **for free**, so there must be some sort of incentive in place, right?
 
-I don’t want to spoil the action here, so you’ll have to wait for the next article to find the answer!
+I don’t want to spoil the action here, so you’ll have to wait for the [next article](/en/blog/blockchain-101/coretime) to find the answer!
 
 See you then!

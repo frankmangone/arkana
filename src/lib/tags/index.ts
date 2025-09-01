@@ -57,6 +57,11 @@ export const tags: TagDefinition = {
     es: "Consenso",
     pt: "Consenso",
   },
+  coretime: {
+    en: "Coretime",
+    es: "Coretime",
+    pt: "Coretime",
+  },
   cpu: {
     en: "CPU",
     es: "CPU",
@@ -416,6 +421,11 @@ export const tags: TagDefinition = {
     en: "Validator",
     es: "Validador",
     pt: "Validador",
+  },
+  validation: {
+    en: "Validation",
+    es: "Validación",
+    pt: "Validação",
   },
   verifiableRandomness: {
     en: "Verifiable Randomness",

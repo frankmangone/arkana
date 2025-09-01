@@ -232,6 +232,11 @@ export const readingLists: ReadingList[] = [
         slug: "blockchain-101/polkadot-consensus",
         order: 19,
       },
+      {
+        id: "coretime",
+        slug: "blockchain-101/coretime",
+        order: 20,
+      },
     ],
   },
   {

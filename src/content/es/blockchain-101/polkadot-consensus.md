@@ -13,7 +13,7 @@ description: >-
   Siguiendo con nuestra exploración de Polkadot, nos enfocamos en su rico
   mecanismo de consenso — y las características satélite del mismo.
 readingTime: 14 min
-contentHash: c6de97c83a238cab1985f6a6c3ea8dd9172e807b3122e5fea84b19683ddf2c8b
+contentHash: e1f9a9b814a89818a7c5a67a629fe573a45c3a83118329788dbabfe104559abb
 supabaseId: 40b61448-ad46-4b5c-8bc8-df914f0cbee4
 ---
 
@@ -350,6 +350,6 @@ El tiempo dirá qué tan exitosa se vuelve esta visión. Si algo, las increíble
 
 Hablando de innovaciones técnicas, Polkadot aún tiene algunas sorpresas bajo la manga. Por una parte, no hemos respondido cómo los Rollups **obtienen acceso** al poder de validación de la Relay chain. Quiero decir, los validadores no deberían trabajar **gratis**, así que debe haber algún tipo de incentivo en su lugar, ¿verdad?
 
-No quiero arruinar la acción aquí, ¡así que tendrás que esperar al próximo artículo para encontrar la respuesta!
+No quiero arruinar la acción aquí, ¡así que tendrás que esperar al [próximo artículo](/es/blog/blockchain-101/coretime) para encontrar la respuesta!
 
 ¡Nos vemos entonces!
