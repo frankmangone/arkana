@@ -1,8 +1,8 @@
 ---
-title: "Blockchain 101: JAM"
+title: 'Blockchain 101: JAM'
 author: frank-mangone
-date: "2025-09-23"
-thumbnail: "/images/blockchain-101/jam/0*ZHe_R0dR9Ov__TNm-1.jpg"
+date: '2025-09-23'
+thumbnail: /images/blockchain-101/jam/0*ZHe_R0dR9Ov__TNm-1.jpg
 tags:
   - blockchain
   - polkadot
@@ -10,10 +10,11 @@ tags:
   - sharding
   - parallelization
 description: >-
-  To close off our chapter in Polkadot, we’ll have to talk about its latest development: JAM.
+  To close off our chapter in Polkadot, we’ll have to talk about its latest
+  development: JAM.
 readingTime: 15 min
-contentHash: # TODO: Add content hash
-supabaseId: # TODO: Add supabase ID
+contentHash: 06d291b10037f796e2f2242d069462dd7d0878dd8ad7a355b961204581e3b5b2
+supabaseId: 69c89960-9df0-40ca-8226-25a11bde28d6
 ---
 
 > This is part of a larger series of articles about Blockchain. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/blockchain-101/how-it-all-began).

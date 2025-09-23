@@ -1,6 +1,6 @@
 ---
-title: "Blockchain 101: Coretime"
-date: "2025-09-01"
+title: 'Blockchain 101: Coretime'
+date: '2025-09-01'
 author: frank-mangone
 thumbnail: /images/blockchain-101/coretime/0*5hVpbbmaF_GTFVIK-7.jpg
 tags:
@@ -12,7 +12,7 @@ description: >-
   Accessing Polkadot’s validation resources can be done through a novel way to
   pay for Blockchain usage: Coretime.
 readingTime: 10 min
-contentHash: 2a88682e8ac1376830b5ac8a34895e74f3f795cdb6bbb5d3c02a68fb04659e14
+contentHash: e49e03bba5535ad73dc7a8062824ffc57c1e2f27f8b0126027c4aa3c8eb9db63
 supabaseId: 34369fdb-9a10-449a-bee4-7af6195c0078
 ---
 

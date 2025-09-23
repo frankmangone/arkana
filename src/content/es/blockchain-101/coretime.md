@@ -12,7 +12,7 @@ description: >-
   Acceder a los recursos de validación de Polkadot se puede hacer a través de
   una forma novedosa de pagar por el uso de Blockchain: Coretime.
 readingTime: 10 min
-contentHash: 429eccf7be6e6babac11c2c3964ae2ae9558ddce936e041113d0dcb62287ef5e
+contentHash: 619680a880e8ede0a2afd5b26269bbfe81f4d7e7d7fa90a2da77dea85130b59b
 supabaseId: 45ad865f-4296-439e-8330-512eba99b2cf
 ---
 
@@ -229,4 +229,4 @@ Porque total, si tenemos la capacidad de asignar recursos computacionales eficie
 	/>
 </figure>
 
-Cubriremos eso y más en el próximo artículo. ¡Nos vemos ahí!
+Cubriremos eso y más en el [próximo artículo](/es/blog/blockchain-101/jam). ¡Nos vemos ahí!
