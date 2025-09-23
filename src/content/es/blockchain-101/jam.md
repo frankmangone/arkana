@@ -13,7 +13,7 @@ description: >-
   Para cerrar nuestro capítulo sobre Polkadot, tendremos que hablar de su último
   desarrollo: JAM.
 readingTime: 15 min
-contentHash: 5b274ba8f154b63a8698a1fb4427aff27aeaca176a83b5cce8ae58c7917c236b
+contentHash: 8d7241fa2fc7d43164bf12425f80558e9b03a84bc9ef4293b38d57c9dc0f7c9b
 supabaseId: fe1367aa-9345-40eb-b805-3b7c384ef535
 ---
 
@@ -216,7 +216,7 @@ Para impulsar el concepto, necesitamos notar que cada core tendrá una lista de 
 	<img
 		src="/images/blockchain-101/jam/1*EMfKDKMuustL7hhu_rZmZw-8.png"
 		alt="Una representación de los diferentes tiempos de procesamiento" 
-		title="¡Las tareas azules no serán procesadas al mismo tiempo — y eso está completamente bien!"
+		title="[zoom] Las tareas azules no serán procesadas al mismo tiempo — ¡y eso está completamente bien!"
 	/>
 </figure>
 

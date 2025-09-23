@@ -13,7 +13,7 @@ description: >-
   To close off our chapter in Polkadot, we’ll have to talk about its latest
   development: JAM.
 readingTime: 15 min
-contentHash: 06d291b10037f796e2f2242d069462dd7d0878dd8ad7a355b961204581e3b5b2
+contentHash: b6d0c2c9491d4832c144955cbb91ebe497f91aace2b7cddb6a87644d86ceb0f9
 supabaseId: 69c89960-9df0-40ca-8226-25a11bde28d6
 ---
 
@@ -216,7 +216,7 @@ To drive the concept home, we need to note that each core will have a list of ta
 	<img
 		src="/images/blockchain-101/jam/1*EMfKDKMuustL7hhu_rZmZw-8.png"
 		alt="A depiction of the different timings of processing" 
-		title="Blue tasks will not be processed at the same time — and that’s completely fine!"
+		title="[zoom] Blue tasks will not be processed at the same time — and that’s completely fine!"
 	/>
 </figure>
 
