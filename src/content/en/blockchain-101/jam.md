@@ -13,7 +13,7 @@ description: >-
   To close off our chapter in Polkadot, we’ll have to talk about its latest
   development: JAM.
 readingTime: 15 min
-contentHash: b6d0c2c9491d4832c144955cbb91ebe497f91aace2b7cddb6a87644d86ceb0f9
+contentHash: 3c53b91e4b6a371aac15dac04371c62eeaeb167adea7b0d630786c94e7a886bf
 supabaseId: 69c89960-9df0-40ca-8226-25a11bde28d6
 ---
 
@@ -153,7 +153,7 @@ Yup. And when you want to execute tasks on your machine, you’ll want to follow
 
 Secondly, if you have some heavy-duty task, executing it on a single core may not make the best use of resources, so you’ll probably want to **split the task**, and execute it on multiple cores. You’ll be executing these pieces of the original task in **parallel**.
 
-There’s no free lunch, though — the separation comes at a cost. Namely, because the new processes are most likely not fully independent, you’ll need an extra step at the end to **aggregate** or **integrate **the results, combining them to obtain the final result of the parallelized computation.
+There’s no free lunch, though — the separation comes at a cost. Namely, because the new processes are most likely not fully independent, you’ll need an extra step at the end to **aggregate** or **integrate** the results, combining them to obtain the final result of the parallelized computation.
 
 > Hint, hint!
 
@@ -278,7 +278,7 @@ What this means is that the [instruction set architecture](/en/blog/wtf-is/risc-
 
 Another big problem with WASM has to do with the estimation of the costs to execute different instructions.
 
-Since we want to **charge** for network usage, it’s important to have precise mechanisms to **measure** usage. In turn, this confers the network the property of being **predictable **— you can estimate how much computation you’ll require to finish a certain task, and with that, you can estimate costs.
+Since we want to **charge** for network usage, it’s important to have precise mechanisms to **measure** usage. In turn, this confers the network the property of being **predictable** — you can estimate how much computation you’ll require to finish a certain task, and with that, you can estimate costs.
 
 > Models like EVM are clearly metered — and metering is embodied in the form of **gas**.
 
