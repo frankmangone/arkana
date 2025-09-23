@@ -212,6 +212,11 @@ export const tags: TagDefinition = {
     es: "Isomorfismo",
     pt: "Isomorfismo",
   },
+  jam: {
+    en: "JAM",
+    es: "JAM",
+    pt: "JAM",
+  },
   keyExchange: {
     en: "Key Exchange",
     es: "Intercambio de Claves",
@@ -361,6 +366,11 @@ export const tags: TagDefinition = {
     en: "Security",
     es: "Seguridad",
     pt: "Segurança",
+  },
+  sharding: {
+    en: "Sharding",
+    es: "Sharding",
+    pt: "Sharding",
   },
   sidechain: {
     en: "Sidechain",

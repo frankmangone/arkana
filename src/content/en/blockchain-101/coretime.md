@@ -1,6 +1,6 @@
 ---
-title: 'Blockchain 101: Coretime'
-date: '2025-09-01'
+title: "Blockchain 101: Coretime"
+date: "2025-09-01"
 author: frank-mangone
 thumbnail: /images/blockchain-101/coretime/0*5hVpbbmaF_GTFVIK-7.jpg
 tags:
@@ -229,4 +229,4 @@ Because, hell, if we have the ability to efficiently assign computational resour
 	/>
 </figure>
 
-We’ll cover that and more in the next article. See you there!
+We’ll cover that and more in the [next article](/en/blog/blockchain-101/jam). See you there!
