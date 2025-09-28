@@ -14,7 +14,7 @@ description: 'Let’s talk about functions on elliptic curves, and their crazy p
 readingTime: 14 min
 mediumUrl: >-
   https://medium.com/@francomangone18/elliptic-curves-in-depth-part-4-5d5fb5638347
-contentHash: f89b8f2305bf887a3c654191a9bcad3439a5b424ecb716e1c4f7bb03795f5ded
+contentHash: a79dd88780a2a5cea00569b8b8732817538840b28998e1fafd62a91f3e19f6f5
 supabaseId: 11b0a995-f36d-451e-b28b-7b38cb663bdb
 ---
 
