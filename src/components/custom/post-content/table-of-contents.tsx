@@ -71,26 +71,29 @@ export function TableOfContents({ content }: TableOfContentsProps) {
   }
 
   return (
-    <nav className="mb-8">
-      <h2 className="text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100">
-        Table of Contents
-      </h2>
-      <div className="space-y-2 ml-4">
-        {headings.map((heading) => (
-          <div key={heading.id}>
-            <a
-              href={`#${heading.id}`}
-              className={`block text-base text-primary-500 dark:text-primary-500 hover:text-primary-700 dark:hover:text-primary-700 transition-colors ${
-                heading.level === 2
-                  ? "font-medium"
-                  : "pl-6"
-              }`}
-            >
-              {heading.text}
-            </a>
-          </div>
-        ))}
-      </div>
-    </nav>
+    <>
+      <nav className="mb-8">
+        <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
+          Table of Contents
+        </h2>
+        <div className="space-y-2 ml-4">
+          {headings.map((heading) => (
+            <div key={heading.id}>
+              <a
+                href={`#${heading.id}`}
+                className={`block text-lg text-primary-500 dark:text-primary-500 hover:text-primary-700 dark:hover:text-primary-700 transition-colors tracking-wide ${
+                  heading.level === 2
+                    ? "pl-0"
+                    : "pl-6"
+                }`}
+              >
+                {heading.text}
+              </a>
+            </div>
+          ))}
+        </div>
+      </nav>
+      <hr />
+    </>
   );
 }

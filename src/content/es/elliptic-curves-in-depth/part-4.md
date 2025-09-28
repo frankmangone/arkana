@@ -16,7 +16,7 @@ contentHash: a48f324f801215584bae2432311f4710b23d974f6b9789f8924dc514ffb661c3
 supabaseId: 4c01f843-e0a3-41fa-8520-0a0a9d790ba0
 ---
 
-Hemos cubierto bastantes cosas hasta ahora, así que creo que un repaso rápido será útil.
+Hemos cubierto bastantes cosas hasta ahora, así que creo que un repaso rápido será útil:
 
 - La serie [comenzó](/es/blog/elliptic-curves-in-depth/part-1) con una mirada a las curvas elípticas sobre $\mathbb{R}^2$ — lo que ahora llamamos **espacio afín**. Las curvas definidas sobre este espacio se llaman **curvas afines**.
 - Luego [introdujimos una operación](/es/blog/elliptic-curves-in-depth/part-2) sobre estas curvas, bautizada como **suma de puntos**. Y requeríamos precisión, así que nos movimos a curvas definidas sobre **campos finitos**.

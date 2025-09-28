@@ -18,7 +18,7 @@ contentHash: f89b8f2305bf887a3c654191a9bcad3439a5b424ecb716e1c4f7bb03795f5ded
 supabaseId: 11b0a995-f36d-451e-b28b-7b38cb663bdb
 ---
 
-We’ve covered quite a few things up until now, so I believe a quick refresher will prove to be helpful.
+We’ve covered quite a few things up until now, so I believe a quick refresher will prove to be helpful:
 
 - The series [started](/en/blog/elliptic-curves-in-depth/part-1) with a look at elliptic curves over $\mathbb{R}^2$ — what we now call **affine space**. The curves defined over this space are called **affine curves**.
 - We then [introduced an operation](/en/blog/elliptic-curves-in-depth/part-2) over these curves, baptized **point addition**. And we required precision, so we moved to curves defined over **finite fields**.
