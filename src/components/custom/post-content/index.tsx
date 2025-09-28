@@ -170,6 +170,7 @@ export function PostContent({ post }: PostContentProps) {
           blockquote: CustomBlockquote,
 
           // Big quote component with LaTeX support
+          // @ts-expect-error - BigQuote is a custom component
           "big-quote": BigQuote,
 
           // Add video-embed component handler
