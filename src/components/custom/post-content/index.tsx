@@ -19,6 +19,7 @@ import {
 import { CustomDiv } from "./content-elements/div";
 import { CustomVideoEmbed } from "./content-elements/video-embed";
 import { CustomBlockquote } from "./content-elements/blockquote";
+import { TableOfContents } from "./table-of-contents";
 
 interface PostContentProps {
   post: Post;
@@ -132,6 +133,7 @@ export function PostContent({ post }: PostContentProps) {
 
   return (
     <div className="prose prose-gray dark:prose-invert max-w-none mb-8">
+      <TableOfContents content={post.content} />
       <ReactMarkdown
         remarkPlugins={[remarkMath, remarkGfm]}
         rehypePlugins={[
@@ -168,7 +170,6 @@ export function PostContent({ post }: PostContentProps) {
           blockquote: CustomBlockquote,
 
           // Big quote component with LaTeX support
-          // @ts-expect-error - BigQuote is a custom component
           "big-quote": BigQuote,
 
           // Add video-embed component handler
