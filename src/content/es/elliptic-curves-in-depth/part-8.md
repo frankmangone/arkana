@@ -13,7 +13,7 @@ description: >-
   Con los grupos de torsión en mano, podemos ahora explorar la definición formal
   de los pairings.
 readingTime: 11 min
-contentHash: 36ac4a90c78fd0159a98a169329c3cb8784f15a3a7bcae2a5ba710e285929c73
+contentHash: ec3397b9f8b5634b1bc1b2ef3ba637a0ffded916a00903e68f06e79712141c2c
 supabaseId: c1d33b47-b56a-48d7-99c5-117bce9880f6
 ---
 
@@ -420,4 +420,4 @@ Todo es fantástico con las **definiciones funcionales**, pero no hemos dicho na
 
 ¿Y qué papel juegan el [mapa de traza](/es/blog/elliptic-curves-in-depth/part-7/#the-trace-map) y el [mapa anti-traza](/es/blog/elliptic-curves-in-depth/part-7/#the-characteristic-polynomial) en todo esto?
 
-No te preocupes - estas preguntas serán respondidas a su tiempo, ¡cuando nos encontremos para el próximo artículo!
+No te preocupes - estas preguntas serán respondidas a su tiempo, ¡cuando nos encontremos para el [próximo artículo](/es/blog/elliptic-curves-in-depth/part-9)!

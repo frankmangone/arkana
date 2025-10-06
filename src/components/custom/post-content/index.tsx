@@ -67,69 +67,15 @@ export function PostContent({ post }: PostContentProps) {
 
       return gfmTable;
     })
-    // Fix hyphen spacing issues by replacing spaced hyphens with non-breaking spaces
-    // This preserves intended spacing around hyphens while keeping compound words intact
-    // BUT we need to avoid doing this inside math expressions or markdown lists
-
-    // First, let's protect markdown list items by temporarily replacing them
-    // Also protect list items that come after colons (common pattern: "text:\n\n- item")
-    .replace(/(:\s*\n\s*)-(\s)/g, "$1___LIST_ITEM_START___-$2")
-    .replace(/^(\s*)-(\s)/gm, "___LIST_ITEM_START___$1-$2")
-
-    .replace(/\s-\s/g, (match, offset, string) => {
-      // Check if we're inside a math expression
-      const beforeMatch = string.substring(0, offset);
-      const afterMatch = string.substring(offset + match.length);
-
-      // Count unmatched $ signs before this position (for inline math)
-      const dollarsBefore = (beforeMatch.match(/\$/g) || []).length;
-
-      // Check for display math delimiters
-      const displayMathBefore = beforeMatch.lastIndexOf("$$");
-      const displayMathAfter = afterMatch.indexOf("$$");
-      const inlineDisplayBefore = beforeMatch.lastIndexOf("\\[");
-      const inlineDisplayAfter = afterMatch.indexOf("\\]");
-
-      // If we're inside math (odd number of $ before us, or between $$ or \[ \])
-      if (
-        dollarsBefore % 2 === 1 ||
-        (displayMathBefore >
-          beforeMatch.lastIndexOf("$$", displayMathBefore - 1) &&
-          displayMathAfter !== -1) ||
-        (inlineDisplayBefore > beforeMatch.lastIndexOf("\\]") &&
-          inlineDisplayAfter !== -1)
-      ) {
-        return match; // Don't replace inside math
-      }
-
-      return "&nbsp;-&nbsp;";
+    // Fix minus signs in LaTeX expressions - replace hyphens/em dashes with proper LaTeX minus
+    .replace(/(\$\$[\s\S]*?\$\$|\\\[[\s\S]*?\\\]|\$[^$\n]*?\$)/g, (match) => {
+      // Replace em dashes and hyphens that act as minus signs with proper LaTeX minus
+      return match
+        .replace(/—/g, '-') // First normalize em dashes to regular hyphens
+        .replace(/(\s)-(\s)/g, '$1{-}$2') // Replace spaced hyphens with proper LaTeX minus
+        .replace(/(\(|\[|^)-/g, '$1{-}') // Replace hyphens at start of expressions
+        .replace(/-(\)|]|$)/g, '{-}$1'); // Replace hyphens at end of expressions
     })
-
-    // Restore the protected list items
-    .replace(/___LIST_ITEM_START___/g, "")
-    .replace(/\s-,/g, (match, offset, string) => {
-      // Same check for comma-separated hyphens
-      const beforeMatch = string.substring(0, offset);
-      const dollarsBefore = (beforeMatch.match(/\$/g) || []).length;
-      const displayMathBefore = beforeMatch.lastIndexOf("$$");
-      const inlineDisplayBefore = beforeMatch.lastIndexOf("\\[");
-      const afterMatch = string.substring(offset + match.length);
-      const displayMathAfter = afterMatch.indexOf("$$");
-      const inlineDisplayAfter = afterMatch.indexOf("\\]");
-
-      if (
-        dollarsBefore % 2 === 1 ||
-        (displayMathBefore >
-          beforeMatch.lastIndexOf("$$", displayMathBefore - 1) &&
-          displayMathAfter !== -1) ||
-        (inlineDisplayBefore > beforeMatch.lastIndexOf("\\]") &&
-          inlineDisplayAfter !== -1)
-      ) {
-        return match; // Don't replace inside math
-      }
-
-      return "&nbsp;-,";
-    });
 
   return (
     <div className="prose prose-gray dark:prose-invert max-w-none mb-8">

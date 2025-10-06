@@ -1,5 +1,5 @@
 ---
-title: 'Elliptic Curves In-Depth (Part 9)'
+title: Elliptic Curves In-Depth (Part 9)
 author: frank-mangone
 date: '2025-10-06'
 thumbnail: /images/elliptic-curves-in-depth/part-9/0*cA5HOtwjA3YxYxcy-20.jpg
@@ -8,14 +8,14 @@ tags:
   - ellipticCurves
   - degeneracy
   - algorithms
-description: "A wrap-up on pairings, with some discussions around algorithms, types, and other nuances."
+description: >-
+  A wrap-up on pairings, with some discussions around algorithms, types, and
+  other nuances.
 readingTime: 15 min
 mediumUrl: >-
   https://medium.com/@francomangone18/elliptic-curves-in-depth-part-9-f9253c437fbd
-contentHash: # TODO: Add content hash
-supabaseId: # TODO: Add supabase ID
-
-
+contentHash: 6ec68d699e11ab0ecf543c0c43c440ad63c4c411e3c7a284ae15943d876d1de0
+supabaseId: 2b7c8046-8a98-4559-b675-e41bb0b07536
 ---
 
 Alright! We left off the [previous installment](/en/blog/elliptic-curves-in-depth/part-8) with a wrap on the very specific way pairings are defined.
@@ -62,7 +62,7 @@ Let’s see how we can get there.
 
 ### Building the Functions
 
-To get us started, we’ll need to go back to one of the affirmations at the start of the previous article: that we can build a function **fₘ,ₚ** whose divisor (which is principal) is of this form:
+To get us started, we’ll need to go back to one of the affirmations at the start of the previous article: that we can build a function $f_{m,P}$ whose divisor (which is principal) is of this form:
 
 $$
 (f_{m,P}) = m(P) — ([m]P) — (m — 1)(\mathcal{O})
@@ -124,6 +124,8 @@ However, pairings **are** used in practice for various cryptographic protocols �
 
 And that’s what we shall see next.
 
+### Miller’s Algorithm
+
 Rather than trying to add one to $m$ on each iteration, what would happen if we try to **double it**?
 
 Let’s see. We being with some function $f_{m,P}$:
@@ -141,7 +143,7 @@ $$
 The interesting bit happens when we try to **square** our original function. By the properties of divisors we already know, we can work out the resulting divisor to be:
 
 $$
-(f_{m,P}²) = 2(f_{m,P}) = 2m(P) — 2([m]P) — 2(m — 1)(\mathcal{O})
+(f_{m,P}^2) = 2(f_{m,P}) = 2m(P) — 2([m]P) — 2(m — 1)(\mathcal{O})
 $$
 
 Which is almost **suspiciously similar** to the divisor we want to get to!
@@ -178,7 +180,7 @@ We can get to any value of $r$ in logarithmic time by **squaring-and-adding**, u
 
 > For example, to get to $r = 28$, we could do **double**, **add**, **double**, **add**, **double**, **double**.
 
-This should be very reminiscent of the [double-and-add algorithm](/en/blog/elliptic-curves-in-depth/part-1/#fast-addition) we used for fast multiplication of elliptic curve points. Behind the scenes, both use the tangent rule for the duplication — it’s just that we’re building functions in the case of Miller’s algorithm.
+This should be very reminiscent of the [double-and-add algorithm](/en/blog/elliptic-curves-in-depth/part-1/#fast-addition) we used for fast multiplication of elliptic curve points. Behind the scenes, both use the tangent rule for the duplication — it’s just that we’re building **functions** in the case of Miller’s algorithm.
 
 As a final remark, it should be noted that as we go deeper into the algorithm, the resulting functions will have high degree, so storing them in full becomes **prohibitively expensive**.
 
@@ -238,9 +240,9 @@ With this, we’re now ready to formally present them.
 
 ### Type 1: Symmetric Pairings
 
-The simplest case we could imagine is when $\mathbb{G}_1$ = $\mathbb{G}_2$ = $\mathcal{G}_1$
+The simplest case we could imagine is when $\mathbb{G}_1 = \mathbb{G}_2 = \mathcal{G}_1$
 
-> Recall that 𝒢**₁ **is the [base field subgroup](/en/blog/elliptic-curves-in-depth/part-7/#torsion-structure).
+> Recall that $\mathcal{G}_1$ is the [base field subgroup](/en/blog/elliptic-curves-in-depth/part-7/#torsion-structure).
 
 Since we use the same group for both  $\mathbb{G}_1$ and  $\mathbb{G}_2$, it’s no surprise these are called **symmetric pairings**.
 
@@ -280,7 +282,7 @@ So here’s the **real** problem: distortion maps only exist for [supersingular 
 
 Supersingular curves have small [embedding degrees](/en/blog/elliptic-curves-in-depth/part-7/#extensions-and-torsion), typically $k \leq 6$. Small embedding degrees mean the pairing outputs land on a small field extension, which in turn causes the discrete logarithm problem in the output group to become **tractable**, resulting in curves that are **vulnerable to attacks**.
 
-In short, Type 1’s simplicity comes at the cost of **security**. As more secure alternatives emerged, Type 1 pairings have fallen out of favor in practice.
+In short, type 1’s simplicity comes at the cost of **security**. As more secure alternatives emerged, type 1 pairings have fallen out of favor in practice.
 
 ### Type 2: Asymmetric with Isomorphism
 
@@ -303,7 +305,7 @@ Now for this type, we take $\mathbb{G}_2$ to be $\mathcal{G}_2$ — the trace ze
 
 This seemingly small change has profound implications — it actually **flips** the tradeoff completely on its head. Let’s see:
 
-- Unlike Type 2, we **can** now hash into $\mathbb{G}_2$. The mechanism involves first hashing into the **entire r-torsion**, and then simply applying the **anti-trace map** to move into $\mathcal{G}_2$.
+- Unlike type 2, we **can** now hash into $\mathbb{G}_2$. The mechanism involves first hashing into the **entire r-torsion**, and then simply applying the **anti-trace map** to move into $\mathcal{G}_2$.
 - Of course, we must pay a price for this convenience. In this case, that translates into not having an efficient way to compute an isomorphism ψ that we can use.
 
 It’s important to point out that such an isomorphism **must exist** — after all, both $\mathbb{G}_1$ and $\mathbb{G}_2$ have the same size. The problem is that there’s no known **efficient way** to compute it.
@@ -387,7 +389,7 @@ $$
 
 What we’re saying is that whatever the output of the pairing is, it’s **fixed by the q-th power map**. In other words, it has to be an **element in the base field**, for if $w_r(P, Q)$ belongs to a field extension, then raising it to the q-th power will **not yield** the same result.
 
-We also know that **w_r(P, Q) **[must be an r-th root of unity](/en/blog/elliptic-curves-in-depth/part-8/#weil-reciprocity).
+We also know that $w_r(P, Q)$ [must be an r-th root of unity](/en/blog/elliptic-curves-in-depth/part-8/#weil-reciprocity).
 
 > Recall that for a field to contain r-th roots of unity, $r$ must divide the cardinality of the multiplicative subgroup of the field, so in this case, $q - 1$.
 
