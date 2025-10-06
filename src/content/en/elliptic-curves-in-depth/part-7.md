@@ -21,7 +21,7 @@ supabaseId: 195db18e-c038-4462-8cb6-d5b97b8e60bd
 
 It must not have been an easy ride to get here.
 
-We've covered a wide spread of concepts, range from simple stuff to some very abstract ideas.
+We've covered a wide spread of concepts, ranging from simple stuff to some very abstract ideas.
 
 Well, if you've felt things have been complicated so far... Well, grab onto whatever you have at hand. Things are about to go batshit crazy.
 
@@ -63,7 +63,7 @@ $$
 e(x, y \cdot z) = e(x,y) * e(x, z)
 $$
 
-It doesn't look that crazy, I know. But this features enables moving things around in clever ways. For instance, it's easy to see that:
+It doesn't look that crazy, I know. But this feature enables moving things around in clever ways. For instance, it's easy to see that:
 
 $$
 e(x^n, y) = e(x,y^n)
@@ -85,7 +85,7 @@ And that's the end of the easy part.
   />
 </figure>
 
-The problem now is that we need to find **suitable groups**, and also define some **function** that behaves like a bilinear map. Of course, we can infer that those groups have to do with out trusty elliptic curves. But it isn't as simple as just picking two random curves - we'll require much more than that for this to work.
+The problem now is that we need to find **suitable groups**, and also define some **function** that behaves like a bilinear map. Of course, we can infer that those groups have to do with our trusty elliptic curves. But it isn't as simple as just picking two random curves - we'll require much more than that for this to work.
 
 In particular, we need to revisit the group structure of elliptic curves one more time.
 
@@ -93,7 +93,7 @@ In particular, we need to revisit the group structure of elliptic curves one mor
 
 ## Elliptic Curve Subgroups
 
-In the previous article, we explored how there structure of an elliptic curve group could be described by the Mordell-Weil theorem:
+In the previous article, we explored how the structure of an elliptic curve group could be described by the Mordell-Weil theorem:
 
 $$
 E(\mathbb{Q}) \simeq E(\mathbb{Q})_{\textrm{tors}} \oplus \mathbb{Z}^r
@@ -115,7 +115,7 @@ Torsion groups are the subgroups where, for some integer $r$, all its elements $
 
 > Also, if $P$ is a generator of $E[r]$, we can see that every other point in the subgroup also belongs to the torsion because $[r]([n]P) = [n]([r]P) = [n]\mathcal{O} = \mathcal{O}$.
 >
-> For this reason, the group $E[r]$ is also the **kernel** of the map $[r]: P \rightarrow P$, or multiplication by $r$. Remember that kernel is just the generalized idea for **roots**.
+> For this reason, the group $E[r]$ is also the **kernel** of the map $[r]: P \rightarrow [r]P$, or multiplication by $r$. Remember that kernel is just the generalized idea for **roots**.
 
 Now we go back to finite fields. As previously mentioned, it's clear that the entire elliptic curve group is finite. However, it's worth remembering that it's highly non-trivial to find integer-valued points on an elliptic curve, as we explored in the [previous article](/en/blog/elliptic-curves-in-depth/part-5).
 
@@ -163,14 +163,14 @@ This smallest $k$ has a special name in this context: it's called the **embeddin
 
 > This is also written as $r | (p^k - 1)$, meaning "$r$ divides $(p^k - 1)$".
 
-At first glance, this requirement may not seem to be enough - after all, we it doesn't guarantee that all $r^2$ points of the r-torsion will belong to out field. As it turns out though, this condition is **usually enough**. It has to do with the field containing the **r-th roots of unity**, which are some field elements $z$ such that $z^r \ \textrm{mod}\ p = 1$.
+At first glance, this requirement may not seem to be enough - after all, it doesn't guarantee that all $r^2$ points of the r-torsion will belong to our field. As it turns out though, this condition is **usually enough**. It has to do with the field containing the **r-th roots of unity**, which are some field elements $z$ such that $z^r \ \textrm{mod}\ p = 1$.
 
 > All we really need is for $r$ to be prime.
 
 <figure>
   <img
     src="/images/elliptic-curves-in-depth/part-7/trust.gif" 
-    alt="Vin Disel with legend 'I trust you'"
+    alt="Vin Diesel with legend 'I trust you'"
     width="600"
   />
 </figure>
@@ -210,7 +210,7 @@ Part of what makes these torsion subgroups useful is the existence of some **map
 
 > We've already talked about **twists** on curves, as a notable example.
 
-Another such function is what's called the **trace map**, denoted by $\textrm{Tr}$. It's definition is quite involved. Here's how it looks:
+Another such function is what's called the **trace map**, denoted by $\textrm{Tr}$. Its definition is quite involved. Here's how it looks:
 
 $$
 \textrm{Tr}(P) = \sum_{\sigma \in Gal(\mathbb{F}_{p^k} / \mathbb{F}_{p})} \sigma (P) = \sum_{i=0}^{k-1} \pi ^i(P) = \sum_{i=0}^{k-1} (x^{p^i}, y^{p^i})
@@ -242,7 +242,7 @@ The trace map has an interesting property: it maps elements in the field extensi
 
 > It's easy to prove this by showing that $\pi(\textrm{Tr}(P)) = \textrm{Tr}(P)$. I'll leave it to you as an exercise!
 
-And it has another even crazier property: it's **linear**. Meaning, for any points $P$ and $Q$, then $\textrm{Tr}(P + Q) = \textrm{Tr}(P) + \textrm{Tr}(Q)$. This is not evident at first sight, but we can see this why this is by examining each of the trace map's components -  which are powers of the Frobenius endomorphism.
+And it has another even crazier property: it's **linear**. Meaning, for any points $P$ and $Q$, then $\textrm{Tr}(P + Q) = \textrm{Tr}(P) + \textrm{Tr}(Q)$. This is not evident at first sight, but we can see why this is by examining each of the trace map's components -  which are powers of the Frobenius endomorphism.
 
 Essentially, for this to work, this equality should hold:
 
@@ -360,7 +360,7 @@ Both are cyclic subgroups of order $r$, because they belong to the r-torsion. Th
 
 Oh, and we have to baptize $\mathcal{G}_2$ with a name. We call it the **trace-zero subgroup**, since all points $P$ in $\mathcal{G}_2$ have $\textrm{Tr}(P) = \mathcal{O}$. We'll not show why this is here, but again, feel free to try this yourself!
 
-Rounding things up, we know that the **trace map** takes point in $E[r]$ to $\mathcal{G}_1$. What about $\mathcal{G}_2$, though? Is there any map that does the same thing? In fact, there is, and it's called the **anti-trace map**, defined as:
+Rounding things up, we know that the **trace map** takes points in $E[r]$ to $\mathcal{G}_1$. What about $\mathcal{G}_2$, though? Is there any map that does the same thing? In fact, there is, and it's called the **anti-trace map**, defined as:
 
 $$
 a\textrm{Tr} : P \to P' \ / \ a\textrm{Tr}(P)= [k]P - \textrm{Tr}(P)

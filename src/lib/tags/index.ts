@@ -12,6 +12,11 @@ export const tags: TagDefinition = {
     es: "Álgebra Abstracta",
     pt: "Álgebra Abstracta",
   },
+  algorithms: {
+    en: "Algorithms",
+    es: "Algoritmos",
+    pt: "Algoritmos",
+  },
   aptos: {
     en: "Aptos",
     es: "Aptos",
@@ -96,6 +101,11 @@ export const tags: TagDefinition = {
     en: "Data Structures",
     es: "Estructuras de Datos",
     pt: "Estruturas de Dados",
+  },
+  degeneracy: {
+    en: "Degeneracy",
+    es: "Degeneración",
+    pt: "Degeneração",
   },
   digitalSignatures: {
     en: "Digital Signatures",

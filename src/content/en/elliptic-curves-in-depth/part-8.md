@@ -35,7 +35,7 @@ Welcome aboard the pairing express. I'll be your guide.
 
 ## Preliminaries
 
-Before we present the **two pairings** we'll be exploring in this article, there's a couple things we need to look at - a few principles used in both pairing definitions.
+Before we present the **two pairings** we'll be exploring in this article, there are a couple things we need to look at - a few principles used in both pairing definitions.
 
 When we talked about divisors, one of the main concepts we talked about was that of [principal divisors](/en/blog/elliptic-curves-in-depth/part-5/#principal-divisors). These represent divisors for **functions**, and have two defining characteristics:
 
@@ -420,4 +420,4 @@ It's all fantastic with the **functional definitions**, but we've said nothing a
 
 And what role do the [trace](/en/blog/elliptic-curves-in-depth/part-7/#the-trace-map) and [anti-trace](/en/blog/elliptic-curves-in-depth/part-7/#the-characteristic-polynomial) map play in all this?
 
-Do not fret - these questions will be answered in time, when we meet for the next article!
+Do not fret - these questions will be answered in time, when we meet for the [next article](/en/blog/elliptic-curves-in-depth/part-9)!
