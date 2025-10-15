@@ -1,7 +1,7 @@
 ---
-title: "Blockchain 101: JAM"
+title: 'Blockchain 101: JAM'
 author: frank-mangone
-date: "2025-09-23"
+date: '2025-09-23'
 thumbnail: /images/blockchain-101/jam/0*ZHe_R0dR9Ov__TNm-1.jpg
 tags:
   - blockchain
@@ -13,7 +13,7 @@ description: >-
   To close off our chapter in Polkadot, we’ll have to talk about its latest
   development: JAM.
 readingTime: 15 min
-contentHash: 3c53b91e4b6a371aac15dac04371c62eeaeb167adea7b0d630786c94e7a886bf
+contentHash: b0f421c015b69739d09cfd0e1f19f95d79e04876d0599cdf8d7ee765a9f61147
 supabaseId: 69c89960-9df0-40ca-8226-25a11bde28d6
 ---
 

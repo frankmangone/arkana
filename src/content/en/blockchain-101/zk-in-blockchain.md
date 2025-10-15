@@ -1,8 +1,8 @@
 ---
-title: "Blockchain 101: ZK in Blockchain"
+title: 'Blockchain 101: ZK in Blockchain'
 author: frank-mangone
-date: "2025-10-15"
-thumbnail: "/images/blockchain-101/zk-in-blockchain/0*4nlnW5cHm23lYgUp-3.jpg"
+date: '2025-10-15'
+thumbnail: /images/blockchain-101/zk-in-blockchain/0*4nlnW5cHm23lYgUp-3.jpg
 tags:
   - zeroKnowledgeProofs
   - blockchain
@@ -10,10 +10,11 @@ tags:
   - alephZero
   - mina
 description: >-
-  Moving on from Polkadot, we now cover the intersection between two cutting edge technologies: blockchain and zero knowledge proofs
+  Moving on from Polkadot, we now cover the intersection between two cutting
+  edge technologies: blockchain and zero knowledge proofs
 readingTime: 11 min
-contentHash: # TODO: Add content hash
-supabaseId: # TODO: Add supabase ID
+contentHash: 6aabc12c66613e4dfb779c706f0e85189cab55322147285118e76810add29ffc
+supabaseId: 415faac9-b3dc-4d0a-816e-426f6176fa5e
 ---
 
 > This is part of a larger series of articles about Blockchain. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/blockchain-101/how-it-all-began).

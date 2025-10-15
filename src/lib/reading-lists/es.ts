@@ -244,6 +244,11 @@ export const readingLists: ReadingList[] = [
         slug: "blockchain-101/jam",
         order: 21,
       },
+      {
+        id: "zk-in-blockchain",
+        slug: "blockchain-101/zk-in-blockchain",
+        order: 22,
+      },
     ],
   },
   {
