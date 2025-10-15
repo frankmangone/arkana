@@ -1,7 +1,7 @@
 ---
-title: 'Blockchain 101: JAM'
+title: "Blockchain 101: JAM"
 author: frank-mangone
-date: '2025-09-23'
+date: "2025-09-23"
 thumbnail: /images/blockchain-101/jam/0*ZHe_R0dR9Ov__TNm-1.jpg
 tags:
   - blockchain
@@ -363,6 +363,6 @@ And honestly, it’s pretty exciting!
 
 With Polkadot behind us, one would think that there’s not much less to cover — and indeed, we’re inching closer to the end of the series.
 
-But there are some quirks that we haven’t yet talked about, one of which is a modern buzzword: **ZK proofs**. They are slowly making their way into the Blockchain space, and in the next article, I want to explore how they may impact the future of this technology.
+But there are some quirks that we haven’t yet talked about, one of which is a modern buzzword: **ZK proofs**. They are slowly making their way into the Blockchain space, and in the [next article](/en/blog/blockchain-101/zk-in-blockchain), I want to explore how they may impact the future of this technology.
 
 I’ll see you soon!

@@ -12,6 +12,11 @@ export const tags: TagDefinition = {
     es: "Álgebra Abstracta",
     pt: "Álgebra Abstracta",
   },
+  alephZero: {
+    en: "Aleph Zero",
+    es: "Aleph Zero",
+    pt: "Aleph Zero",
+  },
   algorithms: {
     en: "Algorithms",
     es: "Algoritmos",
@@ -246,6 +251,11 @@ export const tags: TagDefinition = {
     en: "Merkle Tree",
     es: "Árbol de Merkle",
     pt: "Árvore de Merkle",
+  },
+  mina: {
+    en: "Mina",
+    es: "Mina",
+    pt: "Mina",
   },
   mining: {
     en: "Mining",

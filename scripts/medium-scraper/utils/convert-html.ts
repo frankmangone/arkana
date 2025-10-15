@@ -228,7 +228,7 @@ async function _convertHtmlToMarkdown(
 
         const level = parseInt(tagName[1]);
         const headingText = processInlineElements($el);
-        content.push(`\n${"#".repeat(level + 1)} ${headingText}\n`);
+        content.push(`\n${"#".repeat(level)} ${headingText}\n`);
       }
       // Process paragraphs
       else if (tagName === "p" && $el.hasClass("pw-post-body-paragraph")) {
