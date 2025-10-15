@@ -5,7 +5,7 @@ import Image from "next/image";
 import { PostPreview } from "@/lib/posts";
 import { useRouter } from "next/navigation";
 import { ArrowUpRight, User, Clock } from "lucide-react";
-import { formatDate } from "@/lib/date-utils";
+import { formatDate } from "@/lib/utils";
 import { Tag } from "@/components/custom/tag";
 
 export interface FeaturedPostCardProps {
@@ -28,7 +28,7 @@ export function FeaturedPostCard(props: FeaturedPostCardProps) {
     ? `${baseUrl}${post.thumbnail}`
     : "/placeholder.svg";
 
-  const date = formatDate(new Date(post.date), lang);
+  const date = formatDate(post.date, lang);
 
   const handleAuthorClick = (e: React.MouseEvent) => {
     e.preventDefault();

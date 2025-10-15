@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { User, Clock } from "lucide-react";
 import { ArrowUpRight } from "lucide-react";
-import { formatDate } from "@/lib/date-utils";
+import { formatDate } from "@/lib/utils";
 import { PostPreview } from "@/lib/posts";
 import { useRouter } from "next/navigation";
 import { Tag } from "./tag";
@@ -50,7 +50,7 @@ export function PostCard(props: PostCardProps) {
           </div>
         </div>
         <div className="flex justify-between items-center gap-3 mb-2 text-sm text-gray-400">
-          <span>{formatDate(new Date(post.date), lang)}</span>
+          <span>{formatDate(post.date, lang)}</span>
           <span className="inline-flex items-center">
             <User className="h-3 w-3 mr-1" />
             <button
