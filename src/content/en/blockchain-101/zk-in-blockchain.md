@@ -13,7 +13,7 @@ description: >-
   Moving on from Polkadot, we now cover the intersection between two cutting
   edge technologies: blockchain and zero knowledge proofs
 readingTime: 11 min
-contentHash: 6aabc12c66613e4dfb779c706f0e85189cab55322147285118e76810add29ffc
+contentHash: cff6a6121dbe44eac6f5a48cc648a7d35bbe2c162a145f43bf4e576a4d6694de
 supabaseId: 415faac9-b3dc-4d0a-816e-426f6176fa5e
 ---
 
@@ -51,6 +51,8 @@ Zero-knowledge proofs are cryptographic protocols that allow a prover to convinc
 
 When put like that, it sounds quite magical and esoteric. But I guess we’re really learning about it **backwards** — there’s a way to approach these ideas from a more familiar or down-to-earth perspective. That way is to talk about **verifiable computing**.
 
+### Verifiable Computing
+
 Imagine you have a program $P$, and you want to verify that it was **correctly executed** for a given set of inputs $x$, resulting in some output $y$. Something like:
 
 $$
@@ -70,6 +72,8 @@ However, what we just said is plenty enough to be more precise about this zero k
 Instead, arguments of knowledge are required to satisfy two other properties, called **completeness** and **soundness**: the first one means that valid proofs will always be accepted, and the second one means that false proofs are really, really hard to craft.
 
 > There’s even the more precise notion of **knowledge soundness**, which roughly speaking means that it’s very unlikely that a proof could be crafted without knowledge of certain information. The definition itself is more involved, and it requires us to define an **efficient extractor**, so we’ll skip those technical details.
+
+### What About ZK Then?
 
 In light of this, one must wonder: when is zero knowledge something we should care about?
 
@@ -127,6 +131,8 @@ Clearly, we’re interested in the **latter option**. We’re after solutions th
 
 Wait a second. We’re talking about rollups and validation here. But... Isn’t validation also needed in layer 1 Blockchains?
 
+### L1 Validation
+
 Exactly!
 
 L1 Blockchains already have mechanisms in place to keep validation fast and lean. In fact, we discussed the methods available [a couple articles ago](/en/blog/blockchain-101/polkadot-consensus/#building-the-proofs). ZK proofs were part of the list of possibilities.
@@ -162,6 +168,8 @@ Privacy in Blockchain is not that novel of a concept. Early examples such as [Mo
 Importantly, both Monero and Zcash categorize as payment solutions: they work like Bitcoin, but they add privacy on top of it.
 
 Almost ten years have gone by since the conception of those projects, and modern solutions have also explored adding privacy to general-purpose Blockchains — in other words, adding privacy to **Smart Contracts**.
+
+### Aleph Zero
 
 One example of this is [Aleph Zero](https://alephzero.org/).
 
@@ -215,6 +223,8 @@ While there are some interesting things to talk about such as ZK-based identity 
 		alt="Mina logo"
 	/>
 </figure>
+
+### Mina
 
 The approach Mina takes for, well, **the entire foundation of what a Blockchain is** differs quite dramatically from the standard. We’ve seen some deviations from the Blockchain model in the form of [DAGs](/en/blog/blockchain-101/beyond-the-blockchain-part-2), but that’s about as crazy as things have gotten.
 
