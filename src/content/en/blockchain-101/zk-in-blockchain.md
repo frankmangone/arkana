@@ -13,7 +13,7 @@ description: >-
   Moving on from Polkadot, we now cover the intersection between two cutting
   edge technologies: blockchain and zero knowledge proofs
 readingTime: 11 min
-contentHash: cff6a6121dbe44eac6f5a48cc648a7d35bbe2c162a145f43bf4e576a4d6694de
+contentHash: 62d6f64e3a72c23e0d4265aba08b9bbac4777412c9140370be6f2d4e0303336b
 supabaseId: 415faac9-b3dc-4d0a-816e-426f6176fa5e
 ---
 
@@ -67,7 +67,7 @@ Such systems are known as **arguments of knowledge**. They rely on several techn
 
 > I’ve written some stuff about this in my [Cryptography 101 series](/en/reading-lists/cryptography-101), so you might want to check that out! Don’t worry though — we’ll cover what you need to know here.
 
-However, what we just said is plenty enough to be more precise about this zero knowledge stuff: if your arguments of knowledge happen not to reveal any information about the **inputs** to the computation, then you get a zero knowledge proof. Which means that it’s a **property** that these arguments **can have **— and not a strict requirement.
+However, what we just said is plenty enough to be more precise about this zero knowledge stuff: if your arguments of knowledge happen not to reveal any information about the **inputs** to the computation, then you get a zero knowledge proof. Which means that it’s a **property** that these arguments **can have** — and not a strict requirement.
 
 Instead, arguments of knowledge are required to satisfy two other properties, called **completeness** and **soundness**: the first one means that valid proofs will always be accepted, and the second one means that false proofs are really, really hard to craft.
 
@@ -193,7 +193,7 @@ When you want to make a private transaction or interact with a private Smart Con
 This is interesting on **two accounts**:
 
 - First, it’s an **optional feature**, as we mentioned before. Not everything needs to be private. Having the ability to pick and choose which information we want to protect is great — because if there’s something we’ve stated quite firmly so far, is that zero knowledge proofs are expensive to generate. In the case of building and signing a private transaction, that stress is placed on the **end user**, which hurts the **user experience**.
-- Secondly, privacy is **baked into the protocol**. General-purpose Blockchains may allow for some degree of custom privacy, but there are **limits** to what can be done. Examples such as [Confidential Wrapped Ether](https://ethresear.ch/t/confidential-wrapped-ethereum/22622) or [Zether](https://github.com/Consensys/anonymous-zether) are technically sound, but for instance, they lack the ability to shield the transactions themselves (as in, shield the sender) because the **protocol **(think Ethereum, Polkadot, etc.) doesn’t care about that.
+- Secondly, privacy is **baked into the protocol**. General-purpose Blockchains may allow for some degree of custom privacy, but there are **limits** to what can be done. Examples such as [Confidential Wrapped Ether](https://ethresear.ch/t/confidential-wrapped-ethereum/22622) or [Zether](https://github.com/Consensys/anonymous-zether) are technically sound, but for instance, they lack the ability to shield the transactions themselves (as in, shield the sender) because the **protocol** (think Ethereum, Polkadot, etc.) doesn’t care about that.
 
 The ZK proofs ensure that even though the private operations are hidden, validators can still **verify** certain things such as no tokens being created out of thin air, spending limits being respected, and more.
 
