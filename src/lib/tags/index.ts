@@ -47,6 +47,11 @@ export const tags: TagDefinition = {
     es: "BlockDAG",
     pt: "BlockDAG",
   },
+  bls12381: {
+    en: "BLS12-381",
+    es: "BLS12-381",
+    pt: "BLS12-381",
+  },
   commitmentScheme: {
     en: "Commitment Scheme",
     es: "Esquema de Compromiso",
@@ -121,6 +126,11 @@ export const tags: TagDefinition = {
     en: "Divisor",
     es: "Divisor",
     pt: "Divisor",
+  },
+  ed25519: {
+    en: "Ed25519",
+    es: "Ed25519",
+    pt: "Ed25519",
   },
   eip: {
     en: "EIP",
@@ -386,6 +396,11 @@ export const tags: TagDefinition = {
     en: "Security",
     es: "Seguridad",
     pt: "Segurança",
+  },
+  secp256k1: {
+    en: "secp256k1",
+    es: "secp256k1",
+    pt: "secp256k1",
   },
   sharding: {
     en: "Sharding",
