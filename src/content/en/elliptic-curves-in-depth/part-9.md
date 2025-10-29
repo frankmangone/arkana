@@ -14,7 +14,7 @@ description: >-
 readingTime: 15 min
 mediumUrl: >-
   https://medium.com/@francomangone18/elliptic-curves-in-depth-part-9-f9253c437fbd
-contentHash: 54796e95ab2858d941e161e5f019bc82458cdcb8c891ae3b7ea987d2d99ece63
+contentHash: 9403b39fb9dfbd552c82280fde9027e7af41fe690d4d90b94ae394cce54da1bd
 supabaseId: 2b7c8046-8a98-4559-b675-e41bb0b07536
 ---
 
@@ -442,4 +442,4 @@ While we could say much, much more about elliptic curves (heck, there are [entir
 
 However, I believe some practical considerations would be a good wrap-up. Thus, next article will be dedicated to understanding some of the curves with the most widespread adoption and their particularities.
 
-I’ll see you on the finish line!
+I’ll see you on the [finish line](/en/blog/elliptic-curves-in-depth/part-8)!

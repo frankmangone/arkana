@@ -12,7 +12,7 @@ description: >-
   Un cierre sobre emparejamientos, con algunas discusiones sobre algoritmos,
   tipos y otros matices.
 readingTime: 15 min
-contentHash: 2a773e832ed4fab71c51eb5bd399e539af38c8ef84cd18ce72aaf10cae53095e
+contentHash: d6e01f136f836bdfd3f582e6479929d5c69e5aeff7847ab9bf9722676168a424
 supabaseId: 73dac0f1-e9fd-4c5f-aad1-3f87f25079b8
 ---
 
@@ -440,4 +440,4 @@ Mientras que podríamos decir mucho, mucho más sobre curvas elípticas (diablos
 
 Sin embargo, creo que algunas consideraciones prácticas serían un buen cierre. Así, el próximo artículo estará dedicado a entender algunas de las curvas con la adopción más generalizada y sus particularidades.
 
-¡Nos vemos en la línea de meta!
+¡Nos vemos en la [meta](/en/blog/elliptic-curves-in-depth/part-10)!
