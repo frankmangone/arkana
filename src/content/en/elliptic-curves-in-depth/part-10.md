@@ -1,5 +1,5 @@
 ---
-title: 'Elliptic Curves In-Depth (Part 10)'
+title: Elliptic Curves In-Depth (Part 10)
 author: frank-mangone
 date: '2025-10-28'
 thumbnail: /images/elliptic-curves-in-depth/part-10/1*klTDp0fQcQHrUK43VREKMQ-4.png
@@ -9,10 +9,12 @@ tags:
   - secp256k1
   - ed25519
   - bls12381
-description: "To wrap up the series, we take a look at a few practical aspects, and present some of the most studied elliptic curves out there."
+description: >-
+  To wrap up the series, we take a look at a few practical aspects, and present
+  some of the most studied elliptic curves out there.
 readingTime: 16 min
-contentHash: # TODO: Add content hash
-supabaseId: # TODO: Add supabase ID
+contentHash: 2748abc156a4ce607a67d593ab134c6cf352b41b93b43c6fd9e3c44a4fe567f5
+supabaseId: 48dd1bfc-98ae-4ec7-b696-9cb32f86b8c9
 ---
 I reckon getting here must have not been easy, my dear reader.
 

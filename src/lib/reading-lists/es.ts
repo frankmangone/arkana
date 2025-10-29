@@ -256,7 +256,6 @@ export const readingLists: ReadingList[] = [
     title: "Curvas Elípticas En Profundidad",
     description: "Una inmersión más profunda en las curvas elípticas",
     coverImage: "/images/elliptic-curves-in-depth/part-4/yoda.webp",
-    ongoing: true,
     items: [
       {
         id: "part-1",
@@ -302,6 +301,11 @@ export const readingLists: ReadingList[] = [
         id: "part-9",
         slug: "elliptic-curves-in-depth/part-9",
         order: 9,
+      },
+      {
+        id: "part-10",
+        slug: "elliptic-curves-in-depth/part-10",
+        order: 10,
       },
     ],
   },
