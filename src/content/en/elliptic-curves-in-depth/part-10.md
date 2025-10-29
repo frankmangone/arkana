@@ -13,9 +13,10 @@ description: >-
   To wrap up the series, we take a look at a few practical aspects, and present
   some of the most studied elliptic curves out there.
 readingTime: 16 min
-contentHash: fb73d8544e3fb5b3b7695c722f140ece2537230767df410677564aa8c78b8701
+contentHash: c5965285bfb55521098027fdd7724dda0c419cf29ed6a72fd5a89df5fed7dd05
 supabaseId: 48dd1bfc-98ae-4ec7-b696-9cb32f86b8c9
 ---
+
 I reckon getting here must have not been easy, my dear reader.
 
 We've gone through [nine full articles](/en/reading-lists/elliptic-curves-in-depth) of elliptic curve theory, spanning topics from the very basics, to some real freakin' abstract stuff (looking at you, divisors).
@@ -60,7 +61,7 @@ Of course, there's a good reason for this particular structure. The number itsel
 
 > As a rough sketch of how this works, notice that we can express $p$ as $2^{256} - c$, with $c$ being a "tiny" constant when compared to $p$ itself. With this, it's easy to see that $2^{256} mod p = c$.
 >
-> So the strategy is the following: split any big number you want to reduce (say, 512 bits) into **high bits** ($x$_h$) and **low bits**($x_l$). We can represent such separation for an arbitrary number $x$ as $x = x_h.2^{256} + x_l$. When we apply $\textrm{mod} \ p$ to the expression, we get something fantastic: $x mod p = x_h.c + x_l$.And since $c$ is small (and also has a sparse binary representation, but let's not worry about that now), this operation is super fast!
+> So the strategy is the following: split any big number you want to reduce (say, 512 bits) into **high bits** ($x_h$) and **low bits** ($x_l$). We can represent such separation for an arbitrary number $x$ as $x = x_h.2^{256} + x_l$. When we apply $\textrm{mod} \ p$ to the expression, we get something fantastic: $x mod p = x_h.c + x_l$.And since $c$ is small (and also has a sparse binary representation, but let's not worry about that now), this operation is super fast!
 
 Prime field, check! Now we turn our attention to the group structure, starting with its **order** (number of elements), which is this little number here:
 
@@ -68,7 +69,7 @@ $$
 n = 2^{256} — 432420386565659656852420866394968145599
 $$
 
-What's special about that, you might ask? Hear this: it's a **prime number**. And you know what that means? Thanks to [Lagrange's theorem](https://en.wikipedia.org/wiki/Lagrange%27s_theorem_(group_theory)), we're sure the whole group is a **single cyclic group**, where every non-identity point generates the group entirely.
+What's special about that, you might ask? Hear this: it's a **prime number**. And you know what that means? Thanks to [Lagrange's theorem](<https://en.wikipedia.org/wiki/Lagrange%27s_theorem_(group_theory)>), we're sure the whole group is a **single cyclic group**, where every non-identity point generates the group entirely.
 
 <figure>
 	<img
@@ -292,7 +293,7 @@ $$
 
 > Careful! That division right there is modulo p!
 
-The curve is defined over **p = 2²⁵⁵ - 19**. And that's a **familiar value** — it's the same one we used in Curve25519.
+The curve is defined over $p = 2^{255} - 19$. And that's a **familiar value** — it's the same one we used in Curve25519.
 
 This is no coincidence. In fact, Ed25519 and Curve25519 are [birrationally equivalent](https://en.wikipedia.org/wiki/Birational_geometry) — they're the same underlying algebraic curve, but represented in different coordinate systems.
 

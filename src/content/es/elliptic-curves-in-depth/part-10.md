@@ -13,9 +13,10 @@ description: >-
   Para cerrar la serie, echamos un vistazo a algunos aspectos prácticos, y
   presentamos algunas de las curvas elípticas más estudiadas.
 readingTime: 16 min
-contentHash: 0aa067f89fd6a86a4af3c79ad2dca7e0c120b77e7ac6e8c24fa95c7c7f12ee08
+contentHash: 294e7aa61117062f03e930e3ea6befe2fa69f36284b621df3556b91e238d2b92
 supabaseId: 8854ac8e-04d2-40a7-8198-16a86bb38cdd
 ---
+
 Imagino que llegar hasta acá no debe haber sido fácil, querido lector.
 
 Hemos pasado por [nueve artículos completos](/es/reading-lists/elliptic-curves-in-depth) de teoría de curvas elípticas, abarcando temas desde lo más básico, hasta algunas cosas realmente abstractas (los estoy estoy mirando a ustedes, divisores).
@@ -60,7 +61,7 @@ Por supuesto, hay una buena razón para esta estructura particular. El número p
 
 > Como un bosquejo aproximado de cómo funciona esto, notemos que podemos expresar $p$ como $2^{256} - c$, con $c$ siendo una constante "pequeña" cuando se compara con $p$ mismo. Con esto, es fácil ver que $2^{256} mod p = c$.
 >
-> Así que la estrategia es la siguiente: dividimos cualquier número grande que queramos reducir (digamos, 512 bits) en **bits altos** ($x$_h$) y **bits bajos** ($x_l$). Podemos representar tal separación para un número arbitrario $x$ como $x = x_h.2^{256} + x_l$. Cuando aplicamos $\textrm{mod} \ p$ a la expresión, obtenemos algo fantástico: $x mod p = x_h.c + x_l$. Y dado que $c$ es pequeño (y también tiene una representación binaria dispersa, pero no nos preocupemos por eso ahora), ¡esta operación es súper rápida!
+> Así que la estrategia es la siguiente: dividimos cualquier número grande que queramos reducir (digamos, 512 bits) en **bits altos** ($x_h$) y **bits bajos** ($x_l$). Podemos representar tal separación para un número arbitrario $x$ como $x = x_h.2^{256} + x_l$. Cuando aplicamos $\textrm{mod} \ p$ a la expresión, obtenemos algo fantástico: $x mod p = x_h.c + x_l$. Y dado que $c$ es pequeño (y también tiene una representación binaria dispersa, pero no nos preocupemos por eso ahora), ¡esta operación es súper rápida!
 
 Campo finito, ¡listo! Ahora dirigimos nuestra atención a la estructura del grupo, empezando con su **orden** (número de elementos), que es este pequeño número aquí:
 
@@ -68,7 +69,7 @@ $$
 n = 2^{256} — 432420386565659656852420866394968145599
 $$
 
-¿Qué tiene de especial eso, te preguntarás? Pues esto: es un **número primo**. ¿Y sabes qué significa eso? Gracias al [teorema de Lagrange](https://en.wikipedia.org/wiki/Lagrange%27s_theorem_(group_theory)), estamos seguros de que todo el grupo es un **solo grupo cíclico**, donde cada punto que no es la identidad genera el grupo completamente.
+¿Qué tiene de especial eso, te preguntarás? Pues esto: es un **número primo**. ¿Y sabes qué significa eso? Gracias al [teorema de Lagrange](<https://en.wikipedia.org/wiki/Lagrange%27s_theorem_(group_theory)>), estamos seguros de que todo el grupo es un **solo grupo cíclico**, donde cada punto que no es la identidad genera el grupo completamente.
 
 <figure>
 	<img
@@ -292,7 +293,7 @@ $$
 
 > ¡Cuidado! ¡Esa división ahí es módulo p!
 
-La curva está definida sobre **p = 2²⁵⁵ - 19**. Y ese es un **valor familiar** — es el mismo que usamos en Curve25519.
+La curva está definida sobre $p = 2^{255} - 19$. Y ese es un **valor familiar** — es el mismo que usamos en Curve25519.
 
 Esto no es coincidencia. De hecho, Ed25519 y Curve25519 son [biracionalmente equivalentes](https://en.wikipedia.org/wiki/Birational_geometry) — son la misma curva algebraica subyacente, pero representada en diferentes sistemas de coordenadas.
 
