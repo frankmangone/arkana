@@ -13,7 +13,7 @@ description: >-
   Para cerrar la serie, echamos un vistazo a algunos aspectos prácticos, y
   presentamos algunas de las curvas elípticas más estudiadas.
 readingTime: 16 min
-contentHash: 294e7aa61117062f03e930e3ea6befe2fa69f36284b621df3556b91e238d2b92
+contentHash: 9623b500c8f4a3458454be04eb9dbd4b17687911e29792c872656c31687edd86
 supabaseId: 8854ac8e-04d2-40a7-8198-16a86bb38cdd
 ---
 
@@ -59,9 +59,9 @@ Mi primera reacción al ver ese número fue "eh, eso es extrañamente específic
 
 Por supuesto, hay una buena razón para esta estructura particular. El número pertenece a una familia llamada los [primos de Solinas](https://en.wikipedia.org/wiki/Solinas_prime) (o **primos de Mersenne generalizados**), y su principal ventaja es que permiten la **reducción modular rápida**, al menos cuando se compara con algún primo random de 256 bits.
 
-> Como un bosquejo aproximado de cómo funciona esto, notemos que podemos expresar $p$ como $2^{256} - c$, con $c$ siendo una constante "pequeña" cuando se compara con $p$ mismo. Con esto, es fácil ver que $2^{256} mod p = c$.
+> Como un bosquejo aproximado de cómo funciona esto, notemos que podemos expresar $p$ como $2^{256} - c$, con $c$ siendo una constante "pequeña" cuando se compara con $p$ mismo. Con esto, es fácil ver que $2^{256} \ \textrm{mod} \ p = c$.
 >
-> Así que la estrategia es la siguiente: dividimos cualquier número grande que queramos reducir (digamos, 512 bits) en **bits altos** ($x_h$) y **bits bajos** ($x_l$). Podemos representar tal separación para un número arbitrario $x$ como $x = x_h.2^{256} + x_l$. Cuando aplicamos $\textrm{mod} \ p$ a la expresión, obtenemos algo fantástico: $x mod p = x_h.c + x_l$. Y dado que $c$ es pequeño (y también tiene una representación binaria dispersa, pero no nos preocupemos por eso ahora), ¡esta operación es súper rápida!
+> Así que la estrategia es la siguiente: dividimos cualquier número grande que queramos reducir (digamos, 512 bits) en **bits altos** ($x_h$) y **bits bajos** ($x_l$). Podemos representar tal separación para un número arbitrario $x$ como $x = x_h.2^{256} + x_l$. Cuando aplicamos $\textrm{mod} \ p$ a la expresión, obtenemos algo fantástico: $x \ \textrm{mod} \ p = x_h.c + x_l$. Y dado que $c$ es pequeño (y también tiene una representación binaria dispersa, pero no nos preocupemos por eso ahora), ¡esta operación es súper rápida!
 
 Campo finito, ¡listo! Ahora dirigimos nuestra atención a la estructura del grupo, empezando con su **orden** (número de elementos), que es este pequeño número aquí:
 

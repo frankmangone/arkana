@@ -13,7 +13,7 @@ description: >-
   To wrap up the series, we take a look at a few practical aspects, and present
   some of the most studied elliptic curves out there.
 readingTime: 16 min
-contentHash: c5965285bfb55521098027fdd7724dda0c419cf29ed6a72fd5a89df5fed7dd05
+contentHash: 470d48e2a45ce0f64c9b4dfb78cdd0c4d9497cd3cc4d0ea61ade279a4f43d44f
 supabaseId: 48dd1bfc-98ae-4ec7-b696-9cb32f86b8c9
 ---
 
@@ -59,9 +59,9 @@ My first reaction when looking at that number was "huh, that's oddly specific". 
 
 Of course, there's a good reason for this particular structure. The number itself belongs to a family called the [Solinas primes](https://en.wikipedia.org/wiki/Solinas_prime) (or **generalized Mersenne primes**), and their main advantage is that they enable **fast modular reduction**, at least when compared with some random 256-bit prime.
 
-> As a rough sketch of how this works, notice that we can express $p$ as $2^{256} - c$, with $c$ being a "tiny" constant when compared to $p$ itself. With this, it's easy to see that $2^{256} mod p = c$.
+> As a rough sketch of how this works, notice that we can express $p$ as $2^{256} - c$, with $c$ being a "tiny" constant when compared to $p$ itself. With this, it's easy to see that $2^{256} \ \textrm{mod} \ p = c$.
 >
-> So the strategy is the following: split any big number you want to reduce (say, 512 bits) into **high bits** ($x_h$) and **low bits** ($x_l$). We can represent such separation for an arbitrary number $x$ as $x = x_h.2^{256} + x_l$. When we apply $\textrm{mod} \ p$ to the expression, we get something fantastic: $x mod p = x_h.c + x_l$.And since $c$ is small (and also has a sparse binary representation, but let's not worry about that now), this operation is super fast!
+> So the strategy is the following: split any big number you want to reduce (say, 512 bits) into **high bits** ($x_h$) and **low bits** ($x_l$). We can represent such separation for an arbitrary number $x$ as $x = x_h.2^{256} + x_l$. When we apply $\textrm{mod} \ p$ to the expression, we get something fantastic: $x \ \textrm{mod} \ p = x_h.c + x_l$.And since $c$ is small (and also has a sparse binary representation, but let's not worry about that now), this operation is super fast!
 
 Prime field, check! Now we turn our attention to the group structure, starting with its **order** (number of elements), which is this little number here:
 
