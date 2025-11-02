@@ -9,7 +9,7 @@ tags:
   - ellipticCurves
 description: Una introducción (más o menos) amigable a las curvas elípticas
 readingTime: 12 min
-contentHash: d0b1eb87ff91887de52876a5892a145fdc9b93a70d2c4b6da67e9bcc9299bb61
+contentHash: fc8efe8983425f193c92ef749eab99d437d206aafccb66500f5b62c87537797d
 supabaseId: 84ad0e9c-7c03-4da5-a82a-a28eb7d14cc5
 ---
 
