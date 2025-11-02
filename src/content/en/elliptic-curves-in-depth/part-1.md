@@ -11,7 +11,7 @@ description: A (kinda) gentle intro to elliptic curves
 readingTime: 12 min
 mediumUrl: >-
   https://medium.com/@francomangone18/elliptic-curves-in-depth-part-1-a9c2d37bf484
-contentHash: 26cac763c0f929d97bf163cbd034941c02479a750314674ff109682e107c154e
+contentHash: 97c0c88347c8aa345a74fe7935e84797ddf402b79d8b5b87eb766834f3593dc0
 supabaseId: f45bc01a-569e-4978-82b9-58860b839024
 ---
 
@@ -218,13 +218,13 @@ $$
 $$
 
 $$
-\frac{dy}{dx} = \frac{3x^2 + a}{2y^2}
+\frac{dy}{dx} = \frac{3x^2 + a}{2y}
 $$
 
 Upon plugging the coordinates of $P$ into the above expression, we find the slope of the line **tangent** to $E$ in $P$ - this was our value $m$ in the previous case.
 
 $$
-m = \frac{3x_P^2 + a}{2y_P^2}
+m = \frac{3x_P^2 + a}{2y_P}
 $$
 
 Then, we proceed as before. We just need to be careful to consider $x_P$ a root with [multiplicity = 2](<https://en.wikipedia.org/wiki/Multiplicity_(mathematics)#:~:text=The%20multiplicity%20of%20a%20root,the%20fundamental%20theorem%20of%20algebra.>). With this in mind, we get almost exactly the same result:

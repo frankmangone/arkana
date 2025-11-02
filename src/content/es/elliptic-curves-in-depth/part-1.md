@@ -9,7 +9,7 @@ tags:
   - ellipticCurves
 description: Una introducción (más o menos) amigable a las curvas elípticas
 readingTime: 12 min
-contentHash: fc8efe8983425f193c92ef749eab99d437d206aafccb66500f5b62c87537797d
+contentHash: d0b1eb87ff91887de52876a5892a145fdc9b93a70d2c4b6da67e9bcc9299bb61
 supabaseId: 84ad0e9c-7c03-4da5-a82a-a28eb7d14cc5
 ---
 
@@ -216,13 +216,13 @@ $$
 $$
 
 $$
-\frac{dy}{dx} = \frac{3x^2 + a}{2y^2}
+\frac{dy}{dx} = \frac{3x^2 + a}{2y}
 $$
 
 Al introducir las coordenadas de $P$ en la expresión anterior, encontramos la pendiente de la línea **tangente** a $E$ en $P$ - este era nuestro valor $m$ en el caso anterior.
 
 $$
-m = \frac{3x_P^2 + a}{2y_P^2}
+m = \frac{3x_P^2 + a}{2y_P}
 $$
 
 Luego, procedemos como antes. Solo tenemos que tener cuidado de considerar $x_P$ una raíz con [multiplicidad = 2](<https://en.wikipedia.org/wiki/Multiplicity_(mathematics)#:~:text=The%20multiplicity%20of%20a%20root,the%20fundamental%20theorem%20of%20algebra.>). Con esto en mente, obtenemos casi exactamente el mismo resultado:
