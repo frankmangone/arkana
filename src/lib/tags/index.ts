@@ -472,6 +472,11 @@ export const tags: TagDefinition = {
     es: "Validación",
     pt: "Validação",
   },
+  verifiableComputing: {
+    en: "Verifiable Computing",
+    es: "Computación Verificable",
+    pt: "Computação Verificável",
+  },
   verifiableRandomness: {
     en: "Verifiable Randomness",
     es: "Aleatoriedad Verificable",

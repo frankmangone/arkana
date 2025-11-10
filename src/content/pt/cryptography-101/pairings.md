@@ -8,9 +8,11 @@ tags:
   - ellipticCurves
   - pairings
   - mathematics
-description: 'Uma breve introdução aos emparelhamentos, uma ferramenta importante na criptografia moderna'
+description: >-
+  Uma breve introdução aos emparelhamentos, uma ferramenta importante na
+  criptografia moderna
 readingTime: 11 min
-contentHash: 697854b1ec0ce33220c538ce5d6f47781ea70726a703c19c22a71f8722a2a41f
+contentHash: 2846dfdb13de00a0d98aa6a87d44ace8dc468804832d5011d11451267b93dbc7
 supabaseId: abd00fd8-574e-47a6-88da-f7cb1650c8d4
 ---
 

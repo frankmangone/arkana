@@ -12,7 +12,7 @@ description: >-
   As funções de hash são uma primitiva criptográfica essencial. Venha comigo em
   uma  exploração profunda sobre o que elas são e para que são usadas!
 readingTime: 10 min
-contentHash: 75d419debd3d9e1ea5824d24b0e76f8161048359bba20f2ccb21e32340417c27
+contentHash: 25d362dbe010ddf49c5966c92b829ae4a8b219f42458b7058ed5ce3535981123
 supabaseId: 7cb81645-7feb-4305-970b-4b7ff99f9697
 ---
 
