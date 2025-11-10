@@ -8,7 +8,7 @@ tags:
   - verifiableComputing
 description: We embark on a new journey solely dedicated to ZK technology!
 readingTime: 10 min
-contentHash: 56434f22f17e9ec60c50033d3acb0285987acd7942c9ea7ad52abcfe5dc3c779
+contentHash: 3025727f01807665fd61d0a815e41287a2a5cbb7ba3cc043082d8473e28184c0
 supabaseId: null
 ---
 I’ve been toying around with the idea of starting this series for quite some time now.
@@ -27,7 +27,7 @@ Oh boy. I thought it would be a breeze, since I had previous knowledge of the su
 
 It was immediately clear there were many things I had yet to learn. I had no shortage of those **ahá!** moments during my read through, and I found myself at many times contemplating how I would have **absolutely loved** to have been introduced to some concepts earlier in my journey.
 
-That’s what motivates me to write this series: to try and guide you through this wonderful topic in the way I would have wanted it to be presented to me when I first started.
+That’s what motivates me to write this series: to try and guide you through this wonderful topic in the way I would have wanted it to be presented to me when I first learned about it.
 
 Before we start, a quick disclaimer: **it’s not gonna be easy**. It’s a challenging topic, after all. But hey, let’s try to keep it as fun and engaging as humanly possible!
 
@@ -41,7 +41,9 @@ I’ll start by claiming that the idea itself of zero knowledge is in equal part
 
 It is confusing in the sense that the **simple definition** is quite perplexing on its own. Here, take a look for yourself:
 
-> Proving something in zero knowledge means that we convince someone of the truth of a statement without revealing any information except the truth of said statement.
+::: big-quote
+Proving something in zero knowledge means that we convince someone of the truth of a statement without revealing any information except the truth of said statement.
+:::
 
 Like... **What**?
 
