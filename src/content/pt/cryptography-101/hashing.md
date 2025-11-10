@@ -153,8 +153,8 @@ Primeiro, este é um exemplo claro de que nem toda função de hashing é adequa
 <figure>
   <img
     src="/images/cryptography-101/hashing/chain.webp" 
-    alt="Imagem de uma corrente com um alicate" 
-    title=""Uma corrente não é mais forte que seu elo mais fraco""
+    alt="Imagem de uma cadeia com um alicate" 
+    title="'Uma cadeia não é mais forte que seu elo mais fraco'"
   />
 </figure>
 

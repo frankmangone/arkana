@@ -50,9 +50,14 @@ export const readingLists: ReadingList[] = [
         order: 7,
       },
       {
+        id: "asides-evaluating-security",
+        slug: "cryptography-101/asides-evaluating-security",
+        order: 8,
+      },
+      {
         id: "homomorphisms-and-isomorphisms",
         slug: "cryptography-101/homomorphisms-and-isomorphisms",
-        order: 8,
+        order: 9,
       },
       {
         id: "polynomials",

@@ -14,7 +14,7 @@ contentHash: 372e64222e7f33b139988e84ff2d133eaa3e9a653c08f57efc158288e185556a
 supabaseId: bf667ad2-1c08-49b0-a738-e2079e4bd7b2
 ---
 
-> Este é parte de uma série maior de artigos sobre criptografia. Se este é o primeiro artigo que você encontra, recomendo fortemente começar pelo [início da série](/pt/blog/cryptography-101/where-to-start).
+> Este é parte de uma série de artigos sobre criptografia. Se este é o primeiro artigo que você encontra, eu recomendo começar do [início da série](/pt/blog/cryptography-101/where-to-start).
 
 A encriptação RSA é um dos algoritmos de encriptação mais amplamente utilizados — e ele se baseia exclusivamente no **grupo aditivo dos inteiros módulo** $n$. É um ótimo exemplo de quanto pode ser feito sem a necessidade de curvas elípticas ou qualquer outra construção mais complexa.
 

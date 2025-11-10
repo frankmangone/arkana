@@ -33,3 +33,4 @@ Language-specific rules:
 - In PORTUGUESE, translate `Alice` to `André` and `Bob` to `Bruna`.
 - In PORTUGUESE, translate `threshold signatures` to `Assinaturas de Limite`. And in general, translate `threshold` when talking about cryptographic schemes as `de limite`.
 - In PORTUGUESE, assume Blockchain to be female. So it's not `um Blockchain`, but `uma Blockchain`. Same with other gender-specific prepositions.
+- In PORTUGUESE, do not translate "exploit". Simply keep "exploit" (or its plural) in english.
