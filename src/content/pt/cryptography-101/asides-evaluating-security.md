@@ -10,7 +10,7 @@ tags:
 description: Um breve resumo sobre alguns aspectos importantes de segurança em criptografia
 readingTime: 8 min
 contentHash: 84f708763c98004aed855bebd3e30d7b40136ed5da5ad86f9a850470a7a30c8a
-supabaseId: c4843998-a53f-4f67-88d3-1731f341cd75
+supabaseId: ad40f888-f62a-4f10-9ec1-949077af7f6a
 ---
 
 > Este é parte de uma série de artigos sobre criptografia. Se este é o primeiro artigo que você encontra, eu recomendo começar do [início da série](/pt/blog/cryptography-101/where-to-start).

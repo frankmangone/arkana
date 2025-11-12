@@ -8,9 +8,10 @@ tags:
   - verifiableComputing
 description: We embark on a new journey solely dedicated to ZK technology!
 readingTime: 10 min
-contentHash: 3025727f01807665fd61d0a815e41287a2a5cbb7ba3cc043082d8473e28184c0
-supabaseId: null
+contentHash: 9e0b829cb9408db2f04558275dfffa683e136f6f49fa868dd838b20d501237f7
+supabaseId: 57aacf37-551c-4c1c-abd5-6a6bbcdbf277
 ---
+
 I’ve been toying around with the idea of starting this series for quite some time now.
 
 This story starts a few months ago, when having a conversation with a colleague at a conference. At one point, we started talking about zero knowledge proofs (ZK proofs), and particularly, where to learn about them.
@@ -19,7 +20,7 @@ Some good material was mentioned: for instance, the [Rareskills Book of Zero Kno
 
 > Great resources, by the way. Feel free to give them a go!
 
-But my colleague was particularly adamant about one book: [Justin Thaler’s Proofs, Arguments, and Zero Knowledge](https://people.cs.georgetown.edu/jthaler/ProofsArgsAndZK.pdf).
+But my colleague was particularly adamant about one book: [Justin Thaler’s "Proofs, Arguments, and Zero Knowledge"](https://people.cs.georgetown.edu/jthaler/ProofsArgsAndZK.pdf).
 
 I guess I was up for a challenge at the time, so I bought the book online the next day, and proceeded to start reading it as soon as it got delivered to my door.
 
@@ -154,7 +155,7 @@ I know I said we’d leave the math foundations for later — but we’ll need *
 	/>
 </figure>
 
-Let’s imagine this “program” we’ve been talking about is represented by some function **f**. Our goal then can be described as follows: a **prover** (who will compute **f**) will attempt to convince a **verifier** (who will receive the output of the computation) that the **correct result** for some input **x** is some **claimed value** **y**, as in:
+Let’s imagine this “program” we’ve been talking about is represented by some function $f$. Our goal then can be described as follows: a **prover** (who will compute $f$) will attempt to convince a **verifier** (who will receive the output of the computation) that the **correct result** for some input $x$ is some **claimed value** $y$, as in:
 
 $$
 y = f(x)
@@ -172,7 +173,7 @@ This is what’s known as an **Interactive Proof System** (or simply **IP**), an
 
 ### Properties
 
-If you scroll up to the beginning of this section, you’ll note that I explicitly said that **y** is the **claimed result** of evaluating $f(x)$. This is extremely important to understand right from the get go: now that the verifier does not perform the actual computation, it means that the prover **can attempt to lie**.
+If you scroll up to the beginning of this section, you’ll note that I explicitly said that $y$ is the **claimed result** of evaluating $f(x)$. This is extremely important to understand right from the get go: now that the verifier does not perform the actual computation, it means that the prover **can attempt to lie**.
 
 Let’s say that again:
 
