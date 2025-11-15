@@ -8,7 +8,7 @@ tags:
   - verifiableComputing
 description: We embark on a new journey solely dedicated to ZK technology!
 readingTime: 10 min
-contentHash: 9e0b829cb9408db2f04558275dfffa683e136f6f49fa868dd838b20d501237f7
+contentHash: 03b7ce83d23111fbeee96e241fa095f3824c9ae4fda05b8bd914236a0b095a96
 supabaseId: 57aacf37-551c-4c1c-abd5-6a6bbcdbf277
 ---
 
@@ -204,7 +204,7 @@ It has to do with sort of **hiding** some of the inputs to the function $f$. And
 
 > Remember our pub example from earlier? Let’s say my age is some value $x$, and I have some function that outputs $1$ if $x > 21$, and $0$ otherwise. What I want is to show that $f(x) = 1$, but without revealing $x$.
 
-This zero knowledge property will be important in when we want to keep some sensitive information **private** — for example, in applications where we need private transactions, anonymous credentials, or confidential voting.
+This zero knowledge property will be important when we want to keep some sensitive information **private** — for example, in applications where we need private transactions, anonymous credentials, or confidential voting.
 
 The way we do that though, will be a story for another time.
 
