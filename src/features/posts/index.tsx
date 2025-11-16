@@ -1,4 +1,4 @@
-// import { getDictionary } from "@/lib/dictionaries";
+import { getDictionary } from "@/lib/dictionaries";
 import { getPostBySlug } from "./actions";
 import { PostHeader } from "../../components/custom/post-header";
 import { Metadata } from "next";
@@ -7,6 +7,7 @@ import Script from "next/script";
 import { getWriter } from "@/lib/writers";
 import { PostContent } from "@/components/custom/post-content";
 import { PostActions } from "@/components/custom/post-actions";
+import { BuyMeCoffee } from "@/components/custom/buy-me-coffee";
 
 interface PostPageProps {
   lang: string;
@@ -41,7 +42,7 @@ export async function generateMetadata({
 export async function PostPage(props: PostPageProps) {
   const { lang, slug } = props;
 
-  // const dict = await getDictionary(lang);
+  const dict = await getDictionary(lang);
   const post = await getPostBySlug(slug, lang);
 
   if (!post) {
@@ -101,6 +102,13 @@ export async function PostPage(props: PostPageProps) {
       {header}
       {process.env.NEXT_PUBLIC_AUTH_ENABLED === "true" && <PostActions />}
       <PostContent post={post} />
+      {writer.walletAddress && writer.walletAddress !== "0x0000000000000000000000000000000000000000" && (
+        <BuyMeCoffee 
+          authorName={writer.name} 
+          walletAddress={writer.walletAddress}
+          dictionary={dict.buyMeCoffee}
+        />
+      )}
       {/* <PostFooter post={post} lang={lang} dictionary={dict} /> */}
       {/* <RelatedPosts
         tags={post.tags}

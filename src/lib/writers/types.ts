@@ -17,4 +17,6 @@ export interface Writer {
     email?: string;
     medium?: string;
   };
+  walletAddress?: string;
 }
+

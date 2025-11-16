@@ -100,5 +100,13 @@
     "madeWith": "Feito com",
     "by": "por",
     "author": "Franco Mangone"
+  },
+  "buyMeCoffee": {
+    "title": "Este conteúdo foi útil para você?",
+    "description": "Apoie {authorName} enviando um café. Todos os lucros vão diretamente para o autor.",
+    "sending": "Enviando...",
+    "connectWallet": "Conectar Carteira",
+    "buyCoffee": "Comprar Café ({amount} {symbol})",
+    "thankYou": "✓ Obrigado pelo seu apoio!"
   }
 }
