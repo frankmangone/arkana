@@ -36,6 +36,33 @@ const SUPPORTED_NETWORKS = process.env.NEXT_PUBLIC_DEV_MODE === 'true'
 
 const DEFAULT_AMOUNT = '0.001'; // Default amount in native currency
 
+// Utility to detect if we're on mobile
+const isMobileDevice = () => {
+  if (typeof window === 'undefined') return false;
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    navigator.userAgent
+  );
+};
+
+// Utility to check if MetaMask extension is available
+const hasMetaMaskExtension = () => {
+  if (typeof window === 'undefined') return false;
+  return typeof (window as any).ethereum !== 'undefined' &&
+    (window as any).ethereum.isMetaMask === true;
+};
+
+// Utility to create MetaMask deeplink for mobile
+const getMetaMaskDeeplink = (
+  recipientAddress: string,
+  amount: string,
+  chainId: number
+): string => {
+  // MetaMask deeplink format: metamask://send?address=...&amount=...
+  const encodedAddress = encodeURIComponent(recipientAddress);
+  const encodedAmount = encodeURIComponent(amount);
+  return `https://metamask.app.link/send/${encodedAddress}@${chainId}?amount=${encodedAmount}`;
+};
+
 export function BuyMeCoffee({ authorName, walletAddress, dictionary }: BuyMeCoffeeProps) {
   const { address, isConnected } = useAccount();
   const chainId = useChainId();
@@ -46,6 +73,12 @@ export function BuyMeCoffee({ authorName, walletAddress, dictionary }: BuyMeCoff
   const [selectedChainId, setSelectedChainId] = useState(chainId);
   const [showSuccess, setShowSuccess] = useState(false);
   const [amount, setAmount] = useState(DEFAULT_AMOUNT);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile on mount
+  useEffect(() => {
+    setIsMobile(isMobileDevice());
+  }, []);
 
   // Show success message when transaction hash is received (published to mempool)
   useEffect(() => {
@@ -59,6 +92,42 @@ export function BuyMeCoffee({ authorName, walletAddress, dictionary }: BuyMeCoff
   const isCorrectChain = chainId === selectedChainId;
 
   const handleSendTransaction = async () => {
+    // Mobile tiered strategy
+    if (isMobile) {
+      // Tier 1: Try MetaMask extension (if available)
+      if (hasMetaMaskExtension() && isConnected) {
+        if (!isCorrectChain && switchChain) {
+          try {
+            switchChain({ chainId: selectedChainId });
+          } catch (error) {
+            console.error('Failed to switch chain:', error);
+            return;
+          }
+        }
+
+        try {
+          sendTransaction({
+            account: address,
+            to: walletAddress as `0x${string}`,
+            value: parseEther(amount || DEFAULT_AMOUNT),
+          });
+        } catch (error) {
+          console.error('Transaction failed:', error);
+        }
+        return;
+      }
+
+      // Tier 2: Try MetaMask app deeplink
+      const deeplink = getMetaMaskDeeplink(
+        walletAddress,
+        amount || DEFAULT_AMOUNT,
+        selectedChainId
+      );
+      window.location.href = deeplink;
+      return;
+    }
+
+    // Desktop flow (original behavior)
     if (!isConnected) {
       openConnectModal?.();
       return;
@@ -87,7 +156,7 @@ export function BuyMeCoffee({ authorName, walletAddress, dictionary }: BuyMeCoff
   return (
     <div className="mt-12 pt-8 border border-purple-700/80 bg-purple-950/40 p-6">
       <div className="flex flex-col sm:flex-row items-start justify-between">
-        <div className="basis-3/5 shrink-0">
+        <div className="basis-4/7 shrink-0">
           <h3 className="text-lg font-semibold mb-2 flex items-center gap-2 text-purple-400">
             <Coffee className="w-6 h-6" />
             {dictionary.title}
@@ -97,7 +166,7 @@ export function BuyMeCoffee({ authorName, walletAddress, dictionary }: BuyMeCoff
           </span>
         </div>
 
-        <div className="basis-2/5 shrink-0 sm:w-auto space-y-3">
+        <div className="basis-3/7 shrink-0 mt-8 sm:mt-0 w-full sm:w-auto space-y-3">
           {/* Amount Input */}
           <div className="flex gap-2">
             <input
@@ -115,7 +184,7 @@ export function BuyMeCoffee({ authorName, walletAddress, dictionary }: BuyMeCoff
           </div>
 
           {/* Chain Selector */}
-          <div className="flex gap-2 flex-wrap">
+          <div className="flex gap-2 flex-wrap mt-8 sm:mt-0">
             {SUPPORTED_NETWORKS.map((network) => (
               <button
                 key={network.id}
