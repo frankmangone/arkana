@@ -59,10 +59,10 @@ const getMetaMaskDeeplink = (
   amount: string,
   chainId: number
 ): string => {
-  // MetaMask deeplink format: metamask://send?address=...&amount=...
+  // MetaMask deeplink format: https://link.metamask.io/send/{recipient}@{chainId}?amount={amount}
   const encodedAddress = encodeURIComponent(recipientAddress);
   const encodedAmount = encodeURIComponent(amount);
-  return `https://metamask.app.link/send/${encodedAddress}@${chainId}?amount=${encodedAmount}`;
+  return `https://link.metamask.io/send/${encodedAddress}@${chainId}?amount=${encodedAmount}`;
 };
 
 export function BuyMeCoffee({ authorName, walletAddress, dictionary }: BuyMeCoffeeProps) {
@@ -96,8 +96,13 @@ export function BuyMeCoffee({ authorName, walletAddress, dictionary }: BuyMeCoff
   const handleSendTransaction = async () => {
     // Mobile tiered strategy
     if (isMobile) {
-      // Tier 1: Try MetaMask extension (if available)
-      if (hasMetaMaskExtension() && isConnected) {
+      // Tier 1: Try MetaMask extension if available (covers MetaMask in-app browser)
+      if (hasMetaMaskExtension()) {
+        if (!isConnected) {
+          openConnectModal?.();
+          return;
+        }
+
         if (!isCorrectChain && switchChain) {
           try {
             switchChain({ chainId: selectedChainId });
@@ -119,7 +124,7 @@ export function BuyMeCoffee({ authorName, walletAddress, dictionary }: BuyMeCoff
         return;
       }
 
-      // Tier 2: Try MetaMask app deeplink
+      // Tier 2: Try MetaMask app deeplink (for browsers without MetaMask extension)
       const deeplink = getMetaMaskDeeplink(
         walletAddress,
         amount || DEFAULT_AMOUNT,
