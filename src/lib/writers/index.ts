@@ -47,7 +47,7 @@ export const writers: Record<string, Writer> = {
       github: "https://github.com/GonzaloMBustos",
       medium: "https://medium.com/@bustosgonzalom",
     },
-    walletAddress: "0x0000000000000000000000000000000000000000",
+    walletAddress: "0xCf87a5B8afD4A5386bAAFf05Ad75d3c3a2F19f15",
   },
 };
 
