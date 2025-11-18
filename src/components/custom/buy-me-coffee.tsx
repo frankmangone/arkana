@@ -21,13 +21,39 @@ interface BuyMeCoffeeProps {
   };
 }
 
-const MAINNET_NETWORKS = [
-  { id: 1, name: 'Ethereum', symbol: 'ETH' },
-  { id: 137, name: 'Polygon', symbol: 'MATIC' },
+interface NetworkConfig {
+  id: number;
+  name: string;
+  symbol: string;
+  rpcUrl: string;
+  blockExplorer: string;
+}
+
+const MAINNET_NETWORKS: NetworkConfig[] = [
+  {
+    id: 1,
+    name: 'Ethereum',
+    symbol: 'ETH',
+    rpcUrl: 'https://eth.public-rpc.com',
+    blockExplorer: 'https://etherscan.io'
+  },
+  {
+    id: 137,
+    name: 'Polygon',
+    symbol: 'MATIC',
+    rpcUrl: 'https://polygon-rpc.com',
+    blockExplorer: 'https://polygonscan.com'
+  },
 ];
 
-const TESTNET_NETWORKS = [
-  { id: 11155111, name: 'Sepolia', symbol: 'ETH' },
+const TESTNET_NETWORKS: NetworkConfig[] = [
+  {
+    id: 11155111,
+    name: 'Sepolia',
+    symbol: 'ETH',
+    rpcUrl: 'https://sepolia.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
+    blockExplorer: 'https://sepolia.etherscan.io'
+  },
 ];
 
 const SUPPORTED_NETWORKS = process.env.NEXT_PUBLIC_DEV_MODE === 'true'
@@ -53,16 +79,22 @@ const hasMetaMaskExtension = () => {
     (window as any).ethereum.isMetaMask === true;
 };
 
+// Utility to convert decimal chain ID to hex
+const toHexChainId = (chainId: number): string => {
+  return '0x' + chainId.toString(16);
+};
+
 // Utility to create MetaMask deeplink for mobile
 const getMetaMaskDeeplink = (
   recipientAddress: string,
   amount: string,
   chainId: number
 ): string => {
-  // MetaMask deeplink format: https://link.metamask.io/send/{recipient}@{chainId}?amount={amount}
+  const hexChainId = toHexChainId(chainId);
+  const amountInWei = parseEther(amount).toString();
+  // Try metamask.app.link format with hex chain ID and value in Wei
   const encodedAddress = encodeURIComponent(recipientAddress);
-  const encodedAmount = encodeURIComponent(amount);
-  return `https://link.metamask.io/send/${encodedAddress}@${chainId}?amount=${encodedAmount}`;
+  return `https://metamask.app.link/send/${encodedAddress}?chainId=${encodeURIComponent(hexChainId)}&value=${encodeURIComponent(amountInWei)}`;
 };
 
 export function BuyMeCoffee({ authorName, walletAddress, dictionary }: BuyMeCoffeeProps) {
@@ -96,30 +128,77 @@ export function BuyMeCoffee({ authorName, walletAddress, dictionary }: BuyMeCoff
   const handleSendTransaction = async () => {
     // Mobile tiered strategy
     if (isMobile) {
-      // Tier 1: Try MetaMask extension if available (covers MetaMask in-app browser)
+      // Tier 1: Try direct MetaMask injection if available
       if (hasMetaMaskExtension()) {
-        if (!isConnected) {
-          openConnectModal?.();
-          return;
-        }
+        try {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const ethereum = (window as any).ethereum;
 
-        if (!isCorrectChain && switchChain) {
-          try {
-            switchChain({ chainId: selectedChainId });
-          } catch (error) {
-            console.error('Failed to switch chain:', error);
+          const hexChainId = toHexChainId(selectedChainId);
+          const amountInWei = parseEther(amount || DEFAULT_AMOUNT);
+
+          // Get the selected network
+          const selectedNetwork = SUPPORTED_NETWORKS.find(n => n.id === selectedChainId);
+          if (!selectedNetwork) {
+            console.error('Selected network not found');
             return;
           }
-        }
 
-        try {
-          sendTransaction({
-            account: address,
-            to: walletAddress as `0x${string}`,
-            value: parseEther(amount || DEFAULT_AMOUNT),
+          // Always ensure we're on the correct chain before sending
+          try {
+            console.log('Attempting to switch to chain:', selectedChainId, 'hex:', hexChainId);
+            await ethereum.request({
+              method: 'wallet_switchEthereumChain',
+              params: [{ chainId: hexChainId }],
+            });
+          } catch (switchError: unknown) {
+            console.log('Switch failed, attempting to add chain:', (switchError as any)?.code);
+            // Chain not found, try to add it
+            if ((switchError as any)?.code === 4902) {
+              try {
+                console.log('Adding chain:', selectedNetwork.name);
+                await ethereum.request({
+                  method: 'wallet_addEthereumChain',
+                  params: [{
+                    chainId: hexChainId,
+                    chainName: selectedNetwork.name,
+                    rpcUrls: [selectedNetwork.rpcUrl],
+                    blockExplorerUrls: [selectedNetwork.blockExplorer],
+                    nativeCurrency: {
+                      name: selectedNetwork.symbol,
+                      symbol: selectedNetwork.symbol,
+                      decimals: 18,
+                    },
+                  }],
+                });
+              } catch (addError) {
+                console.error('Failed to add chain:', addError);
+                return;
+              }
+            } else {
+              console.error('Failed to switch chain:', switchError);
+              return;
+            }
+          }
+
+          // Send transaction via direct injection
+          const txHash = await ethereum.request({
+            method: 'eth_sendTransaction',
+            params: [{
+              from: address,
+              to: walletAddress,
+              value: '0x' + amountInWei.toString(16),
+            }],
           });
+
+          if (txHash) {
+            setShowSuccess(true);
+            setTimeout(() => setShowSuccess(false), 3000);
+          }
         } catch (error) {
-          console.error('Transaction failed:', error);
+          console.error('Direct MetaMask transaction failed:', error);
+          // Don't fall through - direct injection failed, inform user
+          return;
         }
         return;
       }
@@ -130,6 +209,7 @@ export function BuyMeCoffee({ authorName, walletAddress, dictionary }: BuyMeCoff
         amount || DEFAULT_AMOUNT,
         selectedChainId
       );
+
       window.location.href = deeplink;
       return;
     }
