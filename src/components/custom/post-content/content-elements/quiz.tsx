@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { HelpCircle, CheckCircle, XCircle } from "lucide-react";
+import { HelpCircle, CheckCircle, XCircle, AlertCircle } from "lucide-react";
 import React, { useState, useEffect } from "react";
 
 export interface QuizOption {
@@ -164,8 +164,8 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ src, lang = "en" }) => {
     <div className="my-4 p-0 sm:p-4">
       <div className="p-4 border border-white/20 flex flex-col">
         {/* Question Title */}
-        <h4 className="font-semibold text-xl text-purple-300 mt-2 mb-4 flex items-center gap-2">
-          <HelpCircle className="w-8 h-8" />
+        <h4 className="font-semibold text-xl mt-2 mb-4 flex items-center gap-2">
+          <HelpCircle className="w-8 h-8 text-purple-400" />
           {questionContent.question}
         </h4>
 
@@ -186,7 +186,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ src, lang = "en" }) => {
             } else if (showFeedback && isSelected && !isCorrectOption) {
               borderClass = "border-incorrect-600 bg-incorrect-900/20";
             } else if (showFeedback && isCorrectOption) {
-              borderClass = "border-correct-600/30 bg-correct-900/10";
+              borderClass = "border-correct-600/20 bg-correct-900/10";
             }
 
             return (
@@ -207,8 +207,8 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ src, lang = "en" }) => {
                 />
                 <span className="text-gray-200">{option.text}</span>
                 {showFeedback && isCorrectOption && !isSelected && (
-                  <span className="ml-auto text-correct-400 text-sm flex items-center gap-1">
-                    <CheckCircle className="w-4 h-4" />
+                  <span className="ml-auto text-correct-400/60 text-sm flex items-center gap-1">
+                    <AlertCircle className="w-4 h-4" />
                   </span>
                 )}
                 {showFeedback && isSelected && isCorrectOption && (
