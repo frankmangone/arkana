@@ -101,7 +101,7 @@ export async function PostPage(props: PostPageProps) {
       />
       {header}
       {process.env.NEXT_PUBLIC_AUTH_ENABLED === "true" && <PostActions />}
-      <PostContent post={post} />
+      <PostContent post={post} quizDictionary={dict.quiz} />
       {writer.walletAddress && writer.walletAddress !== "0x0000000000000000000000000000000000000000" && (
         <BuyMeCoffee 
           authorName={writer.name} 

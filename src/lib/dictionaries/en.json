@@ -108,5 +108,11 @@
     "connectWallet": "Connect Wallet",
     "buyCoffee": "Buy Coffee ({amount} {symbol})",
     "thankYou": "✓ Thank you for your support!"
+  },
+  "quiz": {
+    "submitAnswer": "Submit Answer",
+    "correct": "Correct!",
+    "almost": "Almost!",
+    "incorrect": "Incorrect"
   }
 }

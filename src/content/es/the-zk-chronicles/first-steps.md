@@ -220,6 +220,8 @@ También mencionamos que estos sistemas de prueba van a ser **interactivos**: lo
 
 > Hay algunas cosas que podemos hacer para **eliminar** la necesidad de esta interacción, pero vamos a hablar de eso más adelante.
 
+<quiz src="/the-zk-chronicles/first-steps/validation.json" lang="es" />
+
 Luego, mencionamos las dos propiedades clave que necesitamos garantizar para que estas pruebas tengan sentido: **completitud** y **solidez**. En pocas palabras, estas significan que debería ser fácil probar que el resultado de un cálculo es correcto **cuando realmente lo es**, y que hacer trampa es difícil.
 
 El conocimiento cero es como la cereza del postre de todo esto. No es un requisito estricto, pero puede agregarse a la mezcla. Y cuando lo es, podemos crear estos sistemas de prueba que preservan la privacidad, que pueden ser muy útiles en el contexto correcto.

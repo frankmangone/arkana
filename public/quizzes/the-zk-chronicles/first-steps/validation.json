@@ -26,5 +26,31 @@
             }
         ],
         "feedback": "Verifiers don't re-execute full computations, and they don't trust provers - so the verification process ensures the computation's result is actually correct."
+    },
+    "es": {
+        "question": "¿Por qué necesitamos validar pruebas?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "Porque los verificadores no re ejecutan el cómputo",
+                "isCorrect": true
+            },
+            {
+                "id": "opt2",
+                "text": "Para notificar al probador que su prueba es inválida",
+                "isCorrect": false
+            },
+            {
+                "id": "opt3",
+                "text": "Porque el probador podría ser deshonesto",
+                "isCorrect": true
+            },
+            {
+                "id": "opt4",
+                "text": "Para asegurar que el resultado provisto es correcto",
+                "isCorrect": true
+            }
+        ],
+        "feedback": "Los verificadores no re ejecutan los cómputos completos, y no confían en los probadores - por lo que el proceso de verificación asegura que el resultado provisto sea realmente correcto."
     }
 }

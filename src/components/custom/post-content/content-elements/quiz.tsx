@@ -25,13 +25,28 @@ export interface QuizQuestion {
 interface QuizComponentProps {
   src: string;
   lang?: string;
+  dictionary?: {
+    submitAnswer: string;
+    correct: string;
+    almost: string;
+    incorrect: string;
+  };
 }
 
 interface QuestionState {
   [questionId: string]: string[] | null;
 }
 
-const QuizComponent: React.FC<QuizComponentProps> = ({ src, lang = "en" }) => {
+const QuizComponent: React.FC<QuizComponentProps> = ({ 
+  src, 
+  lang = "en",
+  dictionary = {
+    submitAnswer: "Submit Answer",
+    correct: "Correct!",
+    almost: "Almost!",
+    incorrect: "Incorrect"
+  }
+}) => {
   const [question, setQuestion] = useState<QuizQuestion | null>(null);
   const [answers, setAnswers] = useState<QuestionState>({});
   const [submitted, setSubmitted] = useState<QuestionState>({});
@@ -233,7 +248,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ src, lang = "en" }) => {
             disabled={userAnswers.length === 0}
             className="px-4 py-6 bg-purple-400 hover:bg-purple-300 cursor-pointer disabled:bg-gray-700 disabled:cursor-not-allowed text-white font-medium transition-colors"
           >
-            Submit Answer
+            {dictionary.submitAnswer}
           </Button>
         ) : (
           <div
@@ -249,17 +264,17 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ src, lang = "en" }) => {
               {isCorrect ? (
                 <>
                   <CheckCircle className="w-5 h-5" />
-                  Correct!
+                  {dictionary.correct}
                 </>
               ) : isPartiallyCorrect ? (
                 <>
                   <HelpCircle className="w-5 h-5" />
-                  Almost!
+                  {dictionary.almost}
                 </>
               ) : (
                 <>
                   <XCircle className="w-5 h-5" />
-                  Incorrect
+                  {dictionary.incorrect}
                 </>
               )}
             </p>

@@ -108,5 +108,11 @@
     "connectWallet": "Conectar Billetera",
     "buyCoffee": "Comprar Café ({amount} {symbol})",
     "thankYou": "✓ ¡Gracias por tu apoyo!"
+  },
+  "quiz": {
+    "submitAnswer": "Enviar Respuesta",
+    "correct": "¡Correcto!",
+    "almost": "¡Casi!",
+    "incorrect": "Incorrecto"
   }
 }

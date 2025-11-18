@@ -24,6 +24,12 @@ import QuizComponent from "./content-elements/quiz";
 
 interface PostContentProps {
   post: Post;
+  quizDictionary?: {
+    submitAnswer: string;
+    correct: string;
+    almost: string;
+    incorrect: string;
+  };
 }
 
 // Custom component for rendering big quotes with LaTeX support
@@ -31,7 +37,7 @@ const BigQuote: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return <span className="big-quote">{children}</span>;
 };
 
-export function PostContent({ post }: PostContentProps) {
+export function PostContent({ post, quizDictionary }: PostContentProps) {
   // Extract big quotes and create specialized tags that ReactMarkdown can handle
   // We'll use a special :::big-quote::: syntax and convert it to a custom component
   const processedContent = post.content
@@ -134,7 +140,7 @@ export function PostContent({ post }: PostContentProps) {
 
             // Check if this is specifically a quiz-embed div
             if (className?.includes("quiz-embed")) {
-              return <QuizComponent src={dataSrc} lang={dataLang || 'en'} />;
+              return <QuizComponent src={dataSrc} lang={dataLang || 'en'} dictionary={quizDictionary} />;
             }
 
             // Otherwise use the default CustomDiv
