@@ -152,9 +152,10 @@ export function BuyMeCoffee({ authorName, walletAddress, dictionary }: BuyMeCoff
               params: [{ chainId: hexChainId }],
             });
           } catch (switchError: unknown) {
-            console.log('Switch failed, attempting to add chain:', (switchError as any)?.code);
+            //
+            console.log('Switch failed, attempting to add chain:', (switchError as { code: number })?.code);
             // Chain not found, try to add it
-            if ((switchError as any)?.code === 4902) {
+            if ((switchError as { code: number })?.code === 4902) {
               try {
                 console.log('Adding chain:', selectedNetwork.name);
                 await ethereum.request({

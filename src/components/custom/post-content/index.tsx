@@ -128,6 +128,7 @@ export function PostContent({ post }: PostContentProps) {
           "video-embed": CustomVideoEmbed,
 
           // Custom div handler that includes quiz-embed support
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           div: (props: any) => {
             const { className, "data-src": dataSrc, "data-lang": dataLang } = props;
 
