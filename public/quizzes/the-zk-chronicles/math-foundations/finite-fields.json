@@ -1,0 +1,25 @@
+{
+    "id": "q2",
+    "type": "multiple",
+    "en": {
+        "question": "A finite field...",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "Can have an infinite number of elements.",
+                "isCorrect": false
+            },
+            {
+                "id": "opt2",
+                "text": "Has a multiplicative inverse for each non-zero element.",
+                "isCorrect": true
+            },
+            {
+                "id": "opt3",
+                "text": "Can have rational numbers as elements.",
+                "isCorrect": false
+            }
+        ],
+        "feedback": "A finite field of course has a finite number of elements, and must have a multiplicative inverse for each non-zero element for division to be defined. We don't use rational numbers because we want to avoid floating point notation!"
+    }
+}

@@ -244,7 +244,7 @@ export function BuyMeCoffee({ authorName, walletAddress, dictionary }: BuyMeCoff
   return (
     <div className="mt-12 pt-8 border border-purple-700/80 bg-purple-950/40 p-6">
       <div className="flex flex-col sm:flex-row items-start justify-between">
-        <div className="basis-4/7 shrink-0">
+        <div className="basis-4/7 shrink-0 pr-4">
           <h3 className="text-lg font-semibold mb-2 flex items-center gap-2 text-purple-400">
             <Coffee className="w-6 h-6" />
             {dictionary.title}

@@ -212,7 +212,7 @@ async function _convertHtmlToMarkdown(
   // Process all elements in order
   mainContent
     .find(
-      "h1, h2, p.pw-post-body-paragraph, pre, figure, blockquote, div[role='separator'], ul, ol"
+      "h1, h2, h3, h4, h5, h6, p.pw-post-body-paragraph, pre, figure, blockquote, div[role='separator'], ul, ol"
     )
     .each((_, el) => {
       const $el = $(el);

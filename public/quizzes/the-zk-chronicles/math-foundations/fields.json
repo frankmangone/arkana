@@ -1,0 +1,36 @@
+{
+    "id": "q1",
+    "type": "single",
+    "en": {
+        "question": "A field is a set of elements with two operations: addition and multiplication.",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "True",
+                "isCorrect": false
+            },
+            {
+                "id": "opt2",
+                "text": "False",
+                "isCorrect": true
+            }
+        ],
+        "feedback": "A fields supports four operations: addition, subtraction, multiplication, and division."
+    },
+    "es": {
+        "question": "Un campo es un conjunto de elementos con dos operaciones: adición y multiplicación.",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "Verdadero",
+                "isCorrect": false
+            },
+            {
+                "id": "opt2",
+                "text": "Falso",
+                "isCorrect": true
+            }
+        ],
+        "feedback": "Los campos soportan cuatro operaciones: adición, sustracción, multiplicación y división."
+    }
+}

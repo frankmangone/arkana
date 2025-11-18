@@ -246,7 +246,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({
           <Button
             onClick={handleSubmit}
             disabled={userAnswers.length === 0}
-            className="px-4 py-6 bg-purple-400 hover:bg-purple-300 cursor-pointer disabled:bg-gray-700 disabled:cursor-not-allowed text-white font-medium transition-colors"
+            className="px-4 py-6 bg-purple-400 hover:bg-purple-300 cursor-pointer disabled:bg-gray-700 disabled:cursor-not-allowed text-white text-lg transition-colors"
           >
             {dictionary.submitAnswer}
           </Button>

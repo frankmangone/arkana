@@ -232,4 +232,4 @@ I reckon that by this point, this will still sound quite abstract and honestly, 
 
 To remove this veil of mysticism, we’ll need to dive into the **basic math** that powers this cryptographic machinery.
 
-We'll do so in the next one!
+We'll do so in the [next one](/en/blog/the-zk-chronicles/math-foundations)!

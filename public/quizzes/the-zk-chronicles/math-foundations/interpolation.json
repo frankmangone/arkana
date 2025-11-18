@@ -1,0 +1,30 @@
+{
+    "id": "q3",
+    "type": "single",
+    "en": {
+        "question": "How many points do you need to interpolate a degree-5 polynomial?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "6",
+                "isCorrect": false
+            },
+            {
+                "id": "opt2",
+                "text": "5",
+                "isCorrect": false
+            },
+            {
+                "id": "opt3",
+                "text": "6",
+                "isCorrect": true
+            },
+            {
+                "id": "opt4",
+                "text": "7",
+                "isCorrect": false
+            }
+        ],
+        "feedback": "You need a total of 6 points to interpolate a degree-5 polynomial!"
+    }
+}
