@@ -20,6 +20,7 @@ import { CustomDiv } from "./content-elements/div";
 import { CustomVideoEmbed } from "./content-elements/video-embed";
 import { CustomBlockquote } from "./content-elements/blockquote";
 import { TableOfContents } from "./table-of-contents";
+import QuizComponent from "./content-elements/quiz";
 
 interface PostContentProps {
   post: Post;
@@ -39,6 +40,10 @@ export function PostContent({ post }: PostContentProps) {
       /:::\s*big-quote\s*([\s\S]*?)\s*:::/g,
       (_, content) => `<big-quote>${content}</big-quote>`
     )
+    .replace(/<quiz\s+src="([^"]+)"\s*(?:lang="([^"]+)")?\s*\/>/g, (_, src, lang) => {
+      // Use data attributes to store quiz configuration
+      return `<div class="quiz-embed" data-src="${src}" data-lang="${lang || 'en'}"></div>`;
+    })
     .replace(/<video-embed\s+src="([^"]+)"\s*\/>/g, (_, src) => {
       return `<div class="video-embed" data-src="${src}"></div>`;
     })
@@ -121,7 +126,19 @@ export function PostContent({ post }: PostContentProps) {
 
           // Add video-embed component handler
           "video-embed": CustomVideoEmbed,
-          div: CustomDiv,
+
+          // Custom div handler that includes quiz-embed support
+          div: (props: any) => {
+            const { className, "data-src": dataSrc, "data-lang": dataLang } = props;
+
+            // Check if this is specifically a quiz-embed div
+            if (className?.includes("quiz-embed")) {
+              return <QuizComponent src={dataSrc} lang={dataLang || 'en'} />;
+            }
+
+            // Otherwise use the default CustomDiv
+            return <CustomDiv {...props} />;
+          },
 
           // Add wrapper for tables to ensure proper overflow handling
           table: (props) => (

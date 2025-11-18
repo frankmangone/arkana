@@ -1,0 +1,30 @@
+{
+    "id": "q1",
+    "type": "multiple",
+    "en": {
+        "question": "Why do we need to validate proofs?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "Because verifiers don't re-execute the computation",
+                "isCorrect": true
+            },
+            {
+                "id": "opt2",
+                "text": "To notify the prover that their proof is invalid",
+                "isCorrect": false
+            },
+            {
+                "id": "opt3",
+                "text": "Because the prover might be dishonest",
+                "isCorrect": true
+            },
+            {
+                "id": "opt4",
+                "text": "To ensure the provided result is correct",
+                "isCorrect": true
+            }
+        ],
+        "feedback": "Verifiers don't re-execute full computations, and they don't trust provers - so the verification process ensures the computation's result is actually correct."
+    }
+}

@@ -1,7 +1,7 @@
 ---
-title: 'The ZK Chronicles: First Steps'
+title: "The ZK Chronicles: First Steps"
 author: frank-mangone
-date: '2025-11-10'
+date: "2025-11-10"
 thumbnail: /images/the-zk-chronicles/first-steps/0*bcbfQCO0n1pbsyXD-1.jpg
 tags:
   - zeroKnowledgeProofs
@@ -219,6 +219,8 @@ Flash recap: we saw how execution and verification are not the same thing, which
 We also mentioned these proving system will be **interactive**: messages are sent back and forth between the prover and the verifier until the verifier is **convinced** that the computation was correctly executed.
 
 > There are some things we can do to **remove** the need for this interaction, but we’ll talk about that later.
+
+<quiz src="/the-zk-chronicles/first-steps/validation.json" lang="en" />
 
 Then, we mentioned the two key properties we need to guarantee for these proofs to make sense: **completeness** and **soundness**. In a nutshell, these mean that it should be easy to prove that the result of a computation is correct **when it actually is**, and that cheating is hard.
 
