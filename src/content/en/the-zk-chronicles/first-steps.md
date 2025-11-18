@@ -1,14 +1,14 @@
 ---
-title: "The ZK Chronicles: First Steps"
+title: 'The ZK Chronicles: First Steps'
 author: frank-mangone
-date: "2025-11-10"
+date: '2025-11-10'
 thumbnail: /images/the-zk-chronicles/first-steps/0*bcbfQCO0n1pbsyXD-1.jpg
 tags:
   - zeroKnowledgeProofs
   - verifiableComputing
 description: We embark on a new journey solely dedicated to ZK technology!
 readingTime: 10 min
-contentHash: 03b7ce83d23111fbeee96e241fa095f3824c9ae4fda05b8bd914236a0b095a96
+contentHash: 0db6e99ef3fc85b57884dae9c287c4d301fdbd3e0f32ed6558d46af6b621c1ae
 supabaseId: 57aacf37-551c-4c1c-abd5-6a6bbcdbf277
 ---
 

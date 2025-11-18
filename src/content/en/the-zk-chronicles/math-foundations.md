@@ -1,7 +1,7 @@
 ---
 title: 'The ZK Chronicles: Math Foundations'
 author: frank-mangone
-date: "2025-11-18"
+date: '2025-11-18'
 thumbnail: /images/the-zk-chronicles/math-foundations/0*GbSJc4K4r9V14xsi-3.jpg
 tags:
   - zeroKnowledgeProofs
@@ -9,13 +9,12 @@ tags:
   - finiteField
   - polynomials
   - interpolation
-description: >-
-  Time for our first basic mathematical concepts!
+description: Time for our first basic mathematical concepts!
 readingTime: 12 min
-contentHash: # TODO: Add content hash
-supabaseId: # TODO: Add supabase ID
+contentHash: 5f15c71a1d04999b915b005120a1fb6d7d17ef21984d898dbfc187322c8366dd
+supabaseId: 1945afc7-ad8b-4984-a8e0-3114fb19db22
 ---
-With the [introduction to the series](/en/blog/the-zk-chronicles/first-steps) behind us, it’s now time to start working our toolkit, so we can set sail towards the goal of crafting these **proving systems** we’ve already alluded to.
+With the [introduction to the series](/en/blog/the-zk-chronicles/first-steps) behind us, it’s now time to start working on our toolkit, so we can set sail towards the goal of crafting these **proving systems** we’ve already alluded to.
 
 I sincerely hope the previous article was not too scary. To make up for it just a tiny bit, I’ll say that the concepts we’ll be looking at today are not too complicated, while at the same time having the added benefit of being **quite fundamental** for any serious cryptography.
 

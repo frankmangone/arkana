@@ -8,7 +8,7 @@ tags:
   - verifiableComputing
 description: Emprendemos un nuevo viaje dedicado exclusivamente a la tecnología ZK
 readingTime: 10 min
-contentHash: ad5a60b7bda6ef720bcb2225c2338ec6ef52ad675a42e5ac06cbc974d4700e7c
+contentHash: 9b5a6fb90961a132e3d67de29f8f5ad128c3f8aa5060bd838e22ddde1c869bac
 supabaseId: 4b178afc-78df-4fa3-ae32-8f9adfcbddef
 ---
 
