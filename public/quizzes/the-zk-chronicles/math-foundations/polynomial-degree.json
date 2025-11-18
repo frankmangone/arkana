@@ -1,0 +1,56 @@
+{
+    "id": "q5",
+    "type": "single",
+    "en": {
+        "question": "What is the degree of the polynomial 3X^5 + 2X^6 + XY?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "2",
+                "isCorrect": false
+            },
+            {
+                "id": "opt2",
+                "text": "3",
+                "isCorrect": false
+            },
+            {
+                "id": "opt3",
+                "text": "5",
+                "isCorrect": false
+            },
+            {
+                "id": "opt4",
+                "text": "6",
+                "isCorrect": true
+            }
+        ],
+        "feedback": "The degree of the polynomial is 6."
+    },
+    "es": {
+        "question": "¿Cuál es el grado del polinomio 3X^5 + 2X^6 + XY?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "2",
+                "isCorrect": false
+            },
+            {
+                "id": "opt2",
+                "text": "3",
+                "isCorrect": false
+            },
+            {
+                "id": "opt3",
+                "text": "5",
+                "isCorrect": false
+            },
+            {
+                "id": "opt4",
+                "text": "6",
+                "isCorrect": true
+            }
+        ],
+        "feedback": "El grado del polinomio es 6."
+    }
+}

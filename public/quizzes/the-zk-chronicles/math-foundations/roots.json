@@ -1,0 +1,36 @@
+{
+    "id": "q4",
+    "type": "single",
+    "en": {
+        "question": "Can a polynomial of degree 4 have 8 roots?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "Yes",
+                "isCorrect": false
+            },
+            {
+                "id": "opt2",
+                "text": "No",
+                "isCorrect": true
+            }
+        ],
+        "feedback": "No! It can have at most 4 roots."
+    },
+    "es": {
+        "question": "¿Puede un polinomio de grado 4 tener 8 raíces?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "Sí",
+                "isCorrect": false
+            },
+            {
+                "id": "opt2",
+                "text": "No",
+                "isCorrect": true
+            }
+        ],
+        "feedback": "¡No! Puede tener como máximo 4 raíces."
+    }
+}

@@ -21,5 +21,26 @@
             }
         ],
         "feedback": "A finite field of course has a finite number of elements, and must have a multiplicative inverse for each non-zero element for division to be defined. We don't use rational numbers because we want to avoid floating point notation!"
+    },
+    "es": {
+        "question": "Un campo finito...",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "Puede tener un número infinito de elementos.",
+                "isCorrect": false
+            },
+            {
+                "id": "opt2",
+                "text": "Tiene un inverso multiplicativo para cada elemento no cero.",
+                "isCorrect": true
+            },
+            {
+                "id": "opt3",
+                "text": "Puede tener números racionales como elementos.",
+                "isCorrect": false
+            }
+        ],
+        "feedback": "Un campo finito tiene un número finito de elementos, y debe tener un inverso multiplicativo para cada elemento que no sea ceropara que la división esté definida. No usamos números racionales porque queremos evitar las oepraciones de punto flotante."
     }
 }

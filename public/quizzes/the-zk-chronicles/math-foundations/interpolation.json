@@ -6,7 +6,7 @@
         "options": [
             {
                 "id": "opt1",
-                "text": "6",
+                "text": "4",
                 "isCorrect": false
             },
             {
@@ -26,5 +26,31 @@
             }
         ],
         "feedback": "You need a total of 6 points to interpolate a degree-5 polynomial!"
+    },
+    "es": {
+        "question": "¿Cuántos puntos necesitas para interpolar un polinomio de grado 5?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "4",
+                "isCorrect": false
+            },
+            {
+                "id": "opt2",
+                "text": "5",
+                "isCorrect": false
+            },
+            {
+                "id": "opt3",
+                "text": "6",
+                "isCorrect": true
+            },
+            {
+                "id": "opt4",
+                "text": "7",
+                "isCorrect": false
+            }
+        ],
+        "feedback": "¡Necesitas un total de 6 puntos para interpolar un polinomio de grado 5!"
     }
 }

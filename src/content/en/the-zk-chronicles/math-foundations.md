@@ -148,6 +148,8 @@ As you can see, each term is comprised of the multiplication of variables raised
 
 We also need to define the **degree** of a polynomial: it’s the **highest sum of exponents** in any single term. In our example above, the term $X^2Y$ has degree $3$ (since $2 + 1 = 3$), and that’s the highest degree of any term, so $P$ has degree $3$.
 
+<quiz src="/the-zk-chronicles/math-foundations/polynomial-degree.json" lang="en" />
+
 Earlier, I mentioned that polynomials are built with just addition, subtraction, and multiplication — so we assume that the values represented by variables **admit** these operations. That is, we’re assuming, for instance, that multiplying $x \cdot y$ is fair game. Does this ring any bells?
 
 <figure>
@@ -302,6 +304,8 @@ A polynomial of degree N has at most N roots
 :::
 
 This fact is extremely important, and results in some of the most powerful tools at our disposal. We’ll put this on hold for now though, but know that we’ll come back to this very soon.
+
+<quiz src="/the-zk-chronicles/math-foundations/roots.json" lang="en" />
 
 ---
 
