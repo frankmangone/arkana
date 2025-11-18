@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { HelpCircle, CheckCircle, XCircle } from "lucide-react";
 import React, { useState, useEffect } from "react";
 
 export interface QuizOption {
@@ -68,7 +69,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ src, lang = "en" }) => {
   }
 
   if (error) {
-    return <div className="p-4 text-center text-red-400">Error: {error}</div>;
+    return <div className="p-4 text-center text-incorrect-400">Error: {error}</div>;
   }
 
   if (!question) {
@@ -87,7 +88,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ src, lang = "en" }) => {
     !("question" in questionContent)
   ) {
     return (
-      <div className="p-4 text-center text-red-400">
+      <div className="p-4 text-center text-incorrect-400">
         Language &apos;{lang}&apos; not available for this question
       </div>
     );
@@ -138,10 +139,11 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ src, lang = "en" }) => {
   const inputType = question.type === "single" ? "radio" : "checkbox";
 
   return (
-    <div className="my-8 p-4">
-      <div className="p-4 bg-purple-800/20 rounded border border-purple-700">
+    <div className="my-4 p-0 sm:p-4">
+      <div className="p-4 border border-purple-700">
         {/* Question Title */}
-        <h4 className="font-semibold text-xl text-purple-300 mb-4">
+        <h4 className="font-semibold text-xl text-purple-300 mb-4 flex items-center gap-2">
+          <HelpCircle className="w-5 h-5" />
           {questionContent.question}
         </h4>
 
@@ -153,16 +155,16 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ src, lang = "en" }) => {
             const showFeedback = isSubmitted;
 
             const optionClassName =
-              "flex items-center gap-2 p-3 rounded border cursor-pointer transition-colors";
+              "flex items-center gap-2 p-3 border cursor-pointer transition-colors";
             let borderClass =
               "border-gray-600 hover:border-gray-500 hover:bg-gray-700/50";
 
             if (showFeedback && isSelected && isCorrectOption) {
-              borderClass = "border-green-600 bg-green-900/20";
+              borderClass = "border-correct-600 bg-correct-900/20";
             } else if (showFeedback && isSelected && !isCorrectOption) {
-              borderClass = "border-red-600 bg-red-900/20";
+              borderClass = "border-incorrect-600 bg-incorrect-900/20";
             } else if (showFeedback && isCorrectOption) {
-              borderClass = "border-green-600/50 bg-green-900/10";
+              borderClass = "border-correct-600/30 bg-correct-900/10";
             }
 
             return (
@@ -183,18 +185,18 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ src, lang = "en" }) => {
                 />
                 <span className="text-gray-200">{option.text}</span>
                 {showFeedback && isCorrectOption && !isSelected && (
-                  <span className="ml-auto text-green-400 text-sm">
-                    ✓ Correct
+                  <span className="ml-auto text-correct-400 text-sm flex items-center gap-1">
+                    <CheckCircle className="w-4 h-4" />
                   </span>
                 )}
                 {showFeedback && isSelected && isCorrectOption && (
-                  <span className="ml-auto text-green-400 text-sm">
-                    ✓ Correct
+                  <span className="ml-auto text-correct-400 text-sm flex items-center gap-1">
+                    <CheckCircle className="w-4 h-4" />
                   </span>
                 )}
                 {showFeedback && isSelected && !isCorrectOption && (
-                  <span className="ml-auto text-red-400 text-sm">
-                    ✗ Incorrect
+                  <span className="ml-auto text-incorrect-400 text-sm flex items-center gap-1">
+                    <XCircle className="w-4 h-4" />
                   </span>
                 )}
               </label>
@@ -215,12 +217,22 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ src, lang = "en" }) => {
           <div
             className={`p-3 rounded border ${
               isCorrect
-                ? "border-green-600 bg-green-900/20 text-green-200"
-                : "border-red-600 bg-red-900/20 text-red-200"
+                ? "border-correct-600 bg-correct-900/20 text-correct-200"
+                : "border-incorrect-600 bg-incorrect-900/20 text-incorrect-200"
             }`}
           >
-            <p className="font-semibold mb-1">
-              {isCorrect ? "Correct!" : "Incorrect"}
+            <p className="font-semibold mb-1 flex items-center gap-2">
+              {isCorrect ? (
+                <>
+                  <CheckCircle className="w-5 h-5" />
+                  Correct!
+                </>
+              ) : (
+                <>
+                  <XCircle className="w-5 h-5" />
+                  Incorrect
+                </>
+              )}
             </p>
             <p className="text-sm">{questionContent.feedback}</p>
           </div>
