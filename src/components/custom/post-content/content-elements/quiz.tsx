@@ -133,17 +133,39 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ src, lang = "en" }) => {
     return userAnswers.every((id) => correctAnswers.includes(id));
   };
 
+  const isAnswerPartiallyCorrect = (): boolean => {
+    const userAnswers = answers[questionId] || [];
+    const correctAnswers = questionContent.options
+      .filter((opt) => opt.isCorrect)
+      .map((opt) => opt.id);
+
+    if (userAnswers.length === 0) return false;
+
+    // Check if at least one answer is correct
+    const hasCorrectAnswer = userAnswers.some((id) =>
+      correctAnswers.includes(id)
+    );
+
+    // Check if at least one answer is incorrect or if missing correct answers
+    const hasMissedOrIncorrect =
+      userAnswers.some((id) => !correctAnswers.includes(id)) ||
+      userAnswers.length < correctAnswers.length;
+
+    return hasCorrectAnswer && hasMissedOrIncorrect;
+  };
+
   const isSubmitted = submitted[questionId] !== undefined;
   const isCorrect = isSubmitted && isAnswerCorrect();
+  const isPartiallyCorrect = isSubmitted && isAnswerPartiallyCorrect();
   const userAnswers = answers[questionId] || [];
   const inputType = question.type === "single" ? "radio" : "checkbox";
 
   return (
     <div className="my-4 p-0 sm:p-4">
-      <div className="p-4 border border-purple-700">
+      <div className="p-4 border border-white/20 flex flex-col">
         {/* Question Title */}
-        <h4 className="font-semibold text-xl text-purple-300 mb-4 flex items-center gap-2">
-          <HelpCircle className="w-5 h-5" />
+        <h4 className="font-semibold text-xl text-purple-300 mt-2 mb-4 flex items-center gap-2">
+          <HelpCircle className="w-8 h-8" />
           {questionContent.question}
         </h4>
 
@@ -209,15 +231,17 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ src, lang = "en" }) => {
           <Button
             onClick={handleSubmit}
             disabled={userAnswers.length === 0}
-            className="px-4 py-2 bg-purple-500 hover:bg-purple-400 cursor-pointer disabled:bg-gray-700 disabled:cursor-not-allowed text-white font-medium transition-colors"
+            className="px-4 py-6 bg-purple-400 hover:bg-purple-300 cursor-pointer disabled:bg-gray-700 disabled:cursor-not-allowed text-white font-medium transition-colors"
           >
             Submit Answer
           </Button>
         ) : (
           <div
-            className={`p-3 rounded border ${
+            className={`p-3 border ${
               isCorrect
                 ? "border-correct-600 bg-correct-900/20 text-correct-200"
+                : isPartiallyCorrect
+                ? "border-yellow-600 bg-yellow-900/20 text-yellow-200"
                 : "border-incorrect-600 bg-incorrect-900/20 text-incorrect-200"
             }`}
           >
@@ -226,6 +250,11 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ src, lang = "en" }) => {
                 <>
                   <CheckCircle className="w-5 h-5" />
                   Correct!
+                </>
+              ) : isPartiallyCorrect ? (
+                <>
+                  <HelpCircle className="w-5 h-5" />
+                  Almost!
                 </>
               ) : (
                 <>
