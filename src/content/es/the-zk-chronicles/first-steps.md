@@ -1,5 +1,5 @@
 ---
-title: 'The ZK Chronicles: Primeros Pasos'
+title: 'Las Crónicas de ZK: Primeros Pasos'
 author: frank-mangone
 date: '2025-11-10'
 thumbnail: /images/the-zk-chronicles/first-steps/0*bcbfQCO0n1pbsyXD-1.jpg

@@ -41,6 +41,6 @@
                 "isCorrect": false
             }
         ],
-        "feedback": "Un campo finito tiene un número finito de elementos, y debe tener un inverso multiplicativo para cada elemento que no sea ceropara que la división esté definida. No usamos números racionales porque queremos evitar las oepraciones de punto flotante."
+        "feedback": "Un campo finito tiene un número finito de elementos, y debe tener un inverso multiplicativo para cada elemento que no sea cero para que la división esté definida. No usamos números racionales porque queremos evitar las operaciones de punto flotante."
     }
 }

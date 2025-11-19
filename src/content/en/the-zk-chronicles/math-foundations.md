@@ -11,7 +11,7 @@ tags:
   - interpolation
 description: Time for our first basic mathematical concepts!
 readingTime: 12 min
-contentHash: 5f15c71a1d04999b915b005120a1fb6d7d17ef21984d898dbfc187322c8366dd
+contentHash: 5bd36cf98cd4387b0f7d55520c6d8456df2047f2795fbfc219ba1a858fdfa9b4
 supabaseId: 1945afc7-ad8b-4984-a8e0-3114fb19db22
 ---
 With the [introduction to the series](/en/blog/the-zk-chronicles/first-steps) behind us, it’s now time to start working on our toolkit, so we can set sail towards the goal of crafting these **proving systems** we’ve already alluded to.
@@ -200,7 +200,7 @@ Okay, cool, evaluating seems easy, so here’s a trickier question: can we go th
 
 This is: given a bunch of evaluations $(x_1, y_1)$ through $(x_n, y_n)$, can you find the polynomial that **generated said points**?
 
-Yes we can. The process is called interpolation (or Lagrange interpolation), and it’s **extremely useful**. As long as we’re mindful of a couple details.
+Yes we can. The process is called **interpolation** (or Lagrange interpolation), and it’s **extremely useful**. As long as we’re mindful of a couple details.
 
 Let’s see. A polynomial of degree one is just a **line**:
 
@@ -252,7 +252,7 @@ Though there are faster ways to do this (via the [Fast Fourier Transform](https:
 
 The idea is the following: suppose we have a set of $N$ evaluations. For a single one of those, let’s say $(x_i, y_i)$, we can build some **special** polynomial that will have a value of $0$ for all $x$ values except $x_i$, and exactly the value $1$ for $x_i$. Let’s call that polynomial $L_i(X)$.
 
-> It’s kinda as if we were “selecting” $x_i$ mathematically using $L_i(X)$.
+> It’s as if we were “selecting” $x_i$ mathematically using $L_i(X)$.
 
 Why would we do this? Think of it this way: if we multiply such a polynomial by $y_i$, then we’ve just fabricated a small function such that:
 
@@ -299,7 +299,7 @@ $$
 A very important observation follows from this expression: a polynomial of degree $N$ has **at most** $N$ **roots**. This is such an important lemma that it doesn’t hurt to repeat it, for some dramatic flair:
 
 ::: big-quote
-A polynomial of degree N has at most N roots
+A polynomial of degree $N$ has at most $N$ roots
 :::
 
 This fact is extremely important, and results in some of the most powerful tools at our disposal. We’ll put this on hold for now though, but know that we’ll come back to this very soon.

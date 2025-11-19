@@ -311,7 +311,7 @@ export const readingLists: ReadingList[] = [
   },
   {
     id: "the-zk-chronicles",
-    title: "The ZK Chronicles",
+    title: "Las Crónicas de ZK",
     description: "Un viaje al mundo de las pruebas de Conocimiento Cero",
     coverImage:
       "/images/the-zk-chronicles/first-steps/0*bcbfQCO0n1pbsyXD-1.jpg",
@@ -321,6 +321,11 @@ export const readingLists: ReadingList[] = [
         id: "first-steps",
         slug: "the-zk-chronicles/first-steps",
         order: 1,
+      },
+      {
+        id: "math-foundations",
+        slug: "the-zk-chronicles/math-foundations",
+        order: 2,
       },
     ],
   },
