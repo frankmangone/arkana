@@ -40,7 +40,7 @@ const MAINNET_NETWORKS: NetworkConfig[] = [
   {
     id: 137,
     name: 'Polygon',
-    symbol: 'MATIC',
+    symbol: 'POL',
     rpcUrl: 'https://polygon-rpc.com',
     blockExplorer: 'https://polygonscan.com'
   },
@@ -113,6 +113,17 @@ export function BuyMeCoffee({ authorName, walletAddress, dictionary }: BuyMeCoff
   useEffect(() => {
     setIsMobile(isMobileDevice());
   }, []);
+
+  // Reset amount when switching chains
+  useEffect(() => {
+    if (selectedChainId === 137) {
+      // Polygon: set to 10 POL
+      setAmount('10');
+    } else {
+      // Other chains: set to default 0.001 ETH
+      setAmount(DEFAULT_AMOUNT);
+    }
+  }, [selectedChainId]);
 
   // Show success message when transaction hash is received (published to mempool)
   useEffect(() => {
