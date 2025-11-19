@@ -179,9 +179,9 @@ const QuizComponent: React.FC<QuizComponentProps> = ({
     <div className="my-4 p-0 sm:p-4">
       <div className="p-4 border border-white/20 flex flex-col">
         {/* Question Title */}
-        <h4 className="font-semibold text-xl mt-2 mb-4 flex items-center gap-2">
-          <HelpCircle className="w-8 h-8 text-purple-400" />
-          {questionContent.question}
+        <h4 className="font-semibold text-xl mt-2 mb-4 flex items-start gap-3">
+          <HelpCircle className="w-8 h-8 shrink-0 text-purple-400" />
+          <span className="mt-[2px]">{questionContent.question}</span>
         </h4>
 
         {/* Options */}
@@ -254,28 +254,28 @@ const QuizComponent: React.FC<QuizComponentProps> = ({
           <div
             className={`p-3 border ${
               isCorrect
-                ? "border-correct-600 bg-correct-900/20 text-correct-200"
+                ? "border-correct-600 text-correct-200"
                 : isPartiallyCorrect
-                ? "border-yellow-600 bg-yellow-900/20 text-yellow-200"
-                : "border-incorrect-600 bg-incorrect-900/20 text-incorrect-200"
+                ? "border-yellow-600 text-yellow-200"
+                : "border-incorrect-600 text-incorrect-200"
             }`}
           >
-            <p className="font-semibold mb-1 flex items-center gap-2">
+            <p className="font-semibold mb-1">
               {isCorrect ? (
-                <>
+                <span className="text-correct-600 flex items-center gap-2">
                   <CheckCircle className="w-5 h-5" />
-                  {dictionary.correct}
-                </>
+                  <span className="mt-[2px]">{dictionary.correct}</span>
+                </span>
               ) : isPartiallyCorrect ? (
-                <>
+                <span className="text-yellow-600 flex items-center gap-2">
                   <HelpCircle className="w-5 h-5" />
-                  {dictionary.almost}
-                </>
+                  <span className="mt-[2px]">{dictionary.almost}</span>
+                </span>
               ) : (
-                <>
+                <span className="text-incorrect-600 flex items-center gap-2">
                   <XCircle className="w-5 h-5" />
-                  {dictionary.incorrect}
-                </>
+                  <span className="mt-[2px]">{dictionary.incorrect}</span>
+                </span>
               )}
             </p>
             <p className="text-sm">{questionContent.feedback}</p>
