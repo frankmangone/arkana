@@ -13,6 +13,7 @@ description: >-
   Next in our Polkadot exploration, we focus on its rich consensus
   mechanism — and its satellite features.
 readingTime: 14 min
+mediumUrl: https://medium.com/@francomangone18/blockchain-101-polkadot-consensus-2402636a837d
 contentHash: 5130759b35ebf4120defdfaae76cff3d226f6ee22b6c2869ba9674566d4c3dca
 supabaseId: 11eb8839-8f1e-40e3-bd96-b4ca87a7bf27
 ---

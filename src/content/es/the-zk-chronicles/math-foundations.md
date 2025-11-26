@@ -342,7 +342,7 @@ Ciertamente, hay muchas capas de complejidad que podríamos explorar sobre estos
 
 En cambio, será mejor comenzar a explorar las **aplicaciones** que hacen uso de estos conceptos. A medida que comencemos a usar estas herramientas, su potencial comenzará a volverse más aparente.
 
-Así que en nuestro próximo encuentro, estaremos viendo uno de los protocolos más simples pero más fundamentales que podemos crear a partir de estos bloques básicos de construcción presentados hoy.
+Así que en nuestro [próximo encuentro](/es/blog/the-zk-chronicles/sum-check), estaremos viendo uno de los protocolos más simples pero más fundamentales que podemos crear a partir de estos bloques básicos de construcción presentados hoy.
 
 ¡Nos vemos pronto!
 

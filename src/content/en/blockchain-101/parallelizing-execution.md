@@ -12,6 +12,7 @@ description: >-
   Moving on, we explore two modern Blockchains focused on parallel execution:
   Aptos and Sui
 readingTime: 10 min
+mediumUrl: https://medium.com/@francomangone18/blockchain-101-parallelizing-execution-9171fae4087a
 contentHash: d2573e53dc75e0de846578e8f9c8ec693fb00c8df18b346c5adb38b87aaf5369
 supabaseId: 4d976efd-31ae-4e19-b33e-59f5c6ec512e
 ---

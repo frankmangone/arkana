@@ -8,6 +8,7 @@ tags:
   - verifiableComputing
 description: We embark on a new journey solely dedicated to ZK technology!
 readingTime: 10 min
+mediumUrl: https://medium.com/@francomangone18/the-zk-chronicles-first-steps-a373c675b99d
 contentHash: 0db6e99ef3fc85b57884dae9c287c4d301fdbd3e0f32ed6558d46af6b621c1ae
 supabaseId: 57aacf37-551c-4c1c-abd5-6a6bbcdbf277
 ---

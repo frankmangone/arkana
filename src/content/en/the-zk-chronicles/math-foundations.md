@@ -11,6 +11,7 @@ tags:
   - interpolation
 description: Time for our first basic mathematical concepts!
 readingTime: 12 min
+mediumUrl: https://medium.com/@francomangone18/the-zk-chronicles-math-foundations-9e1393945bab
 contentHash: 5bd36cf98cd4387b0f7d55520c6d8456df2047f2795fbfc219ba1a858fdfa9b4
 supabaseId: 1945afc7-ad8b-4984-a8e0-3114fb19db22
 ---
@@ -340,6 +341,6 @@ Admittedly, there are a lot of layers of complexity to peel from these rather pl
 
 Instead, it would be better to start exploring the **applications** that make use of these concepts. As we start using these tools, their potential will start becoming more apparent.
 
-So on our next encounter, we’ll be looking at one of the simplest yet most fundamental protocols we can craft out of these building blocks presented today.
+So on our [next encounter](/en/blog/the-zk-chronicles/sum-check), we’ll be looking at one of the simplest yet most fundamental protocols we can craft out of these building blocks presented today.
 
 See you soon!

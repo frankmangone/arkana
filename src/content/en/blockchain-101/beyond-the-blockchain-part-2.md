@@ -12,6 +12,8 @@ description: >-
   Continuing with the radical ideas, we know turn our attention to replacing the
   Blockchain itself — with a DAG!
 readingTime: 10 min
+mediumUrl: >-
+  https://medium.com/@francomangone18/blockchain-101-beyond-the-blockchain-part-2-163d43908e89
 contentHash: bf01279c39bdd972e47d2b3d52d048e737f905d50e73d346cb1fda9ea280af1a
 supabaseId: 21ab47ef-f058-449c-af49-a0a811556aee
 ---
