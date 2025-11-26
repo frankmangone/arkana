@@ -327,6 +327,11 @@ export const readingLists: ReadingList[] = [
         slug: "the-zk-chronicles/math-foundations",
         order: 2,
       },
+      {
+        id: "sum-check",
+        slug: "the-zk-chronicles/sum-check",
+        order: 3,
+      },
     ],
   },
 ];

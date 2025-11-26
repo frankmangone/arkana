@@ -267,7 +267,7 @@ Okay, first round, done. Now the verifier picks a random value $r_1$. Let’s su
 The prover then calculates $C_2$, which happens to yield $C_2 = 11$. So now, the prover has to calculate this polynomial here:
 
 $$
-g_2(X_2) = \sum_{(x_3, x_4) \in \{0,1\}²} g(r_1, X_2, x_3, x_4)
+g_2(X_2) = \sum_{(x_3, x_4) \in \{0,1\}^2} g(r_1, X_2, x_3, x_4)
 $$
 
 The result of this is $g_2(X_2) = 2X_2 + 11$.
