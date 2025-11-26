@@ -29,6 +29,8 @@ interface PostContentProps {
     correct: string;
     almost: string;
     incorrect: string;
+    multipleChoice: string;
+    singleChoice: string;
   };
 }
 

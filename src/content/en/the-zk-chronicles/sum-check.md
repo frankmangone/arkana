@@ -13,7 +13,7 @@ description: >-
   very first proving system!
 readingTime: 13 min
 mediumUrl: 'https://medium.com/@francomangone18/the-zk-chronicles-sum-check-0ccf23ffc0e4'
-contentHash: 2c83534d0d844cae0c12bb15b92ec5efc867abb389f9767e7862d5b7ecce742a
+contentHash: 81ee3122f80824212ecb9ee56137a9774859b77c1a862f470532bc23db83b29a
 supabaseId: null
 ---
 
