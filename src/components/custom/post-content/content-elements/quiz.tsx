@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { HelpCircle, CheckCircle, XCircle, AlertCircle } from "lucide-react";
+import { HelpCircle, CheckCircle, XCircle, AlertCircle, ChevronDown, ChevronRight } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkMath from "remark-math";
@@ -34,6 +34,8 @@ interface QuizComponentProps {
     correct: string;
     almost: string;
     incorrect: string;
+    multipleChoice: string;
+    singleChoice: string;
   };
 }
 
@@ -63,7 +65,9 @@ const QuizComponent: React.FC<QuizComponentProps> = ({
     submitAnswer: "Submit Answer",
     correct: "Correct!",
     almost: "Almost!",
-    incorrect: "Incorrect"
+    incorrect: "Incorrect",
+    multipleChoice: "Multiple Choice",
+    singleChoice: "Single Choice"
   }
 }) => {
   const [question, setQuestion] = useState<QuizQuestion | null>(null);
@@ -71,6 +75,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({
   const [submitted, setSubmitted] = useState<QuestionState>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
 
   // Load question from JSON file
   useEffect(() => {
@@ -196,14 +201,39 @@ const QuizComponent: React.FC<QuizComponentProps> = ({
 
   return (
     <div className="my-4 p-0 sm:p-4">
-      <div className="p-4 border border-white/20 flex flex-col">
-        {/* Question Title */}
-        <h4 className="font-semibold text-xl mt-2 mb-4 flex items-start gap-3">
-          <HelpCircle className="w-8 h-8 shrink-0 text-purple-400" />
-          <span className="mt-[2px]">
-            <LatexText>{questionContent.question}</LatexText>
-          </span>
-        </h4>
+      <div className="border border-white/20 flex flex-col">
+        {/* Collapsible Header */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="p-4 flex items-center gap-3 hover:bg-white/5 transition-colors cursor-pointer w-full text-left"
+        >
+          {isOpen ? (
+            <ChevronDown className="w-6 h-6 shrink-0 text-purple-400" />
+          ) : (
+            <ChevronRight className="w-6 h-6 shrink-0 text-purple-400" />
+          )}
+          <HelpCircle className="w-6 h-6 shrink-0 text-purple-400" />
+          <div className="flex-1 flex items-center gap-3">
+            <span className="font-semibold text-lg text-purple-300">
+              Quiz
+            </span>
+            <span className={`text-xs px-2 py-1 rounded ${
+              question.type === "multiple" 
+                ? "bg-blue-500/20 text-blue-300 border border-blue-500/30" 
+                : "bg-purple-500/20 text-purple-300 border border-purple-500/30"
+            }`}>
+              {question.type === "multiple" ? dictionary.multipleChoice : dictionary.singleChoice}
+            </span>
+          </div>
+        </button>
+
+        {/* Quiz Content */}
+        {isOpen && (
+          <div className="p-4 border-t border-white/20">
+            {/* Question Title */}
+            <h4 className="font-semibold text-xl mb-4">
+              <LatexText>{questionContent.question}</LatexText>
+            </h4>
 
         {/* Options */}
         <div className="space-y-2 mx-4 my-8">
@@ -304,6 +334,8 @@ const QuizComponent: React.FC<QuizComponentProps> = ({
             <p className="text-sm">
               <LatexText>{questionContent.feedback}</LatexText>
             </p>
+          </div>
+        )}
           </div>
         )}
       </div>

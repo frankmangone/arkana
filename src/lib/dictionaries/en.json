@@ -113,6 +113,8 @@
     "submitAnswer": "Submit Answer",
     "correct": "Correct!",
     "almost": "Almost!",
-    "incorrect": "Incorrect"
+    "incorrect": "Incorrect",
+    "multipleChoice": "Multiple Choice",
+    "singleChoice": "Single Choice"
   }
 }
