@@ -11,8 +11,9 @@ tags:
   - interpolation
 description: Time for our first basic mathematical concepts!
 readingTime: 12 min
-mediumUrl: https://medium.com/@francomangone18/the-zk-chronicles-math-foundations-9e1393945bab
-contentHash: 5bd36cf98cd4387b0f7d55520c6d8456df2047f2795fbfc219ba1a858fdfa9b4
+mediumUrl: >-
+  https://medium.com/@francomangone18/the-zk-chronicles-math-foundations-9e1393945bab
+contentHash: 8738afa1612cff2a9aca848e8776a38a7e88a5bbb4c2e165a106122acece85b5
 supabaseId: 1945afc7-ad8b-4984-a8e0-3114fb19db22
 ---
 With the [introduction to the series](/en/blog/the-zk-chronicles/first-steps) behind us, it’s now time to start working on our toolkit, so we can set sail towards the goal of crafting these **proving systems** we’ve already alluded to.

@@ -11,7 +11,7 @@ tags:
   - interpolation
 description: ¡Es hora de nuestros primeros conceptos matemáticos básicos!
 readingTime: 12 min
-contentHash: 1b2ea21e708d2882bd0267e1719e14f02cff4077f5739340904efb0cfa580f29
+contentHash: 4c7f647ec3fb47de1140a82cc3765a3090613dd4de4681b972106f68899e2736
 supabaseId: 6049c9f8-19b0-44da-bb63-daefd0fecca9
 ---
 Habiendo dejado atrás la [introducción a la serie](/es/blog/the-zk-chronicles/first-steps), ahora es momento de empezar a trabajar en nuestro conjunto de herramientas, para que podamos encaminarnos hacia el objetivo de crear estos **sistemas de pruebas** a los que ya hemos aludido.

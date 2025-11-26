@@ -9,7 +9,7 @@ tags:
   - rollup
 description: 'It’s finally time to uncover the secrets of a personal favorite: Polkadot'
 readingTime: 11 min
-mediumUrl: https://medium.com/@francomangone18/blockchain-101-polkadot-adf1b0c5e665
+mediumUrl: 'https://medium.com/@francomangone18/blockchain-101-polkadot-adf1b0c5e665'
 contentHash: 23cbc6e6d0242d0b65ff765530197f63670c5d9a0903d9f7463843ade95d6cac
 supabaseId: 7f58dee5-3c7e-491b-acc5-a60ba3978645
 ---

@@ -442,6 +442,11 @@ export const tags: TagDefinition = {
     es: "Sui",
     pt: "Sui",
   },
+  sumCheck: {
+    en: "Sum Check",
+    es: "Verificación de Suma",
+    pt: "Verificação de Soma",
+  },
   thresholdSignature: {
     en: "Threshold Signature",
     es: "Firma de Umbral",

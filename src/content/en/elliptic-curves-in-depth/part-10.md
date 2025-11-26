@@ -13,7 +13,8 @@ description: >-
   To wrap up the series, we take a look at a few practical aspects, and present
   some of the most studied elliptic curves out there.
 readingTime: 16 min
-mediumUrl: https://medium.com/@francomangone18/elliptic-curves-in-depth-part-10-aedd493d8170
+mediumUrl: >-
+  https://medium.com/@francomangone18/elliptic-curves-in-depth-part-10-aedd493d8170
 contentHash: 470d48e2a45ce0f64c9b4dfb78cdd0c4d9497cd3cc4d0ea61ade279a4f43d44f
 supabaseId: 48dd1bfc-98ae-4ec7-b696-9cb32f86b8c9
 ---

@@ -13,8 +13,7 @@ description: >-
   To close off our chapter in Polkadot, we’ll have to talk about its latest
   development: JAM.
 readingTime: 15 min
-mediumUrl: >-
-  https://medium.com/@francomangone18/blockchain-101-jam-2d64de1cab1d
+mediumUrl: 'https://medium.com/@francomangone18/blockchain-101-jam-2d64de1cab1d'
 contentHash: b0f421c015b69739d09cfd0e1f19f95d79e04876d0599cdf8d7ee765a9f61147
 supabaseId: 69c89960-9df0-40ca-8226-25a11bde28d6
 ---
