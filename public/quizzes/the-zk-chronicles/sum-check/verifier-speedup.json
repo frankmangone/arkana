@@ -1,0 +1,57 @@
+{
+    "id": "q7",
+    "type": "single",
+    "en": {
+        "question": "For a 20-variable polynomial, approximately how many times faster is the verifier compared to direct computation?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "20 times faster",
+                "isCorrect": false
+            },
+            {
+                "id": "opt2",
+                "text": "About 50,000 times faster",
+                "isCorrect": true
+            },
+            {
+                "id": "opt3",
+                "text": "About 1 million times faster",
+                "isCorrect": false
+            },
+            {
+                "id": "opt4",
+                "text": "Linear speedup isn't significant",
+                "isCorrect": false
+            }
+        ],
+        "feedback": "Direct computation is $O(2^v) = 2^20 \simeq 1,048,576$ operations. The verifier runs in $O(v) = 20$ operations. The speedup is roughly $1,048,576/20 \simeq 52,428$ times faster!"
+    },
+    "es": {
+        "question": "Para un polinomio de 20 variables, ¿aproximadamente cuántas veces más rápido es el verificador comparado con el cómputo directo?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "20 veces más rápido",
+                "isCorrect": false
+            },
+            {
+                "id": "opt2",
+                "text": "Aproximadamente 50,000 veces más rápido",
+                "isCorrect": true
+            },
+            {
+                "id": "opt3",
+                "text": "Aproximadamente 1 millón de veces más rápido",
+                "isCorrect": false
+            },
+            {
+                "id": "opt4",
+                "text": "La mejora lineal no es significativa",
+                "isCorrect": false
+            }
+        ],
+        "feedback": "El cómputo directo es $O(2^v) = 2^20 \simeq 1,048,576$ operaciones. El verificador corre en $O(v) = 20$ operaciones. ¡La mejora es aproximadamente $1,048,576/20 \simeq 52,428$ veces más rápido!"
+    }
+}
+

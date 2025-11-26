@@ -1,0 +1,57 @@
+{
+    "id": "q1",
+    "type": "single",
+    "en": {
+        "question": "If a polynomial has 10 variables, how many evaluations are needed to compute the sum over the boolean hypercube?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "100",
+                "isCorrect": false
+            },
+            {
+                "id": "opt2",
+                "text": "512",
+                "isCorrect": false
+            },
+            {
+                "id": "opt3",
+                "text": "1024",
+                "isCorrect": true
+            },
+            {
+                "id": "opt4",
+                "text": "10000",
+                "isCorrect": false
+            }
+        ],
+        "feedback": "The boolean hypercube {0,1}^v has 2^v points. For 10 variables, that's 2^10 = 1024 evaluations!"
+    },
+    "es": {
+        "question": "Si un polinomio tiene 10 variables, ¿cuántas evaluaciones se necesitan para calcular la suma sobre el hipercubo booleano?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "100",
+                "isCorrect": false
+            },
+            {
+                "id": "opt2",
+                "text": "512",
+                "isCorrect": false
+            },
+            {
+                "id": "opt3",
+                "text": "1024",
+                "isCorrect": true
+            },
+            {
+                "id": "opt4",
+                "text": "10000",
+                "isCorrect": false
+            }
+        ],
+        "feedback": "El hipercubo booleano {0,1}^v tiene 2^v puntos. Para 10 variables, eso es 2^10 = 1024 evaluaciones!"
+    }
+}
+

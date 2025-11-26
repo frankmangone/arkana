@@ -1,0 +1,57 @@
+{
+    "id": "q4",
+    "type": "single",
+    "en": {
+        "question": "In the example, why does $g_2(0) + g_2(1) = 24$ equal 11 in $F_{13}$?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "Because $24 - 11 = 13$",
+                "isCorrect": false
+            },
+            {
+                "id": "opt2",
+                "text": "Because $24 \ \textrm{mod} \ 13 = 11$",
+                "isCorrect": true
+            },
+            {
+                "id": "opt3",
+                "text": "Because the prover made an error",
+                "isCorrect": false
+            },
+            {
+                "id": "opt4",
+                "text": "Because finite fields use different addition",
+                "isCorrect": false
+            }
+        ],
+        "feedback": "In finite field $F_{13}$, all arithmetic is done modulo 13. So $24 \ \textrm{mod} \ 13 = 11$, which matches $C_2$!"
+    },
+    "es": {
+        "question": "En el ejemplo, ¿por qué $g_2(0) + g_2(1) = 24$ es igual a 11 en $F_{13}$?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "Porque $24 - 11 = 13$",
+                "isCorrect": false
+            },
+            {
+                "id": "opt2",
+                "text": "Porque $24 \ \textrm{mod} \ 13 = 11$",
+                "isCorrect": true
+            },
+            {
+                "id": "opt3",
+                "text": "Porque el probador cometió un error",
+                "isCorrect": false
+            },
+            {
+                "id": "opt4",
+                "text": "Porque los campos finitos usan adición diferente",
+                "isCorrect": false
+            }
+        ],
+        "feedback": "En el campo finito $F_{13}$, toda la aritmética se hace módulo 13. Entonces $24 \ \textrm{mod} \ 13 = 11$, ¡que coincide con $C_2$!"
+    }
+}
+

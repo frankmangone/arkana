@@ -1,0 +1,57 @@
+{
+    "id": "q3",
+    "type": "single",
+    "en": {
+        "question": "What does the verifier gain by choosing a random challenge $r_1$?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "It makes the prover's job easier",
+                "isCorrect": false
+            },
+            {
+                "id": "opt2",
+                "text": "It reduces the problem to a smaller boolean hypercube",
+                "isCorrect": true
+            },
+            {
+                "id": "opt3",
+                "text": "It eliminates the need for more rounds",
+                "isCorrect": false
+            },
+            {
+                "id": "opt4",
+                "text": "It allows direct verification of C",
+                "isCorrect": false
+            }
+        ],
+        "feedback": "By fixing $r_1$, the verifier reduces the original $v$-variable problem to a $(v-1)$-variable problem. This recursive reduction is the key to sum-check!"
+    },
+    "es": {
+        "question": "¿Qué gana el verificador al elegir un desafío aleatorio $r_1$?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "Hace el trabajo del probador más fácil",
+                "isCorrect": false
+            },
+            {
+                "id": "opt2",
+                "text": "Reduce el problema a un hipercubo booleano más pequeño",
+                "isCorrect": true
+            },
+            {
+                "id": "opt3",
+                "text": "Elimina la necesidad de más rondas",
+                "isCorrect": false
+            },
+            {
+                "id": "opt4",
+                "text": "Permite la verificación directa de C",
+                "isCorrect": false
+            }
+        ],
+        "feedback": "Al fijar $r_1$, el verificador reduce el problema original de $v$ variables a un problema de $(v-1)$ variables. ¡Esta reducción recursiva es la clave de sum-check!"
+    }
+}
+

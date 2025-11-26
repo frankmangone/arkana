@@ -103,6 +103,8 @@ In [Big O](https://en.wikipedia.org/wiki/Big_O_notation) terms, we can say that 
 
 For very large values of $v$, exponential time can be a **really long time**.
 
+<quiz src="/the-zk-chronicles/sum-check/hypercube-size.json" lang="en" />
+
 Prohibitively long for my poor computer, but maybe not for someone with some heavy-duty hardware.
 
 <figure>
@@ -222,7 +224,7 @@ Do you see it? A little miracle has unfolded before our eyes: we’re **back whe
 
 Yeah, sorry. Let me explain.
 
-Once we choose and fix a random point $r_1$, the evaluation $g_1(r_1)$ is actually a sum over a **reduced boolean hypercube**. It’s as if we’re replacing the original function $g$ for another function $g’$ with **one less variable**:
+Once we choose and fix a random point $r_1$, the evaluation $g_1(r_1)$ is actually a sum over a **reduced boolean hypercube**. It's as if we're replacing the original function $g$ for another function $g'$ with **one less variable**:
 
 $$
 g’(X_2, ..., X_v) = g(r_1, X_2, ..., X_v)
@@ -231,6 +233,8 @@ $$
 Now, we can ask the same original question: can we prove this reduced version of $g$ sums up to $C_2$ over a reduced boolean hypercube?
 
 And the magic, my friends, is that **another round of sum-checking** does the trick!
+
+<quiz src="/the-zk-chronicles/sum-check/random-challenge.json" lang="en" />
 
 ### The Full Picture
 
@@ -278,9 +282,11 @@ $$
 g_2(0) + g_2(1) = 11
 $$
 
-Although the result seems to be wrong (we get $24$), everything clicks once we remember we’re working on a finite field, so $24 \ \textrm{mod} \ 13 = 11$.
+Although the result seems to be wrong (we get $24$), everything clicks once we remember we're working on a finite field, so $24 \ \textrm{mod} \ 13 = 11$.
 
-For the third and fourth rounds, we just rinse and repeat. To keep things brief, I’ll just summarize the steps:
+<quiz src="/the-zk-chronicles/sum-check/finite-field-arithmetic.json" lang="en" />
+
+For the third and fourth rounds, we just rinse and repeat. To keep things brief, I'll just summarize the steps:
 
 - Verifier chooses r_2 = 3.
 - Prover responds with C_3 = 4, and g_3(X_3) = X_3 + 8.
@@ -328,7 +334,7 @@ So finally, after all the checks in every round, the verifier performs an **orac
 
 > Of course, this whole procedure can be generalized to **any degree** — and the time savings become more relevant the higher the degree!
 
-And that’s the sum-check protocol!
+And that's the sum-check protocol!
 
 ---
 
@@ -373,6 +379,8 @@ We can apply this same reasoning to every round in the same **recursive** fashio
 
 If the probability of this happening is some value $\delta$, then a cheating prover has $v$ chances of getting lucky (or $v$ **rolls** in total), so the total probability of a successful heist would be $v \cdot \delta$. As long as this combined value is small, then the algorithm is sound.
 
+<quiz src="/the-zk-chronicles/sum-check/soundness-probability.json" lang="en" />
+
 Lastly, the final **oracle query** allows the verifier to catch the prover in their final lie (unless they get lucky, of course).
 
 So there you have it! The sum-check protocol fulfills the completeness and soundness requirements.
@@ -388,6 +396,8 @@ I have intentionally skipped over the **computational costs** of this protocol, 
 - The prover runs in $O(2^v)$ time.
 - The verifier runs in $O(v)$ time (linear).
 - There are a total of $v$ communication steps, and the total number of field elements sent during the entire protocol is $O(v)$.
+
+<quiz src="/the-zk-chronicles/sum-check/verifier-speedup.json" lang="en" />
 
 Clearly, the verifier is much faster than the prover as $v$ becomes larger. But some questions may arise around this: is **linear time** good enough? Does it matter if the prover takes too long?
 
