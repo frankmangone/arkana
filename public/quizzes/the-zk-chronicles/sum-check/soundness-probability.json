@@ -2,56 +2,56 @@
     "id": "q6",
     "type": "single",
     "en": {
-        "question": "A dishonest prover tries to cheat in a 5-variable sum-check. If the probability of getting lucky in one round is $\delta$, what's the probability of successfully cheating?",
+        "question": "A dishonest prover tries to cheat in a 5-variable sum-check. If the probability of getting lucky in one round is $\\delta$, what's the probability of successfully cheating?",
         "options": [
             {
                 "id": "opt1",
-                "text": "$\delta$",
+                "text": "$\\delta$",
                 "isCorrect": false
             },
             {
                 "id": "opt2",
-                "text": "5$\delta$",
+                "text": "$5 \\cdot \\delta$",
                 "isCorrect": true
             },
             {
                 "id": "opt3",
-                "text": "$\delta^5$",
+                "text": "$\\delta^5$",
                 "isCorrect": false
             },
             {
                 "id": "opt4",
-                "text": "2⁵$\delta$",
+                "text": "$2^{5} \\cdot \\delta$",
                 "isCorrect": false
             }
         ],
-        "feedback": "The prover has v chances (rounds) to get lucky, and getting lucky in any one round is enough to continue the cheat. So the total probability is $v \cdot \delta$, which is $5\delta$ for a 5-variable polynomial."
+        "feedback": "The prover has v chances (rounds) to get lucky, and getting lucky in any one round is enough to continue the cheat. So the total probability is $v \\cdot \\delta$, which is $5\\delta$ for a 5-variable polynomial."
     },
     "es": {
-        "question": "Un probador deshonesto intenta hacer trampa en un sum-check de 5 variables. Si la probabilidad de tener suerte en una ronda es $\delta$, ¿cuál es la probabilidad de hacer trampa exitosamente?",
+        "question": "Un probador deshonesto intenta hacer trampa en un sum-check de 5 variables. Si la probabilidad de tener suerte en una ronda es $\\delta$, ¿cuál es la probabilidad de hacer trampa exitosamente?",
         "options": [
             {
                 "id": "opt1",
-                "text": "$\delta$",
+                "text": "$\\delta$",
                 "isCorrect": false
             },
             {
                 "id": "opt2",
-                "text": "5$\delta$",
+                "text": "$5 \\cdot \\delta$",
                 "isCorrect": true
             },
             {
                 "id": "opt3",
-                "text": "$\delta^5$",
+                "text": "$\\delta^5$",
                 "isCorrect": false
             },
             {
                 "id": "opt4",
-                "text": "2⁵$\delta$",
+                "text": "$2^{5} \\cdot \\delta$",
                 "isCorrect": false
             }
         ],
-        "feedback": "El probador tiene $v$ oportunidades (rondas) de tener suerte, y tener suerte en cualquier ronda es suficiente para continuar la trampa. Entonces la probabilidad total es $v \cdot \delta$, que es $5\delta$ para un polinomio de 5 variables."
+        "feedback": "El probador tiene $v$ oportunidades (rondas) de tener suerte, y tener suerte en cualquier ronda es suficiente para continuar la trampa. Entonces la probabilidad total es $v \\cdot \\delta$, que es $5\\delta$ para un polinomio de 5 variables."
     }
 }
 

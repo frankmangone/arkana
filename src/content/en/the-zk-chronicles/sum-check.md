@@ -2,7 +2,7 @@
 title: 'The ZK Chronicles: Sum Check'
 author: frank-mangone
 date: '2025-11-25'
-thumbnail: null
+thumbnail: /images/the-zk-chronicles/sum-check/1_Yzr-2zVpHO5IToX1NfBcEw.webp
 tags:
   - sumCheck
   - zeroKnowledgeProofs
@@ -288,11 +288,11 @@ Although the result seems to be wrong (we get $24$), everything clicks once we r
 
 For the third and fourth rounds, we just rinse and repeat. To keep things brief, I'll just summarize the steps:
 
-- Verifier chooses r_2 = 3.
-- Prover responds with C_3 = 4, and g_3(X_3) = X_3 + 8.
-- Verifier checks g_3(0) + g_3(1) = 4, and chooses r_3 = 7.
-- Prover responds with C_4 = 2 and g_4(X_4) = 2X_4.
-- Verifier checks g_4(0) + g_4(1) = 2, and chooses r_4 = 2.
+- Verifier chooses $r_2 = 3$.
+- Prover responds with $C_3 = 4$, and $g_3(X_3) = X_3 + 8$.
+- Verifier checks $g_3(0) + g_3(1) = 4$, and chooses $r_3 = 7$.
+- Prover responds with $C_4 = 2$ and $g_4(X_4) = 2X_4$.
+- Verifier checks $g_4(0) + g_4(1) = 2$, and chooses $r_4 = 2$.
 
 The full process looks like this:
 

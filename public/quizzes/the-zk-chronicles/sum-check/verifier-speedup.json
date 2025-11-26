@@ -25,7 +25,7 @@
                 "isCorrect": false
             }
         ],
-        "feedback": "Direct computation is $O(2^v) = 2^20 \simeq 1,048,576$ operations. The verifier runs in $O(v) = 20$ operations. The speedup is roughly $1,048,576/20 \simeq 52,428$ times faster!"
+        "feedback": "Direct computation is $O(2^v) = 2^{20} \\simeq 1,048,576$ operations. The verifier runs in $O(v) = 20$ operations. The speedup is roughly $1,048,576/20 \\simeq 52,428$ times faster!"
     },
     "es": {
         "question": "Para un polinomio de 20 variables, ¿aproximadamente cuántas veces más rápido es el verificador comparado con el cómputo directo?",
@@ -51,7 +51,7 @@
                 "isCorrect": false
             }
         ],
-        "feedback": "El cómputo directo es $O(2^v) = 2^20 \simeq 1,048,576$ operaciones. El verificador corre en $O(v) = 20$ operaciones. ¡La mejora es aproximadamente $1,048,576/20 \simeq 52,428$ veces más rápido!"
+        "feedback": "El cómputo directo es $O(2^v) = 2^{20} \\simeq 1,048,576$ operaciones. El verificador corre en $O(v) = 20$ operaciones. ¡La mejora es aproximadamente $1,048,576/20 \\simeq 52,428$ veces más rápido!"
     }
 }
 

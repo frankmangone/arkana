@@ -3,6 +3,10 @@
 import { Button } from "@/components/ui/button";
 import { HelpCircle, CheckCircle, XCircle, AlertCircle } from "lucide-react";
 import React, { useState, useEffect } from "react";
+import ReactMarkdown from "react-markdown";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+import "katex/dist/katex.min.css";
 
 export interface QuizOption {
   id: string;
@@ -36,6 +40,21 @@ interface QuizComponentProps {
 interface QuestionState {
   [questionId: string]: string[] | null;
 }
+
+// Component to render text with LaTeX support
+const LatexText: React.FC<{ children: string }> = ({ children }) => {
+  return (
+    <ReactMarkdown
+      remarkPlugins={[remarkMath]}
+      rehypePlugins={[rehypeKatex]}
+      components={{
+        p: ({ children }) => <>{children}</>,
+      }}
+    >
+      {children}
+    </ReactMarkdown>
+  );
+};
 
 const QuizComponent: React.FC<QuizComponentProps> = ({ 
   src, 
@@ -181,7 +200,9 @@ const QuizComponent: React.FC<QuizComponentProps> = ({
         {/* Question Title */}
         <h4 className="font-semibold text-xl mt-2 mb-4 flex items-start gap-3">
           <HelpCircle className="w-8 h-8 shrink-0 text-purple-400" />
-          <span className="mt-[2px]">{questionContent.question}</span>
+          <span className="mt-[2px]">
+            <LatexText>{questionContent.question}</LatexText>
+          </span>
         </h4>
 
         {/* Options */}
@@ -220,7 +241,9 @@ const QuizComponent: React.FC<QuizComponentProps> = ({
                   disabled={isSubmitted}
                   className="w-4 h-4 cursor-pointer"
                 />
-                <span className="text-gray-200">{option.text}</span>
+                <span className="text-gray-200">
+                  <LatexText>{option.text}</LatexText>
+                </span>
                 {showFeedback && isCorrectOption && !isSelected && (
                   <span className="ml-auto text-correct-400/60 text-sm flex items-center gap-1">
                     <AlertCircle className="w-4 h-4" />
@@ -276,9 +299,11 @@ const QuizComponent: React.FC<QuizComponentProps> = ({
                   <XCircle className="w-5 h-5" />
                   <span className="mt-[2px]">{dictionary.incorrect}</span>
                 </span>
-              )}
+                )}
+              </p>
+            <p className="text-sm">
+              <LatexText>{questionContent.feedback}</LatexText>
             </p>
-            <p className="text-sm">{questionContent.feedback}</p>
           </div>
         )}
       </div>

@@ -11,7 +11,7 @@
             },
             {
                 "id": "opt2",
-                "text": "Because $24 \ \textrm{mod} \ 13 = 11$",
+                "text": "Because $24 \\ \\textrm{mod} \\ 13 = 11$",
                 "isCorrect": true
             },
             {
@@ -25,7 +25,7 @@
                 "isCorrect": false
             }
         ],
-        "feedback": "In finite field $F_{13}$, all arithmetic is done modulo 13. So $24 \ \textrm{mod} \ 13 = 11$, which matches $C_2$!"
+        "feedback": "In finite field $F_{13}$, all arithmetic is done modulo 13. So $24 \\ \\textrm{mod} \\ 13 = 11$, which matches $C_2$!"
     },
     "es": {
         "question": "En el ejemplo, ¿por qué $g_2(0) + g_2(1) = 24$ es igual a 11 en $F_{13}$?",
@@ -37,7 +37,7 @@
             },
             {
                 "id": "opt2",
-                "text": "Porque $24 \ \textrm{mod} \ 13 = 11$",
+                "text": "Porque $24 \\ \\textrm{mod} \\ 13 = 11$",
                 "isCorrect": true
             },
             {
@@ -51,7 +51,7 @@
                 "isCorrect": false
             }
         ],
-        "feedback": "En el campo finito $F_{13}$, toda la aritmética se hace módulo 13. Entonces $24 \ \textrm{mod} \ 13 = 11$, ¡que coincide con $C_2$!"
+        "feedback": "En el campo finito $F_{13}$, toda la aritmética se hace módulo 13. Entonces $24 \\ \\textrm{mod} \\ 13 = 11$, ¡que coincide con $C_2$!"
     }
 }
 

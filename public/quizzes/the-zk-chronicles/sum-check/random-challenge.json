@@ -21,7 +21,7 @@
             },
             {
                 "id": "opt4",
-                "text": "It allows direct verification of C",
+                "text": "It allows direct verification of $C$",
                 "isCorrect": false
             }
         ],
@@ -47,7 +47,7 @@
             },
             {
                 "id": "opt4",
-                "text": "Permite la verificación directa de C",
+                "text": "Permite la verificación directa de $C$",
                 "isCorrect": false
             }
         ],
