@@ -114,9 +114,9 @@ Prohibitivamente largo para mi pobre computadora, pero quizás no para alguien c
 	/>
 </figure>
 
-En este contexto, **sí** tiene sentido intentar fabricar un algoritmo para la verificación rápida de algún **resultado reclamado**.
+En este contexto, **sí** tiene sentido intentar fabricar un algoritmo para la verificación rápida de algún **supuesto resultado**.
 
-¡Y este es exactamente el objetivo del protocolo sum-check!
+¡Y este es exactamente el objetivo del protocolo de verificación de la suma!
 
 Veamos cómo funciona.
 
@@ -128,7 +128,7 @@ Veamos cómo funciona.
 
 La belleza de este protocolo que estamos a punto de presentar radica en su **naturaleza recursiva**.
 
-Este es el plan: primero explicaremos cómo funciona **una sola ronda**. Una vez que terminemos con eso, será inmediatamente claro que para continuar avanzando, tendremos que hacer **otra de esas rondas**. Cada ronda reducirá el problema, hasta que nos quede una condición que es muy simple de verificar.
+Este es el plan: primero explicaremos cómo funciona **una sola ronda**. Una vez que terminemos con eso, será inmediatamente claro que para avanzar, tendremos que hacer **otra de esas rondas**. Cada ronda reducirá el problema, hasta que nos quede una condición que es muy simple de verificar.
 
 <figure>
 	<img
@@ -150,9 +150,9 @@ Fácil, ¿verdad?
 
 Woah, woah, tranquilo... Okay, un paso a la vez.
 
-### Una Ronda de Sum-Check {#a-sum-check-round}
+### Una Ronda de Verificación {#a-sum-check-round}
 
-La configuración es la siguiente: un probador afirma haber calculado la suma $C$ para un polinomio $g(X_1, X_2,..., X_v)$ sobre $\{0,1\}^v$. Su objetivo es convencer a un verificador de que $C$ es el **resultado correcto**.
+El escenario es el siguiente: un probador afirma haber calculado la suma $C$ para un polinomio $g(X_1, X_2,..., X_v)$ sobre $\{0,1\}^v$. Su objetivo es convencer a un verificador de que $C$ es el **resultado correcto**.
 
 Para hacerlo, el probador hará algo bastante extraño en apariencia: una **suma parcial de** $g$.
 
@@ -160,7 +160,7 @@ $$
 g_1(X_1) = \sum_{(x_2, ..., x_v) \in \{0,1\}^{v-1}} g(X_1, x_2, ..., x_v)
 $$
 
-Si miras de cerca, notarás que no hemos incluido evaluaciones para la primera variable, $X_1$. Por esta razón el resultado es un **nuevo polinomio** — uno univariado, específicamente.
+Si miramos de cerca, podemos notar que no hemos incluido evaluaciones para la primera variable, $X_1$. Por esta razón el resultado es un **nuevo polinomio** — uno univariado, específicamente.
 
 <figure>
 	<img
@@ -171,7 +171,7 @@ Si miras de cerca, notarás que no hemos incluido evaluaciones para la primera v
 	/>
 </figure>
 
-Lo creas o no, esto es **todo lo que tienen que hacer**. El probador puede enviar $C$ y $g_1(X_1)$ al verificador, y con estos valores, el verificador puede verificar fácilmente la siguiente igualdad:
+Lo creas o no, esto es **todo lo que hay que hacer**. El probador puede enviar $C$ y $g_1(X_1)$ al verificador, y con estos valores, el verificador puede checkear fácilmente la siguiente igualdad:
 
 $$
 C = g_1(0) + g_1(1)
@@ -179,21 +179,21 @@ $$
 
 Claramente, si $C$ está correctamente calculado, esta igualdad debería cumplirse (¡siéntete libre de verificarlo tú mismo si no estás convencido!). Así que si esta prueba pasa, ¡terminamos! ¡El verificador puede decir con confianza que $C$ es correcto!
 
-O... ¿Pueden?
+¿No...?
 
 ### Problemas en el Paraíso {#problems-in-paradise}
 
-De hecho, hay un **problema crítico** con este razonamiento — y es una consideración que siempre necesitamos **tener en mente** a medida que avanzamos en nuestro viaje. Lo hemos dicho antes, pero lo diré de nuevo, y en letras grandes, para que ustedes nunca olviden:
+De hecho, hay un **problema crítico** con este razonamiento — y es una consideración que siempre necesitamos tener en mente a medida que avanzamos en nuestro viaje. Lo hemos dicho antes, pero lo diré de nuevo, y en letras grandes, para que no se olviden:
 
 ::: big-quote
 El probador podría estar mintiendo
 :::
 
-¿Sobre qué podrían estar mintiendo? Bueno, sobre **todo** lo que pueden mentir — pero en este caso, no tienen muchas opciones: o no conocen $g$, o mienten sobre el valor de $C$.
+¿Sobre qué podría estar mintiendo? Bueno, sobre **todo** en lo que fuera posible — pero en este caso, no tienen muchas opciones: o no conocen $g$, o mienten sobre el valor de $C$.
 
 Entonces, digamos que el probador quiere convencer al verificador de que algún valor $C^*$ es el resultado correcto, pero de hecho es **incorrecto**. ¿Cómo lo harían?
 
-Prácticamente la única perilla que pueden controlar es ese polinomio $g_1(X_1)$. Y si lo piensas, ¡nada impide que el probador fabrique un polinomio simple $g_1^*$ para que la verificación del verificador pase!
+Prácticamente la única perilla que pueden ajustar es ese polinomio $g_1(X_1)$. Y si lo piensas, ¡nada impide que el probador fabrique un polinomio simple $g_1^*$ para que la verificación del verificador pase!
 
 $$
 C^* = g_1^*(0) + g_1^*(1)
@@ -205,13 +205,13 @@ Como están las cosas ahora, el algoritmo no funcionará. Vamos a necesitar una 
 
 Tomémonos un momento para reflexionar sobre nuestras opciones. Naturalmente, los verificadores no pueden confiar en la palabra de un probador. Y $g_1(X_1)$ es solo un polinomio — todo lo que podemos hacer con él es **evaluarlo** en algún punto.
 
-Espera... ¿Qué pasa si evaluamos $g_1(X_1)$ en algún punto aleatorio $r_1$?
+Un momento... ¿Qué pasa si evaluamos $g_1(X_1)$ en algún punto aleatorio $r_1$?
 
 $$
 g_1(r_1) = \sum_{(x_2, ..., x_v) \in \{0,1\}^{v-1}} g(r_1, x_2, ..., x_v) = C_2
 $$
 
-¿Lo ves? ¡Un pequeño milagro se ha desplegado ante nuestros ojos: estamos **de vuelta donde empezamos**!
+¿Lo ves? Ha ocurrido un pequeño milagro ante nuestros ojos: ¡estamos **de vuelta donde empezamos**!
 
 <figure>
 	<img
@@ -221,7 +221,7 @@ $$
 	/>
 </figure>
 
-Sí, perdón. Déjame explicar.
+Sí, perdón. Me explico.
 
 Una vez que elegimos y fijamos un punto aleatorio $r_1$, la evaluación $g_1(r_1)$ es en realidad una suma sobre un **hipercubo booleano reducido**. Es como si estuviéramos reemplazando la función original $g$ por otra función $g'$ con **una variable menos**:
 
@@ -231,7 +231,7 @@ $$
 
 Ahora, podemos hacer la misma pregunta original: ¿podemos probar que esta versión reducida de $g$ suma $C_2$ sobre un hipercubo booleano reducido?
 
-¡Y la magia, amigos míos, es que **otra ronda de sum-checking** hace el truco!
+Y la magia, amigos míos, ¡es que **otra ronda de verificación de la suma** es todo lo que necesitamos!
 
 <quiz src="/the-zk-chronicles/sum-check/random-challenge.json" lang="es" />
 
@@ -239,7 +239,7 @@ Ahora, podemos hacer la misma pregunta original: ¿podemos probar que esta versi
 
 Lo que quiero decir aquí es que podemos hacer esto **una y otra vez** de manera **recursiva**, reduciendo el número de variables en $g$ en una en cada ronda. Por lo tanto, después de $v$ rondas, nos quedará una **sola evaluación** de $g$.
 
-Antes de atar cabos, creo que ver esto en acción con un ejemplo simple ayudará mucho.
+Antes de atar finalmente los cabos, creo que ver esto en acción con un ejemplo simple ayudará mucho.
 
 Toma por ejemplo este polinomio de grado $4$:
 
@@ -253,17 +253,17 @@ Primero, el probador necesita calcular la suma sobre el hipercubo booleano $\{0,
 
 > ¡Eso es un total de $16$ evaluaciones sumadas!
 
-Siéntete libre de hacer el cálculo tú mismo — pero en el espíritu de ver el sistema de pruebas en acción, digamos que el probador afirma que el resultado es $C_1 = 12$.
+Siéntete libre de hacer el cálculo tú mismo — pero con el espíritu de ver el sistema de pruebas en acción, digamos que el probador afirma que el resultado es $C_1 = 12$.
 
-El probador también envía el polinomio $g_1(X_1)$, y afirma que es $4X_1 + 4$. El verificador entonces simplemente verifica:
+El probador también envía el polinomio $g_1(X_1)$, y afirma que es $4X_1 + 4$. El verificador entonces simplemente valida que:
 
 $$
 g_1(0) + g_1(1) = 4 + 8 = 12
 $$
 
-Okay, primera ronda, hecha. Ahora el verificador elige un valor aleatorio $r_1$. Supongamos que ese valor es $r_1 = 5$.
+Okay, primera ronda, terminada. Ahora el verificador elige un valor aleatorio $r_1$. Supongamos que ese valor es $r_1 = 5$.
 
-El probador entonces calcula $C_2$, que resulta dar $C_2 = 11$. Así que ahora, el probador tiene que calcular este polinomio aquí:
+El probador entonces calcula $C_2$, que resulta dar $C_2 = 11$. Así que ahora, el probador tiene que calcular este polinomio:
 
 $$
 g_2(X_2) = \sum_{(x_3, x_4) \in \{0,1\}^2} g(r_1, X_2, x_3, x_4)
@@ -281,11 +281,11 @@ $$
 g_2(0) + g_2(1) = 11
 $$
 
-Aunque el resultado parece estar mal (obtenemos $24$), todo tiene sentido una vez que recordamos que estamos trabajando en un campo finito, así que $24 \ \textrm{mod} \ 13 = 11$.
+Aunque el resultado parece estar mal (nos da $24$), todo cobra sentido una vez que recordamos que estamos trabajando en un campo finito, así que $24 \ \textrm{mod} \ 13 = 11$.
 
 <quiz src="/the-zk-chronicles/sum-check/finite-field-arithmetic.json" lang="es" />
 
-Para la tercera y cuarta rondas, simplemente repetimos el proceso. Para mantener las cosas breves, solo resumiré los pasos:
+Para la tercera y cuarta ronda, simplemente repetimos el proceso. Para no extendernos demasiado, acá va un resumen de los pasos:
 
 - El verificador elige $r_2 = 3$.
 - El probador responde con $C_3 = 4$, y $g_3(X_3) = X_3 + 8$.
@@ -303,7 +303,7 @@ El proceso completo se ve así:
 	/>
 </figure>
 
-Todo se verifica muy bien hasta ahora. Pero tenemos un pequeño problema: ¡nos quedamos sin variables!
+Todo cierra muy bien hasta ahora. Pero tenemos un pequeño problema: ¡nos quedamos sin variables!
 
 <figure>
 	<img
@@ -321,40 +321,40 @@ Como no podemos realizar otra ronda, parece que no tenemos ninguna opción para 
 
 En este punto, vamos a necesitar una estrategia diferente.
 
-Necesitamos un mecanismo para verificar que $C_5$ es correcto. Nota que $C_5 = g(5,3,7,2)$. Si hubiera alguna forma mágica de **evaluar de manera segura** $g$ en esa entrada, entonces podríamos comparar con $g_4(2)$, y cerrar bien el procedimiento.
+Necesitamos un mecanismo para verificar que $C_5$ es correcto. Sabemos que $C_5 = g(5,3,7,2)$. Si hubiera alguna forma mágica de **evaluar de manera segura** $g$ en estos inputs, entonces podríamos comparar con $g_4(2)$, y terminar el procedimiento.
 
 Tristemente... Es demasiado temprano en nuestro viaje para ver cómo esto puede lograrse matemáticamente.
 
-Sin embargo, en lugar de pedirte que confíes en la onda de **créeme hermano**, propongo lo siguiente: pongámosle un nombre a esto, para que no nos olvidemos de ello. Y cuando llegue el momento, podemos volver a este concepto, y realmente atar todo junto.
+Sin embargo, en lugar de pedirte que sigas tu camino basado en un simple **trust me, bro**, propongo lo siguiente: pongámosle un nombre a esto, para que no nos olvidemos de ello. Y cuando llegue el momento, podemos volver a este concepto, y realmente terminar de darle sentido.
 
-Diremos que tenemos **acceso de oráculo** a $g$. Con esto, queremos decir que tenemos una forma de evaluar $g$ en algún punto aleatorio, y estamos **garantizados** de tener un valor correcto.
+Diremos que tenemos **acceso de oráculo** a $g$. Con esto, queremos decir que tenemos una forma de evaluar $g$ en algún punto aleatorio, y tenemos **garantizado** obtener un valor correcto.
 
 Así que finalmente, después de todas las verificaciones en cada ronda, el verificador realiza una **consulta de oráculo** de $g$ en $(r_1, r_2, r_3, r_4)$, y acepta la prueba si el valor coincide con $C_5 = g_4(r_4)$.
 
-> ¡Por supuesto, todo este procedimiento puede generalizarse a **cualquier grado** — y los ahorros de tiempo se vuelven más relevantes cuanto mayor sea el grado!
+> Por supuesto, todo este procedimiento puede generalizarse a **cualquier grado** — ¡y los ahorros de tiempo se vuelven más relevantes cuanto mayor sea el grado!
 
-¡Y ese es el protocolo sum-check!
+¡Y ese es el protocolo de la verificación de la suma!
 
 ---
 
 ## Completitud y Solidez {#completeness-and-soundness}
 
-Es un algoritmo muy elegante, eso es seguro. Sé que puede parecer un poco excesivo al principio, así que te animo a que te tomes tu tiempo para dejarlo asentar antes de continuar.
+Es un algoritmo muy elegante, eso es seguro. Sé que puede parecer un poco excesivo al principio, así que te animo a que te tomes tu tiempo para entenderlo antes de continuar.
 
 Sin embargo, con estos métodos de prueba, necesitamos ser **precisos** — lo que significa que para que podamos decir con confianza "sí, esto funciona", necesitamos mostrar formalmente que el algoritmo es tanto **completo** como **sólido**.
 
 Esto se convertirá en práctica estándar para cualquier algoritmo que aprendamos de aquí en adelante. Como es la primera vez que presentamos un algoritmo en esta serie, recapitulemos brevemente lo que significan estas propiedades:
 
-- **Completitud** significa que el verificador siempre aceptará la prueba si la declaración original es válida (la suma de $g$ sobre el hipercubo booleano es de hecho $C$), excepto quizás con probabilidad insignificante.
-- **Solidez** significa que es muy difícil para un probador deshonesto generar una prueba válida, excepto con probabilidad insignificante.
+- **Completitud** significa que el verificador siempre aceptará la prueba si la declaración original es válida (la suma de $g$ sobre el hipercubo booleano es de hecho $C$), excepto quizás con una probabilidad insignificante.
+- **Solidez o Robustez** significa que es muy difícil para un probador deshonesto generar una prueba válida, excepto con probabilidad insignificante.
 
-> La solidez en realidad viene en **varios sabores**, pero diferiremos esa discusión para más adelante.
+> La solidez en realidad viene en **varios formas**, pero diferiremos esa discusión para más adelante.
 
 La completitud es bastante directa: si el probador realmente conoce $g$, y ha calculado correctamente $C$, entonces puede pasar cada ronda simplemente construyendo cada $g_i$ correctamente según el protocolo. Esto es, como conocen $g$, no deberían tener ningún problema para proporcionar respuestas a cada desafío.
 
 La solidez es un poco más complicada de mostrar. Esencialmente, necesitamos medir **qué tan difícil sería para un probador hacer trampa**.
 
-Para hacer esto, sigamos de hecho un intento de trampa. Supongamos que el probador no conoce $C$, y en su lugar afirman que la suma de $g$ sobre el hipercubo booleano es $C^*$. O peor aún: ¡están interesados en convencernos de que el resultado $C^*$ es correcto para su propio beneficio!
+Para hacer esto, siguamos un intento de trampa de punta a punta. Supongamos que el probador no conoce $C$, y en su lugar afirman que la suma de $g$ sobre el hipercubo booleano es $C^*$. O peor aún: ¡están interesados en convencernos de que el resultado $C^*$ es correcto para su propio beneficio!
 
 ¿Cómo podrían engañar a un verificador?
 
@@ -364,7 +364,7 @@ $$
 g_1^*(0) + g_1^*(1) = C^*
 $$
 
-Ahora, aquí es donde se pone interesante: **no pueden usar** $g$ para calcular $g_1^*(X_1)$, porque la suma sería (muy probablemente) diferente a $C^*$. Por lo tanto, necesitarían **fabricar** $g_1^*(X_1)$ para que pase la primera verificación.
+Y acá es donde se pone interesante: **no pueden usar** $g$ para calcular $g_1^*(X_1)$, porque la suma sería (muy probablemente) diferente a $C^*$. Por lo tanto, necesitarían **fabricar** $g_1^*(X_1)$ para que pase la primera verificación.
 
 En otras palabras, $g_1^*(X_1)$ y el verdadero $g_1(X_1)$ son **polinomios diferentes**. Así que cuando el verificador elige su primer desafío $r_1$, es **muy poco probable** que $g_1(r_1)$ y $g_1^*(r_1)$ sean el mismo valor.
 
@@ -382,15 +382,15 @@ Si la probabilidad de que esto suceda es algún valor $\delta$, entonces un prob
 
 Por último, la **consulta de oráculo** final permite al verificador atrapar al probador en su mentira final (a menos que tengan suerte, por supuesto).
 
-¡Así que ahí lo tienes! El protocolo sum-check cumple con los requisitos de completitud y solidez.
+¡Así que ahí lo tienes! El protocolo de la verificación de la suma cumple con los requisitos de completitud y solidez.
 
 ---
 
 ## Resumen {#summary}
 
-Acabamos de ver nuestro primer algoritmo de cómputo verificable. Puede no parecer mucho por ahora, pero es un comienzo. ¡Y hemos visto algunas herramientas y conceptos valiosos en el proceso como **recursión**, **desafíos del verificador**, **evaluaciones polinomiales** ingeniosas, **consultas de oráculo**, e incluso cómo verificar **completitud** y **solidez**!
+Acabamos de ver nuestro primer algoritmo de cómputo verificable. Puede no parecer mucho por ahora, pero es un comienzo. Y hemos visto algunas herramientas y conceptos valiosos en el proceso como **recursión**, **desafíos del verificador**, **evaluaciones polinomiales** ingeniosas, **consultas de oráculo**, e incluso cómo verificar **completitud** y **solidez**.
 
-Intencionalmente he omitido los **costos computacionales** de este protocolo, porque quiero que nos enfoquemos en las matemáticas por ahora. Si tienes curiosidad, puedes calcular eso tú mismo fácilmente — y encontrarás tres cosas:
+Intencionalmente, he omitido los **costos computacionales** de este protocolo, porque quiero que nos enfoquemos en las matemáticas por ahora. Si tienes curiosidad, puedes calcular eso tú mismo fácilmente — y encontrarás tres cosas:
 
 - El probador corre en tiempo $O(2^v)$.
 - El verificador corre en tiempo $O(v)$ (lineal).
@@ -398,16 +398,16 @@ Intencionalmente he omitido los **costos computacionales** de este protocolo, po
 
 <quiz src="/the-zk-chronicles/sum-check/verifier-speedup.json" lang="es" />
 
-Claramente, el verificador es mucho más rápido que el probador a medida que $v$ se vuelve más grande. Pero pueden surgir algunas preguntas alrededor de esto: ¿es **tiempo lineal** suficientemente bueno? ¿Importa si el probador tarda demasiado?
+Claramente, el verificador es mucho más rápido que el probador a medida que $v$ se vuelve más grande. Pero pueden surgir algunas preguntas alrededor de esto: ¿es un **tiempo lineal** suficientemente bueno? ¿Importa si el probador tarda demasiado?
 
-Y especialmente, ¿qué hay de la **sobrecarga de comunicación**? El verificador podría correr más rápido, ¡pero si tiene que esperar al probador, entonces todo el proceso se ralentiza!
+Y especialmente, ¿qué hay de la **sobrecarga de comunicación**? El verificador podría correr más rápido, pero si tiene que esperar al probador... ¡entonces todo el proceso se ralentiza!
 
 Bueno... Sí. En su forma actual, este no es un protocolo muy práctico.
 
-> ¡Aunque te advertí!
+> ¡Te lo advertí!
 
 Digamos simplemente que tiene **potencial**.
 
-Comenzaremos a unir la importancia del protocolo sum-check en los próximos artículos. Y para eso, querremos saltar a otras ideas importantes, especialmente alrededor de cómo representar declaraciones y cómputo en general.
+Comenzaremos a unir la importancia del protocolo de la verificación de la suma en los próximos artículos. Y para eso, querremos saltar a otras ideas importantes, especialmente alrededor de cómo representar declaraciones y cómputo en general.
 
-¡Ese será el tema para el próximo!
+¡Ese será el tema para el próximo artículo!

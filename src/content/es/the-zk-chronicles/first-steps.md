@@ -184,7 +184,7 @@ El probador podría ser deshonesto
 Es crucial que cualquier sistema que diseñemos para **convencer** al verificador pueda **atrapar a los probadores cuando mienten**. Esto se formaliza como **dos propiedades** que necesitamos que nuestras Pruebas Interactivas tengan:
 
 - **Completitud**: si el probador es **honesto**, el verificador va a **casi siempre aceptar** nuestra prueba.
-- **Solidez**: si el probador es **deshonesto**, entonces va a ser **casi imposible** crear una prueba convincente.
+- **Solidez/Robustez**: si el probador es **deshonesto**, entonces va a ser **casi imposible** crear una prueba convincente.
 
 Sí, dije **casi**: puede existir una pequeña posibilidad de que una prueba válida pueda ser rechazada, o que un probador deshonesto pueda lograr hacer trampa. Llamamos a estas probabilidades los **errores** de **completitud** y **solidez**, y por supuesto, nuestro objetivo va a ser hacer estas probabilidades lo más pequeñas posible.
 
