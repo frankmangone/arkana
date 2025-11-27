@@ -1,7 +1,7 @@
 ---
-title: "Las Crónicas de ZK: Verificación de la Suma"
+title: 'Las Crónicas de ZK: Verificación de la Suma'
 author: frank-mangone
-date: "2025-11-25"
+date: '2025-11-25'
 thumbnail: /images/the-zk-chronicles/sum-check/1_Yzr-2zVpHO5IToX1NfBcEw.webp
 tags:
   - sumCheck
@@ -9,10 +9,10 @@ tags:
   - verifiableComputing
   - polynomials
 description: >-
-  Equipados con campos finitos y polinomios, ¡es hora de echarle un vistazo a nuestro
-  primer sistema de pruebas!
+  Equipados con campos finitos y polinomios, ¡es hora de echarle un vistazo a
+  nuestro primer sistema de pruebas!
 readingTime: 13 min
-contentHash: 81ee3122f80824212ecb9ee56137a9774859b77c1a862f470532bc23db83b29a
+contentHash: 33360b8591c9b7423d42010fd6b550d8a20a7b6d69f1e999a2b2c7e40871b6e4
 supabaseId: null
 ---
 
