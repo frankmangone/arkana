@@ -1,7 +1,7 @@
 ---
-title: 'Las Crónicas de ZK: Validación de la Suma'
+title: "Las Crónicas de ZK: Verificación de la Suma"
 author: frank-mangone
-date: '2025-11-25'
+date: "2025-11-25"
 thumbnail: /images/the-zk-chronicles/sum-check/1_Yzr-2zVpHO5IToX1NfBcEw.webp
 tags:
   - sumCheck
@@ -18,33 +18,33 @@ supabaseId: null
 
 Ahora que estamos equipados con [campos finitos y polinomios](/es/blog/the-zk-chronicles/math-foundations), es hora de echarle un vistazo a nuestro primer sistema de pruebas. ¡Genial!
 
-La verdad es que la herramienta que estamos a punto de presentar puede parecer un poco **inútil** a primera vista. Cuando se estudia en aislamiento, se sentirá como una forma extremadamente complicada de realizar una tarea muy simple.
+La verdad es que la herramienta que estamos a punto de presentar puede parecer un poco **inútil** a primera vista. Cuando se estudia por sí sola, se siente como una forma extremadamente complicada de realizar una tarea muy simple.
 
 ¡Pero que eso no te desanime! Resulta que esta herramienta es **extremadamente importante** por una razón maravillosa: muchos problemas sobre los que queremos probar cosas pueden **reducirse** a una versión de lo que estamos a punto de revelar.
 
-Por lo tanto, te pido que abordes el artículo de hoy con una mente abierta. Piensa en el tema de hoy como simplemente **otro peldaño** en nuestro camino para obtener sistemas de pruebas útiles.
+Por lo tanto, te pido que abordes el artículo de hoy con una mente abierta. Piensa en el tema de hoy como simplemente **otro escalón** en nuestro camino para obtener sistemas de pruebas útiles.
 
-> ¡Las cosas empezarán a tener sentido muy pronto, lo prometo. Confía en el proceso!
+> Las cosas empezarán a tener sentido muy pronto, lo prometo. ¡Confía en el proceso!
 
-¡Muy bien entonces! Las expectativas son altas, así que no perdamos tiempo. Hablemos del **protocolo sum-check**.
+¡Muy bien entonces! Las expectativas están altas, así que no perdamos tiempo. Hablemos del **protocolo de verificación de la suma**.
 
 ---
 
-## Comenzando {#getting-started}
+## Calentando los Motores {#getting-started}
 
 Como un breve recordatorio de nuestro primer encuentro, lo que queremos hacer es construir algún tipo de sistema de pruebas para mostrar que el resultado de algún cómputo es válido, e idealmente hacerlo en menos tiempo que el cómputo mismo.
 
 Genial, entonces... ¿De qué tipo de cómputo estamos hablando?
 
-Hasta ahora, nuestro conjunto de herramientas solo incluye polinomios. Usando estos como base, podríamos intentar idear formas de representar cómputos útiles — del tipo sobre el que podemos probar cosas.
+Hasta ahora, nuestro conjunto de herramientas solo incluye polinomios. Usando éstos como base, podríamos intentar idear formas de representar cómputos útiles — del tipo sobre el que podemos probar cosas.
 
-Okay entonces, empecemos poco a poco. Toma algún polinomio univariado $P(X)$. Quizás lo más simple que podemos hacer con él es **evaluarlo** en algún punto. Y a ese respecto, quiero notar que hay **dos puntos especiales** con un comportamiento interesante al evaluarlos: $0$ y $1$.
+Okay entonces, vayamos de a poco. Tomemos algún polinomio univariado $P(X)$. Quizás lo más simple que podemos hacer con él es **evaluarlo** en algún punto. Y a ese respecto, quiero notar que hay **dos puntos especiales** con un comportamiento interesante al evaluarlos: $0$ y $1$.
 
-> Piénsalo por un segundo: cuando $X = 0$, todos los términos que contienen $X$ simplemente **desaparecen**, dejándonos con el término sin $X$. A esto usualmente se le llama el **término constante**, o el **coeficiente cero**.
-> 
+> Pensémoslo por un segundo: cuando $X = 0$, todos los términos que contienen $X$ simplemente **desaparecen**, dejándonos con el término sin $X$. A esto usualmente se le llama el **término constante**, o el **coeficiente cero**.
+>
 > Del mismo modo, evaluar un polinomio en $X = 1$ simplemente nos da la suma de **todos los coeficientes** en el polinomio!
 
-Esencialmente, estos puntos son agradables porque no necesitamos perder tiempo calculando ninguna potencia de X durante la evaluación. Claro — podríamos usar cualquier otro punto, pero estos simplemente resultan ser convenientes, y muy importantes para la construcción de hoy.
+Esencialmente, estos puntos son agradables porque no necesitamos perder tiempo calculando ninguna potencia de $X$ durante la evaluación. Claro — podríamos usar cualquier otro punto, pero estos simplemente resultan ser convenientes, y muy importantes para la construcción de hoy.
 
 Lo sé. No es lo más divertido, pero es un comienzo.
 
@@ -62,17 +62,17 @@ $$
 P(0) + P(1) = k
 $$
 
-Donde $k$ es algún elemento de campo. Realizar este cálculo directamente es **bastante fácil** por las razones que mencionamos antes: la evaluación es muy directa. Parece que no estamos haciendo mucho progreso — después de todo, dijimos que probar un resultado tiene sentido solo cuando hay una ganancia real en el tiempo de verificación versus el esfuerzo de cómputo.
+Donde $k$ es algún elemento de un campo. Realizar este cálculo directamente es **bastante fácil** por las razones que mencionamos antes: la evaluación es muy directa. Parece que no estamos haciendo mucho progreso — después de todo, dijimos que probar un resultado tiene sentido solo cuando hay una ganancia real en el tiempo de verificación versus el esfuerzo de cómputo.
 
-Y aquí, el cómputo es tan simple que es un poco absurdo intentar construir un algoritmo separado para la verificación.
+Y acá, el cómputo es tan simple que es un poco absurdo intentar construir un algoritmo separado para la verificación.
 
-> ¡Quiero decir, solo mira la expresión de arriba!
+> Quiero decir, ¡solo mira la expresión de arriba!
 
-Entonces, ¿qué tal si subimos la apuesta?
+Entonces, ¿qué tal si vamos un paso más allá?
 
-### Subiendo la Intensidad {#turning-up-the-heat}
+### Subiendo la Apuesta {#turning-up-the-heat}
 
-¿Qué pasaría si nuestro punto de partida fuera un **polinomio multivariado** en su lugar? Algo como esto:
+¿Qué pasaría si nuestro punto de partida fuera un **polinomio multivariado**? Algo como esto:
 
 $$
 g(X_1, X_2, X_3,...,X_v)
@@ -124,11 +124,11 @@ Veamos cómo funciona.
 
 ## El Protocolo {#the-protocol}
 
-Un **protocolo** es simplemente una **secuencia de pasos**, definida por reglas que deben seguirse durante una interacción entre partes. Esta es exactamente nuestra situación: un probador y un verificador **interactuarán** de una manera muy específica.
+> Un **protocolo** es simplemente una **secuencia de pasos**, definida por reglas que deben seguirse durante una interacción entre partes. Esta es exactamente nuestra situación: un probador y un verificador **interactuarán** de una manera muy específica.
 
 La belleza de este protocolo que estamos a punto de presentar radica en su **naturaleza recursiva**.
 
-Aquí está el plan: primero explicaremos cómo funciona **una sola ronda**. Una vez que terminemos con eso, será inmediatamente claro que para continuar avanzando, tendremos que hacer **otra de esas rondas**. Cada ronda reducirá el problema, hasta que nos quede una condición que es muy simple de verificar.
+Este es el plan: primero explicaremos cómo funciona **una sola ronda**. Una vez que terminemos con eso, será inmediatamente claro que para continuar avanzando, tendremos que hacer **otra de esas rondas**. Cada ronda reducirá el problema, hasta que nos quede una condición que es muy simple de verificar.
 
 <figure>
 	<img
@@ -160,7 +160,7 @@ $$
 g_1(X_1) = \sum_{(x_2, ..., x_v) \in \{0,1\}^{v-1}} g(X_1, x_2, ..., x_v)
 $$
 
-Si miras de cerca, notarás que no hemos incluido evaluaciones para la primera variable, X_1. Por esta razón el resultado es un **nuevo polinomio** — uno univariado, específicamente.
+Si miras de cerca, notarás que no hemos incluido evaluaciones para la primera variable, $X_1$. Por esta razón el resultado es un **nuevo polinomio** — uno univariado, específicamente.
 
 <figure>
 	<img
@@ -249,7 +249,7 @@ $$
 
 Este polinomio tiene que estar definido sobre algún **campo finito**, así que elijamos uno simple, como $\mathbb{F}_{13}$.
 
-Primero, el probador necesita calcular la suma sobre el hipercubo booleano ${0,1}^4$.
+Primero, el probador necesita calcular la suma sobre el hipercubo booleano $\{0,1\}^4$.
 
 > ¡Eso es un total de $16$ evaluaciones sumadas!
 
@@ -411,4 +411,3 @@ Digamos simplemente que tiene **potencial**.
 Comenzaremos a unir la importancia del protocolo sum-check en los próximos artículos. Y para eso, querremos saltar a otras ideas importantes, especialmente alrededor de cómo representar declaraciones y cómputo en general.
 
 ¡Ese será el tema para el próximo!
-

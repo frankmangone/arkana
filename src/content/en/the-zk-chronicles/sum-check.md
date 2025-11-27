@@ -1,7 +1,7 @@
 ---
-title: 'The ZK Chronicles: Sum Check'
+title: "The ZK Chronicles: Sum Check"
 author: frank-mangone
-date: '2025-11-25'
+date: "2025-11-25"
 thumbnail: /images/the-zk-chronicles/sum-check/1_Yzr-2zVpHO5IToX1NfBcEw.webp
 tags:
   - sumCheck
@@ -12,7 +12,7 @@ description: >-
   Equipped with finite fields and polynomials, it’s time to take a look at our
   very first proving system!
 readingTime: 13 min
-mediumUrl: 'https://medium.com/@francomangone18/the-zk-chronicles-sum-check-0ccf23ffc0e4'
+mediumUrl: "https://medium.com/@francomangone18/the-zk-chronicles-sum-check-0ccf23ffc0e4"
 contentHash: 81ee3122f80824212ecb9ee56137a9774859b77c1a862f470532bc23db83b29a
 supabaseId: null
 ---
@@ -42,10 +42,10 @@ So far, our toolkit only includes polynomials. Using these as a basis, we could 
 Okay then, let’s start small. Take some univariate polynomial $P(X)$. Perhaps the simplest thing we can do with it is to **evaluate** it at some point. And on that account, I want to note that there are **two special points** with an interesting behavior upon evaluation: $0$ and $1$.
 
 > Think about it for a second: when $X = 0$, all terms containing $X$ just **vanish**, leaving us with the term with no $X$. This is usually called the **constant term**, or the **zeroth coefficient**.
-> 
+>
 > Likewise, evaluating a polynomial at $X = 1$ simply gives us the sum of **all the coefficients** in the polynomial!
 
-Essentially, these points are nice because we don’t need to spend time calculating any powers of X during evaluation. Granted — we could use any other point, but these just happen to be convenient, and very important for today’s construction.
+Essentially, these points are nice because we don’t need to spend time calculating any powers of $X$ during evaluation. Granted — we could use any other point, but these just happen to be convenient, and very important for today’s construction.
 
 I know. Not the most fun stuff, but it’s a start.
 
@@ -125,7 +125,7 @@ Let’s see how it works.
 
 ## The Protocol
 
-A **protocol** is simply a **sequence of steps**, defined by rules that must be followed during an interaction between parties. This is exactly our situation: a prover and a verifier will **interact** in a very specific manner.
+> A **protocol** is simply a **sequence of steps**, defined by rules that must be followed during an interaction between parties. This is exactly our situation: a prover and a verifier will **interact** in a very specific manner.
 
 The beauty of this protocol we’re about to present lies in its **recursive nature**.
 
@@ -161,7 +161,7 @@ $$
 g_1(X_1) = \sum_{(x_2, ..., x_v) \in \{0,1\}^{v-1}} g(X_1, x_2, ..., x_v)
 $$
 
-If you look closely, you’ll notice that we have not included evaluations for the first variable, X_1. For this reason the result is a **new polynomial** — a univariate one, specifically.
+If you look closely, you’ll notice that we have not included evaluations for the first variable, $X_1$. For this reason the result is a **new polynomial** — a univariate one, specifically.
 
 <figure>
 	<img
@@ -250,7 +250,7 @@ $$
 
 This polynomial has to be defined over some **finite field**, so let’s choose a simple one, like $\mathbb{F}_{13}$.
 
-First, the prover needs to compute the sum over the boolean hypercube ${0,1}^4$.
+First, the prover needs to compute the sum over the boolean hypercube $\{0,1\}^4$.
 
 > That’s a total of $16$ evaluations added together!
 
