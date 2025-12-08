@@ -25,7 +25,9 @@ export function FeaturedPostCard(props: FeaturedPostCardProps) {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://arkana.blog";
 
   const thumbnail = post.thumbnail
-    ? `${baseUrl}${post.thumbnail}`
+    ? post.thumbnail.startsWith("http")
+      ? post.thumbnail
+      : `${baseUrl}${post.thumbnail}`
     : "/placeholder.svg";
 
   const date = formatDate(post.date, lang);

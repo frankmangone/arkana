@@ -36,7 +36,9 @@ export function PostCard(props: PostCardProps) {
           <Image
             src={
               post.thumbnail
-                ? `${baseUrl}${post.thumbnail}`
+                ? post.thumbnail.startsWith("http")
+                  ? post.thumbnail
+                  : `${baseUrl}${post.thumbnail}`
                 : "/placeholder.svg"
             }
             alt={post.title}
