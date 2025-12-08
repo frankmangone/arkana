@@ -11,7 +11,7 @@ tags:
   - interpolation
 description: ¡Es hora de nuestros primeros conceptos matemáticos básicos!
 readingTime: 12 min
-contentHash: 4c7f647ec3fb47de1140a82cc3765a3090613dd4de4681b972106f68899e2736
+contentHash: 23b70e5a73e32d2f1546268f0ffc8c58ffa71a416e9582df38bbb3bb0042185b
 supabaseId: 6049c9f8-19b0-44da-bb63-daefd0fecca9
 ---
 Habiendo dejado atrás la [introducción a la serie](/es/blog/the-zk-chronicles/first-steps), ahora es momento de empezar a trabajar en nuestro conjunto de herramientas, para que podamos encaminarnos hacia el objetivo de crear estos **sistemas de pruebas** a los que ya hemos aludido.
@@ -259,7 +259,7 @@ La idea es la siguiente: supongamos que tenemos un conjunto de $N$ evaluaciones.
 ¿Por qué haríamos esto? Piénsalo de esta manera: si multiplicamos tal polinomio por $y_i$, entonces acabamos de fabricar una pequeña función tal que:
 
 $$
-f(x_i) = y_i L_i(x_i) = y_i"
+f(x_i) = y_i L_i(x_i) = y_i
 $$
 
 Como $(x_i, y_i)$ es una **evaluación** del polinomio original, lo que queremos obtener del proceso de interpolación es un polinomio $L(X)$ tal que $L(x_i) = y_i$ para todas nuestras evaluaciones — así que parece que $L_i(X)$ nos deja a medio camino.
@@ -267,7 +267,7 @@ Como $(x_i, y_i)$ es una **evaluación** del polinomio original, lo que queremos
 Para obtener nuestro polinomio interpolado, todo lo que necesitamos hacer es sumar todos los valores de $L_i$ para todas nuestras evaluaciones:
 
 $$
-L(X) = \sum_{i=1}^{n} y_i L_i(X)"
+L(X) = \sum_{i=1}^{n} y_i L_i(X)
 $$
 
 ¡Y voilà! Ese será el resultado de nuestra interpolación. Visualmente:
@@ -295,7 +295,7 @@ A pesar de su aparente simplicidad, las raíces son muy poderosas. La razón pri
 Simplificando un poco, una de las consecuencias más importantes de este teorema es que cualquier polinomio univariado puede expresarse como un producto de factores lineales:
 
 $$
-P(X) = a(X — r_1)(X — r_2)...(X — r_n) = a\prod_{i=1}^{n}(X-r_i)"
+P(X) = a(X — r_1)(X — r_2)...(X — r_n) = a\prod_{i=1}^{n}(X-r_i)
 $$
 
 Una observación muy importante sigue de esta expresión: un polinomio de grado $N$ tiene **a lo sumo** $N$ **raíces**. Este es un lema tan importante que no está de más repetirlo, para algo de efecto dramático:
@@ -313,7 +313,7 @@ Este hecho es extremadamente importante, y resulta en algunas de las herramienta
 Ahora, volviendo a la interpolación, resulta que esta forma es bastante útil. Está claro que cuando evaluamos cualquiera de esos valores $r_i$, obtendremos $P(x_i) = 0$. Podemos usar esto a nuestro favor aquí: los polinomios $L_i(X)$ necesitan ser $0$ en todos los valores $x$ **excepto** $x_i$, ¡lo que significa que son raíces de $L_i(X)$! Por lo tanto, podemos construir $L_i(X)$ como:
 
 $$
-L_i(X) = a_i\prod_{\stackrel{j=1}{i \neq j}}^{n} (X — x_j)"
+L_i(X) = a_i\prod_{\stackrel{j=1}{i \neq j}}^{n} (X — x_j)
 $$
 
 > Estamos intencionalmente omitiendo $x_i$ para que **no** sea una raíz del polinomio resultante.
@@ -323,7 +323,7 @@ $$
 La expresión completa es entonces:
 
 $$
-L_i(X) = \frac{\prod_{i \neq j} (X — x_j)}{\prod_{i \neq j} (x_i — x_j)}"
+L_i(X) = \frac{\prod_{i \neq j} (X — x_j)}{\prod_{i \neq j} (x_i — x_j)}
 $$
 
 ¡Y eso es prácticamente todo!

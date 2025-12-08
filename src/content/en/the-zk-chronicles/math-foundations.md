@@ -13,7 +13,7 @@ description: Time for our first basic mathematical concepts!
 readingTime: 12 min
 mediumUrl: >-
   https://medium.com/@francomangone18/the-zk-chronicles-math-foundations-9e1393945bab
-contentHash: 8738afa1612cff2a9aca848e8776a38a7e88a5bbb4c2e165a106122acece85b5
+contentHash: ecf63637da91ce3e02ca62ea76d008f6069d922c1fc5091a1c0f0ecec8f607d6
 supabaseId: 1945afc7-ad8b-4984-a8e0-3114fb19db22
 ---
 With the [introduction to the series](/en/blog/the-zk-chronicles/first-steps) behind us, it’s now time to start working on our toolkit, so we can set sail towards the goal of crafting these **proving systems** we’ve already alluded to.
@@ -259,7 +259,7 @@ The idea is the following: suppose we have a set of $N$ evaluations. For a singl
 Why would we do this? Think of it this way: if we multiply such a polynomial by $y_i$, then we’ve just fabricated a small function such that:
 
 $$
-f(x_i) = y_i L_i(x_i) = y_i"
+f(x_i) = y_i L_i(x_i) = y_i
 $$
 
 Because $(x_i, y_i)$ is an **evaluation** of the original polynomial, what we want to get from the interpolation process is a polynomial $L(X)$ such that $L(x_i) = y_i$ for all our evaluations — so it seems $L_i(X)$ gets us halfway there.
@@ -267,7 +267,7 @@ Because $(x_i, y_i)$ is an **evaluation** of the original polynomial, what we wa
 To get our interpolated polynomial, all we need to do is add up all values of $L_i$ for all our evaluations:
 
 $$
-L(X) = \sum_{i=1}^{n} y_i L_i(X)"
+L(X) = \sum_{i=1}^{n} y_i L_i(X)
 $$
 
 And voilà! That will be the result of our interpolation. Visually:
@@ -295,7 +295,7 @@ Despite their apparent simplicity, roots are very powerful. The main reason for 
 Simplifying a bit, one of the most important consequences of this theorem is that any univariate polynomial can be expressed as a product of linear factors:
 
 $$
-P(X) = a(X — r_1)(X — r_2)...(X — r_n) = a\prod_{i=1}^{n}(X-r_i)"
+P(X) = a(X — r_1)(X — r_2)...(X — r_n) = a\prod_{i=1}^{n}(X-r_i)
 $$
 
 A very important observation follows from this expression: a polynomial of degree $N$ has **at most** $N$ **roots**. This is such an important lemma that it doesn’t hurt to repeat it, for some dramatic flair:
@@ -313,7 +313,7 @@ This fact is extremely important, and results in some of the most powerful tools
 Now, circling back to interpolation, it turns out this form is quite useful. It’s clear that when we evaluate any of those $r_i$ values, we’ll get $P(x_i) = 0$. We can use this to our advantage here: the $L_i(X)$ polynomials need to be $0$ on all $x$ values **except** $x_i$, which means they are roots of $L_i(X)$! Therefore, we can construct $L_i(X)$ as:
 
 $$
-L_i(X) = a_i\prod_{\stackrel{j=1}{i \neq j}}^{n} (X — x_j)"
+L_i(X) = a_i\prod_{\stackrel{j=1}{i \neq j}}^{n} (X — x_j)
 $$
 
 > We’re intentionally omitting $x_i$ so that it’s **not** a root of the resulting polynomial.
@@ -323,7 +323,7 @@ Fantastic! The only detail we’re missing now is tuning that $a_i$ coefficient 
 The full expression is then:
 
 $$
-L_i(X) = \frac{\prod_{i \neq j} (X — x_j)}{\prod_{i \neq j} (x_i — x_j)}"
+L_i(X) = \frac{\prod_{i \neq j} (X — x_j)}{\prod_{i \neq j} (x_i — x_j)}
 $$
 
 And that’s pretty much it!
