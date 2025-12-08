@@ -12,7 +12,7 @@ description: >-
   Equipados con campos finitos y polinomios, ¡es hora de echarle un vistazo a
   nuestro primer sistema de pruebas!
 readingTime: 13 min
-contentHash: 33360b8591c9b7423d42010fd6b550d8a20a7b6d69f1e999a2b2c7e40871b6e4
+contentHash: a636fc565ec9e2f812486f7a81a2c802f9e8565a37fbe623bffe8a08c3865783
 supabaseId: null
 ---
 
@@ -410,4 +410,4 @@ Digamos simplemente que tiene **potencial**.
 
 Comenzaremos a unir la importancia del protocolo de la verificación de la suma en los próximos artículos. Y para eso, querremos saltar a otras ideas importantes, especialmente alrededor de cómo representar declaraciones y cómputo en general.
 
-¡Ese será el tema para el próximo artículo!
+¡Ese será el tema para el [próximo artículo](/es/blog/the-zk-chronicles/circuits-part-1)!

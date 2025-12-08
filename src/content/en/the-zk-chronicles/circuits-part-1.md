@@ -1,8 +1,8 @@
 ---
-title: "The ZK Chronicles: Circuits (Part 1)"
+title: 'The ZK Chronicles: Circuits (Part 1)'
 author: frank-mangone
-date: "2025-12-08"
-thumbnail: "https://cdn-images-1.medium.com/max/640/0*sgS-5SnPV3A0P6gf.jpg"
+date: '2025-12-08'
+thumbnail: 'https://cdn-images-1.medium.com/max/640/0*sgS-5SnPV3A0P6gf.jpg'
 tags:
   - zeroKnowledgeProofs
   - arithmeticCircuits
@@ -13,7 +13,7 @@ description: >-
   computation models, which brings us to circuits!
 mediumUrl: >-
   https://medium.com/@francomangone18/the-zk-chronicles-circuit-part-1-b3367ef443b3
-contentHash: 983845dc2c41362050cacd283d66328c41fc10d260dd940f3fad17bc6fd5fcb5
+contentHash: 5204ba7831c420374a8213b9b6a4b67d86c09de55bae7f87e8b57236d7dfb6cb
 supabaseId: null
 ---
 
@@ -58,7 +58,7 @@ Here’s an example:
 	/>
 </figure>
 
-> Some formulations put the negations as inputs, thus making the number of inputs a function of the original $n$. This only impacts cost analysis, but the formulation is completely equivalent!
+> Some formulations put the negations as inputs, thus making the number of inputs a function of the original $n$ inputs. This only impacts cost analysis, but the formulation is completely equivalent!
 
 Circuits can represent a lot of things. In this boolean form, they express **logical conditions** that we want to evaluate on a series of inputs. For instance: am I over 30, and am I male, and do I have a job or some other kind of source of income? That statement, we can express as a simple boolean circuit!
 
@@ -162,7 +162,7 @@ $$
 $$
 
 > Of course, other logical gates have their respective polynomial representations. For instance, the $\textrm{XOR}$ gate, which can be constructed by a combination of $\textrm{AND}$, $\textrm{OR}$, and **negation** gates, would result in a polynomial that would be the composition of the individual polynomials at play here.
-
+>
 > The resulting expression would be $\textrm{xor}(X,Y) = X(1 - Y) + (1 - X)Y$. If you’re feeling a little edgy, try it yourself!
 
 Marvelous! By replacing each gate by these polynomials, we are in fact **directly extending them**: the gates work just as you’d expect for boolean inputs, but do **other things** when fed other values in some **finite field**.

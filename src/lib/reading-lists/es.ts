@@ -332,6 +332,11 @@ export const readingLists: ReadingList[] = [
         slug: "the-zk-chronicles/sum-check",
         order: 3,
       },
+      {
+        id: "circuits-part-1",
+        slug: "the-zk-chronicles/circuits-part-1",
+        order: 4,
+      },
     ],
   },
 ];
