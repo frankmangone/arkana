@@ -13,7 +13,7 @@ description: >-
   very first proving system!
 readingTime: 13 min
 mediumUrl: 'https://medium.com/@francomangone18/the-zk-chronicles-sum-check-0ccf23ffc0e4'
-contentHash: 9c6e8d9332409d83ee0fbf69a89e5f3a59985a91934cf02110ed283ffac2576e
+contentHash: b55a83eabd85124e10aaaa92ff7b8cb53db727e1a35478213d4932e6e151fb03
 supabaseId: null
 ---
 
@@ -411,4 +411,4 @@ Let’s just say it has **potential**.
 
 We’ll start piecing together the importance of the sum-check protocol in the next few articles. And for that, we’ll want to jump onto other important ideas, especially around how to represent statements and computation in general.
 
-That will be the topic for the next one!
+That will be the topic for the [next one](/en/blog/the-zk-chronicles/circuits-part-1)!

@@ -311,7 +311,8 @@ export const readingLists: ReadingList[] = [
     id: "the-zk-chronicles",
     title: "The ZK Chronicles",
     description: "A journey into the world of Zero-Knowledge proofs",
-    coverImage: "/images/the-zk-chronicles/first-steps/0*bcbfQCO0n1pbsyXD-1.jpg",
+    coverImage:
+      "/images/the-zk-chronicles/first-steps/0*bcbfQCO0n1pbsyXD-1.jpg",
     ongoing: true,
     items: [
       {
@@ -328,6 +329,11 @@ export const readingLists: ReadingList[] = [
         id: "sum-check",
         slug: "the-zk-chronicles/sum-check",
         order: 3,
+      },
+      {
+        id: "circuits-part-1",
+        slug: "the-zk-chronicles/circuits-part-1",
+        order: 4,
       },
     ],
   },

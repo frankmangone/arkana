@@ -32,14 +32,16 @@ const scrap = async (options: ProgramOptions) => {
     });
   } else if (url) {
     // Download and convert from URL
-    const article = await downloadMediumArticle(url, {
+    const articleData = await downloadMediumArticle(url, {
       outputDir,
       filename,
     });
 
-    await convertHtmlToMarkdown(article, {
+    await convertHtmlToMarkdown(articleData.content, {
       outputDir,
       filename,
+      mediumUrl: articleData.link,
+      title: articleData.title,
     });
   } else {
     throw new Error("Either --url or --html-file must be provided");

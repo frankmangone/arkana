@@ -9,6 +9,7 @@ interface ConvertHtmlOptions {
   outputDir: string;
   filename: string;
   mediumUrl?: string;
+  title?: string;
 }
 
 // Helper function to download an image
@@ -16,8 +17,17 @@ function downloadImage(url: string, filepath: string): Promise<void> {
   return new Promise((resolve, reject) => {
     const file = createWriteStream(filepath);
 
+    const options = {
+      headers: {
+        "User-Agent":
+          "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+        Accept: "image/webp,image/apng,image/*,*/*;q=0.8",
+        Referer: "https://medium.com/",
+      },
+    };
+
     https
-      .get(url, (response) => {
+      .get(url, options, (response) => {
         if (response.statusCode !== 200) {
           reject(new Error(`Failed to download image: ${response.statusCode}`));
           return;
@@ -99,12 +109,13 @@ export async function convertHtmlToMarkdown(
   htmlContent: string,
   options: ConvertHtmlOptions
 ): Promise<void> {
-  const { outputDir, filename, mediumUrl } = options;
+  const { outputDir, filename, mediumUrl, title } = options;
   // Convert and save Markdown
   const markdownContent = await _convertHtmlToMarkdown(
     htmlContent,
     outputDir,
-    mediumUrl
+    mediumUrl,
+    title
   );
   const mdPath = path.join(outputDir, `${filename}.md`);
   await fs.writeFile(mdPath, markdownContent, "utf-8");
@@ -116,25 +127,19 @@ export async function convertHtmlToMarkdown(
 async function _convertHtmlToMarkdown(
   htmlContent: string,
   outputDir: string,
-  mediumUrl?: string
+  mediumUrl?: string,
+  articleTitle?: string
 ): Promise<string> {
   const $ = cheerio.load(htmlContent);
 
-  // Extract title - Medium uses h1 with class pw-post-title
-  const title = $("h1.pw-post-title").first().text().trim();
+  // Use the title from RSS metadata if provided, otherwise extract from HTML
+  const title = articleTitle || $("h3").first().text().trim() || $("h4").first().text().trim();
   console.log("Found title:", title);
 
-  // Extract reading time
-  const readingTimeElement = $('[data-testid="storyReadTime"]');
-  const readingTime =
-    readingTimeElement.length > 0 ? readingTimeElement.text().trim() : "";
-  console.log("Found reading time:", readingTime);
-
-  // Extract publish date
-  const publishDateElement = $('[data-testid="storyPublishDate"]');
-  const publishDate =
-    publishDateElement.length > 0 ? publishDateElement.text().trim() : "";
-  console.log("Found publish date:", publishDate);
+  // Reading time and publish date are not available in RSS feed
+  const readingTime: string = "";
+  const publishDate: string = "";
+  console.log("Reading time and publish date not available in RSS feed");
 
   // Convert publish date to YYYY-MM-DD format
   function formatDate(dateString: string): string {
@@ -203,35 +208,26 @@ async function _convertHtmlToMarkdown(
   const content: string[] = [];
   const imageDownloads: Promise<void>[] = [];
   let imageIndex = 0;
-  let isFirstHeading = true; // Flag to skip the first heading (article title)
 
-  // Find the main content div
-  const mainContent = $("div.m").first();
-  console.log("Found main content:", mainContent.length > 0);
+  // RSS feed doesn't have a wrapping div, content is at root level
+  // We'll process all elements from the body
+  console.log("Processing RSS feed content");
 
-  // Process all elements in order
-  mainContent
-    .find(
-      "h1, h2, h3, h4, h5, h6, p.pw-post-body-paragraph, pre, figure, blockquote, div[role='separator'], ul, ol"
-    )
-    .each((_, el) => {
+  // Process all elements in order - RSS feeds have simpler structure
+  $("h1, h2, h3, h4, h5, h6, p, pre, figure, blockquote, ul, ol").each((_, el) => {
       const $el = $(el);
       const tagName = $el.prop("tagName").toLowerCase();
 
       // Process headings
       if (tagName.match(/^h[1-6]$/)) {
-        // Skip the first heading as it's the article title (already in frontmatter)
-        if (isFirstHeading) {
-          isFirstHeading = false;
-          return;
-        }
-
-        const level = parseInt(tagName[1]);
+        // Subtract 1 from level: h3 → ##, h4 → ###, etc.
+        const htmlLevel = parseInt(tagName[1]);
+        const markdownLevel = Math.max(1, htmlLevel - 1); // Ensure at least 1 #
         const headingText = processInlineElements($el);
-        content.push(`\n${"#".repeat(level)} ${headingText}\n`);
+        content.push(`\n${"#".repeat(markdownLevel)} ${headingText}\n`);
       }
-      // Process paragraphs
-      else if (tagName === "p" && $el.hasClass("pw-post-body-paragraph")) {
+      // Process paragraphs - RSS feed has simple p tags without classes
+      else if (tagName === "p") {
         const text = processInlineElements($el);
         if (text) {
           content.push(`\n${text}\n`);
@@ -302,50 +298,23 @@ async function _convertHtmlToMarkdown(
           content.push(`\n\`\`\`\n${code}\n\`\`\`\n`);
         }
       }
-      // Process images
+      // Process images - RSS feed has simpler structure
       else if (tagName === "figure") {
-        // Check if this is a paragraph-image figure
-        if ($el.hasClass("paragraph-image")) {
-          const figcaption = $el.find("figcaption");
-          const caption = figcaption.length > 0 ? figcaption.text().trim() : "";
+        const figcaption = $el.find("figcaption");
+        const caption = figcaption.length > 0 ? figcaption.text().trim() : "";
 
-          // Find the best image source - prefer WebP format (first source) over fallback
-          const sources = $el.find("source");
-          if (sources.length > 0) {
-            // Use the first source (WebP format) instead of the fallback
-            const srcset = sources.first().attr("srcset");
-            if (srcset) {
-              const imageUrl = getBestImageUrl(srcset);
-              if (imageUrl) {
-                imageIndex++;
-                const filename = getImageFilename(imageUrl, imageIndex);
-                const filepath = path.join(outputDir, filename);
-
-                // Add download promise
-                imageDownloads.push(
-                  downloadImage(imageUrl, filepath).catch((err) => {
-                    console.error(`Failed to download image ${imageUrl}:`, err);
-                  })
-                );
-
-                // Add figure placeholder with local file reference
-                content.push(
-                  `\n<figure>\n\t<img\n\t\tsrc="./${filename}"\n\t\talt="" ${
-                    caption
-                      ? `\n\t\ttitle="${caption.replace(/…/g, "...")}"`
-                      : ""
-                  }\n\t/>\n</figure>\n`
-                );
-              }
-            }
-          }
-
-          // Fallback if no image found
-          if (!$el.find("source").length) {
+        // RSS feed images are simpler - just img tags
+        const img = $el.find("img");
+        if (img.length > 0) {
+          const imageUrl = img.attr("src");
+          if (imageUrl) {
+            // Keep the remote URL instead of downloading due to Cloudflare protection
             content.push(
-              `\n<figure\n\tsrc=""\n\talt="" ${
-                caption ? `\n\ttitle="${caption.replace(/…/g, "...")}"` : ""
-              }\n/>\n`
+              `\n<figure>\n\t<img\n\t\tsrc="${imageUrl}"\n\t\talt="" ${
+                caption
+                  ? `\n\t\ttitle="${caption.replace(/…/g, "...")}"`
+                  : ""
+              }\n\t/>\n</figure>\n`
             );
           }
         }
