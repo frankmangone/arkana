@@ -13,7 +13,7 @@ description: >-
   computation models, which brings us to circuits!
 mediumUrl: >-
   https://medium.com/@francomangone18/the-zk-chronicles-circuit-part-1-b3367ef443b3
-contentHash: 5204ba7831c420374a8213b9b6a4b67d86c09de55bae7f87e8b57236d7dfb6cb
+contentHash: 136e4d0e54d723354d6957f4d48a71b860f323959b3fd3836fb4e7eff08acccf
 supabaseId: null
 ---
 
@@ -117,7 +117,7 @@ $$
 
 As you can imagine, finding this quantity (of satisfying combinations) is a **very hard problem**. The fastest known algorithms have a performance similar to a simple brute force approach, which is just churning through all possible combinations.
 
-And about that **convenience** I talked about before, have you noticed how the #SAT expression looks **strikingly similar** to the sum-check one? We’re just calculating the sum of a function over a set of inputs in a **boolean hypercube**. That’s a clear hint — we just need to figure out how to apply a sum-check to our new problem, and we’ll have a verification algorithm for free!
+And about that **convenience** I talked about before, have you noticed how the #SAT expression looks **strikingly similar** to the sum-check one? We're just calculating the sum of a function over a set of inputs in a **boolean hypercube**. That's a clear hint — we just need to figure out how to apply a sum-check to our new problem, and we'll have a verification algorithm for free!
 
 ### Transforming the Circuit
 
@@ -163,13 +163,15 @@ $$
 
 > Of course, other logical gates have their respective polynomial representations. For instance, the $\textrm{XOR}$ gate, which can be constructed by a combination of $\textrm{AND}$, $\textrm{OR}$, and **negation** gates, would result in a polynomial that would be the composition of the individual polynomials at play here.
 >
-> The resulting expression would be $\textrm{xor}(X,Y) = X(1 - Y) + (1 - X)Y$. If you’re feeling a little edgy, try it yourself!
+> The resulting expression would be $\textrm{xor}(X,Y) = X(1 - Y) + (1 - X)Y$. If you're feeling a little edgy, try it yourself!
 
-Marvelous! By replacing each gate by these polynomials, we are in fact **directly extending them**: the gates work just as you’d expect for boolean inputs, but do **other things** when fed other values in some **finite field**.
+<quiz src="/the-zk-chronicles/circuits-part-1/nand-gate.json" lang="en" />
+
+Marvelous! By replacing each gate by these polynomials, we are in fact **directly extending them**: the gates work just as you'd expect for boolean inputs, but do **other things** when fed other values in some **finite field**.
 
 > Remember how I said having multiple possible outputs would be interesting? Well, there you go!
 
-Effectively, we have **transformed** our initial boolean circuit $\phi (X)$ into a new type of construction, called an **arithmetic circuit**, which we’ll denote $\varphi (X)$.
+Effectively, we have **transformed** our initial boolean circuit $\phi (X)$ into a new type of construction, called an **arithmetic circuit**, which we'll denote $\varphi (X)$.
 
 <figure>
 	<img
@@ -195,8 +197,8 @@ Well, the other primitive operation we have in finite fields is **addition**. So
 Sure as hell, it’s **entirely possible** to do this!
 
 > Before you ask: subtraction of some number $b$ is achieved by multiplying it by the **additive inverse** of $1$, which is $p - 1$ (in the field $\mathbb{F}_p$). This is, to get $a - b$, we compute $a + (-b)$ instead, where $-b = (p-1)·b$.
-
-> It’s exactly like multiplying by $-1$!
+>
+> It's exactly like multiplying by $-1$!
 
 This process is so important, it even has a name of its own: **arithmetization**.
 
@@ -225,7 +227,7 @@ And since $\varphi(X)$ is a polynomial over some field $\mathbb{F}$, we can dire
 	/>
 </figure>
 
-So there you go — we’ve now seen a problem (#SAT) that can be **transformed** into an instance of the sum-check protocol.
+So there you go — we've now seen a problem (#SAT) that can be **transformed** into an instance of the sum-check protocol.
 
 There are some other nuances we need to address, like figuring out how big $\mathbb{F}$ needs to be for the soundness error to be small — but we need not care too much for that now. My goal is to try and convey core ideas for now, of which **arithmetization** is an important one.
 
@@ -249,9 +251,11 @@ Furthermore, the verifier costs remain at $O(n)$ if we assume oracle access. How
 
 Lastly, we have a communication cost of $O(n)$ field elements, since we exchange a fixed number of field elements on each round.
 
-> Strictly speaking, the number of field elements depends on the size of the largest univariate polynomial sent by the prover — but let’s not worry too much about that, and assume these are going to be low-degree polynomials.
+> Strictly speaking, the number of field elements depends on the size of the largest univariate polynomial sent by the prover — but let's not worry too much about that, and assume these are going to be low-degree polynomials.
 
-Okay, sorry for the information dump! All this is to finally say: at the very least, #SAT’s performance is **strictly worse** than the sum-check runtime.
+<quiz src="/the-zk-chronicles/circuits-part-1/extension-purpose.json" lang="en" />
+
+Okay, sorry for the information dump! All this is to finally say: at the very least, #SAT's performance is **strictly worse** than the sum-check runtime.
 
 The new ingredient in the mix is the **circuit size**, $S$. It would be very cool if verification time was **sublinear** in circuit size rather than linear, as is our current case. That way, we could still verify computations on large circuits fast — but linear time in circuit size essentially places a heavy burden on execution time for large circuits.
 

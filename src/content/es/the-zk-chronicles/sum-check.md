@@ -12,7 +12,7 @@ description: >-
   Equipados con campos finitos y polinomios, ¡es hora de echarle un vistazo a
   nuestro primer sistema de pruebas!
 readingTime: 13 min
-contentHash: a636fc565ec9e2f812486f7a81a2c802f9e8565a37fbe623bffe8a08c3865783
+contentHash: 28f586417823242962ba581049a2dc3a0602c5e56691e2c1943e1a0b4071e88f
 supabaseId: null
 ---
 
@@ -241,7 +241,7 @@ Lo que quiero decir aquí es que podemos hacer esto **una y otra vez** de manera
 
 Antes de atar finalmente los cabos, creo que ver esto en acción con un ejemplo simple ayudará mucho.
 
-Toma por ejemplo este polinomio de grado $4$:
+Toma por ejemplo este polinomio de $4$ variables:
 
 $$
 g(X_1, X_2, X_3, X_4) = X_1X_4 + X_2X_4 + X_3X_4
@@ -331,7 +331,7 @@ Diremos que tenemos **acceso de oráculo** a $g$. Con esto, queremos decir que t
 
 Así que finalmente, después de todas las verificaciones en cada ronda, el verificador realiza una **consulta de oráculo** de $g$ en $(r_1, r_2, r_3, r_4)$, y acepta la prueba si el valor coincide con $C_5 = g_4(r_4)$.
 
-> Por supuesto, todo este procedimiento puede generalizarse a **cualquier grado** — ¡y los ahorros de tiempo se vuelven más relevantes cuanto mayor sea el grado!
+> Por supuesto, todo este procedimiento puede generalizarse a **cualquier cantidad de variables** — ¡y los ahorros de tiempo se vuelven más relevantes entre más variables haya!
 
 ¡Y ese es el protocolo de la verificación de la suma!
 

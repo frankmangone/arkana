@@ -1,0 +1,56 @@
+{
+    "id": "q5",
+    "type": "single",
+    "en": {
+        "question": "Why do we need to extend boolean gates to work over finite fields for the sum-check protocol?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "To make circuits faster to execute",
+                "isCorrect": false
+            },
+            {
+                "id": "opt2",
+                "text": "Because sum-check requires evaluating the polynomial at random field elements (not just 0 and 1)",
+                "isCorrect": true
+            },
+            {
+                "id": "opt3",
+                "text": "To reduce the circuit size",
+                "isCorrect": false
+            },
+            {
+                "id": "opt4",
+                "text": "To eliminate the need for boolean inputs",
+                "isCorrect": false
+            }
+        ],
+        "feedback": "In sum-check, the verifier picks random challenges $r_1, r_2$, etc. from the field. We need to evaluate $g(r_1, x_2, ...)$ where $r_1$ might be 5, 7, or any field element — not just 0 or 1!"
+    },
+    "es": {
+        "question": "¿Por qué necesitamos extender las compuertas booleanas para trabajar sobre campos finitos para el protocolo sum-check?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "Para hacer que los circuitos se ejecuten más rápido",
+                "isCorrect": false
+            },
+            {
+                "id": "opt2",
+                "text": "Porque sum-check requiere evaluar el polinomio en elementos de campo aleatorios (no solo 0 y 1)",
+                "isCorrect": true
+            },
+            {
+                "id": "opt3",
+                "text": "Para reducir el tamaño del circuito",
+                "isCorrect": false
+            },
+            {
+                "id": "opt4",
+                "text": "Para eliminar la necesidad de entradas booleanas",
+                "isCorrect": false
+            }
+        ],
+        "feedback": "En sum-check, el verificador elige desafíos aleatorios $r_1, r_2$, etc. del campo. Necesitamos evaluar $g(r_1, x_2, ...)$ donde $r_1$ podría ser 5, 7, o cualquier elemento del campo — ¡no solo 0 o 1!"
+    }
+}

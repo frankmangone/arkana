@@ -13,7 +13,7 @@ description: >-
   very first proving system!
 readingTime: 13 min
 mediumUrl: 'https://medium.com/@francomangone18/the-zk-chronicles-sum-check-0ccf23ffc0e4'
-contentHash: b55a83eabd85124e10aaaa92ff7b8cb53db727e1a35478213d4932e6e151fb03
+contentHash: 6064787a66f4cd2a41210c3b1302f8818a2ab92d9fd915d24ced767bf0e957d7
 supabaseId: null
 ---
 
@@ -242,7 +242,7 @@ What I’m getting at here is that we can do this **over and over** in a **recur
 
 Before tying things up, I believe seeing this in action with a simple example will help a lot.
 
-Take for instance this polynomial of degree $4$:
+Take for instance this polynomial with $4$ variables:
 
 $$
 g(X_1, X_2, X_3, X_4) = X_1X_4 + X_2X_4 + X_3X_4
@@ -332,7 +332,7 @@ We’ll say that we have **oracle access** to $g$. By this, we mean that we have
 
 So finally, after all the checks in every round, the verifier performs an **oracle query** of $g$ at $(r_1, r_2, r_3, r_4)$, and accepts the proof if the value matches $C_5 = g_4(r_4)$.
 
-> Of course, this whole procedure can be generalized to **any degree** — and the time savings become more relevant the higher the degree!
+> Of course, this whole procedure can be generalized to **any number of variables** — and the time savings become more relevant the more variables there are!
 
 And that's the sum-check protocol!
 

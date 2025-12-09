@@ -1,17 +1,3 @@
----
-title: "Blockchain Fundamentals Quiz Test"
-date: "2025-11-18"
-author: frank-mangone
-thumbnail: /images/blockchain-101/a-primer-on-consensus/smaug.webp
-tags:
-  - blockchain
-  - quiz
-  - educational
-description: "Test article to demonstrate the quiz component embedded in markdown content."
-readingTime: 5 min
-visible: true
----
-
 # Blockchain Fundamentals Quiz
 
 This is a test article that demonstrates the new quiz component functionality! You can now embed interactive quizzes directly into your markdown articles.
@@ -26,8 +12,10 @@ Quizzes are embedded using the following syntax:
 
 Where:
 
-- `src` is the filename of your JSON quiz file (stored in `/public/quizzes/`)
+- `src` is the path to your JSON quiz file relative to `/public/quizzes/` (e.g., `"blockchain-basics.json"` or `"the-zk-chronicles/circuits-part-1/gate-polynomials.json"`)
 - `lang` (optional) is the language code, defaults to "en"
+
+**Important:** All quiz files must be stored under `/public/quizzes/`. For content organized in subdirectories, follow the same path structure (e.g., content at `src/content/en/the-zk-chronicles/circuits-part-1.md` → quizzes at `public/quizzes/the-zk-chronicles/circuits-part-1/*.json`).
 
 Each JSON file contains a **single question**, making it easy to reference specific questions throughout your content.
 
@@ -68,7 +56,7 @@ The quiz component supports:
 
 ## Creating Your Own Questions
 
-To create a question, add a JSON file to `/public/quizzes/` with the following structure:
+To create a question, add a JSON file under `/public/quizzes/` (following your content path structure if applicable) with the following structure:
 
 ```json
 {

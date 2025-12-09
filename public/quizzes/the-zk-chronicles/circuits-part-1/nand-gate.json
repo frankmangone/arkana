@@ -1,0 +1,56 @@
+{
+    "id": "q4",
+    "type": "single",
+    "en": {
+        "question": "Given that $\\textrm{nand}(X,Y)$ outputs 0 only when both inputs are 1, what is its polynomial representation?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "$1 - X \\cdot Y$",
+                "isCorrect": true
+            },
+            {
+                "id": "opt2",
+                "text": "$X \\cdot Y$",
+                "isCorrect": false
+            },
+            {
+                "id": "opt3",
+                "text": "$1 - X - Y$",
+                "isCorrect": false
+            },
+            {
+                "id": "opt4",
+                "text": "$(1-X) \\cdot (1-Y)$",
+                "isCorrect": false
+            }
+        ],
+        "feedback": "NAND is \"NOT AND\", so we negate the AND gate: $\\textrm{nand}(X,Y) = \\textrm{not}(\\textrm{and}(X,Y)) = 1 - X \\cdot Y$."
+    },
+    "es": {
+        "question": "Dado que $\\textrm{nand}(X,Y)$ produce 0 solo cuando ambas entradas son 1, ¿cuál es su representación polinomial?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "$1 - X \\cdot Y$",
+                "isCorrect": true
+            },
+            {
+                "id": "opt2",
+                "text": "$X \\cdot Y$",
+                "isCorrect": false
+            },
+            {
+                "id": "opt3",
+                "text": "$1 - X - Y$",
+                "isCorrect": false
+            },
+            {
+                "id": "opt4",
+                "text": "$(1-X) \\cdot (1-Y)$",
+                "isCorrect": false
+            }
+        ],
+        "feedback": "NAND es \"NOT AND\", por lo que negamos la compuerta AND: $\\textrm{nand}(X,Y) = \\textrm{not}(\\textrm{and}(X,Y)) = 1 - X \\cdot Y$."
+    }
+}

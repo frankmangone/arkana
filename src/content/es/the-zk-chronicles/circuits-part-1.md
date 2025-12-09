@@ -11,7 +11,7 @@ tags:
 description: >-
   A medida que nos acercamos a sistemas de pruebas generales, necesitamos
   estudiar modelos de computación, ¡lo cual nos lleva a los circuitos!
-contentHash: b84f460f792fcf9c70eb561bbadc9beb810752692117cca4f96f33acce7ff68a
+contentHash: c248a2a9d6b974a54755fbbf187f3d48f3de6b0b08185598957c6a8a81f1a21d
 supabaseId: null
 ---
 
@@ -163,6 +163,8 @@ $$
 >
 > La expresión resultante sería $\textrm{xor}(X,Y) = X(1 - Y) + (1 - X)Y$. ¡Si te sientes un poco atrevido, inténtalo tú mismo!
 
+<quiz src="/the-zk-chronicles/circuits-part-1/nand-gate.json" lang="es" />
+
 Al reemplazar cada compuerta por estos polinomios, de hecho estamos **extendiéndolas directamente**: las compuertas funcionan justo como esperarías para entradas booleanas, pero hacen **otras cosas** cuando se les dan otros valores en algún **campo finito**.
 
 > ¿Recuerdas cuando dije que tener múltiples salidas posibles sería interesante? ¡Bueno, ahí lo tienes!
@@ -193,7 +195,7 @@ Bueno, la otra operación primitiva que tenemos en campos finitos es la **adici�
 ¡Claro que sí, es **completamente posible** hacer esto!
 
 > Antes de que preguntes: la sustracción de algún número $b$ se logra multiplicándolo por el **inverso aditivo** de $1$, que es $p - 1$ (en el campo $\mathbb{F}_p$). Esto es, para obtener $a - b$, calculamos $a + (-b)$ en su lugar, donde $-b = (p-1)·b$.
-
+>
 > ¡Es exactamente como multiplicar por $-1$!
 
 Este proceso es tan importante, que incluso tiene un nombre propio: **aritmetización**.
@@ -248,6 +250,8 @@ Además, los costos del verificador permanecen en $O(n)$ si asumimos acceso de o
 Por último, tenemos un costo de comunicación de $O(n)$ elementos de campo, ya que intercambiamos un número fijo de elementos de campo en cada ronda.
 
 > Estrictamente hablando, el número de elementos de campo depende del tamaño del polinomio univariado más grande enviado por el probador — pero no nos preocupemos demasiado por eso, y asumamos que estos van a ser polinomios de bajo grado.
+
+<quiz src="/the-zk-chronicles/circuits-part-1/extension-purpose.json" lang="es" />
 
 Okay, ¡perdón por tanta información! Todo esto es para finalmente decir: como mínimo, el rendimiento de #SAT es **estrictamente peor** que el tiempo de ejecución de la verificación de la suma por sí sola.
 
