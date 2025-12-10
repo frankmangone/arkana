@@ -1,8 +1,8 @@
 ---
-title: 'Las Crónicas de ZK: Circuitos (Parte 1)'
+title: "Las Crónicas de ZK: Circuitos (Parte 1)"
 author: frank-mangone
-date: '2025-12-08'
-thumbnail: 'https://cdn-images-1.medium.com/max/640/0*sgS-5SnPV3A0P6gf.jpg'
+date: "2025-12-08"
+thumbnail: "/images/the-zk-chronicles/circuits-1/bender.jpg"
 tags:
   - zeroKnowledgeProofs
   - arithmeticCircuits
@@ -224,7 +224,7 @@ Y dado que $\varphi(X)$ es un polinomio sobre algún campo $\mathbb{F}$, ¡podem
 
 <figure>
 	<img
-		src="https://cdn-images-1.medium.com/max/640/0*sgS-5SnPV3A0P6gf.jpg"
+		src="/images/the-zk-chronicles/circuits-1/bender.jpg"
 		alt="Bender de Futurama en su meme 'Nice'" 
 	/>
 </figure>

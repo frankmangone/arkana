@@ -1,8 +1,8 @@
 ---
-title: 'The ZK Chronicles: Circuits (Part 1)'
+title: "The ZK Chronicles: Circuits (Part 1)"
 author: frank-mangone
-date: '2025-12-08'
-thumbnail: 'https://cdn-images-1.medium.com/max/640/0*sgS-5SnPV3A0P6gf.jpg'
+date: "2025-12-08"
+thumbnail: "/images/the-zk-chronicles/circuits-1/bender.jpg"
 tags:
   - zeroKnowledgeProofs
   - arithmeticCircuits
@@ -226,7 +226,7 @@ And since $\varphi(X)$ is a polynomial over some field $\mathbb{F}$, we can dire
 
 <figure>
 	<img
-		src="https://cdn-images-1.medium.com/max/640/0*sgS-5SnPV3A0P6gf.jpg"
+		src="/images/the-zk-chronicles/circuits-1/bender.jpg"
 		alt="Bender from Futurama on its 'Nice' meme" 
 	/>
 </figure>
