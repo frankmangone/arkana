@@ -8,6 +8,7 @@ tags:
   - arithmeticCircuits
   - polynomials
   - sumCheck
+readingTime: 11 min
 description: >-
   As we get closer to general proving systems, we are required to look at
   computation models, which brings us to circuits!

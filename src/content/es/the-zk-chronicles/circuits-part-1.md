@@ -8,6 +8,7 @@ tags:
   - arithmeticCircuits
   - polynomials
   - sumCheck
+readingTime: 11 min
 description: >-
   A medida que nos acercamos a sistemas de pruebas generales, necesitamos
   estudiar modelos de computación, ¡lo cual nos lleva a los circuitos!
