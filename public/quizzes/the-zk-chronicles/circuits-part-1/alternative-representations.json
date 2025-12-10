@@ -1,0 +1,56 @@
+{
+    "id": "q2",
+    "type": "single",
+    "en": {
+        "question": "Could there be other valid polynomial representations of the $\\textrm{AND}$ gate besides $X \\cdot Y$?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "No, $X \\cdot Y$ is the only polynomial that works",
+                "isCorrect": false
+            },
+            {
+                "id": "opt2",
+                "text": "Yes, any polynomial that agrees with AND at all four boolean input pairs works",
+                "isCorrect": true
+            },
+            {
+                "id": "opt3",
+                "text": "Yes, but only if we use a different finite field",
+                "isCorrect": false
+            },
+            {
+                "id": "opt4",
+                "text": "No, because polynomials must have the lowest possible degree",
+                "isCorrect": false
+            }
+        ],
+        "feedback": "The polynomial only needs to match the gate's behavior at boolean inputs: $\\{(0,0), (0,1), (1,0), (1,1)\\}$. For example, $X \\cdot Y + k \\cdot X(X-1) \\cdot Y(Y-1)$ works for any $k$, since the extra term vanishes when $X,Y \\in \\{0,1\\}$! However, we typically choose the lowest-degree polynomial that satisfies these constraints, which is $X \\cdot Y$. This is similar to polynomial interpolation - many polynomials can pass through the same points, but we prefer the simplest one."
+    },
+    "es": {
+        "question": "¿Podría haber otras representaciones polinomiales válidas de la compuerta $\\textrm{AND}$ además de $X \\cdot Y$?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "No, $X \\cdot Y$ es el único polinomio que funciona",
+                "isCorrect": false
+            },
+            {
+                "id": "opt2",
+                "text": "Sí, cualquier polinomio que coincida con AND en los cuatro pares de entradas booleanas funciona",
+                "isCorrect": true
+            },
+            {
+                "id": "opt3",
+                "text": "Sí, pero solo si usamos un campo finito diferente",
+                "isCorrect": false
+            },
+            {
+                "id": "opt4",
+                "text": "No, porque los polinomios deben tener el grado más bajo posible",
+                "isCorrect": false
+            }
+        ],
+        "feedback": "El polinomio solo necesita coincidir con el comportamiento de la compuerta en entradas booleanas: $\\{(0,0), (0,1), (1,0), (1,1)\\}$. Por ejemplo, $X \\cdot Y + k \\cdot X(X-1) \\cdot Y(Y-1)$ funciona para cualquier $k$, ¡ya que el término extra se anula cuando $X,Y \\in \\{0,1\\}$! Sin embargo, típicamente elegimos el polinomio de menor grado que satisface estas restricciones, que es $X \\cdot Y$. Esto es similar a la interpolación polinomial - muchos polinomios pueden pasar por los mismos puntos, pero preferimos el más simple."
+    }
+}

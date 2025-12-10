@@ -13,7 +13,7 @@ description: >-
   computation models, which brings us to circuits!
 mediumUrl: >-
   https://medium.com/@francomangone18/the-zk-chronicles-circuit-part-1-b3367ef443b3
-contentHash: 136e4d0e54d723354d6957f4d48a71b860f323959b3fd3836fb4e7eff08acccf
+contentHash: 23253d5843713c58f4b6d323cebba60d3de4da3152d242158e499014620b69c1
 supabaseId: null
 ---
 
@@ -117,6 +117,8 @@ $$
 
 As you can imagine, finding this quantity (of satisfying combinations) is a **very hard problem**. The fastest known algorithms have a performance similar to a simple brute force approach, which is just churning through all possible combinations.
 
+<quiz src="/the-zk-chronicles/circuits-part-1/csat-vs-sat.json" lang="en" />
+
 And about that **convenience** I talked about before, have you noticed how the #SAT expression looks **strikingly similar** to the sum-check one? We're just calculating the sum of a function over a set of inputs in a **boolean hypercube**. That's a clear hint — we just need to figure out how to apply a sum-check to our new problem, and we'll have a verification algorithm for free!
 
 ### Transforming the Circuit
@@ -160,6 +162,8 @@ And negation would be:
 $$
 \textrm{neg}(X) = \bar{X} = 1 — X
 $$
+
+<quiz src="/the-zk-chronicles/circuits-part-1/alternative-representations.json" lang="en" />
 
 > Of course, other logical gates have their respective polynomial representations. For instance, the $\textrm{XOR}$ gate, which can be constructed by a combination of $\textrm{AND}$, $\textrm{OR}$, and **negation** gates, would result in a polynomial that would be the composition of the individual polynomials at play here.
 >

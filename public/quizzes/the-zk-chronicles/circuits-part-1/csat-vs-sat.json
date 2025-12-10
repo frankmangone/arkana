@@ -1,0 +1,56 @@
+{
+    "id": "q1",
+    "type": "single",
+    "en": {
+        "question": "What is the key difference between CSAT and #SAT?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "CSAT asks if any satisfying input exists, while #SAT counts all satisfying inputs",
+                "isCorrect": true
+            },
+            {
+                "id": "opt2",
+                "text": "CSAT works on boolean circuits, while #SAT works on arithmetic circuits",
+                "isCorrect": false
+            },
+            {
+                "id": "opt3",
+                "text": "CSAT is easier than #SAT",
+                "isCorrect": false
+            },
+            {
+                "id": "opt4",
+                "text": "#SAT requires sum-check, while CSAT doesn't",
+                "isCorrect": false
+            }
+        ],
+        "feedback": "CSAT (Circuit Satisfiability) asks \"does there exist an input that satisfies the circuit?\", while #SAT (counting version) asks \"how many inputs satisfy the circuit?\". #SAT is strictly harder because if you can count all solutions, you automatically know if at least one exists (CSAT). If #SAT > 0, then CSAT is satisfied!"
+    },
+    "es": {
+        "question": "¿Cuál es la diferencia clave entre CSAT y #SAT?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "CSAT pregunta si existe alguna entrada que satisface el circuito, mientras que #SAT cuenta todas las entradas que lo satisfacen",
+                "isCorrect": true
+            },
+            {
+                "id": "opt2",
+                "text": "CSAT funciona en circuitos booleanos, mientras que #SAT funciona en circuitos aritméticos",
+                "isCorrect": false
+            },
+            {
+                "id": "opt3",
+                "text": "CSAT es más fácil que #SAT",
+                "isCorrect": false
+            },
+            {
+                "id": "opt4",
+                "text": "#SAT requiere sum-check, mientras que CSAT no",
+                "isCorrect": false
+            }
+        ],
+        "feedback": "CSAT (Satisfacibilidad de Circuitos) pregunta \"¿existe alguna entrada que satisfaga el circuito?\", mientras que #SAT (versión de conteo) pregunta \"¿cuántas entradas satisfacen el circuito?\". #SAT es estrictamente más difícil porque si puedes contar todas las soluciones, automáticamente sabes si existe al menos una (CSAT). ¡Si #SAT > 0, entonces CSAT está satisfecho!"
+    }
+}

@@ -11,7 +11,7 @@ tags:
 description: >-
   A medida que nos acercamos a sistemas de pruebas generales, necesitamos
   estudiar modelos de computación, ¡lo cual nos lleva a los circuitos!
-contentHash: c248a2a9d6b974a54755fbbf187f3d48f3de6b0b08185598957c6a8a81f1a21d
+contentHash: a3da16bb49a54e74d69fcfe393c4bd1e7d299baea26237cf0556b9d8884e7424
 supabaseId: null
 ---
 
@@ -115,6 +115,8 @@ $$
 
 Como puedes imaginar, encontrar esta cantidad (de combinaciones satisfactorias) es un **problema muy difícil**. Los algoritmos más rápidos conocidos tienen un rendimiento similar a un simple enfoque de fuerza bruta, que vendría a ser probar todas las combinaciones posibles.
 
+<quiz src="/the-zk-chronicles/circuits-part-1/csat-vs-sat.json" lang="es" />
+
 Y sobre esa **conveniencia** de la que hablé antes, ¿has notado cómo la expresión #SAT se ve **sorprendentemente similar** a la de verificación de la suma? Solo estamos calculando la suma de una función sobre un conjunto de entradas en un **hipercubo booleano**. Esa es una pista clara — solo necesitamos descifrar cómo aplicar una verificación de la suma a nuestro nuevo problema, ¡y tendremos un algoritmo de verificación prácticamente gratis!
 
 ### Transformando el Circuito {#transforming-the-circuit}
@@ -158,6 +160,8 @@ Y la negación sería:
 $$
 \textrm{neg}(X) = \bar{X} = 1 — X
 $$
+
+<quiz src="/the-zk-chronicles/circuits-part-1/alternative-representations.json" lang="es" />
 
 > Por supuesto, otras compuertas lógicas tienen sus respectivas representaciones polinómicas. Por ejemplo, la compuerta $\textrm{XOR}$, que puede construirse mediante una combinación de compuertas $\textrm{AND}$, $\textrm{OR}$, y **negación**, resultaría en un polinomio que sería la composición de los polinomios individuales en juego aquí.
 >
