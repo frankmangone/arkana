@@ -1,11 +1,9 @@
-import { Metadata } from "next";
 import { MainLayout } from "@/components/layouts/main-layout";
 import { BlogPage } from "@/features/blog/list";
 import { getDictionary } from "@/lib/dictionaries";
 import { getAllPosts } from "@/lib/posts";
 import { notFound } from "next/navigation";
-
-const POSTS_PER_PAGE = 9; // 3x3 grid
+import { POSTS_PER_PAGE } from "./static-params";
 
 interface BlogPageParams {
   lang: string;
@@ -16,28 +14,8 @@ interface BlogPageProps {
   params: Promise<BlogPageParams>;
 }
 
-export const metadata: Metadata = {
-  title: "Arkana | All Posts",
-  description: "Articles on mathematics, computer science, and cryptography",
-};
-
-export async function generateStaticParams() {
-  // Get all languages
-  const allPosts = await getAllPosts("en"); // Use English as reference for total count
-  const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
-
-  // Generate all possible language + page combinations
-  const languages = ["en", "es", "pt"]; // Add all your supported languages
-  const params = [];
-
-  for (const lang of languages) {
-    for (let page = 1; page <= totalPages; page++) {
-      params.push({ lang, page: page.toString() });
-    }
-  }
-
-  return params;
-}
+export { generateMetadata } from "./metadata";
+export { generateStaticParams } from "./static-params";
 
 export default async function Page({ params }: BlogPageProps) {
   const { lang, page } = await params;

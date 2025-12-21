@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { PageProps } from "./page";
 import { getPostBySlug } from "@/features/posts/actions";
+import { generateBaseMetadata } from "@/lib/metadata-utils";
 
 export async function generateMetadata({
   params,
@@ -16,51 +17,20 @@ export async function generateMetadata({
     };
   }
 
-  // Base URL para links absolutos
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://arkana.io";
-  const canonicalUrl = `${baseUrl}/${lang}/blog/${fullSlug}`;
-  const imageUrl = post.metadata.thumbnail
-    ? `${baseUrl}${post.metadata.thumbnail}`
-    : `${baseUrl}/images/arkana-default-og.png`;
+  const image = post.metadata.thumbnail || "/images/arkana-default-og.png";
 
-  return {
+  return generateBaseMetadata({
+    lang,
+    path: `blog/${fullSlug}`,
     title: `Arkana | ${post.metadata.title}`,
-    description: post.metadata.description,
-    authors: [{ name: post.metadata.author }],
+    description: post.metadata.description!,
+    image,
+    ogTitle: post.metadata.title,
+    siteName: "Arkana Blog",
+    type: "article",
+    publishedTime: post.metadata.date,
+    authors: [post.metadata.author],
+    tags: post.metadata.tags,
     keywords: post.metadata.tags,
-    metadataBase: new URL(baseUrl),
-    alternates: {
-      canonical: canonicalUrl,
-      languages: {
-        en: `${baseUrl}/en/blog/${fullSlug}`,
-        es: `${baseUrl}/es/blog/${fullSlug}`,
-        pt: `${baseUrl}/pt/blog/${fullSlug}`,
-      },
-    },
-    openGraph: {
-      title: post.metadata.title,
-      description: post.metadata.description || "",
-      url: canonicalUrl,
-      siteName: "Arkana Blog",
-      images: [
-        {
-          url: imageUrl,
-          width: 1200,
-          height: 630,
-          alt: post.metadata.title,
-        },
-      ],
-      locale: lang,
-      type: "article",
-      publishedTime: post.metadata.date,
-      authors: [post.metadata.author],
-      tags: post.metadata.tags,
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: post.metadata.title,
-      description: post.metadata.description || "",
-      images: [imageUrl],
-    },
-  };
+  });
 }

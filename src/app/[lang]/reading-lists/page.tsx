@@ -1,6 +1,3 @@
-import fs from "fs/promises";
-import path from "path";
-import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getAllReadingLists } from "@/lib/reading-lists";
 import { MainLayout } from "@/components/layouts/main-layout";
@@ -15,30 +12,8 @@ interface ReadingListsPageProps {
   params: Promise<ReadingListsPageParams>;
 }
 
-export const metadata: Metadata = {
-  title: "Arkana | Reading Lists",
-  description: "Curated lists of articles on various topics",
-};
-
-export async function generateStaticParams() {
-  const contentPath = path.join(process.cwd(), "src", "content");
-
-  try {
-    const languages = await fs.readdir(contentPath);
-    return languages
-      .filter(async (lang) => {
-        const langPath = path.join(contentPath, lang);
-        const langStat = await fs.stat(langPath);
-        return langStat.isDirectory();
-      })
-      .map((lang) => ({
-        lang,
-      }));
-  } catch (error) {
-    console.error("Error generating params:", error);
-    return [{ lang: "en" }];
-  }
-}
+export { generateMetadata } from "./metadata";
+export { generateStaticParams } from "./static-params";
 
 export default async function Page({ params }: ReadingListsPageProps) {
   const { lang } = await params;
