@@ -89,7 +89,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({
 
   return (
     <div className="my-4 p-0 sm:p-4">
-      <div className="border border-white/20 flex flex-col">
+      <div className="border border-white/20 bg-purple-200/10 flex flex-col">
         {/* Collapsible Header */}
         <button
           onClick={() => setIsOpen(!isOpen)}

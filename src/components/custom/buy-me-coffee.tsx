@@ -265,9 +265,9 @@ export function BuyMeCoffee({ authorName, walletAddress, dictionary }: BuyMeCoff
           </span>
         </div>
 
-        <div className="basis-3/7 shrink-0 mt-8 sm:mt-0 w-full sm:w-auto space-y-3">
+        <div className="basis-3/7 shrink-0 mt-8 sm:mt-0 w-full sm:w-auto space-y-4">
           {/* Amount Input */}
-          <div className="flex gap-2">
+          <div className="relative">
             <input
               type="number"
               value={amount}
@@ -275,47 +275,50 @@ export function BuyMeCoffee({ authorName, walletAddress, dictionary }: BuyMeCoff
               placeholder={DEFAULT_AMOUNT}
               step="0.001"
               min="0.001"
-              className="flex-1 sm:flex-initial px-3 py-1.5 text-sm font-medium bg-neutral-800 border border-purple-700 text-white placeholder-neutral-500 focus:outline-none focus:border-purple-500 transition-colors"
+              className="w-full px-4 py-3 pr-16 text-base font-medium bg-neutral-800/50 border-2 border-purple-700/50 text-white placeholder-neutral-500 focus:outline-none focus:border-purple-500 focus:bg-neutral-800 transition-all"
             />
-            <span className="px-3 py-1.5 text-sm font-medium text-neutral-300">
+            <span className="absolute right-4 top-1/2 -translate-y-1/2 px-2 py-1 text-sm font-bold text-purple-300 bg-purple-950/50 rounded border border-purple-700/30">
               {selectedNetwork?.symbol}
             </span>
           </div>
 
           {/* Chain Selector */}
-          <div className="flex gap-2 flex-wrap mt-8 sm:mt-0">
-            {SUPPORTED_NETWORKS.map((network) => (
-              <button
-                key={network.id}
-                onClick={() => setSelectedChainId(network.id)}
-                className={cn(
-                  'px-3 py-1.5 text-xs font-medium transition-colors cursor-pointer',
-                  selectedChainId === network.id
-                    ? 'bg-purple-600 text-white'
-                    : 'bg-neutral-700 text-neutral-300 hover:bg-neutral-600'
-                )}
-              >
-                {network.name}
-              </button>
-            ))}
+          <div className="space-y-2">
+            <span className="text-xs font-medium text-neutral-400 uppercase tracking-wider">Network</span>
+            <div className="flex gap-2 flex-wrap">
+              {SUPPORTED_NETWORKS.map((network) => (
+                <button
+                  key={network.id}
+                  onClick={() => setSelectedChainId(network.id)}
+                  className={cn(
+                    'px-4 py-2 text-sm font-medium transition-all cursor-pointer border-2',
+                    selectedChainId === network.id
+                      ? 'bg-purple-600/80 border-purple-500 text-white shadow-lg shadow-purple-900/50'
+                      : 'bg-neutral-800/50 border-neutral-700 text-neutral-300 hover:bg-neutral-700/50 hover:border-neutral-600'
+                  )}
+                >
+                  {network.name}
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Send Button */}
           <Button
             onClick={handleSendTransaction}
             disabled={isPending}
-            className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 transition-colors cursor-pointer disabled:cursor-not-allowed"
+            className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 transition-all cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 shadow-lg shadow-purple-900/30 hover:shadow-purple-900/50"
           >
             {isPending ? (
               <>
-                <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                <Loader2 className="w-5 h-5 mr-2 animate-spin" />
                 {dictionary.sending}
               </>
             ) : !isConnected ? (
               dictionary.connectWallet
             ) : (
               <>
-                <Coffee className="w-4 h-4 mr-2" />
+                <Coffee className="w-5 h-5 mr-2" />
                 {dictionary.buyCoffee
                   .replace('{amount}', amount || DEFAULT_AMOUNT)
                   .replace('{symbol}', selectedNetwork?.symbol || '')}
@@ -325,9 +328,12 @@ export function BuyMeCoffee({ authorName, walletAddress, dictionary }: BuyMeCoff
 
           {/* Success Message */}
           {showSuccess && (
-            <p className="text-green-400 text-xs text-center font-medium">
-              {dictionary.thankYou}
-            </p>
+            <div className="flex items-center justify-center gap-2 p-3 bg-green-500/10 border border-green-500/30">
+              <Coffee className="w-4 h-4 text-green-400" />
+              <p className="text-green-400 text-sm font-medium">
+                {dictionary.thankYou}
+              </p>
+            </div>
           )}
         </div>
       </div>
