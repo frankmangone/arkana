@@ -1,8 +1,8 @@
 ---
-title: "Las Crónicas de ZK: Circuitos (Parte 1)"
+title: 'Las Crónicas de ZK: Circuitos (Parte 1)'
 author: frank-mangone
-date: "2025-12-08"
-thumbnail: "/images/the-zk-chronicles/circuits-1/bender.jpg"
+date: '2025-12-08'
+thumbnail: /images/the-zk-chronicles/circuits-1/bender.jpg
 tags:
   - zeroKnowledgeProofs
   - arithmeticCircuits
@@ -12,7 +12,7 @@ readingTime: 11 min
 description: >-
   A medida que nos acercamos a sistemas de pruebas generales, necesitamos
   estudiar modelos de computación, ¡lo cual nos lleva a los circuitos!
-contentHash: a3da16bb49a54e74d69fcfe393c4bd1e7d299baea26237cf0556b9d8884e7424
+contentHash: 1e334c29b87f40ff42f9fde25b74f193998ef6a7b468abfdbe2ba47cd0974480
 supabaseId: null
 ---
 
@@ -282,4 +282,4 @@ Idealmente, sin embargo, lo que nos gustaría hacer es tomar algún circuito, y 
 
 Si logramos hacer eso, entonces hablremos encontrado nuestro primer marco **verdaderamente general** para probar afirmaciones.
 
-Pero para llegar allí, amigos míos, primero necesitaremos aprender sobre una **nueva herramienta**. ¡Ese será nuestro próximo destino!
+Pero para llegar allí, amigos míos, primero necesitaremos aprender sobre una **nueva herramienta**. ¡Ese será nuestro [próximo destino](/es/blog/the-zk-chronicles/multilinear-extensions)!

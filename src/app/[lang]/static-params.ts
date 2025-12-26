@@ -7,12 +7,21 @@ export async function generateStaticParams() {
   try {
     const languages = await fs.readdir(contentPath);
 
-    return languages
-      .filter(async (lang) => {
-        const langPath = path.join(contentPath, lang);
-        const langStat = await fs.stat(langPath);
-        return langStat.isDirectory();
+    // Filter to only include directories
+    const validLanguages = await Promise.all(
+      languages.map(async (lang) => {
+        try {
+          const langPath = path.join(contentPath, lang);
+          const langStat = await fs.stat(langPath);
+          return langStat.isDirectory() ? lang : null;
+        } catch {
+          return null;
+        }
       })
+    );
+
+    return validLanguages
+      .filter((lang): lang is string => lang !== null)
       .map((lang) => ({
         lang,
       }));
@@ -23,4 +32,3 @@ export async function generateStaticParams() {
     return [{ lang: "en" }];
   }
 }
-

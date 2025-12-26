@@ -1,8 +1,8 @@
 ---
-title: "The ZK Chronicles: Circuits (Part 1)"
+title: 'The ZK Chronicles: Circuits (Part 1)'
 author: frank-mangone
-date: "2025-12-08"
-thumbnail: "/images/the-zk-chronicles/circuits-1/bender.jpg"
+date: '2025-12-08'
+thumbnail: /images/the-zk-chronicles/circuits-1/bender.jpg
 tags:
   - zeroKnowledgeProofs
   - arithmeticCircuits
@@ -14,7 +14,7 @@ description: >-
   computation models, which brings us to circuits!
 mediumUrl: >-
   https://medium.com/@francomangone18/the-zk-chronicles-circuit-part-1-b3367ef443b3
-contentHash: 23253d5843713c58f4b6d323cebba60d3de4da3152d242158e499014620b69c1
+contentHash: ec81754a7060817395289d8385c5d6b1286a30ca589a6c0a01914afc2d269bff
 supabaseId: null
 ---
 
@@ -284,4 +284,4 @@ Ideally though, what we’d like to do is take some circuit, and instead of worr
 
 If we manage to do that, then we would have found our first **truly general** framework for proving statements.
 
-But to get there, my friends, we’ll first need to learn about a **new tool**. That will be our next destination!
+But to get there, my friends, we’ll first need to learn about a **new tool**. That will be our [next destination](/en/blog/the-zk-chronicles/multilinear-extensions)!

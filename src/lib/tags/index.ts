@@ -277,6 +277,11 @@ export const tags: TagDefinition = {
     es: "Aritmética Modular",
     pt: "Aritmética Modular",
   },
+  multilinearExtensions: {
+    en: "Multilinear Extensions",
+    es: "Extensiones Multilineales",
+    pt: "Extensões Multilineares",
+  },
   pairings: {
     en: "Pairings",
     es: "Emparejamientos",
@@ -391,6 +396,11 @@ export const tags: TagDefinition = {
     en: "Scalability",
     es: "Escalabilidad",
     pt: "Escalabilidade",
+  },
+  schwartzZippelLemma: {
+    en: "Schwartz-Zippel Lemma",
+    es: "Lema de Schwartz-Zippel",
+    pt: "Lema de Schwartz-Zippel",
   },
   security: {
     en: "Security",

@@ -335,6 +335,11 @@ export const readingLists: ReadingList[] = [
         slug: "the-zk-chronicles/circuits-part-1",
         order: 4,
       },
+      {
+        id: "multilinear-extensions",
+        slug: "the-zk-chronicles/multilinear-extensions",
+        order: 5,
+      },
     ],
   },
 ];
