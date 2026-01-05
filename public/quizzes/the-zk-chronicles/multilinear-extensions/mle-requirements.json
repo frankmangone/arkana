@@ -26,6 +26,31 @@
             }
         ],
         "feedback": "An MLE must (1) agree with the original function $f$ on the boolean hypercube, so $g(w) = f(w)$ for all $w \\in \\{0,1\\}^v$, and (2) extend beyond it, accepting any field element as input. The degree restriction is actually at most 1 per variable (multilinear), not 2!"
+    },
+    "es": {
+        "question": "¿Qué dos condiciones debe satisfacer una extensión multilineal (MLE)?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "Acuerdo en el hipercubo booleano — la MLE debe coincidir con la función original en todos los puntos de $\\{0,1\\}^v$",
+                "isCorrect": true
+            },
+            {
+                "id": "opt2",
+                "text": "Grado máximo de 2 por variable",
+                "isCorrect": false
+            },
+            {
+                "id": "opt3",
+                "text": "El polinomio debe ser univariado",
+                "isCorrect": false
+            },
+            {
+                "id": "opt4",
+                "text": "Extensión más allá del hipercubo — la MLE debe ser evaluable en cualquier punto del campo finito",
+                "isCorrect": true
+            }
+        ],
+        "feedback": "Una MLE debe (1) coincidir con la función original $f$ en el hipercubo booleano, es decir $g(w) = f(w)$ para todo $w \\in \\{0,1\\}^v$, y (2) extenderse más allá de él, aceptando cualquier elemento del campo como entrada. ¡La restricción de grado es en realidad a lo sumo 1 por variable (multilineal), no 2!"
     }
 }
-

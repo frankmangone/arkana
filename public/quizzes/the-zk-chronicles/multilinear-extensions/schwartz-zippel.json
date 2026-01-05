@@ -26,5 +26,31 @@
             }
         ],
         "feedback": "The Schwartz-Zippel lemma states that $\\text{Pr}[p(r_1, ..., r_v) = 0] \\leq d / |\\mathbb{F}|$. As long as the degree $d$ is much smaller than the field size, this probability is negligible. This is why random evaluation is such a powerful tool for testing polynomial equality!"
+    },
+    "es": {
+        "question": "Según el lema de Schwartz-Zippel, si $p(X_1, ..., X_v)$ es un polinomio no nulo de grado total $d$ sobre un campo $\\mathbb{F}$, ¿cuál es la probabilidad de que un punto elegido al azar sea una raíz?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "A lo sumo $d / |\\mathbb{F}|$",
+                "isCorrect": true
+            },
+            {
+                "id": "opt2",
+                "text": "A lo sumo $1 / d$",
+                "isCorrect": false
+            },
+            {
+                "id": "opt3",
+                "text": "A lo sumo $d^2 / |\\mathbb{F}|$",
+                "isCorrect": false
+            },
+            {
+                "id": "opt4",
+                "text": "Exactamente $1 / |\\mathbb{F}|$",
+                "isCorrect": false
+            }
+        ],
+        "feedback": "El lema de Schwartz-Zippel establece que $\\text{Pr}[p(r_1, ..., r_v) = 0] \\leq d / |\\mathbb{F}|$. Mientras el grado $d$ sea mucho menor que el tamaño del campo, esta probabilidad es despreciable. ¡Por eso la evaluación aleatoria es una herramienta tan poderosa para probar igualdad de polinomios!"
     }
 }

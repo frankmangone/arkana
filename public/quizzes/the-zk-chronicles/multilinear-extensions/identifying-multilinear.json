@@ -26,6 +26,31 @@
             }
         ],
         "feedback": "Option B is multilinear — each variable appears at most to degree 1. Option A has $X_1 \\cdot X_1 = X_1^2$. Option C expands to $X_1 \\cdot X_2 - X_1^2 \\cdot X_2$, containing $X_1^2$. Option D has $X_2 \\cdot X_2 = X_2^2$. Remember: multilinear means each variable has degree at most 1!"
+    },
+    "es": {
+        "question": "¿Cuál de los siguientes polinomios es multilineal?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "$g(X_1, X_2) = X_1 \\cdot X_1 + X_2 \\cdot X_3$",
+                "isCorrect": false
+            },
+            {
+                "id": "opt2",
+                "text": "$g(X_1, X_2, X_3) = X_1 \\cdot X_2 + X_2 \\cdot X_3 + X_1 \\cdot X_3$",
+                "isCorrect": true
+            },
+            {
+                "id": "opt3",
+                "text": "$g(X_1, X_2) = (1 - X_1) \\cdot X_1 \\cdot X_2$",
+                "isCorrect": false
+            },
+            {
+                "id": "opt4",
+                "text": "$g(X_1, X_2, X_3) = X_1 \\cdot X_2 \\cdot X_2 + X_3$",
+                "isCorrect": false
+            }
+        ],
+        "feedback": "La opción B es multilineal — cada variable aparece a lo sumo con grado 1. La opción A tiene $X_1 \\cdot X_1 = X_1^2$. La opción C se expande a $X_1 \\cdot X_2 - X_1^2 \\cdot X_2$, conteniendo $X_1^2$. La opción D tiene $X_2 \\cdot X_2 = X_2^2$. ¡Recuerda: multilineal significa que cada variable tiene grado a lo sumo 1!"
     }
 }
-

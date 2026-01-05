@@ -26,6 +26,31 @@
             }
         ],
         "feedback": "The basis polynomial $\\chi_w$ evaluates to $1$ at the point $w$, and to $0$ at all other points on the boolean hypercube. This is exactly analogous to Lagrange basis polynomials in univariate interpolation! The MLE is then constructed as $g(X) = \\sum_w f(w) \\cdot \\chi_w(X)$."
+    },
+    "es": {
+        "question": "El polinomio base tipo Lagrange $\\chi_w(X_1, ..., X_v)$ se usa para construir MLEs. ¿A qué evalúa $\\chi_w$ en el punto $w$ del hipercubo booleano?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "$0$",
+                "isCorrect": false
+            },
+            {
+                "id": "opt2",
+                "text": "$1$",
+                "isCorrect": true
+            },
+            {
+                "id": "opt3",
+                "text": "$f(w)$",
+                "isCorrect": false
+            },
+            {
+                "id": "opt4",
+                "text": "$2^v$",
+                "isCorrect": false
+            }
+        ],
+        "feedback": "El polinomio base $\\chi_w$ evalúa a $1$ en el punto $w$, y a $0$ en todos los demás puntos del hipercubo booleano. ¡Esto es exactamente análogo a los polinomios base de Lagrange en interpolación univariada! La MLE se construye entonces como $g(X) = \\sum_w f(w) \\cdot \\chi_w(X)$."
     }
 }
-
