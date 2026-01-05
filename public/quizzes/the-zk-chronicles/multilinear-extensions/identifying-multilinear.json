@@ -1,0 +1,31 @@
+{
+    "id": "identifying-multilinear",
+    "type": "single",
+    "en": {
+        "question": "Which of the following polynomials is multilinear?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "$g(X_1, X_2) = X_1 \\cdot X_1 + X_2 \\cdot X_3$",
+                "isCorrect": false
+            },
+            {
+                "id": "opt2",
+                "text": "$g(X_1, X_2, X_3) = X_1 \\cdot X_2 + X_2 \\cdot X_3 + X_1 \\cdot X_3$",
+                "isCorrect": true
+            },
+            {
+                "id": "opt3",
+                "text": "$g(X_1, X_2) = (1 - X_1) \\cdot X_1 \\cdot X_2$",
+                "isCorrect": false
+            },
+            {
+                "id": "opt4",
+                "text": "$g(X_1, X_2, X_3) = X_1 \\cdot X_2 \\cdot X_2 + X_3$",
+                "isCorrect": false
+            }
+        ],
+        "feedback": "Option B is multilinear — each variable appears at most to degree 1. Option A has $X_1 \\cdot X_1 = X_1^2$. Option C expands to $X_1 \\cdot X_2 - X_1^2 \\cdot X_2$, containing $X_1^2$. Option D has $X_2 \\cdot X_2 = X_2^2$. Remember: multilinear means each variable has degree at most 1!"
+    }
+}
+

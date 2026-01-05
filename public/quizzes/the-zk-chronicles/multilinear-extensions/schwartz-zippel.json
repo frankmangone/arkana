@@ -1,0 +1,30 @@
+{
+    "id": "schwartz-zippel",
+    "type": "single",
+    "en": {
+        "question": "According to the Schwartz-Zippel lemma, if $p(X_1, ..., X_v)$ is a non-zero polynomial of total degree $d$ over a field $\\mathbb{F}$, what is the probability that a randomly chosen point is a root?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "At most $d / |\\mathbb{F}|$",
+                "isCorrect": true
+            },
+            {
+                "id": "opt2",
+                "text": "At most $1 / d$",
+                "isCorrect": false
+            },
+            {
+                "id": "opt3",
+                "text": "At most $d^2 / |\\mathbb{F}|$",
+                "isCorrect": false
+            },
+            {
+                "id": "opt4",
+                "text": "Exactly $1 / |\\mathbb{F}|$",
+                "isCorrect": false
+            }
+        ],
+        "feedback": "The Schwartz-Zippel lemma states that $\\text{Pr}[p(r_1, ..., r_v) = 0] \\leq d / |\\mathbb{F}|$. As long as the degree $d$ is much smaller than the field size, this probability is negligible. This is why random evaluation is such a powerful tool for testing polynomial equality!"
+    }
+}

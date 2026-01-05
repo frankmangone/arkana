@@ -128,9 +128,9 @@ $$
 g: \mathbb{F}^v \rightarrow \mathbb{F}
 $$
 
-This is, it takes v inputs in the field $mathbb{F}$, and will allow us to encode a total of $2^v$ values. And for those values, we have a series of **restrictions** to the function:
+This is, it takes $v$ inputs in the field $\mathbb{F}$, and will allow us to encode a total of $2^v$ values. And for those values, we have a series of **restrictions** to the function:
 
-- $g(0, 0, ..., 0, 0)$ encodes $f(0, 0, ..., 0, 0) = k_0$, so $g(0, 0, ..., 0, 0) = k_0$, where $k_0$ is some element in $mathbb{F}$.
+- $g(0, 0, ..., 0, 0)$ encodes $f(0, 0, ..., 0, 0) = k_0$, so $g(0, 0, ..., 0, 0) = k_0$, where $k_0$ is some element in $\mathbb{F}$.
 - Then, $g(0, 0, ..., 0, 1)$ encodes $f(0, 0, ..., 0, 1) = k_1$, so $g(0, 0, ..., 0, 1) = k_1$.
 - Likewise, $g(0, 0, ..., 1, 0) = k_2$.
 - $g(0, 0, ..., 1, 1) = k_3$
@@ -143,7 +143,9 @@ $$
 
 > Which is just math notation for: $g = f$ only on the hypercube.
 
-This is the construction we’re after. It’s as if we’re **extending** our original function $f$ so that the inputs can take values other than $0s$ and $1s$, allowing values on the larger finite field. Hence the name: **multilinear extensions**.
+This is the construction we're after. It's as if we're **extending** our original function $f$ so that the inputs can take values other than $0s$ and $1s$, allowing values on the larger finite field. Hence the name: **multilinear extensions**.
+
+<quiz src="the-zk-chronicles/multilinear-extensions/mle-requirements.json" lang="en" />
 
 But wait, why **multilinear**? What does that even mean?
 
@@ -173,6 +175,8 @@ g’(X_1, X_2, X_3, X_4) = X_1²X_4 + X_2X_4 + X_3X_4
 $$
 
 > That single term with $X_1^2$ makes the entire polynomial non-linear!
+
+<quiz src="the-zk-chronicles/multilinear-extensions/identifying-multilinear.json" lang="en" />
 
 Alright... But, again, why does this matter?
 
@@ -237,6 +241,8 @@ g(X_1, ..., X_v) = \sum_{w \in \{0,1\}^v} f(w) \chi_w(X_1,...,X_v)
 $$
 
 You can check for yourself that this expression is multilinear. And as such, we have constructed a **valid MLE of** $f$!
+
+<quiz src="the-zk-chronicles/multilinear-extensions/basis-evaluation.json" lang="en" />
 
 What remains is proving that this expression is the **only possible MLE** for $f$.
 
@@ -381,11 +387,13 @@ $$
 h(X) = p(X) — q(X)
 $$
 
-When we select a random point $r*$, and check that $p(r*) = q(r*)$, we’re in fact saying that $h(r*) = 0$, which means **with high probability** that $p(X)$ equals $q(X)$.
+When we select a random point $r^*$, and check that $p(r^*) = q(r^*)$, we’re in fact saying that $h(r^*) = 0$, which means **with high probability** that $p(X)$ equals $q(X)$.
 
-> This should be very reminiscent of the reasoning we used during the [soundness analysis of the sum-check protocol](/en/blog/the-zk-chronicles/sum-check#completeness-and-soundness). Although we didn’t say it explicitly, we used the Schwartz-Zippel lemma!
+> This should be very reminiscent of the reasoning we used during the [soundness analysis of the sum-check protocol](/en/blog/the-zk-chronicles/sum-check#completeness-and-soundness). Although we didn't say it explicitly, we used the Schwartz-Zippel lemma!
 
-We’ll use this a lot, so definitely keep this one in mind!
+<quiz src="the-zk-chronicles/multilinear-extensions/schwartz-zippel.json" lang="en" />
+
+We'll use this a lot, so definitely keep this one in mind!
 
 ---
 

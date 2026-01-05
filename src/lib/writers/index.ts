@@ -48,6 +48,7 @@ export const writers: Record<string, Writer> = {
       medium: "https://medium.com/@bustosgonzalom",
     },
     walletAddress: "0xCf87a5B8afD4A5386bAAFf05Ad75d3c3a2F19f15",
+    visible: false,
   },
 };
 

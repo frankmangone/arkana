@@ -1,0 +1,31 @@
+{
+    "id": "mle-requirements",
+    "type": "multiple",
+    "en": {
+        "question": "What two conditions must a multilinear extension (MLE) satisfy?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "Agreement on the boolean hypercube — the MLE must match the original function at all points in $\\{0,1\\}^v$",
+                "isCorrect": true
+            },
+            {
+                "id": "opt2",
+                "text": "Maximum degree of 2 per variable",
+                "isCorrect": false
+            },
+            {
+                "id": "opt3",
+                "text": "The polynomial must be univariate",
+                "isCorrect": false
+            },
+            {
+                "id": "opt4",
+                "text": "Extension beyond the hypercube — the MLE must be evaluable at any point in the finite field",
+                "isCorrect": true
+            }
+        ],
+        "feedback": "An MLE must (1) agree with the original function $f$ on the boolean hypercube, so $g(w) = f(w)$ for all $w \\in \\{0,1\\}^v$, and (2) extend beyond it, accepting any field element as input. The degree restriction is actually at most 1 per variable (multilinear), not 2!"
+    }
+}
+

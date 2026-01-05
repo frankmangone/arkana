@@ -3,6 +3,7 @@ export interface Writer {
   name: string;
   imageUrl: string;
   avatarUrl: string;
+  visible?: boolean;
   organization?: {
     name: string;
     url: string;

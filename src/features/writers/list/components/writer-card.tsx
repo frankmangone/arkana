@@ -11,6 +11,7 @@ interface Writer {
   imageUrl?: string;
   role?: Record<string, string>;
   articleCount?: number;
+  visible?: boolean;
   social?: {
     twitter?: string;
     github?: string;
@@ -27,6 +28,10 @@ interface WriterCardProps {
 
 export function WriterCard({ writer, lang, dictionary }: WriterCardProps) {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://arkana.blog";
+
+  if (writer.visible === false) {
+    return null;
+  }
 
   return (
     <div className="group">
