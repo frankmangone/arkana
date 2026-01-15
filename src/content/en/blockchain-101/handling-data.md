@@ -9,9 +9,9 @@ tags:
   - celestia
   - ipfs
 description: How do we handle data in Blockchain? What sort of problems may we face?
-mediumUrl: https://medium.com/@francomangone18/blockchain-101-handling-data-714cc71b95d9
-contentHash: # TODO: Add content hash
-supabaseId: # TODO: Add supabase ID
+mediumUrl: 'https://medium.com/@francomangone18/blockchain-101-handling-data-714cc71b95d9'
+contentHash: b05737a9112a79f1891e1d276fc99f356d8514d17ac692168651882b538c23ca
+supabaseId: null
 ---
 
 > This is part of a larger series of articles about Blockchain. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/blockchain-101/how-it-all-began).
@@ -27,6 +27,8 @@ But why exactly would **small proofs** be important? Well, there are essentially
 So let’s start today’s discussion by touching upon this question.
 
 Coffee ready? Let’s go!
+
+---
 
 ## Data in Blockchain
 
@@ -55,8 +57,6 @@ It would be great if that was the end of the story. But unfortunately, this crea
 		title="How to forget those times during COVID..."
 	/>
 </figure>
-
----
 
 ### Blockspace
 

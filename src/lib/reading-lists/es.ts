@@ -249,6 +249,11 @@ export const readingLists: ReadingList[] = [
         slug: "blockchain-101/zk-in-blockchain",
         order: 22,
       },
+      {
+        id: "handling-data",
+        slug: "blockchain-101/handling-data",
+        order: 23,
+      },
     ],
   },
   {

@@ -14,7 +14,7 @@ description: >-
 readingTime: 14 min
 mediumUrl: >-
   https://medium.com/@francomangone18/the-zk-chronicles-multilinear-extensions-7e93a685d8bf
-contentHash: 88ed53f2d012cfee618cb30c1d9b4e68d1ef0351b3782ff0cdd2836c90ebd92b
+contentHash: a9b965a4b444573b41269d7887c7bfe46d4e4f82c7cb5107b027ec611c4c214c
 supabaseId: null
 ---
 
