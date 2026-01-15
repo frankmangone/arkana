@@ -52,6 +52,11 @@ export const tags: TagDefinition = {
     es: "BLS12-381",
     pt: "BLS12-381",
   },
+  celestia: {
+    en: "Celestia",
+    es: "Celestia",
+    pt: "Celestia",
+  },
   commitmentScheme: {
     en: "Commitment Scheme",
     es: "Esquema de Compromiso",
@@ -231,6 +236,11 @@ export const tags: TagDefinition = {
     en: "Internet",
     es: "Internet",
     pt: "Internet",
+  },
+  ipfs: {
+    en: "IPFS",
+    es: "IPFS",
+    pt: "IPFS",
   },
   isomorphism: {
     en: "Isomorphism",
