@@ -1,15 +1,15 @@
 import { HTMLAttributes } from "react";
 import React from "react";
 
-interface CustomBlockquoteProps extends HTMLAttributes<HTMLQuoteElement> {
+interface BlockquoteProps extends HTMLAttributes<HTMLQuoteElement> {
   children?: React.ReactNode;
 }
 
-export function CustomBlockquote({
+export function Blockquote({
   children,
   className,
   ...props
-}: CustomBlockquoteProps) {
+}: BlockquoteProps) {
   // Simple approach: convert all children to string
   const getAllText = (node: React.ReactNode): string => {
     if (typeof node === "string") return node;

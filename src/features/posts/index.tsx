@@ -7,7 +7,7 @@ import Script from "next/script";
 import { getWriter } from "@/lib/writers";
 import { PostContent } from "@/components/custom/post-content";
 import { PostActions } from "@/components/custom/post-actions";
-import { BuyMeCoffee } from "@/components/custom/buy-me-coffee";
+import { BuyMeCoffee } from "@/components/custom/post-content/buy-me-coffee";
 
 interface PostPageProps {
   lang: string;

@@ -350,53 +350,6 @@ blockquote cite {
   margin: 1.5rem 0;
 }
 
-/* Big quote styling */
-.big-quote {
-  display: block;
-  font-size: 1.5rem;
-  line-height: 2rem;
-  text-align: center;
-  margin: 3.5rem 2.5rem;
-  font-weight: 500;
-  color: #e9deff;
-  overflow-wrap: break-word;
-}
-
-@media (min-width: 768px) {
-  .big-quote {
-    font-size: 1.75rem;
-    line-height: 2.25rem;
-  }
-}
-
-.fancy-divider {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1.8rem;
-  margin: 3rem 0;
-  text-align: center;
-}
-
-.fancy-divider span {
-  font-size: 1.1rem;
-  line-height: 1;
-  color: var(--foreground);
-  opacity: 0.6;
-}
-
-.fancy-divider span:nth-child(1) {
-  --i: 0;
-}
-
-.fancy-divider span:nth-child(2) {
-  --i: 1;
-}
-
-.fancy-divider span:nth-child(3) {
-  --i: 2;
-}
-
 /* Smooth scrolling for anchor links */
 html {
   scroll-behavior: smooth;

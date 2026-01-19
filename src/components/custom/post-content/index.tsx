@@ -9,18 +9,17 @@ import remarkGfm from "remark-gfm";
 import "katex/dist/katex.min.css";
 import { CustomImage } from "./content-elements/images";
 import { CustomFigcaption, CustomFigure } from "./content-elements/figures";
-import { CustomSeparator } from "./content-elements/separator";
-import { CustomUl, CustomOl, CustomLi } from "./content-elements/lists";
-import { CustomLink } from "./content-elements/links";
-import {
-  createHeadingComponent,
-  CustomParagraph,
-} from "./content-elements/text";
 import { CustomDiv } from "./content-elements/div";
-import { CustomVideoEmbed } from "./content-elements/video-embed";
-import { CustomBlockquote } from "./content-elements/blockquote";
 import { TableOfContents } from "./table-of-contents";
 import QuizComponent from "./content-elements/quiz";
+import { AnchoredHeading } from "@/components/ui/anchored-heading";
+import { BigQuote } from "@/components/ui/big-quote";
+import { Blockquote } from "@/components/ui/blockquote";
+import { Link } from "@/components/ui/link";
+import { UnorderedList, OrderedList, ListElement } from "@/components/ui/lists";
+import { Paragraph } from "@/components/ui/paragraph";
+import { SectionDivider } from "@/components/ui/section-divider";
+import { VideoEmbed } from "@/components/ui/video-embed";
 
 interface PostContentProps {
   post: Post;
@@ -33,11 +32,6 @@ interface PostContentProps {
     singleChoice: string;
   };
 }
-
-// Custom component for rendering big quotes with LaTeX support
-const BigQuote: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  return <span className="big-quote">{children}</span>;
-};
 
 export function PostContent({ post, quizDictionary }: PostContentProps) {
   // Extract big quotes and create specialized tags that ReactMarkdown can handle
@@ -101,39 +95,36 @@ export function PostContent({ post, quizDictionary }: PostContentProps) {
           [rehypePrism, { showLineNumbers: true }],
         ]}
         components={{
-          // Customize heading components with anchor links
-          h1: createHeadingComponent(1),
-          h2: createHeadingComponent(2),
-          h3: createHeadingComponent(3),
-          h4: createHeadingComponent(4),
-          h5: createHeadingComponent(5),
-          h6: createHeadingComponent(6),
-          p: CustomParagraph,
+          // Text components
+          // h1: createHeadingComponent(1),
+          h2: (props: any) => <AnchoredHeading size="lg" {...props} />,
+          h3: (props: any) => <AnchoredHeading size="sm" {...props} />,
+          // h4: createHeadingComponent(4),
+          // h5: createHeadingComponent(5),
+          // h6: createHeadingComponent(6),
+          p: Paragraph,
+          a: Link,
+          hr: SectionDivider,
 
-          // Links
-          a: CustomLink,
+          // Lists
+          ul: UnorderedList,
+          ol: OrderedList,
+          li: ListElement,
 
           // Images
           img: CustomImage,
           figure: CustomFigure,
           figcaption: CustomFigcaption,
 
-          // Lists
-          ul: CustomUl,
-          ol: CustomOl,
-          li: CustomLi,
-
-          hr: CustomSeparator,
-
           // Blockquotes with callout support
-          blockquote: CustomBlockquote,
+          blockquote: Blockquote,
 
           // Big quote component with LaTeX support
           // @ts-expect-error - BigQuote is a custom component
           "big-quote": BigQuote,
 
           // Add video-embed component handler
-          "video-embed": CustomVideoEmbed,
+          // "video-embed": VideoEmbed,
 
           // Custom div handler that includes quiz-embed support
           // eslint-disable-next-line @typescript-eslint/no-explicit-any

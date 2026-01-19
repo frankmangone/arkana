@@ -1,7 +1,16 @@
-import Link from "next/link";
+import{ default as NextLink } from "next/link";
 import { AnchorHTMLAttributes } from "react";
 
-export function CustomLink({
+/**
+ * Link component
+ * 
+ * This component is used to display a link.
+ * It is a link that can be used to link to a page.
+ * 
+ * @param {AnchorHTMLAttributes<HTMLAnchorElement>} props - The props for the Link component
+ * @returns {JSX.Element} The Link component
+ */
+export function Link({
   href,
   ...props
 }: AnchorHTMLAttributes<HTMLAnchorElement>) {
@@ -10,7 +19,7 @@ export function CustomLink({
   if (isInternal) {
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://arkana.blog";
     const fullHref = `${baseUrl}${href}`;
-    return <Link className="text-primary-500" href={fullHref} {...props} />;
+    return <NextLink className="text-primary-500" href={fullHref} {...props} />;
   }
 
   return (
