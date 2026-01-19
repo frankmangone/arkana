@@ -1,7 +1,7 @@
 import { ZoomableImage } from "./zoomable-image";
 import { ImgHTMLAttributes } from "react";
 
-export function CustomImage({
+export function PostImage({
   src,
   alt,
   width,

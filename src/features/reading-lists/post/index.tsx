@@ -1,4 +1,4 @@
-import { PostContent } from "@/components/custom/post-content";
+import { PostContent } from "@/components/ui/post-content";
 import { PostHeader } from "@/components/custom/post-header";
 import { Post } from "@/lib/types";
 import { getWriter } from "@/lib/writers";

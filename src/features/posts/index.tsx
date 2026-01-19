@@ -5,7 +5,7 @@ import { Metadata } from "next";
 import { NotFoundInLanguage } from "@/components/not-found-in-language";
 import Script from "next/script";
 import { getWriter } from "@/lib/writers";
-import { PostContent } from "@/components/custom/post-content";
+import { PostContent } from "@/components/ui/post-content";
 import { PostActions } from "@/components/custom/post-actions";
 import { BuyMeCoffee } from "@/components/custom/post-content/buy-me-coffee";
 

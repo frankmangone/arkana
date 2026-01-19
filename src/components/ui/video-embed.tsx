@@ -2,7 +2,11 @@
 
 import React, { useState } from "react";
 
-export function VideoEmbed({ src }: HTMLVideoElement) {
+interface VideoEmbedProps {
+  src?: string;
+}
+
+export function VideoEmbed({ src }: VideoEmbedProps) {
   const [isLoaded, setIsLoaded] = useState(false);
 
   // Extract video ID from various YouTube URL formats
