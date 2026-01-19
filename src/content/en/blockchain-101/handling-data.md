@@ -2,6 +2,7 @@
 title: 'Blockchain 101: Handling Data'
 author: frank-mangone
 date: '2026-01-14'
+readingTime: 13 min
 thumbnail: /images/blockchain-101/handling-data/owls.webp
 tags:
   - blockchain
@@ -348,4 +349,4 @@ We’ve covered quite a lot in the series so far. I hope to have sparked your cu
 
 To close things off, I want to go back to what keeps being the center of it all in today’s Blockchain landscape: Ethereum.
 
-I’ll meet you on the finish line!
+I’ll meet you on the [finish line](/en/blog/blockchain-101/evolving-a-blockchain)!

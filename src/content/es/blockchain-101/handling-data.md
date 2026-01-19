@@ -1,6 +1,7 @@
 ---
 title: 'Blockchain 101: Manejo de Datos'
 author: frank-mangone
+readingTime: 13 min
 date: '2026-01-14'
 thumbnail: /images/blockchain-101/handling-data/owls.webp
 tags:
@@ -349,4 +350,4 @@ Hemos cubierto bastante en la serie hasta ahora. Espero haber despertado tu curi
 
 Para cerrar las cosas, quiero volver a lo que sigue siendo el centro de todo en el panorama actual de Blockchain: Ethereum.
 
-¡Te veré en la línea de meta!
+¡Te veré en la [línea de meta](/en/blog/blockchain-101/evolving-a-blockchain)!

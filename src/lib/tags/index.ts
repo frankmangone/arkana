@@ -7,6 +7,7 @@ interface TagDefinition {
 }
 
 export const tags: TagDefinition = {
+  // A
   abstractAlgebra: {
     en: "Abstract Algebra",
     es: "Álgebra Abstracta",
@@ -32,6 +33,8 @@ export const tags: TagDefinition = {
     es: "Circuitos Aritméticos",
     pt: "Circuitos Aritméticos",
   },
+
+  // B
   bitcoin: {
     en: "Bitcoin",
     es: "Bitcoin",
@@ -52,6 +55,8 @@ export const tags: TagDefinition = {
     es: "BLS12-381",
     pt: "BLS12-381",
   },
+
+  // C
   celestia: {
     en: "Celestia",
     es: "Celestia",
@@ -112,6 +117,13 @@ export const tags: TagDefinition = {
     es: "Disponibilidad de Datos",
     pt: "Disponibilidade de Dados",
   },
+
+  // D
+  danksharding: {
+    en: "Danksharding",
+    es: "Danksharding",
+    pt: "Danksharding",
+  },
   dataStructures: {
     en: "Data Structures",
     es: "Estructuras de Datos",
@@ -132,6 +144,8 @@ export const tags: TagDefinition = {
     es: "Divisor",
     pt: "Divisor",
   },
+
+  // E
   ed25519: {
     en: "Ed25519",
     es: "Ed25519",
@@ -167,6 +181,8 @@ export const tags: TagDefinition = {
     es: "EVM",
     pt: "EVM",
   },
+
+  // F
   finiteField: {
     en: "Finite Field",
     es: "Campo Finito",
@@ -177,6 +193,8 @@ export const tags: TagDefinition = {
     es: "Función",
     pt: "Função",
   },
+
+  // G
   gas: {
     en: "Gas",
     es: "Gas",
@@ -192,6 +210,8 @@ export const tags: TagDefinition = {
     es: "Grupos",
     pt: "Grupos",
   },
+
+  // H
   hardFork: {
     en: "Hard Fork",
     es: "Hard Fork",
@@ -227,6 +247,8 @@ export const tags: TagDefinition = {
     es: "Homomorfismo",
     pt: "Homomorfismo",
   },
+
+  // I
   interpolation: {
     en: "Interpolation",
     es: "Interpolación",
@@ -247,21 +269,29 @@ export const tags: TagDefinition = {
     es: "Isomorfismo",
     pt: "Isomorfismo",
   },
+
+  // J
   jam: {
     en: "JAM",
     es: "JAM",
     pt: "JAM",
   },
+
+  // K
   keyExchange: {
     en: "Key Exchange",
     es: "Intercambio de Claves",
     pt: "Troca de Chaves",
   },
+
+  // L
   lattice: {
     en: "Lattice",
     es: "Retículo",
     pt: "Retículo",
   },
+
+  // M
   mathematics: {
     en: "Mathematics",
     es: "Matemáticas",
@@ -292,6 +322,12 @@ export const tags: TagDefinition = {
     es: "Extensiones Multilineales",
     pt: "Extensões Multilineares",
   },
+
+  // N
+
+  // O
+
+  // P
   pairings: {
     en: "Pairings",
     es: "Emparejamientos",
@@ -357,6 +393,8 @@ export const tags: TagDefinition = {
     es: "Protocolo",
     pt: "Protocolo",
   },
+
+  // Q
   quantumMechanics: {
     en: "Quantum Mechanics",
     es: "Mecánica Cuántica",
@@ -367,6 +405,8 @@ export const tags: TagDefinition = {
     es: "Qubit",
     pt: "Qubit",
   },
+
+  // R
   rationalPoints: {
     en: "Rational Points",
     es: "Puntos Racionales",
@@ -397,11 +437,8 @@ export const tags: TagDefinition = {
     es: "RSA",
     pt: "RSA",
   },
-  setCode: {
-    en: "SetCode",
-    es: "SetCode",
-    pt: "SetCode",
-  },
+
+  // S
   scalability: {
     en: "Scalability",
     es: "Escalabilidad",
@@ -421,6 +458,11 @@ export const tags: TagDefinition = {
     en: "secp256k1",
     es: "secp256k1",
     pt: "secp256k1",
+  },
+  setCode: {
+    en: "SetCode",
+    es: "SetCode",
+    pt: "SetCode",
   },
   sharding: {
     en: "Sharding",
@@ -467,10 +509,17 @@ export const tags: TagDefinition = {
     es: "Verificación de Suma",
     pt: "Verificação de Soma",
   },
+
+  // T
   thresholdSignature: {
     en: "Threshold Signature",
     es: "Firma de Umbral",
     pt: "Assinatura de Umbral",
+  },
+  theMerge: {
+    en: "The Merge",
+    es: "The Merge",
+    pt: "The Merge",
   },
   torsion: {
     en: "Torsion Group",
@@ -482,11 +531,15 @@ export const tags: TagDefinition = {
     es: "Transacciones",
     pt: "Transações",
   },
+
+  // U
   utxo: {
     en: "UTXO",
     es: "UTXO",
     pt: "UTXO",
   },
+
+  // V
   validator: {
     en: "Validator",
     es: "Validador",
@@ -507,11 +560,19 @@ export const tags: TagDefinition = {
     es: "Aleatoriedad Verificable",
     pt: "Aleatoriedade Verificável",
   },
+
+  // W
+
+  // X
   xcm: {
     en: "XCM",
     es: "XCM",
     pt: "XCM",
   },
+
+  // Y
+
+  // Z
   zeroKnowledgeProofs: {
     en: "Zero Knowledge Proofs",
     es: "Pruebas de Conocimiento Cero",

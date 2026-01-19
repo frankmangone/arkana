@@ -135,7 +135,7 @@ export const readingLists: ReadingList[] = [
     title: "Blockchain 101",
     description: "A beginner-friendly introduction to blockchain concepts",
     coverImage: "/images/blockchain-101/transactions/doge.webp",
-    ongoing: true,
+    ongoing: false,
     items: [
       {
         id: "how-it-all-began",
@@ -251,6 +251,11 @@ export const readingLists: ReadingList[] = [
         id: "handling-data",
         slug: "blockchain-101/handling-data",
         order: 23,
+      },
+      {
+        id: "evolving-a-blockchain",
+        slug: "blockchain-101/evolving-a-blockchain",
+        order: 24,
       },
     ],
   },
