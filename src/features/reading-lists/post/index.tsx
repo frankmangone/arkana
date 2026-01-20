@@ -5,6 +5,9 @@ import { getWriter } from "@/lib/writers";
 import { getReadingList } from "@/lib/reading-lists";
 import Script from "next/script";
 import { Navigation } from "./components/navigation";
+import BuyMeCoffeeWidget from "@/components/ui/buy-me-coffee";
+import { getDictionary } from "@/lib/dictionaries";
+import { SectionDivider } from "@/components/ui/section-divider";
 
 interface ReadingListPostPageProps {
   lang: string;
@@ -16,7 +19,7 @@ interface ReadingListPostPageProps {
 export async function ReadingListPostPage(props: ReadingListPostPageProps) {
   const { lang, id, slug, post } = props;
 
-  // Get the writer information
+  const dict = await getDictionary(lang);
   const writer = getWriter(post.metadata.author);
 
   // Base URL for absolute links
@@ -76,6 +79,10 @@ export async function ReadingListPostPage(props: ReadingListPostPageProps) {
       />
       <PostHeader post={post} lang={lang} />
       <PostContent post={post} />
+      <SectionDivider />
+      {writer.walletAddress && writer.walletAddress !== "0x0000000000000000000000000000000000000000" && (
+        <BuyMeCoffeeWidget authorName={writer.name} walletAddress={writer.walletAddress} dictionary={dict.buyMeCoffee} />
+      )}
       <Navigation lang={lang} id={id} prevItem={prevItem} nextItem={nextItem} />
     </article>
   );

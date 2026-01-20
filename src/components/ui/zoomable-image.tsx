@@ -1,25 +1,27 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect } from "react";
-
-interface ZoomableImageProps {
-  src: string;
-  alt: string;
-  width?: number;
-  height?: number;
-  className?: string;
-  caption?: string;
-}
+import { useState, useEffect, ImgHTMLAttributes } from "react";
 
 export function ZoomableImage({
   src,
   alt,
-  width = 1000,
-  height = 1000,
-  className = "",
-  caption,
-}: ZoomableImageProps) {
+  width,
+  height,
+  className,
+  title,
+  ...props
+}: ImgHTMLAttributes<HTMLImageElement>) {
+  // Add base path prefix to src
+  const fullSrc = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${(src as string) ?? ""}`;
+  
+  // Use title as caption if provided
+  const caption = title;
+  
+  // Set defaults
+  const imageWidth = width ? Number(width) : 1000;
+  const imageHeight = height ? Number(height) : 1000;
+  const imageClassName = className ?? "";
   const [isZoomed, setIsZoomed] = useState(false);
 
   // Prevent scrolling when zoomed
@@ -57,7 +59,7 @@ export function ZoomableImage({
 
   // Extract any background color classes from the className
   const bgColorClass =
-    className.split(" ").find((cls) => cls.startsWith("bg-")) || "";
+    imageClassName.split(" ").find((cls) => cls.startsWith("bg-")) || "";
 
   return (
     <>
@@ -65,15 +67,16 @@ export function ZoomableImage({
         <div
           className={`relative rounded-none ${
             isZoomable ? "cursor-zoom-in" : ""
-          } ${className}`}
+          } ${imageClassName}`}
           onClick={isZoomable ? toggleZoom : undefined}
         >
           <Image
-            src={src}
-            alt={alt}
-            width={width}
-            height={height}
-            className={`${width ? "" : "w-full"}`}
+            src={fullSrc}
+            alt={alt ?? ""}
+            width={imageWidth}
+            height={imageHeight}
+            className={`${imageWidth ? "" : "w-full"} ${imageClassName}`}
+            {...props}
           />
           {isZoomable && (
             <div className="absolute top-2 right-2 bg-black/70 text-white p-1 text-xs px-2 zoom-indicator">
@@ -122,8 +125,8 @@ export function ZoomableImage({
             {/* Apply background color class to a wrapper div */}
             <div className={`${bgColorClass}  p-0 overflow-hidden`}>
               <Image
-                src={src}
-                alt={alt}
+                src={fullSrc}
+                alt={alt ?? ""}
                 width={2000}
                 height={2000}
                 className="max-h-[90vh] object-contain"

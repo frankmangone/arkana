@@ -7,7 +7,8 @@ import Script from "next/script";
 import { getWriter } from "@/lib/writers";
 import { PostContent } from "@/components/ui/post-content";
 import { PostActions } from "@/components/custom/post-actions";
-import { BuyMeCoffee } from "@/components/custom/post-content/buy-me-coffee";
+import { SectionDivider } from "@/components/ui/section-divider";
+import BuyMeCoffeeWidget from "@/components/ui/buy-me-coffee";
 
 interface PostPageProps {
   lang: string;
@@ -102,12 +103,9 @@ export async function PostPage(props: PostPageProps) {
       {header}
       {process.env.NEXT_PUBLIC_AUTH_ENABLED === "true" && <PostActions />}
       <PostContent post={post} quizDictionary={dict.quiz} />
+      <SectionDivider />
       {writer.walletAddress && writer.walletAddress !== "0x0000000000000000000000000000000000000000" && (
-        <BuyMeCoffee 
-          authorName={writer.name} 
-          walletAddress={writer.walletAddress}
-          dictionary={dict.buyMeCoffee}
-        />
+        <BuyMeCoffeeWidget authorName={writer.name} walletAddress={writer.walletAddress} dictionary={dict.buyMeCoffee} />
       )}
       {/* <PostFooter post={post} lang={lang} dictionary={dict} /> */}
       {/* <RelatedPosts

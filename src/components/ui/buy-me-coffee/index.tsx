@@ -4,11 +4,9 @@ import { useState, useEffect } from 'react';
 import { useAccount, useChainId, useSwitchChain, useSendTransaction } from 'wagmi';
 import { useConnectModal } from '@rainbow-me/rainbowkit';
 import { parseEther } from 'viem';
-import { Button } from '@/components/ui/button';
-import { Coffee, Loader2 } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { Coffee, Loader2, ChevronDown } from 'lucide-react';
 
-interface BuyMeCoffeeProps {
+interface TippingWidgetProps {
   authorName: string;
   walletAddress: string;
   dictionary: {
@@ -97,7 +95,7 @@ const getMetaMaskDeeplink = (
   return `https://metamask.app.link/send/${encodedAddress}?chainId=${encodeURIComponent(hexChainId)}&value=${encodeURIComponent(amountInWei)}`;
 };
 
-export function BuyMeCoffee({ authorName, walletAddress, dictionary }: BuyMeCoffeeProps) {
+export default function BuyMeCoffeeWidget({ authorName, walletAddress, dictionary }: TippingWidgetProps) {
   const { address, isConnected } = useAccount();
   const chainId = useChainId();
   const { switchChain } = useSwitchChain();
@@ -252,91 +250,98 @@ export function BuyMeCoffee({ authorName, walletAddress, dictionary }: BuyMeCoff
     }
   };
 
-  return (
-    <div className="mt-12 pt-8 bg-purple-400/20 p-6">
-      <div className="flex flex-col sm:flex-row items-start justify-between">
-        <div className="basis-4/7 shrink-0 pr-4">
-          <h3 className="text-lg font-semibold mb-2 flex items-center gap-2 text-purple-400">
-            <Coffee className="w-6 h-6" />
-            {dictionary.title}
-          </h3>
-          <span className="text-neutral-400 text-white text-md">
-            {dictionary.description.replace('{authorName}', authorName)}
-          </span>
+    return (
+      <div className="w-full overflow-hidden flex flex-row">
+        {/* Floating Diamonds - Left Side - AFTER content so it overlays */}
+        <div className="relative w-48 h-full pointer-events-none z-10">
+          {/* Base diamonds without glow */}
+          <img 
+            src="/images/buy-me-coffee/tokens.png" 
+            className="w-full h-full object-contain mix-blend-lighten"
+          alt=""
+        />
         </div>
 
-        <div className="basis-3/7 shrink-0 mt-8 sm:mt-0 w-full sm:w-auto space-y-4">
-          {/* Amount Input */}
-          <div className="relative">
-            <input
+        {/* Content Container - needs to be BEFORE diamonds to be behind them */}
+      <div className="px-8 py-8 md:px-12 md:py-16 flex-1 flex flex-col gap-4">
+          {/* Text Content */}
+          <div className="mb-8 max-w-2xl">
+          <h3 className="text-2xl md:text-3xl font-semibold text-white mb-4 flex items-center gap-2">
+            {dictionary.title}
+            </h3>
+            <p className="text-gray-200 text-base md:text-lg">
+            {dictionary.description.replace('{authorName}', authorName)}
+            </p>
+          </div>
+  
+          {/* Form Elements */}
+          <div className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center max-w-3xl">
+            {/* Amount Input */}
+            <div className="flex-1 relative">
+              <input
               type="number"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
               placeholder={DEFAULT_AMOUNT}
               step="0.001"
               min="0.001"
-              className="w-full px-4 py-3 pr-16 text-base font-medium bg-neutral-800/50 border-2 border-purple-700/50 text-white placeholder-neutral-500 focus:outline-none focus:border-purple-500 focus:bg-neutral-800 transition-all"
-            />
-            <span className="absolute right-4 top-1/2 -translate-y-1/2 px-2 py-1 text-sm font-bold text-purple-300 bg-purple-950/50 rounded border border-purple-700/30">
+              className="w-full px-4 py-3 pr-20 bg-transparent border-2 border-[#FC7988] text-white placeholder-gray-400 focus:outline-none focus:border-[#FB8A60] transition-colors"
+              />
+              <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[#FC7988] font-medium">
               {selectedNetwork?.symbol}
-            </span>
-          </div>
-
-          {/* Chain Selector */}
-          <div className="space-y-2">
-            <span className="text-xs font-medium text-neutral-400 uppercase tracking-wider">Network</span>
-            <div className="flex gap-2 flex-wrap">
-              {SUPPORTED_NETWORKS.map((network) => (
-                <button
-                  key={network.id}
-                  onClick={() => setSelectedChainId(network.id)}
-                  className={cn(
-                    'px-4 py-2 text-sm font-medium transition-all cursor-pointer border-2',
-                    selectedChainId === network.id
-                      ? 'bg-purple-600/80 border-purple-500 text-white shadow-lg shadow-purple-900/50'
-                      : 'bg-neutral-800/50 border-neutral-700 text-neutral-300 hover:bg-neutral-700/50 hover:border-neutral-600'
-                  )}
-                >
-                  {network.name}
-                </button>
-              ))}
+              </span>
             </div>
-          </div>
-
-          {/* Send Button */}
-          <Button
-            onClick={handleSendTransaction}
-            disabled={isPending}
-            className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 transition-all cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 shadow-lg shadow-purple-900/30 hover:shadow-purple-900/50"
-          >
-            {isPending ? (
-              <>
-                <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                {dictionary.sending}
-              </>
-            ) : !isConnected ? (
-              dictionary.connectWallet
-            ) : (
-              <>
-                <Coffee className="w-5 h-5 mr-2" />
-                {dictionary.buyCoffee
-                  .replace('{amount}', amount || DEFAULT_AMOUNT)
-                  .replace('{symbol}', selectedNetwork?.symbol || '')}
-              </>
-            )}
-          </Button>
-
-          {/* Success Message */}
-          {showSuccess && (
-            <div className="flex items-center justify-center gap-2 p-3 bg-green-500/10 border border-green-500/30">
-              <Coffee className="w-4 h-4 text-green-400" />
-              <p className="text-green-400 text-sm font-medium">
-                {dictionary.thankYou}
-              </p>
+  
+            {/* Network Selector */}
+            <div className="flex-1 relative">
+              <select
+                value={selectedChainId}
+                onChange={(e) => setSelectedChainId(Number(e.target.value))}
+                className="w-full px-4 py-3 pr-10 bg-transparent border-2 border-[#FC7988] text-white focus:outline-none focus:border-[#FB8A60] transition-colors appearance-none cursor-pointer"
+              >
+                {SUPPORTED_NETWORKS.map((network) => (
+                  <option key={network.id} value={network.id} className="bg-[#2a1810] text-white">
+                    {network.name}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#FC7988] pointer-events-none" />
             </div>
-          )}
         </div>
-      </div>
+
+        {/* Connect Wallet / Send Button */}
+        <button
+        onClick={handleSendTransaction}
+        disabled={isPending}
+        className="px-4 py-3 bg-gradient-to-r from-[#FC7988] to-[#FB8A60] hover:bg-[#e09a6a] self-end text-white font-medium transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 min-w-[160px]"
+        >
+        {isPending ? (
+            <>
+            <Loader2 className="w-5 h-5 animate-spin" />
+            {dictionary.sending}
+            </>
+        ) : !isConnected ? (
+            dictionary.connectWallet
+        ) : (
+            <>
+            <Coffee className="w-5 h-5" />
+            {dictionary.buyCoffee
+                .replace('{amount}', amount || DEFAULT_AMOUNT)
+                .replace('{symbol}', selectedNetwork?.symbol || '')}
+            </>
+        )}
+        </button>
     </div>
-  );
-}
+
+        {/* Success Message */}
+        {showSuccess && (
+          <div className="mt-4 flex items-center justify-center gap-2 p-3 bg-green-500/10 border border-green-500/30 max-w-3xl">
+            <Coffee className="w-4 h-4 text-green-400" />
+            <p className="text-green-400 text-sm font-medium">
+              {dictionary.thankYou}
+            </p>
+          </div>
+        )}
+      </div>
+    );
+  }

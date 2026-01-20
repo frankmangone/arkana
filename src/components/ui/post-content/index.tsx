@@ -8,7 +8,7 @@ import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 import { processContent } from "./process-content";
 import "katex/dist/katex.min.css";
-import { PostImage } from "@/components/ui/images";
+import { ZoomableImage } from "@/components/ui/zoomable-image";
 import { DivSwitch } from "@/components/ui/div-switch";
 import { Figure, FigCaption } from "@/components/ui/figures";
 import { AnchoredHeading } from "@/components/ui/anchored-heading";
@@ -63,7 +63,7 @@ export function PostContent({ post, quizDictionary }: PostContentProps) {
           li: ListElement,
 
           // Images
-          img: PostImage,
+          img: ZoomableImage,
           figure: Figure,
           figcaption: FigCaption,
 
