@@ -36,7 +36,7 @@ export default function BuyMeCoffeeWidget({ authorName, walletAddress, dictionar
   } = useComponent(walletAddress);
 
   return (
-    <div className="w-full overflow-hidden flex flex-row">
+    <div className="w-full overflow-hidden flex md:flex-row flex-col">
       <TokenImage />
 
       <div className="px-8 py-8 md:px-12 md:py-16 flex-1 flex flex-col gap-4">
