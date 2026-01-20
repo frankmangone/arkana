@@ -35,14 +35,24 @@
   --color-primary: var(--primary);
   --color-primary-50: var(--primary-50);
   --color-primary-100: var(--primary-100);
+  --color-primary-150: var(--primary-150);
   --color-primary-200: var(--primary-200);
+  --color-primary-250: var(--primary-250);
   --color-primary-300: var(--primary-300);
+  --color-primary-350: var(--primary-350);
   --color-primary-400: var(--primary-400);
+  --color-primary-450: var(--primary-450);
   --color-primary-500: var(--primary-500);
+  --color-primary-550: var(--primary-550);
   --color-primary-600: var(--primary-600);
+  --color-primary-650: var(--primary-650);
   --color-primary-700: var(--primary-700);
+  --color-primary-750: var(--primary-750);
   --color-primary-800: var(--primary-800);
+  --color-primary-850: var(--primary-850);
   --color-primary-900: var(--primary-900);
+  --color-primary-950: var(--primary-950);
+  --color-primary-1000: var(--primary-1000);
   --color-correct: var(--correct);
   --color-correct-50: var(--correct-50);
   --color-correct-100: var(--correct-100);
@@ -119,16 +129,28 @@
   --popover-foreground: oklch(0.985 0 0);
   --primary: oklch(0.92 0.004 286.32);
   --primary-foreground: oklch(0.21 0.006 285.885);
-  --primary-50: #0b001e;
-  --primary-100: #1f0353;
-  --primary-200: #3a0d8d;
-  --primary-300: #5e23cc;
-  --primary-400: #8041f4;
-  --primary-500: #a777ff;
-  --primary-600: #b79cea;
-  --primary-700: #c6b4e7;
-  --primary-800: #dad2ea;
-  --primary-900: #eae8ef;
+  
+  --primary-50: #1A0B43;
+  --primary-100: #1F0E54;
+  --primary-150: #251167;
+  --primary-200: #2A137A;
+  --primary-250: #31158D;
+  --primary-300: #3618A2;
+  --primary-350: #3D1AB6;
+  --primary-400: #421DCA;
+  --primary-450: #491FDF;
+  --primary-500: #5325EC;
+  --primary-550: #602FED;
+  --primary-600: #6F3FEE;
+  --primary-650: #895EF1;
+  --primary-700: #9770F2;
+  --primary-750: #A582F4;
+  --primary-800: #B396F5;
+  --primary-850: #C2AAF8;
+  --primary-900: #D1BEFA;
+  --primary-950: #E0D3FB;
+  --primary-1000: #EFE9FD;
+  
   --correct: #43FAE4;
   --correct-50: #0a1f1e;
   --correct-100: #0f3d3a;
@@ -151,6 +173,21 @@
   --incorrect-700: #fcaf8f;
   --incorrect-800: #fdc9b5;
   --incorrect-900: #fee4da;
+
+  /* "Correct" colors */
+  --emerald: #53e793;
+  --aquamarine: #4de8c1;
+
+  /* "Incorrect" colors */
+  --salmon: #f87e69;
+  --orange: #fb8a60;
+
+  /* "Warning" colors */
+  --bronze: #fac26e;
+
+  /* "Info" colors */
+  --sky: #4d95e8;
+
   --secondary: oklch(0.274 0.006 286.033);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.274 0.006 286.033);

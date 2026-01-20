@@ -64,7 +64,7 @@ export function PostCard(props: PostCardProps) {
           </span>
         </div>
         <div className="flex items-start justify-between">
-          <h2 className="text-xl font-bold mb-2 text-primary-500 group-hover:text-primary-600 transition-colors">
+          <h2 className="text-xl font-bold mb-2 text-primary-750 group-hover:text-primary-650 transition-colors">
             {post.title}
           </h2>
           <ArrowUpRight className="h-5 w-5 mt-1 opacity-0 group-hover:opacity-100 transition-opacity" />

@@ -37,45 +37,6 @@ export function BlogPage({
     <div className="container py-8">
       <h1 className="text-4xl font-bold mb-8">{dictionary.blog.title}</h1>
 
-      {/* Tag filter */}
-      {/* <div className="mb-8">
-        <h2 className="text-lg mb-3">{dictionary.blog.filterByTag}</h2>
-        <div className="flex flex-wrap gap-2">
-          <Link
-            href={`/${lang}/blog`}
-            className={`px-3 py-1.5 rounded-lg transition-colors ${
-              !selectedTag
-                ? "text-white"
-                : "bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700"
-            }`}
-            style={
-              !selectedTag ? { backgroundColor: "var(--primary-500)" } : {}
-            }
-          >
-            {dictionary.blog.allPosts}
-          </Link>
-
-          {allTags.map((tag) => (
-            <Link
-              key={tag}
-              href={`/${lang}/blog?tag=${encodeURIComponent(tag)}`}
-              className={`px-3 py-1.5 rounded-lg transition-colors ${
-                selectedTag === tag
-                  ? "text-white"
-                  : "bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700"
-              }`}
-              style={
-                selectedTag === tag
-                  ? { backgroundColor: "var(--primary-500)" }
-                  : {}
-              }
-            >
-              {tag}
-            </Link>
-          ))}
-        </div>
-      </div> */}
-
       {/* Post grid */}
       {filteredPosts.length > 0 ? (
         <>

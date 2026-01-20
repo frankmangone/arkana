@@ -49,7 +49,7 @@ export function ReadingListCard(props: ReadingListCardProps) {
 
               {/* Reading list icon */}
               <div className="absolute top-4 right-4 bg-black/70 p-2 rounded-full">
-                <BookOpen className="h-5 w-5 text-primary-500" />
+                <BookOpen className="h-5 w-5 text-primary-750" />
               </div>
             </>
           ) : (
@@ -62,12 +62,12 @@ export function ReadingListCard(props: ReadingListCardProps) {
         </div>
 
         <div className="flex items-start gap-4">
-          <h2 className="grow-1 text-xl font-bold mb-2 text-primary-500 group-hover:text-primary-600 transition-colors line-clamp-1">
+          <h2 className="grow-1 text-xl font-bold mb-2 text-primary-750 group-hover:text-primary-650 transition-colors line-clamp-1">
             {list.title}
           </h2>
 
           {list.ongoing && (
-            <span className="text-xs font-medium px-2 py-0.5 rounded-none bg-primary-500/20 text-primary-500">
+            <span className="text-xs font-medium px-2 py-0.5 rounded-none bg-primary-750/20 text-primary-750">
               {dictionary.readingLists.ongoing}
             </span>
           )}

@@ -1,7 +1,6 @@
 import { Navbar } from "./navbar";
 import { ArkanaBackground } from "./arkana-background";
 import { Footer } from "../custom/footer";
-// import { BuyMeCoffeeButton } from "../buy-me-coffee-button";
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -20,7 +19,6 @@ export const MainLayout = async (props: MainLayoutProps) => {
           {children}
         </main>
         <Footer lang={lang} />
-        {/* <BuyMeCoffeeButton /> */}
       </div>
     </>
   );

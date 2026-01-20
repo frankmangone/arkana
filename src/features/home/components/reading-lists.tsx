@@ -22,7 +22,7 @@ export function ReadingLists({ lang, dictionary }: ReadingListsProps) {
       <div className="absolute top-1/3 right-1/4 w-96 h-48 bg-gradient-to-r from-primary-500/20 to-orange-500/20 rounded-full blur-3xl"></div>
 
       <div className="relative flex flex-col-reverse md:flex-row gap-8 container mx-auto px-8 lg:py-8 md:px-6 lg:px-8 max-w-8xl z-10">
-        <BookOpen className="hidden lg:block md:ml-0 shrink-0 w-12 h-12 text-primary-500" />
+        <BookOpen className="hidden lg:block md:ml-0 shrink-0 w-12 h-12 text-primary-650" />
         <div className="md:max-w-70 lg:max-w-120 relative flex-shrink-0">
           {/* Background gradient orb behind the button */}
           <div className="absolute top-0 left-0 w-64 h-32 bg-gradient-to-r from-purple-500/15 to-primary-500/15 rounded-full blur-2xl -z-10"></div>
@@ -35,7 +35,7 @@ export function ReadingLists({ lang, dictionary }: ReadingListsProps) {
           </p>
           <Link
             href={`${baseUrl}/${lang}/reading-lists`}
-            className="inline-block px-12 py-3 text-white transition-colors bg-primary-500 hover:bg-primary-600"
+            className="inline-block px-12 py-3 text-white transition-colors bg-primary-650 hover:bg-primary-750"
           >
             {dictionary?.home?.readingLists?.viewAll}
           </Link>

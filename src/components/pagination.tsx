@@ -67,9 +67,9 @@ export function Pagination({
               key={page}
               href={page === 1 ? basePath : `${basePath}/page/${page}`}
               className={cn(
-                "inline-flex items-center justify-center h-8 w-8 rounded text-sm font-medium transition-colors",
+                "inline-flex items-center justify-center h-8 w-8 text-sm font-medium transition-colors",
                 currentPage === page
-                  ? "bg-white text-black"
+                  ? "bg-primary-850 text-black"
                   : "text-gray-300 hover:text-white"
               )}
             >
@@ -82,7 +82,7 @@ export function Pagination({
               <span className="text-gray-500 px-1">...</span>
               <Link
                 href={`${basePath}/page/${totalPages}`}
-                className="inline-flex items-center justify-center h-8 w-8 rounded text-sm font-medium text-gray-300 hover:text-white transition-colors"
+                className="inline-flex items-center justify-center h-8 w-8 text-sm font-medium text-gray-300 hover:text-white transition-colors"
               >
                 {totalPages}
               </Link>

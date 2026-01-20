@@ -87,7 +87,7 @@ export function FeaturedPostCard(props: FeaturedPostCardProps) {
               </div>
               <div className="flex items-start justify-between">
                 <h2
-                  className={`font-bold mb-2 text-xl text-primary-500 group-hover:text-primary-600 transition-colors line-clamp-2 md:line-clamp-1 flex-1 min-w-0 ${
+                  className={`font-bold mb-2 text-xl text-primary-750 group-hover:text-primary-650 transition-colors line-clamp-2 md:line-clamp-1 flex-1 min-w-0 ${
                     isLarge ? "md:text-2xl" : ""
                   }`}
                 >

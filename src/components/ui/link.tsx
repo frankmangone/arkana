@@ -12,6 +12,7 @@ import { AnchorHTMLAttributes } from "react";
  */
 export function Link({
   href,
+  className,
   ...props
 }: AnchorHTMLAttributes<HTMLAnchorElement>) {
   const isInternal = href && !href.startsWith("http") && !href.startsWith("#");
@@ -19,7 +20,7 @@ export function Link({
   if (isInternal) {
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://arkana.blog";
     const fullHref = `${baseUrl}${href}`;
-    return <NextLink className="text-primary-500" href={fullHref} {...props} />;
+    return <NextLink className={`text-primary-750 hover:text-primary-650 transition-colors ${className}`} href={fullHref} {...props} />;
   }
 
   return (
@@ -27,7 +28,7 @@ export function Link({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="text-primary-500"
+      className={`text-primary-750 hover:text-primary-650 transition-colors ${className}`}
       {...props}
     />
   );

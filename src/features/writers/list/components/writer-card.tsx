@@ -59,7 +59,7 @@ export function WriterCard({ writer, lang, dictionary }: WriterCardProps) {
 
               {/* Writer icon */}
               <div className="absolute top-4 right-4 bg-black/70 p-2 rounded-full">
-                <Pencil className="h-5 w-5 text-primary-500" />
+                <Pencil className="h-5 w-5 text-primary-750" />
               </div>
             </div>
           ) : (
@@ -68,7 +68,7 @@ export function WriterCard({ writer, lang, dictionary }: WriterCardProps) {
                 <User className="h-20 w-20 text-gray-400" />
               </div>
               <div className="absolute top-4 right-4 bg-black/70 p-2 rounded-full">
-                <Pencil className="h-5 w-5 text-primary-500" />
+                <Pencil className="h-5 w-5 text-primary-750" />
               </div>
             </div>
           )}
@@ -79,7 +79,7 @@ export function WriterCard({ writer, lang, dictionary }: WriterCardProps) {
           <User className="h-4 w-4" />
           <span>{writer.role?.[lang] || dictionary.writers.writer}</span>
           {writer.articleCount !== undefined && (
-            <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-primary-500/20 text-primary-500">
+            <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-primary-500/20 text-primary-750">
               {writer.articleCount}{" "}
               {writer.articleCount === 1
                 ? dictionary.writers.article
@@ -88,7 +88,7 @@ export function WriterCard({ writer, lang, dictionary }: WriterCardProps) {
           )}
         </div>
 
-        <h2 className="text-xl font-bold mb-2 text-primary-500 group-hover:text-primary-600 transition-colors">
+        <h2 className="text-xl font-bold mb-2 text-primary-750 group-hover:text-primary-650 transition-colors">
           {writer.name}
         </h2>
 

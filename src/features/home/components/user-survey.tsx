@@ -43,7 +43,7 @@ export function UserSurvey({ dictionary }: UserSurveyProps) {
         </p>
         <Link
           href="https://forms.gle/NLk49eNnu6jTwGMt8"
-          className="inline-block px-12 py-3 my-8 text-white transition-colors bg-primary-500 hover:bg-primary-600"
+          className="inline-block px-12 py-3 my-8 text-white transition-colors bg-primary-650 hover:bg-primary-750"
         >
           {dictionary?.home?.userSurvey?.button}
         </Link>

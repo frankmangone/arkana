@@ -62,7 +62,7 @@ export async function LatestArticles({
           <div className="text-center mt-16">
             <Link
               href={`${baseUrl}/${lang}/blog`}
-              className="inline-block px-12 py-3 text-white transition-colors bg-primary-500 hover:bg-primary-600"
+              className="inline-block px-12 py-3 text-white transition-colors bg-primary-650 hover:bg-primary-750"
             >
               {dictionary?.blog?.viewAllPosts || "View All Articles"}
             </Link>

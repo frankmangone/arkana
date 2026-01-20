@@ -28,7 +28,7 @@ export async function PrevButton(props: PrevButtonProps) {
       asChild
       variant="outline"
       size="lg"
-      className="flex h-28 md:basis-[280px] justify-between items-start gap-2 border-primary-400 dark:border-primary-400"
+      className="flex h-28 md:basis-[280px] justify-between items-start gap-2 border-primary-650 dark:border-primary-650"
     >
       <Link
         href={`/${lang}/reading-lists/${id}/${prevItem.id}`}
@@ -38,7 +38,7 @@ export async function PrevButton(props: PrevButtonProps) {
           <ArrowLeft size={16} className="shrink-0" />
           <span>Previous</span>
         </div>
-        <div className="text-primary-500 dark:text-primary-500 font-medium line-clamp-2 break-word whitespace-normal">
+        <div className="text-primary-750 dark:text-primary-750 font-medium line-clamp-2 break-word whitespace-normal">
           {post.metadata.title}
         </div>
       </Link>

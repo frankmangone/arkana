@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { formatDate } from "@/lib/utils";
 import type { Post } from "@/lib/types";
@@ -7,6 +6,7 @@ import { getDictionary } from "@/lib/dictionaries";
 import { ExternalLink } from "lucide-react";
 import { ArkanaStrip } from "@/components/arkana-strip";
 import { Tag } from "@/components/custom/tag";
+import { Link } from "@/components/ui/link";
 
 interface PostHeaderProps {
   post: Post;
@@ -53,7 +53,7 @@ export async function PostHeader(props: PostHeaderProps) {
         <div>
           <Link
             href={`/${lang}/writers/${writer.slug}`}
-            className="font-medium text-primary-500 hover:text-primary-600 hover:underline"
+            className="font-medium hover:underline"
           >
             {writer.name}
           </Link>
@@ -63,14 +63,14 @@ export async function PostHeader(props: PostHeaderProps) {
             {metadata.mediumUrl && (
               <>
                 {" · "}
-                <a
+                <Link
                   href={metadata.mediumUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-primary-500 hover:text-primary-600 hover:underline"
+                  className="inline-flex items-center gap-1 hover:underline"
                 >
                   Medium <ExternalLink size={14} />
-                </a>
+                </Link>
               </>
             )}
           </div>

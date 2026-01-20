@@ -28,7 +28,7 @@ export async function NextButton(props: NextButtonProps) {
       asChild
       variant="outline"
       size="lg"
-      className="flex h-28 md:basis-[280px] justify-between items-end gap-2 border-primary-400 dark:border-primary-400"
+      className="flex h-28 md:basis-[280px] justify-between items-end gap-2 border-primary-650 dark:border-primary-650"
     >
       <Link
         href={`/${lang}/reading-lists/${id}/${nextItem.id}`}
@@ -38,7 +38,7 @@ export async function NextButton(props: NextButtonProps) {
           <span>Next</span>
           <ArrowRight size={16} className="shrink-0" />
         </div>
-        <div className="text-primary-500 dark:text-primary-500 font-medium line-clamp-2 break-word whitespace-normal text-right">
+        <div className="text-primary-750 dark:text-primary-750 font-medium line-clamp-2 break-word whitespace-normal text-right">
           {post.metadata.title}
         </div>
       </Link>

@@ -32,7 +32,7 @@ export async function Footer({ lang }: FooterProps) {
             {dictionary?.footer?.by || "by"}{" "}
             <Link
               href="https://www.linkedin.com/in/frank-mangone/"
-              className="text-primary-500 hover:text-primary-700 transition-colors"
+              className="text-primary-650 hover:text-primary-750 transition-colors"
               target="_blank"
               rel="noopener noreferrer"
             >
