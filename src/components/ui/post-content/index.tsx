@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Post } from "@/lib/types";
 import React from "react";
 import ReactMarkdown from "react-markdown";
