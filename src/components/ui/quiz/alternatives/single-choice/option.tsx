@@ -16,16 +16,18 @@ const styles = {
       let optionClass = "border-1";
   
       if (!showFeedback) {
-        optionClass = `${optionClass} border-primary-50/70hover:bg-primary-50/70`;
-
+        optionClass = `${optionClass} border-primary-100 hover:bg-primary-100`;
+  
         if (isSelected) {
-          optionClass = `${optionClass} border-primary-50/70bg-primary-50/70`;
+          optionClass = `${optionClass} border-primary-100 bg-primary-100`;
         }
       } else {
         if (isSelected && isCorrect) {
-          optionClass = `${optionClass} border-aquamarine bg-aquamarine-50/70`;
+          optionClass = `${optionClass} border-aquamarine bg-aquamarine-50`;
         } else if (isSelected) {
-          optionClass = `${optionClass} border-primary-50/70 hover:bg-primary-50/70`;
+          optionClass = `${optionClass} border-salmon bg-salmon-50`;
+        } else if (isCorrect) {
+          optionClass = `${optionClass} border-aquamarine-100 bg-aquamarine-100`;
         }
       }
 

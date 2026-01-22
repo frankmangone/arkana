@@ -20,7 +20,7 @@ const styles = {
     content: 'relative bg-background p-6 pt-18',
     quizType: 'absolute top-0 right-0 bg-primary-700 p-2',
     quizTypeText: 'text-background text-md',
-    title: "font-semibold text-xl mb-4 flex",
+    title: "font-semibold text-xl mt-4 sm:mt-0 mb-4 flex",
 }
 
 const getQuizComponent = (questionType: EQuizType) => {

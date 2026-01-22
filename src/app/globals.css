@@ -881,7 +881,7 @@ ol > li:before {
   content: counter(item) ".";
   position: absolute;
   left: -1.5rem;
-  color: var(--primary-750);
+  color: var(--primary-800);
   font-weight: 600;
 }
 
@@ -894,5 +894,5 @@ ul > li:before {
   content: "•";
   position: absolute;
   left: -1.5rem;
-  color: var(--primary-750);
+  color: var(--primary-800);
 }

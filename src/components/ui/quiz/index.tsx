@@ -5,6 +5,7 @@ import { QuizDictionary } from "./types";
 import { QuizHeader } from "./components/header";
 import { useQuizComponent } from "./use-component";
 import { QuizContent } from "./components/content";
+import { QuizTypeNote } from "./components/quiz-type";
 
 interface QuizComponentProps {
   src: string;

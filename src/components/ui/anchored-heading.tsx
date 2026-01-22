@@ -95,7 +95,7 @@ export function AnchoredHeading(props: AnchoredHeadingProps) {
             className="ml-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity"
             aria-label={`Link to ${cleanText}`}
         >
-            <LinkIcon className="text-primary-500" size={22} />
+            <LinkIcon className="text-primary-700" size={22} />
         </a>,
     ]);
 };
