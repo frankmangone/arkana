@@ -14,18 +14,18 @@ export const SingleChoiceQuiz: React.FC<QuizBodyProps> = ({
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = () => {
-    setSubmitted(true);
-    setResult(isCorrect ? EQuizResult.Correct : EQuizResult.Incorrect);
-  };
-
   const isAnswerCorrect = (): boolean => {
     if (!selectedAnswer) return false;
     const correctAnswer = questionContent.options.find((opt) => opt.isCorrect);
     return selectedAnswer === correctAnswer?.id;
   };
 
-  const isCorrect = submitted && isAnswerCorrect();
+  const handleSubmit = () => {
+    setSubmitted(true);
+
+    const isCorrect = isAnswerCorrect();  
+    setResult(isCorrect ? EQuizResult.Correct : EQuizResult.Incorrect);
+  };
 
   return (
     <div className="flex flex-col gap-4">

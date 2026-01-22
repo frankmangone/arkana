@@ -38,14 +38,10 @@ export const QuizContent = (props: QuizContentProps) => {
 
     const [result, setResult] = useState<EQuizResult | null>(null);
 
-    if (!isOpen) {
-        return null;
-    }
-
     const QuizComponent = getQuizComponent(questionType);
 
     return (
-        <div className={styles.container}>
+        <div className={styles.container} style={{ display: isOpen ? 'block' : 'none' }}>
           <div className={styles.borderWrapper} style={{ borderTop: 'none' }}>
             <div className={styles.content}>
               <QuizTypeNote questionType={questionType} dictionary={dictionary} />
