@@ -27,14 +27,15 @@ export interface QuizQuestion {
   [lang: string]: QuizQuestionContent | string;
 }
 
-export interface QuizDictionary {
+// Quiz dictionary matches the structure in src/lib/dictionaries/*.json under "quiz"
+export type QuizDictionary = {
   submitAnswer: string;
   correct: string;
   almost: string;
   incorrect: string;
   multipleChoice: string;
   singleChoice: string;
-}
+};
 
 export interface QuizBodyProps {
   questionId: string;

@@ -9,22 +9,13 @@ import { QuizContent } from "./components/content";
 interface QuizComponentProps {
   src: string;
   lang?: string;
-  dictionary?: QuizDictionary;
+  dictionary: QuizDictionary;
 }
-
-const defaultDictionary: QuizDictionary = {
-  submitAnswer: "Submit Answer",
-  correct: "Correct!",
-  almost: "Almost!",
-  incorrect: "Incorrect",
-  multipleChoice: "Multiple Choice",
-  singleChoice: "Single Choice",
-};
 
 const QuizComponent: React.FC<QuizComponentProps> = ({
   src,
   lang = "en",
-  dictionary = defaultDictionary,
+  dictionary,
 }) => {
   const {
     question,

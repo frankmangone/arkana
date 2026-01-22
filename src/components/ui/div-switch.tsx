@@ -1,18 +1,12 @@
 import { HTMLAttributes } from "react";
 import QuizComponent from "./quiz";
 import { VideoEmbed } from "./video-embed";
+import { QuizDictionary } from "./quiz/types";
 
 interface DivSwitchProps extends HTMLAttributes<HTMLDivElement> {
   "data-src"?: string;
   "data-lang"?: string;
-  quizDictionary?: {
-    submitAnswer: string;
-    correct: string;
-    almost: string;
-    incorrect: string;
-    multipleChoice: string;
-    singleChoice: string;
-  };
+  quizDictionary?: QuizDictionary;
 }
 
 /**
@@ -35,6 +29,10 @@ export function DivSwitch({
   // Handle quiz-embed divs
   if (className?.includes("quiz-embed")) {
     if (!dataSrc) return null;
+    if (!quizDictionary) {
+      console.warn("Quiz dictionary not provided to quiz-embed");
+      return null;
+    }
     return (
       <QuizComponent
         src={dataSrc}

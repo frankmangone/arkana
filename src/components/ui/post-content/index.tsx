@@ -21,16 +21,11 @@ import { Paragraph } from "@/components/ui/paragraph";
 import { SectionDivider } from "@/components/ui/section-divider";
 import { TableOfContents } from "@/components/ui/table-of-contents";
 
+import { QuizDictionary } from "@/components/ui/quiz/types";
+
 interface PostContentProps {
   post: Post;
-  quizDictionary?: {
-    submitAnswer: string;
-    correct: string;
-    almost: string;
-    incorrect: string;
-    multipleChoice: string;
-    singleChoice: string;
-  };
+  quizDictionary?: QuizDictionary;
 }
 
 export function PostContent({ post, quizDictionary }: PostContentProps) {
