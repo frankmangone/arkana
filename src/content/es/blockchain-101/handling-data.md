@@ -12,7 +12,7 @@ tags:
 description: >-
   ¿Cómo manejamos los datos en Blockchain? ¿Qué tipo de problemas podemos
   enfrentar?
-contentHash: e9e01ade38bdde966cb6853cabeb9285ebae0bc8bbfb4ed2fc27812b6a0fbdb4
+contentHash: 78a6f43858d51dc572b368295a43c4df0d26c6939f8d612e02e49291fff84fa7
 supabaseId: null
 ---
 

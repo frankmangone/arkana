@@ -11,7 +11,7 @@ tags:
   - ipfs
 description: How do we handle data in Blockchain? What sort of problems may we face?
 mediumUrl: 'https://medium.com/@francomangone18/blockchain-101-handling-data-714cc71b95d9'
-contentHash: b05737a9112a79f1891e1d276fc99f356d8514d17ac692168651882b538c23ca
+contentHash: afee6f3f0c986451b9c827f6675c899db693449d923f476697d245f271dab370
 supabaseId: null
 ---
 

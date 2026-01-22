@@ -9,9 +9,11 @@ tags:
   - ethereum
   - theMerge
   - danksharding
-description: Para cerrar, echamos un vistazo a algunas pautas importantes para actualizar una Blockchain que ya está en funcionamiento.
-contentHash: # TODO: Add content hash
-supabaseId: # TODO: Add supabase ID
+description: >-
+  Para cerrar, echamos un vistazo a algunas pautas importantes para actualizar
+  una Blockchain que ya está en funcionamiento.
+contentHash: b9d8755a59ae91c0c3adda120727f5aec9d723e7386e06a292b58b40517550e4
+supabaseId: null
 ---
 
 > Este artículo es parte de una serie más larga sobre Blockchain. Si este es el primer artículo que encuentras, te recomiendo comenzar por el [inicio de la serie](/es/blog/blockchain-101/how-it-all-began).
