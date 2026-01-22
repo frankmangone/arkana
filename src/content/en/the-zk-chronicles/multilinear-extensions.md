@@ -14,7 +14,7 @@ description: >-
 readingTime: 14 min
 mediumUrl: >-
   https://medium.com/@francomangone18/the-zk-chronicles-multilinear-extensions-7e93a685d8bf
-contentHash: a9b965a4b444573b41269d7887c7bfe46d4e4f82c7cb5107b027ec611c4c214c
+contentHash: 143d74d4d427803f17d0f28768338bac7ab6ccee717d18e701dccaca44709c4b
 supabaseId: null
 ---
 
@@ -332,9 +332,9 @@ So, in order to evaluate $g$, we have to go in the **opposite direction**. We st
 
 The magic happens when we consider the context in which these MLEs are used. You see, in our good ol’ sum-check protocol, we need to calculate $g$ at points like these in subsequent rounds:
 
-- $g(0, 0, 0), g(0, 1, 0), g(0, 0, 1), g(0, 1, 1), g(1, 0, 0), ...$
-- $g(r_1, 0, 0), g(r_1, 1, 0), g(r_1, 0, 1), g(r_1, 1, 1)$
-- $g(r_1, r_2, 0), g(r_1, r_2, 1)$
+- $g(0, 0, 0),$ $\ g(0, 1, 0), $ $\ g(0, 0, 1),$ $\ g(0, 1, 1),$ $\ g(1, 0, 0), \ ...$
+- $g(r_1, 0, 0), \ g(r_1, 1, 0), \ g(r_1, 0, 1),$ $\ g(r_1, 1, 1)$
+- $g(r_1, r_2, 0), \ g(r_1, r_2, 1)$
 
 > If you need to, go check the protocol [again](/en/blog/the-zk-chronicles/sum-check#the-full-picture)!
 

@@ -12,7 +12,7 @@ description: >-
   Antes de avanzar hacia nuevos sistemas de pruebas, ¡debemos introducir una
   herramienta muy necesaria!
 readingTime: 14 min
-contentHash: 33334a0d324eb593b7d8bb4aa9caf661d6a9f97d8b8a3a66a8b10d30a286f5aa
+contentHash: c8440ebb32f203c935e1b5775118572c9766a64ae4fa5a51fad7d6204324412b
 supabaseId: null
 ---
 
@@ -330,9 +330,9 @@ Entonces, para evaluar $g$, tenemos que ir en la **dirección opuesta**. Empezam
 
 La magia ocurre cuando consideramos el contexto en el que se usan estas MLEs. Verás, en nuestro buen protocolo de verificación de la suma, necesitamos calcular $g$ en puntos como estos en rondas subsecuentes:
 
-- $g(0, 0, 0), g(0, 1, 0), g(0, 0, 1), g(0, 1, 1), g(1, 0, 0), ...$
-- $g(r_1, 0, 0), g(r_1, 1, 0), g(r_1, 0, 1), g(r_1, 1, 1)$
-- $g(r_1, r_2, 0), g(r_1, r_2, 1)$
+- $g(0, 0, 0),$ $\ g(0, 1, 0), $ $\ g(0, 0, 1),$ $\ g(0, 1, 1),$ $\ g(1, 0, 0), \ ...$
+- $g(r_1, 0, 0), \ g(r_1, 1, 0), \ g(r_1, 0, 1),$ $\ g(r_1, 1, 1)$
+- $g(r_1, r_2, 0), \ g(r_1, r_2, 1)$
 
 > ¡Si lo necesitas, ve a revisar el protocolo [de nuevo](/es/blog/the-zk-chronicles/sum-check#the-full-picture)!
 

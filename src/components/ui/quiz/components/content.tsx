@@ -17,7 +17,7 @@ interface QuizContentProps {
 const styles = {
     container: 'relative -mt-7 z-[1] w-full overflow-visible',
     borderWrapper: 'mt-[-1] p-[2px] bg-gradient-to-b from-secondary-700 to-primary-700',
-    content: 'relative bg-background p-6 pt-18 overflow-visible',
+    content: 'relative bg-background p-6 pt-22 overflow-visible',
     quizType: 'absolute top-0 right-0 bg-primary-700 p-2',
     quizTypeText: 'text-background text-md',
     title: "font-semibold text-xl mt-4 sm:mt-0 mb-4 flex",

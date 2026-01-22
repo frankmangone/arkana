@@ -7,7 +7,7 @@ interface QuizTypeNoteProps {
 }
 
 const styles = {
-    quizType: 'absolute top-10 sm:top-2 left-6 sm:left-auto sm:right-2 bg-secondary-300 p-2 flex items-center gap-2',
+    quizType: 'absolute top-14 sm:top-2 left-6 sm:left-auto sm:right-2 bg-secondary-300 p-2 flex items-center gap-2',
     icon: 'w-4 h-4 text-secondary-900',
     quizTypeText: 'text-secondary-900 font-medium text-sm',
 }
