@@ -4,13 +4,20 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css";
 
-export const LatexText: React.FC<{ children: string }> = ({ children }) => {
+interface LatexTextProps {
+  children: string;
+  className?: string;
+}
+
+export function LatexText(props: LatexTextProps) {
+  const { children, className = '' } = props;
+
   return (
     <ReactMarkdown
       remarkPlugins={[remarkMath]}
       rehypePlugins={[rehypeKatex]}
       components={{
-        p: ({ children }) => <>{children}</>,
+        p: ({ children }) => <span className={`block ${className}`}>{children}</span>,
       }}
     >
       {children}

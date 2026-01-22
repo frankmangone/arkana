@@ -1,3 +1,14 @@
+export enum EQuizType {
+  Single = "single",
+  Multiple = "multiple",
+}
+
+export enum EQuizResult {
+  Correct = 1,
+  PartiallyCorrect = 2,
+  Incorrect = 3,
+}
+
 export interface QuizOption {
   id: string;
   text: string;
@@ -12,7 +23,7 @@ export interface QuizQuestionContent {
 
 export interface QuizQuestion {
   id: string;
-  type: "single" | "multiple";
+  type: EQuizType;
   [lang: string]: QuizQuestionContent | string;
 }
 
@@ -29,5 +40,6 @@ export interface QuizBodyProps {
   questionId: string;
   questionContent: QuizQuestionContent;
   dictionary: QuizDictionary;
+  setResult: (result: EQuizResult) => void;
 }
 
