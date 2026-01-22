@@ -17,7 +17,13 @@ export function QuizHeader(props: QuizHeaderProps) {
   const { isOpen, toggleQuiz } = props;
 
   return (
-    <button onClick={toggleQuiz} className={styles.button}>
+    <button 
+      onClick={toggleQuiz} 
+      className={styles.button}
+      type="button"
+      aria-expanded={isOpen}
+      aria-label={isOpen ? "Collapse quiz" : "Expand quiz"}
+    >
         <div className={styles.line} />
 
         <div className={styles.textContainer(isOpen)}>
