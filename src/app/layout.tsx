@@ -240,8 +240,8 @@ export default async function RootLayout({
             <AuthProvider>{children}</AuthProvider>
           </Web3Provider>
         </ThemeProvider>
-        {process.env.NEXT_PUBLIC_DEV_MODE !== "true" && <Script async src="https://scripts.simpleanalyticscdn.com/latest.js" />}
       </body>
+      {process.env.NEXT_PUBLIC_DEV_MODE !== "true" && <Script src="https://scripts.simpleanalyticscdn.com/latest.js"  />}
     </html>
   );
 }
