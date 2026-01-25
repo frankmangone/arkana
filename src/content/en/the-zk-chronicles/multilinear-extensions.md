@@ -14,7 +14,7 @@ description: >-
 readingTime: 14 min
 mediumUrl: >-
   https://medium.com/@francomangone18/the-zk-chronicles-multilinear-extensions-7e93a685d8bf
-contentHash: 143d74d4d427803f17d0f28768338bac7ab6ccee717d18e701dccaca44709c4b
+contentHash: ab82c1a4f332237278fe157cb7ac05b1a10b5317c47939293534250ab1505a99
 supabaseId: null
 ---
 
@@ -415,4 +415,4 @@ I mean, encoding data is fine and everything, but where’s the **computation**?
 
 That’s where **circuits** come in. And that will be our next stop, where things will finally start clicking into place!
 
-See you on the next one!
+See you on the [next one](/en/blog/the-zk-chronicles/circuits-part-2)!

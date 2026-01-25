@@ -205,6 +205,11 @@ export const tags: TagDefinition = {
     es: "GHOSTDAG",
     pt: "GHOSTDAG",
   },
+  gkr: {
+    en: "GKR",
+    es: "GKR",
+    pt: "GKR",
+  },
   groups: {
     en: "Groups",
     es: "Grupos",

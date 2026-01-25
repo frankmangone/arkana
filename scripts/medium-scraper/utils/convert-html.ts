@@ -167,6 +167,9 @@ async function _convertHtmlToMarkdown(
       "**$1**"
     );
 
+    // Convert plain em tags (without class) to bold markdown
+    html = html.replace(/<em>(.*?)<\/em>/g, "**$1**");
+
     // Convert strong tags to bold markdown
     html = html.replace(/<strong[^>]*>(.*?)<\/strong>/g, "**$1**");
 

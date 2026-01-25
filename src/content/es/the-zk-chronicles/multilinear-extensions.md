@@ -12,7 +12,7 @@ description: >-
   Antes de avanzar hacia nuevos sistemas de pruebas, ¡debemos introducir una
   herramienta muy necesaria!
 readingTime: 14 min
-contentHash: c8440ebb32f203c935e1b5775118572c9766a64ae4fa5a51fad7d6204324412b
+contentHash: 11034b66f1c7da3768fd1d9a739e20b16baa590bbd324e29ccd34f9b8ec2dd94
 supabaseId: null
 ---
 
@@ -413,5 +413,4 @@ Quiero decir, codificar datos está bien y todo, pero ¿dónde está la **comput
 
 Ahí es donde entran los **circuitos**. ¡Y ese será nuestro próximo destino, donde las cosas finalmente empezarán a encajar!
 
-¡Nos vemos en la próxima!
-
+¡Nos vemos en [la próxima](/es/blog/the-zk-chronicles/circuits-part-2)!
