@@ -14,7 +14,7 @@ description: >-
   mechanism!
 mediumUrl: >-
   https://medium.com/@francomangone18/the-zk-chronicles-circuits-part-2-26e7d0ee1e87
-contentHash: efd03dc8e4b6d5a4c0521a89a016f4df9ff29a7bd4e3d70fe329c15c1989b97f
+contentHash: b6fe8d181e705d47d6387ff3f8c9691609b169b1407fef0cc0258d4ee7b79f5f
 supabaseId: null
 ---
 
@@ -335,6 +335,8 @@ $$
 As you can see, at each layer, we need values from the **next layer** to build this polynomial we’re using. Unless the verifier is looking at the input layer, they would **not know these values**! Instead, the prover will provide them — so this sum check reduces the problem to a claim about the **next layer**!
 
 Thus, we only need to apply this $d$ times (the depth of the circuit), and we’d be pretty much done.
+
+---
 
 ## The Remaining Challenges
 
