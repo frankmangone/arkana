@@ -25,6 +25,7 @@ Language-specific rules:
 - In SPANISH, translate `threshold signatures` as `firmas de umbral`.
 - In SPANISH, assume Blockchain to be female. So it's not `un Blockchain`, but `una Blockchain`. Same with other gender-specific prepositions.
 - In SPANISH, translate `sum-check protocol` to `protocolo de verificación de la suma`.
+- In SPANISH, translate `correctness of a computation` as `correctitud de un cómputo`.
 
 - In PORTUGUESE, keep in mind that we're translating to Brazilian portuguese, not portuguese from Portugal.
 - In PORTUGUESE, translate `encryption` or similar words to `encriptação` or their corresponding word. Same for `decryption` and `decriptação`.

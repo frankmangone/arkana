@@ -1,0 +1,56 @@
+{
+    "id": "hypercube-role",
+    "type": "single",
+    "en": {
+        "question": "What role did the boolean hypercube play in the #SAT problem?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "It encoded the circuit structure",
+                "isCorrect": false
+            },
+            {
+                "id": "opt2",
+                "text": "It represented the output values",
+                "isCorrect": false
+            },
+            {
+                "id": "opt3",
+                "text": "It simplified the polynomial evaluation",
+                "isCorrect": false
+            },
+            {
+                "id": "opt4",
+                "text": "It was the set of all possible input combinations",
+                "isCorrect": true
+            }
+        ],
+        "feedback": "The boolean hypercube represents all possible input combinations to the circuit. In #SAT, we sum over all these combinations to count the number of satisfying assignments, which naturally connects to the sum-check protocol."
+    },
+    "es": {
+        "question": "¿Qué papel jugaba el hipercubo booleano en el problema #SAT?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "Codificaba la estructura del circuito",
+                "isCorrect": false
+            },
+            {
+                "id": "opt2",
+                "text": "Representaba los valores de salida",
+                "isCorrect": false
+            },
+            {
+                "id": "opt3",
+                "text": "Simplificaba la evaluación de polinomios",
+                "isCorrect": false
+            },
+            {
+                "id": "opt4",
+                "text": "Era el conjunto de todas las combinaciones de entrada posibles",
+                "isCorrect": true
+            }
+        ],
+        "feedback": "El hipercubo booleano representa todas las combinaciones de entrada posibles del circuito. En #SAT, sumamos sobre todas estas combinaciones para contar el número de asignaciones satisfactorias, lo cual se conecta naturalmente con el protocolo de sum-check."
+    }
+}

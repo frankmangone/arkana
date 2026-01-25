@@ -46,7 +46,9 @@ $$
 
 I want us to take a moment to analyze how to approach this.
 
-We don’t have any clear hints yet. With #SAT, the [hypercube sum made the connection to sum-check obvious](/en/blog/the-zk-chronicles/circuits-part-1/#circuit-satisfiability), but we don’t have the same luck here. We’re gonna need another angle of attack.
+We don't have any clear hints yet. With #SAT, the [hypercube sum made the connection to sum-check obvious](/en/blog/the-zk-chronicles/circuits-part-1/#circuit-satisfiability), but we don't have the same luxury here. We're gonna need another angle of attack.
+
+<quiz src="the-zk-chronicles/circuits-part-2/hypercube-role.json" lang="en" />
 
 Maybe we should recollect our knowledge so far, and that will give us a direction to follow. Let’s see: we know arithmetic circuits are comprised of **addition** and **multiplication** gates. And whenever you feed some input to a circuit, it flows forward through the wires and into gates (remember, it’s a [DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)), which perform **simple operations**.
 
@@ -80,9 +82,11 @@ And that’s mainly where the power of circuits as a computation model comes fro
 
 Good! This seems like a promising starting point. What we need now is a way to use this newfound knowledge.
 
+<quiz src="the-zk-chronicles/circuits-part-2/decomposition-insight.json" lang="en" />
+
 ### Relevant Information
 
-In order to build a proving system, a verifier should be able to **probe** these gates to check if they are correctly calculated. This is usually done through an **encoding** **strategy**: the computation at a gate is somehow expressed in a form the verifier can use on their own.
+In order to build a proving system, a verifier should be able to **probe** these gates to check if they are correctly calculated. This is usually done through an **encoding strategy**: the computation at a gate is somehow expressed in a form the verifier can use on their own.
 
 So how do we do that?
 
@@ -154,7 +158,9 @@ Take a moment to let all this sink in. These kind of encoding strategies will be
 	/>
 </figure>
 
-Good? Okay, let’s move along!
+<quiz src="the-zk-chronicles/circuits-part-2/wiring-predicates.json" lang="en" />
+
+Good? Okay, let's move along!
 
 ---
 
@@ -205,7 +211,7 @@ Some protocols indeed take advantage of this structure. Such is the case of our 
 
 > GKR stands for the initials of the creators of the technique: Goldwasser, Kalai, and Rothblum. Several techniques in cryptography have adopted this way of naming.
 
-Now, this will combine pretty much everything we’ve learned so far: structured circuits, polynomial encoding, multilinear extensions, and sum checks.
+Now, this will combine pretty much everything we’ve learned so far: structured circuits, polynomial encoding, [multilinear extensions](/en/blog/the-zk-chronicles/multilinear-extensions), and [sum checks](/en/blog/the-zk-chronicles/sum-check).
 
 From personal experience, my suggestion is **not to rush this**. Circle back to the previous concepts if needed. This article is going nowhere — that much I can assure you!
 
@@ -238,6 +244,8 @@ $$
 > Where $W_i(b)$ returns the value on wire $b$ in layer $i$ ($b$ is a $k_i$**-bit binary string** indexing the wire).
 
 And you know what a boolean hypercube means: a **sum check** is coming!
+
+<quiz src="the-zk-chronicles/circuits-part-2/layer-gate-count.json" lang="en" />
 
 ### Connecting the Layers
 
@@ -387,7 +395,9 @@ $$
 >
 > Regarding the above equality, feel free to check if it holds if you’d like!
 
-And with this, we’re able to perform a sum-check on each layer!
+And with this, we're able to perform a sum-check on each layer!
+
+<quiz src="the-zk-chronicles/circuits-part-2/multilinear-extensions.json" lang="en" />
 
 ### Reducing Evaluations
 
@@ -450,6 +460,8 @@ The flow goes:
 - Starting on the last layer, prover and verifier engage in a round of sum-check, using the output value as the initial claim.
 - The prover reduces the two required $W$ evaluations to a single one via $q(X)$, which they send to the verifier. The verifier then calculates the claim for the next round of sum-check.
 - Rinse and repeat until the input layer is reached, at which point the verifier can close the verifications on their own (no oracle access is needed!).
+
+<quiz src="the-zk-chronicles/circuits-part-2/line-reduction.json" lang="en" />
 
 ---
 
@@ -526,6 +538,6 @@ We’ve just seen our first **truly general** circuit verification protocol. And
 
 Speaking of which, we have solely focused on circuits as our general computation models for now. I don’t know about you, but for me, writing a circuit does not feel like the most natural thing to do when writing a program. We normally think of computation in other terms.
 
-So, does that mean that our efforts are fundamentally flawed? This is a question that we’ll try to answer in our next encounter!
+So, does that mean that our efforts are fundamentally flawed? This is a question that we’ll try to answer in our [next encounter](/en/blog/the-zk-chronicles/computation-models)!
 
 See you soon!

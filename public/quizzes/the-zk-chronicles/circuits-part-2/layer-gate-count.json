@@ -1,0 +1,56 @@
+{
+    "id": "layer-gate-count",
+    "type": "single",
+    "en": {
+        "question": "Why does GKR require layers to have exactly $2^{k_i}$ gates?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "To ensure all layers have the same number of gates",
+                "isCorrect": false
+            },
+            {
+                "id": "opt2",
+                "text": "To enable indexing gates using the boolean hypercube",
+                "isCorrect": true
+            },
+            {
+                "id": "opt3",
+                "text": "To simplify the sum-check protocol",
+                "isCorrect": false
+            },
+            {
+                "id": "opt4",
+                "text": "To make the circuit evaluation faster",
+                "isCorrect": false
+            }
+        ],
+        "feedback": "The requirement of $2^{k_i}$ gates per layer allows us to index each gate using a $k_i$-bit binary string, which forms a boolean hypercube. This structure is essential for applying the sum-check protocol, as it enables us to sum over all possible gate indices efficiently."
+    },
+    "es": {
+        "question": "¿Por qué GKR requiere que las capas tengan exactamente $2^{k_i}$ compuertas?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "Para asegurar que todas las capas tengan el mismo número de compuertas",
+                "isCorrect": false
+            },
+            {
+                "id": "opt2",
+                "text": "Para permitir indexar compuertas usando el hipercubo booleano",
+                "isCorrect": true
+            },
+            {
+                "id": "opt3",
+                "text": "Para simplificar el protocolo de sum-check",
+                "isCorrect": false
+            },
+            {
+                "id": "opt4",
+                "text": "Para hacer la evaluación del circuito más rápida",
+                "isCorrect": false
+            }
+        ],
+        "feedback": "El requisito de $2^{k_i}$ compuertas por capa nos permite indexar cada compuerta usando una cadena binaria de $k_i$ bits, lo cual forma un hipercubo booleano. Esta estructura es esencial para aplicar el protocolo de sum-check, ya que nos permite sumar sobre todos los índices de compuertas posibles de manera eficiente."
+    }
+}

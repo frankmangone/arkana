@@ -1,0 +1,56 @@
+{
+    "id": "line-reduction",
+    "type": "single",
+    "en": {
+        "question": "What problem does the line reduction subprotocol solve in GKR?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "It combines two required evaluations into a single check to avoid exponential growth",
+                "isCorrect": true
+            },
+            {
+                "id": "opt2",
+                "text": "It reduces the number of layers in the circuit",
+                "isCorrect": false
+            },
+            {
+                "id": "opt3",
+                "text": "It simplifies the wiring predicate encoding",
+                "isCorrect": false
+            },
+            {
+                "id": "opt4",
+                "text": "It eliminates the need for multilinear extensions",
+                "isCorrect": false
+            }
+        ],
+        "feedback": "At the end of each sum-check round, the verifier needs two evaluations of the previous layer's wire polynomial. If we had to perform two separate sum-checks for each, the number of required checks would grow exponentially with circuit depth. The line reduction subprotocol cleverly combines these two evaluations into a single check using a line that interpolates between the two required points."
+    },
+    "es": {
+        "question": "¿Qué problema resuelve el subprotocolo de reducción de línea en GKR?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "Combina dos evaluaciones requeridas en una sola verificación para evitar crecimiento exponencial",
+                "isCorrect": true
+            },
+            {
+                "id": "opt2",
+                "text": "Reduce el número de capas en el circuito",
+                "isCorrect": false
+            },
+            {
+                "id": "opt3",
+                "text": "Simplifica la codificación del predicado de cableado",
+                "isCorrect": false
+            },
+            {
+                "id": "opt4",
+                "text": "Elimina la necesidad de extensiones multilineales",
+                "isCorrect": false
+            }
+        ],
+        "feedback": "Al final de cada ronda de verificación de la suma, el verificador necesita dos evaluaciones del polinomio de cables de la capa anterior. Si tuviéramos que realizar dos sum-checks separados para cada una, el número de verificaciones requeridas crecería exponencialmente con la profundidad del circuito. El subprotocolo de reducción de línea combina inteligentemente estas dos evaluaciones en una sola verificación usando una línea que interpola entre los dos puntos requeridos."
+    }
+}

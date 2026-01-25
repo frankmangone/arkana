@@ -1,0 +1,57 @@
+{
+    "id": "multilinear-extensions",
+    "type": "single",
+    "en": {
+        "question": "Why do we need multilinear extensions in GKR instead of working directly with boolean hypercube evaluations?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "Multilinear extensions are faster to compute",
+                "isCorrect": false
+            },
+            {
+                "id": "opt2",
+                "text": "Sum-check requires evaluating polynomials at random field points, not just boolean values",
+                "isCorrect": true
+            },
+            {
+                "id": "opt3",
+                "text": "Boolean hypercube evaluations are not unique",
+                "isCorrect": false
+            },
+            {
+                "id": "opt4",
+                "text": "Multilinear extensions reduce the circuit size",
+                "isCorrect": false
+            }
+        ],
+        "feedback": "During the sum-check protocol, the verifier needs to evaluate polynomials at randomly chosen points from the finite field. Since the original polynomials are only defined over the boolean hypercube (values 0 and 1), we need multilinear extensions to extend their domain to the entire field, allowing evaluation at arbitrary field points."
+    },
+    "es": {
+        "question": "¿Por qué necesitamos extensiones multilineales en GKR en lugar de trabajar directamente con evaluaciones del hipercubo booleano?",
+        "options": [
+
+            {
+                "id": "opt1",
+                "text": "Las extensiones multilineales son más rápidas de calcular",
+                "isCorrect": false
+            },
+            {
+                "id": "opt2",
+                "text": "La verificación de la suma requiere evaluar polinomios en puntos aleatorios del campo, no solo valores booleanos",
+                "isCorrect": true
+            },
+            {
+                "id": "opt3",
+                "text": "Las evaluaciones del hipercubo booleano no son únicas",
+                "isCorrect": false
+            },
+            {
+                "id": "opt4",
+                "text": "Las extensiones multilineales reducen el tamaño del circuito",
+                "isCorrect": false
+            }
+        ],
+        "feedback": "Durante el protocolo de verificación de la suma, el verificador necesita evaluar polinomios en puntos elegidos aleatoriamente del campo finito. Dado que los polinomios originales solo están definidos sobre el hipercubo booleano (valores 0 y 1), necesitamos extensiones multilineales para extender su dominio a todo el campo, permitiendo la evaluación en puntos arbitrarios del campo."
+    }
+}

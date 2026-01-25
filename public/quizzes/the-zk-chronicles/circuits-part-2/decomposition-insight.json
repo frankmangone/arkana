@@ -1,0 +1,56 @@
+{
+    "id": "decomposition-insight",
+    "type": "single",
+    "en": {
+        "question": "What is the key insight that allows us to decompose circuit evaluation checking?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "If the entire circuit result is correct, each individual gate must be correctly computed",
+                "isCorrect": true
+            },
+            {
+                "id": "opt2",
+                "text": "If each gate is correct, the entire circuit must be correct",
+                "isCorrect": false
+            },
+            {
+                "id": "opt3",
+                "text": "Circuits can be broken down into layers",
+                "isCorrect": false
+            },
+            {
+                "id": "opt4",
+                "text": "Polynomials can encode gate operations",
+                "isCorrect": false
+            }
+        ],
+        "feedback": "The key insight is that correctness of the entire circuit implies correctness of each individual gate. This allows us to decompose the verification problem into checking individual gates rather than the entire circuit at once."
+    },
+    "es": {
+        "question": "¿Cuál es la observación clave que nos permite descomponer la verificación de evaluación de circuitos?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "Si el resultado de todo el circuito es correcto, cada compuerta individual debe estar correctamente calculada",
+                "isCorrect": true
+            },
+            {
+                "id": "opt2",
+                "text": "Si cada compuerta es correcta, todo el circuito debe ser correcto",
+                "isCorrect": false
+            },
+            {
+                "id": "opt3",
+                "text": "Los circuitos pueden dividirse en capas",
+                "isCorrect": false
+            },
+            {
+                "id": "opt4",
+                "text": "Los polinomios pueden codificar operaciones de compuertas",
+                "isCorrect": false
+            }
+        ],
+        "feedback": "La observación clave es que la corrección de todo el circuito implica la corrección de cada compuerta individual. Esto nos permite descomponer el problema de verificación en verificar compuertas individuales en lugar de todo el circuito a la vez."
+    }
+}

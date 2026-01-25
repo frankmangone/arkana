@@ -1,0 +1,56 @@
+{
+    "id": "wiring-predicates",
+    "type": "single",
+    "en": {
+        "question": "In GKR, what do the wiring predicates $A_i$ and $M_i$ encode?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "The values on each wire in layer $i$",
+                "isCorrect": false
+            },
+            {
+                "id": "opt2",
+                "text": "Which gates are connected and whether they are addition or multiplication gates",
+                "isCorrect": true
+            },
+            {
+                "id": "opt3",
+                "text": "The number of gates in each layer",
+                "isCorrect": false
+            },
+            {
+                "id": "opt4",
+                "text": "The depth and width of the circuit",
+                "isCorrect": false
+            }
+        ],
+        "feedback": "The wiring predicates $A_i$ and $M_i$ encode the circuit structure: they indicate which gates are connected (which inputs feed into which outputs) and whether each gate is an addition gate ($A_i$) or a multiplication gate ($M_i$). Together with $W_i$ (which encodes wire values), they provide a complete description of the circuit."
+    },
+    "es": {
+        "question": "En GKR, ¿qué codifican los predicados de cableado $A_i$ y $M_i$?",
+        "options": [
+            {
+                "id": "opt1",
+                "text": "Los valores en cada cable en la capa $i$",
+                "isCorrect": false
+            },
+            {
+                "id": "opt2",
+                "text": "Qué compuertas están conectadas y si son compuertas de suma o multiplicación",
+                "isCorrect": true
+            },
+            {
+                "id": "opt3",
+                "text": "El número de compuertas en cada capa",
+                "isCorrect": false
+            },
+            {
+                "id": "opt4",
+                "text": "La profundidad y el ancho del circuito",
+                "isCorrect": false
+            }
+        ],
+        "feedback": "Los predicados de cableado $A_i$ y $M_i$ codifican la estructura del circuito: indican qué compuertas están conectadas (qué entradas alimentan qué salidas) y si cada compuerta es una compuerta de suma ($A_i$) o una compuerta de multiplicación ($M_i$). Junto con $W_i$ (que codifica los valores de los cables), proporcionan una descripción completa del circuito."
+    }
+}
