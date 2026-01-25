@@ -72,7 +72,7 @@ export function PostCard(props: PostCardProps) {
         <p className="text-gray-400 text-md mb-4 line-clamp-2">
           {post.description}
         </p>
-        <div className="flex flex-wrap gap-2 line-clamp-1 h-6 overflow-hidden">
+        <div className="flex flex-wrap gap-2 line-clamp-2 max-h-[56px] overflow-hidden">
           {post.tags.map((tag) => (
             <Tag key={tag} tag={tag} lang={lang} />
           ))}

@@ -45,13 +45,13 @@ export function FeaturedPostCard(props: FeaturedPostCardProps) {
       >
         <div
           className={`grid gap-4 grid-cols-5 ${
-            isLarge ? "md:grid-cols-1 md:gap-0" : "md:grid-cols-2 h-40"
+            isLarge ? "md:grid-cols-1 md:gap-0" : "md:grid-cols-2 h-40 md:h-52"
           }`}
         >
           <div
             className={`relative overflow-hidden col-span-2 md:col-span-1 ${
               imageClassName ?? ""
-            } h-40 ${isLarge ? "md:h-80 md:mb-4" : "md:h-40"}`}
+            } h-40 ${isLarge ? "md:h-[27.5rem] md:mb-4" : "md:h-52"}`}
           >
             <Image
               src={thumbnail}
@@ -73,7 +73,7 @@ export function FeaturedPostCard(props: FeaturedPostCardProps) {
             }`}
           >
             <div className="overflow-hidden">
-              <div className="flex justify-between gap-3 mb-2 text-sm text-gray-400 min-w-0">
+              <div className="flex justify-between gap-3 mb-3 text-sm text-gray-400 min-w-0">
                 <span className="flex-shrink-0">{date}</span>
                 <span className="inline-flex items-center min-w-0 flex-1 justify-end">
                   <User className="h-3 w-3 mr-1 flex-shrink-0" />
@@ -87,7 +87,7 @@ export function FeaturedPostCard(props: FeaturedPostCardProps) {
               </div>
               <div className="flex items-start justify-between">
                 <h2
-                  className={`font-bold mb-2 text-xl text-primary-750 group-hover:text-primary-650 transition-colors line-clamp-2 md:line-clamp-1 flex-1 min-w-0 ${
+                  className={`font-bold mb-3 text-xl text-primary-750 group-hover:text-primary-650 transition-colors line-clamp-2 md:line-clamp-1 flex-1 min-w-0 ${
                     isLarge ? "md:text-2xl" : ""
                   }`}
                 >
@@ -97,15 +97,15 @@ export function FeaturedPostCard(props: FeaturedPostCardProps) {
               </div>
               <div className="hidden md:block">
                 <p
-                  className={`text-gray-400 mb-3 text-sm line-clamp-2 ${
-                    isLarge ? "md:text-md md:mb-4" : ""
+                  className={`text-gray-400 mb-4 text-sm line-clamp-2 ${
+                    isLarge ? "md:text-md md:mb-5" : ""
                   }`}
                 >
                   {post.description}
                 </p>
               </div>
             </div>
-            <div className="flex flex-wrap gap-2 line-clamp-1 h-6 overflow-hidden">
+            <div className="flex flex-wrap gap-2 line-clamp-2 max-h-[56px] overflow-hidden">
               {post.tags.map((tag) => (
                 <Tag key={tag} tag={tag} lang={lang} />
               ))}

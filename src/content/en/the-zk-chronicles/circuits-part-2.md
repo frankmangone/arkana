@@ -521,7 +521,7 @@ Oh my God. That was a long one.
 We’ve just seen our first **truly general** circuit verification protocol. And despite its runtime limitations, GKR reveals something super important: that **fast verification** of **arbitrary computations** is possible.
 
 > This is a crucial stepping stone in our journey towards more practical protocols. Our goal moving forward will be to find better ways to encode and verify computations, but at least we now know it **can be done**.
-
+>
 > I think this is a powerful moment in our journey. I invite you to take a moment to appreciate how much we’ve done with just a couple tools. Just imagine what crazy things we’ll get into later!
 
 Speaking of which, we have solely focused on circuits as our general computation models for now. I don’t know about you, but for me, writing a circuit does not feel like the most natural thing to do when writing a program. We normally think of computation in other terms.
