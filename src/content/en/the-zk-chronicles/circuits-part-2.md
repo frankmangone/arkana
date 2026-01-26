@@ -14,7 +14,7 @@ description: >-
   mechanism!
 mediumUrl: >-
   https://medium.com/@francomangone18/the-zk-chronicles-circuits-part-2-26e7d0ee1e87
-contentHash: b6fe8d181e705d47d6387ff3f8c9691609b169b1407fef0cc0258d4ee7b79f5f
+contentHash: 76d09fa867116e47a52501f52306b3c31758df32b01ae14b0ed0db2c10be2281
 supabaseId: null
 ---
 

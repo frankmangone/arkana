@@ -10,9 +10,9 @@ tags:
   - sumCheck
   - gkr
 description: >-
-  ¡Avanzamos hacia nuestro primer mecanismo verdaderamente general para
-  probar la correctitud de cómputos!
-contentHash: b6fe8d181e705d47d6387ff3f8c9691609b169b1407fef0cc0258d4ee7b79f5f
+  ¡Avanzamos hacia nuestro primer mecanismo verdaderamente general para probar
+  la correctitud de cómputos!
+contentHash: 139b93c768f5d92c1cfc8c997a2127bc4638b843560a1168b5e55a2cf0dbc8ad
 supabaseId: null
 ---
 

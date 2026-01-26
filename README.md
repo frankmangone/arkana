@@ -28,11 +28,18 @@ Open [http://localhost:3000](http://localhost:3000) to see the result.
 
 ### Environment Setup
 
-Create a `.env.local` file with your Supabase credentials:
+Create a `.env.local` file with your environment variables:
 
 ```bash
+# Supabase Configuration
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
 SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
+
+# Backend API Configuration
+NEXT_PUBLIC_API_URL=http://localhost:8082
+
+# Optional: Development mode (enables testnet chains for Web3)
+NEXT_PUBLIC_DEV_MODE=false
 ```
 
 ## 📊 Content Management & Search
