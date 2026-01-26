@@ -1,8 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { supabase } from "@/lib/supabase/client";
-import { useAuth } from "../providers/auth-provider";
+import { useCurrentUser, useLogout } from "@/lib/api";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,26 +9,27 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { User, User2 } from "lucide-react";
+import Link from "next/link";
+import { useParams } from "next/navigation";
 
 export function AuthButton() {
-  const { user } = useAuth();
-
-  const handleLogin = async () => {
-    await supabase.auth.signInWithOAuth({
-      provider: "google",
-      options: {
-        redirectTo: `${window.location.origin}/auth/callback`,
-        queryParams: {
-          access_type: "offline",
-          prompt: "consent",
-        },
-      },
-    });
-  };
+  const params = useParams();
+  const lang = (params?.lang as string) || "en";
+  const { data: user, isLoading } = useCurrentUser();
+  const logout = useLogout();
 
   const handleLogout = async () => {
-    await supabase.auth.signOut();
+    try {
+      await logout.mutateAsync();
+      window.location.href = `/${lang}`;
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
   };
+
+  if (isLoading) {
+    return null;
+  }
 
   if (user) {
     return (
@@ -37,7 +37,7 @@ export function AuthButton() {
         <DropdownMenuTrigger asChild>
           <Button
             variant="ghost"
-            className="h-[40px] rounded-none py-2 px-4 flex cursor-pointer items-center gap-1 text-base hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500"
+            className="h-[40px] rounded-none py-2 px-4 flex cursor-pointer items-center gap-1 text-base hover:text-primary-750 dark:text-gray-300 dark:hover:text-primary-500"
           >
             <User2 className="h-5 w-5" />
             <span className="sr-only">User menu</span>
@@ -61,11 +61,13 @@ export function AuthButton() {
   return (
     <Button
       variant="ghost"
-      onClick={handleLogin}
+      asChild
       className="h-[40px] rounded-none py-2 px-4 flex cursor-pointer items-center gap-1 text-base hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500"
     >
-      <User className="h-7 w-7 sm:h-6 sm:w-6" />
-      Sign in
+      <Link href={`/${lang}/login`}>
+        <User className="h-7 w-7 sm:h-6 sm:w-6" />
+        Sign in
+      </Link>
     </Button>
   );
 }

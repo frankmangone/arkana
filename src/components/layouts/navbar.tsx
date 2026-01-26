@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { AuthButton } from "../auth/auth-button";
+import { AuthButton } from "../auth-button";
 
 interface NavbarProps {
   lang: string;

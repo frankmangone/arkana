@@ -116,5 +116,42 @@
     "incorrect": "Incorrect",
     "multipleChoice": "Multiple Choice",
     "singleChoice": "Single Choice"
+  },
+  "auth": {
+    "login": {
+      "title": "Sign In",
+      "description": "Welcome back! Sign in to your account",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Sign In",
+      "signingIn": "Signing in...",
+      "noAccount": "Don't have an account?",
+      "signUp": "Sign up",
+      "forgotPassword": "Forgot password?",
+      "errors": {
+        "invalidCredentials": "Invalid email or password",
+        "required": "This field is required",
+        "invalidEmail": "Please enter a valid email address"
+      }
+    },
+    "signup": {
+      "title": "Sign Up",
+      "description": "Create a new account to get started",
+      "email": "Email",
+      "username": "Username",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "submit": "Sign Up",
+      "signingUp": "Creating account...",
+      "hasAccount": "Already have an account?",
+      "signIn": "Sign in",
+      "errors": {
+        "emailExists": "This email is already registered",
+        "passwordTooShort": "Password must be at least 8 characters",
+        "usernameTooShort": "Username must be at least 3 characters",
+        "passwordsDontMatch": "Passwords don't match"
+      }
+    },
+    "signOut": "Sign out"
   }
 }

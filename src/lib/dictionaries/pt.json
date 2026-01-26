@@ -116,5 +116,42 @@
     "incorrect": "Incorreto",
     "multipleChoice": "Múltipla Escolha",
     "singleChoice": "Escolha Única"
+  },
+  "auth": {
+    "login": {
+      "title": "Entrar",
+      "description": "Bem-vindo de volta! Entre na sua conta",
+      "email": "E-mail",
+      "password": "Senha",
+      "submit": "Entrar",
+      "signingIn": "Entrando...",
+      "noAccount": "Não tem uma conta?",
+      "signUp": "Cadastre-se",
+      "forgotPassword": "Esqueceu a senha?",
+      "errors": {
+        "invalidCredentials": "E-mail ou senha inválidos",
+        "required": "Este campo é obrigatório",
+        "invalidEmail": "Por favor, insira um e-mail válido"
+      }
+    },
+    "signup": {
+      "title": "Cadastrar",
+      "description": "Crie uma nova conta para começar",
+      "email": "E-mail",
+      "username": "Nome de usuário",
+      "password": "Senha",
+      "confirmPassword": "Confirmar Senha",
+      "submit": "Cadastrar",
+      "signingUp": "Criando conta...",
+      "hasAccount": "Já tem uma conta?",
+      "signIn": "Entrar",
+      "errors": {
+        "emailExists": "Este e-mail já está registrado",
+        "passwordTooShort": "A senha deve ter pelo menos 8 caracteres",
+        "usernameTooShort": "O nome de usuário deve ter pelo menos 3 caracteres",
+        "passwordsDontMatch": "As senhas não coincidem"
+      }
+    },
+    "signOut": "Sair"
   }
 }

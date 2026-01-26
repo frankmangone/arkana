@@ -5,10 +5,11 @@ import { Footer } from "../custom/footer";
 interface MainLayoutProps {
   children: React.ReactNode;
   lang: string;
+  footer?: boolean;
 }
 
 export const MainLayout = async (props: MainLayoutProps) => {
-  const { children, lang } = props;
+  const { children, lang, footer = true } = props;
 
   return (
     <>
@@ -18,7 +19,7 @@ export const MainLayout = async (props: MainLayoutProps) => {
         <main className="flex-1 container mx-auto px-4 py-8 md:px-6 lg:px-8 max-w-8xl">
           {children}
         </main>
-        <Footer lang={lang} />
+        {footer && <Footer lang={lang} />}
       </div>
     </>
   );
