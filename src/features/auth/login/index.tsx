@@ -12,10 +12,8 @@ export function LoginPage(props: LoginPageProps) {
   
   return (
     <>
-        <div className="flex items-center justify-center min-h-[calc(100vh-200px)] py-12">
-            <LoginForm lang={lang} dictionary={dictionary} />
-        </div>
-        <Toaster />
+      <LoginForm lang={lang} dictionary={dictionary} />
+      <Toaster />
     </>
   );
 }

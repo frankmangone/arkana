@@ -1,4 +1,4 @@
-import { MainLayout } from '@/components/layouts/main-layout';
+import { AuthLayout } from '@/components/layouts/auth-layout';
 import { getDictionary } from '@/lib/dictionaries';
 import { notFound } from 'next/navigation';
 import { LoginPage } from '@/features/auth/login';
@@ -20,8 +20,8 @@ export default async function Page({ params }: PageProps) {
   const dict = await getDictionary(lang);
 
   return (
-    <MainLayout lang={lang} footer={false}>
+    <AuthLayout lang={lang}>
       <LoginPage lang={lang} dictionary={dict.auth} />
-    </MainLayout>
+    </AuthLayout>
   );
 }
