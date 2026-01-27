@@ -44,6 +44,7 @@ export interface RefreshTokenResponse {
 
 export interface GoogleTokenRequest {
   code: string;
+  redirect_uri: string;
 }
 
 // API Response wrapper

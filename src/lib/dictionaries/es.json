@@ -120,11 +120,12 @@
   "auth": {
     "login": {
       "title": "Iniciar Sesión",
-      "description": "¡Bienvenido de nuevo! Inicia sesión en tu cuenta",
+      "description": "¡Bienvenido de nuevo! Inicia sesión con tu cuenta de Google",
+      "loginWithGoogle": "Iniciar sesión con Google",
+      "signingIn": "Iniciando sesión...",
       "email": "Correo electrónico",
       "password": "Contraseña",
       "submit": "Iniciar Sesión",
-      "signingIn": "Iniciando sesión...",
       "noAccount": "¿No tienes una cuenta?",
       "signUp": "Regístrate",
       "forgotPassword": "¿Olvidaste tu contraseña?",

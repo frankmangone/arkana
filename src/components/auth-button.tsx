@@ -37,7 +37,7 @@ export function AuthButton() {
         <DropdownMenuTrigger asChild>
           <Button
             variant="ghost"
-            className="h-[40px] rounded-none py-2 px-4 flex cursor-pointer items-center gap-1 text-base hover:text-primary-750 dark:text-gray-300 dark:hover:text-primary-500"
+            className="h-[40px] rounded-none py-2 px-4 flex cursor-pointer items-center gap-1 text-base hover:text-primary-750 dark:text-gray-300 dark:hover:text-primary-750"
           >
             <User2 className="h-5 w-5" />
             <span className="sr-only">User menu</span>
@@ -62,7 +62,7 @@ export function AuthButton() {
     <Button
       variant="ghost"
       asChild
-      className="h-[40px] rounded-none py-2 px-4 flex cursor-pointer items-center gap-1 text-base hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500"
+      className="h-[40px] rounded-none py-2 px-4 flex cursor-pointer items-center gap-1 text-base hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-750"
     >
       <Link href={`/${lang}/login`}>
         <User className="h-7 w-7 sm:h-6 sm:w-6" />

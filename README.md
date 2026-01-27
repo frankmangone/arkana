@@ -38,8 +38,18 @@ SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
 # Backend API Configuration
 NEXT_PUBLIC_API_URL=http://localhost:8082
 
+# Google OAuth Configuration (for authentication)
+# Use the same Client ID as configured in your backend
+NEXT_PUBLIC_GOOGLE_CLIENT_ID=your_google_client_id
+
+# Site URL (for metadata and links)
+NEXT_PUBLIC_SITE_URL=https://arkana.blog
+
 # Optional: Development mode (enables testnet chains for Web3)
 NEXT_PUBLIC_DEV_MODE=false
+
+# Optional: Enable authentication features
+NEXT_PUBLIC_AUTH_ENABLED=true
 ```
 
 ## 📊 Content Management & Search

@@ -83,7 +83,8 @@ export function useGoogleAuth() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (code: string) => authService.googleToken(code),
+    mutationFn: ({ code, redirectUri }: { code: string; redirectUri: string }) => 
+      authService.googleToken(code, redirectUri),
     onSuccess: (data: AuthResponse) => {
       // Invalidate and refetch user data
       queryClient.setQueryData(authKeys.me(), data.user);

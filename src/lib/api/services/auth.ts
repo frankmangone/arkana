@@ -7,7 +7,6 @@ import type {
   RefreshTokenResponse,
   GoogleTokenRequest,
   User,
-  ErrorResponse,
 } from '../types';
 
 /**
@@ -66,7 +65,16 @@ export const authService = {
    */
   async logout(): Promise<void> {
     try {
-      await apiClient.post('/api/auth/logout');
+      // Get refresh token before clearing localStorage
+      const refreshToken = typeof window !== 'undefined' 
+        ? localStorage.getItem('refresh_token') 
+        : null;
+      
+      if (refreshToken) {
+        await apiClient.post('/api/auth/logout', {
+          refresh_token: refreshToken,
+        } as RefreshTokenRequest);
+      }
     } finally {
       // Clear tokens regardless of API response
       if (typeof window !== 'undefined') {
@@ -87,18 +95,24 @@ export const authService = {
   /**
    * Authenticate with Google OAuth code
    */
-  async googleToken(code: string): Promise<AuthResponse> {
-    const response = await apiClient.post<AuthResponse>('/api/auth/google/token', {
-      code: code,
-    } as GoogleTokenRequest);
-    
-    // Store tokens in localStorage
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('access_token', response.data.access_token);
-      localStorage.setItem('refresh_token', response.data.refresh_token);
+  async googleToken(code: string, redirectUri: string): Promise<AuthResponse> {
+    try {
+      const response = await apiClient.post<AuthResponse>('/api/auth/google/token', {
+        code: code,
+        redirect_uri: redirectUri,
+      } as GoogleTokenRequest);
+      
+      // Store tokens in localStorage
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('access_token', response.data.access_token);
+        localStorage.setItem('refresh_token', response.data.refresh_token);
+      }
+      
+      return response.data;
+    } catch (error: any) {
+      console.error('Google OAuth token exchange error:', error);
+      throw error;
     }
-    
-    return response.data;
   },
 
   /**

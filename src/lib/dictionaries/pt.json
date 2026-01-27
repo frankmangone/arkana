@@ -120,11 +120,12 @@
   "auth": {
     "login": {
       "title": "Entrar",
-      "description": "Bem-vindo de volta! Entre na sua conta",
+      "description": "Bem-vindo de volta! Entre com sua conta do Google",
+      "loginWithGoogle": "Entrar com Google",
+      "signingIn": "Entrando...",
       "email": "E-mail",
       "password": "Senha",
       "submit": "Entrar",
-      "signingIn": "Entrando...",
       "noAccount": "Não tem uma conta?",
       "signUp": "Cadastre-se",
       "forgotPassword": "Esqueceu a senha?",

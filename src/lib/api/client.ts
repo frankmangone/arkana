@@ -9,7 +9,7 @@ const apiClient: AxiosInstance = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
-  withCredentials: true, // Important for cookies if using them
+  // Note: withCredentials is not needed since we're using localStorage for tokens, not cookies
 });
 
 // Request interceptor to add auth token

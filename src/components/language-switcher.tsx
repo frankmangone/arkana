@@ -29,7 +29,7 @@ export function LanguageSwitcher() {
   const languageNames = {
     en: "English",
     es: "Español",
-    pt: "Português",
+    // pt: "Português",
   };
 
   return (
@@ -37,7 +37,7 @@ export function LanguageSwitcher() {
       <DropdownMenuTrigger asChild>
         <Button
           variant="ghost"
-          className="h-[40px] rounded-none py-2 px-4 flex cursor-pointer items-center gap-1 text-base hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500"
+          className="h-[40px] rounded-none py-2 px-4 flex cursor-pointer items-center gap-1 text-base hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-750"
         >
           <Globe className="h-7 w-7 sm:h-6 sm:w-6" />
           <span className="hidden sm:inline">

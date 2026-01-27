@@ -120,11 +120,12 @@
   "auth": {
     "login": {
       "title": "Sign In",
-      "description": "Welcome back! Sign in to your account",
+      "description": "Welcome back! Sign in with your Google account",
+      "loginWithGoogle": "Sign in with Google",
+      "signingIn": "Signing in...",
       "email": "Email",
       "password": "Password",
       "submit": "Sign In",
-      "signingIn": "Signing in...",
       "noAccount": "Don't have an account?",
       "signUp": "Sign up",
       "forgotPassword": "Forgot password?",
