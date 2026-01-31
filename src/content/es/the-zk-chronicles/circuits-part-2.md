@@ -12,7 +12,7 @@ tags:
 description: >-
   ¡Avanzamos hacia nuestro primer mecanismo verdaderamente general para probar
   la correctitud de cómputos!
-contentHash: 139b93c768f5d92c1cfc8c997a2127bc4638b843560a1168b5e55a2cf0dbc8ad
+contentHash: 303023e5f7c108928480ed8ecf34a518cd41eeb6ce9851fd4ef7af16077dd0da
 supabaseId: null
 ---
 
@@ -319,7 +319,7 @@ El punto clave de esto es que a pesar de sumar sobre un hipercubo booleano, **so
 Por ejemplo: si el cable $5$ en la capa $i$ obtiene entradas de los cables $2$ y $3$ en la capa $i + 1$ a través de una compuerta de suma, entonces tenemos que:
 
 - $A_i(2,3,5) = 1$
-- $_i(cualquier otra cosa, 5) = 0$
+- $A_i(\textrm{cualquier otra cosa}, 5) = 0$
 - ¡Toda la suma se reduce a solo $W_{i+1}(2) + W_{i+1}(3)$!
 
 Con esto, ¡las similitudes con la verificación de suma son mucho más evidentes!

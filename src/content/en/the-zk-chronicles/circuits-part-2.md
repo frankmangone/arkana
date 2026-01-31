@@ -14,7 +14,7 @@ description: >-
   mechanism!
 mediumUrl: >-
   https://medium.com/@francomangone18/the-zk-chronicles-circuits-part-2-26e7d0ee1e87
-contentHash: 76d09fa867116e47a52501f52306b3c31758df32b01ae14b0ed0db2c10be2281
+contentHash: 09a3ca495f837619e6a5d07817fbd87ae00f10f6a35c8b5112c25fdfc4f49000
 supabaseId: null
 ---
 
@@ -321,7 +321,7 @@ The key point here is that despite summing over a boolean hypercube, **only one*
 For example: if wire $5$ at layer $i$ gets inputs from wires $2$ and $3$ at layer $i + 1$ via an addition gate, then we have that:
 
 - $A_i(2,3,5) = 1$
-- $_i(anything else, 5) = 0$
+- $A_i(\textrm{anything else}, 5) = 0$
 - The entire sum reduces to just $W_{i+1}(2) + W_{i+1}(3)$!
 
 Now, the similarities with the sum check are much more evident!
