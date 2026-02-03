@@ -1,7 +1,7 @@
 ---
-title: 'Blockchain 101: Consenso en Polkadot'
+title: "Blockchain 101: Consenso en Polkadot"
 author: frank-mangone
-date: '2025-08-13'
+date: "2025-08-13"
 thumbnail: /images/blockchain-101/polkadot-consensus/diagram.png
 tags:
   - polkadot

@@ -1,57 +1,57 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { useCurrentUser, useLogout } from "@/lib/api";
+import { useWallet } from "@/components/providers/wallet-provider";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { User, User2 } from "lucide-react";
+import { Wallet, User } from "lucide-react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+
+function truncateAddress(address: string): string {
+  if (address.length <= 12) return address;
+  return `${address.slice(0, 6)}...${address.slice(-4)}`;
+}
 
 export function AuthButton() {
   const params = useParams();
   const lang = (params?.lang as string) || "en";
-  const { data: user, isLoading } = useCurrentUser();
-  const logout = useLogout();
+  const { wallet, disconnect } = useWallet();
 
-  const handleLogout = async () => {
-    try {
-      await logout.mutateAsync();
-      window.location.href = `/${lang}`;
-    } catch (error) {
-      console.error("Logout failed:", error);
-    }
-  };
-
-  if (isLoading) {
-    return null;
-  }
-
-  if (user) {
+  if (wallet) {
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
             variant="ghost"
-            className="h-[40px] rounded-none py-2 px-4 flex cursor-pointer items-center gap-1 text-base hover:text-primary-750 dark:text-gray-300 dark:hover:text-primary-750"
+            className="h-[40px] rounded-none py-2 px-4 flex cursor-pointer items-center gap-2 text-base hover:text-primary-750 dark:text-gray-300 dark:hover:text-primary-750"
           >
-            <User2 className="h-5 w-5" />
-            <span className="sr-only">User menu</span>
+            <Wallet className="h-5 w-5" />
+            <span className="hidden sm:inline text-sm">
+              {truncateAddress(wallet.address)}
+            </span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-56">
-          <DropdownMenuItem className="py-3 text-base">
-            <span className="truncate block w-full">{user.email}</span>
+          <DropdownMenuItem className="py-3 text-base" disabled>
+            <span className="truncate block w-full text-xs text-muted-foreground">
+              {wallet.walletName} ({wallet.networkType})
+            </span>
+          </DropdownMenuItem>
+          <DropdownMenuItem className="py-3 text-base" disabled>
+            <span className="truncate block w-full text-sm">
+              {truncateAddress(wallet.address)}
+            </span>
           </DropdownMenuItem>
           <DropdownMenuItem
             className="cursor-pointer py-3 text-base"
-            onClick={handleLogout}
+            onClick={disconnect}
           >
-            Sign out
+            Disconnect
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

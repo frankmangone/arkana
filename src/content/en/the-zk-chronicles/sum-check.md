@@ -1,7 +1,7 @@
 ---
-title: 'The ZK Chronicles: Sum Check'
+title: "The ZK Chronicles: Sum Check"
 author: frank-mangone
-date: '2025-11-25'
+date: "2025-11-25"
 thumbnail: /images/the-zk-chronicles/sum-check/1_Yzr-2zVpHO5IToX1NfBcEw.webp
 tags:
   - sumCheck
@@ -12,7 +12,7 @@ description: >-
   Equipped with finite fields and polynomials, it’s time to take a look at our
   very first proving system!
 readingTime: 13 min
-mediumUrl: 'https://medium.com/@francomangone18/the-zk-chronicles-sum-check-0ccf23ffc0e4'
+mediumUrl: "https://medium.com/@francomangone18/the-zk-chronicles-sum-check-0ccf23ffc0e4"
 contentHash: 6064787a66f4cd2a41210c3b1302f8818a2ab92d9fd915d24ced767bf0e957d7
 supabaseId: null
 ---

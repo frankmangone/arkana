@@ -1,6 +1,6 @@
 ---
-title: 'Blockchain 101: Wrapping Up Ethereum'
-date: '2025-04-07'
+title: "Blockchain 101: Wrapping Up Ethereum"
+date: "2025-04-07"
 author: frank-mangone
 thumbnail: /images/blockchain-101/wrapping-up-ethereum/ethereum-coin.webp
 tags:
@@ -13,7 +13,7 @@ description: >-
   A few last comments on important architectural aspects of Ethereum, rounding
   up the section on this Blockchain!
 readingTime: 11 min
-mediumUrl: 'https://medium.com/@francomangone18/blockchain-101-ro-ethereum-8493b8072862'
+mediumUrl: "https://medium.com/@francomangone18/blockchain-101-ro-ethereum-8493b8072862"
 contentHash: 5233021581a01fda9493697104ff294f5b50573be7a12346ed3de8177c546699
 supabaseId: 8dc10fe7-32f1-46a6-b156-681fd097c00b
 ---

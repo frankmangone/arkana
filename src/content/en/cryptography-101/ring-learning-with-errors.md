@@ -1,6 +1,6 @@
 ---
-title: 'Cryptography 101: Ring Learning With Errors'
-date: '2024-09-17'
+title: "Cryptography 101: Ring Learning With Errors"
+date: "2024-09-17"
 author: frank-mangone
 thumbnail: /images/cryptography-101/ring-learning-with-errors/lattice-generation.webp
 tags:

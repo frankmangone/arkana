@@ -19,9 +19,9 @@ For production, set it to your production backend URL.
 The easiest way to use the API is with the provided React Query hooks:
 
 ```tsx
-'use client';
+"use client";
 
-import { useLogin, useCurrentUser, useLogout } from '@/lib/api';
+import { useLogin, useCurrentUser, useLogout } from "@/lib/api";
 
 export function LoginForm() {
   const login = useLogin();
@@ -31,16 +31,16 @@ export function LoginForm() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    
+
     try {
       await login.mutateAsync({
-        email: formData.get('email') as string,
-        password: formData.get('password') as string,
+        email: formData.get("email") as string,
+        password: formData.get("password") as string,
       });
       // Success! User is now logged in
     } catch (error) {
       // Handle error
-      console.error('Login failed:', error);
+      console.error("Login failed:", error);
     }
   };
 
@@ -58,7 +58,7 @@ export function LoginForm() {
       <input name="email" type="email" required />
       <input name="password" type="password" required />
       <button type="submit" disabled={login.isPending}>
-        {login.isPending ? 'Logging in...' : 'Login'}
+        {login.isPending ? "Logging in..." : "Login"}
       </button>
     </form>
   );
@@ -86,12 +86,12 @@ export function LoginForm() {
 You can also use the services directly if you need more control:
 
 ```tsx
-import { authService } from '@/lib/api';
+import { authService } from "@/lib/api";
 
 // Login
 const response = await authService.login({
-  email: 'user@example.com',
-  password: 'password123',
+  email: "user@example.com",
+  password: "password123",
 });
 
 // Get current user
@@ -125,7 +125,7 @@ The API client includes automatic error handling:
 All API responses and requests are fully typed:
 
 ```tsx
-import type { User, AuthResponse, LoginRequest } from '@/lib/api';
+import type { User, AuthResponse, LoginRequest } from "@/lib/api";
 
 const login = async (data: LoginRequest): Promise<AuthResponse> => {
   return authService.login(data);
@@ -162,10 +162,10 @@ Since the frontend uses static export (`output: "export"`), all API calls must b
 ## Example: Complete Auth Flow
 
 ```tsx
-'use client';
+"use client";
 
-import { useLogin, useSignup, useCurrentUser, useLogout } from '@/lib/api';
-import { useState } from 'react';
+import { useLogin, useSignup, useCurrentUser, useLogout } from "@/lib/api";
+import { useState } from "react";
 
 export function AuthExample() {
   const [isSignup, setIsSignup] = useState(false);
@@ -177,23 +177,23 @@ export function AuthExample() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    
+
     const data = {
-      email: formData.get('email') as string,
-      password: formData.get('password') as string,
+      email: formData.get("email") as string,
+      password: formData.get("password") as string,
     };
 
     try {
       if (isSignup) {
         await signup.mutateAsync({
           ...data,
-          username: formData.get('username') as string,
+          username: formData.get("username") as string,
         });
       } else {
         await login.mutateAsync(data);
       }
     } catch (error) {
-      console.error('Auth failed:', error);
+      console.error("Auth failed:", error);
     }
   };
 
@@ -213,16 +213,12 @@ export function AuthExample() {
 
   return (
     <form onSubmit={handleSubmit}>
-      {isSignup && (
-        <input name="username" placeholder="Username" required />
-      )}
+      {isSignup && <input name="username" placeholder="Username" required />}
       <input name="email" type="email" placeholder="Email" required />
       <input name="password" type="password" placeholder="Password" required />
-      <button type="submit">
-        {isSignup ? 'Sign Up' : 'Login'}
-      </button>
+      <button type="submit">{isSignup ? "Sign Up" : "Login"}</button>
       <button type="button" onClick={() => setIsSignup(!isSignup)}>
-        Switch to {isSignup ? 'Login' : 'Sign Up'}
+        Switch to {isSignup ? "Login" : "Sign Up"}
       </button>
     </form>
   );

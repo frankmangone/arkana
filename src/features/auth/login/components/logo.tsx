@@ -42,26 +42,27 @@ export function Logo({
   ) => {
     const from = getVertexCoordinates(fromX, fromY, size);
     const to = getVertexCoordinates(toX, toY, size);
-    
+
     // Check if endpoints are at canvas edges (0 or 16 in grid coordinates)
-    const isFromAtEdge = fromX === 0 || fromX === 16 || fromY === 0 || fromY === 16;
+    const isFromAtEdge =
+      fromX === 0 || fromX === 16 || fromY === 0 || fromY === 16;
     const isToAtEdge = toX === 0 || toX === 16 || toY === 0 || toY === 16;
-    
+
     let adjustedFrom = { x: from.x, y: from.y };
     let adjustedTo = { x: to.x, y: to.y };
-    
+
     // Only adjust endpoints that are at the edge
     if (isFromAtEdge || isToAtEdge) {
       const dx = to.x - from.x;
       const dy = to.y - from.y;
       const length = Math.sqrt(dx * dx + dy * dy);
-      
+
       if (length > 0) {
         // Normalize direction
         const nx = dx / length;
         const ny = dy / length;
         const offset = lineWidth / 2;
-        
+
         // Only offset if the endpoint is at the edge
         if (isFromAtEdge) {
           adjustedFrom = {
@@ -69,7 +70,7 @@ export function Logo({
             y: from.y + ny * offset,
           };
         }
-        
+
         if (isToAtEdge) {
           adjustedTo = {
             x: to.x - nx * offset,
@@ -156,15 +157,23 @@ export function Logo({
     if (elements.top) drawLine(ctx, 8, 0, 8, 4, canvasSize, lineWidth);
     if (elements.bottom) drawLine(ctx, 8, 16, 8, 12, canvasSize, lineWidth);
 
-    if (elements.top_left_ray) drawLine(ctx, 5.7, 5.7, 3, 3, canvasSize, lineWidth);
-    if (elements.top_right_ray) drawLine(ctx, 5.7, 10.3, 3, 13, canvasSize, lineWidth);
-    if (elements.bottom_left_ray) drawLine(ctx, 10.3, 5.7, 13, 3, canvasSize, lineWidth);
-    if (elements.bottom_right_ray) drawLine(ctx, 10.3, 10.3, 13, 13, canvasSize, lineWidth);
+    if (elements.top_left_ray)
+      drawLine(ctx, 5.7, 5.7, 3, 3, canvasSize, lineWidth);
+    if (elements.top_right_ray)
+      drawLine(ctx, 5.7, 10.3, 3, 13, canvasSize, lineWidth);
+    if (elements.bottom_left_ray)
+      drawLine(ctx, 10.3, 5.7, 13, 3, canvasSize, lineWidth);
+    if (elements.bottom_right_ray)
+      drawLine(ctx, 10.3, 10.3, 13, 13, canvasSize, lineWidth);
 
-    if (elements.top_left_left_side) drawLine(ctx, 4, 8, 6, 6, canvasSize, lineWidth);
-    if (elements.top_top_left_side) drawLine(ctx, 6, 6, 8, 4, canvasSize, lineWidth);
-    if (elements.top_top_right_side) drawLine(ctx, 10, 6, 8, 4, canvasSize, lineWidth);
-    if (elements.top_right_right_side) drawLine(ctx, 12, 8, 10, 6, canvasSize, lineWidth);
+    if (elements.top_left_left_side)
+      drawLine(ctx, 4, 8, 6, 6, canvasSize, lineWidth);
+    if (elements.top_top_left_side)
+      drawLine(ctx, 6, 6, 8, 4, canvasSize, lineWidth);
+    if (elements.top_top_right_side)
+      drawLine(ctx, 10, 6, 8, 4, canvasSize, lineWidth);
+    if (elements.top_right_right_side)
+      drawLine(ctx, 12, 8, 10, 6, canvasSize, lineWidth);
 
     if (elements.bottom_right_right_side)
       drawLine(ctx, 4, 8, 6, 10, canvasSize, lineWidth);
@@ -192,11 +201,15 @@ export function Logo({
   }, [canvasSize, lineWidth, lineColor, backgroundColor]);
 
   return (
-    <canvas
-      ref={canvasRef}
-      width={canvasSize}
-      height={canvasSize}
-      className={className}
-    />
+    <div className="flex justify-center mb-6">
+      <div className="relative">
+        <canvas
+          ref={canvasRef}
+          width={canvasSize}
+          height={canvasSize}
+          className={className}
+        />
+      </div>
+    </div>
   );
 }

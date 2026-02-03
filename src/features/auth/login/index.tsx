@@ -9,7 +9,7 @@ interface LoginPageProps {
 
 export function LoginPage(props: LoginPageProps) {
   const { lang, dictionary } = props;
-  
+
   return (
     <>
       <LoginForm lang={lang} dictionary={dictionary} />

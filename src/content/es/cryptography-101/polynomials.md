@@ -1,6 +1,6 @@
 ---
-title: 'Criptografía 101: Polinomios'
-date: '2024-04-24'
+title: "Criptografía 101: Polinomios"
+date: "2024-04-24"
 author: frank-mangone
 thumbnail: /images/cryptography-101/polynomials/parabola-points.webp
 tags:

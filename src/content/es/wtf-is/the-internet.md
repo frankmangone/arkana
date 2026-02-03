@@ -1,6 +1,6 @@
 ---
 title: WTF es el Internet
-date: '2025-05-26'
+date: "2025-05-26"
 author: frank-mangone
 tags:
   - internet

@@ -1,6 +1,6 @@
 ---
 title: Curvas Elípticas En Profundidad (Parte 4)
-date: '2025-03-03'
+date: "2025-03-03"
 author: frank-mangone
 thumbnail: /images/elliptic-curves-in-depth/part-4/yoda.webp
 tags:

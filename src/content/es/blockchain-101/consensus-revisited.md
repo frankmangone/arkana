@@ -1,6 +1,6 @@
 ---
-title: 'Blockchain 101: Consenso Revisitado'
-date: '2025-03-17'
+title: "Blockchain 101: Consenso Revisitado"
+date: "2025-03-17"
 author: frank-mangone
 thumbnail: /images/blockchain-101/consensus-revisited/slash.webp
 tags:

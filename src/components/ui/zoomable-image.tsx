@@ -14,10 +14,10 @@ export function ZoomableImage({
 }: ImgHTMLAttributes<HTMLImageElement>) {
   // Add base path prefix to src
   const fullSrc = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${(src as string) ?? ""}`;
-  
+
   // Use title as caption if provided
   const caption = title;
-  
+
   // Set defaults
   const imageWidth = width ? Number(width) : 1000;
   const imageHeight = height ? Number(height) : 1000;

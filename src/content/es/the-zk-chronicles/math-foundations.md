@@ -1,7 +1,7 @@
 ---
-title: 'Las Crónicas de ZK: Fundamentos Matemáticos'
+title: "Las Crónicas de ZK: Fundamentos Matemáticos"
 author: frank-mangone
-date: '2025-11-18'
+date: "2025-11-18"
 thumbnail: /images/the-zk-chronicles/math-foundations/0*GbSJc4K4r9V14xsi-3.jpg
 tags:
   - zeroKnowledgeProofs
@@ -14,6 +14,7 @@ readingTime: 12 min
 contentHash: 23b70e5a73e32d2f1546268f0ffc8c58ffa71a416e9582df38bbb3bb0042185b
 supabaseId: 6049c9f8-19b0-44da-bb63-daefd0fecca9
 ---
+
 Habiendo dejado atrás la [introducción a la serie](/es/blog/the-zk-chronicles/first-steps), ahora es momento de empezar a trabajar en nuestro conjunto de herramientas, para que podamos encaminarnos hacia el objetivo de crear estos **sistemas de pruebas** a los que ya hemos aludido.
 
 Sinceramente espero que el artículo anterior no haya sido demasiado aterrador. Para compensarlo un poquito, diré que los conceptos que veremos hoy no son demasiado complicados, mientras que al mismo tiempo tienen el beneficio adicional de ser **bastante fundamentales** para cualquier criptografía seria.
@@ -30,7 +31,7 @@ Con eso, ¡el contexto está claramente establecido! Entonces, ¿por dónde empe
 
 En criptografía, la **precisión** es de suma importancia.
 
-Lo que quiero decir con esto es que los algoritmos necesitan ser **consistentes**. Solo imagina una firma digital que funcione solo ocasionalmente — creo que estarías de acuerdo conmigo en que sería un algoritmo de m*erda (perdón por mi francés).
+Lo que quiero decir con esto es que los algoritmos necesitan ser **consistentes**. Solo imagina una firma digital que funcione solo ocasionalmente — creo que estarías de acuerdo conmigo en que sería un algoritmo de m\*erda (perdón por mi francés).
 
 Por lo tanto, nuestras unidades básicas de información, o la forma en que representamos las cosas de aquí en adelante, deben ser tales que evitemos pequeños errores en las operaciones que podrían explotar si se dejan sin mucho control.
 
@@ -38,7 +39,7 @@ Por lo tanto, nuestras unidades básicas de información, o la forma en que repr
 
 Los **enteros** son bastante buenos en eso: al evitar operaciones de [punto flotante](https://en.wikipedia.org/wiki/Floating-point_arithmetic), mantenemos las cosas limpias y consistentes. No debería sorprendernos entonces que la estructura más fundamental sobre la que construiremos sea un **conjunto de enteros**: lo que llamamos un **campo finito**.
 
-Más estrictamente, un [campo](https://es.wikipedia.org/wiki/Cuerpo_(matem%C3%A1ticas)) (o cuerpo) se define como un **conjunto de elementos**, para el cual podemos definir cuatro operaciones: **adición**, **sustracción**, **multiplicación** y **división** (excepto por cero o elementos similares a cero).
+Más estrictamente, un [campo](<https://es.wikipedia.org/wiki/Cuerpo_(matem%C3%A1ticas)>) (o cuerpo) se define como un **conjunto de elementos**, para el cual podemos definir cuatro operaciones: **adición**, **sustracción**, **multiplicación** y **división** (excepto por cero o elementos similares a cero).
 
 > Esto debería sonar familiar — ¡los **números reales** que conocemos y amamos son un campo!
 
@@ -345,4 +346,3 @@ En cambio, será mejor comenzar a explorar las **aplicaciones** que hacen uso de
 Así que en nuestro [próximo encuentro](/es/blog/the-zk-chronicles/sum-check), estaremos viendo uno de los protocolos más simples pero más fundamentales que podemos crear a partir de estos bloques básicos de construcción presentados hoy.
 
 ¡Nos vemos pronto!
-

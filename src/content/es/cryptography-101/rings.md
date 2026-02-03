@@ -1,6 +1,6 @@
 ---
-title: 'Criptografía 101: Anillos'
-date: '2024-08-27'
+title: "Criptografía 101: Anillos"
+date: "2024-08-27"
 author: frank-mangone
 thumbnail: /images/cryptography-101/rings/saurons-eye.webp
 tags:

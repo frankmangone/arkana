@@ -62,8 +62,8 @@ function getImageFilename(url: string, index: number): string {
       const extension = url.includes(".jpg")
         ? ".jpg"
         : url.includes(".png")
-        ? ".png"
-        : ".jpg";
+          ? ".png"
+          : ".jpg";
       return `image-${index}${extension}`;
     }
 
@@ -76,8 +76,8 @@ function getImageFilename(url: string, index: number): string {
     const extension = url.includes(".jpg")
       ? ".jpg"
       : url.includes(".png")
-      ? ".png"
-      : ".jpg";
+        ? ".png"
+        : ".jpg";
     return `image-${index}${extension}`;
   }
 }
@@ -133,7 +133,10 @@ async function _convertHtmlToMarkdown(
   const $ = cheerio.load(htmlContent);
 
   // Use the title from RSS metadata if provided, otherwise extract from HTML
-  const title = articleTitle || $("h3").first().text().trim() || $("h4").first().text().trim();
+  const title =
+    articleTitle ||
+    $("h3").first().text().trim() ||
+    $("h4").first().text().trim();
   console.log("Found title:", title);
 
   // Reading time and publish date are not available in RSS feed
@@ -217,7 +220,8 @@ async function _convertHtmlToMarkdown(
   console.log("Processing RSS feed content");
 
   // Process all elements in order - RSS feeds have simpler structure
-  $("h1, h2, h3, h4, h5, h6, p, pre, figure, blockquote, ul, ol").each((_, el) => {
+  $("h1, h2, h3, h4, h5, h6, p, pre, figure, blockquote, ul, ol").each(
+    (_, el) => {
       const $el = $(el);
       const tagName = $el.prop("tagName").toLowerCase();
 
@@ -314,15 +318,14 @@ async function _convertHtmlToMarkdown(
             // Keep the remote URL instead of downloading due to Cloudflare protection
             content.push(
               `\n<figure>\n\t<img\n\t\tsrc="${imageUrl}"\n\t\talt="" ${
-                caption
-                  ? `\n\t\ttitle="${caption.replace(/…/g, "...")}"`
-                  : ""
+                caption ? `\n\t\ttitle="${caption.replace(/…/g, "...")}"` : ""
               }\n\t/>\n</figure>\n`
             );
           }
         }
       }
-    });
+    }
+  );
 
   // Wait for all image downloads to complete
   console.log(`Starting download of ${imageDownloads.length} images...`);

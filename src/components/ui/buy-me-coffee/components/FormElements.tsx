@@ -1,5 +1,5 @@
-import { ChevronDown } from 'lucide-react';
-import { SUPPORTED_NETWORKS, DEFAULT_AMOUNT } from '../use-component';
+import { ChevronDown } from "lucide-react";
+import { SUPPORTED_NETWORKS, DEFAULT_AMOUNT } from "../use-component";
 
 interface FormElementsProps {
   amount: string;
@@ -42,7 +42,11 @@ export function FormElements({
           className="w-full px-4 py-3 pr-10 bg-transparent border-2 border-[#FC7988] text-white focus:outline-none focus:border-[#FB8A60] transition-colors appearance-none cursor-pointer"
         >
           {SUPPORTED_NETWORKS.map((network) => (
-            <option key={network.id} value={network.id} className="bg-[#2a1810] text-white">
+            <option
+              key={network.id}
+              value={network.id}
+              className="bg-[#2a1810] text-white"
+            >
               {network.name}
             </option>
           ))}

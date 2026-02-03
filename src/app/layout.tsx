@@ -7,6 +7,7 @@ import "prismjs/themes/prism-tomorrow.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { AuthProvider } from "@/components/providers/auth-provider";
 import { Web3Provider } from "@/components/providers/web3-provider";
+import { WalletProvider } from "@/components/providers/wallet-provider";
 import Script from "next/script";
 
 const spaceGrotesk = Space_Grotesk({
@@ -237,11 +238,15 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           <Web3Provider>
-            <AuthProvider>{children}</AuthProvider>
+            <WalletProvider>
+              <AuthProvider>{children}</AuthProvider>
+            </WalletProvider>
           </Web3Provider>
         </ThemeProvider>
       </body>
-      {process.env.NEXT_PUBLIC_DEV_MODE !== "true" && <Script src="https://scripts.simpleanalyticscdn.com/latest.js"  />}
+      {process.env.NEXT_PUBLIC_DEV_MODE !== "true" && (
+        <Script src="https://scripts.simpleanalyticscdn.com/latest.js" />
+      )}
     </html>
   );
 }

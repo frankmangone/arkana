@@ -82,9 +82,7 @@ export function TableOfContents({ content }: TableOfContentsProps) {
               <a
                 href={`#${heading.id}`}
                 className={`block text-lg text-primary-750 hover:text-primary-650 transition-colors tracking-wide ${
-                  heading.level === 2
-                    ? "pl-0"
-                    : "pl-6"
+                  heading.level === 2 ? "pl-0" : "pl-6"
                 }`}
               >
                 {heading.text}

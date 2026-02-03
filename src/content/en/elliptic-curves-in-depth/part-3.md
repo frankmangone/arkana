@@ -1,6 +1,6 @@
 ---
 title: Elliptic Curves In-Depth (Part 3)
-date: '2025-01-29'
+date: "2025-01-29"
 author: frank-mangone
 thumbnail: /images/elliptic-curves-in-depth/part-3/hawk.webp
 tags:

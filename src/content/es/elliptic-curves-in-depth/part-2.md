@@ -1,6 +1,6 @@
 ---
 title: Curvas Elípticas En Profundidad (Parte 2)
-date: '2025-01-22'
+date: "2025-01-22"
 author: frank-mangone
 thumbnail: /images/elliptic-curves-in-depth/part-2/monkey-head-scratching.webp
 tags:

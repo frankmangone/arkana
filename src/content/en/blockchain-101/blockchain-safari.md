@@ -1,6 +1,6 @@
 ---
-title: 'Blockchain 101: Blockchain Safari'
-date: '2025-06-16'
+title: "Blockchain 101: Blockchain Safari"
+date: "2025-06-16"
 author: frank-mangone
 thumbnail: /images/blockchain-101/blockchain-safari/cheetah.webp
 tags:

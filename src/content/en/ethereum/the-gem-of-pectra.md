@@ -1,6 +1,6 @@
 ---
-title: 'The Gem of Pectra: EIP-7702, the SetCode Transaction'
-date: '2025-03-31'
+title: "The Gem of Pectra: EIP-7702, the SetCode Transaction"
+date: "2025-03-31"
 author: gonzalo-bustos
 thumbnail: /images/ethereum/the-gem-of-pectra/7702.webp
 tags:

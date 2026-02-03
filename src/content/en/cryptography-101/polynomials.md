@@ -1,6 +1,6 @@
 ---
-title: 'Cryptography 101: Polynomials'
-date: '2024-04-24'
+title: "Cryptography 101: Polynomials"
+date: "2024-04-24"
 author: frank-mangone
 thumbnail: /images/cryptography-101/polynomials/parabola-points.webp
 tags:
@@ -12,7 +12,7 @@ description: >-
   Polynomials play an important role in many cryptographic applications. This
   article is dedicated to giving a brief intro to the topic
 readingTime: 8 min
-mediumUrl: 'https://medium.com/@francomangone18/cryptography-101-polynomials-c888f31a571e'
+mediumUrl: "https://medium.com/@francomangone18/cryptography-101-polynomials-c888f31a571e"
 contentHash: de861ca2aaaf9f0e4250d0bca46fad3b836ddbf2c21a30b75a254b7be3d7b320
 supabaseId: 90cabede-a1f7-452a-a422-b34192fdb1bd
 ---

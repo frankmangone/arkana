@@ -47,4 +47,3 @@ export async function generateMetadata({
     keywords: post.metadata.tags,
   });
 }
-

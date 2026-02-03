@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import { useEffect, useState, useRef } from 'react';
-import { useRouter, useParams } from 'next/navigation';
-import { useGoogleAuth } from '@/lib/api';
-import { extractOAuthCode } from '@/lib/auth/google-oauth';
-import { toast } from 'sonner';
+import { useEffect, useState, useRef } from "react";
+import { useRouter, useParams } from "next/navigation";
+import { useGoogleAuth } from "@/lib/api";
+import { extractOAuthCode } from "@/lib/auth/google-oauth";
+import { toast } from "sonner";
 
 export function AuthCallbackClient() {
   const router = useRouter();
   const params = useParams();
-  const lang = (params?.lang as string) || 'en';
+  const lang = (params?.lang as string) || "en";
   const googleAuth = useGoogleAuth();
   const [, setIsProcessing] = useState(true);
   const hasProcessed = useRef(false);
@@ -22,36 +22,39 @@ export function AuthCallbackClient() {
 
     const handleAuthCallback = async () => {
       hasProcessed.current = true;
-      
+
       try {
         // Extract code from URL
         const oauthData = extractOAuthCode();
-        
+
         if (!oauthData) {
-          toast.error('Failed to authenticate. Please try again.');
+          toast.error("Failed to authenticate. Please try again.");
           router.push(`/${lang}/login`);
           return;
         }
 
         // Get the redirect URI that was used (must match what was sent to Google)
-        const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
+        const baseUrl =
+          typeof window !== "undefined" ? window.location.origin : "";
         const redirectUri = `${baseUrl}/${lang}/auth/callback`;
 
         // Exchange code for tokens
-        await googleAuth.mutateAsync({ 
+        await googleAuth.mutateAsync({
           code: oauthData.code,
           redirectUri: redirectUri,
         });
-        
-        toast.success('Signed in successfully!');
-        
+
+        toast.success("Signed in successfully!");
+
         // Redirect to home page
         router.push(`/${lang}`);
         router.refresh();
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {
-        console.error('Auth callback error:', error);
+        console.error("Auth callback error:", error);
         const errorMessage =
-          error?.response?.data?.error || 'Authentication failed. Please try again.';
+          error?.response?.data?.error ||
+          "Authentication failed. Please try again.";
         toast.error(errorMessage);
         router.push(`/${lang}/login`);
       } finally {

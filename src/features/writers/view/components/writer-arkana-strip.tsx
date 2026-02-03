@@ -27,10 +27,10 @@ export function WriterArkanaStrip({
         window.innerWidth >= 1024
           ? 32
           : window.innerWidth >= 768
-          ? 28
-          : window.innerWidth >= 640
-          ? 24
-          : 16;
+            ? 28
+            : window.innerWidth >= 640
+              ? 24
+              : 16;
       setCanvasSize(size);
     };
 

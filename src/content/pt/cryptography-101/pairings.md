@@ -1,6 +1,6 @@
 ---
-title: 'Criptografia 101: Emparelhamentos'
-date: '2024-05-20'
+title: "Criptografia 101: Emparelhamentos"
+date: "2024-05-20"
 author: frank-mangone
 thumbnail: /images/cryptography-101/pairings/what-now.webp
 tags:
@@ -352,4 +352,3 @@ Emparelhamentos são esses tipos de liquidificadores, onde nos importamos com o 
 Novamente, podemos mergulhar no **cálculo** de emparelhamentos mais tarde. Acredito ser mais frutífero começar a ver algumas aplicações.
 
 Por essa razão, vamos olhar para mais algumas aplicações de emparelhamentos na [próxima parte](/pt/blog/cryptography-101/pairing-applications-and-more) da série. Te vejo lá!
-

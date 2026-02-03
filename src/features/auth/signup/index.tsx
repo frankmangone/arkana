@@ -9,7 +9,7 @@ interface SignupPageProps {
 
 export function SignupPage(props: SignupPageProps) {
   const { lang, dictionary } = props;
-  
+
   return (
     <>
       <div className="flex items-center justify-center min-h-[calc(100vh-200px)] py-12">

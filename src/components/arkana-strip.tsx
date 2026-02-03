@@ -57,10 +57,10 @@ export function ArkanaStrip({
         window.innerWidth >= 1024
           ? 48
           : window.innerWidth >= 768
-          ? 42
-          : window.innerWidth >= 640
-          ? 36
-          : 28;
+            ? 42
+            : window.innerWidth >= 640
+              ? 36
+              : 28;
       setCanvasSize(size);
     };
 

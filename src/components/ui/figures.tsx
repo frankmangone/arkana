@@ -6,10 +6,7 @@ import { HTMLAttributes } from "react";
  * @param props - The props of the figure
  * @returns The figure component
  */
-export function Figure({
-  children,
-  ...props
-}: HTMLAttributes<HTMLElement>) {
+export function Figure({ children, ...props }: HTMLAttributes<HTMLElement>) {
   return (
     <figure className="w-full" {...props}>
       {children}

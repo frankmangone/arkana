@@ -1,6 +1,6 @@
 ---
-title: 'Cryptography 101: Commitment Schemes Revisited'
-date: '2024-06-04'
+title: "Cryptography 101: Commitment Schemes Revisited"
+date: "2024-06-04"
 author: frank-mangone
 thumbnail: /images/cryptography-101/commitment-schemes-revisited/hell-no.webp
 tags:

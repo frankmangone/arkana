@@ -1,6 +1,6 @@
 ---
-title: 'Criptografia 101  (Anexo): Avaliando Segurança'
-date: '2024-05-13'
+title: "Criptografia 101  (Anexo): Avaliando Segurança"
+date: "2024-05-13"
 author: frank-mangone
 thumbnail: /images/cryptography-101/asides-evaluating-security/arnold-handshake.webp
 tags:
@@ -204,4 +204,3 @@ Uma coisa é clara, no entanto: projetar métodos criptográficos é tão import
 > Intencionalmente omiti a introdução da ideia de um **parâmetro de segurança**, apenas para manter as coisas simples. Você pode ver isso em artigos ou discussões técnicas, então talvez queira [ler sobre isso](https://en.wikipedia.org/wiki/Security_parameter) como uma generalização de alguns dos conceitos discutidos acima.
 
 Com isso, pelo menos temos uma ideia geral de algumas possíveis fraquezas nos nossos métodos — embora haja muito mais a cobrir nesta área. Apenas tenha sempre em mente que segurança não está associada a **quão sofisticada a matemática fica**. Sofisticado não é igual a seguro, e uma análise cuidadosa é sempre uma boa prática!
-

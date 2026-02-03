@@ -1,6 +1,6 @@
 ---
-title: 'Cryptography 101: Rings'
-date: '2024-08-27'
+title: "Cryptography 101: Rings"
+date: "2024-08-27"
 author: frank-mangone
 thumbnail: /images/cryptography-101/rings/saurons-eye.webp
 tags:
@@ -12,7 +12,7 @@ description: >-
   Before moving onto the latest frontier of cryptography — post-quantum
   cryptography — , we need to lay down some more groundwork!
 readingTime: 13 min
-mediumUrl: 'https://medium.com/@francomangone18/cryptography-101-rings-b9d1e0e5b6d0'
+mediumUrl: "https://medium.com/@francomangone18/cryptography-101-rings-b9d1e0e5b6d0"
 contentHash: b8770dda6309da4329cf236c946301b442bc180f348788b7c8c7301eaa72bf5d
 supabaseId: 317b7975-ce2f-4333-8f9d-21c7cd25dafa
 ---

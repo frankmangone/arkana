@@ -1,7 +1,7 @@
 ---
-title: 'The ZK Chronicles: Multilinear Extensions'
+title: "The ZK Chronicles: Multilinear Extensions"
 author: frank-mangone
-date: '2025-12-26'
+date: "2025-12-26"
 thumbnail: /images/the-zk-chronicles/multilinear-extensions/shrek-donkey.webp
 tags:
   - zeroKnowledgeProofs

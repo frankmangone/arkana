@@ -120,20 +120,15 @@
   "auth": {
     "login": {
       "title": "Entrar",
-      "description": "Bem-vindo de volta! Entre com sua conta do Google",
-      "loginWithGoogle": "Entrar com Google",
-      "signingIn": "Entrando...",
-      "email": "E-mail",
-      "password": "Senha",
-      "submit": "Entrar",
-      "noAccount": "Não tem uma conta?",
-      "signUp": "Cadastre-se",
-      "forgotPassword": "Esqueceu a senha?",
-      "errors": {
-        "invalidCredentials": "E-mail ou senha inválidos",
-        "required": "Este campo é obrigatório",
-        "invalidEmail": "Por favor, insira um e-mail válido"
-      }
+      "connectWallet": "Conecte sua Carteira",
+      "description": "Escolha sua carteira preferida para continuar",
+      "connectMetaMask": "Conectar com MetaMask",
+      "connectPolkadot": "Conectar com Polkadot",
+      "connecting": "Conectando...",
+      "termsText": "Ao continuar, você concorda com nossos",
+      "termsOfService": "Termos de Serviço",
+      "and": "e",
+      "privacyPolicy": "Política de Privacidade"
     },
     "signup": {
       "title": "Cadastrar",

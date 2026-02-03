@@ -1,5 +1,5 @@
-import apiClient from '../client';
-import type { User } from '../types';
+import apiClient from "../client";
+import type { User } from "../types";
 
 /**
  * User API service
@@ -24,7 +24,7 @@ export const userService = {
     auth_provider?: string;
     provider_user_id?: string;
   }): Promise<User> {
-    const response = await apiClient.post<User>('/api/users', data);
+    const response = await apiClient.post<User>("/api/users", data);
     return response.data;
   },
 };

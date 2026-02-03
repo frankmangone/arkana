@@ -1,7 +1,7 @@
 ---
-title: 'The ZK Chronicles: Math Foundations'
+title: "The ZK Chronicles: Math Foundations"
 author: frank-mangone
-date: '2025-11-18'
+date: "2025-11-18"
 thumbnail: /images/the-zk-chronicles/math-foundations/0*GbSJc4K4r9V14xsi-3.jpg
 tags:
   - zeroKnowledgeProofs
@@ -16,6 +16,7 @@ mediumUrl: >-
 contentHash: ecf63637da91ce3e02ca62ea76d008f6069d922c1fc5091a1c0f0ecec8f607d6
 supabaseId: 1945afc7-ad8b-4984-a8e0-3114fb19db22
 ---
+
 With the [introduction to the series](/en/blog/the-zk-chronicles/first-steps) behind us, it’s now time to start working on our toolkit, so we can set sail towards the goal of crafting these **proving systems** we’ve already alluded to.
 
 I sincerely hope the previous article was not too scary. To make up for it just a tiny bit, I’ll say that the concepts we’ll be looking at today are not too complicated, while at the same time having the added benefit of being **quite fundamental** for any serious cryptography.
@@ -40,7 +41,7 @@ Thus, our basic units of information, or the way we represent things from this p
 
 **Integers** are pretty good at that: by avoiding [floating point](https://en.wikipedia.org/wiki/Floating-point_arithmetic) operations, we keep things clean and consistent. It should come as no surprise then that the most fundamental structure we’ll be building upon is a **set of integers**: what we call a **finite field**.
 
-Strictly speaking, a [field](https://en.wikipedia.org/wiki/Field_(mathematics)) is defined as a **set of elements**, for which we can define four operations: **addition**, **subtraction**, **multiplication**, and **division** (except by zero or zero-like elements).
+Strictly speaking, a [field](<https://en.wikipedia.org/wiki/Field_(mathematics)>) is defined as a **set of elements**, for which we can define four operations: **addition**, **subtraction**, **multiplication**, and **division** (except by zero or zero-like elements).
 
 > This should sound familiar — the **real numbers** we know and love are a field!
 

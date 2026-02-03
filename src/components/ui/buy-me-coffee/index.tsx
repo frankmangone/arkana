@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { useComponent } from './use-component';
+import { useComponent } from "./use-component";
 import {
   TokenImage,
   TextContent,
   FormElements,
   SendButton,
   SuccessMessage,
-} from './components';
+} from "./components";
 
 interface TippingWidgetProps {
   authorName: string;
@@ -22,7 +22,11 @@ interface TippingWidgetProps {
   };
 }
 
-export default function BuyMeCoffeeWidget({ authorName, walletAddress, dictionary }: TippingWidgetProps) {
+export default function BuyMeCoffeeWidget({
+  authorName,
+  walletAddress,
+  dictionary,
+}: TippingWidgetProps) {
   const {
     amount,
     setAmount,

@@ -1,12 +1,6 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { authService } from '../services/auth';
-import type {
-  LoginRequest,
-  SignupRequest,
-  GoogleTokenRequest,
-  AuthResponse,
-  User,
-} from '../types';
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { authService } from "../services/auth";
+import type { LoginRequest, SignupRequest, AuthResponse } from "../types";
 
 /**
  * React Query hooks for authentication
@@ -14,8 +8,8 @@ import type {
 
 // Query keys
 export const authKeys = {
-  all: ['auth'] as const,
-  me: () => [...authKeys.all, 'me'] as const,
+  all: ["auth"] as const,
+  me: () => [...authKeys.all, "me"] as const,
 };
 
 /**
@@ -83,8 +77,13 @@ export function useGoogleAuth() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: ({ code, redirectUri }: { code: string; redirectUri: string }) => 
-      authService.googleToken(code, redirectUri),
+    mutationFn: ({
+      code,
+      redirectUri,
+    }: {
+      code: string;
+      redirectUri: string;
+    }) => authService.googleToken(code, redirectUri),
     onSuccess: (data: AuthResponse) => {
       // Invalidate and refetch user data
       queryClient.setQueryData(authKeys.me(), data.user);

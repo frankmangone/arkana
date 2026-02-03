@@ -1,6 +1,6 @@
 ---
-title: 'Criptografía 101: Protocolos a Montones'
-date: '2024-04-02'
+title: "Criptografía 101: Protocolos a Montones"
+date: "2024-04-02"
 author: frank-mangone
 thumbnail: /images/cryptography-101/protocols-galore/waldo.webp
 tags:

@@ -45,57 +45,55 @@ interface AnchoredHeadingProps extends HTMLAttributes<HTMLHeadingElement> {
 
 /**
  * AnchoredHeading component
- * 
+ *
  * This component is used to display a heading with an anchor link.
  * It is a heading with an anchor link that can be used to link to the heading.
- * 
+ *
  * @param {AnchoredHeadingProps} props - The props for the AnchoredHeading component
  * @returns {JSX.Element} The AnchoredHeading component
  */
 export function AnchoredHeading(props: AnchoredHeadingProps) {
-    const { size, children, ...rest } = props;
+  const { size, children, ...rest } = props;
 
-    const level = size === SIZES.LG ? 2 : 3;
+  const level = size === SIZES.LG ? 2 : 3;
 
-    // Skip if children isn't a string or doesn't exist
-    if (!children || typeof children !== "string") {
-        return createElement(`h${level}`, props, children);
-    }
-  
-    // Check for custom ID in the heading text
-    const { cleanText, id } = extractCustomId(children);
-  
-    // Use custom ID if provided, otherwise generate a slug
-    const slug = id || slugify(cleanText);
+  // Skip if children isn't a string or doesn't exist
+  if (!children || typeof children !== "string") {
+    return createElement(`h${level}`, props, children);
+  }
 
-    // Map heading levels directly to appropriate classes
-    const headingClasses = {
-        lg: "text-3xl font-bold mt-7 mb-4",
-        sm: "text-2xl font-semibold mt-8 mb-3",
-    };
+  // Check for custom ID in the heading text
+  const { cleanText, id } = extractCustomId(children);
 
-    // Other possible sizes:
-    // ------------------------------------------------------------
-    // 1: "text-4xl font-bold mt-8 mb-4",
-    // 2: "text-3xl font-bold mt-7 mb-4",
-    // 3: "text-2xl font-semibold mt-8 mb-3",
-    // 4: "text-xl font-semibold mt-5 mb-3",
-    // 5: "text-lg font-medium mt-4 mb-2",
-    // 6: "text-base font-medium mt-3 mb-2",
+  // Use custom ID if provided, otherwise generate a slug
+  const slug = id || slugify(cleanText);
 
-    const className = `group flex items-center ${
-        headingClasses[size] || ""
-    }`;
+  // Map heading levels directly to appropriate classes
+  const headingClasses = {
+    lg: "text-3xl font-bold mt-7 mb-4",
+    sm: "text-2xl font-semibold mt-8 mb-3",
+  };
 
-    return createElement(`h${level}`, { id: slug, className, ...rest }, [
-        cleanText, // Use the text without the ID part
-        <a
-            key="anchor"
-            href={`#${slug}`}
-            className="ml-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity"
-            aria-label={`Link to ${cleanText}`}
-        >
-            <LinkIcon className="text-primary-700" size={22} />
-        </a>,
-    ]);
-};
+  // Other possible sizes:
+  // ------------------------------------------------------------
+  // 1: "text-4xl font-bold mt-8 mb-4",
+  // 2: "text-3xl font-bold mt-7 mb-4",
+  // 3: "text-2xl font-semibold mt-8 mb-3",
+  // 4: "text-xl font-semibold mt-5 mb-3",
+  // 5: "text-lg font-medium mt-4 mb-2",
+  // 6: "text-base font-medium mt-3 mb-2",
+
+  const className = `group flex items-center ${headingClasses[size] || ""}`;
+
+  return createElement(`h${level}`, { id: slug, className, ...rest }, [
+    cleanText, // Use the text without the ID part
+    <a
+      key="anchor"
+      href={`#${slug}`}
+      className="ml-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity"
+      aria-label={`Link to ${cleanText}`}
+    >
+      <LinkIcon className="text-primary-700" size={22} />
+    </a>,
+  ]);
+}

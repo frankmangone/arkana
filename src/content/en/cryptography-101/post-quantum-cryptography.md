@@ -1,6 +1,6 @@
 ---
-title: 'Cryptography 101: Post Quantum Cryptography'
-date: '2024-10-07'
+title: "Cryptography 101: Post Quantum Cryptography"
+date: "2024-10-07"
 author: frank-mangone
 thumbnail: /images/cryptography-101/post-quantum-cryptography/not-surprised.webp
 tags:

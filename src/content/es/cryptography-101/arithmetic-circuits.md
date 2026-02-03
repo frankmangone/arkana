@@ -1,6 +1,6 @@
 ---
-title: 'Criptografía 101: Circuitos Aritméticos'
-date: '2024-06-18'
+title: "Criptografía 101: Circuitos Aritméticos"
+date: "2024-06-18"
 author: frank-mangone
 thumbnail: /images/cryptography-101/arithmetic-circuits/polynomial-circuit.webp
 tags:

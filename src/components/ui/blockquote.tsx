@@ -5,11 +5,7 @@ interface BlockquoteProps extends HTMLAttributes<HTMLQuoteElement> {
   children?: React.ReactNode;
 }
 
-export function Blockquote({
-  children,
-  className,
-  ...props
-}: BlockquoteProps) {
+export function Blockquote({ children, className, ...props }: BlockquoteProps) {
   // Simple approach: convert all children to string
   const getAllText = (node: React.ReactNode): string => {
     if (typeof node === "string") return node;

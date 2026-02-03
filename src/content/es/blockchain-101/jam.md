@@ -1,7 +1,7 @@
 ---
-title: 'Blockchain 101: JAM'
+title: "Blockchain 101: JAM"
 author: frank-mangone
-date: '2025-09-23'
+date: "2025-09-23"
 thumbnail: /images/blockchain-101/jam/0*ZHe_R0dR9Ov__TNm-1.jpg
 tags:
   - blockchain

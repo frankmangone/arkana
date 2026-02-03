@@ -59,12 +59,14 @@ export const Navbar = async (props: NavbarProps) => {
             >
               {dict.readingLists.list.title}
             </Link>
-            {false && <Link
-              href={writersUrl}
-              className="px-4 py-2 inline-flex cursor-pointer items-center justify-center text-base font-medium ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:text-gray-300 dark:hover:text-primary-750"
-            >
-              {dict.writers.title}
-            </Link>}
+            {false && (
+              <Link
+                href={writersUrl}
+                className="px-4 py-2 inline-flex cursor-pointer items-center justify-center text-base font-medium ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:text-gray-300 dark:hover:text-primary-750"
+              >
+                {dict.writers.title}
+              </Link>
+            )}
             <Link
               href="https://forms.gle/NLk49eNnu6jTwGMt8"
               target="_blank"

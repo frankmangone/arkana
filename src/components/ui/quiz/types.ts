@@ -43,4 +43,3 @@ export interface QuizBodyProps {
   dictionary: QuizDictionary;
   setResult: (result: EQuizResult) => void;
 }
-

@@ -20,4 +20,3 @@ export interface Writer {
   };
   walletAddress?: string;
 }
-

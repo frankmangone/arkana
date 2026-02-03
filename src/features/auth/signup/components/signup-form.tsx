@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { useSignup } from '@/lib/api';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useSignup } from "@/lib/api";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import {
   Card,
   CardContent,
@@ -12,45 +12,21 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card';
-import { toast } from 'sonner';
-import Link from 'next/link';
+} from "@/components/ui/card";
+import { toast } from "sonner";
+import Link from "next/link";
 
 interface SignupFormProps {
   lang: string;
-  dictionary: {
-    signup: {
-      title: string;
-      description: string;
-      email: string;
-      username: string;
-      password: string;
-      confirmPassword: string;
-      submit: string;
-      signingUp: string;
-      hasAccount: string;
-      signIn: string;
-      errors: {
-        emailExists: string;
-        passwordTooShort: string;
-        usernameTooShort: string;
-        passwordsDontMatch: string;
-      };
-    };
-    login: {
-      errors: {
-        required: string;
-        invalidEmail: string;
-      };
-    };
-  };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  dictionary: any;
 }
 
 export function SignupForm({ lang, dictionary }: SignupFormProps) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [username, setUsername] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const router = useRouter();
@@ -98,14 +74,15 @@ export function SignupForm({ lang, dictionary }: SignupFormProps) {
         username,
         password,
       });
-      toast.success('Account created successfully!');
-      
+      toast.success("Account created successfully!");
+
       // Redirect to home page
       router.push(`/${lang}`);
       router.refresh();
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       const errorMessage =
-        error?.response?.data?.error || 'Failed to create account';
+        error?.response?.data?.error || "Failed to create account";
       toast.error(errorMessage);
     }
   };
@@ -115,12 +92,8 @@ export function SignupForm({ lang, dictionary }: SignupFormProps) {
   return (
     <Card className="w-full max-w-md mx-auto">
       <CardHeader>
-        <CardTitle className="text-2xl">
-          {dictionary.signup.title}
-        </CardTitle>
-        <CardDescription>
-          {dictionary.signup.description}
-        </CardDescription>
+        <CardTitle className="text-2xl">{dictionary.signup.title}</CardTitle>
+        <CardDescription>{dictionary.signup.description}</CardDescription>
       </CardHeader>
       <form onSubmit={handleSubmit}>
         <CardContent className="space-y-4">
@@ -137,10 +110,10 @@ export function SignupForm({ lang, dictionary }: SignupFormProps) {
               value={username}
               onChange={(e) => {
                 setUsername(e.target.value);
-                setErrors((prev) => ({ ...prev, username: '' }));
+                setErrors((prev) => ({ ...prev, username: "" }));
               }}
               placeholder="johndoe"
-              className={errors.username ? 'border-destructive' : ''}
+              className={errors.username ? "border-destructive" : ""}
               disabled={isLoading}
               autoComplete="username"
             />
@@ -162,10 +135,10 @@ export function SignupForm({ lang, dictionary }: SignupFormProps) {
               value={email}
               onChange={(e) => {
                 setEmail(e.target.value);
-                setErrors((prev) => ({ ...prev, email: '' }));
+                setErrors((prev) => ({ ...prev, email: "" }));
               }}
               placeholder="you@example.com"
-              className={errors.email ? 'border-destructive' : ''}
+              className={errors.email ? "border-destructive" : ""}
               disabled={isLoading}
               autoComplete="email"
             />
@@ -187,10 +160,10 @@ export function SignupForm({ lang, dictionary }: SignupFormProps) {
               value={password}
               onChange={(e) => {
                 setPassword(e.target.value);
-                setErrors((prev) => ({ ...prev, password: '' }));
+                setErrors((prev) => ({ ...prev, password: "" }));
               }}
               placeholder="••••••••"
-              className={errors.password ? 'border-destructive' : ''}
+              className={errors.password ? "border-destructive" : ""}
               disabled={isLoading}
               autoComplete="new-password"
             />
@@ -212,10 +185,10 @@ export function SignupForm({ lang, dictionary }: SignupFormProps) {
               value={confirmPassword}
               onChange={(e) => {
                 setConfirmPassword(e.target.value);
-                setErrors((prev) => ({ ...prev, confirmPassword: '' }));
+                setErrors((prev) => ({ ...prev, confirmPassword: "" }));
               }}
               placeholder="••••••••"
-              className={errors.confirmPassword ? 'border-destructive' : ''}
+              className={errors.confirmPassword ? "border-destructive" : ""}
               disabled={isLoading}
               autoComplete="new-password"
             />
@@ -236,7 +209,7 @@ export function SignupForm({ lang, dictionary }: SignupFormProps) {
             {isLoading ? dictionary.signup.signingUp : dictionary.signup.submit}
           </Button>
           <div className="text-sm text-center text-muted-foreground">
-            {dictionary.signup.hasAccount}{' '}
+            {dictionary.signup.hasAccount}{" "}
             <Link
               href={`/${lang}/login`}
               className="text-primary hover:underline"

@@ -1,6 +1,6 @@
 ---
-title: 'Blockchain 101: Smart Contracts'
-date: '2024-12-26'
+title: "Blockchain 101: Smart Contracts"
+date: "2024-12-26"
 author: frank-mangone
 thumbnail: /images/blockchain-101/smart-contracts/dump-spongebob.webp
 tags:

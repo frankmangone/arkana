@@ -1,6 +1,6 @@
 ---
-title: 'Cryptography 101: Pairings'
-date: '2024-05-20'
+title: "Cryptography 101: Pairings"
+date: "2024-05-20"
 author: frank-mangone
 thumbnail: /images/cryptography-101/pairings/what-now.webp
 tags:
@@ -8,9 +8,9 @@ tags:
   - ellipticCurves
   - pairings
   - mathematics
-description: 'A brief introduction to pairings, an important tool in modern cryptography'
+description: "A brief introduction to pairings, an important tool in modern cryptography"
 readingTime: 11 min
-mediumUrl: 'https://medium.com/@francomangone18/cryptography-101-pairings-e50520deea6c'
+mediumUrl: "https://medium.com/@francomangone18/cryptography-101-pairings-e50520deea6c"
 contentHash: 697854b1ec0ce33220c538ce5d6f47781ea70726a703c19c22a71f8722a2a41f
 supabaseId: abd00fd8-574e-47a6-88da-f7cb1650c8d4
 ---

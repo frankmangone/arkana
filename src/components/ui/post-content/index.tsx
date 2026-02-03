@@ -29,7 +29,7 @@ interface PostContentProps {
 }
 
 export function PostContent({ post, quizDictionary }: PostContentProps) {
-  const processedContent = processContent(post.content)
+  const processedContent = processContent(post.content);
 
   return (
     <div className="prose prose-gray dark:prose-invert max-w-none mb-8">
@@ -71,7 +71,9 @@ export function PostContent({ post, quizDictionary }: PostContentProps) {
           "big-quote": BigQuote,
 
           // Custom div handler - selection layer for special div types
-          div: (props: any) => <DivSwitch {...props} quizDictionary={quizDictionary} />,
+          div: (props: any) => (
+            <DivSwitch {...props} quizDictionary={quizDictionary} />
+          ),
 
           // Add wrapper for tables to ensure proper overflow handling
           table: (props) => (

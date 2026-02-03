@@ -1,6 +1,6 @@
 ---
-title: 'Criptografía 101: STARKs'
-date: '2024-08-20'
+title: "Criptografía 101: STARKs"
+date: "2024-08-20"
 author: frank-mangone
 thumbnail: /images/cryptography-101/starks/state-transition.webp
 tags:

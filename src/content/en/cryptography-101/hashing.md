@@ -1,6 +1,6 @@
 ---
-title: 'Cryptography 101: Hashing'
-date: '2024-03-24'
+title: "Cryptography 101: Hashing"
+date: "2024-03-24"
 author: frank-mangone
 thumbnail: /images/cryptography-101/hashing/bosch.webp
 tags:
@@ -12,7 +12,7 @@ description: >-
   Hashing functions are an essential cryptographic primitive. Join me in a deep
   dive into what they are, and what they are used for!
 readingTime: 10 min
-mediumUrl: 'https://medium.com/@francomangone18/cryptography-101-hashing-709347160f60'
+mediumUrl: "https://medium.com/@francomangone18/cryptography-101-hashing-709347160f60"
 contentHash: 1a2898dcf5f7ce50d315743f79a91c075b9c5144adc1ec4d2ca8e91ff6089af8
 supabaseId: ed60dd70-4124-43af-8023-fd7923ffa0c3
 ---

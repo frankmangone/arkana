@@ -104,9 +104,15 @@ export async function PostPage(props: PostPageProps) {
       {process.env.NEXT_PUBLIC_AUTH_ENABLED === "true" && <PostActions />}
       <PostContent post={post} quizDictionary={dict.quiz} />
       <SectionDivider />
-      {writer.walletAddress && writer.walletAddress !== "0x0000000000000000000000000000000000000000" && (
-        <BuyMeCoffeeWidget authorName={writer.name} walletAddress={writer.walletAddress} dictionary={dict.buyMeCoffee} />
-      )}
+      {writer.walletAddress &&
+        writer.walletAddress !==
+          "0x0000000000000000000000000000000000000000" && (
+          <BuyMeCoffeeWidget
+            authorName={writer.name}
+            walletAddress={writer.walletAddress}
+            dictionary={dict.buyMeCoffee}
+          />
+        )}
       {/* <PostFooter post={post} lang={lang} dictionary={dict} /> */}
       {/* <RelatedPosts
         tags={post.tags}

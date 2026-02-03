@@ -55,7 +55,7 @@ export const MultipleChoiceQuiz: React.FC<QuizBodyProps> = ({
 
   const handleSubmit = () => {
     setSubmitted(true);
-    
+
     const isCorrect = isAnswerCorrect();
     const isPartiallyCorrect = isAnswerPartiallyCorrect();
 
@@ -84,8 +84,12 @@ export const MultipleChoiceQuiz: React.FC<QuizBodyProps> = ({
         ))}
       </div>
 
-      <Submit submitted={submitted} handleSubmit={handleSubmit} disabled={selectedAnswers.length === 0} dictionary={dictionary} />
+      <Submit
+        submitted={submitted}
+        handleSubmit={handleSubmit}
+        disabled={selectedAnswers.length === 0}
+        dictionary={dictionary}
+      />
     </div>
   );
 };
-

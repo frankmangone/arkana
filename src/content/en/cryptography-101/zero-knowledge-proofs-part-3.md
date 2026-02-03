@@ -1,6 +1,6 @@
 ---
-title: 'Cryptography 101: Zero Knowledge Proofs (Part 3)'
-date: '2024-07-30'
+title: "Cryptography 101: Zero Knowledge Proofs (Part 3)"
+date: "2024-07-30"
 author: frank-mangone
 thumbnail: /images/cryptography-101/zero-knowledge-proofs-part-3/thinking.webp
 tags:
@@ -8,7 +8,7 @@ tags:
   - zeroKnowledgeProofs
   - mathematics
   - arithmeticCircuits
-description: 'Let’s get practical, and build some arithmetic circuits!'
+description: "Let’s get practical, and build some arithmetic circuits!"
 readingTime: 10 min
 mediumUrl: >-
   https://medium.com/@francomangone18/cryptography-101-zero-knowledge-proofs-part-3-23eeb501cc6e

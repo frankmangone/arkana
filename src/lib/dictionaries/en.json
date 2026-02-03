@@ -120,20 +120,15 @@
   "auth": {
     "login": {
       "title": "Sign In",
-      "description": "Welcome back! Sign in with your Google account",
-      "loginWithGoogle": "Sign in with Google",
-      "signingIn": "Signing in...",
-      "email": "Email",
-      "password": "Password",
-      "submit": "Sign In",
-      "noAccount": "Don't have an account?",
-      "signUp": "Sign up",
-      "forgotPassword": "Forgot password?",
-      "errors": {
-        "invalidCredentials": "Invalid email or password",
-        "required": "This field is required",
-        "invalidEmail": "Please enter a valid email address"
-      }
+      "connectWallet": "Connect Your Wallet",
+      "description": "Choose your preferred wallet to continue",
+      "connectMetaMask": "Connect with MetaMask",
+      "connectPolkadot": "Connect with Polkadot",
+      "connecting": "Connecting...",
+      "termsText": "By continuing, you agree to our",
+      "termsOfService": "Terms of Service",
+      "and": "and",
+      "privacyPolicy": "Privacy Policy"
     },
     "signup": {
       "title": "Sign Up",

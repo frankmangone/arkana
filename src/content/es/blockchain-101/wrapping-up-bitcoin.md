@@ -1,6 +1,6 @@
 ---
-title: 'Blockchain 101: Redondeando Bitcoin'
-date: '2024-10-15'
+title: "Blockchain 101: Redondeando Bitcoin"
+date: "2024-10-15"
 author: frank-mangone
 thumbnail: /images/blockchain-101/wrapping-up-bitcoin/inception.webp
 tags:

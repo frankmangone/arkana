@@ -1,5 +1,5 @@
-import { Coffee, Loader2 } from 'lucide-react';
-import { DEFAULT_AMOUNT } from '../use-component';
+import { Coffee, Loader2 } from "lucide-react";
+import { DEFAULT_AMOUNT } from "../use-component";
 
 interface SendButtonProps {
   isPending: boolean;
@@ -39,8 +39,8 @@ export function SendButton({
         <>
           <Coffee className="w-5 h-5" />
           {dictionary.buyCoffee
-            .replace('{amount}', amount || DEFAULT_AMOUNT)
-            .replace('{symbol}', symbol || '')}
+            .replace("{amount}", amount || DEFAULT_AMOUNT)
+            .replace("{symbol}", symbol || "")}
         </>
       )}
     </button>

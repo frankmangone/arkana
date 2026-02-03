@@ -10,18 +10,19 @@ interface LatexTextProps {
 }
 
 export function LatexText(props: LatexTextProps) {
-  const { children, className = '' } = props;
+  const { children, className = "" } = props;
 
   return (
     <ReactMarkdown
       remarkPlugins={[remarkMath]}
       rehypePlugins={[rehypeKatex]}
       components={{
-        p: ({ children }) => <span className={`block ${className}`}>{children}</span>,
+        p: ({ children }) => (
+          <span className={`block ${className}`}>{children}</span>
+        ),
       }}
     >
       {children}
     </ReactMarkdown>
   );
-};
-
+}

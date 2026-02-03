@@ -1,7 +1,7 @@
 ---
-title: 'Blockchain 101: Evolving a Blockchain'
+title: "Blockchain 101: Evolving a Blockchain"
 author: frank-mangone
-date: '2026-01-16'
+date: "2026-01-16"
 readingTime: 12 min
 thumbnail: /images/blockchain-101/evolving-a-blockchain/cheers.webp
 tags:

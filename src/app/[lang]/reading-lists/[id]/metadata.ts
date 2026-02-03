@@ -34,4 +34,3 @@ export async function generateMetadata({
     type: "website",
   });
 }
-

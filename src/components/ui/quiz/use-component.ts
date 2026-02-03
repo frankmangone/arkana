@@ -51,9 +51,10 @@ export function useQuizComponent(
 
   // Validate language-specific content
   const languageError =
-    question && (!rawQuestionContent ||
-    typeof rawQuestionContent !== "object" ||
-    !("question" in rawQuestionContent))
+    question &&
+    (!rawQuestionContent ||
+      typeof rawQuestionContent !== "object" ||
+      !("question" in rawQuestionContent))
       ? `Language '${lang}' not available for this question`
       : null;
 

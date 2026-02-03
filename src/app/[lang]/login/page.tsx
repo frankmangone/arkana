@@ -1,10 +1,10 @@
-import { AuthLayout } from '@/components/layouts/auth-layout';
-import { getDictionary } from '@/lib/dictionaries';
-import { notFound } from 'next/navigation';
-import { LoginPage } from '@/features/auth/login';
+import { AuthLayout } from "@/components/layouts/auth-layout";
+import { getDictionary } from "@/lib/dictionaries";
+import { notFound } from "next/navigation";
+import { LoginPage } from "@/features/auth/login";
 
-export { generateStaticParams } from '../static-params';
-export { generateMetadata } from './metadata';
+export { generateStaticParams } from "../static-params";
+export { generateMetadata } from "./metadata";
 
 interface PageProps {
   params: Promise<{ lang: string }>;
@@ -12,7 +12,7 @@ interface PageProps {
 
 export default async function Page({ params }: PageProps) {
   // If auth is not enabled, return 404
-  if (process.env.NEXT_PUBLIC_AUTH_ENABLED !== 'true') {
+  if (process.env.NEXT_PUBLIC_AUTH_ENABLED !== "true") {
     notFound();
   }
 

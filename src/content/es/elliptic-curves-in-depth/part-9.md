@@ -1,7 +1,7 @@
 ---
 title: Curvas Elípticas En Profundidad (Parte 9)
 author: frank-mangone
-date: '2025-10-06'
+date: "2025-10-06"
 thumbnail: /images/elliptic-curves-in-depth/part-9/0*cA5HOtwjA3YxYxcy-20.jpg
 tags:
   - pairings

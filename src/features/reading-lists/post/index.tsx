@@ -80,9 +80,15 @@ export async function ReadingListPostPage(props: ReadingListPostPageProps) {
       <PostHeader post={post} lang={lang} />
       <PostContent post={post} />
       <SectionDivider />
-      {writer.walletAddress && writer.walletAddress !== "0x0000000000000000000000000000000000000000" && (
-        <BuyMeCoffeeWidget authorName={writer.name} walletAddress={writer.walletAddress} dictionary={dict.buyMeCoffee} />
-      )}
+      {writer.walletAddress &&
+        writer.walletAddress !==
+          "0x0000000000000000000000000000000000000000" && (
+          <BuyMeCoffeeWidget
+            authorName={writer.name}
+            walletAddress={writer.walletAddress}
+            dictionary={dict.buyMeCoffee}
+          />
+        )}
       <Navigation lang={lang} id={id} prevItem={prevItem} nextItem={nextItem} />
     </article>
   );

@@ -315,18 +315,15 @@ Add to your VS Code tasks.json:
 ### Common Issues
 
 1. **"Missing Supabase environment variables"**
-
    - Check your `.env` file
    - Ensure both `NEXT_PUBLIC_SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` are set
 
 2. **"Failed to extract data"**
-
    - Check markdown file format
    - Ensure frontmatter is valid YAML
    - Check file permissions
 
 3. **"Error creating/updating post"**
-
    - Verify Supabase permissions
    - Check if the posts table exists
    - Run the migration SQL first

@@ -1,7 +1,7 @@
 ---
-title: 'Blockchain 101: Paralelizando la Ejecución'
+title: "Blockchain 101: Paralelizando la Ejecución"
 author: frank-mangone
-date: '2025-06-24'
+date: "2025-06-24"
 thumbnail: /images/blockchain-101/parallelizing-execution/leap-of-faith.jpg
 tags:
   - blockchain

@@ -10,7 +10,7 @@ export async function AuthLayout({ children, lang }: AuthLayoutProps) {
   return (
     <div className="relative min-h-screen flex flex-col bg-background">
       <Navbar lang={lang} />
-      
+
       {/* Background patterns container */}
       <AuthPatternBackground />
 

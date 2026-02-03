@@ -1,6 +1,6 @@
 ---
-title: 'Cryptography 101: Pairing Applications & More'
-date: '2024-05-28'
+title: "Cryptography 101: Pairing Applications & More"
+date: "2024-05-28"
 author: frank-mangone
 thumbnail: /images/cryptography-101/pairing-applications-and-more/rambo-thanks.webp
 tags:

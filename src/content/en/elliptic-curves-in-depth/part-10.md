@@ -1,7 +1,7 @@
 ---
 title: Elliptic Curves In-Depth (Part 10)
 author: frank-mangone
-date: '2025-10-28'
+date: "2025-10-28"
 thumbnail: /images/elliptic-curves-in-depth/part-10/1*klTDp0fQcQHrUK43VREKMQ-4.png
 tags:
   - ellipticCurves

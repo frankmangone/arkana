@@ -1,6 +1,6 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { userService } from '../services/user';
-import type { User } from '../types';
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { userService } from "../services/user";
+import type { User } from "../types";
 
 /**
  * React Query hooks for user operations
@@ -8,7 +8,7 @@ import type { User } from '../types';
 
 // Query keys
 export const userKeys = {
-  all: ['users'] as const,
+  all: ["users"] as const,
   detail: (id: number) => [...userKeys.all, id] as const,
 };
 

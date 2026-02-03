@@ -22,4 +22,3 @@ export async function generateStaticParams() {
     return [{ lang: "en" }];
   }
 }
-

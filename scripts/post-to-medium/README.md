@@ -141,19 +141,16 @@ const publisher = new MediumPublisher({
 ## Next Steps
 
 1. **Phase 1: API Discovery** ✅
-
    - Run this tool
    - Capture all API calls
    - Document the request/response formats
 
 2. **Phase 2: Format Understanding**
-
    - Understand the delta format
    - Map markdown elements to Medium's structure
    - Build conversion functions
 
 3. **Phase 3: Automation**
-
    - Create markdown-to-delta converter
    - Build automated publishing pipeline
    - Add error handling and retry logic

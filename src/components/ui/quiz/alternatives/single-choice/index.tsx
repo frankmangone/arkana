@@ -23,7 +23,7 @@ export const SingleChoiceQuiz: React.FC<QuizBodyProps> = ({
   const handleSubmit = () => {
     setSubmitted(true);
 
-    const isCorrect = isAnswerCorrect();  
+    const isCorrect = isAnswerCorrect();
     setResult(isCorrect ? EQuizResult.Correct : EQuizResult.Incorrect);
   };
 
@@ -31,12 +31,24 @@ export const SingleChoiceQuiz: React.FC<QuizBodyProps> = ({
     <div className="flex flex-col gap-4">
       <div className="space-y-2 mt-2">
         {questionContent.options.map((option) => (
-          <SingleChoiceOption key={option.id} option={option} questionId={questionId} selectedAnswer={selectedAnswer || ""} setSelectedAnswer={setSelectedAnswer} isCorrect={option.isCorrect} submitted={submitted} />
+          <SingleChoiceOption
+            key={option.id}
+            option={option}
+            questionId={questionId}
+            selectedAnswer={selectedAnswer || ""}
+            setSelectedAnswer={setSelectedAnswer}
+            isCorrect={option.isCorrect}
+            submitted={submitted}
+          />
         ))}
       </div>
 
-      <Submit submitted={submitted} handleSubmit={handleSubmit} disabled={!selectedAnswer} dictionary={dictionary} />
+      <Submit
+        submitted={submitted}
+        handleSubmit={handleSubmit}
+        disabled={!selectedAnswer}
+        dictionary={dictionary}
+      />
     </div>
   );
 };
-

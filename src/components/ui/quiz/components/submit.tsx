@@ -8,10 +8,15 @@ interface SubmitProps {
   dictionary: QuizDictionary;
 }
 
-export const Submit: React.FC<SubmitProps> = ({ submitted, handleSubmit, disabled, dictionary }) => {
-    if (submitted) {
-        return null;
-    }
+export const Submit: React.FC<SubmitProps> = ({
+  submitted,
+  handleSubmit,
+  disabled,
+  dictionary,
+}) => {
+  if (submitted) {
+    return null;
+  }
 
   return (
     <Button
@@ -22,4 +27,4 @@ export const Submit: React.FC<SubmitProps> = ({ submitted, handleSubmit, disable
       {dictionary.submitAnswer}
     </Button>
   );
-}
+};

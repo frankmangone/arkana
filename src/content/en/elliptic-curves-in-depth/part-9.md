@@ -1,7 +1,7 @@
 ---
 title: Elliptic Curves In-Depth (Part 9)
 author: frank-mangone
-date: '2025-10-06'
+date: "2025-10-06"
 thumbnail: /images/elliptic-curves-in-depth/part-9/0*cA5HOtwjA3YxYxcy-20.jpg
 tags:
   - pairings
@@ -244,7 +244,7 @@ The simplest case we could imagine is when $\mathbb{G}_1 = \mathbb{G}_2 = \mathc
 
 > Recall that $\mathcal{G}_1$ is the [base field subgroup](/en/blog/elliptic-curves-in-depth/part-7/#torsion-structure).
 
-Since we use the same group for both  $\mathbb{G}_1$ and  $\mathbb{G}_2$, it’s no surprise these are called **symmetric pairings**.
+Since we use the same group for both $\mathbb{G}_1$ and $\mathbb{G}_2$, it’s no surprise these are called **symmetric pairings**.
 
 Let’s see how they fare against our requirements. First, hashing into $\mathcal{G}_1$ is relatively efficient, since the entire group is on the base field — so that’s a win. And since both groups are the same, we only need **one hash** function.
 

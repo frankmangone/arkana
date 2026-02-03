@@ -34,7 +34,9 @@ const QuizComponent: React.FC<QuizComponentProps> = ({
   }
 
   if (error) {
-    return <div className="p-4 text-center text-incorrect-400">Error: {error}</div>;
+    return (
+      <div className="p-4 text-center text-incorrect-400">Error: {error}</div>
+    );
   }
 
   if (!question) {
@@ -56,10 +58,15 @@ const QuizComponent: React.FC<QuizComponentProps> = ({
   return (
     <div className="quiz-container my-12 p-0 flex flex-col relative items-center">
       <QuizHeader isOpen={isOpen} toggleQuiz={toggleQuiz} />
-      <QuizContent isOpen={isOpen} questionId={question.id} questionType={question.type} questionContent={questionContent} dictionary={dictionary} />
+      <QuizContent
+        isOpen={isOpen}
+        questionId={question.id}
+        questionType={question.type}
+        questionContent={questionContent}
+        dictionary={dictionary}
+      />
     </div>
   );
 };
 
 export default QuizComponent;
-

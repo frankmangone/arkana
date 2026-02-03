@@ -1,6 +1,6 @@
 ---
 title: Curvas Elípticas En Profundidad (Parte 6)
-date: '2025-04-14'
+date: "2025-04-14"
 author: frank-mangone
 thumbnail: /images/elliptic-curves-in-depth/part-6/michael-scott-red.webp
 tags:

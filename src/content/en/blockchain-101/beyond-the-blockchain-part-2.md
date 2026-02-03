@@ -1,7 +1,7 @@
 ---
-title: 'Blockchain 101: Beyond The Blockchain (Part 2)'
+title: "Blockchain 101: Beyond The Blockchain (Part 2)"
 author: frank-mangone
-date: '2025-08-01'
+date: "2025-08-01"
 thumbnail: /images/blockchain-101/beyond-the-blockchain-part-2/0*jZKjfpyF3KceIwko-1.jpg
 tags:
   - dag

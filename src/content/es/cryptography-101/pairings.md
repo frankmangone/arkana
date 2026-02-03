@@ -1,6 +1,6 @@
 ---
-title: 'Criptografía 101: Emparejamientos'
-date: '2024-05-20'
+title: "Criptografía 101: Emparejamientos"
+date: "2024-05-20"
 author: frank-mangone
 thumbnail: /images/cryptography-101/pairings/what-now.webp
 tags:

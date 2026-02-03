@@ -1,6 +1,6 @@
 ---
-title: 'Cryptography 101: Where to Start'
-date: '2024-03-07'
+title: "Cryptography 101: Where to Start"
+date: "2024-03-07"
 author: frank-mangone
 thumbnail: /images/cryptography-101/where-to-start/aaaaa.webp
 tags:

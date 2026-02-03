@@ -1,6 +1,6 @@
 ---
 title: Curvas Elípticas En Profundidad (Parte 7)
-date: '2025-05-20'
+date: "2025-05-20"
 author: frank-mangone
 thumbnail: /images/elliptic-curves-in-depth/part-7/sweaty-bear.jpg
 tags:
