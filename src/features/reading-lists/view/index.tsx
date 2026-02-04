@@ -2,6 +2,7 @@ import { ReadingList } from "@/lib/reading-lists";
 import Link from "next/link";
 import { getDictionary } from "@/lib/dictionaries";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { ArrowLeft } from "lucide-react";
 import { PostCard } from "@/components/custom/post-card";
 import { getPostsFromReadingList } from "./fetch";
@@ -32,9 +33,9 @@ export async function ReadingListPage(props: ReadingListPageProps) {
       <div className="flex items-center gap-3 mb-4 mt-6">
         <h1 className="text-4xl font-bold">{readingList.title}</h1>
         {readingList.ongoing && (
-          <span className="text-sm font-medium px-3 py-1 rounded-full dark:bg-[#8041f450] dark:text-[#9f79e7]">
+          <Badge variant="default" className="text-md rounded-none">
             {dict.readingLists.ongoing}
-          </span>
+          </Badge>
         )}
       </div>
 

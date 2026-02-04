@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { BookOpen, List } from "lucide-react";
 import { ReadingListItem } from "@/lib/reading-lists";
+import { Badge } from "@/components/ui/badge";
 
 interface ReadingList {
   id: string;
@@ -67,9 +68,9 @@ export function ReadingListCard(props: ReadingListCardProps) {
           </h2>
 
           {list.ongoing && (
-            <span className="text-xs font-medium px-2 py-0.5 rounded-none bg-primary-750/20 text-primary-750">
+            <Badge variant="default" className="rounded-none">
               {dictionary.readingLists.ongoing}
-            </span>
+            </Badge>
           )}
           <div className="flex items-center text-sm text-gray-500">
             <BookOpen className="h-4 w-4 mr-2" />

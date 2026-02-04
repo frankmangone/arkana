@@ -91,7 +91,6 @@ export function TableOfContents({ content }: TableOfContentsProps) {
           ))}
         </div>
       </nav>
-      <hr />
     </>
   );
 }

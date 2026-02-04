@@ -67,6 +67,16 @@ export const tags: TagDefinition = {
     es: "Esquema de Compromiso",
     pt: "Esquema de Compromisso",
   },
+  complexityTheory: {
+    en: "Complexity Theory",
+    es: "Teoría de la Complejidad",
+    pt: "Teoria da Complexidade",
+  },
+  computationModels: {
+    en: "Computation Models",
+    es: "Modelos de Computación",
+    pt: "Modelos de Computação",
+  },
   computerScience: {
     en: "Computer Science",
     es: "Ciencia de la Computación",

@@ -34,6 +34,7 @@ export function PostContent({ post, quizDictionary }: PostContentProps) {
   return (
     <div className="prose prose-gray dark:prose-invert max-w-none mb-8">
       <TableOfContents content={post.content} />
+      <SectionDivider />
       <ReactMarkdown
         remarkPlugins={[remarkMath, remarkGfm]}
         rehypePlugins={[
