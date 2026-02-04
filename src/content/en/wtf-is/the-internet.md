@@ -1,6 +1,6 @@
 ---
 title: WTF is the Internet
-date: "2025-05-26"
+date: '2025-05-26'
 author: frank-mangone
 tags:
   - internet
@@ -12,7 +12,7 @@ description: >-
   A short exploration of what the Internet really is, and the machinery that
   makes such an ubiquitous thing work.
 readingTime: 13 min
-mediumUrl: "https://medium.com/@francomangone18/wtf-is-the-internet-eafa502c271d"
+mediumUrl: 'https://medium.com/@francomangone18/wtf-is-the-internet-eafa502c271d'
 supabaseId: f2c61821-5c8f-4a81-80cf-94a5cf1dedbc
 contentHash: 9e742c7fa8dfd9d7f8e2c70794f08921bbb383fc74f7e5449ca6ee2ecdf4a670
 ---

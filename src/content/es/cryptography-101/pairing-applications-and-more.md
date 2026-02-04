@@ -1,6 +1,6 @@
 ---
-title: "Criptografía 101: Aplicaciones de Emparejamientos y Más"
-date: "2024-05-28"
+title: 'Criptografía 101: Aplicaciones de Emparejamientos y Más'
+date: '2024-05-28'
 author: frank-mangone
 thumbnail: /images/cryptography-101/pairing-applications-and-more/rambo-thanks.webp
 tags:

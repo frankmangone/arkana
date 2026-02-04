@@ -1,6 +1,6 @@
 ---
-title: "Criptografía 101: Pruebas de Conocimiento Cero (Parte 2)"
-date: "2024-06-25"
+title: 'Criptografía 101: Pruebas de Conocimiento Cero (Parte 2)'
+date: '2024-06-25'
 author: frank-mangone
 thumbnail: /images/cryptography-101/zero-knowledge-proofs-part-2/pikachu.webp
 tags:

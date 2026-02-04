@@ -1,7 +1,7 @@
 ---
-title: "Blockchain 101: Handling Data"
+title: 'Blockchain 101: Handling Data'
 author: frank-mangone
-date: "2026-01-14"
+date: '2026-01-14'
 readingTime: 13 min
 thumbnail: /images/blockchain-101/handling-data/owls.webp
 tags:
@@ -10,7 +10,7 @@ tags:
   - celestia
   - ipfs
 description: How do we handle data in Blockchain? What sort of problems may we face?
-mediumUrl: "https://medium.com/@francomangone18/blockchain-101-handling-data-714cc71b95d9"
+mediumUrl: 'https://medium.com/@francomangone18/blockchain-101-handling-data-714cc71b95d9'
 contentHash: afee6f3f0c986451b9c827f6675c899db693449d923f476697d245f271dab370
 supabaseId: null
 ---

@@ -1,6 +1,6 @@
 ---
-title: "Cryptography 101 Aside: Evaluating Security"
-date: "2024-05-13"
+title: 'Cryptography 101 Aside: Evaluating Security'
+date: '2024-05-13'
 author: frank-mangone
 thumbnail: /images/cryptography-101/asides-evaluating-security/arnold-handshake.webp
 tags:

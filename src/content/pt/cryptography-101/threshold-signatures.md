@@ -1,6 +1,6 @@
 ---
-title: "Criptografia 101: Assinaturas de Limite"
-date: "2024-04-30"
+title: 'Criptografia 101: Assinaturas de Limite'
+date: '2024-04-30'
 author: frank-mangone
 thumbnail: /images/cryptography-101/threshold-signatures/here-we-go-again.webp
 tags:

@@ -1,6 +1,6 @@
 ---
-title: "Criptografía 101: Aprendizaje con Errores en Anillos"
-date: "2024-09-17"
+title: 'Criptografía 101: Aprendizaje con Errores en Anillos'
+date: '2024-09-17'
 author: frank-mangone
 thumbnail: /images/cryptography-101/ring-learning-with-errors/lattice-generation.webp
 tags:

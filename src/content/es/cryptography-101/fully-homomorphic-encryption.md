@@ -1,6 +1,6 @@
 ---
-title: "Criptografía 101: Encriptación Completamente Homomórfica"
-date: "2024-10-22"
+title: 'Criptografía 101: Encriptación Completamente Homomórfica'
+date: '2024-10-22'
 author: frank-mangone
 thumbnail: /images/cryptography-101/fully-homomorphic-encryption/steed.webp
 tags:

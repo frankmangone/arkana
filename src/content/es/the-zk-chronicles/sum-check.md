@@ -1,7 +1,7 @@
 ---
-title: "Las Crónicas de ZK: Verificación de la Suma"
+title: 'Las Crónicas de ZK: Verificación de la Suma'
 author: frank-mangone
-date: "2025-11-25"
+date: '2025-11-25'
 thumbnail: /images/the-zk-chronicles/sum-check/1_Yzr-2zVpHO5IToX1NfBcEw.webp
 tags:
   - sumCheck

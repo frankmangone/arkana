@@ -1,6 +1,6 @@
 ---
-title: "Criptografía 101: Hashing"
-date: "2024-03-24"
+title: 'Criptografía 101: Hashing'
+date: '2024-03-24'
 author: frank-mangone
 thumbnail: /images/cryptography-101/hashing/bosch.webp
 tags:

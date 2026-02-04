@@ -1,6 +1,6 @@
 ---
 title: Elliptic Curves In-Depth (Part 4)
-date: "2025-03-03"
+date: '2025-03-03'
 author: frank-mangone
 thumbnail: /images/elliptic-curves-in-depth/part-4/yoda.webp
 tags:
@@ -10,7 +10,7 @@ tags:
   - isomorphism
   - mathematics
   - ellipticCurves
-description: "Let’s talk about functions on elliptic curves, and their crazy properties."
+description: 'Let’s talk about functions on elliptic curves, and their crazy properties.'
 readingTime: 14 min
 mediumUrl: >-
   https://medium.com/@francomangone18/elliptic-curves-in-depth-part-4-5d5fb5638347

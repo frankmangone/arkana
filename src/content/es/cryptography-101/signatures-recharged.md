@@ -1,6 +1,6 @@
 ---
-title: "Criptografía 101: Firmas Recargadas"
-date: "2024-04-09"
+title: 'Criptografía 101: Firmas Recargadas'
+date: '2024-04-09'
 author: frank-mangone
 thumbnail: /images/cryptography-101/signatures-recharged/one-does-not-simply.webp
 tags:

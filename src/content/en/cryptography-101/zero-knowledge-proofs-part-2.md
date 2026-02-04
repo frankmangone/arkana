@@ -1,6 +1,6 @@
 ---
-title: "Cryptography 101: Zero Knowledge Proofs (Part 2)"
-date: "2024-06-25"
+title: 'Cryptography 101: Zero Knowledge Proofs (Part 2)'
+date: '2024-06-25'
 author: frank-mangone
 thumbnail: /images/cryptography-101/zero-knowledge-proofs-part-2/pikachu.webp
 tags:

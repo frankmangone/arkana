@@ -1,7 +1,7 @@
 ---
-title: "Blockchain 101: Polkadot"
+title: 'Blockchain 101: Polkadot'
 author: frank-mangone
-date: "2025-08-05"
+date: '2025-08-05'
 thumbnail: /images/blockchain-101/polkadot/0*2X_pmsJZlxGr-E_N-8.jpg
 tags:
   - polkadot

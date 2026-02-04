@@ -1,7 +1,7 @@
 ---
-title: "Las Crónicas de ZK: Fundamentos Matemáticos"
+title: 'Las Crónicas de ZK: Fundamentos Matemáticos'
 author: frank-mangone
-date: "2025-11-18"
+date: '2025-11-18'
 thumbnail: /images/the-zk-chronicles/math-foundations/0*GbSJc4K4r9V14xsi-3.jpg
 tags:
   - zeroKnowledgeProofs
@@ -11,7 +11,7 @@ tags:
   - interpolation
 description: ¡Es hora de nuestros primeros conceptos matemáticos básicos!
 readingTime: 12 min
-contentHash: 23b70e5a73e32d2f1546268f0ffc8c58ffa71a416e9582df38bbb3bb0042185b
+contentHash: 23899d7bb4bd188d25e03e86282a69e57743ee974e9639f141e29963aecd4fdb
 supabaseId: 6049c9f8-19b0-44da-bb63-daefd0fecca9
 ---
 

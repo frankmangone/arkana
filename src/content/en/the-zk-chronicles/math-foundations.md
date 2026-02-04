@@ -1,7 +1,7 @@
 ---
-title: "The ZK Chronicles: Math Foundations"
+title: 'The ZK Chronicles: Math Foundations'
 author: frank-mangone
-date: "2025-11-18"
+date: '2025-11-18'
 thumbnail: /images/the-zk-chronicles/math-foundations/0*GbSJc4K4r9V14xsi-3.jpg
 tags:
   - zeroKnowledgeProofs
@@ -13,7 +13,7 @@ description: Time for our first basic mathematical concepts!
 readingTime: 12 min
 mediumUrl: >-
   https://medium.com/@francomangone18/the-zk-chronicles-math-foundations-9e1393945bab
-contentHash: ecf63637da91ce3e02ca62ea76d008f6069d922c1fc5091a1c0f0ecec8f607d6
+contentHash: acd7892e1496039423f99ac7493fc285b84a3b21cdcf7d2feb50663317fed892
 supabaseId: 1945afc7-ad8b-4984-a8e0-3114fb19db22
 ---
 

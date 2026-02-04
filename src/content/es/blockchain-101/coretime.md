@@ -1,6 +1,6 @@
 ---
-title: "Blockchain 101: Coretime"
-date: "2025-09-01"
+title: 'Blockchain 101: Coretime'
+date: '2025-09-01'
 author: frank-mangone
 thumbnail: /images/blockchain-101/coretime/0*5hVpbbmaF_GTFVIK-7.jpg
 tags:

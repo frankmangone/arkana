@@ -1,6 +1,6 @@
 ---
-title: "Criptografía 101: Esquemas de Compromiso Revisitados"
-date: "2024-06-04"
+title: 'Criptografía 101: Esquemas de Compromiso Revisitados'
+date: '2024-06-04'
 author: frank-mangone
 thumbnail: /images/cryptography-101/commitment-schemes-revisited/hell-no.webp
 tags:

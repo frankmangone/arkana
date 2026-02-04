@@ -1,6 +1,6 @@
 ---
 title: WTF is Quantum Computing
-date: "2025-03-24"
+date: '2025-03-24'
 author: frank-mangone
 thumbnail: /images/wtf-is/quantum-computing/hitchhikers.webp
 tags:
@@ -12,7 +12,7 @@ description: >-
   A short explainer on how quantum computers work, what they can do, and what to
   expect from them in the near future
 readingTime: 11 min
-mediumUrl: "https://medium.com/@francomangone18/wtf-is-quantum-computing-201cfb05ed66"
+mediumUrl: 'https://medium.com/@francomangone18/wtf-is-quantum-computing-201cfb05ed66'
 contentHash: 4480945f94d166304e708750d2feeb3ebe4df3007bf0398950885043f6f3dc2f
 supabaseId: c1625537-4005-422e-be70-b8adfa052f79
 ---

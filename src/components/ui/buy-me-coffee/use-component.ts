@@ -61,8 +61,8 @@ const isMobileDevice = () => {
 
 const hasMetaMaskExtension = () => {
   if (typeof window === "undefined") return false;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return (
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     typeof (window as any).ethereum !== "undefined" &&
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (window as any).ethereum.isMetaMask === true

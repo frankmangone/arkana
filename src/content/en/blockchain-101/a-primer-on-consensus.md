@@ -1,6 +1,6 @@
 ---
-title: "Blockchain 101: A Primer on Consensus"
-date: "2024-09-25"
+title: 'Blockchain 101: A Primer on Consensus'
+date: '2024-09-25'
 author: frank-mangone
 thumbnail: /images/blockchain-101/a-primer-on-consensus/smaug.webp
 tags:

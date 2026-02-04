@@ -1,6 +1,6 @@
 ---
-title: "Cryptography 101: Elliptic Curves (Somewhat) Demystified"
-date: "2024-03-11"
+title: 'Cryptography 101: Elliptic Curves (Somewhat) Demystified'
+date: '2024-03-11'
 author: frank-mangone
 thumbnail: >-
   /images/cryptography-101/elliptic-curves-somewhat-demystified/elliptic-curve.webp

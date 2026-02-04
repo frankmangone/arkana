@@ -1,6 +1,6 @@
 ---
-title: "Blockchain 101: Solana Programs"
-date: "2025-06-09"
+title: 'Blockchain 101: Solana Programs'
+date: '2025-06-09'
 author: frank-mangone
 thumbnail: /images/blockchain-101/solana-programs/joey-shocked.webp
 tags:

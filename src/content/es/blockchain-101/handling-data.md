@@ -1,8 +1,8 @@
 ---
-title: "Blockchain 101: Manejo de Datos"
+title: 'Blockchain 101: Manejo de Datos'
 author: frank-mangone
 readingTime: 13 min
-date: "2026-01-14"
+date: '2026-01-14'
 thumbnail: /images/blockchain-101/handling-data/owls.webp
 tags:
   - blockchain

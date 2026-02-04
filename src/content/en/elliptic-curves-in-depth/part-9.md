@@ -1,7 +1,7 @@
 ---
 title: Elliptic Curves In-Depth (Part 9)
 author: frank-mangone
-date: "2025-10-06"
+date: '2025-10-06'
 thumbnail: /images/elliptic-curves-in-depth/part-9/0*cA5HOtwjA3YxYxcy-20.jpg
 tags:
   - pairings
@@ -14,7 +14,7 @@ description: >-
 readingTime: 15 min
 mediumUrl: >-
   https://medium.com/@francomangone18/elliptic-curves-in-depth-part-9-f9253c437fbd
-contentHash: 6af8471fab20ccd3bd7dbcd82329ea6a87032c510a55b2b5f3791f11a74d2b6c
+contentHash: b9e360a42179b9db16bc2d6908366ad1ba343f8d28475caa2621d9131a98af6d
 supabaseId: 2b7c8046-8a98-4559-b675-e41bb0b07536
 ---
 

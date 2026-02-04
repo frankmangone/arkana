@@ -1,6 +1,6 @@
 ---
-title: "Criptografia 101: Assinaturas Turbinadas"
-date: "2024-04-09"
+title: 'Criptografia 101: Assinaturas Turbinadas'
+date: '2024-04-09'
 author: frank-mangone
 thumbnail: /images/cryptography-101/signatures-recharged/one-does-not-simply.webp
 tags:

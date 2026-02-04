@@ -1,7 +1,7 @@
 ---
-title: "Las Crónicas de ZK: Circuitos (Parte 1)"
+title: 'Las Crónicas de ZK: Circuitos (Parte 1)'
 author: frank-mangone
-date: "2025-12-08"
+date: '2025-12-08'
 thumbnail: /images/the-zk-chronicles/circuits-1/bender.jpg
 tags:
   - zeroKnowledgeProofs

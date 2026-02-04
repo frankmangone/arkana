@@ -1,7 +1,7 @@
 ---
-title: "Blockchain 101: ZK en Blockchain"
+title: 'Blockchain 101: ZK en Blockchain'
 author: frank-mangone
-date: "2025-10-15"
+date: '2025-10-15'
 thumbnail: /images/blockchain-101/zk-in-blockchain/0*4nlnW5cHm23lYgUp-3.jpg
 tags:
   - zeroKnowledgeProofs

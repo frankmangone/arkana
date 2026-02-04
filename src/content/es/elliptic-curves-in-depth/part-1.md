@@ -1,6 +1,6 @@
 ---
 title: Curvas Elípticas En Profundidad (Parte 1)
-date: "2025-01-14"
+date: '2025-01-14'
 author: frank-mangone
 thumbnail: /images/elliptic-curves-in-depth/part-1/hyperelliptic.webp
 tags:

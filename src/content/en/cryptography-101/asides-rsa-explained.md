@@ -1,6 +1,6 @@
 ---
-title: "Cryptography 101 Asides: RSA Explained"
-date: "2024-03-31"
+title: 'Cryptography 101 Asides: RSA Explained'
+date: '2024-03-31'
 author: frank-mangone
 thumbnail: /images/cryptography-101/rsa-explained/batman.webp
 tags:

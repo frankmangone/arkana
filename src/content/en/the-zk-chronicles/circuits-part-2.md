@@ -1,7 +1,7 @@
 ---
-title: "The ZK Chronicles: Circuits (Part 2)"
+title: 'The ZK Chronicles: Circuits (Part 2)'
 author: frank-mangone
-date: "2026-01-24"
+date: '2026-01-24'
 readingTime: 17 min
 thumbnail: /images/the-zk-chronicles/circuits-2/legos.webp
 tags:

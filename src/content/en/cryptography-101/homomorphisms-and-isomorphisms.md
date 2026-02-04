@@ -1,6 +1,6 @@
 ---
-title: "Cryptography 101: Homomorphisms and Isomorphisms"
-date: "2024-04-16"
+title: 'Cryptography 101: Homomorphisms and Isomorphisms'
+date: '2024-04-16'
 author: frank-mangone
 thumbnail: /images/cryptography-101/homomorphisms-and-isomorphisms/muppet.webp
 tags:

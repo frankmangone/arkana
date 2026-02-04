@@ -1,6 +1,6 @@
 ---
 title: WTF es la Computación Cuántica
-date: "2025-03-24"
+date: '2025-03-24'
 author: frank-mangone
 thumbnail: /images/wtf-is/quantum-computing/hitchhikers.webp
 tags:

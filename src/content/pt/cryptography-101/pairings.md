@@ -1,6 +1,6 @@
 ---
-title: "Criptografia 101: Emparelhamentos"
-date: "2024-05-20"
+title: 'Criptografia 101: Emparelhamentos'
+date: '2024-05-20'
 author: frank-mangone
 thumbnail: /images/cryptography-101/pairings/what-now.webp
 tags:
@@ -12,7 +12,7 @@ description: >-
   Uma breve introdução aos emparelhamentos, uma ferramenta importante na
   criptografia moderna
 readingTime: 11 min
-contentHash: 2846dfdb13de00a0d98aa6a87d44ace8dc468804832d5011d11451267b93dbc7
+contentHash: 6c7bdf800addf9f6a98596b03bce4375511f5429cc94cda0b26b6a9aec3425ec
 supabaseId: 7ae45c29-f9d3-4a33-96dd-e11408538e53
 ---
 
