@@ -10,10 +10,12 @@ tags:
   - computationModels
   - complexityTheory
 description: >-
-  A broader look at the connection between different computation models, and the importance of arithmetic circuits
-mediumUrl: https://medium.com/@francomangone18/the-zk-chronicles-computation-models-b7a1bf6c1179
-contentHash: # TODO: Add content hash
-supabaseId: # TODO: Add supabase ID
+  A broader look at the connection between different computation models, and the
+  importance of arithmetic circuits
+mediumUrl: >-
+  https://medium.com/@francomangone18/the-zk-chronicles-computation-models-b7a1bf6c1179
+contentHash: 6d67bd38047eb72b15a7089d7c6a80297f0a81fc94562f7722f86368e5415787
+supabaseId: null
 ---
 
 Hey! Glad you survived the [previous article](/en/blog/the-zk-chronicles/circuits-part-2)!
@@ -332,8 +334,10 @@ This revealed important things: models are fundamentally equivalent, and problem
 
 We also introduced a crucial framework: **languages** and **witnesses**. This is a different way to think about problems. It might seem a little strange for now, but it’s a powerful set of tools for formal proofs. We’ll make use of languages later down the road, but for now, just keeping their existence in the back of your mind is enough.
 
+---
+
 If you’re here after all these shenanigans, congrats! This is probably the **single hardest theoretical article** in the series. Sure, we’ll need to talk about other theoretical concepts later, but for me at least, this was the most complicated part to write, or even wrap my head around.
 
 So next time, we’ll start building on all the foundations we’ve covered so far, using some ideas that will probably feel more familiar, and yet, help make verifiable computing and ZK systems actually usable.
 
-Until then!
+[Until then](/en/blog/the-zk-chronicles/enter-hashing)!
