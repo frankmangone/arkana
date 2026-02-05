@@ -56,13 +56,13 @@ export async function getPostInfo(
   path: string,
   walletAddress?: string
 ): Promise<PostInfoResponse> {
-  const params = new URLSearchParams({ path });
+  const params = new URLSearchParams();
   if (walletAddress) {
     params.set("wallet", walletAddress);
   }
-  const response = await axios.get<PostInfoResponse>(
-    `${API_URL}/api/posts/info?${params.toString()}`
-  );
+  const queryString = params.toString();
+  const url = `${API_URL}/api/posts/${path}/info${queryString ? `?${queryString}` : ""}`;
+  const response = await axios.get<PostInfoResponse>(url);
   return response.data;
 }
 
@@ -70,12 +70,13 @@ export async function getPostInfo(
  * Toggle like on a post using JWS authentication.
  * The backend expects the raw JWS string as the request body.
  *
- * @param jws - The signed JWS containing { path: string } in the payload
+ * @param path - The post path identifier (used in URL)
+ * @param jws - The signed JWS for authentication
  * @returns The like response with liked status and count
  */
-export async function toggleLike(jws: string): Promise<ToggleLikeResponse> {
+export async function toggleLike(path: string, jws: string): Promise<ToggleLikeResponse> {
   const response = await axios.post<ToggleLikeResponse>(
-    `${API_URL}/api/posts/like`,
+    `${API_URL}/api/posts/${path}/like`,
     jws,
     {
       headers: {

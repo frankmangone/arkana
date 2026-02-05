@@ -55,7 +55,7 @@ export function useLike() {
   return useMutation<ToggleLikeResponse, Error, UseLikeParams>({
     mutationFn: async ({ address, path }) => {
       const jws = await createSignedJWS(address, { action: "like", path });
-      return toggleLike(jws);
+      return toggleLike(path, jws);
     },
   });
 }
