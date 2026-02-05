@@ -27,7 +27,7 @@ export function LoginForm({ lang, dictionary }: LoginFormProps) {
         <Header dictionary={dictionary} />
 
         <MetamaskLogin lang={lang} dictionary={dictionary} />
-        <PolkadotLogin lang={lang} dictionary={dictionary} />
+        {false && <PolkadotLogin lang={lang} dictionary={dictionary} />}
 
         <Terms dictionary={dictionary} />
       </div>

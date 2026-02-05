@@ -25,7 +25,27 @@ function base64UrlEncode(str: string): string {
 interface JWSPayload {
   addr: string;
   ts: number;
+  action?: string;
+  path?: string;
   [key: string]: unknown;
+}
+
+/**
+ * Builds a human-readable signing message from the payload.
+ * This must match exactly with the backend implementation.
+ */
+function buildSigningMessage(payload: JWSPayload): string {
+  // Determine title based on action
+  let title = "Arkana Login";
+  if (payload.action === "like") {
+    title = "Arkana - Like Post";
+  }
+
+  let msg = `${title}\n\nAddress: ${payload.addr}\nTimestamp: ${payload.ts}`;
+  if (payload.path) {
+    msg += `\nPath: ${payload.path}`;
+  }
+  return msg;
 }
 
 /**
@@ -55,14 +75,14 @@ export async function createSignedJWS(
   };
   const payloadB64 = base64UrlEncode(JSON.stringify(payload));
 
-  // The signing input is the concatenation of header and payload
-  const signingInput = `${protectedB64}.${payloadB64}`;
+  // Build human-readable message for signing
+  const signingMessage = buildSigningMessage(payload);
 
   // Sign using EIP-191 personal_sign
   // The wallet will prefix with "\x19Ethereum Signed Message:\n{length}"
   const signature = await window.ethereum.request({
     method: "personal_sign",
-    params: [signingInput, address],
+    params: [signingMessage, address],
   });
 
   // Remove "0x" prefix if present for the final JWS

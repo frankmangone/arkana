@@ -15,7 +15,10 @@ const WALLET_STORAGE_KEY = "arkana_wallet";
 interface WalletContextType {
   wallet: WalletInfo | null;
   isConnecting: boolean;
+  /** Connects to wallet provider (e.g., MetaMask) and returns info. Does NOT update state. */
   connect(strategy: WalletStrategy): Promise<WalletInfo>;
+  /** Call after successful backend login to persist wallet state. */
+  confirmLogin(info: WalletInfo): void;
   disconnect(): void;
 }
 
@@ -25,6 +28,7 @@ const WalletContext = createContext<WalletContextType>({
   connect: async () => {
     throw new Error("WalletProvider not initialized");
   },
+  confirmLogin: () => {},
   disconnect: () => {},
 });
 
@@ -50,12 +54,16 @@ export function WalletProvider({ children }: { children: ReactNode }) {
     setIsConnecting(true);
     try {
       const info = await strategy.connect();
-      setWallet(info);
-      localStorage.setItem(WALLET_STORAGE_KEY, JSON.stringify(info));
+      // Don't set state here - wait for confirmLogin after backend success
       return info;
     } finally {
       setIsConnecting(false);
     }
+  }, []);
+
+  const confirmLogin = useCallback((info: WalletInfo) => {
+    setWallet(info);
+    localStorage.setItem(WALLET_STORAGE_KEY, JSON.stringify(info));
   }, []);
 
   const disconnect = useCallback(() => {
@@ -65,7 +73,7 @@ export function WalletProvider({ children }: { children: ReactNode }) {
 
   return (
     <WalletContext.Provider
-      value={{ wallet, isConnecting, connect, disconnect }}
+      value={{ wallet, isConnecting, connect, confirmLogin, disconnect }}
     >
       {children}
     </WalletContext.Provider>

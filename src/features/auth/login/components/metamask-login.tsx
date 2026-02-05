@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useWallet } from "@/components/providers/wallet-provider";
 import { WalletStrategy } from "@/lib/wallet/types";
@@ -7,6 +8,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { toast } from "sonner";
 import { metamaskStrategy } from "@/lib/wallet/strategies";
 import { useWalletLogin } from "@/lib/api/hooks/usePosts";
+import { Loader2 } from "lucide-react";
 
 interface MetamaskLoginProps {
   lang: string;
@@ -14,29 +16,58 @@ interface MetamaskLoginProps {
   dictionary: any;
 }
 
+// MetaMask error code for user rejection
+const USER_REJECTED_CODE = 4001;
+
+function isUserRejection(error: unknown): boolean {
+  if (error && typeof error === "object" && "code" in error) {
+    return (error as { code: number }).code === USER_REJECTED_CODE;
+  }
+  return false;
+}
+
 export function MetamaskLogin(props: MetamaskLoginProps) {
   const { lang, dictionary } = props;
 
-  const { connect, isConnecting } = useWallet();
+  const { connect, confirmLogin } = useWallet();
   const walletLogin = useWalletLogin();
   const router = useRouter();
   const searchParams = useSearchParams();
 
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
+
   const handleConnect = async (strategy: WalletStrategy) => {
+    // Check if MetaMask is installed
+    const isAvailable = await strategy.isAvailable();
+    if (!isAvailable) {
+      window.open("https://metamask.io/download/", "_blank");
+      return;
+    }
+
+    setIsLoggingIn(true);
     try {
       const walletInfo = await connect(strategy);
       // Register wallet with backend (signs a JWS and calls /api/login)
       await walletLogin.mutateAsync({ address: walletInfo.address });
 
+      // Only persist wallet state after backend confirms login
+      confirmLogin(walletInfo);
+
       // Redirect to return URL or home
       const redirect = searchParams.get("redirect");
       router.push(redirect || `/${lang}`);
     } catch (error) {
-      const message =
-        error instanceof Error
-          ? error.message
-          : "Failed to connect wallet. Please try again.";
-      toast.error(message);
+      if (isUserRejection(error)) {
+        toast.error("Signing cancelled");
+      } else {
+        const message =
+          error instanceof Error
+            ? error.message
+            : "Failed to connect wallet. Please try again.";
+        toast.error(message);
+      }
+    } finally {
+      setIsLoggingIn(false);
     }
   };
 
@@ -44,14 +75,18 @@ export function MetamaskLogin(props: MetamaskLoginProps) {
     <Button
       type="button"
       onClick={() => handleConnect(metamaskStrategy)}
-      disabled={isConnecting}
+      disabled={isLoggingIn}
       className="w-full mb-4 h-12 bg-background border border-border hover:bg-accent"
       size="lg"
       variant="outline"
     >
-      <MetaMaskSvg />
+      {isLoggingIn ? (
+        <Loader2 className="h-5 w-5 animate-spin" />
+      ) : (
+        <MetaMaskSvg />
+      )}
       <span className="ml-2">
-        {isConnecting
+        {isLoggingIn
           ? dictionary.login.connecting || "Connecting..."
           : dictionary.login.connectMetaMask || "Connect with MetaMask"}
       </span>
