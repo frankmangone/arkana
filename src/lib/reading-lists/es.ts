@@ -357,6 +357,11 @@ export const readingLists: ReadingList[] = [
         slug: "the-zk-chronicles/circuits-part-2",
         order: 6,
       },
+      {
+        id: "computation-models",
+        slug: "the-zk-chronicles/computation-models",
+        order: 7,
+      },
     ],
   },
 ];

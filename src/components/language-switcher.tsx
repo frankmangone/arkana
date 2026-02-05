@@ -29,7 +29,7 @@ export function LanguageSwitcher() {
   const languageNames = {
     en: "English",
     es: "Español",
-    // pt: "Português",
+    pt: "Português",
   };
 
   return (

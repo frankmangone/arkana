@@ -106,7 +106,7 @@ $$
 e([b]G, [c]G)^a = e([a]G, [c]G)^b = e([a]G, [b]G)^c
 $$
 
-You see, what's interesting here is that the values $[a]G$, $[b]G$, and $[c]G$ do not leak information about the secret values $a$, $b$, and $c$ (unless you can solve a DLP!). For these reason, these values can be _q_, and afterwards, everyone can compute the same shared value!
+You see, what's interesting here is that the values $[a]G$, $[b]G$, and $[c]G$ do not leak information about the secret values $a$, $b$, and $c$ (unless you can solve a DLP!). For these reason, these values can be $q$, and afterwards, everyone can compute the same shared value!
 
 > This extension does not use the users' **identity** for the process. In turn, this just goes to show how pairings enable identity-based cryptography, but are not **limited** to that application.
 

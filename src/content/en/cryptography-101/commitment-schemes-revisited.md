@@ -138,7 +138,7 @@ $$
 
 > We'll use the tilde notation ($~$) to denote commitments to functions. For instance, $\tilde{f}$ represents a commitment to $f$.
 
-Upon closer inspection, we can see that $\alpha$ is required to compute the commitment. But in theory, α has been **discarded** at this point! So how can we possibly calculate this?
+Upon closer inspection, we can see that $\alpha$ is required to compute the commitment. But in theory, $\alpha$ has been **discarded** at this point! So how can we possibly calculate this?
 
 Remember the **public parameters** calculated during setup? This is where they come in handy. Given that our polynomial has the form:
 

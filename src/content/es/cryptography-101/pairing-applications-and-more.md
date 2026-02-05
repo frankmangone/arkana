@@ -104,7 +104,7 @@ $$
 e([b]G, [c]G)^a = e([a]G, [c]G)^b = e([a]G, [b]G)^c
 $$
 
-Verás, lo interesante aquí es que los valores $[a]G$, $[b]G$ y $[c]G$ no filtran información sobre los valores secretos $a$, $b$ y $c$ (¡a menos que puedas resolver un DLP!). Por estas razones, ¡estos valores pueden ser _publicados_, y después, todos pueden calcular el mismo valor compartido!
+Verás, lo interesante aquí es que los valores $[a]G$, $[b]G$ y $[c]G$ no filtran información sobre los valores secretos $a$, $b$ y $c$ (¡a menos que puedas resolver un DLP!). Por estas razones, ¡estos valores pueden ser **publicados**, y después, todos pueden calcular el mismo valor compartido!
 
 > Esta extensión no utiliza la **identidad** de los usuarios para el proceso. A su vez, esto solo demuestra cómo los emparejamientos permiten la criptografía basada en identidad, pero no están **limitados** a esa aplicación.
 

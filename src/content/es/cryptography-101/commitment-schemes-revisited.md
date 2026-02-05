@@ -137,7 +137,7 @@ $$
 
 > Usaremos la notación de tilde ($~$) para denotar compromisos con funciones. Por ejemplo, $\tilde{f}$ representa un compromiso con $f$.
 
-Al examinar más de cerca, podemos ver que se requiere $\alpha$ para calcular el compromiso. Pero en teoría, ¡α ha sido **descartado** en este punto! Entonces, ¿cómo podemos calcular esto?
+Al examinar más de cerca, podemos ver que se requiere $\alpha$ para calcular el compromiso. Pero en teoría, ¡$\alpha$ ha sido **descartado** en este punto! Entonces, ¿cómo podemos calcular esto?
 
 ¿Recuerdas los **parámetros públicos** calculados durante la configuración? Aquí es donde resultan útiles. Dado que nuestro polinomio tiene la forma:
 

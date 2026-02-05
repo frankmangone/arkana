@@ -74,6 +74,16 @@ export const readingLists: ReadingList[] = [
         slug: "cryptography-101/pairings",
         order: 12,
       },
+      {
+        id: "pairing-applications-and-more",
+        slug: "cryptography-101/pairing-applications-and-more",
+        order: 13,
+      },
+      {
+        id: "commitment-schemes-revisited",
+        slug: "cryptography-101/commitment-schemes-revisited",
+        order: 14,
+      },
     ],
   },
 ];
