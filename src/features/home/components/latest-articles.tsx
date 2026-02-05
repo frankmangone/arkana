@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FeaturedPostCard } from "@/components/custom/featured-post-card";
+import { FeaturedPostCard } from "@/components/ui/featured-post-card";
 import { PostPreview } from "@/lib/posts";
 
 interface LatestArticlesProps {

@@ -15,14 +15,16 @@ const WALLET_STORAGE_KEY = "arkana_wallet";
 interface WalletContextType {
   wallet: WalletInfo | null;
   isConnecting: boolean;
-  connect(strategy: WalletStrategy): Promise<void>;
+  connect(strategy: WalletStrategy): Promise<WalletInfo>;
   disconnect(): void;
 }
 
 const WalletContext = createContext<WalletContextType>({
   wallet: null,
   isConnecting: false,
-  connect: async () => {},
+  connect: async () => {
+    throw new Error("WalletProvider not initialized");
+  },
   disconnect: () => {},
 });
 
@@ -44,12 +46,13 @@ export function WalletProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
-  const connect = useCallback(async (strategy: WalletStrategy) => {
+  const connect = useCallback(async (strategy: WalletStrategy): Promise<WalletInfo> => {
     setIsConnecting(true);
     try {
       const info = await strategy.connect();
       setWallet(info);
       localStorage.setItem(WALLET_STORAGE_KEY, JSON.stringify(info));
+      return info;
     } finally {
       setIsConnecting(false);
     }

@@ -1,6 +1,6 @@
 import { Navbar } from "./navbar";
 import { ArkanaBackground } from "./arkana-background";
-import { Footer } from "../custom/footer";
+import { Footer } from "../ui/footer";
 
 interface MainLayoutProps {
   children: React.ReactNode;

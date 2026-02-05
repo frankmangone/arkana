@@ -3,9 +3,10 @@
 import { Button } from "@/components/ui/button";
 import { useWallet } from "@/components/providers/wallet-provider";
 import { WalletStrategy } from "@/lib/wallet/types";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { toast } from "sonner";
 import { metamaskStrategy } from "@/lib/wallet/strategies";
+import { useWalletLogin } from "@/lib/api/hooks/usePosts";
 
 interface MetamaskLoginProps {
   lang: string;
@@ -17,12 +18,19 @@ export function MetamaskLogin(props: MetamaskLoginProps) {
   const { lang, dictionary } = props;
 
   const { connect, isConnecting } = useWallet();
+  const walletLogin = useWalletLogin();
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   const handleConnect = async (strategy: WalletStrategy) => {
     try {
-      await connect(strategy);
-      router.push(`/${lang}`);
+      const walletInfo = await connect(strategy);
+      // Register wallet with backend (signs a JWS and calls /api/login)
+      await walletLogin.mutateAsync({ address: walletInfo.address });
+
+      // Redirect to return URL or home
+      const redirect = searchParams.get("redirect");
+      router.push(redirect || `/${lang}`);
     } catch (error) {
       const message =
         error instanceof Error

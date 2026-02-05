@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { PostPreview } from "@/lib/posts";
-import { PostCard } from "@/components/custom/post-card";
+import { PostCard } from "@/components/ui/post-card";
 import { Pagination } from "@/components/pagination";
 
 interface BlogPageProps {

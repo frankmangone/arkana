@@ -4,7 +4,7 @@ import { getDictionary } from "@/lib/dictionaries";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft } from "lucide-react";
-import { PostCard } from "@/components/custom/post-card";
+import { PostCard } from "@/components/ui/post-card";
 import { getPostsFromReadingList } from "./fetch";
 
 interface ReadingListPageProps {

@@ -6,7 +6,7 @@ import { PostPreview } from "@/lib/posts";
 import { useRouter } from "next/navigation";
 import { ArrowUpRight, User, Clock } from "lucide-react";
 import { formatDate } from "@/lib/utils";
-import { Tag } from "@/components/custom/tag";
+import { Tag } from "@/components/ui/tag";
 
 export interface FeaturedPostCardProps {
   post: PostPreview;

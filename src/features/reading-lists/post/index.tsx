@@ -1,5 +1,5 @@
 import { PostContent } from "@/components/ui/post-content";
-import { PostHeader } from "@/components/custom/post-header";
+import { PostHeader } from "@/components/ui/post-header";
 import { Post } from "@/lib/types";
 import { getWriter } from "@/lib/writers";
 import { getReadingList } from "@/lib/reading-lists";

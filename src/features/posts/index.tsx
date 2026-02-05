@@ -1,14 +1,14 @@
 import { getDictionary } from "@/lib/dictionaries";
 import { getPostBySlug } from "./actions";
-import { PostHeader } from "../../components/custom/post-header";
+import { PostHeader } from "../../components/ui/post-header";
 import { Metadata } from "next";
 import { NotFoundInLanguage } from "@/components/not-found-in-language";
 import Script from "next/script";
 import { getWriter } from "@/lib/writers";
 import { PostContent } from "@/components/ui/post-content";
-import { PostActions } from "@/components/custom/post-actions";
 import { SectionDivider } from "@/components/ui/section-divider";
 import BuyMeCoffeeWidget from "@/components/ui/buy-me-coffee";
+import { PostActions } from "@/components/ui/post-actions";
 
 interface PostPageProps {
   lang: string;
@@ -101,7 +101,7 @@ export async function PostPage(props: PostPageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       {header}
-      {process.env.NEXT_PUBLIC_AUTH_ENABLED === "true" && <PostActions />}
+      {process.env.NEXT_PUBLIC_AUTH_ENABLED === "true" && <PostActions path={slug} />}
       <PostContent post={post} quizDictionary={dict.quiz} />
       <SectionDivider />
       {writer.walletAddress &&

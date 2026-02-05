@@ -2,7 +2,7 @@ import React from "react";
 import { Navbar } from "./navbar";
 import { ArkanaBackground } from "./arkana-background";
 import Image from "next/image";
-import { Footer } from "../custom/footer";
+import { Footer } from "../ui/footer";
 
 interface HomeLayoutProps {
   children: React.ReactNode;

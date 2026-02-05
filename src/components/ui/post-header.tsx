@@ -5,7 +5,7 @@ import { getWriter } from "@/lib/writers";
 import { getDictionary } from "@/lib/dictionaries";
 import { ExternalLink } from "lucide-react";
 import { ArkanaStrip } from "@/components/arkana-strip";
-import { Tag } from "@/components/custom/tag";
+import { Tag } from "@/components/ui/tag";
 import { Link } from "@/components/ui/link";
 
 interface PostHeaderProps {
