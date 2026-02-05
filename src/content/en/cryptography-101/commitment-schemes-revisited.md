@@ -14,7 +14,7 @@ description: >-
 readingTime: 10 min
 mediumUrl: >-
   https://medium.com/@francomangone18/cryptography-101-commitment-schemes-revisited-959a3bd94942
-contentHash: e2b76462c6393ccd9a9a869b7fd4b2c64145567483a7359a3e856e25828ea02d
+contentHash: 2e49f3c8a7dc12b4607efb1deeb9f3ebf579c5db9bf911d6f87e1dd3cc5369d6
 supabaseId: 9365067d-224c-4754-bd4f-346cd3748333
 ---
 

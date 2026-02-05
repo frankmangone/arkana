@@ -13,7 +13,7 @@ description: >-
   proporcionando herramientas importantes para construcciones más complejas en
   el futuro
 readingTime: 10 min
-contentHash: 5bd2ec58530476ce1094d5d06673915b64add4c4ede8ac919511b00310488fed
+contentHash: 0fceb5d747fcdd66d2a1c043400bd683f6134dd840efa77043c622234f86e41f
 supabaseId: 681df4f0-18b9-4ee5-9ffa-07aaff05c803
 ---
 

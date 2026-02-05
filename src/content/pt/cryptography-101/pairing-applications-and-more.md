@@ -10,10 +10,10 @@ tags:
   - keyExchange
   - digitalSignatures
 description: >-
-  Seguindo nossa apresentação de emparelhamentos, olhamos para mais algumas aplicações
-  habilitadas por esta nova ferramenta
+  Seguindo nossa apresentação de emparelhamentos, olhamos para mais algumas
+  aplicações habilitadas por esta nova ferramenta
 readingTime: 8 min
-contentHash: 4d0a3c6bcb10b00a303c89791cb19bc9fb5d0bc1c4131f1057e052d3c006d5f5
+contentHash: 258fd0d2eb0ae9a5099a3cdcd9cd3729803d52256d5b75fdda40d87fcb6013cf
 supabaseId: 5ba758ce-1d4f-4dad-9514-1cf1a086a4be
 ---
 

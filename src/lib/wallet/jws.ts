@@ -13,6 +13,7 @@ type EthereumProvider = {
 
 declare global {
   interface Window {
+    /* @ts-expect-error - Ethereum provider is not typed */
     ethereum?: EthereumProvider;
   }
 }

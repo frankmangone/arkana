@@ -13,7 +13,7 @@ description: >-
   Siguiendo nuestra presentación de los emparejamientos, veamos un par más de
   aplicaciones que esta nueva herramienta permite
 readingTime: 8 min
-contentHash: 2c967aae61cb68b3c688043528c323206ac3ab937911226940f147868df8cca8
+contentHash: 0adc4be05fa8629c43569f9ad5e2449fa931125593bef4498265868668976b67
 supabaseId: 66e81a28-036b-46a5-bd1e-3d20d8881207
 ---
 

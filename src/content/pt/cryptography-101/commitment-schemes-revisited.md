@@ -9,10 +9,11 @@ tags:
   - mathematics
   - commitmentScheme
 description: >-
-  Uma expansão sobre as ideias por trás de esquemas de comprometimento mais simples, fornecendo
-  ferramentas importantes para construções mais complexas no futuro
+  Uma expansão sobre as ideias por trás de esquemas de comprometimento mais
+  simples, fornecendo ferramentas importantes para construções mais complexas no
+  futuro
 readingTime: 10 min
-contentHash: e2b76462c6393ccd9a9a869b7fd4b2c64145567483a7359a3e856e25828ea02d
+contentHash: f0573aa86b50b35fbba909681531762afd473a3beaf8e90439c50a158a59d8e5
 supabaseId: 9365067d-224c-4754-bd4f-346cd3748333
 ---
 
