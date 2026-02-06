@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useWallet } from "@/components/providers/wallet-provider";
 import { WalletStrategy } from "@/lib/wallet/types";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { toast } from "sonner";
 import { metamaskStrategy } from "@/lib/wallet/strategies";
 import { useWalletLogin } from "@/lib/api/hooks/usePosts";
@@ -22,7 +22,6 @@ export function MetamaskLogin(props: MetamaskLoginProps) {
 
   const { connect, confirmLogin } = useWallet();
   const walletLogin = useWalletLogin();
-  const router = useRouter();
   const searchParams = useSearchParams();
 
   const [isLoggingIn, setIsLoggingIn] = useState(false);

@@ -11,9 +11,9 @@ interface SignupPageProps {
   params: Promise<SignupPageParams>;
 }
 
-export async function generateMetadata({
-  params,
-}: SignupPageProps): Promise<Metadata> {
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export async function generateMetadata({ params }: SignupPageProps): Promise<Metadata> {
   // Not used for now
   notFound();
 

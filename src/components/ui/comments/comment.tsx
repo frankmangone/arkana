@@ -28,6 +28,7 @@ function truncateAddress(address: string): string {
  */
 function formatTimeAgo(
   dateString: string,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   dictionary: any,
   lang: string
 ): string {
@@ -107,6 +108,7 @@ const MAX_DEPTH = 3;
 
 export function Comment({ comment, path, depth }: CommentProps) {
   const [showReplyForm, setShowReplyForm] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [dictionary, setDictionary] = useState<any>(null);
   const params = useParams();
   const lang = (params?.lang as string) || "en";

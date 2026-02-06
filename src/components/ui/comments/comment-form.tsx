@@ -28,6 +28,7 @@ export function CommentForm({
   autoFocus = false,
 }: CommentFormProps) {
   const [body, setBody] = useState("");
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [dictionary, setDictionary] = useState<any>(null);
   const params = useParams();
   const lang = (params?.lang as string) || "en";

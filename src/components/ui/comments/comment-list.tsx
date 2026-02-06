@@ -50,6 +50,7 @@ function buildCommentTree(comments: CommentResponse[]): CommentWithReplies[] {
 export function CommentList({ comments, path }: CommentListProps) {
   const params = useParams();
   const lang = (params?.lang as string) || "en";
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [dictionary, setDictionary] = useState<any>(null);
 
   useEffect(() => {

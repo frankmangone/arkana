@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { PostContent } from "@/components/ui/post-content";
 import { PostHeader } from "@/components/ui/post-header";
 import { Post } from "@/lib/types";
@@ -92,7 +93,9 @@ export async function ReadingListPostPage(props: ReadingListPostPageProps) {
         )}
 
       <SectionDivider />
-      <CommentSection path={slug} />
+      <Suspense fallback={null}>
+        <CommentSection path={slug} />
+      </Suspense>
 
       <Navigation lang={lang} id={id} prevItem={prevItem} nextItem={nextItem} />
     </article>

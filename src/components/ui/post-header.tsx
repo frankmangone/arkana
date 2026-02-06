@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { formatDate } from "@/lib/utils";
 import type { Post } from "@/lib/types";
@@ -79,7 +80,11 @@ export async function PostHeader(props: PostHeaderProps) {
             </div>
           </div>
         </div>
-        {path && <PostActions path={path} />}
+        {path && (
+          <Suspense fallback={null}>
+            <PostActions path={path} />
+          </Suspense>
+        )}
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { getDictionary } from "@/lib/dictionaries";
 import { getPostBySlug } from "./actions";
 import { PostHeader } from "../../components/ui/post-header";
@@ -114,7 +115,9 @@ export async function PostPage(props: PostPageProps) {
         )}
 
       <SectionDivider />
-      <CommentSection path={slug} />
+      <Suspense fallback={null}>
+        <CommentSection path={slug} />
+      </Suspense>
     </article>
   );
 }

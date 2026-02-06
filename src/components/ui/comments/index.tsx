@@ -20,6 +20,7 @@ export function CommentSection({ path }: CommentSectionProps) {
   const lang = (params?.lang as string) || "en";
   const { wallet } = useWallet();
   const { data, isLoading, error } = useComments({ path });
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [dictionary, setDictionary] = useState<any>(null);
   const [showTooltip, setShowTooltip] = useState(false);
   const shouldFocus = searchParams.get("focus") === "comment";
