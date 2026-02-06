@@ -1,6 +1,7 @@
 import { Metadata } from "next";
-import { getDictionary } from "@/lib/dictionaries";
-import { generateBaseMetadata } from "@/lib/metadata-utils";
+// import { getDictionary } from "@/lib/dictionaries";
+// import { generateBaseMetadata } from "@/lib/metadata-utils";
+import { notFound } from "next/navigation";
 
 interface SignupPageParams {
   lang: string;
@@ -13,22 +14,25 @@ interface SignupPageProps {
 export async function generateMetadata({
   params,
 }: SignupPageProps): Promise<Metadata> {
-  // If auth is not enabled, return basic metadata (page won't be built anyway)
-  if (process.env.NEXT_PUBLIC_AUTH_ENABLED !== "true") {
-    return {
-      title: "Arkana | Page Not Found",
-    };
-  }
+  // Not used for now
+  notFound();
 
-  const { lang } = await params;
-  const dict = await getDictionary(lang);
+  // // If auth is not enabled, return basic metadata (page won't be built anyway)
+  // if (process.env.NEXT_PUBLIC_AUTH_ENABLED !== "true") {
+  //   return {
+  //     title: "Arkana | Page Not Found",
+  //   };
+  // }
 
-  return generateBaseMetadata({
-    lang,
-    path: "signup",
-    title: `Arkana | ${dict.auth.signup.title}`,
-    description: dict.auth.signup.description,
-    ogTitle: dict.auth.signup.title,
-    type: "website",
-  });
+  // const { lang } = await params;
+  // const dict = await getDictionary(lang);
+
+  // return generateBaseMetadata({
+  //   lang,
+  //   path: "signup",
+  //   title: `Arkana | ${dict.auth.signup.title}`,
+  //   description: dict.auth.signup.description,
+  //   ogTitle: dict.auth.signup.title,
+  //   type: "website",
+  // });
 }

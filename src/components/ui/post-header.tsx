@@ -79,9 +79,7 @@ export async function PostHeader(props: PostHeaderProps) {
             </div>
           </div>
         </div>
-        {path && process.env.NEXT_PUBLIC_AUTH_ENABLED === "true" && (
-          <PostActions path={path} />
-        )}
+        {path && <PostActions path={path} />}
       </div>
     </div>
   );

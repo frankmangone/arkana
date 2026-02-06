@@ -13,13 +13,6 @@ interface LoginPageProps {
 export async function generateMetadata({
   params,
 }: LoginPageProps): Promise<Metadata> {
-  // If auth is not enabled, return basic metadata (page won't be built anyway)
-  if (process.env.NEXT_PUBLIC_AUTH_ENABLED !== "true") {
-    return {
-      title: "Arkana | Page Not Found",
-    };
-  }
-
   const { lang } = await params;
   const dict = await getDictionary(lang);
 

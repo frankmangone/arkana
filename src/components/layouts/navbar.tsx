@@ -78,7 +78,7 @@ export const Navbar = async (props: NavbarProps) => {
           </div>
 
           <LanguageSwitcher />
-          {process.env.NEXT_PUBLIC_AUTH_ENABLED === "true" && <AuthButton />}
+          <AuthButton />
 
           {/* Mobile hamburger menu */}
           <div className="md:hidden">

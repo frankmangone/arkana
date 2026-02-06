@@ -47,9 +47,6 @@ NEXT_PUBLIC_SITE_URL=https://arkana.blog
 
 # Optional: Development mode (enables testnet chains for Web3)
 NEXT_PUBLIC_DEV_MODE=false
-
-# Optional: Enable authentication features
-NEXT_PUBLIC_AUTH_ENABLED=true
 ```
 
 ## 📊 Content Management & Search
