@@ -39,7 +39,7 @@ export async function PostHeader(props: PostHeaderProps) {
         </div>
       </div>
 
-      <div className="flex items-center justify-between gap-4">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div className="flex items-center gap-4">
           <Link href={`/${lang}/writers/${writer.slug}`}>
             <Avatar className="w-[50px] h-[50px]">
@@ -81,9 +81,11 @@ export async function PostHeader(props: PostHeaderProps) {
           </div>
         </div>
         {path && (
-          <Suspense fallback={null}>
-            <PostActions path={path} />
-          </Suspense>
+          <div className="flex justify-end md:block">
+            <Suspense fallback={null}>
+              <PostActions path={path} />
+            </Suspense>
+          </div>
         )}
       </div>
     </div>
