@@ -125,10 +125,11 @@
       "connectMetaMask": "Conectar com MetaMask",
       "connectPolkadot": "Conectar com Polkadot",
       "connecting": "Conectando...",
-      "termsText": "Ao continuar, você concorda com nossos",
-      "termsOfService": "Termos de Serviço",
-      "and": "e",
-      "privacyPolicy": "Política de Privacidade"
+      "whyWallet": "Por que preciso conectar minha carteira?",
+      "errors": {
+        "signingCancelled": "Assinatura cancelada",
+        "connectFailed": "Falha ao conectar a carteira. Por favor, tente novamente."
+      }
     },
     "signup": {
       "title": "Cadastrar",
@@ -149,5 +150,20 @@
       }
     },
     "signOut": "Sair"
+  },
+  "faq": {
+    "title": "Perguntas Frequentes",
+    "wallet": {
+      "question": "Por que preciso conectar minha carteira?",
+      "answer": "Conectar sua carteira permite que você interaja com os recursos da Arkana, como curtir postagens e marcar conteúdo. Seu endereço de carteira serve como seu identificador único, e usamos assinaturas criptográficas para verificar sua identidade com segurança, sem exigir senhas tradicionais ou endereços de e-mail."
+    },
+    "privacy": {
+      "question": "Que informações vocês coletam?",
+      "answer": "Coletamos apenas seu endereço de carteira quando você se conecta. Não armazenamos informações pessoais, endereços de e-mail ou quaisquer outros dados identificadores. Sua conexão de carteira é usada apenas para autenticação e para habilitar recursos interativos na plataforma."
+    },
+    "security": {
+      "question": "É seguro conectar minha carteira?",
+      "answer": "Sim, conectar sua carteira é seguro. Usamos assinaturas criptográficas padrão para verificar sua identidade. Nunca solicitamos acesso aos seus fundos ou chaves privadas. Você só será solicitado a assinar mensagens para provar a propriedade do seu endereço de carteira."
+    }
   }
 }

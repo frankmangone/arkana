@@ -45,6 +45,7 @@ export function useWalletLogin() {
 export interface UseLikeParams {
   address: string;
   path: string;
+  liked: boolean;
 }
 
 /**
@@ -53,8 +54,8 @@ export interface UseLikeParams {
  */
 export function useLike() {
   return useMutation<ToggleLikeResponse, Error, UseLikeParams>({
-    mutationFn: async ({ address, path }) => {
-      const jws = await createSignedJWS(address, { action: "like", path });
+    mutationFn: async ({ address, path, liked }) => {
+      const jws = await createSignedJWS(address, { action: "like", path, liked });
       return toggleLike(path, jws);
     },
   });

@@ -13,7 +13,6 @@ type EthereumProvider = {
 
 declare global {
   interface Window {
-    /* @ts-expect-error - Ethereum provider is not typed */
     ethereum?: EthereumProvider;
   }
 }
@@ -28,6 +27,7 @@ interface JWSPayload {
   ts: number;
   action?: string;
   path?: string;
+  liked?: boolean;
   [key: string]: unknown;
 }
 
@@ -39,7 +39,12 @@ function buildSigningMessage(payload: JWSPayload): string {
   // Determine title based on action
   let title = "Arkana Login";
   if (payload.action === "like") {
-    title = "Arkana - Like Post";
+    // Check if this is an unlike action (current liked state is true)
+    if (payload.liked === true) {
+      title = "Arkana - Unlike Post";
+    } else {
+      title = "Arkana - Like Post";
+    }
   }
 
   let msg = `${title}\n\nAddress: ${payload.addr}\nTimestamp: ${payload.ts}`;

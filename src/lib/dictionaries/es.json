@@ -125,10 +125,11 @@
       "connectMetaMask": "Conectar con MetaMask",
       "connectPolkadot": "Conectar con Polkadot",
       "connecting": "Conectando...",
-      "termsText": "Al continuar, aceptas nuestros",
-      "termsOfService": "Términos de Servicio",
-      "and": "y",
-      "privacyPolicy": "Política de Privacidad"
+      "whyWallet": "¿Por qué necesito conectar mi billetera?",
+      "errors": {
+        "signingCancelled": "Firma cancelada",
+        "connectFailed": "Error al conectar la billetera. Por favor, inténtalo de nuevo."
+      }
     },
     "signup": {
       "title": "Registrarse",
@@ -149,5 +150,20 @@
       }
     },
     "signOut": "Cerrar sesión"
+  },
+  "faq": {
+    "title": "Preguntas Frecuentes",
+    "wallet": {
+      "question": "¿Por qué necesito conectar mi billetera?",
+      "answer": "Conectar tu billetera te permite interactuar con las funciones de Arkana, como dar me gusta a publicaciones y marcar contenido. Tu dirección de billetera sirve como tu identificador único, y usamos firmas criptográficas para verificar tu identidad de forma segura sin requerir contraseñas tradicionales o direcciones de correo electrónico."
+    },
+    "privacy": {
+      "question": "¿Qué información recopilan?",
+      "answer": "Solo recopilamos tu dirección de billetera cuando te conectas. No almacenamos información personal, direcciones de correo electrónico ni ningún otro dato identificador. Tu conexión de billetera se usa únicamente para autenticación y para habilitar funciones interactivas en la plataforma."
+    },
+    "security": {
+      "question": "¿Es seguro conectar mi billetera?",
+      "answer": "Sí, conectar tu billetera es seguro. Usamos firmas criptográficas estándar para verificar tu identidad. Nunca solicitamos acceso a tus fondos o claves privadas. Solo se te pedirá que firmes mensajes para demostrar la propiedad de tu dirección de billetera."
+    }
   }
 }

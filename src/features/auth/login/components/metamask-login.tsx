@@ -58,12 +58,15 @@ export function MetamaskLogin(props: MetamaskLoginProps) {
       router.push(redirect || `/${lang}`);
     } catch (error) {
       if (isUserRejection(error)) {
-        toast.error("Signing cancelled");
+        toast.error(
+          dictionary.login.errors?.signingCancelled || "Signing cancelled"
+        );
       } else {
         const message =
           error instanceof Error
             ? error.message
-            : "Failed to connect wallet. Please try again.";
+            : dictionary.login.errors?.connectFailed ||
+              "Failed to connect wallet. Please try again.";
         toast.error(message);
       }
     } finally {

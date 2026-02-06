@@ -125,10 +125,11 @@
       "connectMetaMask": "Connect with MetaMask",
       "connectPolkadot": "Connect with Polkadot",
       "connecting": "Connecting...",
-      "termsText": "By continuing, you agree to our",
-      "termsOfService": "Terms of Service",
-      "and": "and",
-      "privacyPolicy": "Privacy Policy"
+      "whyWallet": "Why do I need to connect my wallet?",
+      "errors": {
+        "signingCancelled": "Signing cancelled",
+        "connectFailed": "Failed to connect wallet. Please try again."
+      }
     },
     "signup": {
       "title": "Sign Up",
@@ -149,5 +150,20 @@
       }
     },
     "signOut": "Sign out"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "wallet": {
+      "question": "Why do I need to connect my wallet?",
+      "answer": "Connecting your wallet allows you to interact with Arkana's features, such as liking posts and bookmarking content. Your wallet address serves as your unique identifier, and we use cryptographic signatures to verify your identity securely without requiring traditional passwords or email addresses."
+    },
+    "privacy": {
+      "question": "What information do you collect?",
+      "answer": "We only collect your wallet address when you connect. We don't store personal information, email addresses, or any other identifying data. Your wallet connection is used solely for authentication and to enable interactive features on the platform."
+    },
+    "security": {
+      "question": "Is it safe to connect my wallet?",
+      "answer": "Yes, connecting your wallet is safe. We use standard cryptographic signatures to verify your identity. We never request access to your funds or private keys. You'll only be asked to sign messages to prove ownership of your wallet address."
+    }
   }
 }

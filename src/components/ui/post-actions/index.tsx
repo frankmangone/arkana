@@ -48,6 +48,7 @@ export function PostActions({ className, path }: PostActionsProps) {
       const response = await likeMutation.mutateAsync({
         address: wallet.address,
         path,
+        liked,
       });
       setLiked(response.liked);
       setLikeCount(response.like_count);
@@ -66,7 +67,7 @@ export function PostActions({ className, path }: PostActionsProps) {
   return (
     <div className={`flex items-center gap-2 ${className}`}>
       <LikeButton {...likeButtonProps} />
-      <BookmarkButton />
+      {false && <BookmarkButton />}
     </div>
   );
 }

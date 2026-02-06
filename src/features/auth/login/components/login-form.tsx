@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import { Header } from "./header";
 import { MetamaskLogin } from "./metamask-login";
 import { PolkadotLogin } from "./polkadot-login";
-import { Terms } from "./terms";
+import { FAQNotes } from "./faq-notes";
 import { Loader2 } from "lucide-react";
 
 interface LoginFormProps {
@@ -41,7 +41,7 @@ export function LoginForm({ lang, dictionary }: LoginFormProps) {
           {false && <PolkadotLogin lang={lang} dictionary={dictionary} />}
         </Suspense>
 
-        <Terms dictionary={dictionary} />
+        <FAQNotes lang={lang} dictionary={dictionary} />
       </div>
     </div>
   );
