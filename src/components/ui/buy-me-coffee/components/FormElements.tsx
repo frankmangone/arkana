@@ -25,8 +25,8 @@ export function FormElements({
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
           placeholder={DEFAULT_AMOUNT}
-          step="0.001"
-          min="0.001"
+          step="1"
+          min="1"
           className="w-full px-4 py-3 pr-20 bg-transparent border-2 border-[#FC7988] text-white placeholder-gray-400 focus:outline-none focus:border-[#FB8A60] transition-colors"
         />
         <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[#FC7988] font-medium">

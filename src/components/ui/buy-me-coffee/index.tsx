@@ -35,15 +35,15 @@ export default function BuyMeCoffeeWidget({
     selectedNetwork,
     showSuccess,
     isPending,
-    isConnected,
+    isLoggedIn,
     handleSendTransaction,
   } = useComponent(walletAddress);
 
   return (
-    <div className="w-full overflow-hidden flex md:flex-row flex-col">
+    <div id="buy-me-coffee" className="w-full overflow-hidden flex md:flex-row flex-col">
       <TokenImage />
 
-      <div className="px-8 py-8 md:px-12 md:py-16 flex-1 flex flex-col gap-4">
+      <div className="pl-8 py-8 md:pl-12 md:py-16 flex-1 flex flex-col gap-4">
         <TextContent
           title={dictionary.title}
           description={dictionary.description}
@@ -60,7 +60,7 @@ export default function BuyMeCoffeeWidget({
 
         <SendButton
           isPending={isPending}
-          isConnected={isConnected}
+          isLoggedIn={isLoggedIn}
           amount={amount}
           symbol={selectedNetwork?.symbol}
           dictionary={dictionary}
