@@ -86,3 +86,51 @@ export async function toggleLike(path: string, jws: string): Promise<ToggleLikeR
   );
   return response.data;
 }
+
+// ============ Comments ============
+
+export interface CommentResponse {
+  id: number;
+  parent_id: number | null;
+  body: string;
+  created_at: string;
+  author_address: string;
+}
+
+export interface CommentsResponse {
+  comments: CommentResponse[];
+  total: number;
+}
+
+/**
+ * Get all comments for a post.
+ *
+ * @param path - The post path identifier
+ * @returns The comments response with list and total count
+ */
+export async function getComments(path: string): Promise<CommentsResponse> {
+  const response = await axios.get<CommentsResponse>(
+    `${API_URL}/api/posts/${path}/comments`
+  );
+  return response.data;
+}
+
+/**
+ * Create a comment on a post using JWS authentication.
+ *
+ * @param path - The post path identifier
+ * @param jws - The signed JWS containing the comment body
+ * @returns The created comment
+ */
+export async function createComment(path: string, jws: string): Promise<CommentResponse> {
+  const response = await axios.post<CommentResponse>(
+    `${API_URL}/api/posts/${path}/comments`,
+    jws,
+    {
+      headers: {
+        "Content-Type": "text/plain",
+      },
+    }
+  );
+  return response.data;
+}

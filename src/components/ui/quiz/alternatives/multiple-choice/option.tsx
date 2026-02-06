@@ -1,5 +1,5 @@
 import { Check, X } from "lucide-react";
-import { LatexText } from "../../components/latex-text";
+import { LatexText } from "@/components/ui/latex-text";
 import { QuizOption } from "../../types";
 
 interface MultipleChoiceOptionProps {
@@ -98,7 +98,7 @@ export const MultipleChoiceOption: React.FC<MultipleChoiceOptionProps> = (
         )}
       </div>
       <span className={styles.optionText}>
-        <LatexText>{option.text}</LatexText>
+        <LatexText inline>{option.text}</LatexText>
       </span>
     </label>
   );

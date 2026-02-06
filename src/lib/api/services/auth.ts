@@ -1,13 +1,6 @@
 import apiClient from "../client";
-import type {
-  AuthResponse,
-  LoginRequest,
-  SignupRequest,
-  RefreshTokenRequest,
-  RefreshTokenResponse,
-  GoogleTokenRequest,
-  User,
-} from "../types";
+import type { AuthResponse, LoginRequest, SignupRequest, RefreshTokenRequest, RefreshTokenResponse, GoogleTokenRequest } from "../types/auth";
+import type { User } from "../types/user";
 
 /**
  * Auth API service

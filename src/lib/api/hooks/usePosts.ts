@@ -1,11 +1,15 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   getPostInfo,
   toggleLike,
   walletLogin,
+  getComments,
+  createComment,
   PostInfoResponse,
   ToggleLikeResponse,
   WalletLoginResponse,
+  CommentsResponse,
+  CommentResponse,
 } from "../services/posts";
 import { createSignedJWS } from "@/lib/wallet/jws";
 import { API_ACTIONS } from "../actions";
@@ -60,6 +64,53 @@ export function useLike() {
       const action = liked ? API_ACTIONS.UNLIKE_POST : API_ACTIONS.LIKE_POST;
       const jws = await createSignedJWS(address, { action, path });
       return toggleLike(path, jws);
+    },
+  });
+}
+
+// ============ Comments ============
+
+interface UseCommentsParams {
+  path: string;
+}
+
+/**
+ * Hook to fetch comments for a post.
+ */
+export function useComments({ path }: UseCommentsParams) {
+  return useQuery<CommentsResponse, Error>({
+    queryKey: ["comments", path],
+    queryFn: () => getComments(path),
+    enabled: !!path,
+  });
+}
+
+export interface UseCreateCommentParams {
+  address: string;
+  path: string;
+  body: string;
+  parentId?: number;
+}
+
+/**
+ * Hook to create a comment on a post with wallet signature authentication.
+ */
+export function useCreateComment() {
+  const queryClient = useQueryClient();
+
+  return useMutation<CommentResponse, Error, UseCreateCommentParams>({
+    mutationFn: async ({ address, path, body, parentId }) => {
+      const jws = await createSignedJWS(address, {
+        action: API_ACTIONS.CREATE_COMMENT,
+        path,
+        body,
+        parent_id: parentId,
+      });
+      return createComment(path, jws);
+    },
+    onSuccess: (_, variables) => {
+      // Invalidate comments query to refetch
+      queryClient.invalidateQueries({ queryKey: ["comments", variables.path] });
     },
   });
 }

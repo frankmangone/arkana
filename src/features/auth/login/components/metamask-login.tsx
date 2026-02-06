@@ -9,21 +9,12 @@ import { toast } from "sonner";
 import { metamaskStrategy } from "@/lib/wallet/strategies";
 import { useWalletLogin } from "@/lib/api/hooks/usePosts";
 import { Loader2 } from "lucide-react";
+import { isUserRejection } from "@/lib/wallet/errors";
 
 interface MetamaskLoginProps {
   lang: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   dictionary: any;
-}
-
-// MetaMask error code for user rejection
-const USER_REJECTED_CODE = 4001;
-
-function isUserRejection(error: unknown): boolean {
-  if (error && typeof error === "object" && "code" in error) {
-    return (error as { code: number }).code === USER_REJECTED_CODE;
-  }
-  return false;
 }
 
 export function MetamaskLogin(props: MetamaskLoginProps) {

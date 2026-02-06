@@ -165,5 +165,36 @@
       "question": "Is it safe to connect my wallet?",
       "answer": "Yes, connecting your wallet is safe. We use standard cryptographic signatures to verify your identity. We never request access to your funds or private keys. You'll only be asked to sign messages to prove ownership of your wallet address."
     }
+  },
+  "comments": {
+    "noComments": "No comments yet. Be the first to comment!",
+    "cancel": "Cancel",
+    "reply": "Reply",
+    "time": {
+      "justNow": "just now",
+      "ago": "ago",
+      "year": "year",
+      "years": "years",
+      "month": "month",
+      "months": "months",
+      "day": "day",
+      "days": "days",
+      "hour": "hour",
+      "hours": "hours",
+      "minute": "minute",
+      "minutes": "minutes"
+    },
+    "form": {
+      "writeComment": "Write a comment...",
+      "writeReply": "Write a reply...",
+      "charactersRemaining": "characters remaining",
+      "posting": "Posting...",
+      "reply": "Reply",
+      "postComment": "Post Comment",
+      "supportsLatex": "Supports LaTeX: use",
+      "forInlineMath": "for inline math.",
+      "commentPosted": "Comment posted!",
+      "failedToPost": "Failed to post comment"
+    }
   }
 }

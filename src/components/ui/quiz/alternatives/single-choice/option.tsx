@@ -1,4 +1,4 @@
-import { LatexText } from "../../components/latex-text";
+import { LatexText } from "@/components/ui/latex-text";
 import { QuizOption } from "../../types";
 
 interface SingleChoiceOptionProps {
@@ -75,7 +75,7 @@ export const SingleChoiceOption: React.FC<SingleChoiceOptionProps> = (
         </div>
       </div>
       <span className="text-gray-200 ml-4">
-        <LatexText>{option.text}</LatexText>
+        <LatexText inline>{option.text}</LatexText>
       </span>
     </label>
   );

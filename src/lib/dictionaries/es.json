@@ -165,5 +165,36 @@
       "question": "¿Es seguro conectar mi billetera?",
       "answer": "Sí, conectar tu billetera es seguro. Usamos firmas criptográficas estándar para verificar tu identidad. Nunca solicitamos acceso a tus fondos o claves privadas. Solo se te pedirá que firmes mensajes para demostrar la propiedad de tu dirección de billetera."
     }
+  },
+  "comments": {
+    "noComments": "Aún no hay comentarios. ¡Sé el primero en comentar!",
+    "cancel": "Cancelar",
+    "reply": "Responder",
+    "time": {
+      "justNow": "ahora mismo",
+      "ago": "hace",
+      "year": "año",
+      "years": "años",
+      "month": "mes",
+      "months": "meses",
+      "day": "día",
+      "days": "días",
+      "hour": "hora",
+      "hours": "horas",
+      "minute": "minuto",
+      "minutes": "minutos"
+    },
+    "form": {
+      "writeComment": "Escribe un comentario...",
+      "writeReply": "Escribe una respuesta...",
+      "charactersRemaining": "caracteres restantes",
+      "posting": "Publicando...",
+      "reply": "Responder",
+      "postComment": "Publicar Comentario",
+      "supportsLatex": "Soporta LaTeX: usa",
+      "forInlineMath": "para matemáticas en línea.",
+      "commentPosted": "¡Comentario publicado!",
+      "failedToPost": "Error al publicar el comentario"
+    }
   }
 }

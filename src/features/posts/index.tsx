@@ -8,7 +8,7 @@ import { getWriter } from "@/lib/writers";
 import { PostContent } from "@/components/ui/post-content";
 import { SectionDivider } from "@/components/ui/section-divider";
 import BuyMeCoffeeWidget from "@/components/ui/buy-me-coffee";
-import { PostActions } from "@/components/ui/post-actions";
+import { CommentSection } from "@/components/ui/comments";
 
 interface PostPageProps {
   lang: string;
@@ -112,13 +112,9 @@ export async function PostPage(props: PostPageProps) {
             dictionary={dict.buyMeCoffee}
           />
         )}
-      {/* <PostFooter post={post} lang={lang} dictionary={dict} /> */}
-      {/* <RelatedPosts
-        tags={post.tags}
-        currentPostId={post.id}
-        lang={lang}
-        dictionary={dict}
-      /> */}
+
+      <SectionDivider />
+      <CommentSection path={slug} />
     </article>
   );
 }

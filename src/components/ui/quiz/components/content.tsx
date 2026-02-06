@@ -7,7 +7,7 @@ import {
   EQuizType,
   EQuizResult,
 } from "../types";
-import { LatexText } from "./latex-text";
+import { LatexText } from "@/components/ui/latex-text";
 import { QuizTypeNote } from "./quiz-type";
 import { QuizResult } from "./result";
 
@@ -53,7 +53,7 @@ export const QuizContent = (props: QuizContentProps) => {
         <div className={styles.content}>
           <QuizTypeNote questionType={questionType} dictionary={dictionary} />
           <h4 className={styles.title}>
-            <LatexText>{questionContent.question}</LatexText>
+            <LatexText inline>{questionContent.question}</LatexText>
           </h4>
           <QuizComponent
             questionId={questionId}

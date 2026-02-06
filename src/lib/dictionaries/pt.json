@@ -165,5 +165,36 @@
       "question": "É seguro conectar minha carteira?",
       "answer": "Sim, conectar sua carteira é seguro. Usamos assinaturas criptográficas padrão para verificar sua identidade. Nunca solicitamos acesso aos seus fundos ou chaves privadas. Você só será solicitado a assinar mensagens para provar a propriedade do seu endereço de carteira."
     }
+  },
+  "comments": {
+    "noComments": "Ainda não há comentários. Seja o primeiro a comentar!",
+    "cancel": "Cancelar",
+    "reply": "Responder",
+    "time": {
+      "justNow": "agora mesmo",
+      "ago": "atrás",
+      "year": "ano",
+      "years": "anos",
+      "month": "mês",
+      "months": "meses",
+      "day": "dia",
+      "days": "dias",
+      "hour": "hora",
+      "hours": "horas",
+      "minute": "minuto",
+      "minutes": "minutos"
+    },
+    "form": {
+      "writeComment": "Escreva um comentário...",
+      "writeReply": "Escreva uma resposta...",
+      "charactersRemaining": "caracteres restantes",
+      "posting": "Publicando...",
+      "reply": "Responder",
+      "postComment": "Publicar Comentário",
+      "supportsLatex": "Suporta LaTeX: use",
+      "forInlineMath": "para matemática inline.",
+      "commentPosted": "Comentário publicado!",
+      "failedToPost": "Falha ao publicar comentário"
+    }
   }
 }

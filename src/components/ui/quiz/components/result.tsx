@@ -1,5 +1,5 @@
 import { PartyPopper, Frown, Lightbulb } from "lucide-react";
-import { LatexText } from "./latex-text";
+import { LatexText } from "@/components/ui/latex-text";
 import { EQuizResult, QuizDictionary } from "../types";
 
 interface QuizResultProps {
@@ -48,7 +48,7 @@ export function QuizResult(props: QuizResultProps) {
         )}
       </p>
       <p className={styles.feedback}>
-        <LatexText>{feedback}</LatexText>
+        <LatexText inline>{feedback}</LatexText>
       </p>
     </div>
   );

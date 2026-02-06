@@ -8,6 +8,7 @@ import { Navigation } from "./components/navigation";
 import BuyMeCoffeeWidget from "@/components/ui/buy-me-coffee";
 import { getDictionary } from "@/lib/dictionaries";
 import { SectionDivider } from "@/components/ui/section-divider";
+import { CommentSection } from "@/components/ui/comments";
 
 interface ReadingListPostPageProps {
   lang: string;
@@ -89,6 +90,10 @@ export async function ReadingListPostPage(props: ReadingListPostPageProps) {
             dictionary={dict.buyMeCoffee}
           />
         )}
+
+      <SectionDivider />
+      <CommentSection path={slug} />
+
       <Navigation lang={lang} id={id} prevItem={prevItem} nextItem={nextItem} />
     </article>
   );
