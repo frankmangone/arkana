@@ -4,7 +4,7 @@ import { useComments } from "@/lib/api/hooks/usePosts";
 import { CommentList } from "./comment-list";
 import { CommentForm } from "./comment-form";
 import { useWallet } from "@/components/providers/wallet-provider";
-import { useParams, useRouter } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import { getDictionary } from "@/lib/dictionaries";
 import { Info } from "lucide-react";
@@ -16,15 +16,28 @@ interface CommentSectionProps {
 export function CommentSection({ path }: CommentSectionProps) {
   const params = useParams();
   const router = useRouter();
+  const searchParams = useSearchParams();
   const lang = (params?.lang as string) || "en";
   const { wallet } = useWallet();
   const { data, isLoading, error } = useComments({ path });
   const [dictionary, setDictionary] = useState<any>(null);
   const [showTooltip, setShowTooltip] = useState(false);
+  const shouldFocus = searchParams.get("focus") === "comment";
 
   useEffect(() => {
     getDictionary(lang).then(setDictionary);
   }, [lang]);
+
+  // Clear the focus parameter after focusing
+  useEffect(() => {
+    if (shouldFocus && wallet) {
+      // Remove the focus parameter from URL
+      const newSearchParams = new URLSearchParams(searchParams.toString());
+      newSearchParams.delete("focus");
+      const newUrl = `${window.location.pathname}${newSearchParams.toString() ? `?${newSearchParams.toString()}` : ""}`;
+      router.replace(newUrl);
+    }
+  }, [shouldFocus, wallet, searchParams, router]);
 
   const handleLoginRedirect = () => {
     router.push(
@@ -37,7 +50,7 @@ export function CommentSection({ path }: CommentSectionProps) {
     : "Supports LaTeX: use $...$ for inline math.";
 
   return (
-    <section className="mt-12">
+    <section id="comments" className="mt-12 scroll-mt-20">
       <div className="flex items-center gap-2 mb-6 relative">
         <h2 className="text-2xl font-semibold">Comments</h2>
         <div className="relative flex items-center">
@@ -60,7 +73,7 @@ export function CommentSection({ path }: CommentSectionProps) {
 
       {/* Comment Form */}
       {wallet ? (
-        <CommentForm path={path} walletAddress={wallet.address} />
+        <CommentForm path={path} walletAddress={wallet.address} autoFocus={shouldFocus} />
       ) : (
         <div className="mb-8 p-4 border border-border rounded-none bg-muted/30">
           <p className="text-secondary-600 text-sm space-y-4">

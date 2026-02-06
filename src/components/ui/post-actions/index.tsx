@@ -2,10 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { useWallet } from "@/components/providers/wallet-provider";
-import { useLike, usePostInfo } from "@/lib/api/hooks/usePosts";
+import { useLike, usePostInfo, useComments } from "@/lib/api/hooks/usePosts";
 import { useParams, useRouter } from "next/navigation";
 import { LikeButton } from "./like-button";
 import { BookmarkButton } from "./bookmark-button";
+import { CommentButton } from "./comment-button";
 
 interface PostActionsProps {
   className?: string;
@@ -25,6 +26,8 @@ export function PostActions({ className, path }: PostActionsProps) {
     path,
     walletAddress: wallet?.address,
   });
+
+  const { data: commentsData } = useComments({ path });
 
   const [liked, setLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
@@ -64,9 +67,12 @@ export function PostActions({ className, path }: PostActionsProps) {
     likeMutation,
   };
 
+  const commentCount = commentsData?.comments?.length || 0;
+
   return (
     <div className={`flex items-center gap-2 ${className}`}>
       <LikeButton {...likeButtonProps} />
+      <CommentButton commentCount={commentCount} />
       {false && <BookmarkButton />}
     </div>
   );

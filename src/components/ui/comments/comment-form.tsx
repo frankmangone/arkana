@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useCreateComment } from "@/lib/api/hooks/usePosts";
 import { Button } from "../button";
 import { isUserRejection } from "@/lib/wallet/errors";
@@ -16,6 +16,7 @@ interface CommentFormProps {
   parentId?: number;
   onSuccess?: () => void;
   compact?: boolean;
+  autoFocus?: boolean;
 }
 
 export function CommentForm({
@@ -24,16 +25,27 @@ export function CommentForm({
   parentId,
   onSuccess,
   compact = false,
+  autoFocus = false,
 }: CommentFormProps) {
   const [body, setBody] = useState("");
   const [dictionary, setDictionary] = useState<any>(null);
   const params = useParams();
   const lang = (params?.lang as string) || "en";
   const createComment = useCreateComment();
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
     getDictionary(lang).then(setDictionary);
   }, [lang]);
+
+  useEffect(() => {
+    if (autoFocus && textareaRef.current) {
+      // Small delay to ensure the element is rendered
+      setTimeout(() => {
+        textareaRef.current?.focus();
+      }, 100);
+    }
+  }, [autoFocus]);
 
   const charactersRemaining = MAX_COMMENT_LENGTH - body.length;
   const isOverLimit = charactersRemaining < 0;
@@ -73,6 +85,7 @@ export function CommentForm({
   return (
     <form onSubmit={handleSubmit} className={compact ? "" : "mb-8"}>
       <textarea
+        ref={textareaRef}
         value={body}
         onChange={(e) => setBody(e.target.value)}
         placeholder={
