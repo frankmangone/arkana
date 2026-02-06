@@ -14,6 +14,7 @@
  */
 
 import { JWSPayload, JWSPayloadInput } from "@/lib/api/actions";
+import { redirectToMetaMaskForSigning } from "./utils/mobile";
 
 type EthereumProvider = {
   request: (args: { method: string; params: unknown[] }) => Promise<string>;
@@ -42,6 +43,9 @@ export async function createSignedJWS(
   address: string,
   customPayload: JWSPayloadInput
 ): Promise<string> {
+  // On mobile, redirect to MetaMask app if extension is not available
+  redirectToMetaMaskForSigning();
+
   if (!window.ethereum) {
     throw new Error("No Ethereum provider found");
   }

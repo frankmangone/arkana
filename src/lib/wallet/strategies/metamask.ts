@@ -1,4 +1,5 @@
 import { WalletStrategy, WalletInfo, NETWORK_TYPES } from "../types";
+import { isMobile, openMetaMaskApp } from "../utils/mobile";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function getEthereum(): any {
@@ -16,12 +17,31 @@ export const metamaskStrategy: WalletStrategy = {
 
   async isAvailable() {
     const ethereum = getEthereum();
+    // On mobile, MetaMask might be available via deep link even if extension is not detected
+    if (isMobile()) {
+      return true; // Allow attempting connection on mobile (will use deep link if needed)
+    }
     return !!ethereum?.isMetaMask;
   },
 
   async connect(): Promise<WalletInfo> {
     const ethereum = getEthereum();
+    
+    // On mobile, if MetaMask extension is not available, redirect to app
+    if (isMobile() && !ethereum?.isMetaMask) {
+      openMetaMaskApp();
+      throw new Error(
+        "Please open this page in MetaMask mobile browser or install MetaMask extension"
+      );
+    }
+    
     if (!ethereum) {
+      if (isMobile()) {
+        openMetaMaskApp();
+        throw new Error(
+          "Please open this page in MetaMask mobile browser or install MetaMask extension"
+        );
+      }
       throw new Error(
         "MetaMask is not installed. Please install the MetaMask browser extension."
       );

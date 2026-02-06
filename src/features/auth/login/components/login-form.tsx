@@ -32,7 +32,7 @@ function LoginButtonsFallback() {
 
 export function LoginForm({ lang, dictionary }: LoginFormProps) {
   return (
-    <div className="w-full max-w-md mx-auto mb-28">
+    <div className="w-full max-w-md mx-auto mb-28 px-4">
       <div className="bg-background p-8 shadow-lg border-0 drop-shadow-[0_0_40px_rgba(59,40,93,0.4)]">
         <Header dictionary={dictionary} />
 
