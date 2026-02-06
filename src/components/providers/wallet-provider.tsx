@@ -15,6 +15,8 @@ const WALLET_STORAGE_KEY = "arkana_wallet";
 interface WalletContextType {
   wallet: WalletInfo | null;
   isConnecting: boolean;
+  /** Whether we've finished checking localStorage for stored wallet */
+  isInitialized: boolean;
   /** Connects to wallet provider (e.g., MetaMask) and returns info. Does NOT update state. */
   connect(strategy: WalletStrategy): Promise<WalletInfo>;
   /** Call after successful backend login to persist wallet state. */
@@ -25,6 +27,7 @@ interface WalletContextType {
 const WalletContext = createContext<WalletContextType>({
   wallet: null,
   isConnecting: false,
+  isInitialized: false,
   connect: async () => {
     throw new Error("WalletProvider not initialized");
   },
@@ -37,6 +40,7 @@ export const useWallet = () => useContext(WalletContext);
 export function WalletProvider({ children }: { children: ReactNode }) {
   const [wallet, setWallet] = useState<WalletInfo | null>(null);
   const [isConnecting, setIsConnecting] = useState(false);
+  const [isInitialized, setIsInitialized] = useState(false);
 
   // Restore wallet from localStorage on mount
   useEffect(() => {
@@ -48,6 +52,7 @@ export function WalletProvider({ children }: { children: ReactNode }) {
         localStorage.removeItem(WALLET_STORAGE_KEY);
       }
     }
+    setIsInitialized(true);
   }, []);
 
   const connect = useCallback(async (strategy: WalletStrategy): Promise<WalletInfo> => {
@@ -73,7 +78,7 @@ export function WalletProvider({ children }: { children: ReactNode }) {
 
   return (
     <WalletContext.Provider
-      value={{ wallet, isConnecting, connect, confirmLogin, disconnect }}
+      value={{ wallet, isConnecting, isInitialized, connect, confirmLogin, disconnect }}
     >
       {children}
     </WalletContext.Provider>

@@ -26,17 +26,21 @@ export function MetamaskLogin(props: MetamaskLoginProps) {
   const searchParams = useSearchParams();
 
   const [isLoggingIn, setIsLoggingIn] = useState(false);
+  
+  // Ensure spinner is visible during API communication
+  const isConnecting = isLoggingIn || walletLogin.isPending;
 
   const handleConnect = async (strategy: WalletStrategy) => {
-    // Check if MetaMask is installed
-    const isAvailable = await strategy.isAvailable();
-    if (!isAvailable) {
-      window.open("https://metamask.io/download/", "_blank");
-      return;
-    }
-
     setIsLoggingIn(true);
     try {
+      // Check if MetaMask is installed
+      const isAvailable = await strategy.isAvailable();
+      if (!isAvailable) {
+        setIsLoggingIn(false);
+        window.open("https://metamask.io/download/", "_blank");
+        return;
+      }
+
       const walletInfo = await connect(strategy);
       // Register wallet with backend (signs a JWS and calls /api/login)
       await walletLogin.mutateAsync({ address: walletInfo.address });
@@ -44,10 +48,16 @@ export function MetamaskLogin(props: MetamaskLoginProps) {
       // Only persist wallet state after backend confirms login
       confirmLogin(walletInfo);
 
-      // Redirect to return URL or home
+      // Redirect to return URL or home (spinner will remain visible until redirect)
+      // Use window.location.href for hard redirect to keep spinner visible during navigation
       const redirect = searchParams.get("redirect");
-      router.push(redirect || `/${lang}`);
+      const targetUrl = redirect || `/${lang}`;
+      window.location.href = targetUrl;
+      // Don't reset isLoggingIn on success - let it stay visible until redirect
     } catch (error) {
+      // Only hide spinner on error
+      setIsLoggingIn(false);
+      
       if (isUserRejection(error)) {
         toast.error(
           dictionary.login.errors?.signingCancelled || "Signing cancelled"
@@ -60,8 +70,6 @@ export function MetamaskLogin(props: MetamaskLoginProps) {
               "Failed to connect wallet. Please try again.";
         toast.error(message);
       }
-    } finally {
-      setIsLoggingIn(false);
     }
   };
 
@@ -69,18 +77,18 @@ export function MetamaskLogin(props: MetamaskLoginProps) {
     <Button
       type="button"
       onClick={() => handleConnect(metamaskStrategy)}
-      disabled={isLoggingIn}
-      className="w-full mb-4 h-12 bg-background border border-border hover:bg-accent"
+      disabled={isConnecting}
+      className="w-full cursor-pointer mb-4 h-12 bg-background border border-border hover:bg-accent"
       size="lg"
       variant="outline"
     >
-      {isLoggingIn ? (
+      {isConnecting ? (
         <Loader2 className="h-5 w-5 animate-spin" />
       ) : (
         <MetaMaskSvg />
       )}
       <span className="ml-2">
-        {isLoggingIn
+        {isConnecting
           ? dictionary.login.connecting || "Connecting..."
           : dictionary.login.connectMetaMask || "Connect with MetaMask"}
       </span>

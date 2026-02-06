@@ -20,7 +20,12 @@ function truncateAddress(address: string): string {
 export function AuthButton() {
   const params = useParams();
   const lang = (params?.lang as string) || "en";
-  const { wallet, disconnect } = useWallet();
+  const { wallet, disconnect, isInitialized } = useWallet();
+
+  // Don't render until we've checked localStorage to avoid flash
+  if (!isInitialized) {
+    return null;
+  }
 
   if (wallet) {
     return (
