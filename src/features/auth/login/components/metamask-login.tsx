@@ -97,244 +97,56 @@ export function MetamaskLogin(props: MetamaskLoginProps) {
 function MetaMaskSvg() {
   return (
     <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
+      version="1.1"
+      id="Layer_1"
       xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+      x="0px"
+      y="0px"
+      viewBox="0 0 142 136.878"
+      xmlSpace="preserve"
     >
-      {/* Simplified MetaMask fox icon */}
       <path
-        d="M21.3 2L13.1 8.2L14.5 4.5L21.3 2Z"
-        fill="#E17726"
-        stroke="#E17726"
-        strokeWidth="0.25"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        style={{ fill: "#FF5C16" }}
+        d="M132.682,132.192l-30.583-9.106l-23.063,13.787l-16.092-0.007l-23.077-13.78l-30.569,9.106L0,100.801
+	l9.299-34.839L0,36.507L9.299,0l47.766,28.538h27.85L132.682,0l9.299,36.507l-9.299,29.455l9.299,34.839L132.682,132.192
+	L132.682,132.192z"
       />
       <path
-        d="M2.7 2L10.8 8.3L9.5 4.5L2.7 2Z"
-        fill="#E27625"
-        stroke="#E27625"
-        strokeWidth="0.25"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        style={{ fill: "#FF5C16" }}
+        d="M9.305,0l47.767,28.558l-1.899,19.599L9.305,0z M39.875,100.814l21.017,16.01l-21.017,6.261
+	C39.875,123.085,39.875,100.814,39.875,100.814z M59.212,74.345l-4.039-26.174L29.317,65.97l-0.014-0.007v0.013l0.08,18.321
+	l10.485-9.951L59.212,74.345L59.212,74.345z M132.682,0L84.915,28.558l1.893,19.599L132.682,0z M102.113,100.814l-21.018,16.01
+	l21.018,6.261V100.814z M112.678,65.975h0.007H112.678v-0.013l-0.006,0.007L86.815,48.171l-4.039,26.174h19.336l10.492,9.95
+	C112.604,84.295,112.678,65.975,112.678,65.975z"
       />
       <path
-        d="M18.4 16.8L16.3 20.1L20.8 21.3L22 16.9L18.4 16.8Z"
-        fill="#E27625"
-        stroke="#E27625"
-        strokeWidth="0.25"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        style={{ fill: "#E34807" }}
+        d="M39.868,123.085l-30.569,9.106L0,100.814h39.868C39.868,100.814,39.868,123.085,39.868,123.085z
+	 M59.205,74.338l5.839,37.84l-8.093-21.04L29.37,84.295l10.491-9.956h19.344L59.205,74.338z M102.112,123.085l30.57,9.106
+	l9.299-31.378h-39.869C102.112,100.814,102.112,123.085,102.112,123.085z M82.776,74.338l-5.839,37.84l8.092-21.04l27.583-6.843
+	l-10.498-9.956H82.776V74.338z"
       />
       <path
-        d="M2 16.9L3.2 21.3L7.7 20.1L5.6 16.8L2 16.9Z"
-        fill="#E27625"
-        stroke="#E27625"
-        strokeWidth="0.25"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        style={{ fill: "#FF8D5D" }}
+        d="M0,100.801l9.299-34.839h19.997l0.073,18.327l27.584,6.843l8.092,21.039l-4.16,4.633l-21.017-16.01H0
+	V100.801z M141.981,100.801l-9.299-34.839h-19.998l-0.073,18.327l-27.582,6.843l-8.093,21.039l4.159,4.633l21.018-16.01h39.868
+	V100.801z M84.915,28.538h-27.85l-1.891,19.599l9.872,64.013h11.891l9.878-64.013L84.915,28.538z"
       />
       <path
-        d="M7.5 10.5L6.3 12.3L10.8 12.5L10.6 7.7L7.5 10.5Z"
-        fill="#E27625"
-        stroke="#E27625"
-        strokeWidth="0.25"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        style={{ fill: "#661800" }}
+        d="M9.299,0L0,36.507l9.299,29.455h19.997l25.87-17.804L9.299,0z M53.426,81.938h-9.059l-4.932,4.835
+	l17.524,4.344l-3.533-9.186V81.938z M132.682,0l9.299,36.507l-9.299,29.455h-19.998L86.815,48.158L132.682,0z M88.568,81.938h9.072
+	l4.932,4.841l-17.544,4.353l3.54-9.201V81.938z M79.029,124.385l2.067-7.567l-4.16-4.633h-11.9l-4.159,4.633l2.066,7.567"
       />
       <path
-        d="M16.5 10.5L13.3 7.6L13.2 12.5L17.7 12.3L16.5 10.5Z"
-        fill="#E27625"
-        stroke="#E27625"
-        strokeWidth="0.25"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        style={{ fill: "#C0C4CD" }}
+        d="M79.029,124.384v12.495H62.945v-12.495L79.029,124.384L79.029,124.384z"
       />
       <path
-        d="M7.7 20.1L10.5 18.7L8.1 16.9L7.7 20.1Z"
-        fill="#E27625"
-        stroke="#E27625"
-        strokeWidth="0.25"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M13.5 18.7L16.3 20.1L15.9 16.9L13.5 18.7Z"
-        fill="#E27625"
-        stroke="#E27625"
-        strokeWidth="0.25"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M16.3 20.1L13.5 18.7L13.7 20.5L13.7 21.2L16.3 20.1Z"
-        fill="#D5BFB2"
-        stroke="#D5BFB2"
-        strokeWidth="0.25"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M7.7 20.1L10.3 21.2L10.3 20.5L10.5 18.7L7.7 20.1Z"
-        fill="#D5BFB2"
-        stroke="#D5BFB2"
-        strokeWidth="0.25"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M10.4 15.2L8 14.5L9.7 13.7L10.4 15.2Z"
-        fill="#233447"
-        stroke="#233447"
-        strokeWidth="0.25"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M13.6 15.2L14.3 13.7L16 14.5L13.6 15.2Z"
-        fill="#233447"
-        stroke="#233447"
-        strokeWidth="0.25"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M7.7 20.1L8.1 16.8L5.6 16.9L7.7 20.1Z"
-        fill="#CC6228"
-        stroke="#CC6228"
-        strokeWidth="0.25"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M15.9 16.8L16.3 20.1L18.4 16.9L15.9 16.8Z"
-        fill="#CC6228"
-        stroke="#CC6228"
-        strokeWidth="0.25"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M17.7 12.3L13.2 12.5L13.6 15.2L14.3 13.7L16 14.5L17.7 12.3Z"
-        fill="#CC6228"
-        stroke="#CC6228"
-        strokeWidth="0.25"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M8 14.5L9.7 13.7L10.4 15.2L10.8 12.5L6.3 12.3L8 14.5Z"
-        fill="#CC6228"
-        stroke="#CC6228"
-        strokeWidth="0.25"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M6.3 12.3L8.1 16.9L8 14.5L6.3 12.3Z"
-        fill="#E27525"
-        stroke="#E27525"
-        strokeWidth="0.25"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M16 14.5L15.9 16.9L17.7 12.3L16 14.5Z"
-        fill="#E27525"
-        stroke="#E27525"
-        strokeWidth="0.25"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M10.8 12.5L10.4 15.2L10.9 17.7L11 13.8L10.8 12.5Z"
-        fill="#E27525"
-        stroke="#E27525"
-        strokeWidth="0.25"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M13.2 12.5L13 13.8L13.1 17.7L13.6 15.2L13.2 12.5Z"
-        fill="#E27525"
-        stroke="#E27525"
-        strokeWidth="0.25"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M13.6 15.2L13.1 17.7L13.5 18.7L15.9 16.9L16 14.5L13.6 15.2Z"
-        fill="#F5841F"
-        stroke="#F5841F"
-        strokeWidth="0.25"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M8 14.5L8.1 16.9L10.5 18.7L10.9 17.7L10.4 15.2L8 14.5Z"
-        fill="#F5841F"
-        stroke="#F5841F"
-        strokeWidth="0.25"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M13.7 21.2L13.7 20.5L13.5 20.3L10.5 20.3L10.3 20.5L10.3 21.2L7.7 20.1L8.6 20.8L10.5 22.1L13.5 22.1L15.4 20.8L16.3 20.1L13.7 21.2Z"
-        fill="#C0AC9D"
-        stroke="#C0AC9D"
-        strokeWidth="0.25"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M13.5 18.7L13.1 17.7L10.9 17.7L10.5 18.7L10.3 20.5L10.5 20.3L13.5 20.3L13.7 20.5L13.5 18.7Z"
-        fill="#161616"
-        stroke="#161616"
-        strokeWidth="0.25"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M21.7 8.5L22.3 5.1L21.3 2L13.5 8L16.5 10.5L20.7 11.7L21.7 10.5L21.3 10.2L22 9.6L21.5 9.2L22.2 8.7L21.7 8.5Z"
-        fill="#763E1A"
-        stroke="#763E1A"
-        strokeWidth="0.25"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M1.7 5.1L2.3 8.5L1.8 8.7L2.5 9.2L2 9.6L2.7 10.2L2.3 10.5L3.3 11.7L7.5 10.5L10.5 8L2.7 2L1.7 5.1Z"
-        fill="#763E1A"
-        stroke="#763E1A"
-        strokeWidth="0.25"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M20.7 11.7L16.5 10.5L17.7 12.3L15.9 16.9L18.4 16.8L22 16.9L20.7 11.7Z"
-        fill="#F5841F"
-        stroke="#F5841F"
-        strokeWidth="0.25"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M7.5 10.5L3.3 11.7L2 16.9L5.6 16.8L8.1 16.9L6.3 12.3L7.5 10.5Z"
-        fill="#F5841F"
-        stroke="#F5841F"
-        strokeWidth="0.25"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M13.2 12.5L13.5 8L14.5 4.5L9.5 4.5L10.5 8L10.8 12.5L10.9 13.8L10.9 17.7L13.1 17.7L13.1 13.8L13.2 12.5Z"
-        fill="#F5841F"
-        stroke="#F5841F"
-        strokeWidth="0.25"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        style={{ fill: "#E7EBF6" }}
+        d="M39.875,123.072l23.083,13.8v-12.495l-2.067-7.566C60.891,116.811,39.875,123.072,39.875,123.072z
+	 M102.113,123.072l-23.084,13.8v-12.495l2.067-7.566C81.096,116.811,102.113,123.072,102.113,123.072z"
       />
     </svg>
   );

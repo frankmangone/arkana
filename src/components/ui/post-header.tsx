@@ -7,20 +7,22 @@ import { ExternalLink } from "lucide-react";
 import { ArkanaStrip } from "@/components/arkana-strip";
 import { Tag } from "@/components/ui/tag";
 import { Link } from "@/components/ui/link";
+import { PostActions } from "@/components/ui/post-actions";
 
 interface PostHeaderProps {
   post: Post;
   lang: string;
+  path?: string;
 }
 
 export async function PostHeader(props: PostHeaderProps) {
-  const { post, lang } = props;
+  const { post, lang, path } = props;
   const { metadata } = post;
   const dict = await getDictionary(lang);
   const writer = getWriter(metadata.author);
 
   return (
-    <div className="mb-8 space-y-6">
+    <div className="mb-6 space-y-6 border-b border-primary-800/20 pb-6">
       <div className="space-y-2">
         <h1 className="text-4xl mb-6 font-bold">{metadata.title}</h1>
 
@@ -36,45 +38,50 @@ export async function PostHeader(props: PostHeaderProps) {
         </div>
       </div>
 
-      <div className="flex items-center gap-4">
-        <Link href={`/${lang}/writers/${writer.slug}`}>
-          <Avatar className="w-[50px] h-[50px]">
-            <AvatarImage
-              src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${
-                writer.avatarUrl
-              }`}
-              alt={writer.name}
-              width={50}
-              height={50}
-            />
-            <AvatarFallback>{writer.name.charAt(0)}</AvatarFallback>
-          </Avatar>
-        </Link>
-        <div>
-          <Link
-            href={`/${lang}/writers/${writer.slug}`}
-            className="font-medium hover:underline"
-          >
-            {writer.name}
+      <div className="flex items-center justify-between gap-4">
+        <div className="flex items-center gap-4">
+          <Link href={`/${lang}/writers/${writer.slug}`}>
+            <Avatar className="w-[50px] h-[50px]">
+              <AvatarImage
+                src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${
+                  writer.avatarUrl
+                }`}
+                alt={writer.name}
+                width={50}
+                height={50}
+              />
+              <AvatarFallback>{writer.name.charAt(0)}</AvatarFallback>
+            </Avatar>
           </Link>
-          <div className="text-sm text-muted-foreground">
-            {formatDate(metadata.date, lang)} · {metadata.readingTime}{" "}
-            {dict.blog.readingTime}
-            {metadata.mediumUrl && (
-              <>
-                {" · "}
-                <Link
-                  href={metadata.mediumUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 hover:underline"
-                >
-                  Medium <ExternalLink size={14} />
-                </Link>
-              </>
-            )}
+          <div>
+            <Link
+              href={`/${lang}/writers/${writer.slug}`}
+              className="font-medium hover:underline"
+            >
+              {writer.name}
+            </Link>
+            <div className="text-sm text-muted-foreground">
+              {formatDate(metadata.date, lang)} · {metadata.readingTime}{" "}
+              {dict.blog.readingTime}
+              {metadata.mediumUrl && (
+                <>
+                  {" · "}
+                  <Link
+                    href={metadata.mediumUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 hover:underline"
+                  >
+                    Medium <ExternalLink size={14} />
+                  </Link>
+                </>
+              )}
+            </div>
           </div>
         </div>
+        {path && process.env.NEXT_PUBLIC_AUTH_ENABLED === "true" && (
+          <PostActions path={path} />
+        )}
       </div>
     </div>
   );

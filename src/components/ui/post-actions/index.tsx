@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Heart, Bookmark } from "lucide-react";
 import { useWallet } from "@/components/providers/wallet-provider";
 import { useLike, usePostInfo } from "@/lib/api/hooks/usePosts";
 import { useParams, useRouter } from "next/navigation";
+import { LikeButton } from "./like-button";
+import { BookmarkButton } from "./bookmark-button";
 
 interface PostActionsProps {
   className?: string;
@@ -56,34 +56,17 @@ export function PostActions({ className, path }: PostActionsProps) {
     }
   };
 
+  const likeButtonProps = {
+    liked,
+    likeCount,
+    handleLike,
+    likeMutation,
+  };
+
   return (
     <div className={`flex items-center gap-2 ${className}`}>
-      <Button
-        variant="ghost"
-        size="icon"
-        className="h-10 w-10 rounded-none cursor-pointer hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500"
-        aria-label={liked ? "Unlike post" : "Like post"}
-        onClick={handleLike}
-        disabled={likeMutation.isPending}
-      >
-        <Heart
-          className={`h-6 w-6 ${liked ? "fill-red-500 text-red-500" : ""}`}
-        />
-      </Button>
-      {likeCount > 0 && (
-        <span className="text-sm text-gray-600 dark:text-gray-400">
-          {likeCount}
-        </span>
-      )}
-
-      <Button
-        variant="ghost"
-        size="icon"
-        className="h-10 w-10 rounded-none cursor-pointer hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500"
-        aria-label="Bookmark post"
-      >
-        <Bookmark className="h-6 w-6" />
-      </Button>
+      <LikeButton {...likeButtonProps} />
+      <BookmarkButton />
     </div>
   );
 }

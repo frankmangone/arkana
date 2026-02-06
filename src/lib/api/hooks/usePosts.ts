@@ -42,7 +42,7 @@ export function useWalletLogin() {
   });
 }
 
-interface UseLikeParams {
+export interface UseLikeParams {
   address: string;
   path: string;
 }

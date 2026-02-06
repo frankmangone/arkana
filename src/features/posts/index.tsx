@@ -54,7 +54,7 @@ export async function PostPage(props: PostPageProps) {
   const writer = getWriter(post.metadata.author);
 
   // Get the PostHeader component and await it
-  const header = await PostHeader({ post, lang });
+  const header = await PostHeader({ post, lang, path: slug });
 
   // Base URL for absolute links
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://arkana.blog";
@@ -101,7 +101,6 @@ export async function PostPage(props: PostPageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       {header}
-      {process.env.NEXT_PUBLIC_AUTH_ENABLED === "true" && <PostActions path={slug} />}
       <PostContent post={post} quizDictionary={dict.quiz} />
       <SectionDivider />
       {writer.walletAddress &&
