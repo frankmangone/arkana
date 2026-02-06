@@ -8,6 +8,7 @@ import {
   WalletLoginResponse,
 } from "../services/posts";
 import { createSignedJWS } from "@/lib/wallet/jws";
+import { API_ACTIONS } from "../actions";
 
 interface UsePostInfoParams {
   path: string;
@@ -36,7 +37,7 @@ interface UseWalletLoginParams {
 export function useWalletLogin() {
   return useMutation<WalletLoginResponse, Error, UseWalletLoginParams>({
     mutationFn: async ({ address }) => {
-      const jws = await createSignedJWS(address, {});
+      const jws = await createSignedJWS(address, { action: API_ACTIONS.LOGIN });
       return walletLogin(jws);
     },
   });
@@ -55,7 +56,9 @@ export interface UseLikeParams {
 export function useLike() {
   return useMutation<ToggleLikeResponse, Error, UseLikeParams>({
     mutationFn: async ({ address, path, liked }) => {
-      const jws = await createSignedJWS(address, { action: "like", path, liked });
+      // Use UNLIKE_POST if currently liked, LIKE_POST if not
+      const action = liked ? API_ACTIONS.UNLIKE_POST : API_ACTIONS.LIKE_POST;
+      const jws = await createSignedJWS(address, { action, path });
       return toggleLike(path, jws);
     },
   });

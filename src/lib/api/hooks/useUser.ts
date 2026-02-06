@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { userService } from "../services/user";
-import type { User } from "../types";
+import type { User } from "../types/user";
 
 /**
  * React Query hooks for user operations

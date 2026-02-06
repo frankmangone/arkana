@@ -2,10 +2,18 @@
  * JWS (JSON Web Signature) utilities for wallet-signed requests.
  *
  * Format: header.payload.signature
- * - header: base64url encoded {"sys": "ethereum"}
- * - payload: base64url encoded {"addr": "0x...", "ts": unix_timestamp, ...customFields}
- * - signature: hex-encoded EIP-191 personal_sign signature
+ * - header: base64url encoded {"system": "ethereum"}
+ * - payload: base64url encoded JSON with action and parameters
+ * - signature: hex-encoded EIP-191 personal_sign signature of the payload JSON
+ *
+ * Actions:
+ * - LOGIN: { action: "LOGIN", address, timestamp }
+ * - LIKE_POST: { action: "LIKE_POST", address, timestamp, path }
+ * - UNLIKE_POST: { action: "UNLIKE_POST", address, timestamp, path }
+ * - CREATE_COMMENT: { action: "CREATE_COMMENT", address, timestamp, path, body, parent_id? }
  */
+
+import { JWSPayload, JWSPayloadInput } from "@/lib/api/actions";
 
 type EthereumProvider = {
   request: (args: { method: string; params: unknown[] }) => Promise<string>;
@@ -22,73 +30,39 @@ function base64UrlEncode(str: string): string {
   return base64.replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
 }
 
-interface JWSPayload {
-  addr: string;
-  ts: number;
-  action?: string;
-  path?: string;
-  liked?: boolean;
-  [key: string]: unknown;
-}
-
-/**
- * Builds a human-readable signing message from the payload.
- * This must match exactly with the backend implementation.
- */
-function buildSigningMessage(payload: JWSPayload): string {
-  // Determine title based on action
-  let title = "Arkana Login";
-  if (payload.action === "like") {
-    // Check if this is an unlike action (current liked state is true)
-    if (payload.liked === true) {
-      title = "Arkana - Unlike Post";
-    } else {
-      title = "Arkana - Like Post";
-    }
-  }
-
-  let msg = `${title}\n\nAddress: ${payload.addr}\nTimestamp: ${payload.ts}`;
-  if (payload.path) {
-    msg += `\nPath: ${payload.path}`;
-  }
-  return msg;
-}
-
 /**
  * Creates a compact JWS string signed by the user's Ethereum wallet.
+ * The signature is over the JSON payload string directly.
  *
  * @param address - The wallet address
- * @param customPayload - Additional fields to include in the payload (e.g., { path: "blog/post-slug" })
+ * @param customPayload - Action-specific payload fields (must include "action")
  * @returns The compact JWS string: header.payload.signature
  */
 export async function createSignedJWS(
   address: string,
-  customPayload: Record<string, unknown> = {}
+  customPayload: JWSPayloadInput
 ): Promise<string> {
   if (!window.ethereum) {
     throw new Error("No Ethereum provider found");
   }
 
   // Create header
-  const header = JSON.stringify({ sys: "ethereum" });
+  const header = JSON.stringify({ system: "ethereum" });
   const protectedB64 = base64UrlEncode(header);
 
   // Create payload with address, timestamp, and custom fields
   const payload: JWSPayload = {
-    addr: address,
-    ts: Math.floor(Date.now() / 1000),
     ...customPayload,
-  };
-  const payloadB64 = base64UrlEncode(JSON.stringify(payload));
+    address: address,
+    timestamp: Math.floor(Date.now() / 1000),
+  } as JWSPayload;
+  const payloadJSON = JSON.stringify(payload);
+  const payloadB64 = base64UrlEncode(payloadJSON);
 
-  // Build human-readable message for signing
-  const signingMessage = buildSigningMessage(payload);
-
-  // Sign using EIP-191 personal_sign
-  // The wallet will prefix with "\x19Ethereum Signed Message:\n{length}"
+  // Sign the JSON payload directly using EIP-191 personal_sign
   const signature = await window.ethereum.request({
     method: "personal_sign",
-    params: [signingMessage, address],
+    params: [payloadJSON, address],
   });
 
   // Remove "0x" prefix if present for the final JWS
