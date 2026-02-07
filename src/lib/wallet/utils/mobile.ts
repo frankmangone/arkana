@@ -51,7 +51,8 @@ export function openMetaMaskApp(): void {
  * This should be called before attempting to sign a message
  */
 export function redirectToMetaMaskForSigning(): void {
-  if (isMobile() && !window.ethereum?.isMetaMask) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  if (isMobile() && !(window.ethereum as any)?.isMetaMask) {
     // On mobile without MetaMask extension, redirect to app
     openMetaMaskApp();
     throw new Error("Please open this page in MetaMask mobile browser or install MetaMask extension");
