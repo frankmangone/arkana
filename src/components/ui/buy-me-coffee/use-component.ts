@@ -4,6 +4,7 @@ import { useState } from "react";
 import { parseUnits, encodeFunctionData } from "viem";
 import { useWallet } from "@/components/providers/wallet-provider";
 import { useParams, useRouter } from "next/navigation";
+import { trackEvent, EVENTS } from "@/lib/analytics";
 
 interface NetworkConfig {
   id: number;
@@ -182,6 +183,10 @@ export function useComponent(walletAddress: string) {
       });
 
       if (hash) {
+        trackEvent(EVENTS.COFFEE_PURCHASED, {
+          amount: Number(amount),
+          chain: network.name,
+        });
         setShowSuccess(true);
         setTimeout(() => setShowSuccess(false), 5000);
       }

@@ -10,6 +10,7 @@ import { metamaskStrategy } from "@/lib/wallet/strategies";
 import { useWalletLogin } from "@/lib/api/hooks/usePosts";
 import { Loader2 } from "lucide-react";
 import { isUserRejection } from "@/lib/wallet/errors";
+import { trackEvent, EVENTS } from "@/lib/analytics";
 
 interface MetamaskLoginProps {
   lang: string;
@@ -46,6 +47,8 @@ export function MetamaskLogin(props: MetamaskLoginProps) {
 
       // Only persist wallet state after backend confirms login
       confirmLogin(walletInfo);
+
+      trackEvent(EVENTS.WALLET_CONNECTED, { wallet: walletInfo.walletName });
 
       // Redirect to return URL or home (spinner will remain visible until redirect)
       // Use window.location.href for hard redirect to keep spinner visible during navigation

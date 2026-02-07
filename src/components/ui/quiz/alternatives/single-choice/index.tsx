@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { EQuizResult, QuizBodyProps } from "../../types";
 import { SingleChoiceOption } from "./option";
 import { Submit } from "../../components/submit";
+import { trackEvent, EVENTS } from "@/lib/analytics";
 
 export const SingleChoiceQuiz: React.FC<QuizBodyProps> = ({
   questionId,
@@ -25,6 +26,11 @@ export const SingleChoiceQuiz: React.FC<QuizBodyProps> = ({
 
     const isCorrect = isAnswerCorrect();
     setResult(isCorrect ? EQuizResult.Correct : EQuizResult.Incorrect);
+
+    trackEvent(EVENTS.QUIZ_SUBMITTED, {
+      question_id: questionId,
+      correct: isCorrect,
+    });
   };
 
   return (

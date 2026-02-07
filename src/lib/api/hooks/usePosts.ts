@@ -13,6 +13,7 @@ import {
 } from "../services/posts";
 import { createSignedJWS } from "@/lib/wallet/jws";
 import { API_ACTIONS } from "../actions";
+import { trackEvent, EVENTS } from "@/lib/analytics";
 
 interface UsePostInfoParams {
   path: string;
@@ -65,6 +66,10 @@ export function useLike() {
       const jws = await createSignedJWS(address, { action, path });
       return toggleLike(path, jws);
     },
+    onSuccess: (response, variables) => {
+      const event = response.liked ? EVENTS.POST_LIKED : EVENTS.POST_UNLIKED;
+      trackEvent(event, { path: variables.path });
+    },
   });
 }
 
@@ -109,6 +114,10 @@ export function useCreateComment() {
       return createComment(path, jws);
     },
     onSuccess: (_, variables) => {
+      trackEvent(EVENTS.COMMENT_CREATED, {
+        path: variables.path,
+        is_reply: !!variables.parentId,
+      });
       // Invalidate comments query to refetch
       queryClient.invalidateQueries({ queryKey: ["comments", variables.path] });
     },

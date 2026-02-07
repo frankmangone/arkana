@@ -11,6 +11,7 @@ import {
 import { Wallet, User } from "lucide-react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { trackEvent, EVENTS } from "@/lib/analytics";
 
 function truncateAddress(address: string): string {
   if (address.length <= 12) return address;
@@ -54,7 +55,10 @@ export function AuthButton() {
           </DropdownMenuItem>
           <DropdownMenuItem
             className="cursor-pointer py-3 text-base"
-            onClick={disconnect}
+            onClick={() => {
+              trackEvent(EVENTS.WALLET_DISCONNECTED);
+              disconnect();
+            }}
           >
             Disconnect
           </DropdownMenuItem>

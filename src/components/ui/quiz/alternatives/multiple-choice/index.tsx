@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { EQuizResult, QuizBodyProps } from "../../types";
 import { MultipleChoiceOption } from "./option";
 import { Submit } from "../../components/submit";
+import { trackEvent, EVENTS } from "@/lib/analytics";
 
 export const MultipleChoiceQuiz: React.FC<QuizBodyProps> = ({
   questionId,
@@ -59,13 +60,21 @@ export const MultipleChoiceQuiz: React.FC<QuizBodyProps> = ({
     const isCorrect = isAnswerCorrect();
     const isPartiallyCorrect = isAnswerPartiallyCorrect();
 
+    let result: EQuizResult;
     if (isCorrect) {
-      setResult(EQuizResult.Correct);
+      result = EQuizResult.Correct;
     } else if (isPartiallyCorrect) {
-      setResult(EQuizResult.PartiallyCorrect);
+      result = EQuizResult.PartiallyCorrect;
     } else {
-      setResult(EQuizResult.Incorrect);
+      result = EQuizResult.Incorrect;
     }
+
+    setResult(result);
+
+    trackEvent(EVENTS.QUIZ_SUBMITTED, {
+      question_id: questionId,
+      result,
+    });
   };
 
   return (
