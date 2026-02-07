@@ -89,3 +89,15 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  clear-cache:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clear nginx cache
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.VULTR_HOST }}
+          username: deploy-frontend
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          script: sudo /usr/local/bin/clear-cache.sh
