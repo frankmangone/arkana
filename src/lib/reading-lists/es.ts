@@ -362,6 +362,11 @@ export const readingLists: ReadingList[] = [
         slug: "the-zk-chronicles/computation-models",
         order: 7,
       },
+      {
+        id: "enter-hashing",
+        slug: "the-zk-chronicles/enter-hashing",
+        order: 8,
+      },
     ],
   },
 ];

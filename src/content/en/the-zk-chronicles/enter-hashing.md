@@ -12,7 +12,7 @@ tags:
 description: 'Time for hashes to take the stage, bringing along a few cool tricks!'
 mediumUrl: >-
   https://medium.com/@francomangone18/the-zk-chronicles-enter-hashing-1117c08d9b0e
-contentHash: ec3360f8a3eabb14927f7648499037ed08a05f923896ec1feaca04d9fc21469e
+contentHash: d3ad12e82da43b5ca56aac2c5f64c96f4bade80f521b0f96ba41f8d4de12bba5
 supabaseId: null
 ---
 
@@ -46,7 +46,7 @@ I’m willing to bet you probably know what they are and how they work, but for 
 
 To make this introduction swift, a hashing function is just a **function** that takes some input, shuffles it up, and produces an output that’s **entirely unrecognizable** from the input.
 
-> Oh, by the way, we usually refer to the output of a hashing function as the **hash **of the input value!
+> Oh, by the way, we usually refer to the output of a hashing function as the **hash** of the input value!
 
 That’s all it does, really. “To hash” [literally means](https://www.merriam-webster.com/dictionary/hash) to chop something into smaller pieces and cook it, effectively mixing it up and creating something new out of the mixture. Like those tasty hash browns we all know and love.
 
@@ -338,7 +338,7 @@ The Fiat-Shamir transform is one of the most elegant and powerful ideas in crypt
 
 The practical impact is enormous: proofs become **portable artifacts** that can be stored, and verified by anyone, anytime, anywhere.
 
-This is why essentially every modern ZK system uses Fiat-Shamir, and is one of the crucial factors that make verifiable computing and ZK **practical **at all!
+This is why essentially every modern ZK system uses Fiat-Shamir, and is one of the crucial factors that make verifiable computing and ZK **practical** at all!
 
 ---
 
