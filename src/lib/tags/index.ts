@@ -193,6 +193,11 @@ export const tags: TagDefinition = {
   },
 
   // F
+  fiatShamirTransform: {
+    en: "Fiat-Shamir Transform",
+    es: "Transformación de Fiat-Shamir",
+    pt: "Transformação de Fiat-Shamir",
+  },
   finiteField: {
     en: "Finite Field",
     es: "Campo Finito",

@@ -338,6 +338,6 @@ We also introduced a crucial framework: **languages** and **witnesses**. This is
 
 If you’re here after all these shenanigans, congrats! This is probably the **single hardest theoretical jump** in the series. Sure, we’ll need to talk about other theoretical concepts later, but for me at least, this was the most complicated part to write, or even wrap my head around.
 
-So next time, we’ll start building on all the foundations we’ve covered so far, using some ideas that will probably feel more familiar, and yet, help make verifiable computing and ZK systems actually usable.
+[Next time](/en/blog/the-zk-chronicles/enter-hashing), we’ll continue stocking up on foundational concepts, exploring some ideas that will probably feel more familiar, and yet, help make verifiable computing and ZK systems actually usable.
 
-[Until then](/en/blog/the-zk-chronicles/enter-hashing)!
+Until then!

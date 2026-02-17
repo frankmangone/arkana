@@ -336,6 +336,6 @@ También introdujimos un marco crucial: **lenguajes** y **testigos**. Esta es un
 
 Si estás aquí después de todas estas cosas, ¡felicidades! Este es probablemente el **salto teórico más difícil** de la serie. Claro, necesitaremos hablar sobre otros conceptos teóricos más tarde, pero al menos para mí, esta fue la parte más complicada de escribir, o incluso de entender.
 
-Así que la próxima vez, empezaremos a construir sobre todos los fundamentos que hemos cubierto hasta ahora, usando algunas ideas que probablemente se sentirán más familiares, y sin embargo, ayudarán a hacer que la computación verificable y los sistemas ZK sean realmente utilizables.
+[La próxima vez](/es/blog/the-zk-chronicles/enter-hashing), continuaremos estoqueándonos de conceptos fundamentales, explorando algunas ideas que probablemente resulten familiares, y sin embargo, ayudan a hacer de la computación verificable y ZK algo usable en la práctica.
 
-[¡Hasta entonces](/es/blog/the-zk-chronicles/enter-hashing)!
+¡Hasta entonces!
