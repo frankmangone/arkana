@@ -14,7 +14,7 @@ description: >-
   importance of arithmetic circuits
 mediumUrl: >-
   https://medium.com/@francomangone18/the-zk-chronicles-computation-models-b7a1bf6c1179
-contentHash: 9ece2e08e54bdf73eda527bc0bd0c5357057ab372300d8638eba60306030011c
+contentHash: 61de63007934785e3642d4905959914b45a52d6c1cc07acf5d9c99b8ed16827b
 supabaseId: null
 ---
 

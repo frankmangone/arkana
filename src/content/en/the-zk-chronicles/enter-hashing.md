@@ -9,12 +9,13 @@ tags:
   - hashing
   - fiatShamirTransform
   - merkleTree
-description: >-
-  Time for hashes to take the stage, bringing along a few cool tricks!
-mediumUrl: https://medium.com/@francomangone18/the-zk-chronicles-enter-hashing-1117c08d9b0e
-contentHash: # TODO: Add content hash
-supabaseId: # TODO: Add supabase ID
+description: 'Time for hashes to take the stage, bringing along a few cool tricks!'
+mediumUrl: >-
+  https://medium.com/@francomangone18/the-zk-chronicles-enter-hashing-1117c08d9b0e
+contentHash: ec3360f8a3eabb14927f7648499037ed08a05f923896ec1feaca04d9fc21469e
+supabaseId: null
 ---
+
 It’s kind of amazing that we even got here at all using only [finite fields](/en/blog/the-zk-chronicles/math-foundations/#finite-fields) and [polynomials](/en/blog/the-zk-chronicles/math-foundations/#polynomials), isn’t it?
 
 As far as protocols go, we even got to our first general proving system in the form of [GKR](/en/blog/the-zk-chronicles/circuits-part-2). And in the [theory department](/en/blog/the-zk-chronicles/computation-models), we got into some pretty deep concepts, connecting different types of problems, and providing a strong theoretical foundation for many things to come.
