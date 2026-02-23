@@ -3,11 +3,11 @@
 import { useState, useEffect, useRef } from "react";
 import { articlesService, type ArticleListItem } from "@/lib/supabase";
 import { SearchResultCard } from "./search-result-card";
+import type { Dictionary } from "@/lib/dictionaries";
 
 interface ClientSearchProps {
   lang: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  dictionary: any;
+  dictionary: Dictionary;
 }
 
 export function ClientSearch({ lang, dictionary }: ClientSearchProps) {

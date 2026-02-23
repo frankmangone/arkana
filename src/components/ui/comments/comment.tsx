@@ -1,12 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { CommentForm } from "./comment-form";
 import { useWallet } from "@/components/providers/wallet-provider";
 import { CommentWithReplies } from "./comment-list";
 import { useParams } from "next/navigation";
-import { getDictionary } from "@/lib/dictionaries";
+import type { Dictionary } from "@/lib/dictionaries";
 import { LatexText } from "@/components/ui/latex-text";
+import { useDictionary } from "@/lib/hooks/use-dictionary";
 
 interface CommentProps {
   comment: CommentWithReplies;
@@ -28,8 +29,7 @@ function truncateAddress(address: string): string {
  */
 function formatTimeAgo(
   dateString: string,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  dictionary: any,
+  dictionary: Dictionary | null,
   lang: string
 ): string {
   const date = new Date(dateString);
@@ -108,15 +108,10 @@ const MAX_DEPTH = 3;
 
 export function Comment({ comment, path, depth }: CommentProps) {
   const [showReplyForm, setShowReplyForm] = useState(false);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [dictionary, setDictionary] = useState<any>(null);
   const params = useParams();
   const lang = (params?.lang as string) || "en";
   const { wallet } = useWallet();
-
-  useEffect(() => {
-    getDictionary(lang).then(setDictionary);
-  }, [lang]);
+  const dictionary = useDictionary(lang);
 
   const canReply = depth < MAX_DEPTH;
   const timeAgo = formatTimeAgo(comment.created_at, dictionary, lang);

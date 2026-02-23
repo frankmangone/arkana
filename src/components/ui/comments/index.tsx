@@ -6,8 +6,8 @@ import { CommentForm } from "./comment-form";
 import { useWallet } from "@/components/providers/wallet-provider";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
-import { getDictionary } from "@/lib/dictionaries";
 import { Info } from "lucide-react";
+import { useDictionary } from "@/lib/hooks/use-dictionary";
 
 interface CommentSectionProps {
   path: string;
@@ -20,14 +20,9 @@ export function CommentSection({ path }: CommentSectionProps) {
   const lang = (params?.lang as string) || "en";
   const { wallet } = useWallet();
   const { data, isLoading, error } = useComments({ path });
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [dictionary, setDictionary] = useState<any>(null);
+  const dictionary = useDictionary(lang);
   const [showTooltip, setShowTooltip] = useState(false);
   const shouldFocus = searchParams.get("focus") === "comment";
-
-  useEffect(() => {
-    getDictionary(lang).then(setDictionary);
-  }, [lang]);
 
   // Clear the focus parameter after focusing
   useEffect(() => {

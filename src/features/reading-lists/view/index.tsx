@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowLeft } from "lucide-react";
 import { PostCard } from "@/components/ui/post-card";
 import { getPostsFromReadingList } from "./fetch";
+import { withLocalePath } from "@/lib/site-config";
 
 interface ReadingListPageProps {
   lang: string;
@@ -16,8 +17,7 @@ export async function ReadingListPage(props: ReadingListPageProps) {
   const { lang, readingList } = props;
 
   const dict = await getDictionary(lang);
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://arkana.blog";
-  const backUrl = `${baseUrl}/${lang}/reading-lists`;
+  const backUrl = withLocalePath(lang, "reading-lists");
 
   const posts = await getPostsFromReadingList({ readingList, lang });
 
@@ -46,7 +46,10 @@ export async function ReadingListPage(props: ReadingListPageProps) {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {posts.map((item, index) => {
           const readingListItem = readingList.items[index];
-          const url = `${baseUrl}/${lang}/reading-lists/${readingList.id}/${readingListItem.id}`;
+          const url = withLocalePath(
+            lang,
+            `reading-lists/${readingList.id}/${readingListItem.id}`
+          );
 
           return (
             <PostCard

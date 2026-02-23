@@ -3,6 +3,8 @@ import Image from "next/image";
 import { BookOpen, List } from "lucide-react";
 import { ReadingListItem } from "@/lib/reading-lists";
 import { Badge } from "@/components/ui/badge";
+import type { Dictionary } from "@/lib/dictionaries";
+import { withLocalePath, withSiteUrl } from "@/lib/site-config";
 
 interface ReadingList {
   id: string;
@@ -16,19 +18,15 @@ interface ReadingList {
 interface ReadingListCardProps {
   list: ReadingList;
   lang: string;
-  dictionary: any; // eslint-disable-line @typescript-eslint/no-explicit-any
+  dictionary: Dictionary;
 }
 
 export function ReadingListCard(props: ReadingListCardProps) {
   const { list, lang, dictionary } = props;
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://arkana.blog";
 
   return (
     <div className="group">
-      <Link
-        href={`${baseUrl}/${lang}/reading-lists/${list.id}`}
-        className="block"
-      >
+      <Link href={withLocalePath(lang, `reading-lists/${list.id}`)} className="block">
         {/* Image container with stacked appearance */}
         <div className="relative h-64 mb-4 hidden md:block">
           {list.coverImage ? (
@@ -38,7 +36,7 @@ export function ReadingListCard(props: ReadingListCardProps) {
                 <Image
                   src={
                     list.coverImage
-                      ? `${baseUrl}${list.coverImage}`
+                      ? withSiteUrl(list.coverImage)
                       : "/placeholder.svg"
                   }
                   alt={list.title}

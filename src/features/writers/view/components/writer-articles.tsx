@@ -1,12 +1,12 @@
 import { PostPreview } from "@/lib/posts";
 import { PostCard } from "@/components/ui/post-card";
+import type { Dictionary } from "@/lib/dictionaries";
 
 interface WriterArticlesProps {
   lang: string;
   articles: PostPreview[];
   writerName: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  dictionary: any;
+  dictionary: Dictionary;
 }
 
 export function WriterArticles({

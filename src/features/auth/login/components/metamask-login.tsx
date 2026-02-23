@@ -11,11 +11,11 @@ import { useWalletLogin } from "@/lib/api/hooks/usePosts";
 import { Loader2 } from "lucide-react";
 import { isUserRejection } from "@/lib/wallet/errors";
 import { trackEvent, EVENTS } from "@/lib/analytics";
+import type { AuthDictionary } from "@/lib/dictionaries";
 
 interface MetamaskLoginProps {
   lang: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  dictionary: any;
+  dictionary: AuthDictionary;
 }
 
 export function MetamaskLogin(props: MetamaskLoginProps) {

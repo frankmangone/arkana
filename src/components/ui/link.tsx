@@ -1,5 +1,6 @@
 import { default as NextLink } from "next/link";
 import { AnchorHTMLAttributes } from "react";
+import { cn } from "@/lib/utils";
 
 /**
  * Link component
@@ -15,15 +16,21 @@ export function Link({
   className,
   ...props
 }: AnchorHTMLAttributes<HTMLAnchorElement>) {
-  const isInternal = href && !href.startsWith("http") && !href.startsWith("#");
+  const safeHref = href ?? "#";
+  const isExternal =
+    safeHref.startsWith("http://") ||
+    safeHref.startsWith("https://") ||
+    safeHref.startsWith("mailto:") ||
+    safeHref.startsWith("tel:");
 
-  if (isInternal) {
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://arkana.blog";
-    const fullHref = `${baseUrl}${href}`;
+  if (!isExternal) {
     return (
       <NextLink
-        className={`text-primary-750 hover:text-primary-650 transition-colors ${className}`}
-        href={fullHref}
+        className={cn(
+          "text-primary-750 hover:text-primary-650 transition-colors",
+          className
+        )}
+        href={safeHref}
         {...props}
       />
     );
@@ -31,10 +38,13 @@ export function Link({
 
   return (
     <a
-      href={href}
+      href={safeHref}
       target="_blank"
       rel="noopener noreferrer"
-      className={`text-primary-750 hover:text-primary-650 transition-colors ${className}`}
+      className={cn(
+        "text-primary-750 hover:text-primary-650 transition-colors",
+        className
+      )}
       {...props}
     />
   );

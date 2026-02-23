@@ -1,10 +1,10 @@
 import { ReadingList } from "@/lib/reading-lists";
 import { EmptyState } from "@/components/empty-state";
 import { ReadingListCard } from "./components/reading-list-card";
+import type { Dictionary } from "@/lib/dictionaries";
 
 interface ReadingListsPageProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  dictionary: any;
+  dictionary: Dictionary;
   lang: string;
   readingLists: ReadingList[];
 }

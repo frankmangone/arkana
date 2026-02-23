@@ -6,11 +6,11 @@ import { WalletStrategy } from "@/lib/wallet/types";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { polkadotStrategy } from "@/lib/wallet/strategies";
+import type { AuthDictionary } from "@/lib/dictionaries";
 
 interface PolkadotLoginProps {
   lang: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  dictionary: any;
+  dictionary: AuthDictionary;
 }
 
 export function PolkadotLogin(props: PolkadotLoginProps) {

@@ -2,17 +2,16 @@ import { BookOpen } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
+import { withLocalePath } from "@/lib/site-config";
+import type { Dictionary } from "@/lib/dictionaries";
 
 interface ReadingListsProps {
   lang: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  dictionary: any;
+  dictionary: Dictionary;
 }
 
 // TODO: Do something about background
 export function ReadingLists({ lang, dictionary }: ReadingListsProps) {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://arkana.blog";
-
   return (
     <section className="relative flex flex-col justify-center w-full min-h-[80vh] py-8 md:py-20 mt-12 overflow-hidden">
       {/* Background gradients */}
@@ -28,16 +27,16 @@ export function ReadingLists({ lang, dictionary }: ReadingListsProps) {
           <div className="absolute top-0 left-0 w-64 h-32 bg-gradient-to-r from-purple-500/15 to-primary-500/15 rounded-full blur-2xl -z-10"></div>
 
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            {dictionary?.home?.readingLists?.title}
+            {dictionary.home.readingLists.title}
           </h1>
           <p className="text-gray-400 mb-12">
-            {dictionary?.home?.readingLists?.description}
+            {dictionary.home.readingLists.description}
           </p>
           <Link
-            href={`${baseUrl}/${lang}/reading-lists`}
+            href={withLocalePath(lang, "reading-lists")}
             className="inline-block px-12 py-3 text-white transition-colors bg-primary-650 hover:bg-primary-750"
           >
-            {dictionary?.home?.readingLists?.viewAll}
+            {dictionary.home.readingLists.viewAll}
           </Link>
         </div>
         <div className="flex-1 min-w-0">

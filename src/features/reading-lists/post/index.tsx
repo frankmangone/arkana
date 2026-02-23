@@ -79,7 +79,7 @@ export async function ReadingListPostPage(props: ReadingListPostPageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <PostHeader post={post} lang={lang} />
+      <PostHeader post={post} lang={lang} path={slug} />
       <PostContent post={post} />
       <SectionDivider />
       {writer.walletAddress &&

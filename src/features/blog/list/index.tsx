@@ -2,12 +2,13 @@ import Link from "next/link";
 import { PostPreview } from "@/lib/posts";
 import { PostCard } from "@/components/ui/post-card";
 import { Pagination } from "@/components/pagination";
+import { withLocalePath } from "@/lib/site-config";
+import type { Dictionary } from "@/lib/dictionaries";
 
 interface BlogPageProps {
   lang: string;
   posts: PostPreview[];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  dictionary: any;
+  dictionary: Dictionary;
   selectedTag?: string | null;
   currentPage?: number;
   totalPages?: number;
@@ -21,8 +22,6 @@ export function BlogPage({
   currentPage = 1,
   totalPages = 1,
 }: BlogPageProps) {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://arkana.blog";
-
   // Get all unique tags from posts
   //   const allTags = Array.from(
   //     new Set(posts.flatMap((post) => post.tags))
@@ -64,7 +63,7 @@ export function BlogPage({
             {dictionary.blog.tryDifferentTag}
           </p>
           <Link
-            href={`${baseUrl}/${lang}/blog`}
+            href={withLocalePath(lang, "blog")}
             style={{
               borderColor: "var(--primary-500)",
               color: "var(--primary-500)",

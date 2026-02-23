@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { FeaturedPostCard } from "@/components/ui/featured-post-card";
 import { PostPreview } from "@/lib/posts";
+import type { Dictionary } from "@/lib/dictionaries";
+import { withLocalePath } from "@/lib/site-config";
 
 interface LatestArticlesProps {
   lang: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  dictionary: any;
+  dictionary: Dictionary;
   latestPosts: PostPreview[];
 }
 
@@ -14,8 +15,6 @@ export async function LatestArticles({
   dictionary,
   latestPosts,
 }: LatestArticlesProps) {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://arkana.blog";
-
   return (
     <div className="w-full min-h-[80vh]">
       {/* Gradient overlay for the section above */}
@@ -61,7 +60,7 @@ export async function LatestArticles({
 
           <div className="text-center mt-16">
             <Link
-              href={`${baseUrl}/${lang}/blog`}
+              href={withLocalePath(lang, "blog")}
               className="inline-block px-12 py-3 text-white transition-colors bg-primary-650 hover:bg-primary-750"
             >
               {dictionary?.blog?.viewAllPosts || "View All Articles"}

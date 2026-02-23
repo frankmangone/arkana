@@ -1,10 +1,10 @@
 import { Writer } from "@/lib/writers";
 import { EmptyState } from "@/components/empty-state";
 import { WriterCard } from "./components/writer-card";
+import type { Dictionary } from "@/lib/dictionaries";
 
 interface WritersPageProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  dictionary: any;
+  dictionary: Dictionary;
   lang: string;
   writers: Writer[];
 }

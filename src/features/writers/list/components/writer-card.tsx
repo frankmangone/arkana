@@ -3,6 +3,8 @@
 import { User, Pencil, Twitter, Github, ExternalLink } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import type { Dictionary } from "@/lib/dictionaries";
+import { withLocalePath, withSiteUrl } from "@/lib/site-config";
 
 interface Writer {
   slug: string;
@@ -23,12 +25,10 @@ interface Writer {
 interface WriterCardProps {
   writer: Writer;
   lang: string;
-  dictionary: any; // eslint-disable-line @typescript-eslint/no-explicit-any
+  dictionary: Dictionary;
 }
 
 export function WriterCard({ writer, lang, dictionary }: WriterCardProps) {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://arkana.blog";
-
   if (writer.visible === false) {
     return null;
   }
@@ -36,7 +36,7 @@ export function WriterCard({ writer, lang, dictionary }: WriterCardProps) {
   return (
     <div className="group">
       <Link
-        href={`${baseUrl}/${lang}/writers/${writer.slug}`}
+        href={withLocalePath(lang, `writers/${writer.slug}`)}
         className="block"
       >
         {/* Writer image with portrait styling */}
@@ -48,7 +48,7 @@ export function WriterCard({ writer, lang, dictionary }: WriterCardProps) {
                 <Image
                   src={
                     writer.imageUrl
-                      ? `${baseUrl}${writer.imageUrl}`
+                      ? withSiteUrl(writer.imageUrl)
                       : "/placeholder.svg"
                   }
                   alt=""

@@ -66,6 +66,8 @@
     }
   },
   "readingLists": {
+    "article": "article",
+    "articles": "articles",
     "list": {
       "title": "Reading Lists",
       "description": "Curated collections of articles organized by topic to help guide your learning journey.",
@@ -83,6 +85,9 @@
     }
   },
   "writers": {
+    "writer": "Writer",
+    "article": "article",
+    "articles": "articles",
     "title": "Writers",
     "description": "Meet the people behind the content",
     "noWriters": "Oops!",
@@ -143,6 +148,8 @@
       "hasAccount": "Already have an account?",
       "signIn": "Sign in",
       "errors": {
+        "required": "This field is required",
+        "invalidEmail": "Please enter a valid email address",
         "emailExists": "This email is already registered",
         "passwordTooShort": "Password must be at least 8 characters",
         "usernameTooShort": "Username must be at least 3 characters",

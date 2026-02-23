@@ -1,6 +1,4 @@
-import axios from "axios";
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8082";
+import apiClient from "../client";
 
 export interface WalletInfo {
   id: number;
@@ -33,15 +31,11 @@ export interface ToggleLikeResponse {
  * @returns The wallet info
  */
 export async function walletLogin(jws: string): Promise<WalletLoginResponse> {
-  const response = await axios.post<WalletLoginResponse>(
-    `${API_URL}/api/login`,
-    jws,
-    {
-      headers: {
-        "Content-Type": "text/plain",
-      },
-    }
-  );
+  const response = await apiClient.post<WalletLoginResponse>("/api/login", jws, {
+    headers: {
+      "Content-Type": "text/plain",
+    },
+  });
   return response.data;
 }
 
@@ -61,8 +55,8 @@ export async function getPostInfo(
     params.set("wallet", walletAddress);
   }
   const queryString = params.toString();
-  const url = `${API_URL}/api/posts/${path}/info${queryString ? `?${queryString}` : ""}`;
-  const response = await axios.get<PostInfoResponse>(url);
+  const url = `/api/posts/${path}/info${queryString ? `?${queryString}` : ""}`;
+  const response = await apiClient.get<PostInfoResponse>(url);
   return response.data;
 }
 
@@ -75,8 +69,8 @@ export async function getPostInfo(
  * @returns The like response with liked status and count
  */
 export async function toggleLike(path: string, jws: string): Promise<ToggleLikeResponse> {
-  const response = await axios.post<ToggleLikeResponse>(
-    `${API_URL}/api/posts/${path}/like`,
+  const response = await apiClient.post<ToggleLikeResponse>(
+    `/api/posts/${path}/like`,
     jws,
     {
       headers: {
@@ -109,9 +103,7 @@ export interface CommentsResponse {
  * @returns The comments response with list and total count
  */
 export async function getComments(path: string): Promise<CommentsResponse> {
-  const response = await axios.get<CommentsResponse>(
-    `${API_URL}/api/posts/${path}/comments`
-  );
+  const response = await apiClient.get<CommentsResponse>(`/api/posts/${path}/comments`);
   return response.data;
 }
 
@@ -123,8 +115,8 @@ export async function getComments(path: string): Promise<CommentsResponse> {
  * @returns The created comment
  */
 export async function createComment(path: string, jws: string): Promise<CommentResponse> {
-  const response = await axios.post<CommentResponse>(
-    `${API_URL}/api/posts/${path}/comments`,
+  const response = await apiClient.post<CommentResponse>(
+    `/api/posts/${path}/comments`,
     jws,
     {
       headers: {

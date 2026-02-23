@@ -15,11 +15,11 @@ import {
 } from "@/components/ui/card";
 import { toast } from "sonner";
 import Link from "next/link";
+import type { AuthDictionary } from "@/lib/dictionaries";
 
 interface SignupFormProps {
   lang: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  dictionary: any;
+  dictionary: AuthDictionary;
 }
 
 export function SignupForm({ lang, dictionary }: SignupFormProps) {
@@ -36,19 +36,19 @@ export function SignupForm({ lang, dictionary }: SignupFormProps) {
     const newErrors: Record<string, string> = {};
 
     if (!email) {
-      newErrors.email = dictionary.login.errors.required;
+      newErrors.email = dictionary.signup.errors.required;
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      newErrors.email = dictionary.login.errors.invalidEmail;
+      newErrors.email = dictionary.signup.errors.invalidEmail;
     }
 
     if (!password) {
-      newErrors.password = dictionary.login.errors.required;
+      newErrors.password = dictionary.signup.errors.required;
     } else if (password.length < 8) {
       newErrors.password = dictionary.signup.errors.passwordTooShort;
     }
 
     if (!username) {
-      newErrors.username = dictionary.login.errors.required;
+      newErrors.username = dictionary.signup.errors.required;
     } else if (username.length < 3) {
       newErrors.username = dictionary.signup.errors.usernameTooShort;
     }
@@ -79,10 +79,20 @@ export function SignupForm({ lang, dictionary }: SignupFormProps) {
       // Redirect to home page
       router.push(`/${lang}`);
       router.refresh();
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (error: any) {
+    } catch (error: unknown) {
       const errorMessage =
-        error?.response?.data?.error || "Failed to create account";
+        error &&
+        typeof error === "object" &&
+        "response" in error &&
+        error.response &&
+        typeof error.response === "object" &&
+        "data" in error.response &&
+        error.response.data &&
+        typeof error.response.data === "object" &&
+        "error" in error.response.data &&
+        typeof error.response.data.error === "string"
+          ? error.response.data.error
+          : "Failed to create account";
       toast.error(errorMessage);
     }
   };

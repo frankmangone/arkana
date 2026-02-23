@@ -4,8 +4,7 @@ import { CommentResponse } from "@/lib/api/services/posts";
 import { Comment } from "./comment";
 import { useMemo } from "react";
 import { useParams } from "next/navigation";
-import { getDictionary } from "@/lib/dictionaries";
-import { useEffect, useState } from "react";
+import { useDictionary } from "@/lib/hooks/use-dictionary";
 
 interface CommentListProps {
   comments: CommentResponse[];
@@ -50,12 +49,7 @@ function buildCommentTree(comments: CommentResponse[]): CommentWithReplies[] {
 export function CommentList({ comments, path }: CommentListProps) {
   const params = useParams();
   const lang = (params?.lang as string) || "en";
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [dictionary, setDictionary] = useState<any>(null);
-
-  useEffect(() => {
-    getDictionary(lang).then(setDictionary);
-  }, [lang]);
+  const dictionary = useDictionary(lang);
 
   const threadedComments = useMemo(
     () => buildCommentTree(comments),

@@ -1,9 +1,9 @@
 import Link from "next/link";
+import type { AuthDictionary } from "@/lib/dictionaries";
 
 interface FAQNotesProps {
   lang: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  dictionary: any;
+  dictionary: AuthDictionary;
 }
 
 export function FAQNotes(props: FAQNotesProps) {

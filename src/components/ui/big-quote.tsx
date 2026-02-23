@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function BigQuote({ children }: { children: React.ReactNode }) {
   return (
-    <span className="block flex flex-col items-center my-8">
+    <span className="block w-full flex flex-col items-center my-8">
       <span className="flex justify-between w-full opacity-70">
         <Image src="/quote.png" alt="Big Quote" width={30} height={30} />
         <Image
@@ -13,7 +13,7 @@ export function BigQuote({ children }: { children: React.ReactNode }) {
           className="rotate-90"
         />
       </span>
-      <span className="block text-2xl leading-8 md:text-[1.75rem] md:leading-9 text-center my-0 mx-[30px] font-medium text-[#e9deff] break-words">
+      <span className="block w-full max-w-full px-[30px] text-2xl leading-8 md:text-[1.75rem] md:leading-9 text-center my-0 font-medium text-[#e9deff] break-words [overflow-wrap:anywhere] [&_*]:break-words [&_*]:[overflow-wrap:anywhere]">
         {children}
       </span>
       <span className="flex justify-between w-full opacity-70">

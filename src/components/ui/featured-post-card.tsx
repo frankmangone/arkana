@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { ArrowUpRight, User, Clock } from "lucide-react";
 import { formatDate } from "@/lib/utils";
 import { Tag } from "@/components/ui/tag";
+import { withLocalePath, withSiteUrl } from "@/lib/site-config";
 
 export interface FeaturedPostCardProps {
   post: PostPreview;
@@ -22,25 +23,24 @@ export function FeaturedPostCard(props: FeaturedPostCardProps) {
   const router = useRouter();
 
   const isLarge = variant === "large";
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://arkana.blog";
 
   const thumbnail = post.thumbnail
     ? post.thumbnail.startsWith("http")
       ? post.thumbnail
-      : `${baseUrl}${post.thumbnail}`
+      : withSiteUrl(post.thumbnail)
     : "/placeholder.svg";
 
   const date = formatDate(post.date, lang);
 
   const handleAuthorClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    router.push(`${baseUrl}/${lang}/writers/${post.author.slug}`);
+    router.push(withLocalePath(lang, `writers/${post.author.slug}`));
   };
 
   return (
     <div className="group flex flex-col items-center">
       <Link
-        href={`${baseUrl}/${lang}/blog/${post.slug}`}
+        href={withLocalePath(lang, `blog/${post.slug}`)}
         className="block w-full"
       >
         <div

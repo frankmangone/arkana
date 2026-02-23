@@ -1,10 +1,10 @@
 import { Toaster } from "@/components/ui/sonner";
 import { LoginForm } from "@/features/auth/login/components/login-form";
+import type { AuthDictionary } from "@/lib/dictionaries";
 
 interface LoginPageProps {
   lang: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  dictionary: any;
+  dictionary: AuthDictionary;
 }
 
 export function LoginPage(props: LoginPageProps) {

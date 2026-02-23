@@ -1,10 +1,9 @@
-import type React from "react";
-
 import Image from "next/image";
 import Link from "next/link";
 import { /* User, */ ArrowUpRight } from "lucide-react";
 // import { formatDate } from "@/lib/date-utils";
 import { Tag } from "@/components/ui/tag";
+import { withLocalePath, withSiteUrl } from "@/lib/site-config";
 
 // Assuming ArticleListItem has these fields - adjust as needed
 interface ArticleListItem {
@@ -28,8 +27,6 @@ export function SearchResultCard({
   lang,
   onNavigate,
 }: SearchResultCardProps) {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://arkana.blog";
-
   const handleClick = () => {
     // Call the onNavigate callback to close the popover
     onNavigate?.();
@@ -44,7 +41,7 @@ export function SearchResultCard({
   return (
     <div className="group">
       <Link
-        href={`${baseUrl}/${lang}/blog/${article.slug}`}
+        href={withLocalePath(lang, `blog/${article.slug}`)}
         className="block"
         onClick={handleClick}
       >
@@ -53,7 +50,7 @@ export function SearchResultCard({
             <Image
               src={
                 article.thumbnail
-                  ? `${baseUrl}${article.thumbnail}`
+                  ? withSiteUrl(article.thumbnail)
                   : "/placeholder.svg"
               }
               alt={article.title}

@@ -1,10 +1,10 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import type { Dictionary } from "@/lib/dictionaries";
 
 interface UserSurveyProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  dictionary: any;
+  dictionary: Dictionary;
 }
 
 // TODO: Do something about background
@@ -36,16 +36,16 @@ export function UserSurvey({ dictionary }: UserSurveyProps) {
           </div>
         </div>
         <h2 className="text-4xl md:text-5xl text-center font-bold">
-          {dictionary?.home?.userSurvey?.title}
+          {dictionary.home.userSurvey.title}
         </h2>
         <p className="text-gray-400 text-center max-w-[700px]">
-          {dictionary?.home?.userSurvey?.description}
+          {dictionary.home.userSurvey.description}
         </p>
         <Link
           href="https://forms.gle/NLk49eNnu6jTwGMt8"
           className="inline-block px-12 py-3 my-8 text-white transition-colors bg-primary-650 hover:bg-primary-750"
         >
-          {dictionary?.home?.userSurvey?.button}
+          {dictionary.home.userSurvey.button}
         </Link>
       </div>
     </section>

@@ -12,6 +12,7 @@ import {
 import { Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { AuthButton } from "../auth-button";
+import { withLocalePath } from "@/lib/site-config";
 
 interface NavbarProps {
   lang: string;
@@ -23,10 +24,8 @@ export const Navbar = async (props: NavbarProps) => {
 
   const dict = await getDictionary(lang);
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://arkana.blog";
-  const homeUrl = `${baseUrl}/${lang}`;
-  const readingListsUrl = `${baseUrl}/${lang}/reading-lists`;
-  const writersUrl = `${baseUrl}/${lang}/writers`;
+  const homeUrl = withLocalePath(lang);
+  const readingListsUrl = withLocalePath(lang, "reading-lists");
 
   return (
     <header className="relative z-10">
@@ -59,14 +58,6 @@ export const Navbar = async (props: NavbarProps) => {
             >
               {dict.readingLists.list.title}
             </Link>
-            {false && (
-              <Link
-                href={writersUrl}
-                className="px-4 py-2 inline-flex cursor-pointer items-center justify-center text-base font-medium ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:text-gray-300 dark:hover:text-primary-750"
-              >
-                {dict.writers.title}
-              </Link>
-            )}
             <Link
               href="https://forms.gle/NLk49eNnu6jTwGMt8"
               target="_blank"
@@ -100,14 +91,6 @@ export const Navbar = async (props: NavbarProps) => {
                     className="w-full cursor-pointer py-3 text-base"
                   >
                     {dict.readingLists.list.title}
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link
-                    href={writersUrl}
-                    className="w-full cursor-pointer py-3 text-base"
-                  >
-                    {dict.writers.title}
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>

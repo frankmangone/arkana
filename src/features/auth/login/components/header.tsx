@@ -1,8 +1,8 @@
 import { Logo } from "./logo";
+import type { AuthDictionary } from "@/lib/dictionaries";
 
 interface HeaderProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  dictionary: any;
+  dictionary: AuthDictionary;
 }
 
 export function Header(props: HeaderProps) {

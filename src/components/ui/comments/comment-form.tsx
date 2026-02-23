@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useCreateComment } from "@/lib/api/hooks/usePosts";
 import { Button } from "../button";
 import { isUserRejection } from "@/lib/wallet/errors";
 import { toast } from "sonner";
 import { useParams } from "next/navigation";
-import { getDictionary } from "@/lib/dictionaries";
+import { useDictionary } from "@/lib/hooks/use-dictionary";
 
 const MAX_COMMENT_LENGTH = 1000;
 
@@ -28,16 +28,11 @@ export function CommentForm({
   autoFocus = false,
 }: CommentFormProps) {
   const [body, setBody] = useState("");
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [dictionary, setDictionary] = useState<any>(null);
   const params = useParams();
   const lang = (params?.lang as string) || "en";
+  const dictionary = useDictionary(lang);
   const createComment = useCreateComment();
   const textareaRef = useRef<HTMLTextAreaElement>(null);
-
-  useEffect(() => {
-    getDictionary(lang).then(setDictionary);
-  }, [lang]);
 
   useEffect(() => {
     if (autoFocus && textareaRef.current) {

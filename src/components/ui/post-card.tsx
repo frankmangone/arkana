@@ -8,6 +8,7 @@ import { formatDate } from "@/lib/utils";
 import { PostPreview } from "@/lib/posts";
 import { useRouter } from "next/navigation";
 import { Tag } from "./tag";
+import { withLocalePath, withSiteUrl } from "@/lib/site-config";
 
 interface PostCardProps {
   post: PostPreview;
@@ -19,8 +20,7 @@ interface PostCardProps {
 export function PostCard(props: PostCardProps) {
   const { post, lang, imageClassName, overrideUrl } = props;
   const router = useRouter();
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://arkana.blog";
-  const url = overrideUrl ?? `${baseUrl}/${lang}/blog/${post.slug}`;
+  const url = overrideUrl ?? withLocalePath(lang, `blog/${post.slug}`);
 
   const handleAuthorClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -38,7 +38,7 @@ export function PostCard(props: PostCardProps) {
               post.thumbnail
                 ? post.thumbnail.startsWith("http")
                   ? post.thumbnail
-                  : `${baseUrl}${post.thumbnail}`
+                  : withSiteUrl(post.thumbnail)
                 : "/placeholder.svg"
             }
             alt={post.title}

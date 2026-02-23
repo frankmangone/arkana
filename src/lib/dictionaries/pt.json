@@ -66,6 +66,8 @@
     }
   },
   "readingLists": {
+    "article": "artigo",
+    "articles": "artigos",
     "list": {
       "title": "Listas de Leitura",
       "description": "Coleções selecionadas de artigos organizados por tópico para guiar sua jornada de aprendizado.",
@@ -83,6 +85,9 @@
     }
   },
   "writers": {
+    "writer": "Escritor",
+    "article": "artigo",
+    "articles": "artigos",
     "title": "Escritores",
     "description": "Conheça as pessoas por trás do conteúdo",
     "noWriters": "Oops!",
@@ -143,6 +148,8 @@
       "hasAccount": "Já tem uma conta?",
       "signIn": "Entrar",
       "errors": {
+        "required": "Este campo é obrigatório",
+        "invalidEmail": "Por favor, insira um e-mail válido",
         "emailExists": "Este e-mail já está registrado",
         "passwordTooShort": "A senha deve ter pelo menos 8 caracteres",
         "usernameTooShort": "O nome de usuário deve ter pelo menos 3 caracteres",

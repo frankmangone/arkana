@@ -1,25 +1,13 @@
 import { Suspense } from "react";
 import { Header } from "./header";
 import { MetamaskLogin } from "./metamask-login";
-import { PolkadotLogin } from "./polkadot-login";
 import { FAQNotes } from "./faq-notes";
 import { Loader2 } from "lucide-react";
+import type { AuthDictionary } from "@/lib/dictionaries";
 
 interface LoginFormProps {
   lang: string;
-  dictionary: {
-    login: {
-      title: string;
-      description: string;
-      connectWallet?: string;
-      connectMetaMask?: string;
-      connectPolkadot?: string;
-      connecting?: string;
-      termsText?: string;
-      termsLink?: string;
-      privacyLink?: string;
-    };
-  };
+  dictionary: AuthDictionary;
 }
 
 function LoginButtonsFallback() {
@@ -38,7 +26,6 @@ export function LoginForm({ lang, dictionary }: LoginFormProps) {
 
         <Suspense fallback={<LoginButtonsFallback />}>
           <MetamaskLogin lang={lang} dictionary={dictionary} />
-          {false && <PolkadotLogin lang={lang} dictionary={dictionary} />}
         </Suspense>
 
         <FAQNotes lang={lang} dictionary={dictionary} />

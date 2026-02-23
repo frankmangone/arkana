@@ -10,16 +10,16 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Globe } from "lucide-react";
+import { withLocalePath } from "@/lib/site-config";
 
 export function LanguageSwitcher() {
   const pathname = usePathname();
   const router = useRouter();
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://arkana.blog";
 
   const switchLanguage = (locale: string) => {
     // Get the path without the locale
     const pathWithoutLocale = pathname.split("/").slice(2).join("/");
-    const newPath = `${baseUrl}/${locale}/${pathWithoutLocale}`;
+    const newPath = withLocalePath(locale, pathWithoutLocale);
     router.push(newPath);
   };
 

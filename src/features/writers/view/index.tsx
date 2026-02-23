@@ -8,13 +8,14 @@ import { PostCard } from "@/components/ui/post-card";
 import { Pagination } from "@/components/pagination";
 import { OrganizationBadge } from "./components/organization-badge";
 import Link from "next/link";
+import type { Dictionary } from "@/lib/dictionaries";
+import { withLocalePath, withSiteUrl } from "@/lib/site-config";
 
 interface WriterPageProps {
   lang: string;
   writer: Writer;
   articles: PostPreview[];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  dictionary: any;
+  dictionary: Dictionary;
   currentPage?: number;
   totalPages?: number;
 }
@@ -27,8 +28,6 @@ export default function WriterPage({
   currentPage = 1,
   totalPages = 1,
 }: WriterPageProps) {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://arkana.blog";
-
   // Assuming the writer object might have an organization field
   const hasOrganization = writer.organization?.name && writer.organization?.url;
 
@@ -39,7 +38,7 @@ export default function WriterPage({
           <Image
             src={
               writer.avatarUrl
-                ? `${baseUrl}${writer.avatarUrl}`
+                ? withSiteUrl(writer.avatarUrl)
                 : "/placeholder.svg"
             }
             alt={writer.name}
@@ -118,7 +117,7 @@ export default function WriterPage({
             {dictionary.writers.noArticlesInLanguage.description}
           </p>
           <Link
-            href={`${baseUrl}/${lang}`}
+            href={withLocalePath(lang)}
             className="inline-flex items-center justify-center px-6 py-3 text-white transition-colors bg-primary-500 hover:bg-primary-600"
           >
             {dictionary.writers.noArticlesInLanguage.button}
