@@ -12,12 +12,6 @@ This script processes markdown files and extracts search-oriented JSON data.
 
 ## Usage
 
-### Via npm (recommended)
-
-```bash
-npm run build:search -- <markdown-file-path> [output-file-path]
-```
-
 ### Via ts-node
 
 ```bash
@@ -28,10 +22,10 @@ ts-node --project scripts/tsconfig.json scripts/extract-search-data/index.ts <ma
 
 ```bash
 # Auto-generated filename in ./search/
-npm run build:search -- ./src/content/en/blockchain-101/a-primer-on-consensus.md
+ts-node --project scripts/tsconfig.json scripts/extract-search-data/index.ts ./src/content/en/blockchain-101/a-primer-on-consensus.md
 
 # Custom output path
-npm run build:search -- ./src/content/es/cryptography-101/hashing.md ./output/hashing.es.json
+ts-node --project scripts/tsconfig.json scripts/extract-search-data/index.ts ./src/content/es/cryptography-101/hashing.md ./output/hashing.es.json
 ```
 
 ## Output

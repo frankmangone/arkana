@@ -12,10 +12,9 @@
     "export": "next export",
     "calculate-hashes": "node scripts/calculate-hashes.js",
     "prebuild": "npm run calculate-hashes",
-    "build:search": "ts-node --project scripts/tsconfig.json scripts/extract-search-data/index.ts",
     "index:setup": "pip3 install spacy && python -m spacy download en_core_web_sm && python -m spacy download es_core_news_sm && python -m spacy download pt_core_news_sm",
-    "index:article": "ts-node --project scripts/tsconfig.json scripts/indexing/index.one.ts",
-    "scrap:medium": "ts-node --project scripts/tsconfig.json scripts/medium-scraper/index.ts"
+    "scrap:medium": "ts-node --project scripts/tsconfig.json scripts/medium-scraper/index.ts",
+    "post:medium": "ts-node --project scripts/post-to-medium/tsconfig.json scripts/post-to-medium/src/index.ts"
   },
   "dependencies": {
     "@polkadot/extension-dapp": "^0.62.6",

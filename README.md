@@ -46,8 +46,8 @@ NEXT_PUBLIC_DEV_MODE=false
 | `npm run build`        | Build production app                       |
 | `npm run start`        | Start production server                    |
 | `npm run lint`         | Run lint checks                            |
-| `npm run build:search` | Extract search metadata from markdown file |
 | `npm run scrap:medium` | Run Medium scraper pipeline                |
+| `npm run post:medium`  | Create Medium draft from markdown          |
 
 ## 📁 Content Structure
 
