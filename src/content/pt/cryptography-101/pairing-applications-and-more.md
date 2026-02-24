@@ -14,7 +14,6 @@ description: >-
   aplicações habilitadas por esta nova ferramenta
 readingTime: 8 min
 contentHash: 258fd0d2eb0ae9a5099a3cdcd9cd3729803d52256d5b75fdda40d87fcb6013cf
-supabaseId: 5ba758ce-1d4f-4dad-9514-1cf1a086a4be
 ---
 
 > Este é parte de uma série de artigos sobre criptografia. Se este é o primeiro artigo que você encontra, eu recomendo começar do [início da série](/pt/blog/cryptography-101/where-to-start).

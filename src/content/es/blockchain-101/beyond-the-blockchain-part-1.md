@@ -14,7 +14,6 @@ description: >-
   Ledger Distribuido — ¡y hoy, comenzamos a mirar otras estructuras!
 readingTime: 14 min
 contentHash: 4b75cdf8a3b58ad44f3b493ad80df5e78f5628355a0f5b5ed71538810cbeaa6a
-supabaseId: 94dbc661-f2f9-40da-97f6-825942ca2aa6
 ---
 
 > Esto es parte de una serie más larga de artículos sobre Blockchain. Si este es el primer artículo que encuentras, te recomiendo comenzar desde el [inicio de la serie](/es/blog/blockchain-101/how-it-all-began).

@@ -13,7 +13,6 @@ description: >-
   Es hora de que los hashes tomen el escenario, trayendo consigo algunos trucos
   geniales
 contentHash: 69f4dcef2067ee49f67ffe096b7fa49df164b6f0d181dd075f26776660db9e3b
-supabaseId: null
 ---
 
 Es bastante increíble que hayamos llegado hasta aquí usando solo [campos finitos](/es/blog/the-zk-chronicles/math-foundations/#finite-fields) y [polinomios](/es/blog/the-zk-chronicles/math-foundations/#polynomials), ¿no?

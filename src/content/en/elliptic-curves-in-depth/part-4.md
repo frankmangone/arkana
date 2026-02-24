@@ -15,7 +15,6 @@ readingTime: 14 min
 mediumUrl: >-
   https://medium.com/@francomangone18/elliptic-curves-in-depth-part-4-5d5fb5638347
 contentHash: a79dd88780a2a5cea00569b8b8732817538840b28998e1fafd62a91f3e19f6f5
-supabaseId: 11b0a995-f36d-451e-b28b-7b38cb663bdb
 ---
 
 We’ve covered quite a few things up until now, so I believe a quick refresher will prove to be helpful:

@@ -15,7 +15,6 @@ description: >-
 readingTime: 15 min
 mediumUrl: 'https://medium.com/@francomangone18/blockchain-101-jam-2d64de1cab1d'
 contentHash: b0f421c015b69739d09cfd0e1f19f95d79e04876d0599cdf8d7ee765a9f61147
-supabaseId: 69c89960-9df0-40ca-8226-25a11bde28d6
 ---
 
 > This is part of a larger series of articles about Blockchain. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/blockchain-101/how-it-all-began).

@@ -9,6 +9,7 @@ import { AuthProvider } from "@/components/providers/auth-provider";
 import { Web3Provider } from "@/components/providers/web3-provider";
 import { WalletProvider } from "@/components/providers/wallet-provider";
 import Script from "next/script";
+import { SITE_URL, withSiteUrl } from "@/lib/site-config";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -58,9 +59,7 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://arkana.blog"
-  ),
+  metadataBase: new URL(SITE_URL),
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "32x32", type: "image/x-icon" },
@@ -112,7 +111,7 @@ export default async function RootLayout({
   params: Promise<{ lang: string }>;
 }) {
   const { lang } = await params;
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://arkana.blog";
+  const baseUrl = SITE_URL;
 
   // JSON-LD structured data for the organization
   const organizationJsonLd = {
@@ -163,7 +162,7 @@ export default async function RootLayout({
     },
     logo: {
       "@type": "ImageObject",
-      url: `${baseUrl}/logo.png`,
+      url: withSiteUrl("/logo.png"),
       width: 60,
       height: 60,
     },

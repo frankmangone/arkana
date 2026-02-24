@@ -12,7 +12,6 @@ tags:
 description: ¡Es hora de nuestros primeros conceptos matemáticos básicos!
 readingTime: 12 min
 contentHash: 23899d7bb4bd188d25e03e86282a69e57743ee974e9639f141e29963aecd4fdb
-supabaseId: 6049c9f8-19b0-44da-bb63-daefd0fecca9
 ---
 
 Habiendo dejado atrás la [introducción a la serie](/es/blog/the-zk-chronicles/first-steps), ahora es momento de empezar a trabajar en nuestro conjunto de herramientas, para que podamos encaminarnos hacia el objetivo de crear estos **sistemas de pruebas** a los que ya hemos aludido.

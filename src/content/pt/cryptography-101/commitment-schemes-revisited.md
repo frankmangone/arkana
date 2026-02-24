@@ -14,7 +14,6 @@ description: >-
   futuro
 readingTime: 10 min
 contentHash: f0573aa86b50b35fbba909681531762afd473a3beaf8e90439c50a158a59d8e5
-supabaseId: 9365067d-224c-4754-bd4f-346cd3748333
 ---
 
 > Este é parte de uma série de artigos sobre criptografia. Se este é o primeiro artigo que você encontra, eu recomendo começar do [início da série](/pt/blog/cryptography-101/where-to-start).

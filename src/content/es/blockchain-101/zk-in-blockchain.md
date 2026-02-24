@@ -14,7 +14,6 @@ description: >-
   vanguardia: blockchain y pruebas de conocimiento cero
 readingTime: 11 min
 contentHash: 9645c17cae25204b6be18a1258051bacdc76ab0a5bb255ef86f9ccd16a49a8dd
-supabaseId: f8a1d826-9c4a-4485-9798-e1d47f2ac3a8
 ---
 
 > Este artículo es parte de una serie más larga sobre Blockchain. Si este es el primer artículo que encuentras, te recomiendo comenzar por el [inicio de la serie](/es/blog/blockchain-101/how-it-all-began).

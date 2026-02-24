@@ -11,7 +11,6 @@ description: 'A gentle intro to the world of open-source, modular processing uni
 readingTime: 10 min
 mediumUrl: 'https://medium.com/@francomangone18/wtf-is-risc-v-4cf8399059fb'
 contentHash: bfd791c9a8fbc7a676d10fc7e881a433a22f9b585a1a6b1c94fac414f49d3838
-supabaseId: 1f509bee-3152-4278-b0bf-f5d60bc34dd5
 ---
 
 Lately, I’ve been hearing about RISC-V a lot.

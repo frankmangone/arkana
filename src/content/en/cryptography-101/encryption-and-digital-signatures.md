@@ -16,7 +16,6 @@ readingTime: 9 min
 mediumUrl: >-
   https://medium.com/@francomangone18/cryptography-101-encryption-and-digital-signatures-210960778765
 contentHash: 3221c5dd85899d46efaeb6a8f6d092e6acd88a4280416421ffde337f02e8999b
-supabaseId: a27ea686-6262-4033-877b-fad9817e0aa8
 ---
 
 > This is part of a larger series of articles about cryptography. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/cryptography-101/where-to-start).

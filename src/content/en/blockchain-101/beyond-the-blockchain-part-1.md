@@ -14,7 +14,6 @@ description: >-
   Technology — and today, we start looking at other structures!
 readingTime: 14 min
 contentHash: ebd66cc7738af29eaef936e741cac7f475da4a892e7bfb527f2a0a7a6eff6d38
-supabaseId: 31a2db62-f310-4b2e-b863-da8c1c2ea8da
 mediumUrl: >-
   https://medium.com/@francomangone18/blockchain-101-beyond-the-blockchain-part-1-4e1f54b90312
 ---

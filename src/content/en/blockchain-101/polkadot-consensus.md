@@ -16,7 +16,6 @@ readingTime: 14 min
 mediumUrl: >-
   https://medium.com/@francomangone18/blockchain-101-polkadot-consensus-2402636a837d
 contentHash: 5130759b35ebf4120defdfaae76cff3d226f6ee22b6c2869ba9674566d4c3dca
-supabaseId: 11eb8839-8f1e-40e3-bd96-b4ca87a7bf27
 ---
 
 > This is part of a larger series of articles about Blockchain. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/blockchain-101/how-it-all-began).

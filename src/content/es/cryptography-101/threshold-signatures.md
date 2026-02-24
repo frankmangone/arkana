@@ -14,7 +14,6 @@ description: >-
   funcionalidad, en forma de Firmas de Umbral!
 readingTime: 14 min
 contentHash: 1de8a475ccd3eef66dbd775a6cb86a23a637a71f929361def11ab67ed8473acd
-supabaseId: d9cedc55-b08b-43dd-9cac-311dc4c5513d
 ---
 
 > Este artículo forma parte de una serie más larga sobre criptografía. Si este es el primer artículo con el que te encuentras, te recomiendo comenzar desde el [principio de la serie](/es/blog/cryptography-101/where-to-start).

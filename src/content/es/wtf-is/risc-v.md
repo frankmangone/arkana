@@ -12,7 +12,6 @@ description: >-
   código abierto.
 readingTime: 10 min
 contentHash: 45d1c6bdd6ae4dc5c1b4c926c6a4247ad98dc1159cbf465062ee4d1e07e7c56e
-supabaseId: 89f46326-83bd-4359-b32e-4f298f2a4147
 ---
 
 Últimamente, he estado escuchando mucho sobre RISC-V.

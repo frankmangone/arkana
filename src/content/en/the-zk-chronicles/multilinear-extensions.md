@@ -15,7 +15,6 @@ readingTime: 14 min
 mediumUrl: >-
   https://medium.com/@francomangone18/the-zk-chronicles-multilinear-extensions-7e93a685d8bf
 contentHash: ab82c1a4f332237278fe157cb7ac05b1a10b5317c47939293534250ab1505a99
-supabaseId: null
 ---
 
 In the [previous installment](/en/blog/the-zk-chronicles/circuits-part-1), we saw our first instance of a protocol that makes use of a general model for computation: **circuits**.

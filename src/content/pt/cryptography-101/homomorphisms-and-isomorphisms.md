@@ -14,7 +14,6 @@ description: >-
   fascinante: a encriptação homomórfica
 readingTime: 9 min
 contentHash: 0fcc0574262d1fb0fa04e197ab362c8473e96c76420556475a30295c2635dd74
-supabaseId: a71a22ef-72f1-4c2c-bfe3-bb1fb0b606cb
 ---
 
 > Este é parte de uma série de artigos sobre criptografia. Se este é o primeiro artigo que você encontra, eu recomendo começar do [início da série](/pt/blog/cryptography-101/where-to-start).

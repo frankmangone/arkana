@@ -13,7 +13,6 @@ description: >-
   herramienta muy necesaria!
 readingTime: 14 min
 contentHash: 11034b66f1c7da3768fd1d9a739e20b16baa590bbd324e29ccd34f9b8ec2dd94
-supabaseId: null
 ---
 
 En la [entrega anterior](/es/blog/the-zk-chronicles/circuits-part-1), vimos nuestra primera instancia de un protocolo que hace uso de un modelo general para la computación: los **circuitos**.

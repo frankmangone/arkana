@@ -13,7 +13,6 @@ description: >-
   ¿Cómo manejamos los datos en Blockchain? ¿Qué tipo de problemas podemos
   enfrentar?
 contentHash: 78a6f43858d51dc572b368295a43c4df0d26c6939f8d612e02e49291fff84fa7
-supabaseId: null
 ---
 
 > Este artículo es parte de una serie más larga sobre Blockchain. Si este es el primer artículo que encuentras, te recomiendo comenzar por el [inicio de la serie](/es/blog/blockchain-101/how-it-all-began).

@@ -14,7 +14,6 @@ description: >-
 readingTime: 10 min
 mediumUrl: 'https://medium.com/@francomangone18/blockchain-101-coretime-f0247786ff87'
 contentHash: e49e03bba5535ad73dc7a8062824ffc57c1e2f27f8b0126027c4aa3c8eb9db63
-supabaseId: 34369fdb-9a10-449a-bee4-7af6195c0078
 ---
 
 > This is part of a larger series of articles about Blockchain. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/blockchain-101/how-it-all-began).

@@ -15,7 +15,6 @@ readingTime: 10 min
 mediumUrl: >-
   https://medium.com/@francomangone18/blockchain-101-wrapping-up-bitcoin-c01cb572021e
 contentHash: 67e3c3a43ace0c68ac58dd27d045f6880599d2d8e43c5181127c217f6ecebd18
-supabaseId: a628cad3-8835-4b22-93cd-3562846e9959
 ---
 
 > Este artículo es parte de una serie más larga sobre Blockchain. Si este es el primer artículo que encuentras, te recomiendo comenzar por el [inicio de la serie](/es/blog/blockchain-101/how-it-all-began).

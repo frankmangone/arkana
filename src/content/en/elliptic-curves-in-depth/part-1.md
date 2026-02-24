@@ -12,7 +12,6 @@ readingTime: 12 min
 mediumUrl: >-
   https://medium.com/@francomangone18/elliptic-curves-in-depth-part-1-a9c2d37bf484
 contentHash: 97c0c88347c8aa345a74fe7935e84797ddf402b79d8b5b87eb766834f3593dc0
-supabaseId: f45bc01a-569e-4978-82b9-58860b839024
 ---
 
 Cryptography is always evolving.

@@ -13,7 +13,6 @@ description: >-
   una forma novedosa de pagar por el uso de Blockchain: Coretime.
 readingTime: 10 min
 contentHash: 619680a880e8ede0a2afd5b26269bbfe81f4d7e7d7fa90a2da77dea85130b59b
-supabaseId: 45ad865f-4296-439e-8330-512eba99b2cf
 ---
 
 > Esto es parte de una serie más larga de artículos sobre Blockchain. Si este es el primer artículo que encuentras, te recomiendo comenzar desde el [inicio de la serie](/es/blog/blockchain-101/how-it-all-began).

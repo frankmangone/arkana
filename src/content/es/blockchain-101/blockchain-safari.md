@@ -14,7 +14,6 @@ description: >-
   desviación para mirar algunas ideas geniales propuestas por otras Blockchains.
 readingTime: 16 min
 contentHash: dd7a561dab9a46af7fe286aef4530b9609161cd552e917f024b4478da1408efe
-supabaseId: df5fb4b4-7608-42d4-a83a-f6600e43100d
 ---
 
 > Este artículo es parte de una serie más larga sobre Blockchain. Si este es el primer artículo que encuentras, te recomiendo comenzar por el [inicio de la serie](/es/blog/blockchain-101/how-it-all-began).

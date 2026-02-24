@@ -16,7 +16,6 @@ readingTime: 16 min
 mediumUrl: >-
   https://medium.com/@francomangone18/blockchain-101-blockchain-safari-19062a05d5c1
 contentHash: 10ed1240b7be88d54b9b1d32c113117875e2cd515320b8092a4e4855e7770c2c
-supabaseId: 4ad73a46-a8d0-4f06-918c-235b8cff0df3
 ---
 
 > This is part of a larger series of articles about Blockchain. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/blockchain-101/how-it-all-began).

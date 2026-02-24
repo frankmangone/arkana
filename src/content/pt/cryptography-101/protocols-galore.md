@@ -14,7 +14,6 @@ description: >-
   de compromisso, provas de conhecimento zero, funções aleatórias verificáveis
 readingTime: 11 min
 contentHash: 64824fbd803849c75b19198e248fa4bd302e7a7293525db16c2be1fe24d6bc29
-supabaseId: e0559783-8a6e-43b1-bc18-9e8716f9d0c0
 ---
 
 > Este é parte de uma série de artigos sobre criptografia. Se este é o primeiro artigo que você encontra, eu recomendo começar do [início da série](/pt/blog/cryptography-101/where-to-start).

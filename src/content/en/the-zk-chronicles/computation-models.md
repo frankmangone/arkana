@@ -15,7 +15,6 @@ description: >-
 mediumUrl: >-
   https://medium.com/@francomangone18/the-zk-chronicles-computation-models-b7a1bf6c1179
 contentHash: 61de63007934785e3642d4905959914b45a52d6c1cc07acf5d9c99b8ed16827b
-supabaseId: null
 ---
 
 Hey! Glad you survived the [previous article](/en/blog/the-zk-chronicles/circuits-part-2)!

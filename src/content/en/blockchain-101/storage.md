@@ -13,7 +13,6 @@ description: Time to look at the machinery behind Ethereum’s storage!
 readingTime: 11 min
 mediumUrl: 'https://medium.com/@francomangone18/blockchain-101-storage-12d84d0e2c8e'
 contentHash: f022ebb513e9b0ae0c72c6acd3c59cc86bb4ccaa2716ec6cd23120987a5dad15
-supabaseId: 9407b18b-b766-4a94-a0da-21b3adcb0b41
 ---
 
 > This is part of a larger series of articles about Blockchain. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/blockchain-101/how-it-all-began).

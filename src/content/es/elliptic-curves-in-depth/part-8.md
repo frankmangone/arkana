@@ -14,7 +14,6 @@ description: >-
   de los pairings.
 readingTime: 11 min
 contentHash: ec3397b9f8b5634b1bc1b2ef3ba637a0ffded916a00903e68f06e79712141c2c
-supabaseId: c1d33b47-b56a-48d7-99c5-117bce9880f6
 ---
 
 Después de nuestra expedición a través de las enmarañadas junglas de los [grupos de torsión](/es/blog/elliptic-curves-in-depth/part-7), continuamos nuestro viaje presentando los **pairings**.

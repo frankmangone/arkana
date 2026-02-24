@@ -13,7 +13,6 @@ description: >-
   tipos y otros matices.
 readingTime: 15 min
 contentHash: d6e01f136f836bdfd3f582e6479929d5c69e5aeff7847ab9bf9722676168a424
-supabaseId: 73dac0f1-e9fd-4c5f-aad1-3f87f25079b8
 ---
 
 ¡Muy bien! Dejamos la [entrega anterior](/es/blog/elliptic-curves-in-depth/part-8) con un resumen de la forma bastante específica en que se definen los emparejamientos.

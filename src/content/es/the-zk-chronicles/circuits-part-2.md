@@ -13,7 +13,6 @@ description: >-
   ¡Avanzamos hacia nuestro primer mecanismo verdaderamente general para probar
   la correctitud de cómputos!
 contentHash: 303023e5f7c108928480ed8ecf34a518cd41eeb6ce9851fd4ef7af16077dd0da
-supabaseId: null
 ---
 
 Si recuerdas, [un par de artículos atrás](/es/blog/the-zk-chronicles/circuits-part-1) introdujimos el problema de satisfacibilidad de circuitos (ambas versiones, CSAT y #SAT), lo cual nos llevó directamente a una poderosa extensión de los circuitos tradicionales en forma de **circuitos aritméticos**.

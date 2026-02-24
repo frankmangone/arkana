@@ -14,7 +14,6 @@ description: >-
   presentamos algunas de las curvas elípticas más estudiadas.
 readingTime: 16 min
 contentHash: 9623b500c8f4a3458454be04eb9dbd4b17687911e29792c872656c31687edd86
-supabaseId: 8854ac8e-04d2-40a7-8198-16a86bb38cdd
 ---
 
 Imagino que llegar hasta acá no debe haber sido fácil, querido lector.

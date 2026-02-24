@@ -15,7 +15,6 @@ description: >-
 readingTime: 11 min
 mediumUrl: 'https://medium.com/@francomangone18/blockchain-101-ro-ethereum-8493b8072862'
 contentHash: 5233021581a01fda9493697104ff294f5b50573be7a12346ed3de8177c546699
-supabaseId: 8dc10fe7-32f1-46a6-b156-681fd097c00b
 ---
 
 > This is part of a larger series of articles about Blockchain. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/blockchain-101/how-it-all-began).

@@ -13,7 +13,6 @@ description: >-
   criptografia moderna
 readingTime: 11 min
 contentHash: 6c7bdf800addf9f6a98596b03bce4375511f5429cc94cda0b26b6a9aec3425ec
-supabaseId: 7ae45c29-f9d3-4a33-96dd-e11408538e53
 ---
 
 > Este é parte de uma série de artigos sobre criptografia. Se este é o primeiro artigo que você encontra, eu recomendo começar do [início da série](/pt/blog/cryptography-101/where-to-start).

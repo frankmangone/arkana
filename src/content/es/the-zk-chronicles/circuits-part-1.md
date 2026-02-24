@@ -13,7 +13,6 @@ description: >-
   A medida que nos acercamos a sistemas de pruebas generales, necesitamos
   estudiar modelos de computación, ¡lo cual nos lleva a los circuitos!
 contentHash: 1e334c29b87f40ff42f9fde25b74f193998ef6a7b468abfdbe2ba47cd0974480
-supabaseId: null
 ---
 
 Después de haber pasado por el [artículo anterior](/es/blog/the-zk-chronicles/sum-check), hemos aprendido sobre nuestro primer sistema de pruebas en la forma del protocolo de verificación de la suma.

@@ -14,7 +14,6 @@ description: >-
 readingTime: 10 min
 mediumUrl: 'https://medium.com/@francomangone18/blockchain-101-solana-177128bf1501'
 contentHash: 7446812b3363b22bce18a9eb62123bca65c4883e1a3264ce11906fb3c2480549
-supabaseId: 0df229eb-4656-4cdf-9ae8-f4eb2312eed7
 ---
 
 > This is part of a larger series of articles about Blockchain. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/blockchain-101/how-it-all-began).

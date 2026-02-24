@@ -12,7 +12,6 @@ tags:
 description: How do we handle data in Blockchain? What sort of problems may we face?
 mediumUrl: 'https://medium.com/@francomangone18/blockchain-101-handling-data-714cc71b95d9'
 contentHash: afee6f3f0c986451b9c827f6675c899db693449d923f476697d245f271dab370
-supabaseId: null
 ---
 
 > This is part of a larger series of articles about Blockchain. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/blockchain-101/how-it-all-began).

@@ -10,6 +10,7 @@ import { PostContent } from "@/components/ui/post-content";
 import { SectionDivider } from "@/components/ui/section-divider";
 import BuyMeCoffeeWidget from "@/components/ui/buy-me-coffee";
 import { CommentSection } from "@/components/ui/comments";
+import { SITE_URL, withLocalePath, withSiteUrl } from "@/lib/site-config";
 
 interface PostPageProps {
   lang: string;
@@ -58,11 +59,11 @@ export async function PostPage(props: PostPageProps) {
   const header = await PostHeader({ post, lang, path: slug });
 
   // Base URL for absolute links
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://arkana.blog";
-  const postUrl = `${baseUrl}/${lang}/blog/${slug}`;
+  const baseUrl = SITE_URL;
+  const postUrl = `${baseUrl}${withLocalePath(lang, `blog/${slug}`)}`;
   const imageUrl = post.metadata.thumbnail
-    ? `${baseUrl}${post.metadata.thumbnail}`
-    : `${baseUrl}/images/arkana-default-og.png`;
+    ? withSiteUrl(post.metadata.thumbnail)
+    : withSiteUrl("/images/arkana-default-og.png");
 
   // Create structured data for the article
   const jsonLd = {
@@ -75,14 +76,14 @@ export async function PostPage(props: PostPageProps) {
     author: {
       "@type": "Person",
       name: writer.name,
-      url: `${baseUrl}/${lang}/writers/${writer.slug}`,
+      url: `${baseUrl}${withLocalePath(lang, `writers/${writer.slug}`)}`,
     },
     publisher: {
       "@type": "Organization",
       name: "Arkana",
       logo: {
         "@type": "ImageObject",
-        url: `${baseUrl}/images/logo.png`,
+        url: withSiteUrl("/images/logo.png"),
       },
     },
     url: postUrl,

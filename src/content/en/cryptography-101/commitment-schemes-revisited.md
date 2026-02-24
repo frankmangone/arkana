@@ -15,7 +15,6 @@ readingTime: 10 min
 mediumUrl: >-
   https://medium.com/@francomangone18/cryptography-101-commitment-schemes-revisited-959a3bd94942
 contentHash: 2e49f3c8a7dc12b4607efb1deeb9f3ebf579c5db9bf911d6f87e1dd3cc5369d6
-supabaseId: 9365067d-224c-4754-bd4f-346cd3748333
 ---
 
 > This is part of a larger series of articles about cryptography. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/cryptography-101/where-to-start).

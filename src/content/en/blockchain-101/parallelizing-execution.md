@@ -15,7 +15,6 @@ readingTime: 10 min
 mediumUrl: >-
   https://medium.com/@francomangone18/blockchain-101-parallelizing-execution-9171fae4087a
 contentHash: d2573e53dc75e0de846578e8f9c8ec693fb00c8df18b346c5adb38b87aaf5369
-supabaseId: 4d976efd-31ae-4e19-b33e-59f5c6ec512e
 ---
 
 > This is part of a larger series of articles about Blockchain. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/blockchain-101/how-it-all-began).

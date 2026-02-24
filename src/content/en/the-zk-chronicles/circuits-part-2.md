@@ -15,7 +15,6 @@ description: >-
 mediumUrl: >-
   https://medium.com/@francomangone18/the-zk-chronicles-circuits-part-2-26e7d0ee1e87
 contentHash: 09a3ca495f837619e6a5d07817fbd87ae00f10f6a35c8b5112c25fdfc4f49000
-supabaseId: null
 ---
 
 If you recall, a [couple articles back](/en/blog/the-zk-chronicles/circuits-part-1) we introduced the circuit satisfiability problem (both versions, CSAT and #SAT), which led us directly into a powerful extension of traditional circuits in the form of **arithmetic circuits**.

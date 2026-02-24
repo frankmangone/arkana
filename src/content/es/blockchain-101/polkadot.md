@@ -12,7 +12,6 @@ description: >-
   Polkadot
 readingTime: 11 min
 contentHash: 32820ce9181349b000f4e6c0ab3d820873165f945a2bb51afccec7d31d044e7d
-supabaseId: bfc88963-1a21-49ce-9f80-1e1de4fe49d6
 ---
 
 > Este artículo es parte de una serie más larga sobre Blockchain. Si este es el primer artículo que encuentras, te recomiendo comenzar desde el [inicio de la serie](/es/blog/blockchain-101/how-it-all-began).

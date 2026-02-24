@@ -13,7 +13,6 @@ description: >-
   Una mirada más amplia a la conexión entre diferentes modelos de cómputo, y la
   importancia de los circuitos aritméticos
 contentHash: 61ae51fea89983e6d4f677950ca29898b55ed4eac89467c020f8f26328863c26
-supabaseId: null
 ---
 
 ¡Hola! ¡Me alegra que hayas sobrevivido al [artículo anterior](/es/blog/the-zk-chronicles/circuits-part-2)!

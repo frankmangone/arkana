@@ -15,7 +15,6 @@ description: >-
 mediumUrl: >-
   https://medium.com/@francomangone18/blockchain-101-evolving-a-blockchain-8382873a7f93?source=rss-52f727507bbd------2
 contentHash: 98306a3bd3e3545094ce8fd90d315ddfa378519d2387d25a222b3d2b4d5dbd75
-supabaseId: null
 ---
 
 > This is part of a larger series of articles about Blockchain. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/blockchain-101/how-it-all-began).

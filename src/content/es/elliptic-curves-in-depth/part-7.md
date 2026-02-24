@@ -14,7 +14,6 @@ description: >-
   explora los grupos de torsión!
 readingTime: 14 min
 contentHash: e76a3df082ecbd36a649e599d4f6280da5a77a77ab8f52c39b6ccf04ef4f509a
-supabaseId: 2b3674b3-ec47-4164-ba73-1536fbed2b94
 ---
 
 No debe haber sido un viaje fácil para llegar hasta aquí.

@@ -16,7 +16,6 @@ readingTime: 7 min
 mediumUrl: >-
   https://medium.com/@francomangone18/cryptography-101-elliptic-curves-somewhat-demystified-e835cce01e23
 contentHash: 18543cd240d83255ba8489f89cf5d28e6ccd3a19a2ecbd4375fee4a57bf498b6
-supabaseId: 3e5b9cef-df20-4ada-9779-949bda0e4785
 ---
 
 > Este é parte de uma série de artigos sobre criptografia. Se este é o primeiro artigo que você encontra, eu recomendo começar do [início da série](/pt/blog/cryptography-101/where-to-start).

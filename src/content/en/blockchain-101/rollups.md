@@ -14,7 +14,6 @@ description: >-
 readingTime: 12 min
 mediumUrl: 'https://medium.com/@francomangone18/blockchain-101-rollups-8da114a51f32'
 contentHash: c2a3a2e4d02355dbee8fcb0fd991be92e5360b06ae993e04f4b7b9e2830e8b55
-supabaseId: b19f3765-3ca7-4440-b679-a2b9f2cd587d
 ---
 
 > This is part of a larger series of articles about Blockchain. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/blockchain-101/how-it-all-began).

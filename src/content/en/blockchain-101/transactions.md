@@ -13,7 +13,6 @@ description: 'Let''s focus on the lifeblood of Blockchains early: Transactions!'
 readingTime: 9 min
 mediumUrl: 'https://medium.com/@francomangone18/blockchain-101-transactions-bbbc9e535374'
 contentHash: 1888322e3e57947aa88c11f45e06c908dd37e3c73e4bed8f31e004f7e8ffcdb9
-supabaseId: 55e3dd97-795e-45da-adb8-b7e5afc4f3c3
 ---
 
 > This is part of a larger series of articles about Blockchain. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/blockchain-101/how-it-all-began).

@@ -13,7 +13,6 @@ description: >-
   nuestro primer sistema de pruebas!
 readingTime: 13 min
 contentHash: 28f586417823242962ba581049a2dc3a0602c5e56691e2c1943e1a0b4071e88f
-supabaseId: null
 ---
 
 Ahora que estamos equipados con [campos finitos y polinomios](/es/blog/the-zk-chronicles/math-foundations), es hora de echarle un vistazo a nuestro primer sistema de pruebas. ¡Genial!

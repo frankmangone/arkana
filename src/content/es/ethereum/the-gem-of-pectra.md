@@ -14,7 +14,6 @@ description: >-
   contratos inteligentes.
 readingTime: 7 min
 contentHash: fb99826e268e0f36081c979cb6d8cc541fba73d0ad552e5c0a3620e1d2319292
-supabaseId: 7953d819-8edb-4709-a1ec-1b2b6cbbf7dc
 ---
 
 Al principio dudé si escribir este artículo.

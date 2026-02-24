@@ -14,7 +14,6 @@ readingTime: 12 min
 mediumUrl: >-
   https://medium.com/@francomangone18/the-zk-chronicles-math-foundations-9e1393945bab
 contentHash: acd7892e1496039423f99ac7493fc285b84a3b21cdcf7d2feb50663317fed892
-supabaseId: 1945afc7-ad8b-4984-a8e0-3114fb19db22
 ---
 
 With the [introduction to the series](/en/blog/the-zk-chronicles/first-steps) behind us, it’s now time to start working on our toolkit, so we can set sail towards the goal of crafting these **proving systems** we’ve already alluded to.

@@ -545,8 +545,7 @@ function generateContentHash(content: string) {
 
 // Main processing function
 function processMarkdownFile(
-  filePath: string,
-  supabaseId: string | null = null
+  filePath: string
 ) {
   try {
     // Read and parse the markdown file
@@ -653,11 +652,6 @@ function processMarkdownFile(
       source_file: path.basename(filePath),
     };
 
-    // Add Supabase ID if provided
-    if (supabaseId) {
-      result.supabaseId = supabaseId;
-    }
-
     return result;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
@@ -672,7 +666,7 @@ function main() {
 
   if (args.length === 0) {
     console.log(
-      "Usage: node extract-search-data.js <markdown-file-path> [output-file-path] [supabase-id]"
+      "Usage: node extract-search-data.js <markdown-file-path> [output-file-path]"
     );
     console.log(
       "Example: node extract-search-data.js ./src/content/en/blockchain-101/my-article.md"
@@ -682,9 +676,6 @@ function main() {
     );
     console.log(
       "Example with custom output: node extract-search-data.js ./src/content/en/blog/my-article.md ./custom/path.json"
-    );
-    console.log(
-      "Example with Supabase ID: node extract-search-data.js ./src/content/es/blog/my-article.md ./search/my-article.json f47ac10b-58cc-4372-a567-0e02b2c3d479"
     );
     process.exit(1);
   }
@@ -696,7 +687,6 @@ function main() {
   // Use default if second argument is empty string or not provided
   const outputPath =
     args[1] && args[1].trim() !== "" ? args[1] : defaultOutputPath;
-  const supabaseId = args[2] || null;
 
   // Check if input file exists
   if (!fs.existsSync(inputPath)) {
@@ -710,15 +700,8 @@ function main() {
   } else {
     console.log(`Generated filename: ${generatedFilename}`);
   }
-  if (supabaseId) {
-    console.log(`Supabase ID: ${supabaseId}`);
-  }
-
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const result: Record<string, any> | null = processMarkdownFile(
-    inputPath,
-    supabaseId
-  );
+  const result: Record<string, any> | null = processMarkdownFile(inputPath);
 
   if (!result) {
     console.error("Failed to process the file");
@@ -744,9 +727,6 @@ function main() {
   console.log(`📝 Summary: ${result.search_summary.length} characters`);
   console.log(`🏷️  Headings: ${result.headings_structure.length} found`);
   console.log(`💬 Word count: ${result.word_count} words`);
-  if (result.supabaseId) {
-    console.log(`🔗 Supabase ID: ${result.supabaseId}`);
-  }
 }
 
 // Run the script

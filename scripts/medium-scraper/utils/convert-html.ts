@@ -355,7 +355,6 @@ async function _convertHtmlToMarkdown(
     readingTime ? `readingTime: ${readingTime.replace("min read", "min")}` : "",
     mediumUrl ? `mediumUrl: ${mediumUrl}` : "",
     "contentHash: # TODO: Add content hash",
-    "supabaseId: # TODO: Add supabase ID",
     "---",
     "",
   ]

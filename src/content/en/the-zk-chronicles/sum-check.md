@@ -14,7 +14,6 @@ description: >-
 readingTime: 13 min
 mediumUrl: 'https://medium.com/@francomangone18/the-zk-chronicles-sum-check-0ccf23ffc0e4'
 contentHash: 6064787a66f4cd2a41210c3b1302f8818a2ab92d9fd915d24ced767bf0e957d7
-supabaseId: null
 ---
 
 Now that we’re equipped with [finite fields and polynomials](/en/blog/the-zk-chronicles/math-foundations), it’s time to take a look at our very first proving system. Yay!

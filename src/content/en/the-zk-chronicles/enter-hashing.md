@@ -13,7 +13,6 @@ description: 'Time for hashes to take the stage, bringing along a few cool trick
 mediumUrl: >-
   https://medium.com/@francomangone18/the-zk-chronicles-enter-hashing-1117c08d9b0e
 contentHash: d3ad12e82da43b5ca56aac2c5f64c96f4bade80f521b0f96ba41f8d4de12bba5
-supabaseId: null
 ---
 
 It’s kind of amazing that we even got here at all using only [finite fields](/en/blog/the-zk-chronicles/math-foundations/#finite-fields) and [polynomials](/en/blog/the-zk-chronicles/math-foundations/#polynomials), isn’t it?

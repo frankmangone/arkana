@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { SITE_URL, withSiteUrl } from "@/lib/site-config";
 
 interface BaseMetadataOptions {
   lang: string;
@@ -30,25 +31,24 @@ export function generateBaseMetadata({
   tags,
   keywords,
 }: BaseMetadataOptions): Metadata {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://arkana.blog";
   const fullPath = path ? `/${lang}/${path}` : `/${lang}`;
-  const canonicalUrl = `${baseUrl}${fullPath}`;
+  const canonicalUrl = `${SITE_URL}${fullPath}`;
   const imageUrl = image
     ? image.startsWith("http")
       ? image
-      : `${baseUrl}${image}`
-    : `${baseUrl}/og.png`;
+      : withSiteUrl(image)
+    : withSiteUrl("/og.png");
 
   const metadata: Metadata = {
     title,
     description,
-    metadataBase: new URL(baseUrl),
+    metadataBase: new URL(SITE_URL),
     alternates: {
       canonical: canonicalUrl,
       languages: {
-        en: `${baseUrl}/en${path ? `/${path}` : ""}`,
-        es: `${baseUrl}/es${path ? `/${path}` : ""}`,
-        pt: `${baseUrl}/pt${path ? `/${path}` : ""}`,
+        en: `${SITE_URL}/en${path ? `/${path}` : ""}`,
+        es: `${SITE_URL}/es${path ? `/${path}` : ""}`,
+        pt: `${SITE_URL}/pt${path ? `/${path}` : ""}`,
       },
     },
     openGraph: {

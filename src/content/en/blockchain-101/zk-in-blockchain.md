@@ -16,7 +16,6 @@ readingTime: 11 min
 mediumUrl: >-
   https://medium.com/@francomangone18/blockchain-101-zk-in-blockchain-ecb583183185
 contentHash: 62d6f64e3a72c23e0d4265aba08b9bbac4777412c9140370be6f2d4e0303336b
-supabaseId: 415faac9-b3dc-4d0a-816e-426f6176fa5e
 ---
 
 > This is part of a larger series of articles about Blockchain. If this is the first article you come across, I strongly recommend starting from the [beginning of the series](/en/blog/blockchain-101/how-it-all-began).

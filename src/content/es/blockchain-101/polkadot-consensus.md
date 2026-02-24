@@ -14,7 +14,6 @@ description: >-
   mecanismo de consenso — y las características satélite del mismo.
 readingTime: 14 min
 contentHash: e1f9a9b814a89818a7c5a67a629fe573a45c3a83118329788dbabfe104559abb
-supabaseId: 40b61448-ad46-4b5c-8bc8-df914f0cbee4
 ---
 
 > Este artículo es parte de una serie más larga sobre Blockchain. Si este es el primer artículo que encuentras, te recomiendo comenzar desde el [inicio de la serie](/es/blog/blockchain-101/how-it-all-began).

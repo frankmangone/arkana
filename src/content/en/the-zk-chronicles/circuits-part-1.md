@@ -15,7 +15,6 @@ description: >-
 mediumUrl: >-
   https://medium.com/@francomangone18/the-zk-chronicles-circuit-part-1-b3367ef443b3
 contentHash: ec81754a7060817395289d8385c5d6b1286a30ca589a6c0a01914afc2d269bff
-supabaseId: null
 ---
 
 After going through the [previous article](/en/blog/the-zk-chronicles/sum-check), we have learned about our first proving system in the form of the sum-check protocol.

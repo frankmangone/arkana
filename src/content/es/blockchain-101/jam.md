@@ -14,7 +14,6 @@ description: >-
   desarrollo: JAM.
 readingTime: 15 min
 contentHash: 8d7241fa2fc7d43164bf12425f80558e9b03a84bc9ef4293b38d57c9dc0f7c9b
-supabaseId: fe1367aa-9345-40eb-b805-3b7c384ef535
 ---
 
 > Este artículo es parte de una serie más larga sobre Blockchain. Si este es el primer artículo que encuentras, te recomiendo comenzar desde el [inicio de la serie](/es/blog/blockchain-101/how-it-all-began).
