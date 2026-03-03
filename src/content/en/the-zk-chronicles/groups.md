@@ -2,15 +2,16 @@
 title: 'The ZK Chronicles: Groups'
 author: frank-mangone
 date: '2026-03-02'
-thumbnail: "/images/the-zk-chronicles/groups/judge-judy.webp"
+thumbnail: /images/the-zk-chronicles/groups/judge-judy.webp
 tags:
   - zeroKnowledgeProofs
   - groups
   - ellipticCurves
 description: >-
-  After stocking up with hashes, now's time for another big protagonist of this ZK story!
-mediumUrl: https://medium.com/@francomangone18/the-zk-chronicles-groups-4b8ab3d4d823
-contentHash: # TODO: Add content hash
+  After stocking up with hashes, now's time for another big protagonist of this
+  ZK story!
+mediumUrl: 'https://medium.com/@francomangone18/the-zk-chronicles-groups-4b8ab3d4d823'
+contentHash: c61f0094b8d980c02eab0452cb4f78d00f74a7fe7586cd145238965f36410cce
 ---
 
 Our last encounter saw us introducing a crucial tool in the form of [hashes](/en/blog/the-zk-chronicles/enter-hashing).
