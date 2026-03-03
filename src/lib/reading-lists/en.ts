@@ -365,6 +365,11 @@ export const readingLists: ReadingList[] = [
         slug: "the-zk-chronicles/enter-hashing",
         order: 8,
       },
+      {
+        id: "groups",
+        slug: "the-zk-chronicles/groups",
+        order: 9,
+      },
     ],
   },
 ];
