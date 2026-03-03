@@ -10,6 +10,7 @@ tags:
 description: >-
   After stocking up with hashes, now's time for another big protagonist of this
   ZK story!
+readingTime: 14 min
 mediumUrl: 'https://medium.com/@francomangone18/the-zk-chronicles-groups-4b8ab3d4d823'
 contentHash: c61f0094b8d980c02eab0452cb4f78d00f74a7fe7586cd145238965f36410cce
 ---
