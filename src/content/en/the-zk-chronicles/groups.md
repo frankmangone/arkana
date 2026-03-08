@@ -12,7 +12,7 @@ description: >-
   ZK story!
 readingTime: 14 min
 mediumUrl: 'https://medium.com/@francomangone18/the-zk-chronicles-groups-4b8ab3d4d823'
-contentHash: c61f0094b8d980c02eab0452cb4f78d00f74a7fe7586cd145238965f36410cce
+contentHash: 68744587390c98893db06a84c75f0e736a825205ea3dc0876c0a286cf17373c4
 ---
 
 Our last encounter saw us introducing a crucial tool in the form of [hashes](/en/blog/the-zk-chronicles/enter-hashing).

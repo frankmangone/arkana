@@ -368,6 +368,11 @@ export const tags: TagDefinition = {
     es: "Pectra",
     pt: "Pectra",
   },
+  pedersenCommitments: {
+    en: "Pedersen Commitments",
+    es: "Commitments de Pedersen",
+    pt: "Commitments de Pedersen",
+  },
   polkadot: {
     en: "Polkadot",
     es: "Polkadot",
