@@ -75,7 +75,7 @@ Let’s see. We know the mechanism we’re trying to create needs to have two pr
 - It must be **hiding**: we should not be able to learn what the committed value is by looking at the commitment (just like we can’t see inside the envelope).
 - It must be **binding**: the commitment has a single valid associated value (just like we get a single value when we open the envelope).
 
-How do we do that? Imagine this: we build some function `commit()` that takes the original value, which we’ll call **v**, and produces another value we shall call $c$, the **commitment to** $v$.
+How do we do that? Imagine this: we build some function `commit()` that takes the original value, which we’ll call $v$, and produces another value we shall call $c$, the **commitment to** $v$.
 
 Now, instead of literally opening the commitments, we want to check whether a provided value matches the commitment. For that, we build **another function** `verify()` which takes both $c$ and $v$, and outputs either $0$ or $1$, with the result meaning whether the provided value $v$ matches the commitment or not.
 

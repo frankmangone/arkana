@@ -469,6 +469,11 @@ export const tags: TagDefinition = {
     es: "Escalabilidad",
     pt: "Escalabilidade",
   },
+  schnorrProtocol: {
+    en: "Schnorr Protocol",
+    es: "Protocolo Schnorr",
+    pt: "Protocolo Schnorr",
+  },
   schwartzZippelLemma: {
     en: "Schwartz-Zippel Lemma",
     es: "Lema de Schwartz-Zippel",
@@ -498,6 +503,11 @@ export const tags: TagDefinition = {
     en: "Sidechain",
     es: "Sidechain",
     pt: "Sidechain",
+  },
+  sigmaProtocols: {
+    en: "Sigma Protocols",
+    es: "Protocolos Sigma",
+    pt: "Protocolos Sigma",
   },
   snark: {
     en: "SNARK",
