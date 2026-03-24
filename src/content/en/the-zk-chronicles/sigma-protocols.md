@@ -14,7 +14,7 @@ description: >-
   systems
 mediumUrl: >-
   https://medium.com/@francomangone18/the-zk-chronicles-sigma-protocols-c4ebaebc11d8
-contentHash: 98c17c35f1ef53ffc75bade153a7fe6250e97acc7978891822835eab79fadc88
+contentHash: a6e457e3b70a5389a716df387588f1c4bd86d9dbee5960514ee9f1cd4cb635c8
 ---
 As we wrapped things up with the introduction of our very first [commitment schemes](/en/blog/the-zk-chronicles/commitment-schemes-part-1), we had to point out that even when they hold a lot of potential, they are **not proving systems**. Although, it sure feels like they are closely related.
 
@@ -535,6 +535,8 @@ My brain feels like mush after writing all this, so I can imagine you’re also 
 Sigma protocols are super useful. They can even be used as **subprotocols** of more complex constructions. And I reckon I framed composition in a somewhat pessimistic manner, but it really is a nice tool to have, especially when we’re dealing with a small number of commitments.
 
 Importantly, we successfully applied our newfound knowledge of groups to build a new kind of protocol.
+
+---
 
 Given their simplicity, we'd be forgiven to think that there’s not much we could do with groups. And that could not be **further from the truth**.
 
