@@ -11,7 +11,7 @@ description: >-
   Tras abastecernos de hashes, ¡es hora de otro gran protagonista de esta
   historia ZK!
 readingTime: 14 min
-contentHash: 68744587390c98893db06a84c75f0e736a825205ea3dc0876c0a286cf17373c4
+contentHash: f76f8315d87c91d6dde1058d785af6ad61e5a84bef8190b464c485cdb0773d50
 ---
 
 Nuestro último encuentro fue principalmente para presentar una herramienta crucial, en forma de los [hashes](/es/blog/the-zk-chronicles/enter-hashing).

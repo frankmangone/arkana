@@ -11,7 +11,7 @@ tags:
 description: Time to start building on top of the primitives we know so far!
 mediumUrl: >-
   https://medium.com/@francomangone18/the-zk-chronicles-commitment-schemes-part-1-5310fb6ebb27
-contentHash: ab8a0454bb3e5a67f9a33011ecc4b2cc36a164d8752c4a232df6ac96b1329046
+contentHash: ba251cecd0003ff1cfb88e5e6c86189a831add4750780dda3a725588c59b98ac
 ---
 
 After going through the last [couple](/en/blog/the-zk-chronicles/enter-hashing) of [articles](/en/blog/the-zk-chronicles/groups), we should now be equipped with many of the core gears that make verifiable computing tick.

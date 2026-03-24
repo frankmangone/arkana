@@ -1,18 +1,20 @@
 ---
 title: 'The ZK Chronicles: Sigma Protocols'
 author: frank-mangone
-date: "2026-03-23"
+date: '2026-03-23'
 readingTime: 18 min
-thumbnail: "/images/the-zk-chronicles/sigma-protocols/sigma.webp"
+thumbnail: /images/the-zk-chronicles/sigma-protocols/sigma.webp
 tags:
   - zeroKnowledgeProofs
   - sigmaProtocols
   - schnorrProtocol
   - pedersenCommitments
 description: >-
-  With commitment schemes at hand, we turn our attention once again to proving systems
-mediumUrl: https://medium.com/@francomangone18/the-zk-chronicles-sigma-protocols-c4ebaebc11d8
-contentHash: # TODO: Add content hash
+  With commitment schemes at hand, we turn our attention once again to proving
+  systems
+mediumUrl: >-
+  https://medium.com/@francomangone18/the-zk-chronicles-sigma-protocols-c4ebaebc11d8
+contentHash: 98c17c35f1ef53ffc75bade153a7fe6250e97acc7978891822835eab79fadc88
 ---
 As we wrapped things up with the introduction of our very first [commitment schemes](/en/blog/the-zk-chronicles/commitment-schemes-part-1), we had to point out that even when they hold a lot of potential, they are **not proving systems**. Although, it sure feels like they are closely related.
 
@@ -244,7 +246,7 @@ Lastly, while absolutely needed, completeness and soundness are but the bare min
 
 > We can even throw zero knowledge in there for what it’s worth!
 
-And here, it’s worth pausing to ask the complementary question: what does an **honest** prover actually have that a cheating one doesn’t?
+And here, it’s a good time to pause to ask the complementary question: what does an **honest** prover actually have that a cheating one doesn’t?
 
 The answer is quite obvious, at least in this case: they know $x$. How do we make that more **precise**, though?
 
@@ -264,7 +266,7 @@ It might seem that this is just a cosmetic reframing, but it’s actually much m
 
 This in turn makes special soundness feel a lot less like a gimmick, and a lot more like a **formal guarantee**: if a prover can answer two independent challenges for the same commitment, we can **extract** their witness. And extractability is exactly what we mean when we say a prover **knows** something, rather than just getting lucky.
 
-We’ll come back to this ideas and make them even more precise later in the series when we look at yet another closely-related concept, called **knowledge soundness**. It’s a bit of a more general version of special soundness, because it allows **unlimited interactions** between prover and verifier, but the idea is the same: we’re eventually able to extract the witness, which means the prover **must know it**.
+We’ll come back to these ideas and make them even more precise later in the series when we look at yet another closely-related concept, called **knowledge soundness**. It’s a bit of a more general version of special soundness, because it allows **unlimited interactions** between prover and verifier, but the idea is the same: we’re eventually able to extract the witness, which means the prover **must know it**.
 
 For now, it’s good to keep this framing in mind — languages and witnesses will keep showing up when we want to formalize things, and they are there even if we don’t talk about them explicitly!
 
@@ -350,7 +352,7 @@ That, and because I made some promises around it!
 
 ### Multiplication Gates
 
-Exactly! We hit a dead end last time, because unlike addition gates, multiplication gates did not fare too well with Pedersen commitments.
+Exactly! We hit a dead end [last time](/en/blog/the-zk-chronicles/commitment-schemes-part-1/#circuit-commitments), because unlike addition gates, multiplication gates did not fare too well with Pedersen commitments.
 
 We promptly noted that the commitments themselves are **not proving systems**. But now, armed with the notion of Sigma protocols, perhaps that **is** something we can do!
 
@@ -426,7 +428,7 @@ $$
 
 Breathe, just breathe. Let’s take it step by step.
 
-We must check that this by expanding the expressions. Starting on the left side, and assuming of course $c = a \cdot b$:
+We must check this by expanding the expressions. Starting on the left side, and assuming of course $c = a \cdot b$:
 
 $$
 {c_a}^{z_3}h^{z_5} = (g^ah^{r_a})^{s_3 + eb}h^{s_5 + e(r_c - r_ab)} = g^{a(s_3 + eb)}h^{r_a(s_3 + eb) + s_5 + e(r_c - r_ab)}
@@ -486,11 +488,11 @@ Huh... But if we can treat both gate types, can we not deal with **full arithmet
 	/>
 </figure>
 
-Yes! If we commit to each wire, a verifier could easily work their way through addition gates (in fact, we don’t need to commit to the output of addition gates), and we can use a separate Sigma protocol for the each multiplication gate.
+Yes! If we commit to each wire, a verifier could easily work their way through addition gates (in fact, we don’t need to commit to the output of addition gates), and we can use a separate Sigma protocol for each multiplication gate.
 
 It’s a noble idea... And one with an obvious problem. The strategy scales poorly as the number of multiplication gates increases, which translates into an increasing number of required communication steps.
 
-> Or in a larger proof size, when applying the [Fiat-Shamir transform](/en/blog/the-zk-chronicles/enter-hashing/#the-fiat-shamir-transform).
+> Or into a larger proof size, when applying the [Fiat-Shamir transform](/en/blog/the-zk-chronicles/enter-hashing/#the-fiat-shamir-transform).
 
 Not everything is lost though, as we can mitigate this through a cool trick: **composition**!
 
@@ -534,7 +536,7 @@ Sigma protocols are super useful. They can even be used as **subprotocols** of m
 
 Importantly, we successfully applied our newfound knowledge of groups to build a new kind of protocol.
 
-You’d be forgiven to think that, given their simplicity, there’s not much we could do with groups. And that could not be **further from the truth**.
+Given their simplicity, we'd be forgiven to think that there’s not much we could do with groups. And that could not be **further from the truth**.
 
 Especially because of those **optimizations** I mentioned before. I don’t want to spoil the fun, but to give you a small hint, this has to do with how we **encode circuits**.
 
