@@ -108,12 +108,12 @@ The secret lies in a couple special properties these little guys have: **symmetr
 
 ### Symmetry
 
-To understand what I mean by this, let’s work our way backwards. We know that when we have a **primitive** $n$th-root of unity, raising it to the n-th power gives us the identity, which in our case is just $1$.
+To understand what I mean by this, let’s work our way backwards. We know that when we have a **primitive** $n$th-root of unity, raising it to the $n$-th power gives us the identity, which in our case is just $1$.
 
 With that information in mind, what would happen if instead of raising to the $n$-th power, we try **half of that**?
 
 $$
-\omega^{\frac{n}{2}} = \ ?
+\omega^{\frac{n}{2}} = ?
 $$
 
 > Provided, obviously, that $n/2$ is an integer!
@@ -228,7 +228,7 @@ Yes! This is exactly where **recursion** kicks in: we can continue doing this ov
 
 <figure>
 	<img
-		src="/images/the-zk-chronicles/fast-fourier-transform/omg.jpg"
+		src="/images/the-zk-chronicles/fast-fourier-transform/omg.png"
 		alt="Oh my fucking god" 
 	/>
 </figure>
