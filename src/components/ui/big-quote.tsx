@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export function BigQuote({ children }: { children: React.ReactNode }) {
   return (
     <span className="block w-full flex flex-col items-center my-8">
