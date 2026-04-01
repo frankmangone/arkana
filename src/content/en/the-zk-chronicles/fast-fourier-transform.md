@@ -3,7 +3,7 @@ title: 'The ZK Chronicles: Fast Fourier Transform'
 author: frank-mangone
 date: '2026-04-01'
 readingTime: 13 min
-thumbnail: /images/the-zk-chronicles/first-steps/carrey.jpg
+thumbnail: /images/the-zk-chronicles/fast-fourier-transform/carrey.jpg
 tags:
   - zeroKnowledgeProofs
   - fastFourierTransform
@@ -98,7 +98,7 @@ Yeah, cool. But those are just **numbers** in the end. What makes them so specia
 
 <figure>
 	<img
-		src="/images/the-zk-chronicles/first-steps/carrey.jpg"
+		src="/images/the-zk-chronicles/fast-fourier-transform/carrey.jpg"
 		alt="Jim Carrey, confused" 
 		title="Visible confusion"
 	/>
@@ -155,7 +155,7 @@ Can you see it? Squaring any root of unity transforms it into an $(n/2)$**-th ro
 
 <figure>
 	<img
-		src="/images/the-zk-chronicles/first-steps/hollywood.jpg"
+		src="/images/the-zk-chronicles/fast-fourier-transform/hollywood.jpg"
 		alt="The iconic TV scene from Once Upon a Time in Hollywood" 
 	/>
 </figure>
@@ -228,7 +228,7 @@ Yes! This is exactly where **recursion** kicks in: we can continue doing this ov
 
 <figure>
 	<img
-		src="/images/the-zk-chronicles/first-steps/omg.jpg"
+		src="/images/the-zk-chronicles/fast-fourier-transform/omg.jpg"
 		alt="Oh my fucking god" 
 	/>
 </figure>
