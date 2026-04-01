@@ -380,6 +380,11 @@ export const readingLists: ReadingList[] = [
         slug: "the-zk-chronicles/sigma-protocols",
         order: 11,
       },
+      {
+        id: "fast-fourier-transform",
+        slug: "the-zk-chronicles/fast-fourier-transform",
+        order: 12,
+      },
     ],
   },
 ];

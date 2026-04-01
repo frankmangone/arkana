@@ -193,6 +193,11 @@ export const tags: TagDefinition = {
   },
 
   // F
+  fastFourierTransform: {
+    en: "Fast Fourier Transform",
+    es: "Transformada Rápida de Fourier",
+    pt: "Transformada Rápida de Fourier",
+  },
   fiatShamirTransform: {
     en: "Fiat-Shamir Transform",
     es: "Transformación de Fiat-Shamir",
