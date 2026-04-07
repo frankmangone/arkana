@@ -385,6 +385,11 @@ export const readingLists: ReadingList[] = [
         slug: "the-zk-chronicles/fast-fourier-transform",
         order: 12,
       },
+      {
+        id: "commitment-schemes-part-2",
+        slug: "the-zk-chronicles/commitment-schemes-part-2",
+        order: 13,
+      },
     ],
   },
 ];

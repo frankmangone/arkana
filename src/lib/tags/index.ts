@@ -308,6 +308,11 @@ export const tags: TagDefinition = {
     es: "Intercambio de Claves",
     pt: "Troca de Chaves",
   },
+  kzg: {
+    en: "KZG",
+    es: "KZG",
+    pt: "KZG",
+  },
 
   // L
   lattice: {
@@ -382,6 +387,11 @@ export const tags: TagDefinition = {
     en: "Polkadot",
     es: "Polkadot",
     pt: "Polkadot",
+  },
+  polynomialCommitmentSchemes: {
+    en: "Polynomial Commitment Schemes",
+    es: "Esquemas de Compromiso Polinomial",
+    pt: "Esquemas de Compromisso Polinomial",
   },
   polynomials: {
     en: "Polynomials",
