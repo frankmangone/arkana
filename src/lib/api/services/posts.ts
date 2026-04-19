@@ -1,17 +1,5 @@
 import apiClient from "../client";
 
-export interface WalletInfo {
-  id: number;
-  address: string;
-  system: string;
-  created_at: string;
-  updated_at: string;
-}
-
-export interface WalletLoginResponse {
-  wallet: WalletInfo;
-}
-
 export interface PostInfoResponse {
   path: string;
   like_count: number;
@@ -24,35 +12,18 @@ export interface ToggleLikeResponse {
 }
 
 /**
- * Login/register a wallet with the backend.
- * This creates the wallet record if it doesn't exist.
- *
- * @param jws - The signed JWS (payload can be empty or have any fields)
- * @returns The wallet info
- */
-export async function walletLogin(jws: string): Promise<WalletLoginResponse> {
-  const response = await apiClient.post<WalletLoginResponse>("/api/login", jws, {
-    headers: {
-      "Content-Type": "text/plain",
-    },
-  });
-  return response.data;
-}
-
-/**
  * Get post info including like count and whether the user has liked it.
  *
  * @param path - The post path identifier
- * @param walletAddress - Optional wallet address to check if user has liked
- * @returns The post info
+ * @param userId - Optional user ID to check if they've liked the post
  */
 export async function getPostInfo(
   path: string,
-  walletAddress?: string
+  userId?: number
 ): Promise<PostInfoResponse> {
   const params = new URLSearchParams();
-  if (walletAddress) {
-    params.set("wallet", walletAddress);
+  if (userId) {
+    params.set("user", String(userId));
   }
   const queryString = params.toString();
   const url = `/api/posts/${path}/info${queryString ? `?${queryString}` : ""}`;
@@ -61,22 +32,13 @@ export async function getPostInfo(
 }
 
 /**
- * Toggle like on a post using JWS authentication.
- * The backend expects the raw JWS string as the request body.
+ * Toggle like on a post. Bearer token is sent automatically by the axios interceptor.
  *
- * @param path - The post path identifier (used in URL)
- * @param jws - The signed JWS for authentication
- * @returns The like response with liked status and count
+ * @param path - The post path identifier
  */
-export async function toggleLike(path: string, jws: string): Promise<ToggleLikeResponse> {
+export async function toggleLike(path: string): Promise<ToggleLikeResponse> {
   const response = await apiClient.post<ToggleLikeResponse>(
-    `/api/posts/${path}/like`,
-    jws,
-    {
-      headers: {
-        "Content-Type": "text/plain",
-      },
-    }
+    `/api/posts/${path}/like`
   );
   return response.data;
 }
@@ -88,7 +50,8 @@ export interface CommentResponse {
   parent_id: number | null;
   body: string;
   created_at: string;
-  author_address: string;
+  author_username: string;
+  author_avatar_url?: string | null;
 }
 
 export interface CommentsResponse {
@@ -98,9 +61,6 @@ export interface CommentsResponse {
 
 /**
  * Get all comments for a post.
- *
- * @param path - The post path identifier
- * @returns The comments response with list and total count
  */
 export async function getComments(path: string): Promise<CommentsResponse> {
   const response = await apiClient.get<CommentsResponse>(`/api/posts/${path}/comments`);
@@ -108,21 +68,16 @@ export async function getComments(path: string): Promise<CommentsResponse> {
 }
 
 /**
- * Create a comment on a post using JWS authentication.
- *
- * @param path - The post path identifier
- * @param jws - The signed JWS containing the comment body
- * @returns The created comment
+ * Create a comment on a post. Bearer token is sent automatically by the axios interceptor.
  */
-export async function createComment(path: string, jws: string): Promise<CommentResponse> {
+export async function createComment(
+  path: string,
+  body: string,
+  parentId?: number
+): Promise<CommentResponse> {
   const response = await apiClient.post<CommentResponse>(
     `/api/posts/${path}/comments`,
-    jws,
-    {
-      headers: {
-        "Content-Type": "text/plain",
-      },
-    }
+    { body, parent_id: parentId ?? null }
   );
   return response.data;
 }

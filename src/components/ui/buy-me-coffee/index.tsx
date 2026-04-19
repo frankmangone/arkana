@@ -35,7 +35,7 @@ export default function BuyMeCoffeeWidget({
     selectedNetwork,
     showSuccess,
     isPending,
-    isLoggedIn,
+    isWalletConnected,
     handleSendTransaction,
   } = useComponent(walletAddress);
 
@@ -60,7 +60,7 @@ export default function BuyMeCoffeeWidget({
 
         <SendButton
           isPending={isPending}
-          isLoggedIn={isLoggedIn}
+          isWalletConnected={isWalletConnected}
           amount={amount}
           symbol={selectedNetwork?.symbol}
           dictionary={dictionary}

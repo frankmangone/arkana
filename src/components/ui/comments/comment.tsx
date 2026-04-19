@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { CommentForm } from "./comment-form";
-import { useWallet } from "@/components/providers/wallet-provider";
+import { useAuth } from "@/components/providers/auth-provider";
 import { CommentWithReplies } from "./comment-list";
 import { useParams } from "next/navigation";
 import type { Dictionary } from "@/lib/dictionaries";
@@ -15,18 +15,6 @@ interface CommentProps {
   depth: number;
 }
 
-/**
- * Truncates an Ethereum address for display.
- * e.g., 0x1234...5678
- */
-function truncateAddress(address: string): string {
-  if (address.length <= 13) return address;
-  return `${address.slice(0, 6)}...${address.slice(-4)}`;
-}
-
-/**
- * Formats a date as relative time (e.g., "2 hours ago", "3 days ago").
- */
 function formatTimeAgo(
   dateString: string,
   dictionary: Dictionary | null,
@@ -75,7 +63,6 @@ function formatTimeAgo(
   ];
 
   const ago = dictionary?.comments?.time?.ago || "ago";
-  // Spanish puts "ago" (hace) before the time unit
   const isSpanish = lang === "es";
 
   for (const [secondsInInterval, labels] of intervals) {
@@ -91,11 +78,6 @@ function formatTimeAgo(
   return dictionary?.comments?.time?.justNow || "just now";
 }
 
-/**
- * Renders comment body with LaTeX support.
- * Inline math: $...$
- * Display math: $$...$$
- */
 function CommentBody({ body }: { body: string }) {
   return (
     <div className="text-primary-800 mb-2 text-sm whitespace-pre-wrap break-words">
@@ -110,7 +92,7 @@ export function Comment({ comment, path, depth }: CommentProps) {
   const [showReplyForm, setShowReplyForm] = useState(false);
   const params = useParams();
   const lang = (params?.lang as string) || "en";
-  const { wallet } = useWallet();
+  const { user } = useAuth();
   const dictionary = useDictionary(lang);
 
   const canReply = depth < MAX_DEPTH;
@@ -121,8 +103,16 @@ export function Comment({ comment, path, depth }: CommentProps) {
       <div className="bg-primary-800/10 border border-primary-800/20 rounded-none p-4">
         {/* Header */}
         <div className="flex items-center gap-2 mb-4">
+          {comment.author_avatar_url && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={comment.author_avatar_url}
+              alt={comment.author_username}
+              className="h-5 w-5 rounded-full"
+            />
+          )}
           <span className="font-mono text-sm text-primary-800">
-            {truncateAddress(comment.author_address)}
+            {comment.author_username}
           </span>
           <span className="text-primary-800 text-sm">&middot;</span>
           <span className="text-primary-800 text-sm">{timeAgo}</span>
@@ -132,7 +122,7 @@ export function Comment({ comment, path, depth }: CommentProps) {
         <CommentBody body={comment.body} />
 
         {/* Actions */}
-        {canReply && wallet && (
+        {canReply && user && (
           <button
             onClick={() => setShowReplyForm(!showReplyForm)}
             className="text-sm cursor-pointer text-primary-650 hover:text-primary-800 transition-colors"
@@ -144,11 +134,10 @@ export function Comment({ comment, path, depth }: CommentProps) {
         )}
 
         {/* Reply Form */}
-        {showReplyForm && wallet && (
+        {showReplyForm && user && (
           <div className="mt-4">
             <CommentForm
               path={path}
-              walletAddress={wallet.address}
               parentId={comment.id}
               onSuccess={() => setShowReplyForm(false)}
               compact

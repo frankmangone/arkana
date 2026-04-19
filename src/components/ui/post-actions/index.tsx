@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useWallet } from "@/components/providers/wallet-provider";
+import { useAuth } from "@/components/providers/auth-provider";
 import { useLike, usePostInfo, useComments } from "@/lib/api/hooks/usePosts";
 import { useParams, useRouter } from "next/navigation";
 import { LikeButton } from "./like-button";
@@ -18,12 +18,12 @@ export function PostActions({ className, path }: PostActionsProps) {
   const router = useRouter();
   const lang = (params?.lang as string) || "en";
 
-  const { wallet } = useWallet();
+  const { user } = useAuth();
   const likeMutation = useLike();
 
   const { data: postInfo } = usePostInfo({
     path,
-    walletAddress: wallet?.address,
+    userId: user?.id,
   });
 
   const { data: commentsData } = useComments({ path });
@@ -31,7 +31,6 @@ export function PostActions({ className, path }: PostActionsProps) {
   const [liked, setLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
 
-  // Sync local state with fetched data
   useEffect(() => {
     if (postInfo) {
       setLiked(postInfo.liked);
@@ -40,22 +39,17 @@ export function PostActions({ className, path }: PostActionsProps) {
   }, [postInfo]);
 
   const handleLike = async () => {
-    if (!wallet?.address) {
-      // Redirect to login, then back to this page
+    if (!user) {
       router.push(`/${lang}/login?redirect=${encodeURIComponent(window.location.pathname)}`);
       return;
     }
 
     try {
-      const response = await likeMutation.mutateAsync({
-        address: wallet.address,
-        path,
-        liked,
-      });
+      const response = await likeMutation.mutateAsync({ path, liked });
       setLiked(response.liked);
       setLikeCount(response.like_count);
     } catch {
-      // Signature rejected or request failed - no action needed
+      // Signature rejected or request failed
     }
   };
 

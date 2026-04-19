@@ -7,7 +7,6 @@ import { WalletStrategy } from "@/lib/wallet/types";
 import { useSearchParams } from "next/navigation";
 import { toast } from "sonner";
 import { metamaskStrategy } from "@/lib/wallet/strategies";
-import { useWalletLogin } from "@/lib/api/hooks/usePosts";
 import { Loader2 } from "lucide-react";
 import { isUserRejection } from "@/lib/wallet/errors";
 import { trackEvent, EVENTS } from "@/lib/analytics";
@@ -22,13 +21,10 @@ export function MetamaskLogin(props: MetamaskLoginProps) {
   const { lang, dictionary } = props;
 
   const { connect, confirmLogin } = useWallet();
-  const walletLogin = useWalletLogin();
   const searchParams = useSearchParams();
 
   const [isLoggingIn, setIsLoggingIn] = useState(false);
-  
-  // Ensure spinner is visible during API communication
-  const isConnecting = isLoggingIn || walletLogin.isPending;
+  const isConnecting = isLoggingIn;
 
   const handleConnect = async (strategy: WalletStrategy) => {
     setIsLoggingIn(true);
@@ -42,10 +38,6 @@ export function MetamaskLogin(props: MetamaskLoginProps) {
       }
 
       const walletInfo = await connect(strategy);
-      // Register wallet with backend (signs a JWS and calls /api/login)
-      await walletLogin.mutateAsync({ address: walletInfo.address });
-
-      // Only persist wallet state after backend confirms login
       confirmLogin(walletInfo);
 
       trackEvent(EVENTS.WALLET_CONNECTED, { wallet: walletInfo.walletName });

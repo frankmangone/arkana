@@ -3,7 +3,7 @@
 import { useComments } from "@/lib/api/hooks/usePosts";
 import { CommentList } from "./comment-list";
 import { CommentForm } from "./comment-form";
-import { useWallet } from "@/components/providers/wallet-provider";
+import { useAuth } from "@/components/providers/auth-provider";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Info } from "lucide-react";
@@ -18,22 +18,20 @@ export function CommentSection({ path }: CommentSectionProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const lang = (params?.lang as string) || "en";
-  const { wallet } = useWallet();
+  const { user } = useAuth();
   const { data, isLoading, error } = useComments({ path });
   const dictionary = useDictionary(lang);
   const [showTooltip, setShowTooltip] = useState(false);
   const shouldFocus = searchParams.get("focus") === "comment";
 
-  // Clear the focus parameter after focusing
   useEffect(() => {
-    if (shouldFocus && wallet) {
-      // Remove the focus parameter from URL
+    if (shouldFocus && user) {
       const newSearchParams = new URLSearchParams(searchParams.toString());
       newSearchParams.delete("focus");
       const newUrl = `${window.location.pathname}${newSearchParams.toString() ? `?${newSearchParams.toString()}` : ""}`;
       router.replace(newUrl);
     }
-  }, [shouldFocus, wallet, searchParams, router]);
+  }, [shouldFocus, user, searchParams, router]);
 
   const handleLoginRedirect = () => {
     router.push(
@@ -67,9 +65,8 @@ export function CommentSection({ path }: CommentSectionProps) {
         </div>
       </div>
 
-      {/* Comment Form */}
-      {wallet ? (
-        <CommentForm path={path} walletAddress={wallet.address} autoFocus={shouldFocus} />
+      {user ? (
+        <CommentForm path={path} autoFocus={shouldFocus} />
       ) : (
         <div className="mb-8 p-4 border border-border rounded-none bg-muted/30">
           <p className="text-secondary-600 text-sm space-y-4">
@@ -77,14 +74,13 @@ export function CommentSection({ path }: CommentSectionProps) {
               onClick={handleLoginRedirect}
               className="text-primary hover:underline font-medium"
             >
-              Connect your wallet
+              Sign in
             </button>{" "}
             to leave a comment.
           </p>
         </div>
       )}
 
-      {/* Comments List */}
       {isLoading && (
         <div className="text-secondary-500 text-sm">Loading comments...</div>
       )}

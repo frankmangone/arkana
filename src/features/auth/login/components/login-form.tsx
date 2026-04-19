@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { Header } from "./header";
-import { MetamaskLogin } from "./metamask-login";
+import { GoogleLogin } from "./google-login";
 import { FAQNotes } from "./faq-notes";
 import { Loader2 } from "lucide-react";
 import type { AuthDictionary } from "@/lib/dictionaries";
@@ -25,7 +25,7 @@ export function LoginForm({ lang, dictionary }: LoginFormProps) {
         <Header dictionary={dictionary} />
 
         <Suspense fallback={<LoginButtonsFallback />}>
-          <MetamaskLogin lang={lang} dictionary={dictionary} />
+          <GoogleLogin lang={lang} />
         </Suspense>
 
         <FAQNotes lang={lang} dictionary={dictionary} />

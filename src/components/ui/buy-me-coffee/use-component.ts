@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import { parseUnits, encodeFunctionData } from "viem";
-import { useWallet } from "@/components/providers/wallet-provider";
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import { trackEvent, EVENTS } from "@/lib/analytics";
 
 interface NetworkConfig {
@@ -86,8 +85,6 @@ const toHexChainId = (chainId: number): string => {
 };
 
 export function useComponent(walletAddress: string) {
-  const { wallet } = useWallet();
-  const router = useRouter();
   const params = useParams();
   const lang = (params?.lang as string) || "en";
 
@@ -97,38 +94,43 @@ export function useComponent(walletAddress: string) {
   const [showSuccess, setShowSuccess] = useState(false);
   const [amount, setAmount] = useState(DEFAULT_AMOUNT);
   const [isPending, setIsPending] = useState(false);
+  const [connectedAddress, setConnectedAddress] = useState<string | null>(null);
 
-  const isLoggedIn = !!wallet;
+  const isWalletConnected = !!connectedAddress;
 
   const selectedNetwork = SUPPORTED_NETWORKS.find(
     (n) => n.id === selectedChainId
   );
 
   const handleSendTransaction = async () => {
-    // If not logged in, redirect to login page
-    if (!isLoggedIn) {
-      const currentPath = window.location.pathname;
-      const returnUrl = encodeURIComponent(`${currentPath}#buy-me-coffee`);
-      router.push(`/${lang}/login?redirect=${returnUrl}`);
-      return;
-    }
-
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const ethereum = (window as any).ethereum;
+
     if (!ethereum) {
-      console.error("No ethereum provider found");
+      window.open("https://metamask.io/download/", "_blank");
       return;
     }
 
     const network = SUPPORTED_NETWORKS.find((n) => n.id === selectedChainId);
-    if (!network) {
-      console.error("Selected network not found");
-      return;
-    }
+    if (!network) return;
 
     setIsPending(true);
 
     try {
+      // Connect wallet if not already connected
+      let fromAddress = connectedAddress;
+      if (!fromAddress) {
+        const accounts: string[] = await ethereum.request({
+          method: "eth_requestAccounts",
+        });
+        if (!accounts || accounts.length === 0) {
+          setIsPending(false);
+          return;
+        }
+        fromAddress = accounts[0];
+        setConnectedAddress(fromAddress);
+      }
+
       // Switch to the correct chain
       const hexChainId = toHexChainId(selectedChainId);
       try {
@@ -138,7 +140,6 @@ export function useComponent(walletAddress: string) {
         });
       } catch (switchError: unknown) {
         if ((switchError as { code: number })?.code === 4902) {
-          // Chain not added, try to add it
           await ethereum.request({
             method: "wallet_addEthereumChain",
             params: [
@@ -163,19 +164,17 @@ export function useComponent(walletAddress: string) {
       // USDC has 6 decimals
       const amountInSmallestUnit = parseUnits(amount || DEFAULT_AMOUNT, 6);
 
-      // Encode the ERC-20 transfer call
       const data = encodeFunctionData({
         abi: ERC20_ABI,
         functionName: "transfer",
         args: [walletAddress as `0x${string}`, amountInSmallestUnit],
       });
 
-      // Send the transaction using the logged-in wallet
       const hash = await ethereum.request({
         method: "eth_sendTransaction",
         params: [
           {
-            from: wallet.address,
+            from: fromAddress,
             to: network.usdcAddress,
             data,
           },
@@ -197,6 +196,9 @@ export function useComponent(walletAddress: string) {
     }
   };
 
+  // Suppress unused var — lang may be used for future i18n
+  void lang;
+
   return {
     amount,
     setAmount,
@@ -205,7 +207,7 @@ export function useComponent(walletAddress: string) {
     selectedNetwork,
     showSuccess,
     isPending,
-    isLoggedIn,
+    isWalletConnected,
     handleSendTransaction,
   };
 }

@@ -3,7 +3,6 @@
 import { useEffect, useState, useRef } from "react";
 import { useCreateComment } from "@/lib/api/hooks/usePosts";
 import { Button } from "../button";
-import { isUserRejection } from "@/lib/wallet/errors";
 import { toast } from "sonner";
 import { useParams } from "next/navigation";
 import { useDictionary } from "@/lib/hooks/use-dictionary";
@@ -12,7 +11,6 @@ const MAX_COMMENT_LENGTH = 1000;
 
 interface CommentFormProps {
   path: string;
-  walletAddress: string;
   parentId?: number;
   onSuccess?: () => void;
   compact?: boolean;
@@ -21,7 +19,6 @@ interface CommentFormProps {
 
 export function CommentForm({
   path,
-  walletAddress,
   parentId,
   onSuccess,
   compact = false,
@@ -36,7 +33,6 @@ export function CommentForm({
 
   useEffect(() => {
     if (autoFocus && textareaRef.current) {
-      // Small delay to ensure the element is rendered
       setTimeout(() => {
         textareaRef.current?.focus();
       }, 100);
@@ -54,7 +50,6 @@ export function CommentForm({
 
     try {
       await createComment.mutateAsync({
-        address: walletAddress,
         path,
         body: body.trim(),
         parentId,
@@ -64,17 +59,10 @@ export function CommentForm({
       toast.success(
         dictionary?.comments?.form?.commentPosted || "Comment posted!"
       );
-    } catch (error) {
-      if (isUserRejection(error)) {
-        toast.error(
-          dictionary?.auth?.login?.errors?.signingCancelled ||
-            "Signing cancelled"
-        );
-      } else {
-        toast.error(
-          dictionary?.comments?.form?.failedToPost || "Failed to post comment"
-        );
-      }
+    } catch {
+      toast.error(
+        dictionary?.comments?.form?.failedToPost || "Failed to post comment"
+      );
     }
   };
 
@@ -122,7 +110,6 @@ export function CommentForm({
             : dictionary?.comments?.form?.postComment || "Post Comment"}
         </Button>
       </div>
-
     </form>
   );
 }
