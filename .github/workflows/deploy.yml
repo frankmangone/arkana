@@ -19,12 +19,13 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BASE_PATH: ""
-      SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
       NEXT_PUBLIC_BASE_PATH: ""
       NEXT_PUBLIC_SITE_URL: "https://arkana.blog"
       NEXT_PUBLIC_API_URL: "https://arkana.blog"
       NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
       NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+      NEXT_PUBLIC_GOOGLE_CLIENT_ID: ${{ secrets.NEXT_PUBLIC_GOOGLE_CLIENT_ID }}
+      NEXT_PUBLIC_GOOGLE_REDIRECT_URI: ${{ secrets.NEXT_PUBLIC_GOOGLE_REDIRECT_URI }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -70,6 +71,8 @@ jobs:
           echo "BASE_PATH: $BASE_PATH"
           echo "NEXT_PUBLIC_BASE_PATH: $NEXT_PUBLIC_BASE_PATH"
           echo "NEXT_PUBLIC_API_URL: $NEXT_PUBLIC_API_URL"
+          echo "NEXT_PUBLIC_GOOGLE_CLIENT_ID: $NEXT_PUBLIC_GOOGLE_CLIENT_ID"
+          echo "NEXT_PUBLIC_GOOGLE_REDIRECT_URI: $NEXT_PUBLIC_GOOGLE_REDIRECT_URI"
 
       - name: Build with Next.js
         run: pnpm build
