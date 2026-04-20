@@ -19,7 +19,7 @@ export function Header(props: HeaderProps) {
       />
 
       <h1 className="text-2xl font-semibold text-white text-center mb-2">
-        {dictionary.login.connectWallet || "Connect Your Wallet"}
+        {dictionary.login.connectWallet || "Welcome Back"}
       </h1>
 
       <span className="text-muted-foreground block text-center mb-8 text-sm w-full">

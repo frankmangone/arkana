@@ -125,15 +125,15 @@
   "auth": {
     "login": {
       "title": "Sign In",
-      "connectWallet": "Connect Your Wallet",
-      "description": "Choose your preferred wallet to continue",
+      "connectWallet": "Welcome Back",
+      "description": "Sign in with Google to continue",
       "connectMetaMask": "Connect with MetaMask",
       "connectPolkadot": "Connect with Polkadot",
       "connecting": "Connecting...",
-      "whyWallet": "Why do I need to connect my wallet?",
+      "whyWallet": "Have questions? Visit our FAQ",
       "errors": {
-        "signingCancelled": "Signing cancelled",
-        "connectFailed": "Failed to connect wallet. Please try again."
+        "signingCancelled": "Sign in cancelled",
+        "connectFailed": "Sign in failed. Please try again."
       }
     },
     "signup": {

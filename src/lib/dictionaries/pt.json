@@ -125,15 +125,15 @@
   "auth": {
     "login": {
       "title": "Entrar",
-      "connectWallet": "Conecte sua Carteira",
-      "description": "Escolha sua carteira preferida para continuar",
+      "connectWallet": "Bem-vindo de volta",
+      "description": "Entre com o Google para continuar",
       "connectMetaMask": "Conectar com MetaMask",
       "connectPolkadot": "Conectar com Polkadot",
       "connecting": "Conectando...",
-      "whyWallet": "Por que preciso conectar minha carteira?",
+      "whyWallet": "Tem dúvidas? Visite o nosso FAQ",
       "errors": {
-        "signingCancelled": "Assinatura cancelada",
-        "connectFailed": "Falha ao conectar a carteira. Por favor, tente novamente."
+        "signingCancelled": "Login cancelado",
+        "connectFailed": "Falha ao entrar. Por favor, tente novamente."
       }
     },
     "signup": {

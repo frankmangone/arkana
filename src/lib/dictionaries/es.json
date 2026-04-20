@@ -125,15 +125,15 @@
   "auth": {
     "login": {
       "title": "Iniciar Sesión",
-      "connectWallet": "Conecta tu Billetera",
-      "description": "Elige tu billetera preferida para continuar",
+      "connectWallet": "Bienvenido de nuevo",
+      "description": "Inicia sesión con Google para continuar",
       "connectMetaMask": "Conectar con MetaMask",
       "connectPolkadot": "Conectar con Polkadot",
       "connecting": "Conectando...",
-      "whyWallet": "¿Por qué necesito conectar mi billetera?",
+      "whyWallet": "¿Tienes preguntas? Visita nuestras FAQ",
       "errors": {
-        "signingCancelled": "Firma cancelada",
-        "connectFailed": "Error al conectar la billetera. Por favor, inténtalo de nuevo."
+        "signingCancelled": "Inicio de sesión cancelado",
+        "connectFailed": "Error al iniciar sesión. Por favor, inténtalo de nuevo."
       }
     },
     "signup": {

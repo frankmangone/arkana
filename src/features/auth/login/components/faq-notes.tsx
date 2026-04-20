@@ -15,7 +15,7 @@ export function FAQNotes(props: FAQNotesProps) {
         href={`/${lang}/faq`}
         className="text-primary-750 hover:text-primary-650 transition-colors"
       >
-        {dictionary.login.whyWallet || "Why do I need to connect my wallet?"}
+        {dictionary.login.whyWallet || "Have questions? Visit our FAQ"}
       </Link>
     </span>
   );
