@@ -12,8 +12,9 @@ tags:
 description: >-
   The next step in our journey will see us looking at a new and important
   commitment mechanism, designed for polynomials
-mediumUrl: https://medium.com/@francomangone18/the-zk-chronicles-inner-product-arguments-efb0e3a45639
-contentHash: 
+mediumUrl: >-
+  https://medium.com/@francomangone18/the-zk-chronicles-inner-product-arguments-efb0e3a45639
+contentHash: ca1111a54e8eb9c4a7b40be4bd609ed9fb5dae361fdbb6840da512493544de38
 ---
 
 [Last time](/en/blog/the-zk-chronicles/commitment-schemes-part-2), we built our first fully-fledged polynomial commitment scheme.

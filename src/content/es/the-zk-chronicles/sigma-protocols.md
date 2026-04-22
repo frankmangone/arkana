@@ -12,7 +12,7 @@ tags:
 description: >-
   Con los esquemas de compromiso en mano, volvemos a dirigir nuestra atención
   hacia los sistemas de prueba
-contentHash: a6e457e3b70a5389a716df387588f1c4bd86d9dbee5960514ee9f1cd4cb635c8
+contentHash: c79a0e2b3700b0658ba871289df5728a92343411bf68e70ecd844cf5c11d5531
 ---
 
 Al cerrar el capítulo anterior con la introducción de nuestros primeros [esquemas de compromiso](/es/blog/the-zk-chronicles/commitment-schemes-part-1), señalamos que, aunque tienen mucho potencial, **no son sistemas de prueba**. Aunque, sin duda, se sienten muy relacionados.
