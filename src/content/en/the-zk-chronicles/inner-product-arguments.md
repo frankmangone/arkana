@@ -2,8 +2,8 @@
 title: 'The ZK Chronicles: Inner Product Arguments'
 author: frank-mangone
 date: '2026-04-22'
-readingTime:  min
-thumbnail: 
+readingTime: 16 min
+thumbnail: /images/the-zk-chronicles/inner-product-arguments/bulletproofs.webp
 tags:
   - zeroKnowledgeProofs
   - innerProductArguments
@@ -12,7 +12,7 @@ tags:
 description: >-
   The next step in our journey will see us looking at a new and important
   commitment mechanism, designed for polynomials
-mediumUrl: 
+mediumUrl: https://medium.com/@francomangone18/the-zk-chronicles-inner-product-arguments-efb0e3a45639
 contentHash: 
 ---
 
@@ -28,7 +28,7 @@ So far, we’ve approached this endeavor through the lens of “evaluation at a 
 
 <figure>
 	<img
-		src="https://cdn-images-1.medium.com/max/800/0*bOz6Nu8t5ZDiFkn5.jpg"
+		src="/images/the-zk-chronicles/inner-product-arguments/morfeus.webp"
 		alt="Morpheus from Matrix" 
 		title="What if I told you…"
 	/>
@@ -80,7 +80,7 @@ The secret lies in a somewhat unexpected connection: inner products are tightly 
 
 <figure>
 	<img
-		src="https://cdn-images-1.medium.com/max/800/1*7izJB4BMcANapYKYLKnwxA.png"
+		src="/images/the-zk-chronicles/inner-product-arguments/peppers.webp"
 		alt="Two confused peppers" 
 		title="Say whaaaat?"
 	/>
@@ -109,7 +109,7 @@ Perhaps the most well-known realization of an inner product argument appears in 
 
 <figure>
 	<img
-		src="https://cdn-images-1.medium.com/max/800/1*c1FC6IkcRZpLTj5wY6OW_w.png"
+		src="/images/the-zk-chronicles/inner-product-arguments/bulletproofs.webp"
 		alt="A man shooting another, wearing a very rudimentary bulletproof vest" 
 		title="Nope!"
 	/>
@@ -161,7 +161,7 @@ In order to make things work, we’re gonna need to tap into a resource we’ve 
 
 <figure>
 	<img
-		src="https://cdn-images-1.medium.com/max/800/0*DrJoFWAP2h9ovTAH"
+		src="/images/the-zk-chronicles/inner-product-arguments/recursion.webp"
 		alt="Pooh eating recursion meme" 
 	/>
 </figure>
@@ -325,7 +325,7 @@ So far, this looks familiar. However, there’s a problem: the verifier **cannot
 
 <figure>
 	<img
-		src="https://cdn-images-1.medium.com/max/800/0*Syb9DUawNEL7JY_g.jpg"
+		src="/images/the-zk-chronicles/inner-product-arguments/damn.webp"
 		alt="A frustrated streamer" 
 	/>
 </figure>
@@ -382,7 +382,7 @@ Oh my. This was a hardcore one for sure.
 
 <figure>
 	<img
-		src="https://cdn-images-1.medium.com/max/800/1*H4yFN8vIC0MjLRLHPqQ86Q.png"
+		src="/images/the-zk-chronicles/inner-product-arguments/wasted.webp"
 		alt="A boy lying on the ground with a book over his head"
 		title="Nah, you think so?" 
 	/>
