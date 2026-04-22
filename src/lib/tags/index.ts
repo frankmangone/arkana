@@ -55,6 +55,11 @@ export const tags: TagDefinition = {
     es: "BLS12-381",
     pt: "BLS12-381",
   },
+  bulletproofs: {
+    en: "Bulletproofs",
+    es: "Bulletproofs",
+    pt: "Bulletproofs",
+  },
 
   // C
   celestia: {
@@ -153,6 +158,11 @@ export const tags: TagDefinition = {
     en: "Divisor",
     es: "Divisor",
     pt: "Divisor",
+  },
+  dory: {
+    en: "Dory",
+    es: "Dory",
+    pt: "Dory",
   },
 
   // E
@@ -274,6 +284,11 @@ export const tags: TagDefinition = {
   },
 
   // I
+  innerProductArguments: {
+    en: "Inner Product Arguments",
+    es: "Argumentos de Producto Interno",
+    pt: "Argumentos de Produto Interno",
+  },
   interpolation: {
     en: "Interpolation",
     es: "Interpolación",

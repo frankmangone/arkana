@@ -390,6 +390,11 @@ export const readingLists: ReadingList[] = [
         slug: "the-zk-chronicles/commitment-schemes-part-2",
         order: 13,
       },
+      {
+        id: "inner-product-arguments",
+        slug: "the-zk-chronicles/inner-product-arguments",
+        order: 14,
+      },
     ],
   },
 ];
