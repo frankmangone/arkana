@@ -14,7 +14,7 @@ description: >-
   commitment mechanism, designed for polynomials
 mediumUrl: >-
   https://medium.com/@francomangone18/the-zk-chronicles-inner-product-arguments-efb0e3a45639
-contentHash: ca1111a54e8eb9c4a7b40be4bd609ed9fb5dae361fdbb6840da512493544de38
+contentHash: a241e2c44b9024313a0e5e78b73cd72e45e9cf38921e140085b23af0cdaff940
 ---
 
 [Last time](/en/blog/the-zk-chronicles/commitment-schemes-part-2), we built our first fully-fledged polynomial commitment scheme.
@@ -61,7 +61,7 @@ In our case though, we’re interested in the verifiable computing aspect of thi
 
 ### Inner Product Arguments
 
-The core idea is best presented with a simple example. Suppose we have a secret vector $\textbf{a}$ and a public vector $\textbf{b}$, and we’ve somehow committed to **a** using a vector commitment scheme like a [[Commitment Schemes (Part 1)#Pedersen Commitments|Pedersen commitment]].
+The core idea is best presented with a simple example. Suppose we have a secret vector $\textbf{a}$ and a public vector $\textbf{b}$, and we’ve somehow committed to **a** using a vector commitment scheme like a [Pedersen commitment](/en/blog/the-zk-chronicles/commitment-schemes-part-1/#pedersen-as-vector-commitments).
 
 With this, we claim that:
 
@@ -377,7 +377,7 @@ Transforming this to a polynomial commitment scheme takes a little extra work, b
 
 ---
 
-### Summary
+## Summary
 
 Oh my. This was a hardcore one for sure.
 
