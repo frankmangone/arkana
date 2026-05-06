@@ -186,6 +186,11 @@ export const tags: TagDefinition = {
     es: "Encriptación",
     pt: "Encriptação",
   },
+  entropy: {
+    en: "Entropy",
+    es: "Entropía",
+    pt: "Entropia",
+  },
   ether: {
     en: "Ether",
     es: "Ether",
@@ -284,6 +289,11 @@ export const tags: TagDefinition = {
   },
 
   // I
+  informationTheory: {
+    en: "Information Theory",
+    es: "Teoría de la Información",
+    pt: "Teoría da Informação",
+  },
   innerProductArguments: {
     en: "Inner Product Arguments",
     es: "Argumentos de Producto Interno",
@@ -580,6 +590,11 @@ export const tags: TagDefinition = {
     en: "Threshold Signature",
     es: "Firma de Umbral",
     pt: "Assinatura de Umbral",
+  },
+  theormodynamics: {
+    en: "Thermodynamics",
+    es: "Termodinámica",
+    pt: "Termodinâmica",
   },
   theMerge: {
     en: "The Merge",
