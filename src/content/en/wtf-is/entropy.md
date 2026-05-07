@@ -12,7 +12,7 @@ description: >-
   We explore the mysterious and misunderstood concept of entropy, and discover
   how it pops up in unexpected places.
 readingTime: 13 min
-contentHash: 289bb0eb11ff80ceb832f142832767acfddb677c226ffa97109bc56c01e32c05
+contentHash: 34f72deb7b80afde808efe8b7fb13af9a4d5687364add63be84c69b5ee0d4090
 ---
 
 If we had to pick the most widely misunderstood concept from science in general, I'm willing to bet a strong contender would be the concept of **entropy**.
@@ -306,9 +306,9 @@ The domain changes every time, but the underlying question is always the same. A
 - **Probability and statistics**: the [likelihood function](https://en.wikipedia.org/wiki/Likelihood_function) in statistical inference is deeply related to entropy. When you fit a model to data, you're essentially minimizing the "surprise" between your model's predictions and reality.
 - **Machine learning**: [cross-entropy loss](https://en.wikipedia.org/wiki/Cross-entropy), one of the most widely used training objectives in deep learning, is literally Shannon's $H$ applied to the difference between predicted and true probability distributions. Every time a neural network trains, it's doing entropy arithmetic!
 - **Black hole physics**: [Bekenstein-Hawking entropy](https://en.wikipedia.org/wiki/Bekenstein%E2%80%93Hawking_radiation) suggests that the entropy of a black hole is proportional to its surface area. The universe itself seems to be doing the same counting, at the most extreme scales imaginable.
-- **Evolution**: even natural selection can be framed as a process that reduces entropy in biological information, because genomes becoming increasingly "improbable" configurations relative to random chemistry.
+- **Evolution**: even natural selection can be framed as a process that reduces entropy in biological information, because genomes become increasingly "improbable" configurations relative to random chemistry.
 
-It's almost eerie, as if counting things was deeply embedded into the very fabric of reality. 
+> It's almost eerie, as if counting things was deeply embedded into the very fabric of reality. 
 
 In the end, Von Neumann was right in more ways than one. Most people don't know what entropy is, because it's not only confusing, but also because it doesn't really belong in a single area of knowledge.
 
