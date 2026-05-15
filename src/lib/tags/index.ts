@@ -206,6 +206,11 @@ export const tags: TagDefinition = {
     es: "EVM",
     pt: "EVM",
   },
+  extractor: {
+    en: "Extractor",
+    es: "Extractor",
+    pt: "Extrator",
+  },
 
   // F
   fastFourierTransform: {
@@ -287,6 +292,11 @@ export const tags: TagDefinition = {
     es: "Homomorfismo",
     pt: "Homomorfismo",
   },
+  honestVerifierZeroKnowledge: {
+    en: "Honest Verifier Zero Knowledge",
+    es: "Conocimiento Cero con Verificador Honesto",
+    pt: "Conhecimento Zero com Verificador Honesto",
+  },
 
   // I
   informationTheory: {
@@ -332,6 +342,11 @@ export const tags: TagDefinition = {
     en: "Key Exchange",
     es: "Intercambio de Claves",
     pt: "Troca de Chaves",
+  },
+  knowledgeSoundness: {
+    en: "Knowledge Soundness",
+    es: "Solidez de Conocimiento",
+    pt: "Solidez de Conhecimento",
   },
   kzg: {
     en: "KZG",
@@ -548,6 +563,11 @@ export const tags: TagDefinition = {
     en: "Sigma Protocols",
     es: "Protocolos Sigma",
     pt: "Protocolos Sigma",
+  },
+  simulator: {
+    en: "Simulator",
+    es: "Simulador",
+    pt: "Simulador",
   },
   snark: {
     en: "SNARK",

@@ -395,6 +395,11 @@ export const readingLists: ReadingList[] = [
         slug: "the-zk-chronicles/inner-product-arguments",
         order: 14,
       },
+      {
+        id: "zero-knowledge",
+        slug: "the-zk-chronicles/zero-knowledge",
+        order: 14,
+      },
     ],
   },
 ];
