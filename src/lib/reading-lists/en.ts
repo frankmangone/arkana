@@ -400,6 +400,11 @@ export const readingLists: ReadingList[] = [
         slug: "the-zk-chronicles/zero-knowledge",
         order: 14,
       },
+      {
+        id: "zero-knowledge",
+        slug: "the-zk-chronicles/the-random-oracle-model",
+        order: 15,
+      }
     ],
   },
 ];
