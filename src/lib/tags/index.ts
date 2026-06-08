@@ -394,6 +394,11 @@ export const tags: TagDefinition = {
   },
 
   // N
+  nonInteractivity: {
+    en: "Non-Interactivity",
+    es: "No Interactividad",
+    pt: "Não Interatividade",
+  },
 
   // O
 
@@ -487,6 +492,11 @@ export const tags: TagDefinition = {
   },
 
   // R
+  randomOracleModel: {
+    en: "Random Oracle Model",
+    es: "Modelo de Oráclulo Aleatorio",
+    pt: "Modelo de Oráculo Aleatório",
+  },
   rationalPoints: {
     en: "Rational Points",
     es: "Puntos Racionales",
