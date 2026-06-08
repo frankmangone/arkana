@@ -129,7 +129,7 @@ jobs:
           host: ${{ secrets.VULTR_HOST }}
           username: ${{ secrets.VULTR_USER }}
           key: ${{ secrets.VULTR_SSH_KEY }}
-          envs: NEW_PATHS
+          envs: NEW_PATHS,DATABASE_PATH
           script: |
             for path_id in $NEW_PATHS; do
               sqlite3 "$DATABASE_PATH" \
