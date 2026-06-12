@@ -1,7 +1,7 @@
 ---
-title: "The ZK Chronicles: The Random Oracle Model"
+title: 'The ZK Chronicles: The Random Oracle Model'
 author: frank-mangone
-date: "2026-06-07"
+date: '2026-06-07'
 readingTime: 12 min
 thumbnail: /images/the-zk-chronicles/the-random-oracle-model/mario-bros.jpg
 tags:
@@ -11,11 +11,12 @@ tags:
   - nonInteractivity
   - fiatShamirTransform
 description: >-
-  Now that we understand zero knowledge, we must take some time to inspect how it fares under non-interactivity.
-contentHash:
+  Now that we understand zero knowledge, we must take some time to inspect how
+  it fares under non-interactivity.
+contentHash: 28108b4b58574ce6450b1a39edde50d731cb52ad19c7598305f27e7d9e91e78f
 ---
 
-Now that we've shed some light into the true meaning of zero knowledge, we're fully positioned to start looking into the techniques and protocols that have made noise in the ZK space in the past few years.
+Now that we've shed some light into the true meaning of zero knowledge, we're fully poised to start looking into the techniques and protocols that have made a name for themselves in the ZK space in the past few years.
 
 Or so it seems... until we realize we're leaving a pretty big loose end unaddressed!
 

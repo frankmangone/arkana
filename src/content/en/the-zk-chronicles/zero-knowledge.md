@@ -1,7 +1,7 @@
 ---
-title: "The ZK Chronicles: Zero Knowledge"
+title: 'The ZK Chronicles: Zero Knowledge'
 author: frank-mangone
-date: "2026-05-15"
+date: '2026-05-15'
 readingTime: 12 min
 thumbnail: /images/the-zk-chronicles/zero-knowledge/galaxy-brain.jpg
 tags:
@@ -10,9 +10,8 @@ tags:
   - simulator
   - knowledgeSoundness
   - extractor
-description: >-
-  It's finally time to formalize what "zero knowledge" truly means
-contentHash: a241e2c44b9024313a0e5e78b73cd72e45e9cf38921e140085b23af0cdaff940
+description: It's finally time to formalize what "zero knowledge" truly means
+contentHash: b9b244d3f0a5b97124b47fba61b8d86f8bed97fd4dafcdaf81aac86b2d32e8d4
 ---
 
 Back in our [very first encounter](/en/blog/the-zk-chronicles/first-steps), I made a big effort to convey the importance of verifiable computing on its own. In my mind, that is truly a necessary first step. There’s a lot of value in building from the ground up, stripping away the hype, and really visualizing where zero knowledge sits in the universe of possibilities - so that we can clearly define when it matters, and crucially, when it **doesn’t**.
