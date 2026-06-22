@@ -401,10 +401,15 @@ export const readingLists: ReadingList[] = [
         order: 14,
       },
       {
-        id: "zero-knowledge",
+        id: "the-random-oracle-model",
         slug: "the-zk-chronicles/the-random-oracle-model",
         order: 15,
-      }
+      },
+      {
+        id: "arithmetization",
+        slug: "the-zk-chronicles/arithmetization",
+        order: 16,
+      },
     ],
   },
 ];
