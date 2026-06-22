@@ -14,7 +14,7 @@ description: >-
 contentHash:
 ---
 
-Equipped with pretty much every primitive we’re gonna need for the rest of the road, and having gone through what zero knowledge truly means, we can finally start looking at how modern proving systems are actually built.
+Equipped with pretty much every primitive we’re gonna need for the rest of the road, and having gone through what zero knowledge truly means, we can finally explore how modern proving systems are actually built.
 
 And as we’ve hinted a couple times throughout the series, the first step to this endeavor is to understand what treatment we should give to [circuits](/en/blog/the-zk-chronicles/circuits-part-2) (our chosen model for general, finite computation) in order to encode their information in a way we can use to craft our protocols.
 

@@ -401,12 +401,6 @@ export const readingLists: ReadingList[] = [
         order: 14,
       },
       {
-<<<<<<< Updated upstream
-        id: "zero-knowledge",
-        slug: "the-zk-chronicles/the-random-oracle-model",
-        order: 15,
-      }
-=======
         id: "the-random-oracle-model",
         slug: "the-zk-chronicles/the-random-oracle-model",
         order: 15,
@@ -416,7 +410,6 @@ export const readingLists: ReadingList[] = [
         slug: "the-zk-chronicles/arithmetization",
         order: 16,
       },
->>>>>>> Stashed changes
     ],
   },
 ];
