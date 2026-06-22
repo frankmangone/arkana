@@ -33,6 +33,11 @@ export const tags: TagDefinition = {
     es: "Circuitos Aritméticos",
     pt: "Circuitos Aritméticos",
   },
+  arithmetization: {
+    en: "Arithmetization",
+    es: "Aritmetización",
+    pt: "Artimetização",
+  },
 
   // B
   bitcoin: {
@@ -492,6 +497,11 @@ export const tags: TagDefinition = {
   },
 
   // R
+  r1cs: {
+    en: "R1CS",
+    es: "R1CS",
+    pt: "R1CS",
+  },
   randomOracleModel: {
     en: "Random Oracle Model",
     es: "Modelo de Oráclulo Aleatorio",
