@@ -255,6 +255,11 @@ export const tags: TagDefinition = {
     es: "GKR",
     pt: "GKR",
   },
+  groth16: {
+    en: "Groth16",
+    es: "Groth16",
+    pt: "Groth16",
+  },
   groups: {
     en: "Groups",
     es: "Grupos",
@@ -650,6 +655,11 @@ export const tags: TagDefinition = {
     en: "Transactions",
     es: "Transacciones",
     pt: "Transações",
+  },
+  trustedSetup: {
+    en: "Trusted Setup",
+    es: "Setup de Confianza",
+    pt: "Setup de Confiança",
   },
 
   // U
