@@ -5,6 +5,7 @@ const fs = require("fs");
 const path = require("path");
 const { execFileSync } = require("child_process");
 const { Command } = require("commander");
+const matter = require("gray-matter");
 
 // Restricts values embedded directly into the remote SQL string (below) to a
 // safe character set, so no quote-escaping is needed and injection isn't possible.
@@ -27,7 +28,7 @@ function main() {
   program
     .name("publish-content")
     .description(
-      "Publish a local .md file's content into post_content on the backend DB.\n" +
+      "Publish a local .md file's content into post_contents on the backend DB.\n" +
         "Requires env vars REMOTE_HOST (SSH config alias or user@host) and DATABASE_PATH."
     )
     .requiredOption("--file <path>", "local .md file to publish")
@@ -35,7 +36,7 @@ function main() {
     .requiredOption(
       "--path <path>",
       "folder/slug, no extension, shared across languages, e.g. the-zk-chronicles/snarks-part-2 " +
-        "(used as posts.path_identifier as-is, and as post_content.path with .md appended)"
+        "(used as posts.path_identifier as-is, and as post_contents.path with .md appended)"
     )
     .parse(process.argv);
 
@@ -50,6 +51,15 @@ function main() {
 
   const pathIdentifier = slugPath;
   const contentPath = `${slugPath}.md`;
+
+  // Extracted purely so post_contents.thumbnail is queryable by SQL (e.g. by
+  // the search API) without parsing frontmatter out of the raw content blob.
+  const { data: frontmatter } = matter(fs.readFileSync(localFile, "utf8"));
+  const thumbnail = frontmatter.thumbnail;
+  if (thumbnail) {
+    assertSafe(thumbnail, "thumbnail");
+  }
+  const thumbnailSql = thumbnail ? `'${thumbnail}'` : "NULL";
 
   const remoteHost = process.env.REMOTE_HOST;
   const databasePath = process.env.DATABASE_PATH;
@@ -79,15 +89,15 @@ function main() {
     }
     console.log(`posts.id = ${postId}`);
 
-    console.log("Inserting post_content row...");
+    console.log("Inserting post_contents row...");
     ssh(
       remoteHost,
-      `sqlite3 "${databasePath}" "INSERT INTO post_content (post_id, lang, path, content, visible) VALUES (${postId}, '${lang}', '${contentPath}', readfile('${remoteTempPath}'), 1);"`
+      `sqlite3 "${databasePath}" "INSERT INTO post_contents (post_id, lang, path, content, thumbnail, visible) VALUES (${postId}, '${lang}', '${contentPath}', readfile('${remoteTempPath}'), ${thumbnailSql}, 1);"`
     );
 
     const lenJson = ssh(
       remoteHost,
-      `sqlite3 -json "${databasePath}" "SELECT length(content) AS len FROM post_content WHERE post_id = ${postId} AND lang = '${lang}' ORDER BY id DESC LIMIT 1;"`
+      `sqlite3 -json "${databasePath}" "SELECT length(content) AS len FROM post_contents WHERE post_id = ${postId} AND lang = '${lang}' ORDER BY id DESC LIMIT 1;"`
     );
     const remoteLength = JSON.parse(lenJson)[0]?.len;
     const localLength = fs.statSync(localFile).size;

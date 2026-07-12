@@ -20,7 +20,7 @@ try {
 }
 
 if (!Array.isArray(rows)) {
-  console.error("Expected a JSON array of rows from the post_content export");
+  console.error("Expected a JSON array of rows from the post_contents export");
   process.exit(1);
 }
 

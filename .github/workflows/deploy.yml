@@ -74,7 +74,7 @@ jobs:
           ssh-keyscan -H "$VULTR_HOST" >> ~/.ssh/known_hosts 2>/dev/null
 
           ssh -i ~/.ssh/deploy_key "$VULTR_USER@$VULTR_HOST" \
-            "sqlite3 -json \"$DATABASE_PATH\" \"SELECT lang, path, content FROM post_content WHERE visible = 1\"" \
+            "sqlite3 -json \"$DATABASE_PATH\" \"SELECT lang, path, content FROM post_contents WHERE visible = 1\"" \
             > post_content_export.json
 
           node scripts/pull-content.js post_content_export.json
