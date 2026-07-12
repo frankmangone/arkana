@@ -25,6 +25,7 @@ if (!Array.isArray(rows)) {
 }
 
 const contentRoot = path.join(__dirname, "..", "src", "content");
+fs.mkdirSync(contentRoot, { recursive: true });
 
 for (const row of rows) {
   const { lang, path: relPath, content } = row;
