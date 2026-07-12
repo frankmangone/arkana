@@ -1,8 +1,6 @@
 name: Deploy to GitHub Pages
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -62,6 +60,25 @@ jobs:
 
       - name: Install dependencies without frozen lockfile
         run: pnpm install --no-frozen-lockfile
+
+      - name: Pull content from DB
+        env:
+          VULTR_HOST: ${{ secrets.VULTR_HOST }}
+          VULTR_USER: ${{ secrets.VULTR_USER }}
+          VULTR_SSH_KEY: ${{ secrets.VULTR_SSH_KEY }}
+          DATABASE_PATH: ${{ secrets.DATABASE_PATH }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$VULTR_SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H "$VULTR_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+
+          ssh -i ~/.ssh/deploy_key "$VULTR_USER@$VULTR_HOST" \
+            "sqlite3 -json \"$DATABASE_PATH\" \"SELECT lang, path, content FROM post_content WHERE visible = 1\"" \
+            > post_content_export.json
+
+          node scripts/pull-content.js post_content_export.json
+          rm -f ~/.ssh/deploy_key post_content_export.json
 
       - name: Pre-calculate content hashes
         run: node scripts/calculate-hashes.js
