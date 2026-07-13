@@ -415,6 +415,11 @@ export const readingLists: ReadingList[] = [
         slug: "the-zk-chronicles/snarks-part-1",
         order: 17,
       },
+      {
+        id: "snarks-part-2",
+        slug: "the-zk-chronicles/snarks-part-2",
+        order: 18,
+      },
     ],
   },
 ];

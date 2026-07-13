@@ -9,7 +9,7 @@ const matter = require("gray-matter");
 
 // Restricts values embedded directly into the remote SQL string (below) to a
 // safe character set, so no quote-escaping is needed and injection isn't possible.
-const SAFE_PATTERN = /^[a-zA-Z0-9_\-./]+$/;
+const SAFE_PATTERN = /^[a-zA-Z0-9_\-./*]+$/;
 
 function assertSafe(value, label) {
   if (!SAFE_PATTERN.test(value)) {
@@ -19,17 +19,57 @@ function assertSafe(value, label) {
   }
 }
 
-function ssh(remoteHost, remoteCommand) {
-  return execFileSync("ssh", [remoteHost, remoteCommand], { encoding: "utf8" });
+function ssh(remoteHost, remoteCommand, input) {
+  const options = { encoding: "utf8" };
+  if (input !== undefined) options.input = input;
+  return execFileSync("ssh", [remoteHost, remoteCommand], options);
 }
 
-function main() {
+// Runs on the remote host itself (curl against its own localhost:7700) so no
+// tunnel from the operator's machine is ever required - same reasoning as
+// why the DB writes above go over SSH instead of a direct DB connection.
+// The document (arbitrary post content: quotes, backticks, LaTeX, etc.) is
+// piped over stdin via --data-binary @-, never embedded in the command
+// string, so it can't break out of the remote shell command.
+async function indexIntoMeilisearch(remoteHost, masterKey, indexUid, document) {
+  const addResponse = JSON.parse(
+    ssh(
+      remoteHost,
+      `curl -s -X POST "http://localhost:7700/indexes/${indexUid}/documents?primaryKey=id" ` +
+        `-H "Authorization: Bearer ${masterKey}" -H "Content-Type: application/json" --data-binary @-`,
+      JSON.stringify([document])
+    )
+  );
+
+  if (typeof addResponse.taskUid !== "number") {
+    throw new Error(`Meilisearch indexing failed: ${JSON.stringify(addResponse)}`);
+  }
+
+  const taskCommand =
+    `curl -s "http://localhost:7700/tasks/${addResponse.taskUid}" ` +
+    `-H "Authorization: Bearer ${masterKey}"`;
+
+  for (let attempt = 0; attempt < 20; attempt++) {
+    const task = JSON.parse(ssh(remoteHost, taskCommand));
+    if (task.status === "succeeded") return task;
+    if (task.status === "failed") {
+      throw new Error(`Meilisearch indexing task failed: ${JSON.stringify(task.error)}`);
+    }
+    await new Promise((resolve) => setTimeout(resolve, 300));
+  }
+
+  throw new Error(`Meilisearch indexing task ${addResponse.taskUid} did not complete in time`);
+}
+
+async function main() {
   const program = new Command();
   program
     .name("publish-content")
     .description(
-      "Publish a local .md file's content into post_contents on the backend DB.\n" +
-        "Requires env vars REMOTE_HOST (SSH config alias or user@host) and DATABASE_PATH."
+      "Publish a local .md file's content into post_contents on the backend DB, then index it into " +
+        "Meilisearch (both done over SSH on the remote host - no tunnel needed).\n" +
+        "Requires env vars REMOTE_HOST (SSH config alias or user@host), DATABASE_PATH, and MEILI_KEY " +
+        "(the remote Meilisearch instance's master key)."
     )
     .requiredOption("--file <path>", "local .md file to publish")
     .requiredOption("--lang <lang>", "language code, e.g. en")
@@ -54,7 +94,7 @@ function main() {
 
   // Extracted purely so post_contents.thumbnail is queryable by SQL (e.g. by
   // the search API) without parsing frontmatter out of the raw content blob.
-  const { data: frontmatter } = matter(fs.readFileSync(localFile, "utf8"));
+  const { data: frontmatter, content: body } = matter(fs.readFileSync(localFile, "utf8"));
   const thumbnail = frontmatter.thumbnail;
   if (thumbnail) {
     assertSafe(thumbnail, "thumbnail");
@@ -63,9 +103,11 @@ function main() {
 
   const remoteHost = process.env.REMOTE_HOST;
   const databasePath = process.env.DATABASE_PATH;
+  const meiliMasterKey = process.env.MEILI_KEY;
 
   if (!remoteHost) throw new Error("Set REMOTE_HOST (SSH config alias, or user@host)");
   if (!databasePath) throw new Error("Set DATABASE_PATH (path to blog.db on the remote host)");
+  if (!meiliMasterKey) throw new Error("Set MEILI_KEY (Meilisearch master key on the remote host)");
 
   const remoteTempPath = `/tmp/arkana-publish-${Date.now()}-${path.basename(localFile)}`;
 
@@ -92,7 +134,7 @@ function main() {
     console.log("Inserting post_contents row...");
     ssh(
       remoteHost,
-      `sqlite3 "${databasePath}" "INSERT INTO post_contents (post_id, lang, path, content, thumbnail, visible) VALUES (${postId}, '${lang}', '${contentPath}', readfile('${remoteTempPath}'), ${thumbnailSql}, 1);"`
+      `sqlite3 "${databasePath}" "INSERT INTO post_contents (post_id, lang, path, content, thumbnail, visible) VALUES (${postId}, '${lang}', '${contentPath}', readfile('${remoteTempPath}'), ${thumbnailSql}, 1) ON CONFLICT (lang, path) DO UPDATE SET post_id = excluded.post_id, content = excluded.content, thumbnail = excluded.thumbnail, visible = excluded.visible, updated_at = CURRENT_TIMESTAMP;"`
     );
 
     const lenJson = ssh(
@@ -109,6 +151,19 @@ function main() {
     }
 
     console.log(`Verified: ${remoteLength} bytes match. Done.`);
+
+    console.log("Indexing into Meilisearch...");
+    const indexUid = `posts_${lang}`;
+    await indexIntoMeilisearch(remoteHost, meiliMasterKey, indexUid, {
+      id: `${lang}-${slugPath.replace(/\//g, "-")}`,
+      lang,
+      path: slugPath,
+      title: frontmatter.title,
+      description: frontmatter.description,
+      tags: frontmatter.tags,
+      content: body,
+    });
+    console.log(`Indexed into "${indexUid}".`);
   } finally {
     console.log("Cleaning up remote temp file...");
     try {
@@ -119,9 +174,7 @@ function main() {
   }
 }
 
-try {
-  main();
-} catch (error) {
+main().catch((error) => {
   console.error(error.message);
   process.exit(1);
-}
+});
