@@ -6,6 +6,7 @@ const path = require("path");
 const { execFileSync } = require("child_process");
 const { Command } = require("commander");
 const matter = require("gray-matter");
+const { stripMarkdown } = require("./indexing/utils/strip-markdown");
 
 // Restricts values embedded directly into the remote SQL string (below) to a
 // safe character set, so no quote-escaping is needed and injection isn't possible.
@@ -161,7 +162,7 @@ async function main() {
       title: frontmatter.title,
       description: frontmatter.description,
       tags: frontmatter.tags,
-      content: body,
+      content: stripMarkdown(body),
     });
     console.log(`Indexed into "${indexUid}".`);
   } finally {

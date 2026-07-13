@@ -17,7 +17,7 @@ export async function HomePage(props: HomePageProps) {
 
   return (
     <>
-      <IntroSection dictionary={dict} />
+      <IntroSection lang={lang} dictionary={dict} />
       <LatestArticles lang={lang} dictionary={dict} latestPosts={latestPosts} />
       <ReadingLists lang={lang} dictionary={dict} />
       <UserSurvey dictionary={dict} />

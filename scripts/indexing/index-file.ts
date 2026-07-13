@@ -3,6 +3,7 @@ import * as path from "path";
 import matter from "gray-matter";
 import { Command } from "commander";
 import { indexDocument } from "./utils/meili-client";
+import { stripMarkdown } from "./utils/strip-markdown";
 
 const CONTENT_ROOT = path.join(process.cwd(), "src", "content");
 
@@ -44,7 +45,7 @@ async function run(file: string) {
     title: data.title,
     description: data.description,
     tags: data.tags,
-    content,
+    content: stripMarkdown(content),
   };
 
   const indexUid = `posts_${lang}`;
