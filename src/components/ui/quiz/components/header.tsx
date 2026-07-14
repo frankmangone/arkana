@@ -8,13 +8,13 @@ interface QuizHeaderProps {
 const styles = {
   button:
     "flex flex-row items-center justify-between cursor-pointer text-left w-full z-2",
-  line: "border-2 border-t-0 border-secondary-750 flex-1",
+  line: "h-px bg-rule flex-1",
   textContainer: (isOpen: boolean) =>
-    `h-14 flex items-center gap-2 px-4 border-2 border-secondary-750 ${isOpen ? "text-background bg-secondary-750" : "text-secondary-750 bg-background"}`,
+    `h-12 flex items-center gap-2 px-5 rounded-[4px] border transition-colors ${isOpen ? "border-secondary-750 bg-secondary-750" : "border-rule-strong bg-transparent hover:border-secondary-750"}`,
   text: (isOpen: boolean) =>
-    `font-semibold text-lg ${isOpen ? "text-background" : "text-secondary-750"}`,
+    `font-semibold text-base tracking-wide ${isOpen ? "text-[#1d0a2e]" : "text-secondary-750"}`,
   icon: (isOpen: boolean) =>
-    `w-6 h-6 shrink-0 ${isOpen ? "text-background" : "text-secondary-750"}`,
+    `w-5 h-5 shrink-0 ${isOpen ? "text-[#1d0a2e]" : "text-secondary-750"}`,
 };
 
 export function QuizHeader(props: QuizHeaderProps) {

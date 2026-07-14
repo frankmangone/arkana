@@ -8,9 +8,10 @@ interface QuizTypeNoteProps {
 
 const styles = {
   quizType:
-    "absolute top-14 sm:top-2 left-6 sm:left-auto sm:right-2 bg-secondary-300 p-2 flex items-center gap-2",
-  icon: "w-4 h-4 text-secondary-900",
-  quizTypeText: "text-secondary-900 font-medium text-sm",
+    "absolute top-14 sm:top-3 left-6 sm:left-auto sm:right-3 rounded-[3px] border border-secondary-750/40 px-2 py-1.5 flex items-center gap-2",
+  icon: "w-4 h-4 text-secondary-800",
+  quizTypeText:
+    "text-secondary-800 font-medium text-[10px] uppercase tracking-[0.12em]",
 };
 
 const getQuizTypeIcon = (questionType: EQuizType) => {

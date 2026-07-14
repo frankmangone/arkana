@@ -14,13 +14,13 @@ interface MultipleChoiceOptionProps {
 const styles = {
   checkbox: {
     outer: (isSelected: boolean): string =>
-      `w-4 h-4 border-2 flex items-center justify-center transition-all ${isSelected ? "border-primary-700" : "border-primary-300"}`,
+      `w-4 h-4 border-2 flex items-center justify-center transition-all ${isSelected ? "border-primary-700" : "border-rule-strong"}`,
     inner: (isSelected: boolean): string =>
       `w-1.5 h-1.5 bg-primary-700 ${isSelected ? "block" : "hidden"}`,
   },
   baseOption:
-    "flex flex-1 items-center gap-2 p-3 border cursor-pointer transition-colors",
-  optionText: "text-gray-200 mx-4 flex-1",
+    "flex flex-1 items-center gap-2 p-3 rounded-[4px] border cursor-pointer transition-colors",
+  optionText: "text-ink-body mx-4 flex-1",
   selectedOption: (
     isSelected: boolean,
     isCorrect: boolean,
@@ -29,10 +29,10 @@ const styles = {
     let optionClass = "border-2";
 
     if (!showFeedback) {
-      optionClass = `${optionClass} border-primary-100 hover:bg-primary-100`;
+      optionClass = `${optionClass} border-rule hover:border-rule-strong hover:bg-white/[0.03]`;
 
       if (isSelected) {
-        optionClass = `${optionClass} border-primary-100 bg-primary-100`;
+        optionClass = `${optionClass} border-primary-700 bg-primary-700/10`;
       }
     } else {
       if (isSelected && isCorrect) {

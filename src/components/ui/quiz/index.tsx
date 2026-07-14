@@ -29,7 +29,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({
 
   if (loading) {
     return (
-      <div className="p-4 text-center text-gray-400">Loading question...</div>
+      <div className="p-4 text-center text-ink-muted">Loading question...</div>
     );
   }
 
@@ -41,7 +41,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({
 
   if (!question) {
     return (
-      <div className="p-4 text-center text-gray-400">
+      <div className="p-4 text-center text-ink-muted">
         No question data available
       </div>
     );

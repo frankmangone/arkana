@@ -22,7 +22,7 @@ export const Submit: React.FC<SubmitProps> = ({
     <Button
       onClick={handleSubmit}
       disabled={disabled}
-      className="px-4 py-6 self-end bg-secondary-700 hover:bg-secondary-800 cursor-pointer disabled:bg-gray-700 disabled:cursor-not-allowed text-white text-md transition-colors"
+      className="px-6 py-3 self-end rounded-[4px] bg-secondary-700 hover:bg-secondary-750 cursor-pointer disabled:bg-surface-overlay disabled:text-ink-faint disabled:cursor-not-allowed text-[#1d0a2e] font-medium text-md transition-colors"
     >
       {dictionary.submitAnswer}
     </Button>
