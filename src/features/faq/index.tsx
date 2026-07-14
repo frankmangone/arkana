@@ -13,14 +13,14 @@ export async function FAQPage({ lang }: FAQPageProps) {
     <article className="container py-8 max-w-3xl mx-auto">
       <div className="space-y-8">
         <div className="space-y-2">
-          <h1 className="text-4xl mb-6 font-bold">
+          <h1 className="text-4xl mb-6 font-bold tracking-tight text-ink-heading md:text-5xl">
             {dict.faq.title || "Frequently Asked Questions"}
           </h1>
         </div>
 
         <SectionDivider />
 
-        <div className="space-y-0">
+        <div className="space-y-0 divide-y divide-rule border-y border-rule">
           <FAQItem
             id="wallet"
             question={dict.faq.wallet.question}

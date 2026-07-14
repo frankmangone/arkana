@@ -34,7 +34,14 @@ export function BlogPage({
 
   return (
     <div className="container py-8">
-      <h1 className="text-4xl font-bold mb-8">{dictionary.blog.title}</h1>
+      <header className="mb-10 border-b border-rule pb-6">
+        <p className="eyebrow mb-3 text-primary-800">
+          {dictionary.home.recentPosts.title}
+        </p>
+        <h1 className="text-4xl font-bold tracking-tight text-ink-heading md:text-5xl">
+          {dictionary.blog.title}
+        </h1>
+      </header>
 
       {/* Post grid */}
       {filteredPosts.length > 0 ? (
@@ -56,19 +63,15 @@ export function BlogPage({
         </>
       ) : (
         <div className="text-center py-12">
-          <h3 className="text-xl font-semibold mb-2">
+          <h3 className="text-xl font-semibold text-ink-heading mb-2">
             {dictionary.blog.noPosts}
           </h3>
-          <p className="text-gray-600 dark:text-gray-300 mb-6">
+          <p className="text-ink-muted mb-6">
             {dictionary.blog.tryDifferentTag}
           </p>
           <Link
             href={withLocalePath(lang, "blog")}
-            style={{
-              borderColor: "var(--primary-500)",
-              color: "var(--primary-500)",
-            }}
-            className="inline-block px-6 py-3 border-2 rounded-lg transition-colors hover:bg-primary-100"
+            className="inline-block rounded-[4px] border border-rule-strong px-6 py-3 text-ink-body transition-colors hover:border-primary-700 hover:text-ink-heading"
           >
             {dictionary.blog.viewAllPosts}
           </Link>

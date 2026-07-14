@@ -28,17 +28,17 @@ export async function PrevButton(props: PrevButtonProps) {
       asChild
       variant="outline"
       size="lg"
-      className="flex h-28 md:basis-[280px] justify-between items-start gap-2 border-primary-650 dark:border-primary-650"
+      className="flex h-28 md:basis-[280px] justify-between items-start gap-2"
     >
       <Link
         href={`/${lang}/reading-lists/${id}/${prevItem.id}`}
         className="flex flex-col w-full justify-start gap-4 items-end py-4"
       >
-        <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+        <div className="flex items-center gap-2 eyebrow">
           <ArrowLeft size={16} className="shrink-0" />
           <span>Previous</span>
         </div>
-        <div className="text-primary-750 dark:text-primary-750 font-medium line-clamp-2 break-word whitespace-normal">
+        <div className="text-ink-heading font-medium line-clamp-2 break-word whitespace-normal">
           {post.metadata.title}
         </div>
       </Link>

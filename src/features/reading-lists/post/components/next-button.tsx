@@ -28,17 +28,17 @@ export async function NextButton(props: NextButtonProps) {
       asChild
       variant="outline"
       size="lg"
-      className="flex h-28 md:basis-[280px] justify-between items-end gap-2 border-primary-650 dark:border-primary-650"
+      className="flex h-28 md:basis-[280px] justify-between items-end gap-2"
     >
       <Link
         href={`/${lang}/reading-lists/${id}/${nextItem.id}`}
         className="flex flex-col w-full justify-start gap-4 items-end py-4"
       >
-        <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 w-full justify-end">
+        <div className="flex items-center gap-2 eyebrow w-full justify-end">
           <span>Next</span>
           <ArrowRight size={16} className="shrink-0" />
         </div>
-        <div className="text-primary-750 dark:text-primary-750 font-medium line-clamp-2 break-word whitespace-normal text-right">
+        <div className="text-ink-heading font-medium line-clamp-2 break-word whitespace-normal text-right">
           {post.metadata.title}
         </div>
       </Link>

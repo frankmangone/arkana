@@ -32,7 +32,7 @@ export function OrganizationBadge({
         </div>
       )}
       <span className="text-sm font-medium">{name}</span>
-      <ExternalLink className="h-5 w-5 text-gray-500 group-hover:text-primary-500 transition-colors" />
+      <ExternalLink className="h-4 w-4 text-ink-faint group-hover:text-primary-800 transition-colors" />
     </Link>
   );
 }

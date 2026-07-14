@@ -25,13 +25,15 @@ export function ReadingListCard(props: ReadingListCardProps) {
   const { list, lang, dictionary } = props;
 
   return (
-    <div className="group">
-      <Link href={withLocalePath(lang, `reading-lists/${list.id}`)} className="block">
-        {/* Image container with stacked appearance */}
-        <div className="relative h-64 mb-4 hidden md:block">
+    <div className="group h-full overflow-hidden rounded-md border border-rule transition-colors hover:border-rule-strong">
+      <Link
+        href={withLocalePath(lang, `reading-lists/${list.id}`)}
+        className="flex h-full flex-col"
+      >
+        {/* Cover */}
+        <div className="relative hidden h-52 border-b border-rule md:block">
           {list.coverImage ? (
             <>
-              {/* Main image */}
               <div className="absolute inset-0 overflow-hidden">
                 <Image
                   src={
@@ -41,47 +43,44 @@ export function ReadingListCard(props: ReadingListCardProps) {
                   }
                   alt={list.title}
                   fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background opacity-90" />
               </div>
 
               {/* Reading list icon */}
-              <div className="absolute top-4 right-4 bg-black/70 p-2 rounded-full">
-                <BookOpen className="h-5 w-5 text-primary-750" />
+              <div className="absolute right-3 top-3 rounded-[3px] border border-rule bg-surface-page/80 p-2 backdrop-blur-sm">
+                <BookOpen className="h-4 w-4 text-primary-800" />
               </div>
             </>
           ) : (
-            <div className="flex items-center justify-center h-full text-gray-400 bg-gray-100 dark:bg-gray-800 rounded-lg relative">
-              <div className="absolute -bottom-1 -right-1 w-[calc(100%-8px)] h-[calc(100%-8px)] border border-gray-700 rounded-lg"></div>
-              <div className="absolute -bottom-2 -right-2 w-[calc(100%-16px)] h-[calc(100%-16px)] border border-gray-700 rounded-lg"></div>
+            <div className="flex h-full items-center justify-center text-ink-faint">
               <List className="h-10 w-10" />
             </div>
           )}
         </div>
 
-        <div className="flex items-start gap-4">
-          <h2 className="grow-1 text-xl font-bold mb-2 text-primary-750 group-hover:text-primary-650 transition-colors line-clamp-1">
-            {list.title}
-          </h2>
+        <div className="flex flex-1 flex-col p-5">
+          <div className="mb-2 flex items-start gap-3">
+            <h2 className="grow-1 line-clamp-1 text-xl font-semibold tracking-tight text-ink-heading transition-colors group-hover:text-primary-800">
+              {list.title}
+            </h2>
 
-          {list.ongoing && (
-            <Badge variant="default" className="rounded-none">
-              {dictionary.readingLists.ongoing}
-            </Badge>
-          )}
-          <div className="flex items-center text-sm text-gray-500">
-            <BookOpen className="h-4 w-4 mr-2" />
-            {list.items.length}{" "}
-            {list.items.length === 1
-              ? dictionary.readingLists.article
-              : dictionary.readingLists.articles}
+            {list.ongoing && (
+              <Badge variant="outline">{dictionary.readingLists.ongoing}</Badge>
+            )}
+            <div className="flex shrink-0 items-center text-sm text-ink-faint">
+              <BookOpen className="mr-2 h-4 w-4" />
+              {list.items.length}{" "}
+              {list.items.length === 1
+                ? dictionary.readingLists.article
+                : dictionary.readingLists.articles}
+            </div>
           </div>
-        </div>
 
-        <p className="text-gray-400 text-md mb-4 line-clamp-2">
-          {list.description}
-        </p>
+          <p className="line-clamp-2 text-sm text-ink-muted">
+            {list.description}
+          </p>
+        </div>
       </Link>
     </div>
   );

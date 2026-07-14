@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { Plus } from "lucide-react";
 
 interface FAQItemProps {
   id: string;
@@ -26,17 +26,19 @@ export function FAQItem({
     <section id={id} className="scroll-mt-20">
       <button
         onClick={toggle}
-        className="w-full flex items-center justify-between text-left gap-4 cursor-pointer py-4 hover:text-primary-650 transition-colors"
+        className="group w-full flex items-center justify-between text-left gap-4 cursor-pointer py-5 transition-colors"
         aria-expanded={isOpen}
         aria-controls={`faq-answer-${id}`}
       >
-        <h2 className="text-2xl text-primary-750 font-semibold flex-1">{question}</h2>
+        <h2 className="flex-1 text-xl font-medium text-ink-heading transition-colors group-hover:text-primary-800 md:text-2xl">
+          {question}
+        </h2>
         <div className="flex-shrink-0">
-          {isOpen ? (
-            <ChevronUp className="w-6 h-6 text-muted-foreground" />
-          ) : (
-            <ChevronDown className="w-6 h-6 text-muted-foreground" />
-          )}
+          <Plus
+            className={`h-5 w-5 text-ink-muted transition-transform duration-300 ${
+              isOpen ? "rotate-45" : ""
+            }`}
+          />
         </div>
       </button>
       <div
@@ -45,7 +47,7 @@ export function FAQItem({
           isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <p className="text-muted-foreground leading-relaxed pb-4">{answer}</p>
+        <p className="text-ink-muted leading-relaxed pb-6">{answer}</p>
       </div>
     </section>
   );

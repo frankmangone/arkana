@@ -14,10 +14,14 @@ export function WritersPage(props: WritersPageProps) {
 
   return (
     <div className="container">
-      <h1 className="text-4xl font-bold mb-8">{dictionary.writers.title}</h1>
-      <p className="text-lg mb-10 text-gray-600 dark:text-gray-300">
-        {dictionary.writers.description}
-      </p>
+      <header className="mb-10 border-b border-rule pb-6">
+        <h1 className="mb-3 text-4xl font-bold tracking-tight text-ink-heading md:text-5xl">
+          {dictionary.writers.title}
+        </h1>
+        <p className="max-w-[60ch] text-lg text-ink-muted">
+          {dictionary.writers.description}
+        </p>
+      </header>
 
       {writers.length === 0 && (
         <EmptyState

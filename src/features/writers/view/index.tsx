@@ -32,7 +32,7 @@ export default function WriterPage({
   const hasOrganization = writer.organization?.name && writer.organization?.url;
 
   return (
-    <div className="container py-8 max-w-8xl mx-auto">
+    <div className="container py-8 mx-auto">
       <div className="flex flex-col lg:flex-row gap-8 items-start mb-12">
         <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden flex-shrink-0 mx-auto md:mx-0">
           <Image
@@ -50,7 +50,9 @@ export default function WriterPage({
 
         <div className="w-full flex-1 text-center md:text-left">
           <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 mb-4">
-            <h1 className="text-3xl md:text-4xl font-bold">{writer.name}</h1>
+            <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-ink-heading">
+              {writer.name}
+            </h1>
 
             {/* Organization badge - if writer has organization info */}
             {hasOrganization && (
@@ -79,7 +81,7 @@ export default function WriterPage({
           {/* Writer's bio/description */}
           {writer.bio && writer.bio[lang as keyof typeof writer.bio] && (
             <div className="mb-6">
-              <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl">
+              <p className="text-lg text-ink-muted leading-relaxed max-w-2xl">
                 {writer.bio[lang as keyof typeof writer.bio]}
               </p>
             </div>
@@ -110,15 +112,15 @@ export default function WriterPage({
         </>
       ) : (
         <div className="text-center py-12">
-          <h3 className="text-xl font-semibold mb-2">
+          <h3 className="text-xl font-semibold text-ink-heading mb-2">
             {dictionary.writers.noArticlesInLanguage.title}
           </h3>
-          <p className="text-gray-500 mb-6">
+          <p className="text-ink-muted mb-6">
             {dictionary.writers.noArticlesInLanguage.description}
           </p>
           <Link
             href={withLocalePath(lang)}
-            className="inline-flex items-center justify-center px-6 py-3 text-white transition-colors bg-primary-500 hover:bg-primary-600"
+            className="inline-flex items-center justify-center rounded-[4px] bg-primary-700 px-6 py-3 font-medium text-[#161226] transition-colors hover:bg-primary-750"
           >
             {dictionary.writers.noArticlesInLanguage.button}
           </Link>
