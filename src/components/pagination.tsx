@@ -45,16 +45,15 @@ export function Pagination({
   const visiblePages = getVisiblePages();
 
   return (
-    <div className="mt-12">
-      <div className="h-px w-full bg-gray-800 mb-6"></div>
+    <div className="mt-12 border-t border-rule pt-6">
       <nav className="flex items-center justify-between">
         <Link
           href={
             currentPage > 1 ? `${basePath}/page/${currentPage - 1}` : basePath
           }
           className={cn(
-            "flex items-center text-sm font-medium text-gray-300 hover:text-white transition-colors",
-            currentPage === 1 && "pointer-events-none opacity-50"
+            "flex items-center text-sm font-medium text-ink-muted hover:text-ink-heading transition-colors",
+            currentPage === 1 && "pointer-events-none opacity-40"
           )}
         >
           <ArrowLeft className="h-4 w-4 mr-2" />
@@ -67,10 +66,10 @@ export function Pagination({
               key={page}
               href={page === 1 ? basePath : `${basePath}/page/${page}`}
               className={cn(
-                "inline-flex items-center justify-center h-8 w-8 text-sm font-medium transition-colors",
+                "inline-flex items-center justify-center h-8 w-8 text-sm font-medium tabular-nums transition-colors",
                 currentPage === page
-                  ? "bg-primary-850 text-black"
-                  : "text-gray-300 hover:text-white"
+                  ? "border-b-2 border-primary-700 text-ink-heading"
+                  : "text-ink-muted hover:text-ink-heading"
               )}
             >
               {page}
@@ -79,10 +78,10 @@ export function Pagination({
 
           {visiblePages[visiblePages.length - 1] < totalPages - 1 && (
             <>
-              <span className="text-gray-500 px-1">...</span>
+              <span className="text-ink-faint px-1">...</span>
               <Link
                 href={`${basePath}/page/${totalPages}`}
-                className="inline-flex items-center justify-center h-8 w-8 text-sm font-medium text-gray-300 hover:text-white transition-colors"
+                className="inline-flex items-center justify-center h-8 w-8 text-sm font-medium tabular-nums text-ink-muted hover:text-ink-heading transition-colors"
               >
                 {totalPages}
               </Link>
@@ -97,8 +96,8 @@ export function Pagination({
               : basePath
           }
           className={cn(
-            "flex items-center text-sm font-medium text-gray-300 hover:text-white transition-colors",
-            currentPage === totalPages && "pointer-events-none opacity-50"
+            "flex items-center text-sm font-medium text-ink-muted hover:text-ink-heading transition-colors",
+            currentPage === totalPages && "pointer-events-none opacity-40"
           )}
         >
           Next

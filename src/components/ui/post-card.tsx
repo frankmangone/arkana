@@ -28,10 +28,10 @@ export function PostCard(props: PostCardProps) {
   };
 
   return (
-    <div className="group flex flex-col items-center">
-      <Link href={url} className="block my-2 md:my-0 w-full">
+    <div className="group flex h-full flex-col overflow-hidden rounded-md border border-rule transition-colors hover:border-rule-strong">
+      <Link href={url} className="flex h-full w-full flex-col">
         <div
-          className={`relative h-64 mb-4 overflow-hidden hidden md:block ${imageClassName}`}
+          className={`relative hidden h-48 overflow-hidden border-b border-rule md:block ${imageClassName}`}
         >
           <Image
             src={
@@ -43,42 +43,44 @@ export function PostCard(props: PostCardProps) {
             }
             alt={post.title}
             fill
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            className="object-cover"
           />
-          {/* Reading time indicator */}
-          <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-sm text-white text-xs px-2 py-1 flex items-center">
-            <Clock className="w-3 h-3 mr-1" />
-            {post.readingTime || "5 min read"}
+        </div>
+        <div className="flex flex-1 flex-col p-5">
+          <div className="mb-3 flex items-center justify-between gap-3 text-xs text-ink-faint">
+            <span className="inline-flex items-center gap-3">
+              <span>{formatDate(post.date, lang)}</span>
+              <span className="inline-flex items-center">
+                <Clock className="mr-1 h-3 w-3" />
+                {post.readingTime || "5 min read"}
+              </span>
+            </span>
+            <span className="inline-flex items-center">
+              <User className="mr-1 h-3 w-3" />
+              <button
+                onClick={handleAuthorClick}
+                className="cursor-pointer transition-colors hover:text-primary-800"
+              >
+                {post.author.name}
+              </button>
+            </span>
+          </div>
+          <div className="flex items-start justify-between">
+            <h2 className="mb-2 text-xl font-semibold tracking-tight text-ink-heading transition-colors group-hover:text-primary-800">
+              {post.title}
+            </h2>
+            <ArrowUpRight className="mt-1 h-5 w-5 shrink-0 text-primary-800 opacity-0 transition-opacity group-hover:opacity-100" />
+          </div>
+          <p className="mb-4 line-clamp-2 text-sm text-ink-muted">
+            {post.description}
+          </p>
+          <div className="mt-auto flex max-h-[56px] flex-wrap gap-2 overflow-hidden">
+            {post.tags.map((tag) => (
+              <Tag key={tag} tag={tag} lang={lang} />
+            ))}
           </div>
         </div>
-        <div className="flex justify-between items-center gap-3 mb-2 text-sm text-gray-400">
-          <span>{formatDate(post.date, lang)}</span>
-          <span className="inline-flex items-center">
-            <User className="h-3 w-3 mr-1" />
-            <button
-              onClick={handleAuthorClick}
-              className="hover:text-primary-500 transition-colors cursor-pointer"
-            >
-              {post.author.name}
-            </button>
-          </span>
-        </div>
-        <div className="flex items-start justify-between">
-          <h2 className="text-xl font-bold mb-2 text-primary-750 group-hover:text-primary-650 transition-colors">
-            {post.title}
-          </h2>
-          <ArrowUpRight className="h-5 w-5 mt-1 opacity-0 group-hover:opacity-100 transition-opacity" />
-        </div>
-        <p className="text-gray-400 text-md mb-4 line-clamp-2">
-          {post.description}
-        </p>
-        <div className="flex flex-wrap gap-2 line-clamp-2 max-h-[56px] overflow-hidden">
-          {post.tags.map((tag) => (
-            <Tag key={tag} tag={tag} lang={lang} />
-          ))}
-        </div>
       </Link>
-      <div className="w-1/2 h-[1px] bg-primary-500/20 mt-6 md:hidden" />
     </div>
   );
 }

@@ -13,9 +13,7 @@ export function Tag(props: TagProps) {
 
   return (
     // <Link key={tag} href={`/${lang}/blog?tag=${tag}`}>
-    <Badge variant="default" className="rounded-none">
-      {getTagDisplayName(tag, lang)}
-    </Badge>
+    <Badge variant="default">{getTagDisplayName(tag, lang)}</Badge>
     // </Link>
   );
 }

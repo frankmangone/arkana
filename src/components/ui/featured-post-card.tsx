@@ -38,48 +38,47 @@ export function FeaturedPostCard(props: FeaturedPostCardProps) {
   };
 
   return (
-    <div className="group flex flex-col items-center">
+    <div className="group flex flex-col">
       <Link
         href={withLocalePath(lang, `blog/${post.slug}`)}
         className="block w-full"
       >
         <div
-          className={`grid gap-4 grid-cols-5 ${
-            isLarge ? "md:grid-cols-1 md:gap-0" : "md:grid-cols-2 h-40 md:h-52"
+          className={`grid grid-cols-5 gap-4 ${
+            isLarge ? "md:grid-cols-1 md:gap-0" : "h-40 md:h-52 md:grid-cols-2"
           }`}
         >
           <div
-            className={`relative overflow-hidden col-span-2 md:col-span-1 ${
+            className={`relative col-span-2 overflow-hidden rounded-md border border-rule transition-colors group-hover:border-rule-strong md:col-span-1 ${
               imageClassName ?? ""
-            } h-40 ${isLarge ? "md:h-[27.5rem] md:mb-4" : "md:h-52"}`}
+            } h-40 ${isLarge ? "md:mb-5 md:h-[27.5rem]" : "md:h-52"}`}
           >
             <Image
               src={thumbnail}
               alt={post.title}
               fill
-              className="object-cover transition-transform duration-300 group-hover:scale-105"
+              className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background opacity-90" />
 
             {/* Reading time indicator */}
-            <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-sm text-white text-xs px-2 py-1 flex items-center">
-              <Clock className="w-3 h-3 mr-1" />
+            <div className="absolute right-3 top-3 flex items-center rounded-[3px] border border-rule bg-surface-page/80 px-2 py-1 text-xs text-ink-body backdrop-blur-sm">
+              <Clock className="mr-1 h-3 w-3" />
               {post.readingTime || "5 min read"}
             </div>
           </div>
           <div
-            className={`flex flex-col justify-between overflow-hidden col-span-3 md:col-span-1 ${
+            className={`col-span-3 flex flex-col justify-between overflow-hidden md:col-span-1 ${
               !isLarge ? "md:h-full" : ""
             }`}
           >
             <div className="overflow-hidden">
-              <div className="flex justify-between gap-3 mb-3 text-sm text-gray-400 min-w-0">
+              <div className="mb-3 flex min-w-0 justify-between gap-3 text-xs text-ink-faint">
                 <span className="flex-shrink-0">{date}</span>
-                <span className="inline-flex items-center min-w-0 flex-1 justify-end">
-                  <User className="h-3 w-3 mr-1 flex-shrink-0" />
+                <span className="inline-flex min-w-0 flex-1 items-center justify-end">
+                  <User className="mr-1 h-3 w-3 flex-shrink-0" />
                   <button
                     onClick={handleAuthorClick}
-                    className="hover:text-primary-500 cursor-pointer transition-colors truncate"
+                    className="cursor-pointer truncate transition-colors hover:text-primary-800"
                   >
                     {post.author.name}
                   </button>
@@ -87,25 +86,25 @@ export function FeaturedPostCard(props: FeaturedPostCardProps) {
               </div>
               <div className="flex items-start justify-between">
                 <h2
-                  className={`font-bold mb-3 text-xl text-primary-750 group-hover:text-primary-650 transition-colors line-clamp-2 md:line-clamp-1 flex-1 min-w-0 ${
-                    isLarge ? "md:text-2xl" : ""
+                  className={`mb-3 min-w-0 flex-1 text-xl font-semibold tracking-tight text-ink-heading transition-colors group-hover:text-primary-800 line-clamp-2 md:line-clamp-1 ${
+                    isLarge ? "md:text-3xl" : ""
                   }`}
                 >
                   {post.title}
                 </h2>
-                <ArrowUpRight className="h-5 w-5 mt-1 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0 ml-2" />
+                <ArrowUpRight className="ml-2 mt-1 h-5 w-5 flex-shrink-0 text-primary-800 opacity-0 transition-opacity group-hover:opacity-100" />
               </div>
               <div className="hidden md:block">
                 <p
-                  className={`text-gray-400 mb-4 text-sm line-clamp-2 ${
-                    isLarge ? "md:text-md md:mb-5" : ""
+                  className={`mb-4 line-clamp-2 text-sm text-ink-muted ${
+                    isLarge ? "md:mb-5 md:text-base" : ""
                   }`}
                 >
                   {post.description}
                 </p>
               </div>
             </div>
-            <div className="flex flex-wrap gap-2 line-clamp-2 max-h-[56px] overflow-hidden">
+            <div className="flex max-h-[56px] flex-wrap gap-2 overflow-hidden">
               {post.tags.map((tag) => (
                 <Tag key={tag} tag={tag} lang={lang} />
               ))}
@@ -113,7 +112,7 @@ export function FeaturedPostCard(props: FeaturedPostCardProps) {
           </div>
         </div>
       </Link>
-      <div className="w-1/2 h-[1px] bg-primary-500/20 mt-6 md:hidden" />
+      <div className="mt-6 border-t border-rule md:hidden" />
     </div>
   );
 }
