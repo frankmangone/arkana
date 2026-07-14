@@ -30,7 +30,8 @@ export function AuthButton() {
         <DropdownMenuTrigger asChild>
           <Button
             variant="ghost"
-            className="h-[40px] rounded-none py-2 px-4 flex cursor-pointer items-center gap-2 text-base hover:text-primary-750 dark:text-gray-300 dark:hover:text-primary-750"
+            size="sm"
+            className="flex cursor-pointer items-center gap-2 px-3 text-sm text-ink-muted hover:text-ink-heading"
           >
             {user.avatar_url ? (
               // eslint-disable-next-line @next/next/no-img-element
@@ -69,12 +70,13 @@ export function AuthButton() {
 
   return (
     <Button
-      variant="ghost"
+      variant="outline"
+      size="sm"
       asChild
-      className="h-[40px] rounded-none py-2 px-4 flex cursor-pointer items-center gap-1 text-base hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-750"
+      className="ml-2 flex cursor-pointer items-center gap-1.5"
     >
       <Link href={`/${lang}/login`}>
-        <User className="h-7 w-7 sm:h-6 sm:w-6" />
+        <User className="h-4 w-4" />
         Sign in
       </Link>
     </Button>

@@ -37,9 +37,10 @@ export function LanguageSwitcher() {
       <DropdownMenuTrigger asChild>
         <Button
           variant="ghost"
-          className="h-[40px] rounded-none py-2 px-4 flex cursor-pointer items-center gap-1 text-base hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-750"
+          size="sm"
+          className="flex cursor-pointer items-center gap-1.5 px-3 text-sm text-ink-muted hover:text-ink-heading"
         >
-          <Globe className="h-7 w-7 sm:h-6 sm:w-6" />
+          <Globe className="h-4 w-4" />
           <span className="hidden sm:inline">
             {languageNames[currentLocale as keyof typeof languageNames]}
           </span>
@@ -51,7 +52,7 @@ export function LanguageSwitcher() {
             key={locale}
             onClick={() => switchLanguage(locale)}
             className={`${
-              locale === currentLocale ? "bg-muted" : ""
+              locale === currentLocale ? "text-primary-800" : ""
             } cursor-pointer py-3 text-base`}
           >
             {languageNames[locale as keyof typeof languageNames]}

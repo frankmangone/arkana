@@ -15,7 +15,7 @@ export async function AuthLayout({ children, lang }: AuthLayoutProps) {
       <AuthPatternBackground />
 
       {/* Main content */}
-      <main className="relative z-10 flex-1 flex items-center justify-center min-h-[calc(100vh-80px)] py-12">
+      <main className="relative z-10 flex-1 flex items-center justify-center min-h-[calc(100vh-64px)] py-12">
         {children}
       </main>
     </div>

@@ -28,33 +28,33 @@ export const Navbar = async (props: NavbarProps) => {
   const readingListsUrl = withLocalePath(lang, "reading-lists");
 
   return (
-    <header className="relative z-10">
+    <header className="sticky top-0 z-40 border-b border-rule bg-surface-page/80 backdrop-blur-md">
       <div
         className={cn(
-          "container mx-auto px-4 md:px-6 lg:px-8 max-w-8xl flex items-center justify-between py-4",
+          "mx-auto flex h-16 max-w-6xl items-center justify-between px-4 md:px-6 lg:px-8",
           containerClassName
         )}
       >
         <Link
           href={homeUrl}
-          className="flex items-center gap-2 text-2xl text-primary-750 transition-colors"
+          className="flex items-center gap-2.5 text-xl text-ink-heading transition-opacity hover:opacity-80"
         >
           <Image
             src="/logo.svg"
             alt="Arkana Logo"
-            width={32}
-            height={32}
-            className="h-8 w-8"
+            width={28}
+            height={28}
+            className="h-7 w-7"
           />
           arkana
         </Link>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1">
           {/* Desktop navigation */}
-          <div className="hidden md:flex items-center">
+          <nav className="hidden md:flex items-center">
             <Link
               href={readingListsUrl}
-              className="px-4 py-2 inline-flex cursor-pointer items-center justify-center text-base font-medium ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:text-gray-300 dark:hover:text-primary-750"
+              className="eyebrow px-4 py-2 transition-colors hover:text-ink-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               {dict.readingLists.list.title}
             </Link>
@@ -62,11 +62,11 @@ export const Navbar = async (props: NavbarProps) => {
               href="https://forms.gle/NLk49eNnu6jTwGMt8"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 inline-flex cursor-pointer items-center justify-center text-base font-medium ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:text-gray-300 dark:hover:text-primary-750"
+              className="eyebrow px-4 py-2 transition-colors hover:text-ink-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               {dict.blog.survey}
             </Link>
-          </div>
+          </nav>
 
           <LanguageSwitcher />
           <AuthButton />
@@ -78,9 +78,9 @@ export const Navbar = async (props: NavbarProps) => {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="h-[50px] px-6 cursor-pointer"
+                  className="h-10 w-10 cursor-pointer"
                 >
-                  <Menu className="h-7 w-7" />
+                  <Menu className="h-5 w-5" />
                   <span className="sr-only">Toggle menu</span>
                 </Button>
               </DropdownMenuTrigger>
