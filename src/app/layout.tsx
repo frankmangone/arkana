@@ -14,6 +14,7 @@ import { SITE_URL, withSiteUrl } from "@/lib/site-config";
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   display: "swap",
+  variable: "--font-space-grotesk",
 });
 
 export const metadata: Metadata = {
@@ -214,7 +215,7 @@ export default async function RootLayout({
         />
         <link rel="manifest" href="/manifest.json" />
       </head>
-      <body className={spaceGrotesk.className}>
+      <body className={`${spaceGrotesk.className} ${spaceGrotesk.variable}`}>
         <Script
           id="organization-schema"
           type="application/ld+json"
