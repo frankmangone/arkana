@@ -18,14 +18,14 @@ export function LikeButton(props: LikeButtonProps) {
     <>
         <Button
             variant="ghost"
-            className="h-auto min-h-10 !px-4 !py-2 rounded-none cursor-pointer bg-background border border-border text-secondary-900 hover:!bg-accent hover:!border-secondary-700/50 flex items-center gap-2"
+            className="h-auto min-h-10 !px-4 !py-2 rounded-[4px] cursor-pointer bg-transparent border border-rule text-ink-muted hover:!border-primary-700 hover:text-primary-800 flex items-center gap-2"
             aria-label={liked ? "Unlike post" : "Like post"}
             onClick={handleLike}
             disabled={likeMutation.isPending}
         >
             <LikeIcon size={20} filled={liked} />
             {likeCount > 0 && (
-                <span className="text-sm text-secondary-900">
+                <span className="text-sm">
                 {likeCount}
                 </span>
             )}

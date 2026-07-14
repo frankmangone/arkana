@@ -27,9 +27,9 @@ export function FormElements({
           placeholder={DEFAULT_AMOUNT}
           step="1"
           min="1"
-          className="w-full px-4 py-3 pr-20 bg-transparent border-2 border-[#FC7988] text-white placeholder-gray-400 focus:outline-none focus:border-[#FB8A60] transition-colors"
+          className="w-full px-4 py-3 pr-20 bg-transparent rounded-[4px] border border-rule-strong text-ink-body placeholder:text-ink-faint focus:outline-none focus:border-salmon-600 transition-colors"
         />
-        <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[#FC7988] font-medium">
+        <span className="absolute right-4 top-1/2 -translate-y-1/2 text-salmon-600 font-medium">
           {symbol}
         </span>
       </div>
@@ -39,19 +39,19 @@ export function FormElements({
         <select
           value={selectedChainId}
           onChange={(e) => setSelectedChainId(Number(e.target.value))}
-          className="w-full px-4 py-3 pr-10 bg-transparent border-2 border-[#FC7988] text-white focus:outline-none focus:border-[#FB8A60] transition-colors appearance-none cursor-pointer"
+          className="w-full px-4 py-3 pr-10 bg-transparent rounded-[4px] border border-rule-strong text-ink-body focus:outline-none focus:border-salmon-600 transition-colors appearance-none cursor-pointer"
         >
           {SUPPORTED_NETWORKS.map((network) => (
             <option
               key={network.id}
               value={network.id}
-              className="bg-[#2a1810] text-white"
+              className="bg-surface-overlay text-ink-body"
             >
               {network.name}
             </option>
           ))}
         </select>
-        <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#FC7988] pointer-events-none" />
+        <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-salmon-600 pointer-events-none" />
       </div>
     </div>
   );

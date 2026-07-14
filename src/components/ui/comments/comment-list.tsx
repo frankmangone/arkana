@@ -58,7 +58,7 @@ export function CommentList({ comments, path }: CommentListProps) {
 
   if (comments.length === 0) {
     return (
-      <div className="text-secondary-800 text-sm py-4">
+      <div className="text-ink-muted text-sm py-4">
         {dictionary?.comments?.noComments || "No comments yet. Be the first to comment!"}
       </div>
     );

@@ -80,7 +80,7 @@ function formatTimeAgo(
 
 function CommentBody({ body }: { body: string }) {
   return (
-    <div className="text-primary-800 mb-2 text-sm whitespace-pre-wrap break-words">
+    <div className="text-ink-body mb-2 text-sm whitespace-pre-wrap break-words">
       <LatexText className="inline">{body}</LatexText>
     </div>
   );
@@ -99,8 +99,8 @@ export function Comment({ comment, path, depth }: CommentProps) {
   const timeAgo = formatTimeAgo(comment.created_at, dictionary, lang);
 
   return (
-    <div className={depth > 0 ? "ml-6 pl-4 border-l-2 border-border" : ""}>
-      <div className="bg-primary-800/10 border border-primary-800/20 rounded-none p-4">
+    <div className={depth > 0 ? "ml-6 pl-4 border-l border-rule" : ""}>
+      <div className="border-b border-rule pb-4">
         {/* Header */}
         <div className="flex items-center gap-2 mb-4">
           {comment.author_avatar_url && (
@@ -111,11 +111,11 @@ export function Comment({ comment, path, depth }: CommentProps) {
               className="h-5 w-5 rounded-full"
             />
           )}
-          <span className="font-mono text-sm text-primary-800">
+          <span className="text-sm font-medium text-ink-heading">
             {comment.author_username}
           </span>
-          <span className="text-primary-800 text-sm">&middot;</span>
-          <span className="text-primary-800 text-sm">{timeAgo}</span>
+          <span className="text-ink-faint text-sm">&middot;</span>
+          <span className="text-ink-faint text-sm">{timeAgo}</span>
         </div>
 
         {/* Body */}
@@ -125,7 +125,7 @@ export function Comment({ comment, path, depth }: CommentProps) {
         {canReply && user && (
           <button
             onClick={() => setShowReplyForm(!showReplyForm)}
-            className="text-sm cursor-pointer text-primary-650 hover:text-primary-800 transition-colors"
+            className="text-sm cursor-pointer text-ink-muted hover:text-primary-800 transition-colors"
           >
             {showReplyForm
               ? dictionary?.comments?.cancel || "Cancel"

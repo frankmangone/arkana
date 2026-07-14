@@ -32,8 +32,16 @@ export function PostContent({ post, quizDictionary }: PostContentProps) {
   const processedContent = processContent(post.content);
 
   return (
-    <div className="prose prose-gray dark:prose-invert max-w-none mb-8">
-      <TableOfContents content={post.content} />
+    <div className="prose prose-gray dark:prose-invert relative max-w-none mb-8">
+      {/* Sticky contents rail in the right margin on wide screens */}
+      <div className="hidden xl:block absolute left-full top-0 bottom-0 ml-10 w-52">
+        <div className="sticky top-24">
+          <TableOfContents content={post.content} compact />
+        </div>
+      </div>
+      <div className="xl:hidden">
+        <TableOfContents content={post.content} />
+      </div>
       <SectionDivider />
       <ReactMarkdown
         remarkPlugins={[remarkMath, remarkGfm]}

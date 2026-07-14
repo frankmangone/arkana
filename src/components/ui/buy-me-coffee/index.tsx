@@ -40,7 +40,7 @@ export default function BuyMeCoffeeWidget({
   } = useComponent(walletAddress);
 
   return (
-    <div id="buy-me-coffee" className="w-full overflow-hidden flex md:flex-row flex-col">
+    <div id="buy-me-coffee" className="w-full overflow-hidden flex md:flex-row flex-col rounded-md border border-rule">
       <TokenImage />
 
       <div className="pl-8 py-8 md:pl-12 md:py-16 flex-1 flex flex-col gap-4">

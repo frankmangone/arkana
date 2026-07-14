@@ -65,7 +65,7 @@ export function ZoomableImage({
     <>
       <figure className="w-full my-6">
         <div
-          className={`relative rounded-none ${
+          className={`relative overflow-hidden rounded-md ${
             isZoomable ? "cursor-zoom-in" : ""
           } ${imageClassName}`}
           onClick={isZoomable ? toggleZoom : undefined}
@@ -85,7 +85,7 @@ export function ZoomableImage({
           )}
         </div>
         {displayCaption && (
-          <figcaption className="text-center text-sm text-gray-500 dark:text-gray-400 mt-2">
+          <figcaption className="text-center text-sm text-ink-faint mt-2">
             {displayCaption}
           </figcaption>
         )}

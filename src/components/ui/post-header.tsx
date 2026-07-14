@@ -23,45 +23,40 @@ export async function PostHeader(props: PostHeaderProps) {
   const writer = getWriter(metadata.author);
 
   return (
-    <div className="mb-6 space-y-6 border-b border-primary-800/20 pb-6">
-      <div className="space-y-2">
-        <h1 className="text-4xl mb-6 font-bold">{metadata.title}</h1>
-
-        <ArkanaStrip
-          content={post.content}
-          preCalculatedHash={metadata.contentHash}
-        />
-
-        <div className="flex flex-wrap gap-2 mt-6">
-          {metadata.tags.map((tag) => (
-            <Tag key={tag} tag={tag} lang={lang} />
-          ))}
-        </div>
+    <header className="mb-10">
+      <div className="mb-6 flex flex-wrap gap-2">
+        {metadata.tags.map((tag) => (
+          <Tag key={tag} tag={tag} lang={lang} />
+        ))}
       </div>
 
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-        <div className="flex items-center gap-4">
-          <Link href={`/${lang}/writers/${writer.slug}`}>
-            <Avatar className="w-[50px] h-[50px]">
+      <h1 className="mb-8 text-4xl font-bold leading-[1.1] tracking-tight text-ink-heading md:text-5xl">
+        {metadata.title}
+      </h1>
+
+      <div className="flex flex-col gap-4 border-y border-rule py-4 md:flex-row md:items-center md:justify-between">
+        <div className="flex items-center gap-3">
+          <Link href={`/${lang}/writers/${writer.slug}`} className="no-underline">
+            <Avatar className="h-9 w-9">
               <AvatarImage
                 src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${
                   writer.avatarUrl
                 }`}
                 alt={writer.name}
-                width={50}
-                height={50}
+                width={36}
+                height={36}
               />
               <AvatarFallback>{writer.name.charAt(0)}</AvatarFallback>
             </Avatar>
           </Link>
-          <div>
+          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-0.5">
             <Link
               href={`/${lang}/writers/${writer.slug}`}
-              className="font-medium hover:underline"
+              className="font-medium text-ink-heading no-underline hover:underline"
             >
               {writer.name}
             </Link>
-            <div className="text-sm text-muted-foreground">
+            <div className="text-sm text-ink-muted">
               {formatDate(metadata.date, lang)} · {metadata.readingTime}{" "}
               {dict.blog.readingTime}
               {metadata.mediumUrl && (
@@ -71,7 +66,7 @@ export async function PostHeader(props: PostHeaderProps) {
                     href={metadata.mediumUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 hover:underline"
+                    className="inline-flex items-center gap-1 no-underline hover:underline"
                   >
                     Medium <ExternalLink size={14} />
                   </Link>
@@ -88,6 +83,12 @@ export async function PostHeader(props: PostHeaderProps) {
           </div>
         )}
       </div>
-    </div>
+
+      <ArkanaStrip
+        content={post.content}
+        preCalculatedHash={metadata.contentHash}
+        className="mt-8 opacity-70"
+      />
+    </header>
   );
 }

@@ -49,7 +49,7 @@ export function VideoEmbed({ src }: VideoEmbedProps) {
 
   return (
     <div
-      className="relative overflow-hidden rounded-lg my-8"
+      className="relative overflow-hidden rounded-md border border-rule my-8"
       style={{ paddingBottom: "56.25%" }}
     >
       {!isLoaded && (
