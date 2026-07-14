@@ -556,31 +556,35 @@
   }
 }
 
-p {
-  color: var(--ink-body);
-  line-height: 1.8rem;
-  font-size: 1.1rem;
+@layer base {
+  p {
+    color: var(--ink-body);
+    line-height: 1.8rem;
+    font-size: 1.1rem;
+  }
+
+  strong {
+    color: var(--ink-heading);
+  }
 }
 
-strong {
-  color: var(--ink-heading);
-}
+/* Editorial type utilities — components layer so utilities can override */
+@layer components {
+  .eyebrow {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
 
-/* Editorial type utilities */
-.eyebrow {
-  font-size: 0.6875rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-muted);
-}
-
-.display-title {
-  font-size: clamp(2.5rem, 5.5vw, 4.25rem);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  font-weight: 700;
-  color: var(--ink-heading);
+  .display-title {
+    font-size: clamp(2.5rem, 5.5vw, 4.25rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+    color: var(--ink-heading);
+  }
 }
 
 /* KaTeX block equation styling - Add scrolling without changing other styles */
@@ -873,45 +877,47 @@ table.compact {
 }
 
 /* List styling */
-ul,
-ol {
-  margin: 1.5rem 0;
-  padding-left: 1.5rem;
-}
+@layer base {
+  ul,
+  ol {
+    margin: 1.5rem 0;
+    padding-left: 1.5rem;
+  }
 
-li {
-  margin: 0.75rem 0;
-  line-height: 1.8rem;
-  font-size: 1.1rem;
-}
+  li {
+    margin: 0.75rem 0;
+    line-height: 1.8rem;
+    font-size: 1.1rem;
+  }
 
-/* Numbered list styling */
-ol {
-  counter-reset: item;
-  list-style-type: none;
-}
+  /* Numbered list styling */
+  ol {
+    counter-reset: item;
+    list-style-type: none;
+  }
 
-ol > li {
-  counter-increment: item;
-  position: relative;
-}
+  ol > li {
+    counter-increment: item;
+    position: relative;
+  }
 
-ol > li:before {
-  content: counter(item) ".";
-  position: absolute;
-  left: -1.5rem;
-  color: var(--primary-800);
-  font-weight: 600;
-}
+  ol > li:before {
+    content: counter(item) ".";
+    position: absolute;
+    left: -1.5rem;
+    color: var(--primary-800);
+    font-weight: 600;
+  }
 
-/* Bullet list styling */
-ul > li {
-  position: relative;
-}
+  /* Bullet list styling */
+  ul > li {
+    position: relative;
+  }
 
-ul > li:before {
-  content: "•";
-  position: absolute;
-  left: -1.5rem;
-  color: var(--primary-800);
+  ul > li:before {
+    content: "•";
+    position: absolute;
+    left: -1.5rem;
+    color: var(--primary-800);
+  }
 }

@@ -1,4 +1,5 @@
 import type { Dictionary } from "@/lib/dictionaries";
+import { ArkanaStrip } from "@/components/arkana-strip";
 import { HeroSearch } from "./hero-search";
 
 interface IntroSectionProps {
@@ -6,18 +7,34 @@ interface IntroSectionProps {
   dictionary: Dictionary;
 }
 
+// Stable seed so the hero glyph field is identical on every render
+const HERO_STRIP_SEED = BigInt(
+  "0x43fae4b79cea8041f4fa7b43a777ff5423b043fae4b79cea8041f4fa7b43a777"
+);
+
 export function IntroSection({ lang, dictionary }: IntroSectionProps) {
   return (
-    <section className="relative w-full min-h-[30vh] flex flex-col md:flex-row items-center md:pt-12">
-      <div className="container z-10 mx-auto px-4 md:px-6 lg:px-8 max-w-8xl">
-        <div className="z-10 flex-1 flex flex-col justify-center pt-6 md:pt-20 bg-transparent text-left w-full md:max-w-6/10 md:text-left xl:max-w-4/10">
-          <h1 className="text-4xl md:text-6xl mb-8 mr-2 text-white font-extrabold tracking-tight leading-tight">
+    <section className="border-b border-rule">
+      <div className="mx-auto flex max-w-6xl items-center gap-16 px-4 py-20 md:px-6 md:py-28 lg:px-8">
+        <div className="max-w-2xl flex-1">
+          <p className="eyebrow mb-6 text-primary-800">
+            {dictionary.home.intro.title}
+          </p>
+          <h1 className="display-title mb-6">
             {dictionary.home.intro.descriptionBig}
           </h1>
-          <p className="text-2xl text-gray-200 mb-10 font-semibold leading-relaxed">
+          <p className="mb-10 max-w-[45ch] text-lg leading-relaxed text-ink-muted">
             {dictionary.home.intro.descriptionSmall}
           </p>
           <HeroSearch lang={lang} dictionary={dictionary} />
+        </div>
+
+        {/* Glyph field — constrained width wraps the 16-glyph strip into a 4×4 grid */}
+        <div
+          className="hidden w-[200px] shrink-0 opacity-50 lg:block"
+          aria-hidden="true"
+        >
+          <ArkanaStrip randomSeed={HERO_STRIP_SEED} />
         </div>
       </div>
     </section>
