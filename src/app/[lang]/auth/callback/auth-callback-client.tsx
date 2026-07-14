@@ -68,8 +68,8 @@ export function AuthCallbackClient() {
   return (
     <div className="flex min-h-screen items-center justify-center">
       <div className="text-center">
-        <h1 className="text-2xl font-semibold">Signing you in...</h1>
-        <p className="mt-2 text-muted-foreground">
+        <h1 className="text-2xl font-semibold tracking-tight text-ink-heading">Signing you in...</h1>
+        <p className="mt-2 text-ink-muted">
           Please wait while we complete the authentication process.
         </p>
       </div>

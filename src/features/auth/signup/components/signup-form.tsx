@@ -100,7 +100,7 @@ export function SignupForm({ lang, dictionary }: SignupFormProps) {
   const isLoading = signup.isPending;
 
   return (
-    <Card className="w-full max-w-md mx-auto">
+    <Card className="w-full max-w-md mx-auto bg-surface-raised">
       <CardHeader>
         <CardTitle className="text-2xl">{dictionary.signup.title}</CardTitle>
         <CardDescription>{dictionary.signup.description}</CardDescription>

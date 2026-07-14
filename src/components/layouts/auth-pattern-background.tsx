@@ -91,7 +91,7 @@ export function AuthPatternBackground() {
   }, [patternSize, gridOffset]);
 
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-60 [mask-image:radial-gradient(ellipse_at_center,transparent_30%,black_80%)]">
       {/* Patterns positioned around the center */}
       <div className="absolute inset-0">
         {patterns.slice(0, patternPositions.length).map((elements, idx) => {
