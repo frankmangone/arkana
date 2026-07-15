@@ -9,7 +9,7 @@ interface UserSurveyProps {
 
 export function UserSurvey({ dictionary }: UserSurveyProps) {
   return (
-    <section className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-24 lg:px-8">
+    <section className="mx-auto max-w-6xl mt-24 px-4 py-16 md:px-6 md:py-24 lg:px-8">
       <div className="flex flex-col items-center gap-10 md:flex-row md:gap-16">
         <div className="w-52 shrink-0 md:w-64">
           <DecoderSigil content={dictionary.home.userSurvey.title} />

@@ -18,7 +18,7 @@ export function ReadingLists({ lang, dictionary }: ReadingListsProps) {
 
   return (
     <section className="border-y border-rule bg-[image:var(--grad-band)]">
-      <div className="mx-auto flex max-w-6xl flex-col gap-12 px-4 py-24 md:px-6 md:py-32 lg:flex-row lg:items-center lg:gap-16 lg:px-8">
+      <div className="mx-auto flex max-w-6xl flex-col-reverse gap-12 px-12 py-24 md:px-16 md:py-56 lg:flex-row lg:items-center lg:gap-16 lg:px-8">
         <div className="flex-1">
           <h2 className="mb-4 text-4xl font-semibold tracking-tight text-ink-heading md:text-5xl">
             {dictionary.home.readingLists.title}
