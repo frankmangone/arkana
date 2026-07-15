@@ -20,6 +20,7 @@ import { UnorderedList, OrderedList, ListElement } from "@/components/ui/lists";
 import { Paragraph } from "@/components/ui/paragraph";
 import { SectionDivider } from "@/components/ui/section-divider";
 import { TableOfContents } from "@/components/ui/table-of-contents";
+import { HashScrollFix } from "@/components/ui/hash-scroll-fix";
 
 import { QuizDictionary } from "@/components/ui/quiz/types";
 
@@ -33,6 +34,7 @@ export function PostContent({ post, quizDictionary }: PostContentProps) {
 
   return (
     <div className="prose prose-gray dark:prose-invert relative max-w-none mb-8">
+      <HashScrollFix />
       {/* Sticky contents rail in the right margin on wide screens */}
       <div className="hidden xl:block absolute left-full top-0 bottom-0 ml-10 w-52">
         <div className="sticky top-24">

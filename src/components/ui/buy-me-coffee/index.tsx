@@ -42,7 +42,7 @@ export default function BuyMeCoffeeWidget({
   return (
     <div
       id="buy-me-coffee"
-      className="overflow-hidden flex md:flex-row flex-col rounded-md border border-salmon-500/25 bg-[hsl(5,50%,11%)] lg:-mx-32"
+      className="overflow-hidden flex md:flex-row flex-col rounded-md border border-salmon-700/30 bg-[hsl(5,50%,11%)] lg:-mx-32"
     >
       <TokenImage />
 

@@ -108,7 +108,7 @@ export async function PostHeader(props: PostHeaderProps) {
                 ))}
               </div>
 
-              <h1 className="display-title mb-7 !text-[clamp(2.75rem,5.5vw,4.75rem)] text-ink-on-brand-title">
+              <h1 className="display-title mb-7 !text-[clamp(2.5rem,5vw,4.25rem)] text-ink-on-brand-title">
                 {metadata.title}
               </h1>
 

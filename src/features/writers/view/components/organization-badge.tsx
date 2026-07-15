@@ -19,10 +19,10 @@ export function OrganizationBadge({
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group block inline-flex items-center gap-2 transition-colors"
+      className="inline-flex items-center gap-2 rounded-[4px] border border-rule-on-brand bg-white/15 px-3 py-2 backdrop-blur-sm transition-colors hover:bg-white/25"
     >
       {logoUrl && (
-        <div className="relative w-10 h-10 overflow-hidden">
+        <div className="relative w-7 h-7 overflow-hidden">
           <Image
             src={logoUrl ? withSiteUrl(logoUrl) : "/placeholder.svg"}
             alt={name}
@@ -32,7 +32,7 @@ export function OrganizationBadge({
         </div>
       )}
       <span className="text-sm font-medium">{name}</span>
-      <ExternalLink className="h-4 w-4 text-ink-faint group-hover:text-primary-800 transition-colors" />
+      <ExternalLink className="h-4 w-4" />
     </Link>
   );
 }
