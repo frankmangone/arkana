@@ -9,7 +9,7 @@ interface IntroSectionProps {
 
 export function IntroSection({ lang, dictionary }: IntroSectionProps) {
   return (
-    <section className="brand-hero relative overflow-hidden">
+    <section className="brand-hero relative">
       {/* Matrix-style glyph rain across the right side */}
       <div
         className="pointer-events-none absolute inset-y-0 right-0 hidden w-[46%] lg:block [mask-image:linear-gradient(to_left,black_55%,transparent)]"

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Search, LoaderCircle } from "lucide-react";
+import { Search, LoaderCircle, X } from "lucide-react";
 import { useSearch } from "@/lib/api/hooks";
 import { withLocalePath, withSiteUrl } from "@/lib/site-config";
 import type { Dictionary } from "@/lib/dictionaries";
@@ -96,10 +96,21 @@ export function HeroSearch({ lang, dictionary }: HeroSearchProps) {
           }}
           placeholder={dictionary.search.placeholder}
           aria-label={dictionary.search.placeholder}
-          className="h-14 w-full rounded-md border-2 border-ink-on-brand/40 bg-white/10 pl-12 pr-11 text-base text-ink-on-brand placeholder:text-ink-on-brand/60 transition-colors hover:border-ink-on-brand/70 focus:border-ink-on-brand focus:outline-none"
+          className="h-14 w-full rounded-md border-2 border-ink-on-brand/40 bg-white/10 pl-12 pr-11 text-base text-ink-on-brand placeholder:text-ink-on-brand/60 transition-colors hover:border-ink-on-brand/70 focus:border-ink-on-brand focus:bg-white/25 focus:outline-none [&::-webkit-search-cancel-button]:hidden [&::-webkit-search-cancel-button]:appearance-none"
         />
-        {loading && (
+        {loading ? (
           <LoaderCircle className="absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 animate-spin text-ink-on-brand" />
+        ) : (
+          term.length > 0 && (
+            <button
+              type="button"
+              onClick={() => setTerm("")}
+              aria-label="Clear search"
+              className="absolute right-4 top-1/2 flex h-6 w-6 -translate-y-1/2 cursor-pointer items-center justify-center rounded-[3px] text-ink-on-brand/70 transition-colors hover:bg-black/10 hover:text-ink-on-brand"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          )
         )}
       </div>
 

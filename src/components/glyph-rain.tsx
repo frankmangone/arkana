@@ -105,7 +105,7 @@ export function GlyphRain({
   className = "",
   cellSize = 44,
   color = "hsl(260, 60%, 18%)",
-  headColor = "#f8f5ff",
+  headColor = "hsl(260, 70%, 5%)",
 }: GlyphRainProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
