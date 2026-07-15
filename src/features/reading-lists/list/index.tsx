@@ -18,7 +18,7 @@ export async function ReadingListsPage(props: ReadingListsPageProps) {
   const previews = await Promise.all(
     readingLists.map(async (list) => {
       const posts = await getPostsFromReadingList({ readingList: list, lang });
-      return posts.slice(0, 3).map((post) => post.title);
+      return posts.slice(0, 4).map((post) => post.title);
     })
   );
 
@@ -48,7 +48,7 @@ export async function ReadingListsPage(props: ReadingListsPageProps) {
         />
       )}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="flex flex-col gap-8">
         {readingLists.map((list, index) => (
           <ReadingListCard
             key={list.id}

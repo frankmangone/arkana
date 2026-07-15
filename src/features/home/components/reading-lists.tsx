@@ -18,12 +18,12 @@ export function ReadingLists({ lang, dictionary }: ReadingListsProps) {
 
   return (
     <section className="border-y border-rule bg-[image:var(--grad-band)]">
-      <div className="mx-auto flex max-w-6xl flex-col gap-10 px-4 py-16 md:px-6 md:py-20 lg:flex-row lg:items-center lg:gap-16 lg:px-8">
+      <div className="mx-auto flex max-w-6xl flex-col gap-12 px-4 py-24 md:px-6 md:py-32 lg:flex-row lg:items-center lg:gap-16 lg:px-8">
         <div className="flex-1">
-          <h2 className="mb-3 text-3xl font-semibold tracking-tight text-ink-heading md:text-4xl">
+          <h2 className="mb-4 text-4xl font-semibold tracking-tight text-ink-heading md:text-5xl">
             {dictionary.home.readingLists.title}
           </h2>
-          <p className="mb-8 max-w-[60ch] text-lg text-ink-muted">
+          <p className="mb-10 max-w-[60ch] text-xl text-ink-muted">
             {dictionary.home.readingLists.description}
           </p>
           <Link
@@ -39,15 +39,15 @@ export function ReadingLists({ lang, dictionary }: ReadingListsProps) {
         {covers.length > 0 && (
           <Link
             href={withLocalePath(lang, "reading-lists")}
-            className="group relative mx-auto hidden h-56 w-96 shrink-0 sm:block"
+            className="group relative mx-auto hidden h-72 w-[34rem] shrink-0 transition-transform duration-300 hover:-translate-y-1.5 sm:block"
             aria-label={dictionary.home.readingLists.viewAll}
           >
             {covers.map((list, index) => (
               <div
                 key={list.id}
-                className="absolute top-1/2 h-44 w-40 overflow-hidden rounded-md border border-rule-strong transition-opacity group-hover:opacity-90"
+                className="absolute top-1/2 h-60 w-52 overflow-hidden rounded-md border border-rule-strong"
                 style={{
-                  left: `${index * 76}px`,
+                  left: `${index * 104}px`,
                   transform: `translateY(-50%) rotate(${(index - 1.5) * 3}deg)`,
                   zIndex: index,
                 }}
@@ -56,12 +56,12 @@ export function ReadingLists({ lang, dictionary }: ReadingListsProps) {
                   src={withSiteUrl(list.coverImage!)}
                   alt={list.title}
                   fill
-                  sizes="160px"
+                  sizes="208px"
                   className="object-cover"
                 />
-                <div className="absolute inset-x-0 bottom-0 flex items-center gap-1.5 bg-[hsl(260,30%,8%)]/80 px-2.5 py-1.5 backdrop-blur-sm">
-                  <BookOpen className="h-3 w-3 shrink-0 text-primary-800" />
-                  <span className="truncate text-[10px] font-medium uppercase tracking-[0.1em] text-ink-body">
+                <div className="absolute inset-x-0 bottom-0 flex items-center gap-1.5 bg-[hsl(260,30%,8%)]/80 px-3 py-2 backdrop-blur-sm">
+                  <BookOpen className="h-3.5 w-3.5 shrink-0 text-primary-800" />
+                  <span className="truncate text-[11px] font-medium uppercase tracking-[0.1em] text-ink-body">
                     {list.title}
                   </span>
                 </div>
