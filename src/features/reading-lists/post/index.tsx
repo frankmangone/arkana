@@ -101,6 +101,7 @@ export async function ReadingListPostPage(props: ReadingListPostPageProps) {
         ]}
       />
       <PostContent post={post} />
+      <Navigation lang={lang} id={id} prevItem={prevItem} nextItem={nextItem} />
       <SectionDivider />
       {writer.walletAddress &&
         writer.walletAddress !==
@@ -116,8 +117,6 @@ export async function ReadingListPostPage(props: ReadingListPostPageProps) {
       <Suspense fallback={null}>
         <CommentSection path={slug} />
       </Suspense>
-
-      <Navigation lang={lang} id={id} prevItem={prevItem} nextItem={nextItem} />
     </article>
   );
 }

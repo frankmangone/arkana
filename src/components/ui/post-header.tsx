@@ -40,17 +40,6 @@ export async function PostHeader(props: PostHeaderProps) {
             />
           )}
 
-          {/* Title spans the full content width */}
-          <div className="mb-8 flex flex-wrap gap-2 [&_[data-slot=badge]]:border-rule-on-brand [&_[data-slot=badge]]:text-ink-on-brand-soft">
-            {metadata.tags.map((tag) => (
-              <Tag key={tag} tag={tag} lang={lang} />
-            ))}
-          </div>
-
-          <h1 className="display-title mb-10 !text-[clamp(2.75rem,5.5vw,4.75rem)] text-ink-on-brand-title">
-            {metadata.title}
-          </h1>
-
           <div className="grid gap-10 lg:grid-cols-[220px_1fr] lg:gap-16">
             {/* Metadata rail */}
             <aside className="order-2 flex flex-wrap items-start gap-x-12 gap-y-7 lg:order-1 lg:flex-col">
@@ -111,8 +100,18 @@ export async function PostHeader(props: PostHeaderProps) {
               )}
             </aside>
 
-            {/* Standfirst + fingerprint */}
+            {/* Title block */}
             <div className="order-1 lg:order-2">
+              <div className="mb-8 flex flex-wrap gap-2 [&_[data-slot=badge]]:border-rule-on-brand [&_[data-slot=badge]]:text-ink-on-brand-soft">
+                {metadata.tags.map((tag) => (
+                  <Tag key={tag} tag={tag} lang={lang} />
+                ))}
+              </div>
+
+              <h1 className="display-title mb-7 !text-[clamp(2.75rem,5.5vw,4.75rem)] text-ink-on-brand-title">
+                {metadata.title}
+              </h1>
+
               {metadata.description && (
                 <p className="mb-10 max-w-[58ch] text-xl leading-relaxed text-ink-on-brand-soft">
                   {metadata.description}

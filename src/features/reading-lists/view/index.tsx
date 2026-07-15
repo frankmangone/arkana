@@ -21,35 +21,27 @@ export async function ReadingListPage(props: ReadingListPageProps) {
 
   return (
     <div className="container">
-      <header className="full-bleed brand-hero mb-12">
-        <div className="mx-auto max-w-6xl px-4 pb-14 pt-8 md:px-6 md:pb-20 lg:px-8">
-          <Breadcrumbs
-            lang={lang}
-            items={[
-              { label: dict.readingLists.list.title, href: backUrl },
-              { label: readingList.title },
-            ]}
-            variant="onBrand"
-            className="mb-12"
-          />
-          <div className="mb-5 flex flex-wrap items-center gap-4">
-            <h1 className="display-title !text-[clamp(2.75rem,6vw,4.75rem)] text-ink-on-brand-title">
-              {readingList.title}
-            </h1>
-            {readingList.ongoing && (
-              <Badge
-                variant="outline"
-                className="border-rule-on-brand text-ink-on-brand-soft"
-              >
-                {dict.readingLists.ongoing}
-              </Badge>
-            )}
-          </div>
-
-          <p className="max-w-[60ch] text-xl text-ink-on-brand-soft">
-            {readingList.description}
-          </p>
+      <header className="mb-12 pb-10 pt-8">
+        <Breadcrumbs
+          lang={lang}
+          items={[
+            { label: dict.readingLists.list.title, href: backUrl },
+            { label: readingList.title },
+          ]}
+          className="mb-12"
+        />
+        <div className="mb-5 flex flex-wrap items-center gap-4">
+          <h1 className="display-title !text-[clamp(2.75rem,6vw,4.75rem)] text-primary-750">
+            {readingList.title}
+          </h1>
+          {readingList.ongoing && (
+            <Badge variant="outline">{dict.readingLists.ongoing}</Badge>
+          )}
         </div>
+
+        <p className="max-w-[60ch] text-xl text-ink-muted">
+          {readingList.description}
+        </p>
       </header>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

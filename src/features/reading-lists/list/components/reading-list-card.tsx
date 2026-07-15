@@ -80,7 +80,7 @@ export function ReadingListCard(props: ReadingListCardProps) {
             </div>
           </div>
 
-          <p className="max-w-[70ch] text-base text-ink-muted">
+          <p className="max-w-[70ch] mb-6 text-base text-ink-muted">
             {list.description}
           </p>
 
