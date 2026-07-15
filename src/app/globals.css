@@ -735,7 +735,8 @@ blockquote cite {
 /* Smooth scrolling for anchor links */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 88px; /* Matches the sticky h-16 navbar + breathing room */
+  /* No scroll-padding here: anchor targets carry their own scroll-margin-top,
+     and the two values are additive when both are set */
 }
 
 /* Ensure anchor links work with fixed header */

@@ -54,7 +54,7 @@ export function VideoEmbed({ src }: VideoEmbedProps) {
     >
       {!isLoaded && (
         <div
-          className="absolute inset-0 bg-gray-200 dark:bg-gray-800 flex items-center justify-center"
+          className="absolute inset-0 bg-surface-raised flex items-center justify-center"
           aria-hidden="true"
         >
           <div className="animate-pulse flex flex-col items-center">

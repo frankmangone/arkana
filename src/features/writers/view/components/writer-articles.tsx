@@ -18,7 +18,7 @@ export function WriterArticles({
   if (articles.length === 0) {
     return (
       <div className="text-center py-8">
-        <p className="text-gray-500">{dictionary.writers.noArticles}</p>
+        <p className="text-ink-muted">{dictionary.writers.noArticles}</p>
       </div>
     );
   }
