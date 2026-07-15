@@ -63,7 +63,9 @@
       "title": "Article not available",
       "description": "Sorry, this article is not available in your selected language yet.",
       "button": "Back to home"
-    }
+    },
+    "date": "Date",
+    "author": "Author"
   },
   "readingLists": {
     "article": "article",

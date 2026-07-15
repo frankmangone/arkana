@@ -6,6 +6,7 @@ import { getWriter } from "@/lib/writers";
 import { getReadingList } from "@/lib/reading-lists";
 import Script from "next/script";
 import { Navigation } from "./components/navigation";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import BuyMeCoffeeWidget from "@/components/ui/buy-me-coffee";
 import { getDictionary } from "@/lib/dictionaries";
 import { SectionDivider } from "@/components/ui/section-divider";
@@ -79,6 +80,25 @@ export async function ReadingListPostPage(props: ReadingListPostPageProps) {
         id="article-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <Breadcrumbs
+        lang={lang}
+        items={[
+          {
+            label: dict.readingLists.list.title,
+            href: withLocalePath(lang, "reading-lists"),
+          },
+          ...(readingList
+            ? [
+                {
+                  label: readingList.title,
+                  href: withLocalePath(lang, `reading-lists/${id}`),
+                },
+              ]
+            : []),
+          { label: post.metadata.title },
+        ]}
+        className="mb-8"
       />
       <PostHeader post={post} lang={lang} path={slug} />
       <PostContent post={post} />

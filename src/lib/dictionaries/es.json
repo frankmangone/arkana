@@ -63,7 +63,9 @@
       "title": "Artículo no disponible",
       "description": "Lo sentimos, este artículo aún no está disponible en el idioma seleccionado.",
       "button": "Volver al inicio"
-    }
+    },
+    "date": "Fecha",
+    "author": "Autor"
   },
   "readingLists": {
     "article": "artículo",

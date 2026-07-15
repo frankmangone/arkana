@@ -7,6 +7,7 @@ import { WriterArkanaStrip } from "@/features/writers/view/components/writer-ark
 import { PostCard } from "@/components/ui/post-card";
 import { Pagination } from "@/components/pagination";
 import { OrganizationBadge } from "./components/organization-badge";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import Link from "next/link";
 import type { Dictionary } from "@/lib/dictionaries";
 import { withLocalePath, withSiteUrl } from "@/lib/site-config";
@@ -33,6 +34,17 @@ export default function WriterPage({
 
   return (
     <div className="container py-8 mx-auto">
+      <Breadcrumbs
+        lang={lang}
+        items={[
+          {
+            label: dictionary.writers.title,
+            href: withLocalePath(lang, "writers"),
+          },
+          { label: writer.name },
+        ]}
+        className="mb-8"
+      />
       <div className="flex flex-col lg:flex-row gap-8 items-start mb-12">
         <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden flex-shrink-0 mx-auto md:mx-0">
           <Image

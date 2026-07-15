@@ -1,4 +1,5 @@
 import { ReadingList } from "@/lib/reading-lists";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { EmptyState } from "@/components/empty-state";
 import { ReadingListCard } from "./components/reading-list-card";
 import type { Dictionary } from "@/lib/dictionaries";
@@ -14,13 +15,20 @@ export function ReadingListsPage(props: ReadingListsPageProps) {
 
   return (
     <div className="container">
-      <header className="brand-band mb-10 px-6 py-10 md:px-10 md:py-14">
-        <h1 className="display-title !text-[clamp(2.5rem,5vw,4rem)] mb-4">
-          {dictionary.readingLists.list.title}
-        </h1>
-        <p className="max-w-[60ch] text-lg text-ink-muted">
-          {dictionary.readingLists.list.description}
-        </p>
+      <Breadcrumbs
+        lang={lang}
+        items={[{ label: dictionary.readingLists.list.title }]}
+        className="mb-6"
+      />
+      <header className="full-bleed brand-hero mb-12">
+        <div className="mx-auto max-w-6xl px-4 py-14 md:px-6 md:py-20 lg:px-8">
+          <h1 className="display-title !text-[clamp(2.75rem,6vw,4.75rem)] mb-5 text-ink-on-brand">
+            {dictionary.readingLists.list.title}
+          </h1>
+          <p className="max-w-[60ch] text-xl text-ink-on-brand-soft">
+            {dictionary.readingLists.list.description}
+          </p>
+        </div>
       </header>
 
       {readingLists.length === 0 && (

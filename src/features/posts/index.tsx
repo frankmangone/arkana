@@ -4,6 +4,7 @@ import { getPostBySlug } from "./actions";
 import { PostHeader } from "../../components/ui/post-header";
 import { Metadata } from "next";
 import { NotFoundInLanguage } from "@/components/not-found-in-language";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import Script from "next/script";
 import { getWriter } from "@/lib/writers";
 import { PostContent } from "@/components/ui/post-content";
@@ -101,6 +102,14 @@ export async function PostPage(props: PostPageProps) {
         id="article-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <Breadcrumbs
+        lang={lang}
+        items={[
+          { label: dict.blog.title, href: withLocalePath(lang, "blog") },
+          { label: post.metadata.title },
+        ]}
+        className="mb-8"
       />
       {header}
       <PostContent post={post} quizDictionary={dict.quiz} />

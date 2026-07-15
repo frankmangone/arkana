@@ -86,7 +86,7 @@ export function HeroSearch({ lang, dictionary }: HeroSearchProps) {
   return (
     <div className="relative w-full max-w-xl">
       <div className="relative">
-        <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-ink-faint" />
+        <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-ink-on-brand/70" />
         <input
           type="search"
           value={term}
@@ -96,10 +96,10 @@ export function HeroSearch({ lang, dictionary }: HeroSearchProps) {
           }}
           placeholder={dictionary.search.placeholder}
           aria-label={dictionary.search.placeholder}
-          className="h-13 w-full rounded-md border border-rule-strong bg-transparent pl-12 pr-11 text-base text-ink-body placeholder:text-ink-faint transition-colors hover:border-primary-700/50 focus:border-primary-700 focus:outline-none"
+          className="h-14 w-full rounded-md border-2 border-ink-on-brand/40 bg-white/10 pl-12 pr-11 text-base text-ink-on-brand placeholder:text-ink-on-brand/60 transition-colors hover:border-ink-on-brand/70 focus:border-ink-on-brand focus:outline-none"
         />
         {loading && (
-          <LoaderCircle className="absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 animate-spin text-primary-700" />
+          <LoaderCircle className="absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 animate-spin text-ink-on-brand" />
         )}
       </div>
 

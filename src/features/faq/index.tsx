@@ -1,4 +1,5 @@
 import { getDictionary } from "@/lib/dictionaries";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { SectionDivider } from "@/components/ui/section-divider";
 import { FAQItem } from "./components/faq-item";
 
@@ -12,10 +13,13 @@ export async function FAQPage({ lang }: FAQPageProps) {
   return (
     <article className="container py-8 max-w-3xl mx-auto">
       <div className="space-y-8">
-        <div className="brand-band px-6 py-10 md:px-10 md:py-14">
-          <h1 className="display-title !text-[clamp(2.25rem,4.5vw,3.5rem)]">
-            {dict.faq.title || "Frequently Asked Questions"}
-          </h1>
+        <Breadcrumbs lang={lang} items={[{ label: dict.faq.title }]} />
+        <div className="full-bleed brand-hero">
+          <div className="mx-auto max-w-6xl px-4 py-14 md:px-6 md:py-20 lg:px-8">
+            <h1 className="display-title !text-[clamp(2.5rem,5vw,4rem)] text-ink-on-brand">
+              {dict.faq.title || "Frequently Asked Questions"}
+            </h1>
+          </div>
         </div>
 
         <SectionDivider />

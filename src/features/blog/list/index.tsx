@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { PostPreview } from "@/lib/posts";
 import { PostCard } from "@/components/ui/post-card";
 import { Pagination } from "@/components/pagination";
@@ -34,13 +35,20 @@ export function BlogPage({
 
   return (
     <div className="container py-8">
-      <header className="brand-band mb-10 px-6 py-10 md:px-10 md:py-14">
-        <p className="eyebrow mb-3 text-primary-850">
-          {dictionary.home.recentPosts.title}
-        </p>
-        <h1 className="display-title !text-[clamp(2.5rem,5vw,4rem)]">
-          {dictionary.blog.title}
-        </h1>
+      <Breadcrumbs
+        lang={lang}
+        items={[{ label: dictionary.blog.title }]}
+        className="mb-6"
+      />
+      <header className="full-bleed brand-hero mb-12">
+        <div className="mx-auto max-w-6xl px-4 py-14 md:px-6 md:py-20 lg:px-8">
+          <p className="eyebrow mb-4 font-semibold text-ink-on-brand">
+            {dictionary.home.recentPosts.title}
+          </p>
+          <h1 className="display-title !text-[clamp(2.75rem,6vw,4.75rem)] text-ink-on-brand">
+            {dictionary.blog.title}
+          </h1>
+        </div>
       </header>
 
       {/* Post grid */}

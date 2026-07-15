@@ -36,6 +36,7 @@ interface ArkanaStripProps {
   randomSeed?: bigint;
   className?: string;
   preCalculatedHash?: string;
+  lineColor?: string;
 }
 
 export function ArkanaStrip({
@@ -43,6 +44,7 @@ export function ArkanaStrip({
   randomSeed,
   className,
   preCalculatedHash,
+  lineColor = "#a777ff",
 }: ArkanaStripProps) {
   const [canvasSize, setCanvasSize] = useState(48);
 
@@ -153,7 +155,7 @@ export function ArkanaStrip({
           key={index}
           elements={pattern.elements}
           canvasSize={canvasSize}
-          lineColor="#a777ff"
+          lineColor={lineColor}
           backgroundColor="transparent"
         />
       ))}

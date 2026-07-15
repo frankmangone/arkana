@@ -17,6 +17,9 @@
   --color-ink-faint: var(--ink-faint);
   --color-rule: var(--rule);
   --color-rule-strong: var(--rule-strong);
+  --color-ink-on-brand: var(--ink-on-brand);
+  --color-ink-on-brand-soft: var(--ink-on-brand-soft);
+  --color-rule-on-brand: var(--rule-on-brand);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -343,6 +346,17 @@
     color-mix(in srgb, var(--primary-500) 12%, transparent),
     transparent
   );
+
+  /* Vivid hero field — dark ink goes on top of this */
+  --grad-hero: linear-gradient(
+    135deg,
+    hsl(260, 80%, 66%) 0%,
+    hsl(260, 80%, 58%) 45%,
+    hsl(276, 90%, 60%) 100%
+  );
+  --ink-on-brand: hsl(260, 75%, 10%);
+  --ink-on-brand-soft: hsl(260, 50%, 20%);
+  --rule-on-brand: hsla(260, 80%, 12%, 0.3);
   --card: hsl(260, 28%, 12%);
   --card-foreground: oklch(0.985 0 0);
   --popover: hsl(260, 28%, 12%);
@@ -609,11 +623,24 @@
     color: var(--ink-heading);
   }
 
-  /* Deep-gradient header panel (Consensys-style color block) */
+  /* Deep-gradient panel */
   .brand-band {
     background-image: var(--grad-band);
     border: 1px solid var(--rule);
     border-radius: calc(var(--radius) + 4px);
+  }
+
+  /* Vivid full-color hero field — pair with text-ink-on-brand */
+  .brand-hero {
+    background-image: var(--grad-hero);
+  }
+
+  /* Escape a centered container to span the full viewport width */
+  .full-bleed {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    margin-left: -50vw;
   }
 
   /* Vivid gradient text accent — use sparingly */

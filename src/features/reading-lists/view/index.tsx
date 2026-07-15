@@ -1,8 +1,7 @@
 import { ReadingList } from "@/lib/reading-lists";
-import Link from "next/link";
 import { getDictionary } from "@/lib/dictionaries";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft } from "lucide-react";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { PostCard } from "@/components/ui/post-card";
 import { getPostsFromReadingList } from "./fetch";
 import { withLocalePath } from "@/lib/site-config";
@@ -22,27 +21,35 @@ export async function ReadingListPage(props: ReadingListPageProps) {
 
   return (
     <div className="container">
-      <Link
-        href={backUrl}
-        className="inline-flex items-center gap-1.5 text-sm font-medium text-ink-muted transition-colors hover:text-ink-heading"
-      >
-        <ArrowLeft size={16} />
-        {dict.readingLists.view.back}
-      </Link>
+      <Breadcrumbs
+        lang={lang}
+        items={[
+          { label: dict.readingLists.list.title, href: backUrl },
+          { label: readingList.title },
+        ]}
+        className="mb-6"
+      />
 
-      <header className="brand-band mb-10 mt-6 px-6 py-10 md:px-10 md:py-14">
-        <div className="mb-4 flex flex-wrap items-center gap-3">
-          <h1 className="display-title !text-[clamp(2.5rem,5vw,4rem)]">
-            {readingList.title}
-          </h1>
-          {readingList.ongoing && (
-            <Badge variant="outline">{dict.readingLists.ongoing}</Badge>
-          )}
+      <header className="full-bleed brand-hero mb-12">
+        <div className="mx-auto max-w-6xl px-4 py-14 md:px-6 md:py-20 lg:px-8">
+          <div className="mb-5 flex flex-wrap items-center gap-4">
+            <h1 className="display-title !text-[clamp(2.75rem,6vw,4.75rem)] text-ink-on-brand">
+              {readingList.title}
+            </h1>
+            {readingList.ongoing && (
+              <Badge
+                variant="outline"
+                className="border-rule-on-brand text-ink-on-brand-soft"
+              >
+                {dict.readingLists.ongoing}
+              </Badge>
+            )}
+          </div>
+
+          <p className="max-w-[60ch] text-xl text-ink-on-brand-soft">
+            {readingList.description}
+          </p>
         </div>
-
-        <p className="max-w-[60ch] text-lg text-ink-muted">
-          {readingList.description}
-        </p>
       </header>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

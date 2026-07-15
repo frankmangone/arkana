@@ -126,3 +126,22 @@ No tests exist in the repo; the safety net is:
   article featuring math + code + tables + quiz, reading lists, reading-list
   post, writer profile, FAQ, login — confirming rendering and that TOC anchors,
   search, language switching, quiz interaction, and post actions still behave.
+
+## Iteration 3 (2026-07-14, second review)
+
+Feedback: still too shy — wants the Consensys full-bleed saturated hero
+(bright field, huge type, big space), especially on articles and landing.
+Plus breadcrumbs.
+
+- New `--grad-hero` (vivid primary 66%→58% → magenta 60%) with dark
+  "ink-on-brand" text tokens — Arkana's answer to black-on-acid-green.
+- Article hero: full-bleed vivid field with a Consensys-style left metadata
+  rail (Date / Author / reading time), tag chips, clamp-to-4.75rem title,
+  description, and the glyph fingerprint in dark ink.
+- Landing hero: full-bleed vivid field, ~72vh, type up to 6rem.
+- Index page headers (blog / reading lists / writers / FAQ / list view):
+  same full-bleed vivid treatment.
+- New `Breadcrumbs` component (root crumb = "arkana" wordmark) on all
+  content pages; replaces the reading-list back button. New dictionary keys
+  `blog.date` / `blog.author` in en/es/pt for the hero rail.
+- `ArkanaStrip` gains an optional `lineColor` prop (default unchanged).

@@ -7,3 +7,4 @@ Developer: Frank
 - Fixed a long-standing double anchor-scroll offset (headings now land right below the navbar) and removed the leftover search console.log
 - Verified with static builds, lint, and screenshots of every route (desktop + mobile + Spanish locale), including interactive quiz and anchor-jump tests
 - Iterated on the redesign after feedback: purple-tinted backgrounds everywhere (no more near-black), gradient hero and page-header color blocks, vivid gradient buttons, bigger hero typography, gradient quiz border restored
+- Second design iteration: full-bleed vivid purple hero fields with dark ink text on articles, landing, and all index pages (Consensys-style color blocks); added breadcrumbs to every content page
