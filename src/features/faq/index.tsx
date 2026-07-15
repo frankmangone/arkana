@@ -11,12 +11,17 @@ export async function FAQPage({ lang }: FAQPageProps) {
   const dict = await getDictionary(lang);
 
   return (
-    <article className="container py-8 max-w-3xl mx-auto">
+    <article className="container pb-8 max-w-3xl mx-auto">
       <div className="space-y-8">
-        <Breadcrumbs lang={lang} items={[{ label: dict.faq.title }]} />
         <div className="full-bleed brand-hero">
-          <div className="mx-auto max-w-6xl px-4 py-14 md:px-6 md:py-20 lg:px-8">
-            <h1 className="display-title !text-[clamp(2.5rem,5vw,4rem)] text-ink-on-brand">
+          <div className="mx-auto max-w-6xl px-4 pb-14 pt-8 md:px-6 md:pb-20 lg:px-8">
+            <Breadcrumbs
+              lang={lang}
+              items={[{ label: dict.faq.title }]}
+              variant="onBrand"
+              className="mb-12"
+            />
+            <h1 className="display-title !text-[clamp(2.5rem,5vw,4rem)] text-ink-on-brand-title">
               {dict.faq.title || "Frequently Asked Questions"}
             </h1>
           </div>

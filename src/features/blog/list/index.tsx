@@ -34,18 +34,19 @@ export function BlogPage({
     : posts;
 
   return (
-    <div className="container py-8">
-      <Breadcrumbs
-        lang={lang}
-        items={[{ label: dictionary.blog.title }]}
-        className="mb-6"
-      />
+    <div className="container pb-8">
       <header className="full-bleed brand-hero mb-12">
-        <div className="mx-auto max-w-6xl px-4 py-14 md:px-6 md:py-20 lg:px-8">
+        <div className="mx-auto max-w-6xl px-4 pb-14 pt-8 md:px-6 md:pb-20 lg:px-8">
+          <Breadcrumbs
+            lang={lang}
+            items={[{ label: dictionary.blog.title }]}
+            variant="onBrand"
+            className="mb-12"
+          />
           <p className="eyebrow mb-4 font-semibold text-ink-on-brand">
             {dictionary.home.recentPosts.title}
           </p>
-          <h1 className="display-title !text-[clamp(2.75rem,6vw,4.75rem)] text-ink-on-brand">
+          <h1 className="display-title !text-[clamp(2.75rem,6vw,4.75rem)] text-ink-on-brand-title">
             {dictionary.blog.title}
           </h1>
         </div>

@@ -15,14 +15,15 @@ export function ReadingListsPage(props: ReadingListsPageProps) {
 
   return (
     <div className="container">
-      <Breadcrumbs
-        lang={lang}
-        items={[{ label: dictionary.readingLists.list.title }]}
-        className="mb-6"
-      />
       <header className="full-bleed brand-hero mb-12">
-        <div className="mx-auto max-w-6xl px-4 py-14 md:px-6 md:py-20 lg:px-8">
-          <h1 className="display-title !text-[clamp(2.75rem,6vw,4.75rem)] mb-5 text-ink-on-brand">
+        <div className="mx-auto max-w-6xl px-4 pb-14 pt-8 md:px-6 md:pb-20 lg:px-8">
+          <Breadcrumbs
+            lang={lang}
+            items={[{ label: dictionary.readingLists.list.title }]}
+            variant="onBrand"
+            className="mb-12"
+          />
+          <h1 className="display-title !text-[clamp(2.75rem,6vw,4.75rem)] mb-5 text-ink-on-brand-title">
             {dictionary.readingLists.list.title}
           </h1>
           <p className="max-w-[60ch] text-xl text-ink-on-brand-soft">

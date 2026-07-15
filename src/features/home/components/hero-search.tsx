@@ -36,9 +36,9 @@ function ResultCard({ hit, lang }: { hit: SearchHit; lang: string }) {
   return (
     <Link
       href={withLocalePath(lang, `blog/${hit.path}`)}
-      className="group flex items-center gap-4 px-4 py-3 transition-colors hover:bg-white/5"
+      className="group flex items-stretch gap-4 transition-colors hover:bg-white/5"
     >
-      <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-[4px] border border-rule">
+      <div className="relative w-24 shrink-0 self-stretch overflow-hidden border-r border-rule">
         <Image
           src={
             hit.thumbnail
@@ -49,11 +49,11 @@ function ResultCard({ hit, lang }: { hit: SearchHit; lang: string }) {
           }
           alt={hit.title}
           fill
-          sizes="48px"
+          sizes="96px"
           className="object-cover"
         />
       </div>
-      <div className="min-w-0">
+      <div className="min-w-0 py-3 pr-4">
         <h3 className="line-clamp-1 text-sm font-semibold text-ink-heading transition-colors group-hover:text-primary-800">
           {hit.title}
         </h3>

@@ -21,19 +21,19 @@ export async function ReadingListPage(props: ReadingListPageProps) {
 
   return (
     <div className="container">
-      <Breadcrumbs
-        lang={lang}
-        items={[
-          { label: dict.readingLists.list.title, href: backUrl },
-          { label: readingList.title },
-        ]}
-        className="mb-6"
-      />
-
       <header className="full-bleed brand-hero mb-12">
-        <div className="mx-auto max-w-6xl px-4 py-14 md:px-6 md:py-20 lg:px-8">
+        <div className="mx-auto max-w-6xl px-4 pb-14 pt-8 md:px-6 md:pb-20 lg:px-8">
+          <Breadcrumbs
+            lang={lang}
+            items={[
+              { label: dict.readingLists.list.title, href: backUrl },
+              { label: readingList.title },
+            ]}
+            variant="onBrand"
+            className="mb-12"
+          />
           <div className="mb-5 flex flex-wrap items-center gap-4">
-            <h1 className="display-title !text-[clamp(2.75rem,6vw,4.75rem)] text-ink-on-brand">
+            <h1 className="display-title !text-[clamp(2.75rem,6vw,4.75rem)] text-ink-on-brand-title">
               {readingList.title}
             </h1>
             {readingList.ongoing && (

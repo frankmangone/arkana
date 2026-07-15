@@ -10,6 +10,8 @@ interface BreadcrumbsProps {
   lang: string;
   items: BreadcrumbItem[];
   className?: string;
+  /** "onBrand" renders dark ink for use on the vivid hero fields */
+  variant?: "default" | "onBrand";
 }
 
 /**
@@ -18,11 +20,25 @@ interface BreadcrumbsProps {
  * Eyebrow-style breadcrumb trail. The root crumb is always the "arkana"
  * wordmark linking home; the last item renders as plain text.
  */
-export function Breadcrumbs({ lang, items, className }: BreadcrumbsProps) {
+export function Breadcrumbs({
+  lang,
+  items,
+  className,
+  variant = "default",
+}: BreadcrumbsProps) {
   const crumbs: BreadcrumbItem[] = [
     { label: "arkana", href: withLocalePath(lang) },
     ...items,
   ];
+
+  const onBrand = variant === "onBrand";
+  const linkClass = onBrand
+    ? "eyebrow text-ink-on-brand-soft transition-colors hover:text-ink-on-brand"
+    : "eyebrow transition-colors hover:text-ink-heading";
+  const separatorClass = onBrand ? "text-ink-on-brand-soft" : "text-ink-faint";
+  const currentClass = onBrand
+    ? "eyebrow max-w-[16rem] truncate font-semibold text-ink-on-brand"
+    : "eyebrow max-w-[16rem] truncate text-primary-800";
 
   return (
     <nav aria-label="Breadcrumb" className={className}>
@@ -35,21 +51,18 @@ export function Breadcrumbs({ lang, items, className }: BreadcrumbsProps) {
               className="!m-0 flex items-center gap-2 before:!content-none"
             >
               {index > 0 && (
-                <span aria-hidden="true" className="text-ink-faint">
+                <span aria-hidden="true" className={separatorClass}>
                   /
                 </span>
               )}
               {crumb.href && !isLast ? (
-                <Link
-                  href={crumb.href}
-                  className="eyebrow transition-colors hover:text-ink-heading"
-                >
+                <Link href={crumb.href} className={linkClass}>
                   {crumb.label}
                 </Link>
               ) : (
                 <span
                   aria-current={isLast ? "page" : undefined}
-                  className="eyebrow max-w-[16rem] truncate text-primary-800"
+                  className={currentClass}
                 >
                   {crumb.label}
                 </span>

@@ -19,6 +19,7 @@
   --color-rule-strong: var(--rule-strong);
   --color-ink-on-brand: var(--ink-on-brand);
   --color-ink-on-brand-soft: var(--ink-on-brand-soft);
+  --color-ink-on-brand-title: var(--ink-on-brand-title);
   --color-rule-on-brand: var(--rule-on-brand);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -354,9 +355,10 @@
     hsl(260, 80%, 58%) 45%,
     hsl(276, 90%, 60%) 100%
   );
-  --ink-on-brand: hsl(260, 75%, 10%);
-  --ink-on-brand-soft: hsl(260, 50%, 20%);
-  --rule-on-brand: hsla(260, 80%, 12%, 0.3);
+  --ink-on-brand: hsl(260, 60%, 15%);
+  --ink-on-brand-soft: hsl(260, 45%, 24%);
+  --ink-on-brand-title: hsl(261, 72%, 26%);
+  --rule-on-brand: hsla(260, 80%, 14%, 0.3);
   --card: hsl(260, 28%, 12%);
   --card-foreground: oklch(0.985 0 0);
   --popover: hsl(260, 28%, 12%);

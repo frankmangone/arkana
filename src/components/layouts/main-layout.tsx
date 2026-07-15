@@ -13,7 +13,7 @@ export const MainLayout = async (props: MainLayoutProps) => {
   return (
     <div className="min-h-screen flex flex-col bg-surface-page overflow-x-clip">
       <Navbar lang={lang} />
-      <main className="flex-1 w-full mx-auto max-w-6xl px-4 py-10 md:px-6 lg:px-8">
+      <main className="flex-1 w-full mx-auto max-w-6xl px-4 pb-10 md:px-6 lg:px-8">
         {children}
       </main>
       {footer && <Footer lang={lang} />}

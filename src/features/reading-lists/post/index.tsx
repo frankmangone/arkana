@@ -6,7 +6,6 @@ import { getWriter } from "@/lib/writers";
 import { getReadingList } from "@/lib/reading-lists";
 import Script from "next/script";
 import { Navigation } from "./components/navigation";
-import { Breadcrumbs } from "@/components/breadcrumbs";
 import BuyMeCoffeeWidget from "@/components/ui/buy-me-coffee";
 import { getDictionary } from "@/lib/dictionaries";
 import { SectionDivider } from "@/components/ui/section-divider";
@@ -75,15 +74,17 @@ export async function ReadingListPostPage(props: ReadingListPostPageProps) {
   };
 
   return (
-    <article className="container py-8 max-w-3xl mx-auto">
+    <article className="container pb-8 max-w-3xl mx-auto">
       <Script
         id="article-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Breadcrumbs
+      <PostHeader
+        post={post}
         lang={lang}
-        items={[
+        path={slug}
+        breadcrumbs={[
           {
             label: dict.readingLists.list.title,
             href: withLocalePath(lang, "reading-lists"),
@@ -98,9 +99,7 @@ export async function ReadingListPostPage(props: ReadingListPostPageProps) {
             : []),
           { label: post.metadata.title },
         ]}
-        className="mb-8"
       />
-      <PostHeader post={post} lang={lang} path={slug} />
       <PostContent post={post} />
       <SectionDivider />
       {writer.walletAddress &&

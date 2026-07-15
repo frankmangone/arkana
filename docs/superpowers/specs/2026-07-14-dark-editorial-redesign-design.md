@@ -145,3 +145,20 @@ Plus breadcrumbs.
   content pages; replaces the reading-list back button. New dictionary keys
   `blog.date` / `blog.author` in en/es/pt for the hero rail.
 - `ArkanaStrip` gains an optional `lineColor` prop (default unchanged).
+
+## Iteration 4 (2026-07-14, third review)
+
+- Breadcrumbs live inside the hero fields in dark ink; the black gap between
+  navbar and hero is gone everywhere (layout top padding removed, heroes
+  flush under the navbar).
+- Hero titles use `--ink-on-brand-title` (rich dark primary hsl(261 72% 26%))
+  instead of near-black; small text stays darker for contrast.
+- Post actions moved into the hero metadata rail, restyled as borderless
+  lucide icons (Heart / MessageCircle): dark ink idle, salmon fill when liked.
+- Buy-me-coffee widget: raised background, full padding, extends wider than
+  the article column on lg (`-mx-20`).
+- "Welcome to Arkana" eyebrow removed from the landing hero.
+- New `GlyphRain` canvas component: matrix-style rain of Arkana glyphs down
+  the right side of the landing hero (fade mask toward text, static field
+  under prefers-reduced-motion).
+- Search result thumbnails: flush to the row edge, 96px wide, full height.
