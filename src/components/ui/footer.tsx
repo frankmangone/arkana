@@ -36,7 +36,7 @@ export async function Footer({ lang }: FooterProps) {
         <div className="flex flex-col items-center gap-8 md:flex-row md:items-start md:justify-between">
           <Link
             href={withLocalePath(lang)}
-            className="flex items-center gap-2.5 text-xl text-ink-heading transition-opacity hover:opacity-80"
+            className="flex items-center gap-2.5 text-xl text-primary-750 transition-opacity hover:opacity-80"
           >
             <Image
               src="/logo.svg"

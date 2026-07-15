@@ -36,9 +36,9 @@ export function LanguageSwitcher() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
-          variant="ghost"
+          variant="outline"
           size="sm"
-          className="flex cursor-pointer items-center gap-1.5 px-3 text-sm text-ink-muted hover:text-ink-heading"
+          className="flex cursor-pointer items-center gap-1.5"
         >
           <Globe className="h-4 w-4" />
           <span className="hidden sm:inline">

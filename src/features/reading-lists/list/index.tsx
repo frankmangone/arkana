@@ -1,6 +1,7 @@
 import { ReadingList } from "@/lib/reading-lists";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { EmptyState } from "@/components/empty-state";
+import { getPostsFromReadingList } from "../view/fetch";
 import { ReadingListCard } from "./components/reading-list-card";
 import type { Dictionary } from "@/lib/dictionaries";
 
@@ -10,8 +11,16 @@ interface ReadingListsPageProps {
   readingLists: ReadingList[];
 }
 
-export function ReadingListsPage(props: ReadingListsPageProps) {
+export async function ReadingListsPage(props: ReadingListsPageProps) {
   const { lang, dictionary, readingLists } = props;
+
+  // First article titles per list, so cards can preview their contents
+  const previews = await Promise.all(
+    readingLists.map(async (list) => {
+      const posts = await getPostsFromReadingList({ readingList: list, lang });
+      return posts.slice(0, 3).map((post) => post.title);
+    })
+  );
 
   return (
     <div className="container">
@@ -40,12 +49,13 @@ export function ReadingListsPage(props: ReadingListsPageProps) {
       )}
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {readingLists.map((list) => (
+        {readingLists.map((list, index) => (
           <ReadingListCard
             key={list.id}
             list={list}
             lang={lang}
             dictionary={dictionary}
+            previewTitles={previews[index]}
           />
         ))}
       </div>

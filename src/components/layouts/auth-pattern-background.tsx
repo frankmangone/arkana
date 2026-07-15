@@ -111,7 +111,7 @@ export function AuthPatternBackground() {
               <ArkanaPattern
                 elements={elements}
                 canvasSize={patternSize}
-                lineColor="hsl(262, 40%, 26%)"
+                lineColor="hsl(260, 60%, 22%)"
                 backgroundColor="transparent"
                 className="w-full h-full"
               />
@@ -119,14 +119,6 @@ export function AuthPatternBackground() {
           );
         })}
 
-        {/* Fade overlay - fades patterns to background color around the center */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse 60% 50% at center, transparent 0%, transparent 25%, rgba(24, 24, 27, 0.3) 45%, rgb(24, 24, 27) 70%, rgb(24, 24, 27) 100%)",
-          }}
-        />
       </div>
     </div>
   );

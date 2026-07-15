@@ -8,7 +8,7 @@ interface AuthLayoutProps {
 
 export async function AuthLayout({ children, lang }: AuthLayoutProps) {
   return (
-    <div className="relative min-h-screen flex flex-col bg-background">
+    <div className="brand-hero relative min-h-screen flex flex-col">
       <Navbar lang={lang} />
 
       {/* Background patterns container */}

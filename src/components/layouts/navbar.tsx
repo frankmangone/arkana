@@ -37,7 +37,7 @@ export const Navbar = async (props: NavbarProps) => {
       >
         <Link
           href={homeUrl}
-          className="flex items-center gap-2.5 text-xl text-ink-heading transition-opacity hover:opacity-80"
+          className="flex items-center gap-2.5 text-xl text-primary-750 transition-opacity hover:opacity-80"
         >
           <Image
             src="/logo.svg"

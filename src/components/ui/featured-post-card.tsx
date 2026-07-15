@@ -104,7 +104,7 @@ export function FeaturedPostCard(props: FeaturedPostCardProps) {
                 </p>
               </div>
             </div>
-            <div className="flex max-h-[56px] flex-wrap gap-2 overflow-hidden">
+            <div className="flex max-h-[64px] flex-wrap gap-2 overflow-hidden">
               {post.tags.map((tag) => (
                 <Tag key={tag} tag={tag} lang={lang} />
               ))}

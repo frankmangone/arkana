@@ -19,10 +19,12 @@ interface ReadingListCardProps {
   list: ReadingList;
   lang: string;
   dictionary: Dictionary;
+  previewTitles?: string[];
 }
 
 export function ReadingListCard(props: ReadingListCardProps) {
-  const { list, lang, dictionary } = props;
+  const { list, lang, dictionary, previewTitles = [] } = props;
+  const remaining = list.items.length - previewTitles.length;
 
   return (
     <div className="group h-full overflow-hidden rounded-md border border-rule transition-colors hover:border-rule-strong">
@@ -80,6 +82,35 @@ export function ReadingListCard(props: ReadingListCardProps) {
           <p className="line-clamp-2 text-sm text-ink-muted">
             {list.description}
           </p>
+
+          {/* Contents preview */}
+          {previewTitles.length > 0 && (
+            <ol className="!m-0 mt-5 flex-1 space-y-0 divide-y divide-rule border-t border-rule !p-0">
+              {previewTitles.map((title, index) => (
+                <li
+                  key={title}
+                  className="!m-0 flex items-baseline gap-3 py-2.5 before:!content-none"
+                >
+                  <span className="eyebrow shrink-0 tabular-nums text-primary-800">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className="truncate text-sm text-ink-body">
+                    {title}
+                  </span>
+                </li>
+              ))}
+              {remaining > 0 && (
+                <li className="!m-0 flex items-baseline gap-3 py-2.5 before:!content-none">
+                  <span className="eyebrow shrink-0 text-ink-faint">
+                    +{remaining}
+                  </span>
+                  <span className="truncate text-sm text-ink-faint">
+                    {dictionary.readingLists.articles}
+                  </span>
+                </li>
+              )}
+            </ol>
+          )}
         </div>
       </Link>
     </div>
