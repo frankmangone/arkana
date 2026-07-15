@@ -6,3 +6,4 @@ Developer: Frank
 - Retired the 3D render images and full-page pattern background; the content-hash glyph strip is now the signature brand element
 - Fixed a long-standing double anchor-scroll offset (headings now land right below the navbar) and removed the leftover search console.log
 - Verified with static builds, lint, and screenshots of every route (desktop + mobile + Spanish locale), including interactive quiz and anchor-jump tests
+- Iterated on the redesign after feedback: purple-tinted backgrounds everywhere (no more near-black), gradient hero and page-header color blocks, vivid gradient buttons, bigger hero typography, gradient quiz border restored

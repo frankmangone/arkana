@@ -30,9 +30,9 @@ export async function ReadingListPage(props: ReadingListPageProps) {
         {dict.readingLists.view.back}
       </Link>
 
-      <header className="mb-10 mt-6 border-b border-rule pb-6">
-        <div className="mb-3 flex items-center gap-3">
-          <h1 className="text-4xl font-bold tracking-tight text-ink-heading md:text-5xl">
+      <header className="brand-band mb-10 mt-6 px-6 py-10 md:px-10 md:py-14">
+        <div className="mb-4 flex flex-wrap items-center gap-3">
+          <h1 className="display-title !text-[clamp(2.5rem,5vw,4rem)]">
             {readingList.title}
           </h1>
           {readingList.ongoing && (

@@ -11,7 +11,7 @@ interface ReadingListsProps {
 
 export function ReadingLists({ lang, dictionary }: ReadingListsProps) {
   return (
-    <section className="border-y border-rule bg-surface-raised/50">
+    <section className="border-y border-rule bg-[image:var(--grad-band)]">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-16 md:flex-row md:items-center md:px-6 md:py-20 lg:px-8">
         <BookOpen
           className="hidden h-10 w-10 shrink-0 text-primary-700 lg:block"

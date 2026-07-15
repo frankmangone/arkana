@@ -98,6 +98,24 @@ component map and `DivSwitch` routing, the content-hash pipeline
 wallet/auth flows, static-export config (`next.config.ts`), logo files
 (`public/logo.svg` etc.), Space Grotesk.
 
+## Iteration 2 (2026-07-14, after Frank's review)
+
+Feedback: too much black, primary color underused, wants larger space
+occupation and linear gradients (closer to Consensys's bold color blocks).
+
+Changes, still on the same hue ramps:
+
+- Base surfaces become purple-tinted (page `hsl(260 30% 8%)`, raised/overlay
+  stepped up in the same hue); rules become purple-tinted instead of white.
+- New gradient tokens: `--grad-brand` (vivid primary-500 → secondary-500,
+  for buttons/accents), `--grad-band` (deep primary-100 → deep magenta, for
+  hero/header panels), `--grad-fade` / `--grad-fade-up` (soft section washes).
+- Primary buttons use the vivid brand gradient with white text.
+- Home hero: taller, bigger display type, gradient wash background.
+- Article + index pages: title headers sit on rounded deep-gradient panels.
+- Reading-lists band, survey banner, footer: gradient surfaces.
+- Quiz gets back a (subtle) gradient border as a nod to its old identity.
+
 ## 5. Verification
 
 No tests exist in the repo; the safety net is:

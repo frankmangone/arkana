@@ -21,8 +21,9 @@ interface QuizContentProps {
 
 const styles = {
   container: "relative -mt-7 z-[1] w-full overflow-visible",
-  borderWrapper: "mt-[-1] border border-t-0 border-rule rounded-b-md",
-  content: "relative bg-surface-page p-6 pt-22 overflow-visible rounded-b-md",
+  borderWrapper: "mt-[-1] p-px pt-0 bg-[image:var(--grad-brand)] rounded-b-md",
+  content:
+    "relative bg-surface-raised p-6 pt-22 overflow-visible rounded-b-[calc(var(--radius)-1px)]",
   quizType: "absolute top-0 right-0 bg-primary-700 p-2",
   quizTypeText: "text-background text-md",
   title: "font-semibold text-xl mt-4 sm:mt-0 mb-4 flex",

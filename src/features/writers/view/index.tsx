@@ -120,7 +120,7 @@ export default function WriterPage({
           </p>
           <Link
             href={withLocalePath(lang)}
-            className="inline-flex items-center justify-center rounded-[4px] bg-primary-700 px-6 py-3 font-medium text-[#161226] transition-colors hover:bg-primary-750"
+            className="inline-flex items-center justify-center rounded-[4px] bg-[image:var(--grad-brand)] px-6 py-3 font-medium text-white transition-[filter] hover:brightness-110"
           >
             {dictionary.writers.noArticlesInLanguage.button}
           </Link>

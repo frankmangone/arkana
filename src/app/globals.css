@@ -307,22 +307,45 @@
 }
 
 .dark {
-  --background: oklch(0.141 0.005 285.823);
+  --background: hsl(260, 30%, 8%);
   --foreground: oklch(0.985 0 0);
 
-  /* Dark-editorial semantic layer */
-  --surface-page: oklch(0.141 0.005 285.823);
-  --surface-raised: oklch(0.175 0.006 286);
-  --surface-overlay: oklch(0.23 0.008 286);
+  /* Dark-editorial semantic layer — purple-tinted, not black */
+  --surface-page: hsl(260, 30%, 8%);
+  --surface-raised: hsl(260, 28%, 12%);
+  --surface-overlay: hsl(260, 26%, 17%);
   --ink-heading: #f8f5ff;
   --ink-body: #e1dfe4;
-  --ink-muted: #a9a6b2;
-  --ink-faint: #7f7e84;
-  --rule: rgba(255, 255, 255, 0.08);
-  --rule-strong: rgba(255, 255, 255, 0.16);
-  --card: oklch(0.21 0.006 285.885);
+  --ink-muted: #aca6bd;
+  --ink-faint: #837c94;
+  --rule: hsla(260, 70%, 75%, 0.14);
+  --rule-strong: hsla(260, 70%, 75%, 0.26);
+
+  /* Brand gradients */
+  --grad-brand: linear-gradient(
+    135deg,
+    var(--primary-500),
+    var(--secondary-500)
+  );
+  --grad-band: linear-gradient(
+    150deg,
+    hsl(260, 62%, 22%) 0%,
+    hsl(268, 65%, 16%) 55%,
+    hsl(276, 70%, 13%) 100%
+  );
+  --grad-fade: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--primary-500) 16%, transparent),
+    transparent
+  );
+  --grad-fade-up: linear-gradient(
+    0deg,
+    color-mix(in srgb, var(--primary-500) 12%, transparent),
+    transparent
+  );
+  --card: hsl(260, 28%, 12%);
   --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.21 0.006 285.885);
+  --popover: hsl(260, 28%, 12%);
   --popover-foreground: oklch(0.985 0 0);
   --primary-foreground: oklch(0.21 0.006 285.885);
 
@@ -522,11 +545,11 @@
   --incorrect-800: #fdc9b5;
   --incorrect-900: #fee4da;
 
-  --secondary: oklch(0.274 0.006 286.033);
+  --secondary: hsl(260, 26%, 17%);
   --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.274 0.006 286.033);
+  --muted: hsl(260, 26%, 17%);
   --muted-foreground: oklch(0.705 0.015 286.067);
-  --accent: oklch(0.274 0.006 286.033);
+  --accent: hsl(260, 26%, 17%);
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 10%);
@@ -579,11 +602,30 @@
   }
 
   .display-title {
-    font-size: clamp(2.5rem, 5.5vw, 4.25rem);
-    line-height: 1.05;
+    font-size: clamp(2.75rem, 6.5vw, 5.25rem);
+    line-height: 1.03;
     letter-spacing: -0.02em;
     font-weight: 700;
     color: var(--ink-heading);
+  }
+
+  /* Deep-gradient header panel (Consensys-style color block) */
+  .brand-band {
+    background-image: var(--grad-band);
+    border: 1px solid var(--rule);
+    border-radius: calc(var(--radius) + 4px);
+  }
+
+  /* Vivid gradient text accent — use sparingly */
+  .grad-text {
+    background-image: linear-gradient(
+      100deg,
+      var(--primary-750),
+      var(--secondary-700)
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
   }
 }
 

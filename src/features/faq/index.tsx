@@ -12,8 +12,8 @@ export async function FAQPage({ lang }: FAQPageProps) {
   return (
     <article className="container py-8 max-w-3xl mx-auto">
       <div className="space-y-8">
-        <div className="space-y-2">
-          <h1 className="text-4xl mb-6 font-bold tracking-tight text-ink-heading md:text-5xl">
+        <div className="brand-band px-6 py-10 md:px-10 md:py-14">
+          <h1 className="display-title !text-[clamp(2.25rem,4.5vw,3.5rem)]">
             {dict.faq.title || "Frequently Asked Questions"}
           </h1>
         </div>

@@ -34,11 +34,11 @@ export function BlogPage({
 
   return (
     <div className="container py-8">
-      <header className="mb-10 border-b border-rule pb-6">
-        <p className="eyebrow mb-3 text-primary-800">
+      <header className="brand-band mb-10 px-6 py-10 md:px-10 md:py-14">
+        <p className="eyebrow mb-3 text-primary-850">
           {dictionary.home.recentPosts.title}
         </p>
-        <h1 className="text-4xl font-bold tracking-tight text-ink-heading md:text-5xl">
+        <h1 className="display-title !text-[clamp(2.5rem,5vw,4rem)]">
           {dictionary.blog.title}
         </h1>
       </header>

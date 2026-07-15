@@ -24,17 +24,25 @@ export async function PostHeader(props: PostHeaderProps) {
 
   return (
     <header className="mb-10">
-      <div className="mb-6 flex flex-wrap gap-2">
-        {metadata.tags.map((tag) => (
-          <Tag key={tag} tag={tag} lang={lang} />
-        ))}
+      <div className="brand-band mb-6 px-6 py-10 md:px-10 md:py-14">
+        <div className="mb-7 flex flex-wrap gap-2">
+          {metadata.tags.map((tag) => (
+            <Tag key={tag} tag={tag} lang={lang} />
+          ))}
+        </div>
+
+        <h1 className="mb-10 text-4xl font-bold leading-[1.08] tracking-tight text-ink-heading md:text-[3.5rem]">
+          {metadata.title}
+        </h1>
+
+        <ArkanaStrip
+          content={post.content}
+          preCalculatedHash={metadata.contentHash}
+          className="!my-0 opacity-90"
+        />
       </div>
 
-      <h1 className="mb-8 text-4xl font-bold leading-[1.1] tracking-tight text-ink-heading md:text-5xl">
-        {metadata.title}
-      </h1>
-
-      <div className="flex flex-col gap-4 border-y border-rule py-4 md:flex-row md:items-center md:justify-between">
+      <div className="flex flex-col gap-4 border-b border-rule pb-4 md:flex-row md:items-center md:justify-between">
         <div className="flex items-center gap-3">
           <Link href={`/${lang}/writers/${writer.slug}`} className="no-underline">
             <Avatar className="h-9 w-9">
@@ -83,12 +91,6 @@ export async function PostHeader(props: PostHeaderProps) {
           </div>
         )}
       </div>
-
-      <ArkanaStrip
-        content={post.content}
-        preCalculatedHash={metadata.contentHash}
-        className="mt-8 opacity-70"
-      />
     </header>
   );
 }

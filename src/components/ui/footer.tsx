@@ -31,7 +31,7 @@ export async function Footer({ lang }: FooterProps) {
   ];
 
   return (
-    <footer className="mt-24 border-t border-rule">
+    <footer className="mt-24 border-t border-rule bg-[image:var(--grad-fade-up)]">
       <div className="mx-auto max-w-6xl px-4 py-12 md:px-6 lg:px-8">
         <div className="flex flex-col items-center gap-8 md:flex-row md:items-start md:justify-between">
           <Link
@@ -63,7 +63,7 @@ export async function Footer({ lang }: FooterProps) {
 
         <ArkanaStrip
           randomSeed={FOOTER_STRIP_SEED}
-          className="my-10 opacity-30"
+          className="my-10 opacity-50"
         />
 
         <div className="flex flex-wrap justify-center gap-2 text-center">
