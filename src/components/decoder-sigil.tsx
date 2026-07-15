@@ -200,20 +200,9 @@ export function DecoderSigil({ content, className }: DecoderSigilProps) {
     };
   }, [target]);
 
-  // Playful: re-run the decode on hover once it has settled
-  const handleMouseEnter = () => {
-    const anim = animRef.current;
-    if (reducedRef.current || anim.mode !== "idle") return;
-    anim.mode = "decode";
-    anim.rank = shuffledRanks();
-    anim.locked = 0;
-    anim.tick = 0;
-  };
-
   return (
     <div
       ref={containerRef}
-      onMouseEnter={handleMouseEnter}
       className={`grid grid-cols-4 ${className ?? ""}`}
       aria-hidden="true"
     >
