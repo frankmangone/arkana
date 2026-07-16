@@ -18,7 +18,8 @@ interface PostHeaderProps {
   breadcrumbs?: BreadcrumbItem[];
 }
 
-const HERO_GLYPH_INK = "hsl(260, 60%, 18%)";
+// ~3.4:1 against --grad-hero: decorative texture, deliberately quieter than text
+const HERO_GLYPH_INK = "hsl(260, 50%, 28%)";
 
 export async function PostHeader(props: PostHeaderProps) {
   const { post, lang, path, breadcrumbs } = props;
@@ -30,19 +31,26 @@ export async function PostHeader(props: PostHeaderProps) {
     <header className="mb-10">
       {/* Full-bleed vivid hero field */}
       <div className="full-bleed brand-hero">
-        <div className="mx-auto max-w-6xl px-4 pb-16 pt-8 md:px-6 md:pb-24 lg:px-8">
+        <div className="px-4 pb-16 pt-8 md:px-6 md:pb-24 lg:px-8">
+          {/* From xl, indent the breadcrumbs to the title column's left edge
+              ((100% - 48rem)/2), so they sit on the same axis as the
+              tags/title/body reading flow. */}
           {breadcrumbs && (
             <Breadcrumbs
               lang={lang}
               items={breadcrumbs}
               variant="onBrand"
-              className="mb-12 md:mb-16"
+              className="mb-12 md:mb-16 xl:ml-[max(0rem,calc((100%-48rem)/2))]"
             />
           )}
 
-          <div className="grid gap-10 lg:grid-cols-[220px_1fr] lg:gap-16">
+          {/* The center column is minmax(0,48rem) flanked by equal 1fr
+              gutters, so it sits exactly where the article's centered
+              max-w-3xl column does and the title aligns with the body.
+              The metadata rail occupies the left gutter from xl up. */}
+          <div className="flex flex-col gap-10 xl:grid xl:grid-cols-[1fr_minmax(0,48rem)_1fr] xl:gap-x-10">
             {/* Metadata rail */}
-            <aside className="order-2 flex flex-wrap items-start gap-x-12 gap-y-7 lg:order-1 lg:flex-col">
+            <aside className="order-2 mx-auto flex w-full max-w-3xl flex-wrap items-start gap-x-12 gap-y-7 xl:order-1 xl:col-start-1 xl:row-start-1 xl:mx-0 xl:w-44 xl:max-w-none xl:flex-col xl:justify-self-end">
               <div>
                 <p className="eyebrow mb-1.5 font-semibold text-ink-on-brand">
                   {dict.blog.date}
@@ -101,7 +109,7 @@ export async function PostHeader(props: PostHeaderProps) {
             </aside>
 
             {/* Title block */}
-            <div className="order-1 lg:order-2">
+            <div className="order-1 mx-auto w-full max-w-3xl xl:order-2 xl:col-start-2 xl:row-start-1 xl:mx-0 xl:max-w-none">
               <div className="mb-8 flex flex-wrap gap-2 [&_[data-slot=badge]]:border-rule-on-brand [&_[data-slot=badge]]:text-ink-on-brand-soft">
                 {metadata.tags.map((tag) => (
                   <Tag key={tag} tag={tag} lang={lang} />

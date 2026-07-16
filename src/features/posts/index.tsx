@@ -7,6 +7,7 @@ import { NotFoundInLanguage } from "@/components/not-found-in-language";
 import Script from "next/script";
 import { getWriter } from "@/lib/writers";
 import { PostContent } from "@/components/ui/post-content";
+import { ReadingProgress } from "@/components/ui/reading-progress";
 import { SectionDivider } from "@/components/ui/section-divider";
 import BuyMeCoffeeWidget from "@/components/ui/buy-me-coffee";
 import { CommentSection } from "@/components/ui/comments";
@@ -111,6 +112,7 @@ export async function PostPage(props: PostPageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       {header}
+      <ReadingProgress />
       <PostContent post={post} quizDictionary={dict.quiz} />
       <SectionDivider />
       {writer.walletAddress &&

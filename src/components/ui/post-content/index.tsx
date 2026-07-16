@@ -33,7 +33,10 @@ export function PostContent({ post, quizDictionary }: PostContentProps) {
   const processedContent = processContent(post.content);
 
   return (
-    <div className="prose prose-gray dark:prose-invert relative max-w-none mb-8">
+    <div
+      data-post-body
+      className="prose prose-gray dark:prose-invert relative max-w-none mb-8"
+    >
       <HashScrollFix />
       {/* Sticky contents rail in the right margin on wide screens */}
       <div className="hidden xl:block absolute left-full top-0 bottom-0 ml-10 w-52">

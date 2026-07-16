@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import { PostContent } from "@/components/ui/post-content";
+import { ReadingProgress } from "@/components/ui/reading-progress";
 import { PostHeader } from "@/components/ui/post-header";
 import { Post } from "@/lib/types";
 import { getWriter } from "@/lib/writers";
@@ -100,6 +101,7 @@ export async function ReadingListPostPage(props: ReadingListPostPageProps) {
           { label: post.metadata.title },
         ]}
       />
+      <ReadingProgress />
       <PostContent post={post} />
       <Navigation lang={lang} id={id} prevItem={prevItem} nextItem={nextItem} />
       <SectionDivider />

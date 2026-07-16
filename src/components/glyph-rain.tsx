@@ -104,8 +104,9 @@ function drawGlyph(
 export function GlyphRain({
   className = "",
   cellSize = 44,
-  color = "hsl(260, 60%, 18%)",
-  headColor = "hsl(260, 70%, 5%)",
+  // tuned against the lightened --grad-hero to keep the rain a quiet texture
+  color = "hsl(260, 50%, 28%)",
+  headColor = "hsl(260, 70%, 10%)",
 }: GlyphRainProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 

@@ -37,7 +37,7 @@ export function generateBaseMetadata({
     ? image.startsWith("http")
       ? image
       : withSiteUrl(image)
-    : withSiteUrl("/og.png");
+    : withSiteUrl("/og.png?v=2"); // ?v busts scraper caches (Slack/Twitter) when the image changes
 
   const metadata: Metadata = {
     title,

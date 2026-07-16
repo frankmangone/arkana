@@ -80,7 +80,7 @@ export const metadata: Metadata = {
     url: "/",
     images: [
       {
-        url: "/og.png",
+        url: "/og.png?v=2",
         width: 1200,
         height: 630,
         alt: "Arkana - Cryptography, Blockchain & Mathematics Learning Platform",
@@ -92,7 +92,7 @@ export const metadata: Metadata = {
     title: "Arkana | Cryptography, Blockchain & Mathematics Learning",
     description:
       "Learn cryptography, blockchain technology, and mathematics with comprehensive tutorials covering zero-knowledge proofs, elliptic curves, smart contracts, and more.",
-    images: ["/og.png"],
+    images: ["/og.png?v=2"],
     creator: "@arkana_blog",
   },
   alternates: {
@@ -199,9 +199,12 @@ export default async function RootLayout({
   return (
     <html lang={lang} suppressHydrationWarning>
       <head>
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css"
+        {/* Inline so it applies before any stylesheet arrives: keeps any
+            pre-paint window dark instead of white. */}
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `html { background-color: hsl(260, 30%, 8%); }`,
+          }}
         />
         <script
           dangerouslySetInnerHTML={{
