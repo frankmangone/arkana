@@ -34,6 +34,30 @@ async function waitForTask(host: string, key: string, taskUid: number) {
   throw new Error(`Task ${taskUid} did not complete in time`);
 }
 
+/**
+ * Ensures the index accepts `filter: "tags = ..."` queries (used by the
+ * backend's tag-filtered search). Idempotent: PATCHing the same value is a
+ * cheap no-op task, so it's safe to run before every indexing call.
+ */
+export async function ensureFilterableTags(indexUid: string) {
+  const { host, key } = getConfig();
+
+  const response = await fetch(`${host}/indexes/${indexUid}/settings`, {
+    method: "PATCH",
+    headers: headers(key),
+    body: JSON.stringify({ filterableAttributes: ["tags"] }),
+  });
+
+  if (!response.ok) {
+    throw new Error(
+      `Failed to update index settings: ${response.status} ${await response.text()}`
+    );
+  }
+
+  const { taskUid } = await response.json();
+  return waitForTask(host, key, taskUid);
+}
+
 export async function indexDocument(
   indexUid: string,
   document: Record<string, unknown>
