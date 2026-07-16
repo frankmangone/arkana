@@ -1,4 +1,7 @@
+"use client";
+
 import { getTagDisplayName } from "@/lib/tags";
+import { withLocalePath } from "@/lib/site-config";
 import { Badge } from "../ui/badge";
 
 interface TagProps {
@@ -9,11 +12,26 @@ interface TagProps {
 export function Tag(props: TagProps) {
   const { tag, lang } = props;
 
-  // Disable link for now
+  // Button (not a link): tags render inside post-card <Link>s, where a
+  // nested <a> would be invalid HTML. Full navigation on purpose — the
+  // blog grid reads ?tag= on mount.
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    window.location.assign(
+      withLocalePath(lang, `blog/page/1?tag=${encodeURIComponent(tag)}`)
+    );
+  };
 
   return (
-    // <Link key={tag} href={`/${lang}/blog?tag=${tag}`}>
-    <Badge variant="default">{getTagDisplayName(tag, lang)}</Badge>
-    // </Link>
+    <Badge asChild variant="default">
+      <button
+        type="button"
+        onClick={handleClick}
+        className="cursor-pointer hover:border-primary-700 hover:text-primary-800"
+      >
+        {getTagDisplayName(tag, lang)}
+      </button>
+    </Badge>
   );
 }

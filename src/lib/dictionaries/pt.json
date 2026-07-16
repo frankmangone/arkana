@@ -42,6 +42,8 @@
     "readingTime": "de leitura",
     "filterByTag": "Filtrar por tag",
     "allPosts": "Todas as Postagens",
+    "showAllTags": "+{count} mais",
+    "showFewerTags": "Mostrar menos",
     "noPosts": "Nenhuma postagem encontrada",
     "tryDifferentTag": "Tente uma tag diferente ou veja todas as postagens",
     "viewAllPosts": "Ver todas as postagens",

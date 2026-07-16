@@ -42,6 +42,8 @@
     "readingTime": "de lectura",
     "filterByTag": "Filtrar por etiqueta",
     "allPosts": "Todas las Publicaciones",
+    "showAllTags": "+{count} más",
+    "showFewerTags": "Mostrar menos",
     "noPosts": "No se encontraron publicaciones",
     "tryDifferentTag": "Prueba con una etiqueta diferente o ve todas las publicaciones",
     "viewAllPosts": "Ver todas las publicaciones",

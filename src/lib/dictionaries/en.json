@@ -42,6 +42,8 @@
     "readingTime": "read",
     "filterByTag": "Filter by tag",
     "allPosts": "All Posts",
+    "showAllTags": "+{count} more",
+    "showFewerTags": "Show fewer",
     "noPosts": "No posts found",
     "tryDifferentTag": "Try a different tag or view all posts",
     "viewAllPosts": "View all posts",

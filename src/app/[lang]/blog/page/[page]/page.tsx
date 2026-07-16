@@ -47,6 +47,7 @@ export default async function Page({ params }: BlogPageProps) {
       <BlogPage
         lang={lang}
         posts={paginatedPosts}
+        allPosts={allPosts}
         dictionary={dict}
         currentPage={pageNumber}
         totalPages={totalPages}
