@@ -8,7 +8,7 @@ import { useSearch } from "@/lib/api/hooks";
 import { withLocalePath, withSiteUrl } from "@/lib/site-config";
 import type { Dictionary } from "@/lib/dictionaries";
 import type { SearchHit } from "@/lib/api/services/search";
-import { useDebouncedValue } from "../hooks/use-debounced-value";
+import { useDebouncedValue } from "@/hooks/use-debounced-value";
 
 const RESULT_LIMIT = 3;
 const DEBOUNCE_MS = 500;

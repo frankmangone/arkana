@@ -14,12 +14,12 @@ export function Tag(props: TagProps) {
 
   // Button (not a link): tags render inside post-card <Link>s, where a
   // nested <a> would be invalid HTML. Full navigation on purpose — the
-  // blog grid reads ?tag= on mount.
+  // blog grid reads ?tags= on mount.
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     window.location.assign(
-      withLocalePath(lang, `blog/page/1?tag=${encodeURIComponent(tag)}`)
+      withLocalePath(lang, `blog/page/1?tags=${encodeURIComponent(tag)}`)
     );
   };
 

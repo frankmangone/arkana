@@ -43,10 +43,11 @@ export function BlogPage({
         currentPage={currentPage}
         totalPages={totalPages}
         labels={{
+          filters: dictionary.blog.filters,
           filterByTag: dictionary.blog.filterByTag,
-          allPosts: dictionary.blog.allPosts,
-          showAllTags: dictionary.blog.showAllTags,
-          showFewerTags: dictionary.blog.showFewerTags,
+          searchTags: dictionary.blog.searchTags,
+          noTagsFound: dictionary.blog.noTagsFound,
+          searching: dictionary.search.searching,
           noPosts: dictionary.blog.noPosts,
           tryDifferentTag: dictionary.blog.tryDifferentTag,
           viewAllPosts: dictionary.blog.viewAllPosts,
