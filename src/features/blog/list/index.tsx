@@ -22,7 +22,7 @@ export function BlogPage({
 }: BlogPageProps) {
   return (
     <div className="container pb-8">
-      <header className="mb-12 pb-10 pt-8">
+      <header className="mb-12 pb-4 pt-8">
         <Breadcrumbs
           lang={lang}
           items={[{ label: dictionary.blog.title }]}

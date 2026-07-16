@@ -2,16 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { LanguageSwitcher } from "../language-switcher";
 import { getDictionary } from "@/lib/dictionaries";
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { AuthButton } from "../auth-button";
+import { MobileMenu } from "./mobile-menu";
 import { withLocalePath } from "@/lib/site-config";
 
 interface NavbarProps {
@@ -69,42 +62,20 @@ export const Navbar = async (props: NavbarProps) => {
           </nav>
 
           <LanguageSwitcher />
-          <AuthButton />
 
-          {/* Mobile hamburger menu */}
+          {/* On mobile the sign-in / account actions live in the hamburger */}
+          <div className="hidden md:block">
+            <AuthButton />
+          </div>
+
           <div className="md:hidden">
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="h-10 w-10 cursor-pointer"
-                >
-                  <Menu className="h-5 w-5" />
-                  <span className="sr-only">Toggle menu</span>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-56">
-                <DropdownMenuItem asChild>
-                  <Link
-                    href={readingListsUrl}
-                    className="w-full cursor-pointer py-3 text-base"
-                  >
-                    {dict.readingLists.list.title}
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link
-                    href="https://forms.gle/NLk49eNnu6jTwGMt8"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full cursor-pointer py-3 text-base"
-                  >
-                    {dict.blog.survey}
-                  </Link>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            <MobileMenu
+              lang={lang}
+              labels={{
+                readingLists: dict.readingLists.list.title,
+                survey: dict.blog.survey,
+              }}
+            />
           </div>
         </div>
       </div>
