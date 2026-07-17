@@ -20,3 +20,19 @@ Developer: Frank
 - Remote tag enablement: publish-content.js now applies tag-filter/facet settings before each index write, plus an ephemeral scripts/apply-tag-settings-remote.js (untracked, delete after use) that enables tag search on the remote indexes over SSH — no bulk re-publish needed since remote docs already carry tags
 - Blog multi-tag filtering: collapsible Filters section with a tag type-ahead (backend facet search, most-used tags on focus), removable tag pills, shareable tags=a,b URLs, AND semantics; static first paint preserved when no tags are active, silent client-side fallback if the API is down; tag clicks anywhere now navigate to the filtered blog
 - Navbar polish: language and sign-in controls restyled as borderless uppercase links matching the nav items, sign-in/account actions moved into the mobile hamburger, and the login page glyph field now tiles the entire viewport
+
+Date: 2026-07-17
+Developer: co-work
+
+- Completed the full SEO improvement plan (14 items) on branch feature/seo-improvements, executed and reviewed task-by-task:
+- Search engines can now find a full site map of every page (sitemap.xml) and know which pages they're allowed to crawl (robots.txt)
+- Untranslated articles no longer create dead "Post Not Found" pages that search engines could index by mistake, and language links (e.g. "read this in Spanish") only appear when a translation actually exists
+- The homepage now loads real content directly instead of a blank placeholder that immediately redirected, and every page correctly declares its language to browsers and search engines
+- Rich search-result data (article previews, organization info) now renders directly in the page instead of loading in after the fact, so it reliably shows up in Google
+- Fixed a broken icon reference and a broken logo link that were both quietly 404ing
+- The blog listing, writer profile pages, and reading-list articles now each have one clear, correct address search engines should index, instead of duplicate/near-duplicate versions competing with each other
+- Clicking a topic tag now lands on a dedicated, search-indexable page for that topic (e.g. "Zero-Knowledge Proofs") instead of only filtering the current view
+- Added an RSS feed per language so readers and feed tools can subscribe to new articles
+- Strengthened the default page description search engines show, and removed an outdated field they no longer use
+- Article pages now announce their breadcrumb trail to search engines, writer profile pages describe the author as a structured "Person" (name, photo, bio, socials), and the FAQ page marks up its three questions so they can show up as rich snippets in search results
+- Verified with full site builds, an automated content check, and lint after every step; one cross-page inconsistency (reading-list article pages linking to translations that don't exist) was caught in final review and fixed before merge
