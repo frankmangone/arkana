@@ -6,6 +6,7 @@ import { getAllPosts } from "@/lib/posts";
 import { readingLists } from "@/lib/reading-lists";
 import { writers } from "@/lib/writers";
 import { POSTS_PER_PAGE } from "./[lang]/blog/page/[page]/static-params";
+import { getTagsForLanguage } from "./[lang]/blog/tags/[tag]/static-params";
 
 export const dynamic = "force-static";
 
@@ -78,6 +79,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const path = `writers/${writer.slug}`;
     for (const lang of languages) {
       entries.push({ url: url(lang, path), alternates: alternatesFor(path, languages) });
+    }
+  }
+
+  // Tag hub pages
+  for (const lang of languages) {
+    for (const tag of await getTagsForLanguage(lang)) {
+      entries.push({ url: url(lang, `blog/tags/${tag}`) });
     }
   }
 
