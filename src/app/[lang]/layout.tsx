@@ -19,33 +19,8 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   title: "Arkana | Cryptography, Blockchain & Mathematics Learning",
-  description: "Where technology meets clarity.",
-  keywords: [
-    "cryptography",
-    "blockchain",
-    "mathematics",
-    "elliptic curves",
-    "zero knowledge proofs",
-    "smart contracts",
-    "solana",
-    "ethereum",
-    "encryption",
-    "hashing",
-    "protocols",
-    "learning",
-    "tutorials",
-    "programming",
-    "computer science",
-    "technology education",
-    "web3",
-    "bitcoin",
-    "digital signatures",
-    "consensus algorithms",
-    "rollups",
-    "internet protocols",
-    "TCP/IP",
-    "DNS",
-  ],
+  description:
+    "Learn cryptography, blockchain technology, and mathematics with clear, beginner-friendly tutorials — zero-knowledge proofs, elliptic curves, smart contracts, and more.",
   authors: [{ name: "Frank Mangone" }, { name: "Gonzalo Bustos" }],
   creator: "Frank Mangone",
   publisher: "Arkana",
@@ -97,6 +72,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     languages: {
+      "x-default": "/en",
       en: "/en",
       es: "/es",
       pt: "/pt",
