@@ -45,5 +45,6 @@ export async function generateMetadata({
     authors: [post.metadata.author],
     tags: post.metadata.tags,
     keywords: post.metadata.tags,
+    canonicalPath: `blog/${postFromReadingList.slug}`,
   });
 }
