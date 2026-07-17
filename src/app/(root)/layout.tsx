@@ -1,4 +1,5 @@
 import type React from "react";
+import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
 import "../globals.css";
 import "katex/dist/katex.min.css";
@@ -19,7 +20,35 @@ const spaceGrotesk = Space_Grotesk({
 // Root layout for "/" only (English, no locale prefix) — a sibling root to
 // (localized)/[lang]/layout.tsx via route groups, so Next.js lets each
 // declare its own <html>. Keep this in sync with that file: both must stay
-// structurally equivalent (fonts, providers, dark-theme bootstrap, schema).
+// structurally equivalent (fonts, providers, dark-theme bootstrap, schema,
+// and this static metadata export — icons/robots/authors are layout-level
+// here, not covered by the page's own generateMetadata).
+export const metadata: Metadata = {
+  authors: [{ name: "Frank Mangone" }, { name: "Gonzalo Bustos" }],
+  creator: "Frank Mangone",
+  publisher: "Arkana",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "32x32", type: "image/x-icon" },
+      { url: "/logo.svg", type: "image/svg+xml" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    other: [{ url: "/logo.png", sizes: "60x60", type: "image/png" }],
+  },
+};
 export default async function RootLayout({
   children,
 }: {
