@@ -31,5 +31,6 @@ export async function generateMetadata({
     description,
     ogTitle: dict.blog.title,
     type: "website",
+    ...(pageNumber === 1 ? { canonicalPath: "blog" } : {}),
   });
 }

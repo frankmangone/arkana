@@ -23,6 +23,7 @@ interface BaseMetadataOptions {
   tags?: string[];
   keywords?: string[];
   availableLanguages?: string[]; // languages this page exists in; defaults to all
+  canonicalPath?: string; // canonical target when this URL is a duplicate (defaults to path)
 }
 
 export function generateBaseMetadata({
@@ -39,8 +40,10 @@ export function generateBaseMetadata({
   tags,
   keywords,
   availableLanguages,
+  canonicalPath,
 }: BaseMetadataOptions): Metadata {
-  const fullPath = path ? `/${lang}/${path}` : `/${lang}`;
+  const effectivePath = canonicalPath ?? path;
+  const fullPath = effectivePath ? `/${lang}/${effectivePath}` : `/${lang}`;
   const canonicalUrl = `${SITE_URL}${fullPath}`;
   const imageUrl = image
     ? image.startsWith("http")
@@ -52,11 +55,11 @@ export function generateBaseMetadata({
   const languageAlternates: Record<string, string> = {};
   for (const language of available) {
     languageAlternates[language] =
-      `${SITE_URL}/${language}${path ? `/${path}` : ""}`;
+      `${SITE_URL}/${language}${effectivePath ? `/${effectivePath}` : ""}`;
   }
   if (available.includes(defaultLanguage)) {
     languageAlternates["x-default"] =
-      `${SITE_URL}/${defaultLanguage}${path ? `/${path}` : ""}`;
+      `${SITE_URL}/${defaultLanguage}${effectivePath ? `/${effectivePath}` : ""}`;
   }
 
   const metadata: Metadata = {
