@@ -185,14 +185,6 @@ export default async function RootLayout({
     publisher: {
       "@id": `${baseUrl}/#organization`,
     },
-    potentialAction: {
-      "@type": "SearchAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: `${baseUrl}/search?q={search_term_string}`,
-      },
-      "query-input": "required name=search_term_string",
-    },
     inLanguage: ["en", "es", "pt"],
   };
 
@@ -219,15 +211,13 @@ export default async function RootLayout({
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body className={`${spaceGrotesk.className} ${spaceGrotesk.variable}`}>
-        <Script
-          id="organization-schema"
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(organizationJsonLd),
           }}
         />
-        <Script
-          id="website-schema"
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(websiteJsonLd),
