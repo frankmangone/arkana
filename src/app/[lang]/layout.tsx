@@ -1,7 +1,7 @@
 import type React from "react";
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import "katex/dist/katex.min.css";
 import "prismjs/themes/prism-tomorrow.css";
 import { ThemeProvider } from "@/components/theme-provider";
