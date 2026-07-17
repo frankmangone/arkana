@@ -209,6 +209,12 @@ export default async function RootLayout({
           }}
         />
         <link rel="manifest" href="/manifest.json" />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="Arkana RSS"
+          href={`/${lang}/rss.xml`}
+        />
       </head>
       <body className={`${spaceGrotesk.className} ${spaceGrotesk.variable}`}>
         <script
