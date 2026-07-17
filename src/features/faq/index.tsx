@@ -10,8 +10,24 @@ interface FAQPageProps {
 export async function FAQPage({ lang }: FAQPageProps) {
   const dict = await getDictionary(lang);
 
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [dict.faq.wallet, dict.faq.privacy, dict.faq.security].map(
+      (entry) => ({
+        "@type": "Question",
+        name: entry.question,
+        acceptedAnswer: { "@type": "Answer", text: entry.answer },
+      })
+    ),
+  };
+
   return (
     <article className="container pb-8 max-w-3xl mx-auto">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <div className="space-y-8">
         <div className="full-bleed brand-hero">
           <div className="mx-auto max-w-6xl px-4 pb-14 pt-8 md:px-6 md:pb-20 lg:px-8">

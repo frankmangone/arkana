@@ -4,7 +4,6 @@ import { getPostBySlug } from "./actions";
 import { PostHeader } from "../../components/ui/post-header";
 import { Metadata } from "next";
 import { NotFoundInLanguage } from "@/components/not-found-in-language";
-import Script from "next/script";
 import { getWriter } from "@/lib/writers";
 import { PostContent } from "@/components/ui/post-content";
 import { ReadingProgress } from "@/components/ui/reading-progress";
@@ -92,7 +91,7 @@ export async function PostPage(props: PostPageProps) {
       name: "Arkana",
       logo: {
         "@type": "ImageObject",
-        url: withSiteUrl("/images/logo.png"),
+        url: withSiteUrl("/logo.png"),
       },
     },
     url: postUrl,
@@ -104,12 +103,40 @@ export async function PostPage(props: PostPageProps) {
     inLanguage: lang,
   };
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Arkana",
+        item: `${baseUrl}${withLocalePath(lang)}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: dict.blog.title,
+        item: `${baseUrl}${withLocalePath(lang, "blog")}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: post.metadata.title,
+        item: postUrl,
+      },
+    ],
+  };
+
   return (
     <article className="container pb-8 max-w-3xl mx-auto">
-      <Script
-        id="article-schema"
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       {header}
       <ReadingProgress />

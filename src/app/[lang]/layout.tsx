@@ -1,7 +1,7 @@
 import type React from "react";
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import "katex/dist/katex.min.css";
 import "prismjs/themes/prism-tomorrow.css";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -19,33 +19,8 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   title: "Arkana | Cryptography, Blockchain & Mathematics Learning",
-  description: "Where technology meets clarity.",
-  keywords: [
-    "cryptography",
-    "blockchain",
-    "mathematics",
-    "elliptic curves",
-    "zero knowledge proofs",
-    "smart contracts",
-    "solana",
-    "ethereum",
-    "encryption",
-    "hashing",
-    "protocols",
-    "learning",
-    "tutorials",
-    "programming",
-    "computer science",
-    "technology education",
-    "web3",
-    "bitcoin",
-    "digital signatures",
-    "consensus algorithms",
-    "rollups",
-    "internet protocols",
-    "TCP/IP",
-    "DNS",
-  ],
+  description:
+    "Learn cryptography, blockchain technology, and mathematics with clear, beginner-friendly tutorials — zero-knowledge proofs, elliptic curves, smart contracts, and more.",
   authors: [{ name: "Frank Mangone" }, { name: "Gonzalo Bustos" }],
   creator: "Frank Mangone",
   publisher: "Arkana",
@@ -97,6 +72,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     languages: {
+      "x-default": "/en",
       en: "/en",
       es: "/es",
       pt: "/pt",
@@ -185,14 +161,6 @@ export default async function RootLayout({
     publisher: {
       "@id": `${baseUrl}/#organization`,
     },
-    potentialAction: {
-      "@type": "SearchAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: `${baseUrl}/search?q={search_term_string}`,
-      },
-      "query-input": "required name=search_term_string",
-    },
     inLanguage: ["en", "es", "pt"],
   };
 
@@ -217,17 +185,21 @@ export default async function RootLayout({
           }}
         />
         <link rel="manifest" href="/manifest.json" />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="Arkana RSS"
+          href={`/${lang}/rss.xml`}
+        />
       </head>
       <body className={`${spaceGrotesk.className} ${spaceGrotesk.variable}`}>
-        <Script
-          id="organization-schema"
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(organizationJsonLd),
           }}
         />
-        <Script
-          id="website-schema"
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(websiteJsonLd),

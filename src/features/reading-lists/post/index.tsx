@@ -5,7 +5,6 @@ import { PostHeader } from "@/components/ui/post-header";
 import { Post } from "@/lib/types";
 import { getWriter } from "@/lib/writers";
 import { getReadingList } from "@/lib/reading-lists";
-import Script from "next/script";
 import { Navigation } from "./components/navigation";
 import BuyMeCoffeeWidget from "@/components/ui/buy-me-coffee";
 import { getDictionary } from "@/lib/dictionaries";
@@ -62,7 +61,7 @@ export async function ReadingListPostPage(props: ReadingListPostPageProps) {
       name: "Arkana",
       logo: {
         "@type": "ImageObject",
-        url: withSiteUrl("/images/logo.png"),
+        url: withSiteUrl("/logo.png"),
       },
     },
     url: postUrl,
@@ -76,8 +75,7 @@ export async function ReadingListPostPage(props: ReadingListPostPageProps) {
 
   return (
     <article className="container pb-8 max-w-3xl mx-auto">
-      <Script
-        id="article-schema"
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />

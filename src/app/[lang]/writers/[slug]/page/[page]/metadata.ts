@@ -42,5 +42,6 @@ export async function generateMetadata({
     description,
     ogTitle: writerName,
     type: "website",
+    ...(pageNumber === 1 ? { canonicalPath: `writers/${slug}` } : {}),
   });
 }

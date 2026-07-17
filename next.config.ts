@@ -10,6 +10,15 @@ const nextConfig: NextConfig = {
   assetPrefix: "",
   trailingSlash: true, // Add trailing slashes for GitHub Pages compatibility
   // appDir: true,
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/en",
+        permanent: false,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
