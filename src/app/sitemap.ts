@@ -5,8 +5,8 @@ import { getPostPaths } from "@/lib/posts/translations";
 import { getAllPosts } from "@/lib/posts";
 import { readingLists } from "@/lib/reading-lists";
 import { writers } from "@/lib/writers";
-import { POSTS_PER_PAGE } from "./[lang]/blog/page/[page]/static-params";
-import { getTagsForLanguage } from "./[lang]/blog/tags/[tag]/static-params";
+import { POSTS_PER_PAGE } from "./(localized)/[lang]/blog/page/[page]/static-params";
+import { getTagsForLanguage } from "./(localized)/[lang]/blog/tags/[tag]/static-params";
 
 export const dynamic = "force-static";
 

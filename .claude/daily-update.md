@@ -27,7 +27,7 @@ Developer: co-work
 - Completed the full SEO improvement plan (14 items) on branch feature/seo-improvements, executed and reviewed task-by-task:
 - Search engines can now find a full site map of every page (sitemap.xml) and know which pages they're allowed to crawl (robots.txt)
 - Untranslated articles no longer create dead "Post Not Found" pages that search engines could index by mistake, and language links (e.g. "read this in Spanish") only appear when a translation actually exists
-- The homepage now loads real content directly instead of a blank placeholder that immediately redirected, and every page correctly declares its language to browsers and search engines
+- The homepage at the bare site address now shows the actual English homepage immediately — no blank page, no flash, no redirect step of any kind — while every page still correctly declares its language to browsers and search engines (an earlier version of this fix caused a brief blank-page flash after deploying; caught after deployment and replaced same day with a direct-render approach that has none)
 - Rich search-result data (article previews, organization info) now renders directly in the page instead of loading in after the fact, so it reliably shows up in Google
 - Fixed a broken icon reference and a broken logo link that were both quietly 404ing
 - The blog listing, writer profile pages, and reading-list articles now each have one clear, correct address search engines should index, instead of duplicate/near-duplicate versions competing with each other

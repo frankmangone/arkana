@@ -17,10 +17,13 @@ const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
 });
 
+// Root layout for "/" only (English, no locale prefix) — a sibling root to
+// (localized)/[lang]/layout.tsx via route groups, so Next.js lets each
+// declare its own <html>. Keep this in sync with that file: both must stay
+// structurally equivalent (fonts, providers, dark-theme bootstrap, schema,
+// and this static metadata export — icons/robots/authors are layout-level
+// here, not covered by the page's own generateMetadata).
 export const metadata: Metadata = {
-  title: "Arkana | Cryptography, Blockchain & Mathematics Learning",
-  description:
-    "Learn cryptography, blockchain technology, and mathematics with clear, beginner-friendly tutorials — zero-knowledge proofs, elliptic curves, smart contracts, and more.",
   authors: [{ name: "Frank Mangone" }, { name: "Gonzalo Bustos" }],
   creator: "Frank Mangone",
   publisher: "Arkana",
@@ -35,7 +38,6 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  metadataBase: new URL(SITE_URL),
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "32x32", type: "image/x-icon" },
@@ -46,51 +48,15 @@ export const metadata: Metadata = {
     ],
     other: [{ url: "/logo.png", sizes: "60x60", type: "image/png" }],
   },
-  openGraph: {
-    type: "website",
-    siteName: "Arkana",
-    title: "Arkana | Cryptography, Blockchain & Mathematics Learning",
-    description:
-      "Learn cryptography, blockchain technology, and mathematics with comprehensive tutorials covering zero-knowledge proofs, elliptic curves, smart contracts, and more.",
-    url: "/",
-    images: [
-      {
-        url: "/og.png?v=2",
-        width: 1200,
-        height: 630,
-        alt: "Arkana - Cryptography, Blockchain & Mathematics Learning Platform",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Arkana | Cryptography, Blockchain & Mathematics Learning",
-    description:
-      "Learn cryptography, blockchain technology, and mathematics with comprehensive tutorials covering zero-knowledge proofs, elliptic curves, smart contracts, and more.",
-    images: ["/og.png?v=2"],
-    creator: "@arkana_blog",
-  },
-  alternates: {
-    languages: {
-      "x-default": "/en",
-      en: "/en",
-      es: "/es",
-      pt: "/pt",
-    },
-  },
 };
-
 export default async function RootLayout({
   children,
-  params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ lang: string }>;
 }) {
-  const { lang } = await params;
+  const lang = "en";
   const baseUrl = SITE_URL;
 
-  // JSON-LD structured data for the organization
   const organizationJsonLd = {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
@@ -149,7 +115,6 @@ export default async function RootLayout({
     ],
   };
 
-  // JSON-LD for the website
   const websiteJsonLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
