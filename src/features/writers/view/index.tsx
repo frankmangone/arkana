@@ -31,8 +31,33 @@ export default function WriterPage({
   // Assuming the writer object might have an organization field
   const hasOrganization = writer.organization?.name && writer.organization?.url;
 
+  const personJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: writer.name,
+    url: withSiteUrl(withLocalePath(lang, `writers/${writer.slug}`)),
+    image: withSiteUrl(writer.avatarUrl),
+    ...(writer.bio?.[lang] ? { description: writer.bio[lang] } : {}),
+    ...(writer.organization
+      ? {
+          worksFor: {
+            "@type": "Organization",
+            name: writer.organization.name,
+            url: writer.organization.url,
+          },
+        }
+      : {}),
+    sameAs: Object.values(writer.social ?? {}).filter((link) =>
+      link.startsWith("http")
+    ),
+  };
+
   return (
     <div className="container pb-8 mx-auto">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+      />
       {/* Full-bleed vivid hero field */}
       <header className="full-bleed brand-hero mb-12">
         <div className="mx-auto max-w-6xl px-4 pb-14 pt-8 md:px-6 md:pb-20 lg:px-8">

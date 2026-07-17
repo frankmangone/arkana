@@ -103,11 +103,40 @@ export async function PostPage(props: PostPageProps) {
     inLanguage: lang,
   };
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Arkana",
+        item: `${baseUrl}${withLocalePath(lang)}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: dict.blog.title,
+        item: `${baseUrl}${withLocalePath(lang, "blog")}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: post.metadata.title,
+        item: postUrl,
+      },
+    ],
+  };
+
   return (
     <article className="container pb-8 max-w-3xl mx-auto">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       {header}
       <ReadingProgress />
