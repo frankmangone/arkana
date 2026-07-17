@@ -3,6 +3,7 @@ import { getPostBySlug } from "@/features/posts/actions";
 import { ReadingListPostPageProps } from "./page";
 import { getPostFromReadingList } from "@/lib/reading-lists";
 import { generateBaseMetadata } from "@/lib/metadata-utils";
+import { getAvailablePostLanguages } from "@/lib/posts/translations";
 
 export async function generateMetadata({
   params,
@@ -31,6 +32,8 @@ export async function generateMetadata({
   }
 
   const image = post.metadata.thumbnail || "/images/arkana-default-og.png";
+  const [folder, fileSlug] = postFromReadingList.slug.split("/");
+  const availableLanguages = await getAvailablePostLanguages(folder, fileSlug);
 
   return generateBaseMetadata({
     lang,
@@ -46,5 +49,6 @@ export async function generateMetadata({
     tags: post.metadata.tags,
     keywords: post.metadata.tags,
     canonicalPath: `blog/${postFromReadingList.slug}`,
+    availableLanguages,
   });
 }
