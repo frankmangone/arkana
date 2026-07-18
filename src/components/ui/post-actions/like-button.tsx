@@ -18,7 +18,7 @@ export function LikeButton(props: LikeButtonProps) {
     <Button
       variant="ghost"
       className={`h-auto !px-2.5 !py-2 rounded-[4px] cursor-pointer bg-transparent hover:bg-black/10 flex items-center gap-1.5 ${
-        liked ? "text-salmon-500 hover:text-salmon-500" : "text-ink-on-brand hover:text-ink-on-brand"
+        liked ? "text-salmon-500 hover:text-salmon-500" : "text-white/70 hover:text-white"
       }`}
       aria-label={liked ? "Unlike post" : "Like post"}
       onClick={handleLike}
