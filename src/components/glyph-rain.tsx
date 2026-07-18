@@ -151,18 +151,39 @@ export function GlyphRain({
       if (isStatic) drawStatic(rect.width, rect.height);
     };
 
+    // Each column fades independently: brightest glyph at the top, fading
+    // out over a random streak length so columns run out at different
+    // points. Color stays fixed (color/headColor) — only opacity varies,
+    // via a per-column intensity multiplier (some columns read washed-out
+    // from their very first glyph) and a "sustain" plateau before the
+    // fade-out begins (some columns hold brightness longer).
     const drawStatic = (w: number, h: number) => {
       ctx.clearRect(0, 0, w, h);
       for (let c = 0; c < cols; c++) {
-        for (let r = 0; r < rows; r++) {
+        const streakLength = Math.max(
+          4,
+          Math.floor(rows * (0.35 + Math.random() * 0.85))
+        );
+        const intensity = 0.35 + Math.random() * 0.65;
+        const sustainRows = Math.floor(streakLength * Math.random() * 0.5);
+
+        for (let r = 0; r < Math.min(rows, streakLength); r++) {
+          const fade =
+            r <= sustainRows
+              ? 1
+              : Math.pow(
+                  1 - (r - sustainRows) / Math.max(1, streakLength - sustainRows),
+                  1.6
+                );
+          const isHead = r === 0;
           drawGlyph(
             ctx,
             c * cellSize,
             r * cellSize,
             cellSize,
             glyphs[c][r],
-            color,
-            0.15 + Math.random() * 0.35
+            isHead ? headColor : color,
+            (isHead ? 0.95 : fade * 0.85) * intensity
           );
         }
       }
