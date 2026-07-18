@@ -11,9 +11,10 @@ interface TintedThumbnailProps {
   variant?: "hero" | "card";
 }
 
-// Grayscale photo + primary-color multiply overlay; render inside a relative overflow-hidden container.
+// Photo + primary-color multiply overlay; render inside a relative overflow-hidden container.
 export function TintedThumbnail(props: TintedThumbnailProps) {
   const { src, alt, priority, sizes, imageClassName, variant = "card" } = props;
+  const isHero = variant === "hero";
 
   return (
     <>
@@ -23,19 +24,18 @@ export function TintedThumbnail(props: TintedThumbnailProps) {
         fill
         priority={priority}
         sizes={sizes}
-        className={`object-cover grayscale contrast-110 ${imageClassName ?? ""}`}
+        className={`object-cover contrast-110 ${isHero ? "grayscale" : "grayscale-[60%]"} ${imageClassName ?? ""}`}
       />
       <div
         className="absolute inset-0"
         style={{
-          background:
-            variant === "hero"
-              ? "linear-gradient(180deg, color-mix(in srgb, var(--primary-500) 70%, black) 0%, black 100%)"
-              : "color-mix(in srgb, var(--primary-500) 50%, transparent)",
+          background: isHero
+            ? "linear-gradient(180deg, color-mix(in srgb, var(--primary-500) 70%, black) 0%, black 100%)"
+            : "color-mix(in srgb, var(--primary-500) 35%, transparent)",
           mixBlendMode: "multiply",
         }}
       />
-      {variant === "hero" && <div className="absolute inset-0 bg-black/30" />}
+      <div className={`absolute inset-0 ${isHero ? "bg-black/30" : "bg-black/15"}`} />
     </>
   );
 }
