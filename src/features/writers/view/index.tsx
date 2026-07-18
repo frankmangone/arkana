@@ -136,7 +136,11 @@ export default function WriterPage({
       </header>
 
       {articles.length > 0 ? (
-        <InfiniteMasonryFeed posts={articles} lang={lang} />
+        <InfiniteMasonryFeed
+          posts={articles}
+          lang={lang}
+          endMessage={dictionary.common.endOfFeed}
+        />
       ) : (
         <div className="text-center py-12">
           <h3 className="text-xl font-semibold text-ink-heading mb-2">

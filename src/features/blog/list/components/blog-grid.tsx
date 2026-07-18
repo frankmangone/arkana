@@ -6,6 +6,12 @@ import { PostPreview } from "@/lib/posts";
 import { PostCard } from "@/components/ui/post-card";
 import { MasonryColumns } from "@/components/ui/masonry-columns";
 import { ArkanaSpinner } from "@/components/ui/arkana-spinner";
+import {
+  EndOfFeed,
+  MUTED_CROSS_GLYPH,
+  MUTED_CROSS_COLOR,
+} from "@/components/ui/end-of-feed";
+import ArkanaPattern from "@/components/arkana-pattern";
 import { useUnifiedSearch } from "@/lib/api/hooks";
 import { useDebouncedValue } from "@/hooks/use-debounced-value";
 import { useInfiniteScrollTrigger } from "@/hooks/use-infinite-scroll-trigger";
@@ -19,8 +25,9 @@ interface BlogGridLabels extends TagFilterLabels {
   searchPlaceholder: string;
   searching: string;
   noPosts: string;
-  tryDifferentTag: string;
-  viewAllPosts: string;
+  noPostsDescription: string;
+  clearSearch: string;
+  endOfFeed: string;
 }
 
 interface BlogGridProps {
@@ -220,29 +227,45 @@ export function BlogGrid(props: BlogGridProps) {
             ))}
           />
 
-          {!filtering && hasMoreLocal && (
-            <div ref={localSentinelRef} className="flex justify-center py-10">
-              <ArkanaSpinner />
-            </div>
-          )}
-          {filtering && !isError && hasNextPage && (
-            <div ref={searchSentinelRef} className="flex justify-center py-10">
-              <ArkanaSpinner />
-            </div>
+          {!filtering &&
+            (hasMoreLocal ? (
+              <div ref={localSentinelRef} className="flex justify-center py-10">
+                <ArkanaSpinner />
+              </div>
+            ) : (
+              <EndOfFeed message={labels.endOfFeed} />
+            ))}
+          {filtering && !isError && (
+            hasNextPage ? (
+              <div ref={searchSentinelRef} className="flex justify-center py-10">
+                <ArkanaSpinner />
+              </div>
+            ) : (
+              <EndOfFeed message={labels.endOfFeed} />
+            )
           )}
         </>
       ) : (
         <div className="py-12 text-center">
-          <h3 className="mb-2 text-xl font-semibold text-ink-heading">
+          <ArkanaPattern
+            elements={MUTED_CROSS_GLYPH}
+            canvasSize={48}
+            lineColor={MUTED_CROSS_COLOR}
+            backgroundColor="transparent"
+            className="mx-auto mb-4"
+          />
+          <h3 className="mb-2 text-lg font-semibold text-ink-heading">
             {labels.noPosts}
           </h3>
-          <p className="mb-6 text-ink-muted">{labels.tryDifferentTag}</p>
+          <p className="mb-6 text-sm text-ink-muted">
+            {labels.noPostsDescription}
+          </p>
           <button
             type="button"
             onClick={reset}
             className="inline-block cursor-pointer rounded-[4px] border border-rule-strong px-6 py-3 text-ink-body transition-colors hover:border-primary-700 hover:text-ink-heading"
           >
-            {labels.viewAllPosts}
+            {labels.clearSearch}
           </button>
         </div>
       )}

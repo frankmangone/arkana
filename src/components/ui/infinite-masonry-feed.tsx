@@ -3,6 +3,7 @@
 import { useCallback, useState } from "react";
 import { PostCard } from "@/components/ui/post-card";
 import { ArkanaSpinner } from "@/components/ui/arkana-spinner";
+import { EndOfFeed } from "@/components/ui/end-of-feed";
 import {
   MasonryColumns,
   type MasonryBreakpoint,
@@ -15,12 +16,15 @@ const CHUNK_SIZE = 12;
 interface InfiniteMasonryFeedProps {
   posts: PostPreview[];
   lang: string;
+  /** Shown once every post has been loaded. */
+  endMessage: string;
   breakpoints?: MasonryBreakpoint[];
 }
 
 export function InfiniteMasonryFeed({
   posts,
   lang,
+  endMessage,
   breakpoints,
 }: InfiniteMasonryFeedProps) {
   const [visibleCount, setVisibleCount] = useState(
@@ -50,10 +54,12 @@ export function InfiniteMasonryFeed({
           />
         ))}
       />
-      {hasMore && (
+      {hasMore ? (
         <div ref={sentinelRef} className="flex justify-center py-10">
           <ArkanaSpinner />
         </div>
+      ) : (
+        <EndOfFeed message={endMessage} />
       )}
     </>
   );

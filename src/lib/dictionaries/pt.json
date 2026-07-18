@@ -44,9 +44,9 @@
     "allPosts": "Todas as Postagens",
     "searchTags": "Buscar tags...",
     "noTagsFound": "Nenhuma tag encontrada",
-    "noPosts": "Nenhuma postagem encontrada",
-    "tryDifferentTag": "Tente uma tag diferente ou veja todas as postagens",
-    "viewAllPosts": "Ver todas as postagens",
+    "noPosts": "Nenhum artigo encontrado",
+    "noPostsDescription": "Nenhum artigo corresponde à sua busca. Tente outro termo ou tag.",
+    "clearSearch": "Limpar busca",
     "relatedPosts": "Postagens Relacionadas",
     "postLiked": "Postagem curtida!",
     "thanksForLiking": "Obrigado por curtir esta postagem",
@@ -206,5 +206,8 @@
       "commentPosted": "Comentário publicado!",
       "failedToPost": "Falha ao publicar comentário"
     }
+  },
+  "common": {
+    "endOfFeed": "Você chegou ao fim"
   }
 }

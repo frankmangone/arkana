@@ -2,11 +2,13 @@ import { FeaturedPostCard } from "@/components/ui/featured-post-card";
 import { type MasonryBreakpoint } from "@/components/ui/masonry-columns";
 import { InfiniteMasonryFeed } from "@/components/ui/infinite-masonry-feed";
 import { PostPreview } from "@/lib/posts";
+import type { Dictionary } from "@/lib/dictionaries";
 
 interface LatestArticlesProps {
   lang: string;
   /** Full post archive, newest first. */
   allPosts: PostPreview[];
+  dictionary: Dictionary;
 }
 
 // A 4th column only kicks in on genuinely wide monitors (2xl) — narrower than
@@ -18,7 +20,11 @@ const HOME_GRID_BREAKPOINTS: MasonryBreakpoint[] = [
   { minWidth: 0, columns: 1 },
 ];
 
-export function LatestArticles({ lang, allPosts }: LatestArticlesProps) {
+export function LatestArticles({
+  lang,
+  allPosts,
+  dictionary,
+}: LatestArticlesProps) {
   const [featured, ...rest] = allPosts;
 
   return (
@@ -39,6 +45,7 @@ export function LatestArticles({ lang, allPosts }: LatestArticlesProps) {
           posts={rest}
           lang={lang}
           breakpoints={HOME_GRID_BREAKPOINTS}
+          endMessage={dictionary.common.endOfFeed}
         />
       </div>
     </section>

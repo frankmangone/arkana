@@ -47,8 +47,9 @@ export function BlogPage({
           noTagsFound: dictionary.blog.noTagsFound,
           searching: dictionary.search.searching,
           noPosts: dictionary.blog.noPosts,
-          tryDifferentTag: dictionary.blog.tryDifferentTag,
-          viewAllPosts: dictionary.blog.viewAllPosts,
+          noPostsDescription: dictionary.blog.noPostsDescription,
+          clearSearch: dictionary.blog.clearSearch,
+          endOfFeed: dictionary.common.endOfFeed,
         }}
       />
     </div>
