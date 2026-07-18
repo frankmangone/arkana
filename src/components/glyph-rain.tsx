@@ -10,6 +10,8 @@ interface GlyphRainProps {
   color?: string;
   /** Color of the leading glyph in each column */
   headColor?: string;
+  /** When false, renders a single static frame instead of animating */
+  animated?: boolean;
 }
 
 // Line segments of the 17×17 Arkana glyph grid, keyed by the same 16 bits
@@ -104,9 +106,10 @@ function drawGlyph(
 export function GlyphRain({
   className = "",
   cellSize = 44,
-  // tuned against the lightened --grad-hero to keep the rain a quiet texture
-  color = "hsl(260, 50%, 28%)",
-  headColor = "hsl(260, 70%, 10%)",
+  // tuned against the dark home-hero background
+  color = "hsl(260, 55%, 45%)",
+  headColor = "hsl(266, 85%, 65%)",
+  animated = true,
 }: GlyphRainProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -123,9 +126,9 @@ export function GlyphRain({
     let heads: Array<{ row: number; every: number; tick: number }> = [];
     let glyphs: number[][] = [];
 
-    const reducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
+    const isStatic =
+      !animated ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     const randomBits = () => Math.floor(Math.random() * 0x10000);
 
@@ -145,7 +148,7 @@ export function GlyphRain({
       glyphs = Array.from({ length: cols }, () =>
         Array.from({ length: rows }, randomBits)
       );
-      if (reducedMotion) drawStatic(rect.width, rect.height);
+      if (isStatic) drawStatic(rect.width, rect.height);
     };
 
     const drawStatic = (w: number, h: number) => {
@@ -202,13 +205,13 @@ export function GlyphRain({
 
     resize();
     window.addEventListener("resize", resize);
-    if (!reducedMotion) raf = requestAnimationFrame(loop);
+    if (!isStatic) raf = requestAnimationFrame(loop);
 
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", resize);
     };
-  }, [cellSize, color, headColor]);
+  }, [cellSize, color, headColor, animated]);
 
   return (
     <canvas

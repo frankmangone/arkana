@@ -638,6 +638,19 @@
     background-image: var(--grad-hero);
   }
 
+  /* Homepage-only static dark hero — scoped override, does not touch
+     brand-hero or its other consumers (writers/FAQ/auth). */
+  .home-hero {
+    background-image: linear-gradient(
+      180deg,
+      hsl(260, 38%, 5%) 0%,
+      hsl(260, 30%, 8%) 100%
+    );
+    --ink-on-brand: #f5f3fa;
+    --ink-on-brand-soft: #e1dfe4;
+    --ink-on-brand-title: #f8f5ff;
+  }
+
   /* Escape a centered container to span the full viewport width */
   .full-bleed {
     width: 100vw;
