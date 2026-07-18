@@ -49,8 +49,7 @@ export default async function Page({ params }: BlogPageProps) {
         posts={paginatedPosts}
         allPosts={allPosts}
         dictionary={dict}
-        currentPage={pageNumber}
-        totalPages={totalPages}
+        startIndex={startIndex}
       />
     </MainLayout>
   );

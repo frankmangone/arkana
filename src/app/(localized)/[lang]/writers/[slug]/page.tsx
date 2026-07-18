@@ -4,7 +4,6 @@ import WriterPage from "@/features/writers/view";
 import { getPostsByAuthor } from "@/lib/posts";
 import { getDictionary } from "@/lib/dictionaries";
 import { notFound } from "next/navigation";
-import { POSTS_PER_PAGE } from "./page/[page]/static-params";
 
 interface WriterPageParams {
   lang: string;
@@ -28,19 +27,11 @@ export default async function Page({ params }: WriterPageProps) {
     notFound();
   }
 
-  const allArticles = await getPostsByAuthor(slug, lang);
-  const totalPages = Math.ceil(allArticles.length / POSTS_PER_PAGE);
+  const articles = await getPostsByAuthor(slug, lang);
 
   return (
     <MainLayout lang={lang}>
-      <WriterPage
-        lang={lang}
-        writer={writer}
-        articles={allArticles.slice(0, POSTS_PER_PAGE)}
-        dictionary={dict}
-        currentPage={1}
-        totalPages={Math.max(1, totalPages)}
-      />
+      <WriterPage lang={lang} writer={writer} articles={articles} dictionary={dict} />
     </MainLayout>
   );
 }

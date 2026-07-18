@@ -1,16 +1,19 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { LoaderCircle, Search, X } from "lucide-react";
 import { PostPreview } from "@/lib/posts";
 import { PostCard } from "@/components/ui/post-card";
-import { Pagination } from "@/components/pagination";
+import { MasonryColumns } from "@/components/ui/masonry-columns";
+import { ArkanaSpinner } from "@/components/ui/arkana-spinner";
 import { useUnifiedSearch } from "@/lib/api/hooks";
 import { useDebouncedValue } from "@/hooks/use-debounced-value";
+import { useInfiniteScrollTrigger } from "@/hooks/use-infinite-scroll-trigger";
 import { getTagDisplayName } from "@/lib/tags";
 import { TagFilter, type TagFilterLabels } from "./tag-filter";
 
 const DEBOUNCE_MS = 400;
+const CHUNK_SIZE = 12;
 
 interface BlogGridLabels extends TagFilterLabels {
   searchPlaceholder: string;
@@ -24,10 +27,11 @@ interface BlogGridProps {
   lang: string;
   /** Full corpus, for mapping search hits to previews and as an offline fallback. */
   allPosts: PostPreview[];
-  /** The statically paginated slice shown when no query or tags are active. */
+  /** The statically rendered slice shown before hydration / with JS off. */
   pagePosts: PostPreview[];
-  currentPage: number;
-  totalPages: number;
+  /** Index into `allPosts` where `pagePosts` starts; infinite scroll
+   * continues forward through `allPosts` from there. */
+  startIndex: number;
   labels: BlogGridLabels;
 }
 
@@ -57,7 +61,7 @@ function writeSearchParams(query: string, tags: string[]) {
 }
 
 export function BlogGrid(props: BlogGridProps) {
-  const { lang, allPosts, pagePosts, currentPage, totalPages, labels } = props;
+  const { lang, allPosts, pagePosts, startIndex, labels } = props;
 
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [term, setTerm] = useState("");
@@ -76,11 +80,14 @@ export function BlogGrid(props: BlogGridProps) {
     writeSearchParams(query, selectedTags);
   }, [query, selectedTags]);
 
-  const { data, isFetching, isError } = useUnifiedSearch({
-    query,
-    tags: selectedTags,
-    lang,
-  });
+  const {
+    data,
+    isFetching,
+    isFetchingNextPage,
+    hasNextPage,
+    fetchNextPage,
+    isError,
+  } = useUnifiedSearch({ query, tags: selectedTags, lang });
 
   const previewsBySlug = useMemo(
     () => new Map(allPosts.map((post) => [post.slug, post])),
@@ -98,15 +105,38 @@ export function BlogGrid(props: BlogGridProps) {
     setTerm("");
   };
 
-  // Three sources, in order: static page slice (no query/tags), search hits
+  const filtering = selectedTags.length > 0 || query.trim().length > 0;
+
+  // Unfiltered browsing: infinite-scroll through the shipped corpus, 12 at
+  // a time, continuing forward from wherever this page's static slice
+  // started (usually 0, but a direct /blog/page/N link starts further in).
+  const [visibleCount, setVisibleCount] = useState(pagePosts.length);
+  const hasMoreLocal = !filtering && startIndex + visibleCount < allPosts.length;
+  const loadMoreLocal = useCallback(() => {
+    setVisibleCount((count) =>
+      Math.min(count + CHUNK_SIZE, allPosts.length - startIndex)
+    );
+  }, [allPosts.length, startIndex]);
+  const localSentinelRef = useInfiniteScrollTrigger(loadMoreLocal, hasMoreLocal);
+
+  // Filtered browsing: infinite-scroll via the backend's offset paging.
+  const loadMoreSearch = useCallback(() => {
+    fetchNextPage();
+  }, [fetchNextPage]);
+  const searchSentinelRef = useInfiniteScrollTrigger(
+    loadMoreSearch,
+    filtering && !isError && !!hasNextPage
+  );
+
+  // Three sources, in order: the shipped corpus (no query/tags), search hits
   // mapped back to build-time previews, and — if the API is unreachable —
   // filtering the shipped corpus locally so search still works offline.
-  const filtering = selectedTags.length > 0 || query.trim().length > 0;
   let shownPosts: PostPreview[];
   if (!filtering) {
-    shownPosts = pagePosts;
+    shownPosts = allPosts.slice(startIndex, startIndex + visibleCount);
   } else if (data && !isError) {
-    shownPosts = data.hits
+    shownPosts = data.pages
+      .flatMap((page) => page.hits)
       .map((hit) => previewsBySlug.get(hit.path))
       .filter((post): post is PostPreview => post !== undefined);
   } else if (isError) {
@@ -176,24 +206,29 @@ export function BlogGrid(props: BlogGridProps) {
         </p>
       ) : shownPosts.length > 0 ? (
         <>
-          <div
-            className={`grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 transition-opacity ${
-              filtering && isFetching ? "opacity-60" : ""
-            }`}
-          >
-            {shownPosts.map((post) => (
-              <PostCard key={post.slug} post={post} lang={lang} />
+          <MasonryColumns
+            className={
+              filtering && isFetching && !isFetchingNextPage ? "opacity-60" : ""
+            }
+            items={shownPosts.map((post) => (
+              <PostCard
+                key={post.slug}
+                post={post}
+                lang={lang}
+                clampDescription={false}
+              />
             ))}
-          </div>
+          />
 
-          {/* Static pagination only applies to the unfiltered corpus; a
-              filtered view shows every match at once */}
-          {!filtering && totalPages > 1 && (
-            <Pagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              basePath={`/${lang}/blog`}
-            />
+          {!filtering && hasMoreLocal && (
+            <div ref={localSentinelRef} className="flex justify-center py-10">
+              <ArkanaSpinner />
+            </div>
+          )}
+          {filtering && !isError && hasNextPage && (
+            <div ref={searchSentinelRef} className="flex justify-center py-10">
+              <ArkanaSpinner />
+            </div>
           )}
         </>
       ) : (

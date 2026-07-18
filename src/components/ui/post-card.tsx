@@ -6,7 +6,7 @@ import { ArrowUpRight } from "lucide-react";
 import { formatDate } from "@/lib/utils";
 import { PostPreview } from "@/lib/posts";
 import { useRouter } from "next/navigation";
-import { Tag } from "./tag";
+import { TagList } from "./tag-list";
 import { TintedThumbnail } from "./tinted-thumbnail";
 import { withLocalePath, resolveThumbnailUrl } from "@/lib/site-config";
 
@@ -15,10 +15,19 @@ interface PostCardProps {
   lang: string;
   imageClassName?: string;
   overrideUrl?: string;
+  /** Clamp the description to 2 lines. Default true; disable for layouts
+   * (e.g. masonry grids) that want each card's natural height. */
+  clampDescription?: boolean;
 }
 
 export function PostCard(props: PostCardProps) {
-  const { post, lang, imageClassName, overrideUrl } = props;
+  const {
+    post,
+    lang,
+    imageClassName,
+    overrideUrl,
+    clampDescription = true,
+  } = props;
   const router = useRouter();
   const url = overrideUrl ?? withLocalePath(lang, `blog/${post.slug}`);
 
@@ -31,7 +40,7 @@ export function PostCard(props: PostCardProps) {
     <div className="group flex h-full flex-col overflow-hidden rounded-md border border-rule transition-colors hover:border-rule-strong">
       <Link href={url} className="flex h-full w-full flex-col">
         <div
-          className={`relative hidden h-48 overflow-hidden border-b border-rule md:block ${imageClassName}`}
+          className={`relative hidden h-48 shrink-0 overflow-hidden border-b border-rule md:block ${imageClassName}`}
         >
           <TintedThumbnail
             src={resolveThumbnailUrl(post.thumbnail)}
@@ -63,13 +72,13 @@ export function PostCard(props: PostCardProps) {
             </h2>
             <ArrowUpRight className="mt-1 h-5 w-5 shrink-0 text-primary-800 opacity-0 transition-opacity group-hover:opacity-100" />
           </div>
-          <p className="mb-4 line-clamp-2 text-sm text-ink-muted">
+          <p
+            className={`mb-4 text-sm text-ink-muted ${clampDescription ? "line-clamp-2" : ""}`}
+          >
             {post.description}
           </p>
-          <div className="mt-auto flex max-h-[64px] flex-wrap gap-2 overflow-hidden">
-            {post.tags.map((tag) => (
-              <Tag key={tag} tag={tag} lang={lang} />
-            ))}
+          <div className="mt-auto">
+            <TagList tags={post.tags} lang={lang} />
           </div>
         </div>
       </Link>

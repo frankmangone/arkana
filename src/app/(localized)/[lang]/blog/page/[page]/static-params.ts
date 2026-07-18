@@ -1,6 +1,6 @@
 import { getAllPosts } from "@/lib/posts";
 
-export const POSTS_PER_PAGE = 9; // 3x3 grid
+export const POSTS_PER_PAGE = 12; // matches the infinite-scroll chunk size
 
 export async function generateStaticParams() {
   // Get all languages

@@ -1,6 +1,6 @@
 import { LatestArticles } from "./components/latest-articles";
 import { IntroSection } from "./components/intro-section";
-import { getLatestPosts } from "./utils/fetch";
+import { getAllPosts } from "@/lib/posts";
 import { getDictionary } from "@/lib/dictionaries";
 
 interface HomePageProps {
@@ -11,12 +11,12 @@ export async function HomePage(props: HomePageProps) {
   const { lang } = props;
 
   const dict = await getDictionary(lang);
-  const latestPosts = await getLatestPosts(lang, 13);
+  const allPosts = await getAllPosts(lang);
 
   return (
     <>
       <IntroSection lang={lang} dictionary={dict} />
-      <LatestArticles lang={lang} latestPosts={latestPosts} />
+      <LatestArticles lang={lang} allPosts={allPosts} />
     </>
   );
 }

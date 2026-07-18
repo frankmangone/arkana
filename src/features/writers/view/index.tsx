@@ -3,8 +3,8 @@ import type { Writer } from "@/lib/writers";
 import type { PostPreview } from "@/lib/posts";
 import Image from "next/image";
 import { WriterArkanaStrip } from "@/features/writers/view/components/writer-arkana-strip";
-import { PostCard } from "@/components/ui/post-card";
-import { Pagination } from "@/components/pagination";
+import { InfiniteMasonryFeed } from "@/components/ui/infinite-masonry-feed";
+import { GlyphRain } from "@/components/glyph-rain";
 import { OrganizationBadge } from "./components/organization-badge";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import Link from "next/link";
@@ -16,8 +16,6 @@ interface WriterPageProps {
   writer: Writer;
   articles: PostPreview[];
   dictionary: Dictionary;
-  currentPage?: number;
-  totalPages?: number;
 }
 
 export default function WriterPage({
@@ -25,8 +23,6 @@ export default function WriterPage({
   writer,
   articles,
   dictionary,
-  currentPage = 1,
-  totalPages = 1,
 }: WriterPageProps) {
   // Assuming the writer object might have an organization field
   const hasOrganization = writer.organization?.name && writer.organization?.url;
@@ -58,9 +54,16 @@ export default function WriterPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
       />
-      {/* Full-bleed vivid hero field */}
-      <header className="full-bleed brand-hero mb-12">
-        <div className="mx-auto max-w-6xl px-4 pb-14 pt-8 md:px-6 md:pb-20 lg:px-8">
+      {/* Full-bleed dark hero, matching the homepage's GlyphRain treatment */}
+      <header className="full-bleed home-hero relative mb-12">
+        <div
+          className="pointer-events-none absolute inset-0 [mask-image:linear-gradient(to_right,transparent_0%,black_15%,black_85%,transparent_100%)]"
+          aria-hidden="true"
+        >
+          <GlyphRain animated={false} />
+        </div>
+
+        <div className="relative z-10 mx-auto max-w-6xl px-4 pb-14 pt-8 md:px-6 md:pb-20 lg:px-8">
           <Breadcrumbs
             lang={lang}
             items={[
@@ -90,27 +93,10 @@ export default function WriterPage({
             </div>
 
             <div className="w-full flex-1 text-center md:text-left">
-              <div className="mb-5 flex flex-col items-center gap-4 sm:flex-row sm:justify-center md:justify-start [&_svg]:text-ink-on-brand-soft">
+              <div className="mb-5 flex flex-col items-center gap-4 sm:flex-row sm:justify-center md:justify-start">
                 <h1 className="display-title !text-[clamp(2.5rem,4.5vw,4rem)] text-ink-on-brand-title">
                   {writer.name}
                 </h1>
-
-                {/* Organization badge - if writer has organization info */}
-                <div className="text-ink-on-brand">
-                  {hasOrganization ? (
-                    <OrganizationBadge
-                      name={writer.organization?.name ?? ""}
-                      url={writer.organization?.url ?? ""}
-                      logoUrl={writer.organization?.logoUrl ?? ""}
-                    />
-                  ) : (
-                    <OrganizationBadge
-                      name="SpaceDev"
-                      url="https://spacedev.io"
-                      logoUrl="/images/spacedev-logo.png"
-                    />
-                  )}
-                </div>
               </div>
 
               <WriterArkanaStrip
@@ -128,7 +114,20 @@ export default function WriterPage({
                 </div>
               )}
 
-              <div className="[&_[data-slot=button]]:border-rule-on-brand [&_[data-slot=button]]:bg-white/10 [&_[data-slot=button]]:text-ink-on-brand [&_[data-slot=button]:hover]:bg-white/25">
+              <div className="flex flex-wrap items-center justify-center gap-2 md:justify-start [&_[data-slot=button]]:border-ink-on-brand/40 [&_[data-slot=button]]:bg-transparent [&_[data-slot=button]]:text-ink-on-brand [&_[data-slot=button]:hover]:border-ink-on-brand/70 [&_[data-slot=button]:hover]:bg-white/10">
+                {hasOrganization ? (
+                  <OrganizationBadge
+                    name={writer.organization?.name ?? ""}
+                    url={writer.organization?.url ?? ""}
+                    logoUrl={writer.organization?.logoUrl ?? ""}
+                  />
+                ) : (
+                  <OrganizationBadge
+                    name="SpaceDev"
+                    url="https://spacedev.io"
+                    logoUrl="/images/spacedev-logo.png"
+                  />
+                )}
                 <SocialLinks author={writer} />
               </div>
             </div>
@@ -137,22 +136,7 @@ export default function WriterPage({
       </header>
 
       {articles.length > 0 ? (
-        <>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {articles.map((post) => (
-              <PostCard key={post.slug} post={post} lang={lang} />
-            ))}
-          </div>
-
-          {/* Only show pagination if we have more than one page */}
-          {totalPages > 1 && (
-            <Pagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              basePath={`/${lang}/writers/${writer.slug}`}
-            />
-          )}
-        </>
+        <InfiniteMasonryFeed posts={articles} lang={lang} />
       ) : (
         <div className="text-center py-12">
           <h3 className="text-xl font-semibold text-ink-heading mb-2">
