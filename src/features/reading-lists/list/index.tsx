@@ -30,7 +30,7 @@ export async function ReadingListsPage(props: ReadingListsPageProps) {
           items={[{ label: dictionary.readingLists.list.title }]}
           className="mb-12"
         />
-        <h1 className="display-title !text-[clamp(2.75rem,6vw,4.75rem)] mb-5 text-primary-750">
+        <h1 className="display-title !text-[clamp(2.25rem,5vw,3.75rem)] mb-5 text-primary-750">
           {dictionary.readingLists.list.title}
         </h1>
         <p className="max-w-[60ch] text-xl text-ink-muted">

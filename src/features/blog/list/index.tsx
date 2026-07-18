@@ -31,7 +31,7 @@ export function BlogPage({
         <p className="eyebrow mb-4 font-semibold text-ink-faint">
           {dictionary.home.recentPosts.title}
         </p>
-        <h1 className="display-title !text-[clamp(2.75rem,6vw,4.75rem)] text-primary-750">
+        <h1 className="display-title !text-[clamp(2.25rem,5vw,3.75rem)] text-primary-750">
           {dictionary.blog.title}
         </h1>
       </header>

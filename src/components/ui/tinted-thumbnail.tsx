@@ -6,8 +6,9 @@ interface TintedThumbnailProps {
   priority?: boolean;
   sizes?: string;
   imageClassName?: string;
-  // "hero" fades to black at the bottom for text legibility; "card" is a flat,
-  // lighter tint that keeps the thumbnail recognizable at small sizes.
+  // "hero" fades to black at the bottom for text legibility; "card" is a
+  // top-to-bottom vignette (barely there at top, a stronger duotone at the
+  // bottom) that clears entirely on hover — render inside a `group` ancestor.
   variant?: "hero" | "card";
 }
 
@@ -24,18 +25,34 @@ export function TintedThumbnail(props: TintedThumbnailProps) {
         fill
         priority={priority}
         sizes={sizes}
-        className={`object-cover contrast-110 ${isHero ? "grayscale" : "grayscale-[60%]"} ${imageClassName ?? ""}`}
+        className={`object-cover contrast-110 ${
+          isHero
+            ? "grayscale"
+            : "grayscale-[60%] transition-[filter] duration-300 group-hover:grayscale-0"
+        } ${imageClassName ?? ""}`}
       />
-      <div
-        className="absolute inset-0"
-        style={{
-          background: isHero
-            ? "linear-gradient(180deg, color-mix(in srgb, var(--primary-500) 70%, black) 0%, black 100%)"
-            : "color-mix(in srgb, var(--primary-500) 35%, transparent)",
-          mixBlendMode: "multiply",
-        }}
-      />
-      <div className={`absolute inset-0 ${isHero ? "bg-black/30" : "bg-black/15"}`} />
+      {isHero ? (
+        <>
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(180deg, color-mix(in srgb, var(--primary-500) 70%, black) 0%, black 100%)",
+              mixBlendMode: "multiply",
+            }}
+          />
+          <div className="absolute inset-0 bg-black/30" />
+        </>
+      ) : (
+        <div
+          className="absolute inset-0 transition-opacity duration-300 group-hover:opacity-0"
+          style={{
+            background:
+              "linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--primary-500) 55%, black) 100%)",
+            mixBlendMode: "multiply",
+          }}
+        />
+      )}
     </>
   );
 }

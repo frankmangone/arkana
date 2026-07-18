@@ -94,14 +94,14 @@ export default function WriterPage({
 
             <div className="w-full flex-1 text-center md:text-left">
               <div className="mb-5 flex flex-col items-center gap-4 sm:flex-row sm:justify-center md:justify-start">
-                <h1 className="display-title !text-[clamp(2.5rem,4.5vw,4rem)] text-ink-on-brand-title">
+                <h1 className="display-title !text-[clamp(2rem,3.5vw,3rem)] text-ink-on-brand-title">
                   {writer.name}
                 </h1>
               </div>
 
               <WriterArkanaStrip
                 content={writer.name}
-                lineColor="hsl(260, 60%, 18%)"
+                lineColor="#FFF"
                 className="md:justify-start flex-shrink-0 mb-6"
               />
 
