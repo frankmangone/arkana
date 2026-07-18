@@ -23,7 +23,8 @@
       "meetWriters": "Meet the Writers",
       "descriptionBig": "Complex topics, made simple",
       "descriptionSmall": "Rediscover mathematics, cryptography, computer science and more through engaging articles.",
-      "exploreReadingLists": "Explore Reading Lists"
+      "exploreReadingLists": "Explore Reading Lists",
+      "findPosts": "Find Articles"
     },
     "userSurvey": {
       "title": "Help us improve Arkana",

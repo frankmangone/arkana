@@ -14,12 +14,12 @@ export function Tag(props: TagProps) {
 
   // Button (not a link): tags render inside post-card <Link>s, where a
   // nested <a> would be invalid HTML. Full navigation on purpose — this
-  // takes the user to the static, crawlable tag hub page.
+  // takes the user to the blog search page, pre-filtered by this tag.
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     window.location.assign(
-      withLocalePath(lang, `blog/tags/${encodeURIComponent(tag)}`)
+      withLocalePath(lang, `blog?tags=${encodeURIComponent(tag)}`)
     );
   };
 

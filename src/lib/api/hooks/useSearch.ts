@@ -1,31 +1,10 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import {
-  searchPosts,
-  searchPostsByTags,
+  searchPostsUnified,
   searchTags,
   SearchResponse,
   TagSearchResponse,
 } from "../services/search";
-
-interface UseSearchParams {
-  query: string;
-  lang: string;
-  limit: number;
-}
-
-/**
- * Hook to search posts. Pass an already-debounced query; the request only
- * fires when the query is non-empty. Previous results are kept while a new
- * query is in flight so the results panel doesn't flicker between keystrokes.
- */
-export function useSearch({ query, lang, limit }: UseSearchParams) {
-  return useQuery<SearchResponse, Error>({
-    queryKey: ["search", lang, query, limit],
-    queryFn: () => searchPosts(query, lang, limit),
-    enabled: query.trim().length > 0,
-    placeholderData: keepPreviousData,
-  });
-}
 
 interface UseTagSearchParams {
   query: string;
@@ -47,20 +26,30 @@ export function useTagSearch({ query, lang, enabled }: UseTagSearchParams) {
   });
 }
 
-interface UseTagFilteredPostsParams {
+interface UseUnifiedSearchParams {
+  query: string;
   tags: string[];
   lang: string;
+  limit?: number;
 }
 
 /**
- * Posts carrying every selected tag. Disabled with no tags selected — the
- * caller renders its static post list instead.
+ * Posts matching a free-text query, a tag filter, or both. Disabled when
+ * neither is set — the caller renders its static post list instead.
  */
-export function useTagFilteredPosts({ tags, lang }: UseTagFilteredPostsParams) {
+export function useUnifiedSearch({
+  query,
+  tags,
+  lang,
+  limit = 50,
+}: UseUnifiedSearchParams) {
+  const trimmedQuery = query.trim();
+
   return useQuery<SearchResponse, Error>({
-    queryKey: ["tag-posts", lang, tags],
-    queryFn: () => searchPostsByTags(tags, lang, 50),
-    enabled: tags.length > 0,
+    queryKey: ["unified-search", lang, trimmedQuery, tags, limit],
+    queryFn: () =>
+      searchPostsUnified({ query: trimmedQuery, tags, lang, limit }),
+    enabled: trimmedQuery.length > 0 || tags.length > 0,
     placeholderData: keepPreviousData,
     retry: 1,
   });
