@@ -36,6 +36,8 @@ export interface UnifiedSearchParams {
   matchAll?: boolean;
   lang: string;
   limit: number;
+  /** Number of hits to skip, for paging through results. Default 0. */
+  offset?: number;
 }
 
 /**
@@ -48,6 +50,7 @@ export async function searchPostsUnified({
   matchAll = true,
   lang,
   limit,
+  offset,
 }: UnifiedSearchParams): Promise<SearchResponse> {
   const params = new URLSearchParams({ lang, limit: String(limit) });
   if (query) params.set("q", query);
@@ -55,6 +58,7 @@ export async function searchPostsUnified({
     params.set("tags", tags.join(","));
     params.set("match", matchAll ? "all" : "any");
   }
+  if (offset) params.set("offset", String(offset));
   const response = await apiClient.get<SearchResponse>(
     `/api/search?${params.toString()}`
   );

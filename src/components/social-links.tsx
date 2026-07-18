@@ -31,7 +31,7 @@ export function SocialLinks({ author }: SocialLinksProps) {
               width="16"
               className="h-4 w-4"
               alt="X"
-              src="https://cdn.simpleicons.org/x/000000"
+              src="https://cdn.simpleicons.org/x/f5f3fa"
             />
           </a>
         </Button>
@@ -51,7 +51,7 @@ export function SocialLinks({ author }: SocialLinksProps) {
               width="16"
               className="h-4 w-4"
               alt="GitHub"
-              src="https://cdn.simpleicons.org/github/000000"
+              src="https://cdn.simpleicons.org/github/f5f3fa"
             />
           </a>
         </Button>
@@ -66,7 +66,7 @@ export function SocialLinks({ author }: SocialLinksProps) {
             aria-label="LinkedIn"
             title="LinkedIn"
           >
-            <Linkedin className="h-4 w-4 text-black" />
+            <Linkedin className="h-4 w-4" />
           </a>
         </Button>
       )}
@@ -85,7 +85,7 @@ export function SocialLinks({ author }: SocialLinksProps) {
               width="16"
               className="h-4 w-4"
               alt="Medium"
-              src="https://cdn.simpleicons.org/medium/000000"
+              src="https://cdn.simpleicons.org/medium/f5f3fa"
             />
           </a>
         </Button>
@@ -100,7 +100,7 @@ export function SocialLinks({ author }: SocialLinksProps) {
             aria-label="Website"
             title="Website"
           >
-            <Globe className="h-4 w-4 text-black" />
+            <Globe className="h-4 w-4" />
           </a>
         </Button>
       )}
@@ -108,7 +108,7 @@ export function SocialLinks({ author }: SocialLinksProps) {
       {email && (
         <Button variant="outline" size="icon" asChild>
           <a href={`mailto:${email}`} aria-label="Email" title="Email">
-            <Mail className="h-4 w-4 text-black" />
+            <Mail className="h-4 w-4" />
           </a>
         </Button>
       )}

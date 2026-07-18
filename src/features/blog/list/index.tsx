@@ -8,8 +8,9 @@ interface BlogPageProps {
   posts: PostPreview[];
   allPosts: PostPreview[];
   dictionary: Dictionary;
-  currentPage?: number;
-  totalPages?: number;
+  /** Index into `allPosts` where `posts` starts — infinite scroll continues
+   * forward from there. */
+  startIndex?: number;
 }
 
 export function BlogPage({
@@ -17,8 +18,7 @@ export function BlogPage({
   posts,
   allPosts,
   dictionary,
-  currentPage = 1,
-  totalPages = 1,
+  startIndex = 0,
 }: BlogPageProps) {
   return (
     <div className="container pb-8">
@@ -40,16 +40,16 @@ export function BlogPage({
         lang={lang}
         allPosts={allPosts}
         pagePosts={posts}
-        currentPage={currentPage}
-        totalPages={totalPages}
+        startIndex={startIndex}
         labels={{
           searchPlaceholder: dictionary.search.placeholder,
           searchTags: dictionary.blog.searchTags,
           noTagsFound: dictionary.blog.noTagsFound,
           searching: dictionary.search.searching,
           noPosts: dictionary.blog.noPosts,
-          tryDifferentTag: dictionary.blog.tryDifferentTag,
-          viewAllPosts: dictionary.blog.viewAllPosts,
+          noPostsDescription: dictionary.blog.noPostsDescription,
+          clearSearch: dictionary.blog.clearSearch,
+          endOfFeed: dictionary.common.endOfFeed,
         }}
       />
     </div>

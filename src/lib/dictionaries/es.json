@@ -44,9 +44,9 @@
     "allPosts": "Todas las Publicaciones",
     "searchTags": "Buscar etiquetas...",
     "noTagsFound": "No se encontraron etiquetas",
-    "noPosts": "No se encontraron publicaciones",
-    "tryDifferentTag": "Prueba con una etiqueta diferente o ve todas las publicaciones",
-    "viewAllPosts": "Ver todas las publicaciones",
+    "noPosts": "No se encontraron artículos",
+    "noPostsDescription": "Ningún artículo coincide con tu búsqueda. Prueba con otro término o etiqueta.",
+    "clearSearch": "Limpiar búsqueda",
     "relatedPosts": "Publicaciones Relacionadas",
     "postLiked": "¡Publicación gustada!",
     "thanksForLiking": "Gracias por dar me gusta a esta publicación",
@@ -97,7 +97,6 @@
     "noWriters": "¡Ups!",
     "noWritersDescription": "No se encontraron escritores",
     "articlesBy": "Artículos de {name}",
-    "noArticles": "No se encontraron artículos para este escritor.",
     "noArticlesInLanguage": {
       "title": "No hay artículos disponibles",
       "description": "Este escritor aún no tiene artículos publicados en el idioma seleccionado.",
@@ -207,5 +206,8 @@
       "commentPosted": "¡Comentario publicado!",
       "failedToPost": "Error al publicar el comentario"
     }
+  },
+  "common": {
+    "endOfFeed": "Has llegado al final"
   }
 }

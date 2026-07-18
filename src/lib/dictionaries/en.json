@@ -44,9 +44,9 @@
     "allPosts": "All Posts",
     "searchTags": "Search tags...",
     "noTagsFound": "No matching tags",
-    "noPosts": "No posts found",
-    "tryDifferentTag": "Try a different tag or view all posts",
-    "viewAllPosts": "View all posts",
+    "noPosts": "No articles found",
+    "noPostsDescription": "No articles matched your search. Try a different term or tag.",
+    "clearSearch": "Clear search",
     "relatedPosts": "Related Posts",
     "postLiked": "Post liked!",
     "thanksForLiking": "Thanks for liking this post",
@@ -97,7 +97,6 @@
     "noWriters": "Oops!",
     "noWritersDescription": "No writers found",
     "articlesBy": "Articles by {name}",
-    "noArticles": "No articles found for this writer.",
     "noArticlesInLanguage": {
       "title": "No articles available",
       "description": "This writer has no published articles in the selected language yet.",
@@ -207,5 +206,8 @@
       "commentPosted": "Comment posted!",
       "failedToPost": "Failed to post comment"
     }
+  },
+  "common": {
+    "endOfFeed": "You've reached the end"
   }
 }

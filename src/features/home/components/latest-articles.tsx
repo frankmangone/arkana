@@ -1,28 +1,52 @@
 import { FeaturedPostCard } from "@/components/ui/featured-post-card";
+import { type MasonryBreakpoint } from "@/components/ui/masonry-columns";
+import { InfiniteMasonryFeed } from "@/components/ui/infinite-masonry-feed";
 import { PostPreview } from "@/lib/posts";
+import type { Dictionary } from "@/lib/dictionaries";
 
 interface LatestArticlesProps {
   lang: string;
-  latestPosts: PostPreview[];
+  /** Full post archive, newest first. */
+  allPosts: PostPreview[];
+  dictionary: Dictionary;
 }
 
-export async function LatestArticles({ lang, latestPosts }: LatestArticlesProps) {
-  const [featured, ...rest] = latestPosts;
+// A 4th column only kicks in on genuinely wide monitors (2xl) — narrower than
+// that, four columns would squeeze these text-heavy cards too much.
+const HOME_GRID_BREAKPOINTS: MasonryBreakpoint[] = [
+  { minWidth: 1536, columns: 4 },
+  { minWidth: 1024, columns: 3 },
+  { minWidth: 768, columns: 2 },
+  { minWidth: 0, columns: 1 },
+];
+
+export function LatestArticles({
+  lang,
+  allPosts,
+  dictionary,
+}: LatestArticlesProps) {
+  const [featured, ...rest] = allPosts;
 
   return (
-    <section className="mx-auto max-w-6xl px-4 pt-8 md:px-6 md:pt-10 lg:px-8">
+    <section className="pt-8 md:pt-10">
       {/* Featured post, full width */}
       {featured && (
-        <div className="mb-10">
+        <div className="mx-auto mb-10 max-w-6xl px-4 md:px-6 lg:px-8">
           <FeaturedPostCard post={featured} lang={lang} variant="large" />
         </div>
       )}
 
-      {/* Remaining posts, two columns */}
-      <div className="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2">
-        {rest.map((post) => (
-          <FeaturedPostCard key={post.slug} post={post} lang={lang} />
-        ))}
+      {/* Remaining posts, three masonry columns — reading order still goes
+          left-to-right, top-to-bottom, but each column's height is its own,
+          so columns fall out of phase with one another. Infinite-scrolls
+          through the rest of the archive 12 posts at a time. */}
+      <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8 2xl:max-w-[96rem]">
+        <InfiniteMasonryFeed
+          posts={rest}
+          lang={lang}
+          breakpoints={HOME_GRID_BREAKPOINTS}
+          endMessage={dictionary.common.endOfFeed}
+        />
       </div>
     </section>
   );

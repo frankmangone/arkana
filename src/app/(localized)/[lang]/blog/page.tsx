@@ -19,7 +19,6 @@ export default async function Page({ params }: PageProps) {
   const { lang } = await params;
   const dict = await getDictionary(lang);
   const allPosts = await getAllPosts(lang);
-  const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
 
   return (
     <MainLayout lang={lang}>
@@ -28,8 +27,7 @@ export default async function Page({ params }: PageProps) {
         posts={allPosts.slice(0, POSTS_PER_PAGE)}
         allPosts={allPosts}
         dictionary={dict}
-        currentPage={1}
-        totalPages={totalPages}
+        startIndex={0}
       />
     </MainLayout>
   );
