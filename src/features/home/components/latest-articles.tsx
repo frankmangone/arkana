@@ -32,6 +32,9 @@ export function LatestArticles({
       {/* Featured post, full width */}
       {featured && (
         <div className="mx-auto mb-10 max-w-6xl px-4 md:px-6 lg:px-8">
+          <p className="eyebrow mb-4 font-semibold text-ink-faint">
+            {dictionary.home.featuredPosts.title}
+          </p>
           <FeaturedPostCard post={featured} lang={lang} variant="large" />
         </div>
       )}

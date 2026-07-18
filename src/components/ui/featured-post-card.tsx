@@ -40,14 +40,14 @@ export function FeaturedPostCard(props: FeaturedPostCardProps) {
         className="block w-full"
       >
         <div
-          className={`grid grid-cols-5 gap-4 md:grid-cols-2 ${
+          className={`grid grid-cols-1 gap-4 overflow-hidden rounded-md border border-rule transition-colors group-hover:border-rule-strong md:grid-cols-2 md:overflow-visible md:rounded-none md:border-none ${
             isLarge ? "md:gap-8" : ""
           }`}
         >
           <div
-            className={`relative col-span-2 self-start overflow-hidden rounded-md border border-rule transition-colors group-hover:border-rule-strong md:col-span-1 ${
+            className={`relative self-start overflow-hidden border-b border-rule transition-colors group-hover:border-rule-strong md:rounded-md md:border md:border-rule ${
               imageClassName ?? ""
-            } h-40 ${isLarge ? "md:h-[24rem]" : "md:h-52"}`}
+            } h-32 ${isLarge ? "md:h-[24rem]" : "md:h-52"}`}
           >
             <TintedThumbnail src={thumbnail} alt={post.title} />
 
@@ -57,7 +57,7 @@ export function FeaturedPostCard(props: FeaturedPostCardProps) {
               {post.readingTime || "5 min read"}
             </div>
           </div>
-          <div className="col-span-3 flex flex-col md:col-span-1">
+          <div className="flex flex-col p-5 pt-0 md:p-0">
             <div className="mb-3 flex min-w-0 justify-between gap-3 text-xs text-ink-faint">
               <span className="flex-shrink-0">{date}</span>
               <span className="inline-flex min-w-0 flex-1 items-center justify-end">
@@ -80,20 +80,17 @@ export function FeaturedPostCard(props: FeaturedPostCardProps) {
               </h2>
               <ArrowUpRight className="ml-2 mt-1 h-5 w-5 flex-shrink-0 text-primary-800 opacity-0 transition-opacity group-hover:opacity-100" />
             </div>
-            <div className="hidden md:block">
-              <p
-                className={`mb-4 line-clamp-2 text-sm text-ink-muted ${
-                  isLarge ? "md:mb-5 md:text-base" : ""
-                }`}
-              >
-                {post.description}
-              </p>
-            </div>
+            <p
+              className={`mb-4 line-clamp-2 text-sm text-ink-muted ${
+                isLarge ? "md:mb-5 md:text-base" : ""
+              }`}
+            >
+              {post.description}
+            </p>
             <TagList tags={post.tags} lang={lang} />
           </div>
         </div>
       </Link>
-      <div className="mt-6 border-t border-rule md:hidden" />
     </div>
   );
 }

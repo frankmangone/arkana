@@ -165,7 +165,7 @@ export function BlogGrid(props: BlogGridProps) {
   return (
     <>
       <div className="mb-4 flex flex-col gap-3 sm:flex-row">
-        <div className="relative flex-1">
+        <div className="relative min-w-0 flex-1">
           <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-faint" />
           <input
             type="search"
