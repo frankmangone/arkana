@@ -162,3 +162,66 @@ Plus breadcrumbs.
   the right side of the landing hero (fade mask toward text, static field
   under prefers-reduced-motion).
 - Search result thumbnails: flush to the row edge, 96px wide, full height.
+
+## Iteration 5 (2026-07-17) — Homepage hero restatement
+
+Feedback (via Frank, relaying a friend's review): the landing hero is too tall,
+and its vivid light-purple field should become a shorter, static, full-width
+black/purple band instead. Scoped to the homepage hero only — the shared
+`brand-hero` vivid field (Writers list/view, FAQ header, auth layout) is
+unaffected and keeps its current look. A second requirement (making the
+homepage post-only and promoting reading lists into the hero) is deferred to a
+later step.
+
+**Scope & structure**
+
+- New `.home-hero` class in `globals.css`, used only by
+  `features/home/components/intro-section.tsx` (replaces `brand-hero` there).
+  Does not touch the shared `.brand-hero` class or its other consumers.
+- `.home-hero` locally overrides `--ink-on-brand`, `--ink-on-brand-soft`,
+  `--ink-on-brand-title` to near-white values. Because `hero-search.tsx` and
+  `intro-section.tsx` already consume those tokens via Tailwind utilities
+  (`text-ink-on-brand*`, `border-ink-on-brand`), the override cascades to both
+  with no changes needed in either file.
+- Hero height: `min-h-[72vh]` → `min-h-[48vh]`; padding trimmed from
+  `py-24 md:py-32` to `py-16 md:py-20` to match.
+
+**Colors**
+
+- Background: `linear-gradient(180deg, hsl(260, 38%, 5%) 0%, hsl(260, 30%, 8%) 100%)`
+  — the end value matches the app's dark-mode `--background` exactly, so it
+  blends seamlessly by default (site defaults to dark theme). Fixed regardless
+  of theme (does not read `var(--background)`), per Frank's call — in light
+  mode the hero intentionally stays dark.
+- Text: near-white, reusing the same values the dark theme already uses
+  elsewhere — `#f8f5ff` (title, matches `--ink-heading`), `#e1dfe4`
+  (subtitle/search, matches `--ink-body`) — applied as fixed hero-local values
+  rather than theme-linked ones.
+- Glyph rain purple: bumped from today's muted tuning (trail
+  `hsl(260, 50%, 28%)`, head `hsl(260, 70%, 10%)`) to a medium-vivid pass —
+  trail `hsl(260, 55%, 45%)`, head `hsl(266, 85%, 65%)`. Starting point;
+  expect a quick visual tuning pass once rendering.
+
+**GlyphRain effect**
+
+- `glyph-rain.tsx` gains a `static?: boolean` prop: when true, draws once via
+  the existing `drawStatic` path (already used for `prefers-reduced-motion`)
+  and skips the animation loop/RAF entirely. No new rendering logic.
+- Wrapper goes from `absolute inset-y-0 right-0 w-[46%] hidden lg:block`
+  (masked, desktop-only) to `absolute inset-0` (full-bleed, all breakpoints).
+  Mask re-tuned to fade the texture behind the left-aligned title/search copy
+  across the full width, rather than just the right strip.
+
+**Non-goals (this iteration)**
+
+- No change to homepage content/sections (post-only homepage, reading lists
+  in hero) — deferred.
+- No change to `.brand-hero`, `--ink-on-brand*` base token values, or any
+  other consumer of those (Writers, FAQ, auth).
+
+**Verification**
+
+- `pnpm run build` and `pnpm run lint` must pass.
+- Run the dev server, screenshot the homepage hero, confirm: shorter height,
+  full-width static purple glyph field, white text/search legible against the
+  dark gradient, no regression to Writers/FAQ/auth hero styling.
