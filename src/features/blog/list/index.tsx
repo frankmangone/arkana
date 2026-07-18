@@ -1,6 +1,5 @@
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { PostPreview } from "@/lib/posts";
-import { withLocalePath } from "@/lib/site-config";
 import { BlogGrid } from "./components/blog-grid";
 import type { Dictionary } from "@/lib/dictionaries";
 
@@ -11,7 +10,6 @@ interface BlogPageProps {
   dictionary: Dictionary;
   currentPage?: number;
   totalPages?: number;
-  heading?: string;
 }
 
 export function BlogPage({
@@ -21,31 +19,20 @@ export function BlogPage({
   dictionary,
   currentPage = 1,
   totalPages = 1,
-  heading,
 }: BlogPageProps) {
   return (
     <div className="container pb-8">
       <header className="mb-12 pb-4 pt-8">
         <Breadcrumbs
           lang={lang}
-          items={
-            heading
-              ? [
-                  {
-                    label: dictionary.blog.title,
-                    href: withLocalePath(lang, "blog"),
-                  },
-                  { label: heading },
-                ]
-              : [{ label: dictionary.blog.title }]
-          }
+          items={[{ label: dictionary.blog.title }]}
           className="mb-12"
         />
         <p className="eyebrow mb-4 font-semibold text-ink-faint">
           {dictionary.home.recentPosts.title}
         </p>
         <h1 className="display-title !text-[clamp(2.75rem,6vw,4.75rem)] text-primary-750">
-          {heading ?? dictionary.blog.title}
+          {dictionary.blog.title}
         </h1>
       </header>
 
@@ -56,8 +43,7 @@ export function BlogPage({
         currentPage={currentPage}
         totalPages={totalPages}
         labels={{
-          filters: dictionary.blog.filters,
-          filterByTag: dictionary.blog.filterByTag,
+          searchPlaceholder: dictionary.search.placeholder,
           searchTags: dictionary.blog.searchTags,
           noTagsFound: dictionary.blog.noTagsFound,
           searching: dictionary.search.searching,

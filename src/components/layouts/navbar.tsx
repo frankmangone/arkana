@@ -19,6 +19,7 @@ export const Navbar = async (props: NavbarProps) => {
 
   const homeUrl = withLocalePath(lang);
   const readingListsUrl = withLocalePath(lang, "reading-lists");
+  const surveyUrl = withLocalePath(lang, "survey");
 
   return (
     <header className="sticky top-0 z-40 border-b border-rule bg-surface-page/80 backdrop-blur-md">
@@ -52,9 +53,7 @@ export const Navbar = async (props: NavbarProps) => {
               {dict.readingLists.list.title}
             </Link>
             <Link
-              href="https://forms.gle/NLk49eNnu6jTwGMt8"
-              target="_blank"
-              rel="noopener noreferrer"
+              href={surveyUrl}
               className="eyebrow px-4 py-2 transition-colors hover:text-ink-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               {dict.blog.survey}

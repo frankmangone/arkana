@@ -23,7 +23,8 @@
       "meetWriters": "Meet the Writers",
       "descriptionBig": "Complex topics, made simple",
       "descriptionSmall": "Rediscover mathematics, cryptography, computer science and more through engaging articles.",
-      "exploreReadingLists": "Explore Reading Lists"
+      "exploreReadingLists": "Explore Reading Lists",
+      "findPosts": "Find Articles"
     },
     "userSurvey": {
       "title": "Help us improve Arkana",
@@ -40,9 +41,7 @@
   "blog": {
     "title": "Blog",
     "readingTime": "read",
-    "filterByTag": "Filter by tag",
     "allPosts": "All Posts",
-    "filters": "Filters",
     "searchTags": "Search tags...",
     "noTagsFound": "No matching tags",
     "noPosts": "No posts found",

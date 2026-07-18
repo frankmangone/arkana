@@ -23,7 +23,8 @@
       "descriptionBig": "Temas complejos, simplificados",
       "descriptionSmall": "Redescubre las matemáticas, la criptografía, la informática y más a través de artículos atrapantes.",
       "meetWriters": "Nuestros Escritores",
-      "exploreReadingLists": "Listas de Lectura"
+      "exploreReadingLists": "Listas de Lectura",
+      "findPosts": "Buscar Artículos"
     },
     "userSurvey": {
       "title": "Ayúdanos a mejorar Arkana",
@@ -40,9 +41,7 @@
   "blog": {
     "title": "Blog",
     "readingTime": "de lectura",
-    "filterByTag": "Filtrar por etiqueta",
     "allPosts": "Todas las Publicaciones",
-    "filters": "Filtros",
     "searchTags": "Buscar etiquetas...",
     "noTagsFound": "No se encontraron etiquetas",
     "noPosts": "No se encontraron publicaciones",

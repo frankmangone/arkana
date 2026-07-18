@@ -48,9 +48,7 @@ export function MobileMenu({ lang, labels }: MobileMenuProps) {
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
           <Link
-            href="https://forms.gle/NLk49eNnu6jTwGMt8"
-            target="_blank"
-            rel="noopener noreferrer"
+            href={withLocalePath(lang, "survey")}
             className="w-full cursor-pointer py-3 text-base"
           >
             {labels.survey}
