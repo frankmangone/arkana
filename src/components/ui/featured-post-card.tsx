@@ -1,13 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { PostPreview } from "@/lib/posts";
 import { useRouter } from "next/navigation";
 import { ArrowUpRight, User, Clock } from "lucide-react";
 import { formatDate } from "@/lib/utils";
 import { Tag } from "@/components/ui/tag";
-import { withLocalePath, withSiteUrl } from "@/lib/site-config";
+import { TintedThumbnail } from "@/components/ui/tinted-thumbnail";
+import { withLocalePath, resolveThumbnailUrl } from "@/lib/site-config";
 
 export interface FeaturedPostCardProps {
   post: PostPreview;
@@ -24,11 +24,7 @@ export function FeaturedPostCard(props: FeaturedPostCardProps) {
 
   const isLarge = variant === "large";
 
-  const thumbnail = post.thumbnail
-    ? post.thumbnail.startsWith("http")
-      ? post.thumbnail
-      : withSiteUrl(post.thumbnail)
-    : "/placeholder.svg";
+  const thumbnail = resolveThumbnailUrl(post.thumbnail);
 
   const date = formatDate(post.date, lang);
 
@@ -53,12 +49,7 @@ export function FeaturedPostCard(props: FeaturedPostCardProps) {
               imageClassName ?? ""
             } h-40 ${isLarge ? "md:mb-5 md:h-[27.5rem]" : "md:h-52"}`}
           >
-            <Image
-              src={thumbnail}
-              alt={post.title}
-              fill
-              className="object-cover"
-            />
+            <TintedThumbnail src={thumbnail} alt={post.title} />
 
             {/* Reading time indicator */}
             <div className="absolute right-3 top-3 flex items-center rounded-[3px] border border-rule bg-surface-page/80 px-2 py-1 text-xs text-ink-body backdrop-blur-sm">

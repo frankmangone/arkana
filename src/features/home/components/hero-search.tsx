@@ -1,14 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { Search, LoaderCircle, X } from "lucide-react";
 import { useSearch } from "@/lib/api/hooks";
-import { withLocalePath, withSiteUrl } from "@/lib/site-config";
+import { withLocalePath, resolveThumbnailUrl } from "@/lib/site-config";
 import type { Dictionary } from "@/lib/dictionaries";
 import type { SearchHit } from "@/lib/api/services/search";
 import { useDebouncedValue } from "@/hooks/use-debounced-value";
+import { TintedThumbnail } from "@/components/ui/tinted-thumbnail";
 
 const RESULT_LIMIT = 3;
 const DEBOUNCE_MS = 500;
@@ -39,18 +39,10 @@ function ResultCard({ hit, lang }: { hit: SearchHit; lang: string }) {
       className="group flex items-stretch gap-4 transition-colors hover:bg-white/5"
     >
       <div className="relative w-24 shrink-0 self-stretch overflow-hidden border-r border-rule">
-        <Image
-          src={
-            hit.thumbnail
-              ? hit.thumbnail.startsWith("http")
-                ? hit.thumbnail
-                : withSiteUrl(hit.thumbnail)
-              : "/placeholder.svg"
-          }
+        <TintedThumbnail
+          src={resolveThumbnailUrl(hit.thumbnail)}
           alt={hit.title}
-          fill
           sizes="96px"
-          className="object-cover"
         />
       </div>
       <div className="min-w-0 py-3 pr-4">

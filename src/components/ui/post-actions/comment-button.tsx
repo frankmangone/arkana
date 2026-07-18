@@ -36,7 +36,7 @@ export function CommentButton(props: CommentButtonProps) {
   return (
     <Button
       variant="ghost"
-      className="h-auto !px-2.5 !py-2 rounded-[4px] cursor-pointer bg-transparent text-ink-on-brand hover:bg-black/10 hover:text-ink-on-brand flex items-center gap-1.5"
+      className="h-auto !px-2.5 !py-2 rounded-[4px] cursor-pointer bg-transparent text-white/70 hover:bg-black/10 hover:text-white flex items-center gap-1.5"
       aria-label="Comment on post"
       onClick={handleClick}
     >

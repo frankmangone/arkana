@@ -10,8 +10,11 @@ interface BreadcrumbsProps {
   lang: string;
   items: BreadcrumbItem[];
   className?: string;
-  /** "onBrand" renders dark ink for use on the vivid hero fields */
-  variant?: "default" | "onBrand";
+  /**
+   * "onBrand" renders dark ink for use on the vivid gradient hero fields.
+   * "onPhoto" renders white ink for use on the dark duotone photo hero.
+   */
+  variant?: "default" | "onBrand" | "onPhoto";
 }
 
 /**
@@ -31,14 +34,24 @@ export function Breadcrumbs({
     ...items,
   ];
 
-  const onBrand = variant === "onBrand";
-  const linkClass = onBrand
-    ? "eyebrow text-ink-on-brand-soft transition-colors hover:text-ink-on-brand"
-    : "eyebrow transition-colors hover:text-ink-heading";
-  const separatorClass = onBrand ? "text-ink-on-brand-soft" : "text-ink-faint";
-  const currentClass = onBrand
-    ? "eyebrow max-w-[16rem] truncate font-semibold text-ink-on-brand"
-    : "eyebrow max-w-[16rem] truncate text-primary-800";
+  const linkClass =
+    variant === "onBrand"
+      ? "eyebrow text-ink-on-brand-soft transition-colors hover:text-ink-on-brand"
+      : variant === "onPhoto"
+        ? "eyebrow text-white/60 transition-colors hover:text-white"
+        : "eyebrow transition-colors hover:text-ink-heading";
+  const separatorClass =
+    variant === "onBrand"
+      ? "text-ink-on-brand-soft"
+      : variant === "onPhoto"
+        ? "text-white/40"
+        : "text-ink-faint";
+  const currentClass =
+    variant === "onBrand"
+      ? "eyebrow max-w-[16rem] truncate font-semibold text-ink-on-brand"
+      : variant === "onPhoto"
+        ? "eyebrow max-w-[16rem] truncate font-semibold text-white/80"
+        : "eyebrow max-w-[16rem] truncate text-primary-800";
 
   return (
     <nav aria-label="Breadcrumb" className={className}>

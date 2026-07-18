@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { User, Clock } from "lucide-react";
 import { ArrowUpRight } from "lucide-react";
@@ -8,7 +7,8 @@ import { formatDate } from "@/lib/utils";
 import { PostPreview } from "@/lib/posts";
 import { useRouter } from "next/navigation";
 import { Tag } from "./tag";
-import { withLocalePath, withSiteUrl } from "@/lib/site-config";
+import { TintedThumbnail } from "./tinted-thumbnail";
+import { withLocalePath, resolveThumbnailUrl } from "@/lib/site-config";
 
 interface PostCardProps {
   post: PostPreview;
@@ -33,17 +33,9 @@ export function PostCard(props: PostCardProps) {
         <div
           className={`relative hidden h-48 overflow-hidden border-b border-rule md:block ${imageClassName}`}
         >
-          <Image
-            src={
-              post.thumbnail
-                ? post.thumbnail.startsWith("http")
-                  ? post.thumbnail
-                  : withSiteUrl(post.thumbnail)
-                : "/placeholder.svg"
-            }
+          <TintedThumbnail
+            src={resolveThumbnailUrl(post.thumbnail)}
             alt={post.title}
-            fill
-            className="object-cover"
           />
         </div>
         <div className="flex flex-1 flex-col p-5">

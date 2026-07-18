@@ -4,12 +4,14 @@ import { formatDate } from "@/lib/utils";
 import type { Post } from "@/lib/types";
 import { getWriter } from "@/lib/writers";
 import { getDictionary } from "@/lib/dictionaries";
+import { resolveThumbnailUrl } from "@/lib/site-config";
 import { ExternalLink } from "lucide-react";
 import { ArkanaStrip } from "@/components/arkana-strip";
 import { Breadcrumbs, type BreadcrumbItem } from "@/components/breadcrumbs";
 import { Tag } from "@/components/ui/tag";
 import { Link } from "@/components/ui/link";
 import { PostActions } from "@/components/ui/post-actions";
+import { TintedThumbnail } from "@/components/ui/tinted-thumbnail";
 
 interface PostHeaderProps {
   post: Post;
@@ -18,20 +20,26 @@ interface PostHeaderProps {
   breadcrumbs?: BreadcrumbItem[];
 }
 
-// ~3.4:1 against --grad-hero: decorative texture, deliberately quieter than text
-const HERO_GLYPH_INK = "hsl(260, 50%, 28%)";
-
 export async function PostHeader(props: PostHeaderProps) {
   const { post, lang, path, breadcrumbs } = props;
   const { metadata } = post;
   const dict = await getDictionary(lang);
   const writer = getWriter(metadata.author);
+  const thumbnailSrc = resolveThumbnailUrl(metadata.thumbnail);
 
   return (
     <header className="mb-10">
-      {/* Full-bleed vivid hero field */}
-      <div className="full-bleed brand-hero">
-        <div className="px-4 pb-16 pt-8 md:px-6 md:pb-24 lg:px-8">
+      {/* Full-bleed hero: post thumbnail with a dark purple duotone tint */}
+      <div className="full-bleed relative overflow-hidden">
+        <TintedThumbnail
+          src={thumbnailSrc}
+          alt=""
+          priority
+          imageClassName="object-top"
+          variant="hero"
+        />
+
+        <div className="relative px-4 pb-16 pt-8 md:px-6 md:pb-24 lg:px-8">
           {/* From xl, indent the breadcrumbs to the title column's left edge
               ((100% - 48rem)/2), so they sit on the same axis as the
               tags/title/body reading flow. */}
@@ -39,7 +47,7 @@ export async function PostHeader(props: PostHeaderProps) {
             <Breadcrumbs
               lang={lang}
               items={breadcrumbs}
-              variant="onBrand"
+              variant="onPhoto"
               className="mb-12 md:mb-16 xl:ml-[max(0rem,calc((100%-48rem)/2))]"
             />
           )}
@@ -52,20 +60,20 @@ export async function PostHeader(props: PostHeaderProps) {
             {/* Metadata rail */}
             <aside className="order-2 mx-auto flex w-full max-w-3xl flex-wrap items-start gap-x-12 gap-y-7 xl:order-1 xl:col-start-1 xl:row-start-1 xl:mx-0 xl:w-44 xl:max-w-none xl:flex-col xl:justify-self-end">
               <div>
-                <p className="eyebrow mb-1.5 font-semibold text-ink-on-brand">
+                <p className="eyebrow mb-1.5 font-semibold text-white/60">
                   {dict.blog.date}
                 </p>
-                <p className="text-ink-on-brand-soft">
+                <p className="text-white/80">
                   {formatDate(metadata.date, lang)}
                 </p>
               </div>
               <div>
-                <p className="eyebrow mb-1.5 font-semibold text-ink-on-brand">
+                <p className="eyebrow mb-1.5 font-semibold text-white/60">
                   {dict.blog.author}
                 </p>
                 <Link
                   href={`/${lang}/writers/${writer.slug}`}
-                  className="flex items-center gap-2 text-ink-on-brand-soft no-underline hover:underline"
+                  className="flex items-center gap-2 text-white/80 no-underline hover:underline"
                 >
                   <Avatar className="h-6 w-6">
                     <AvatarImage
@@ -82,7 +90,7 @@ export async function PostHeader(props: PostHeaderProps) {
                 </Link>
               </div>
               <div>
-                <p className="text-ink-on-brand-soft">
+                <p className="text-white/80">
                   {metadata.readingTime} {dict.blog.readingTime}
                   {metadata.mediumUrl && (
                     <>
@@ -91,7 +99,7 @@ export async function PostHeader(props: PostHeaderProps) {
                         href={metadata.mediumUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-ink-on-brand-soft no-underline hover:underline"
+                        className="inline-flex items-center gap-1 text-white/80 no-underline hover:underline"
                       >
                         Medium <ExternalLink size={14} />
                       </Link>
@@ -110,18 +118,18 @@ export async function PostHeader(props: PostHeaderProps) {
 
             {/* Title block */}
             <div className="order-1 mx-auto w-full max-w-3xl xl:order-2 xl:col-start-2 xl:row-start-1 xl:mx-0 xl:max-w-none">
-              <div className="mb-8 flex flex-wrap gap-2 [&_[data-slot=badge]]:border-rule-on-brand [&_[data-slot=badge]]:text-ink-on-brand-soft">
+              <div className="mb-8 flex flex-wrap gap-2 [&_[data-slot=badge]]:border-white/30 [&_[data-slot=badge]]:text-white/80">
                 {metadata.tags.map((tag) => (
                   <Tag key={tag} tag={tag} lang={lang} />
                 ))}
               </div>
 
-              <h1 className="display-title mb-7 !text-[clamp(2.5rem,5vw,4.25rem)] text-ink-on-brand-title">
+              <h1 className="display-title mb-7 !text-[clamp(2.5rem,5vw,4.25rem)] text-white">
                 {metadata.title}
               </h1>
 
               {metadata.description && (
-                <p className="mb-10 max-w-[58ch] text-xl leading-relaxed text-ink-on-brand-soft">
+                <p className="mb-10 max-w-[58ch] text-xl leading-relaxed text-white/80">
                   {metadata.description}
                 </p>
               )}
@@ -129,7 +137,7 @@ export async function PostHeader(props: PostHeaderProps) {
               <ArkanaStrip
                 content={post.content}
                 preCalculatedHash={metadata.contentHash}
-                lineColor={HERO_GLYPH_INK}
+                lineColor="#FFF"
                 className="!my-0 !justify-start"
               />
             </div>
