@@ -44,8 +44,6 @@ export function BlogPage({
         totalPages={totalPages}
         labels={{
           searchPlaceholder: dictionary.search.placeholder,
-          filters: dictionary.blog.filters,
-          filterByTag: dictionary.blog.filterByTag,
           searchTags: dictionary.blog.searchTags,
           noTagsFound: dictionary.blog.noTagsFound,
           searching: dictionary.search.searching,

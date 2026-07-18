@@ -41,9 +41,7 @@
   "blog": {
     "title": "Blog",
     "readingTime": "de lectura",
-    "filterByTag": "Filtrar por etiqueta",
     "allPosts": "Todas las Publicaciones",
-    "filters": "Filtros",
     "searchTags": "Buscar etiquetas...",
     "noTagsFound": "No se encontraron etiquetas",
     "noPosts": "No se encontraron publicaciones",
