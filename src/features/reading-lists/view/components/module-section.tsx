@@ -17,13 +17,14 @@ export function ModuleSection({ module }: ModuleSectionProps) {
         </p>
       </div>
 
-      <ol className="!m-0 flex flex-col !p-0">
+      <ol className="!m-0 flex list-none flex-col !p-0">
         {module.steps.map((step, index) => (
           <StepItem
             key={step.id}
-            index={index + 1}
+            order={String(index + 1).padStart(2, "0")}
             title={step.title}
             url={step.url}
+            showConnector={index < module.steps.length - 1}
           />
         ))}
       </ol>
