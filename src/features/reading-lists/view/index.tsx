@@ -20,6 +20,10 @@ export async function ReadingListPage(props: ReadingListPageProps) {
   const posts = await getPostsFromReadingList({ readingList, lang });
   const postsBySlug = new Map(posts.map((post) => [post.slug, post]));
 
+  // Step numbers run across the whole journey (not reset per module), so the
+  // last number always equals the total article count.
+  let stepCount = 0;
+
   const modules: ModuleData[] = readingList.modules
     .map((module) => ({
       id: module.id,
@@ -27,15 +31,19 @@ export async function ReadingListPage(props: ReadingListPageProps) {
       description: module.description,
       steps: module.items
         .filter((item) => postsBySlug.has(item.slug))
-        .map((item) => ({
-          id: item.id,
-          slug: item.slug,
-          title: postsBySlug.get(item.slug)!.title,
-          url: withLocalePath(
-            lang,
-            `reading-lists/${readingList.id}/${item.id}`
-          ),
-        })),
+        .map((item) => {
+          stepCount += 1;
+          return {
+            id: item.id,
+            slug: item.slug,
+            title: postsBySlug.get(item.slug)!.title,
+            url: withLocalePath(
+              lang,
+              `reading-lists/${readingList.id}/${item.id}`
+            ),
+            order: stepCount,
+          };
+        }),
     }))
     .filter((module) => module.steps.length > 0);
 
@@ -64,7 +72,7 @@ export async function ReadingListPage(props: ReadingListPageProps) {
         </p>
       </header>
 
-      <JourneyStepper modules={modules} />
+      <JourneyStepper modules={modules} moduleLabel={dict.readingLists.module} />
     </div>
   );
 }

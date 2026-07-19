@@ -3,13 +3,20 @@ import type { ModuleData } from "./journey-stepper";
 
 interface ModuleSectionProps {
   module: ModuleData;
+  moduleNumber: number;
+  moduleLabel: string;
 }
 
-export function ModuleSection({ module }: ModuleSectionProps) {
+export function ModuleSection(props: ModuleSectionProps) {
+  const { module, moduleNumber, moduleLabel } = props;
+
   return (
-    <section>
-      <div className="mb-6">
-        <h2 className="text-2xl font-semibold tracking-tight text-ink-heading">
+    <section className="grid gap-8 md:grid-cols-[2fr_3fr] md:gap-x-12">
+      <div>
+        <span className="eyebrow text-ink-faint">
+          {moduleLabel} {String(moduleNumber).padStart(2, "0")}
+        </span>
+        <h2 className="mt-2 text-2xl font-semibold tracking-tight text-ink-heading">
           {module.title}
         </h2>
         <p className="mt-1 max-w-[65ch] text-base text-ink-muted">
@@ -17,11 +24,11 @@ export function ModuleSection({ module }: ModuleSectionProps) {
         </p>
       </div>
 
-      <ol className="!m-0 flex list-none flex-col !p-0">
+      <ol className="!m-0 flex list-none flex-col !p-0 !pt-8">
         {module.steps.map((step, index) => (
           <StepItem
             key={step.id}
-            order={String(index + 1).padStart(2, "0")}
+            order={String(step.order).padStart(2, "0")}
             title={step.title}
             url={step.url}
             showConnector={index < module.steps.length - 1}

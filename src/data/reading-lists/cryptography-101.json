@@ -1,0 +1,212 @@
+{
+  "id": "cryptography-101",
+  "coverImage": "/images/cryptography-101/zero-knowledge-proofs-part-1/wingardium-leviosa.webp",
+  "ongoing": false,
+  "translations": {
+    "en": {
+      "title": "Cryptography 101",
+      "description": "A beginner-friendly introduction to cryptography concepts"
+    },
+    "es": {
+      "title": "Criptografía 101",
+      "description": "Una introducción accesible a los conceptos más importantes de la criptografía"
+    },
+    "pt": {
+      "title": "Criptografia 101",
+      "description": "Uma introdução acessível aos conceitos de criptografia"
+    }
+  },
+  "modules": [
+    {
+      "id": "asymmetric-cryptography-basics",
+      "translations": {
+        "en": {
+          "title": "Asymmetric Cryptography Basics",
+          "description": "The basics to understand asymmetric cryptography"
+        },
+        "es": {
+          "title": "Fundamentos de Criptografía Asimétrica",
+          "description": "Los conceptos básicos para entender la criptografía asimétrica"
+        },
+        "pt": {
+          "title": "Fundamentos de Criptografia Assimétrica",
+          "description": "Os conceitos básicos para entender a criptografia assimétrica"
+        }
+      },
+      "items": [
+        {
+          "id": "where-to-start",
+          "slug": "cryptography-101/where-to-start",
+          "order": 1
+        },
+        {
+          "id": "asides-rsa-explained",
+          "slug": "cryptography-101/asides-rsa-explained",
+          "order": 2
+        },
+        {
+          "id": "elliptic-curves-somewhat-demystified",
+          "slug": "cryptography-101/elliptic-curves-somewhat-demystified",
+          "order": 3
+        },
+        {
+          "id": "encryption-and-digital-signatures",
+          "slug": "cryptography-101/encryption-and-digital-signatures",
+          "order": 4
+        },
+        {
+          "id": "hashing",
+          "slug": "cryptography-101/hashing",
+          "order": 5
+        },
+        {
+          "id": "protocols-galore",
+          "slug": "cryptography-101/protocols-galore",
+          "order": 6
+        }
+      ]
+    },
+    {
+      "id": "advanced-signatures",
+      "translations": {
+        "en": {
+          "title": "Advanced Signatures",
+          "description": "A look into a few variations of digital signatures"
+        },
+        "es": {
+          "title": "Firmas Avanzadas",
+          "description": "Un vistazo a algunas variaciones de las firmas digitales"
+        },
+        "pt": {
+          "title": "Assinaturas Avançadas",
+          "description": "Uma olhada em algumas variações das assinaturas digitais"
+        }
+      },
+      "items": [
+        {
+          "id": "signatures-recharged",
+          "slug": "cryptography-101/signatures-recharged",
+          "order": 7
+        },
+        {
+          "id": "asides-evaluating-security",
+          "slug": "cryptography-101/asides-evaluating-security",
+          "order": 8
+        },
+        {
+          "id": "homomorphisms-and-isomorphisms",
+          "slug": "cryptography-101/homomorphisms-and-isomorphisms",
+          "order": 9
+        },
+        {
+          "id": "polynomials",
+          "slug": "cryptography-101/polynomials",
+          "order": 10
+        },
+        {
+          "id": "threshold-signatures",
+          "slug": "cryptography-101/threshold-signatures",
+          "order": 11
+        }
+      ]
+    },
+    {
+      "id": "zero-knowledge-basics",
+      "translations": {
+        "en": {
+          "title": "Zero Knowledge Basics",
+          "description": "An introduction to the world of Zero Knowledge Proofs"
+        },
+        "es": {
+          "title": "Fundamentos de Conocimiento Cero",
+          "description": "Una introducción al mundo de las pruebas de Conocimiento Cero"
+        },
+        "pt": {
+          "title": "Fundamentos de Conhecimento Zero",
+          "description": "Uma introdução ao mundo das provas de Conhecimento Zero"
+        }
+      },
+      "items": [
+        {
+          "id": "pairings",
+          "slug": "cryptography-101/pairings",
+          "order": 12
+        },
+        {
+          "id": "pairing-applications-and-more",
+          "slug": "cryptography-101/pairing-applications-and-more",
+          "order": 13
+        },
+        {
+          "id": "commitment-schemes-revisited",
+          "slug": "cryptography-101/commitment-schemes-revisited",
+          "order": 14
+        },
+        {
+          "id": "zero-knowledge-proofs-part-1",
+          "slug": "cryptography-101/zero-knowledge-proofs-part-1",
+          "order": 15
+        },
+        {
+          "id": "arithmetic-circuits",
+          "slug": "cryptography-101/arithmetic-circuits",
+          "order": 16
+        },
+        {
+          "id": "zero-knowledge-proofs-part-2",
+          "slug": "cryptography-101/zero-knowledge-proofs-part-2",
+          "order": 17
+        },
+        {
+          "id": "zero-knowledge-proofs-part-3",
+          "slug": "cryptography-101/zero-knowledge-proofs-part-3",
+          "order": 18
+        },
+        {
+          "id": "starks",
+          "slug": "cryptography-101/starks",
+          "order": 19
+        }
+      ]
+    },
+    {
+      "id": "lattice-based-cryptography-basics",
+      "translations": {
+        "en": {
+          "title": "Lattice-based Cryptography Basics",
+          "description": "An introduction to Lattices and modern methods based on them"
+        },
+        "es": {
+          "title": "Fundamentos de Criptografía Basada en Retículos",
+          "description": "Una introducción a los retículos y los métodos modernos basados en ellos"
+        },
+        "pt": {
+          "title": "Fundamentos de Criptografia Baseada em Reticulados",
+          "description": "Uma introdução aos reticulados e aos métodos modernos baseados neles"
+        }
+      },
+      "items": [
+        {
+          "id": "rings",
+          "slug": "cryptography-101/rings",
+          "order": 20
+        },
+        {
+          "id": "ring-learning-with-errors",
+          "slug": "cryptography-101/ring-learning-with-errors",
+          "order": 21
+        },
+        {
+          "id": "post-quantum-cryptography",
+          "slug": "cryptography-101/post-quantum-cryptography",
+          "order": 22
+        },
+        {
+          "id": "fully-homomorphic-encryption",
+          "slug": "cryptography-101/fully-homomorphic-encryption",
+          "order": 23
+        }
+      ]
+    }
+  ]
+}

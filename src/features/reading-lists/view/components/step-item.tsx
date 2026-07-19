@@ -19,7 +19,7 @@ export function StepItem(props: StepItemProps) {
       {showConnector && (
         <span
           aria-hidden="true"
-          className="absolute left-3 top-6 h-[calc(100%-1.5rem)] w-0.5 -translate-x-1/2 bg-rule-strong"
+          className="absolute left-3 top-6 h-[calc(100%-1.5rem)] w-[3px] -translate-x-1/2 bg-ink-faint"
         />
       )}
       <Link

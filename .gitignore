@@ -4,7 +4,7 @@
 docs/superpowers
 
 # content
-/src/data
+# /src/data
 /src/content
 
 # dependencies

@@ -72,6 +72,7 @@
   "readingLists": {
     "article": "artículo",
     "articles": "artículos",
+    "module": "Módulo",
     "list": {
       "title": "Listas de Lectura",
       "description": "Colecciones seleccionadas de artículos organizados por tema para guiar tu aprendizaje.",

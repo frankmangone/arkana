@@ -1,0 +1,188 @@
+{
+  "id": "the-zk-chronicles",
+  "coverImage": "/images/the-zk-chronicles/first-steps/0*bcbfQCO0n1pbsyXD-1.jpg",
+  "ongoing": true,
+  "translations": {
+    "en": {
+      "title": "The ZK Chronicles",
+      "description": "A journey into the world of Zero-Knowledge proofs"
+    },
+    "es": {
+      "title": "Las Crónicas de ZK",
+      "description": "Un viaje al mundo de las pruebas de Conocimiento Cero"
+    }
+  },
+  "modules": [
+    {
+      "id": "fundamentals",
+      "translations": {
+        "en": {
+          "title": "Fundamentals",
+          "description": "The very foundations behind ZK"
+        },
+        "es": {
+          "title": "Fundamentos",
+          "description": "Los cimientos detrás de ZK"
+        }
+      },
+      "items": [
+        {
+          "id": "first-steps",
+          "slug": "the-zk-chronicles/first-steps",
+          "order": 1
+        },
+        {
+          "id": "math-foundations",
+          "slug": "the-zk-chronicles/math-foundations",
+          "order": 2
+        },
+        {
+          "id": "sum-check",
+          "slug": "the-zk-chronicles/sum-check",
+          "order": 3
+        }
+      ]
+    },
+    {
+      "id": "circuits",
+      "translations": {
+        "en": {
+          "title": "Arithmetic Circuits",
+          "description": "Introduction to arithmetic circuits and their uses"
+        },
+        "es": {
+          "title": "Circuitos Aritméticos",
+          "description": "Introducción a los circuitos aritméticos y sus usos"
+        }
+      },
+      "items": [
+        {
+          "id": "circuits-part-1",
+          "slug": "the-zk-chronicles/circuits-part-1",
+          "order": 4
+        },
+        {
+          "id": "multilinear-extensions",
+          "slug": "the-zk-chronicles/multilinear-extensions",
+          "order": 5
+        },
+        {
+          "id": "circuits-part-2",
+          "slug": "the-zk-chronicles/circuits-part-2",
+          "order": 6
+        },
+        {
+          "id": "computation-models",
+          "slug": "the-zk-chronicles/computation-models",
+          "order": 7
+        }
+      ]
+    }, 
+    {
+      "id": "further-constructions",
+      "translations": {
+        "en": {
+          "title": "Further Constructions",
+          "description": "We need to look at a few more important constructions and techniques before moving forward"
+        },
+        "es": {
+          "title": "Más Construcciones",
+          "description": "Necesitamos ver algunas construcciones y técnicas importantes antes de continuar"
+        }
+      },
+      "items": [
+        {
+          "id": "enter-hashing",
+          "slug": "the-zk-chronicles/enter-hashing",
+          "order": 8
+        },
+        {
+          "id": "groups",
+          "slug": "the-zk-chronicles/groups",
+          "order": 9
+        },
+        {
+          "id": "commitment-schemes-part-1",
+          "slug": "the-zk-chronicles/commitment-schemes-part-1",
+          "order": 10
+        },
+        {
+          "id": "sigma-protocols",
+          "slug": "the-zk-chronicles/sigma-protocols",
+          "order": 11
+        },
+        {
+          "id": "fast-fourier-transform",
+          "slug": "the-zk-chronicles/fast-fourier-transform",
+          "order": 12
+        },
+        {
+          "id": "commitment-schemes-part-2",
+          "slug": "the-zk-chronicles/commitment-schemes-part-2",
+          "order": 13
+        }
+      ]
+    },
+    {
+      "id": "zero-knowledge",
+      "translations": {
+        "en": {
+          "title": "Zero Knowledge",
+          "description": "We can now formally understand what zero knowledge truly means, formally"
+        },
+        "es": {
+          "title": "Conocimiento Cero",
+          "description": "Ahora podemos entender formalmente qué significa realmente el conocimiento cero"
+        }
+      },
+      "items": [
+        {
+          "id": "inner-product-arguments",
+          "slug": "the-zk-chronicles/inner-product-arguments",
+          "order": 14
+        },
+        {
+          "id": "zero-knowledge",
+          "slug": "the-zk-chronicles/zero-knowledge",
+          "order": 14
+        },
+        {
+          "id": "the-random-oracle-model",
+          "slug": "the-zk-chronicles/the-random-oracle-model",
+          "order": 15
+        }
+      ]
+    },
+    {
+      "id": "snarks",
+      "translations": {
+        "en": {
+          "title": "SNARKs",
+          "description": "Onto the frontier of practical ZK: small, fast-to-verify proofs that we can actually use for real systems"
+        },
+        "es": {
+          "title": "SNARKs",
+          "description": "Hacia la frontera de ZK práctico: pruebas pequeñas y rápidas de verificar que podemos usar en sistemas reales"
+        }
+      },
+      "items": [
+        {
+          "id": "arithmetization",
+          "slug": "the-zk-chronicles/arithmetization",
+          "order": 16
+        },
+        {
+          "id": "snarks-part-1",
+          "slug": "the-zk-chronicles/snarks-part-1",
+          "order": 17
+        },
+        {
+          "id": "snarks-part-2",
+          "slug": "the-zk-chronicles/snarks-part-2",
+          "order": 18
+        }
+      ]
+    }
+
+  ]
+}

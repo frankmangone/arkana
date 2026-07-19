@@ -17,7 +17,7 @@ export function StepGlyph({ read, className }: StepGlyphProps) {
         d="M12 0 L24 12 L12 24 L0 12 Z"
         fill={read ? "currentColor" : "none"}
         stroke="currentColor"
-        strokeWidth={2}
+        strokeWidth={3}
       />
     </svg>
   );
