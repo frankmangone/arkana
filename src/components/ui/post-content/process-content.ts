@@ -6,6 +6,16 @@ export function processContent(content: string): string {
         /:::\s*big-quote\s*([\s\S]*?)\s*:::/g,
         (_, content) => `<big-quote>${content}</big-quote>`
       )
+      // Normalize raw <big-quote> tags onto a single line too, however they're
+      // formatted in source. Without this, a <big-quote> spread across
+      // multiple lines is parsed as an HTML block and its inner
+      // markdown/LaTeX is left as literal text instead of being rendered
+      // (the single-line form above is parsed as inline HTML instead, which
+      // leaves the surrounding text as ordinary markdown).
+      .replace(
+        /<big-quote>\s*([\s\S]*?)\s*<\/big-quote>/g,
+        (_, content) => `<big-quote>${content}</big-quote>`
+      )
       .replace(
         /<quiz\s+src="([^"]+)"\s*(?:lang="([^"]+)")?\s*\/>/g,
         (_, src, lang) => {

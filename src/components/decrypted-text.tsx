@@ -1,16 +1,16 @@
 "use client";
 
-import { useLayoutEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import ArkanaPattern from "@/components/arkana-pattern";
 import type { Pattern } from "@/components/arkana-strip";
 
 type Elements = Pattern["elements"];
 
 const GLYPH_LINE_COLOR = "#ffffff";
-const GLYPH_LINE_WIDTH = 3.5;
-const TICK_MS = 65;
-const REVEAL_STAGGER_MS = 45;
-const START_DELAY_MS = 150;
+const DEFAULT_GLYPH_LINE_WIDTH = 3.5;
+const DEFAULT_TICK_MS = 65;
+const DEFAULT_REVEAL_STAGGER_MS = 45;
+const DEFAULT_START_DELAY_MS = 150;
 
 function bitsToElements(bits: string): Elements {
   return {
@@ -50,6 +50,22 @@ function randomElements(): Elements {
 interface DecryptedTextProps {
   text: string;
   className?: string;
+  /** "mount" (default): scrambles immediately on mount, matching the hero's
+   * entrance effect. "visible": stays plainly rendered until scrolled into
+   * view, then decrypts once (never replays) — for content further down a
+   * page, like blockquotes. */
+  triggerOn?: "mount" | "visible";
+  /** Glyph stroke width. Defaults to the hero's tuning. */
+  lineWidth?: number;
+  /** How often unrevealed glyphs re-randomize, in ms. Defaults to the
+   * hero's tuning. */
+  tickMs?: number;
+  /** Delay between each successive character becoming eligible to lock in,
+   * in ms — the main knob for overall speed. Defaults to the hero's tuning. */
+  revealStaggerMs?: number;
+  /** Minimum scramble time before the first character can lock in, in ms.
+   * Defaults to the hero's tuning. */
+  startDelayMs?: number;
 }
 
 interface CharGroup {
@@ -75,7 +91,15 @@ function groupCharacters(characters: string[]): CharGroup[] {
   return groups;
 }
 
-export function DecryptedText({ text, className = "" }: DecryptedTextProps) {
+export function DecryptedText({
+  text,
+  className = "",
+  triggerOn = "mount",
+  lineWidth = DEFAULT_GLYPH_LINE_WIDTH,
+  tickMs = DEFAULT_TICK_MS,
+  revealStaggerMs = DEFAULT_REVEAL_STAGGER_MS,
+  startDelayMs = DEFAULT_START_DELAY_MS,
+}: DecryptedTextProps) {
   const characters = useMemo(() => Array.from(text), [text]);
   const groups = useMemo(() => groupCharacters(characters), [characters]);
   const containerRef = useRef<HTMLSpanElement>(null);
@@ -115,27 +139,15 @@ export function DecryptedText({ text, className = "" }: DecryptedTextProps) {
     return () => window.removeEventListener("resize", updateSize);
   }, []);
 
-  // Scramble on mount, then reveal characters left-to-right over time.
-  // Skipped entirely under prefers-reduced-motion (stays fully revealed).
-  // useLayoutEffect (not useEffect) so the scramble commits before the
-  // browser paints — avoids a flash of plain text on first paint. The
-  // animated span also starts CSS-hidden (opacity-0, see render) so there's
-  // no flash even if hydration itself is slow — this effect is what turns
-  // it visible again, right as it either scrambles or (reduced motion)
-  // reveals, so the very first visible paint is always the correct one.
-  useLayoutEffect(() => {
-    if (glyphsRef.current) glyphsRef.current.style.opacity = "1";
-
-    const reducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-    if (reducedMotion) return;
-
+  // Scrambles every character, then reveals them left-to-right over time.
+  // Shared by both trigger modes below. Returns a cleanup that stops the
+  // timer (unmount, or a fresh trigger for new text).
+  const runDecryptAnimation = () => {
     setRevealed(characters.map(() => false));
 
     const startTime = performance.now();
     const totalDuration =
-      START_DELAY_MS + characters.length * REVEAL_STAGGER_MS;
+      startDelayMs + characters.length * revealStaggerMs;
 
     const interval = window.setInterval(() => {
       const elapsed = performance.now() - startTime;
@@ -143,18 +155,72 @@ export function DecryptedText({ text, className = "" }: DecryptedTextProps) {
       setRevealed((prev) =>
         prev.map(
           (isRevealed, index) =>
-            isRevealed ||
-            elapsed >= START_DELAY_MS + index * REVEAL_STAGGER_MS
+            isRevealed || elapsed >= startDelayMs + index * revealStaggerMs
         )
       );
 
       if (elapsed >= totalDuration) {
         window.clearInterval(interval);
       }
-    }, TICK_MS);
+    }, tickMs);
 
     return () => window.clearInterval(interval);
-  }, [characters]);
+  };
+
+  // Mount trigger: scrambles immediately on mount. Skipped entirely under
+  // prefers-reduced-motion (stays fully revealed). useLayoutEffect (not
+  // useEffect) so the scramble commits before the browser paints — avoids
+  // a flash of plain text on first paint. The animated span also starts
+  // CSS-hidden (opacity-0, see render) so there's no flash even if
+  // hydration itself is slow — this effect is what turns it visible again,
+  // right as it either scrambles or (reduced motion) reveals, so the very
+  // first visible paint is always the correct one.
+  useLayoutEffect(() => {
+    if (triggerOn !== "mount") return;
+    if (glyphsRef.current) glyphsRef.current.style.opacity = "1";
+
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (reducedMotion) return;
+
+    return runDecryptAnimation();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [characters, triggerOn, tickMs, revealStaggerMs, startDelayMs]);
+
+  // Visible trigger: stays plainly rendered (no CSS hide needed — it's
+  // already correct, readable text) until scrolled into view, then
+  // decrypts once. The observer disconnects after the first trigger, so it
+  // never replays.
+  useEffect(() => {
+    if (triggerOn !== "visible") return;
+
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (reducedMotion) return;
+
+    const container = containerRef.current;
+    if (!container) return;
+
+    let cleanupAnimation: (() => void) | undefined;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          cleanupAnimation = runDecryptAnimation();
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(container);
+
+    return () => {
+      observer.disconnect();
+      cleanupAnimation?.();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [characters, triggerOn, tickMs, revealStaggerMs, startDelayMs]);
 
   // Estimated glyph count spanning roughly the same width as `str` would
   // render at, using the hero's real font metrics. Falls back to one glyph
@@ -169,16 +235,18 @@ export function DecryptedText({ text, className = "" }: DecryptedTextProps) {
     <span ref={containerRef} className={className}>
       <span className="sr-only">{text}</span>
       {/*
-        Hidden by default (pure CSS, present from the very first paint —
-        no JS needed) so a JS-enabled client never flashes plain text before
-        the mount effect above scrambles it. The noscript override restores
-        visibility for clients that never run JS at all, so the plain text
-        is still visible to them (just without the animation).
+        For the "mount" trigger: hidden by default (pure CSS, present from
+        the very first paint — no JS needed) so a JS-enabled client never
+        flashes plain text before the mount effect above scrambles it. The
+        noscript override below restores visibility for clients that never
+        run JS at all. The "visible" trigger has nothing to hide — it's
+        already showing correct, readable text until it decrypts once on
+        scroll — so it skips this entirely.
       */}
       <span
         ref={glyphsRef}
         aria-hidden="true"
-        className="decrypted-text-glyphs opacity-0"
+        className={`decrypted-text-glyphs ${triggerOn === "mount" ? "opacity-0" : ""}`}
       >
         {groups.map((group, groupIndex) => {
           if (group.isWhitespace) {
@@ -214,7 +282,7 @@ export function DecryptedText({ text, className = "" }: DecryptedTextProps) {
                       key={i}
                       elements={randomElements()}
                       canvasSize={glyphSize}
-                      lineWidth={GLYPH_LINE_WIDTH}
+                      lineWidth={lineWidth}
                       lineColor={GLYPH_LINE_COLOR}
                       backgroundColor="transparent"
                     />
@@ -225,9 +293,11 @@ export function DecryptedText({ text, className = "" }: DecryptedTextProps) {
           );
         })}
       </span>
-      <noscript>
-        <style>{".decrypted-text-glyphs { opacity: 1 !important; }"}</style>
-      </noscript>
+      {triggerOn === "mount" && (
+        <noscript>
+          <style>{".decrypted-text-glyphs { opacity: 1 !important; }"}</style>
+        </noscript>
+      )}
     </span>
   );
 }

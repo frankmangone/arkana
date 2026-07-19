@@ -761,11 +761,12 @@ figure figcaption {
 
 /* Blockquote styling - dark version by default */
 blockquote {
-  border-left: 2px solid var(--primary-600);
-  background-color: var(--surface-raised);
+  border-left: 3px solid var(--primary-600);
+  background-color: color-mix(in srgb, var(--primary-600) 7%, var(--surface-raised));
   color: var(--ink-body);
   padding: 0.5rem 1.5rem;
   margin: 1.5rem 0;
+  border-radius: 0 4px 4px 0;
 }
 
 /* Add citation/attribution support */

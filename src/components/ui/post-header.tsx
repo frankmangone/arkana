@@ -118,7 +118,7 @@ export async function PostHeader(props: PostHeaderProps) {
 
             {/* Title block */}
             <div className="order-1 mx-auto w-full max-w-3xl xl:order-2 xl:col-start-2 xl:row-start-1 xl:mx-0 xl:max-w-none">
-              <div className="mb-8 flex flex-wrap gap-2 [&_[data-slot=badge]]:border-white/30 [&_[data-slot=badge]]:text-white/80">
+              <div className="mb-8 flex flex-wrap gap-2 [&_[data-slot=badge]]:border-white/30 [&_[data-slot=badge]]:text-white/80 [&_[data-slot=badge]]:hover:border-primary-700 [&_[data-slot=badge]]:hover:text-primary-800">
                 {metadata.tags.map((tag) => (
                   <Tag key={tag} tag={tag} lang={lang} />
                 ))}
