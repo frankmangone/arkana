@@ -1,13 +1,11 @@
-import { readingLists as en } from "./en";
-import { readingLists as es } from "./es";
-import { readingLists as pt } from "./pt";
 import { ReadingList } from "./types";
+import { getAllReadingListsForLang } from "./data";
 
 export * from "./types";
 export * from "./fetch";
 
-export const readingLists: Record<string, ReadingList[]> = {
-  en,
-  es,
-  pt,
-};
+const SUPPORTED_LANGS = ["en", "es", "pt"];
+
+export const readingLists: Record<string, ReadingList[]> = Object.fromEntries(
+  SUPPORTED_LANGS.map((lang) => [lang, getAllReadingListsForLang(lang)])
+);

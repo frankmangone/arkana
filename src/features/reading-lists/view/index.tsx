@@ -2,9 +2,9 @@ import { ReadingList } from "@/lib/reading-lists";
 import { getDictionary } from "@/lib/dictionaries";
 import { Badge } from "@/components/ui/badge";
 import { Breadcrumbs } from "@/components/breadcrumbs";
-import { PostCard } from "@/components/ui/post-card";
 import { getPostsFromReadingList } from "./fetch";
 import { withLocalePath } from "@/lib/site-config";
+import { JourneyStepper, type ModuleData } from "./components/journey-stepper";
 
 interface ReadingListPageProps {
   lang: string;
@@ -18,6 +18,34 @@ export async function ReadingListPage(props: ReadingListPageProps) {
   const backUrl = withLocalePath(lang, "reading-lists");
 
   const posts = await getPostsFromReadingList({ readingList, lang });
+  const postsBySlug = new Map(posts.map((post) => [post.slug, post]));
+
+  // Step numbers run across the whole journey (not reset per module), so the
+  // last number always equals the total article count.
+  let stepCount = 0;
+
+  const modules: ModuleData[] = readingList.modules
+    .map((module) => ({
+      id: module.id,
+      title: module.title,
+      description: module.description,
+      steps: module.items
+        .filter((item) => postsBySlug.has(item.slug))
+        .map((item) => {
+          stepCount += 1;
+          return {
+            id: item.id,
+            slug: item.slug,
+            title: postsBySlug.get(item.slug)!.title,
+            url: withLocalePath(
+              lang,
+              `reading-lists/${readingList.id}/${item.id}`
+            ),
+            order: stepCount,
+          };
+        }),
+    }))
+    .filter((module) => module.steps.length > 0);
 
   return (
     <div className="container">
@@ -44,26 +72,7 @@ export async function ReadingListPage(props: ReadingListPageProps) {
         </p>
       </header>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {posts.map((item, index) => {
-          const readingListItem = readingList.items[index];
-          const url = withLocalePath(
-            lang,
-            `reading-lists/${readingList.id}/${readingListItem.id}`
-          );
-
-          return (
-            <div key={item.slug} className="flex flex-col gap-2">
-              <span className="eyebrow tabular-nums text-ink-faint">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <div className="flex-1">
-                <PostCard post={item} lang={lang} overrideUrl={url} />
-              </div>
-            </div>
-          );
-        })}
-      </div>
+      <JourneyStepper modules={modules} moduleLabel={dict.readingLists.module} />
     </div>
   );
 }
