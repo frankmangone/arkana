@@ -23,7 +23,7 @@ export function GoogleLogin({ lang }: GoogleLoginProps) {
     <Button
       type="button"
       onClick={handleLogin}
-      className="w-full cursor-pointer mb-4 h-12"
+      className="w-full cursor-pointer mb-4 h-12 border-ink-on-brand/40 text-ink-on-brand hover:border-ink-on-brand/70 hover:bg-white/10"
       size="lg"
       variant="outline"
     >

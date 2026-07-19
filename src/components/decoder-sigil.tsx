@@ -7,7 +7,7 @@ import type { Pattern } from "@/components/arkana-strip";
 
 type Elements = Pattern["elements"];
 
-const GLYPH_COUNT = 16; // 4×4 grid — 16 glyphs × 16 bits = the full SHA-256
+const DEFAULT_GLYPH_COUNT = 16; // 4×4 grid — 16 glyphs × 16 bits = the full SHA-256
 const TICK_MS = 90;
 const LOCK_EVERY_TICKS = 2; // one glyph locks onto the fingerprint every 2 ticks
 const IDLE_GAP_TICKS = 26; // pause between idle flickers (~2.3s)
@@ -48,29 +48,34 @@ function randomElements(): Elements {
   return bitsToElements(bits);
 }
 
-/** The 4×4 glyph fingerprint of the message, same encoding as ArkanaStrip. */
-function fingerprintElements(content: string): Elements[] {
+/** The glyph fingerprint of the message, same encoding as ArkanaStrip. */
+function fingerprintElements(content: string, glyphCount: number): Elements[] {
   const hash = createHash("sha256").update(content).digest("hex");
   const binary = BigInt("0x" + hash)
     .toString(2)
     .padStart(256, "0");
-  return Array.from({ length: GLYPH_COUNT }, (_, i) =>
+  return Array.from({ length: glyphCount }, (_, i) =>
     bitsToElements(binary.slice(i * 16, i * 16 + 16))
   );
 }
 
 /** rank[i] = position at which glyph i locks during the decode. */
-function shuffledRanks(): number[] {
-  const order = Array.from({ length: GLYPH_COUNT }, (_, i) => i);
+function shuffledRanks(glyphCount: number): number[] {
+  const order = Array.from({ length: glyphCount }, (_, i) => i);
   for (let i = order.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [order[i], order[j]] = [order[j], order[i]];
   }
-  const rank = new Array<number>(GLYPH_COUNT);
+  const rank = new Array<number>(glyphCount);
   order.forEach((glyph, position) => {
     rank[glyph] = position;
   });
   return rank;
+}
+
+/** rank[i] = i — glyphs lock in order, left to right / first to last. */
+function sequentialRanks(glyphCount: number): number[] {
+  return Array.from({ length: glyphCount }, (_, i) => i);
 }
 
 interface AnimState {
@@ -87,15 +92,37 @@ interface DecoderSigilProps {
   /** Message whose SHA-256 fingerprint the grid decodes into. */
   content: string;
   className?: string;
+  lineColor?: string;
+  /** "grid" (default) is a 4×4 square; "row" is a single horizontal strip. */
+  layout?: "grid" | "row";
+  /** Number of glyphs. Defaults to 16 (a full 4×4 grid). */
+  glyphCount?: number;
+  /** When true, glyphs lock left-to-right in order instead of a shuffled
+   * order — reads as the fingerprint "building itself" one glyph at a time. */
+  sequential?: boolean;
+  /** When false, skip the occasional single-glyph re-scramble after the
+   * initial decode completes — stays fully locked. Defaults to true. */
+  idleFlicker?: boolean;
 }
 
 /**
- * A 4×4 grid of Arkana glyphs that "decodes" into the fingerprint of its
- * message when scrolled into view, then idles with occasional one-glyph
+ * A grid (or row) of Arkana glyphs that "decodes" into the fingerprint of
+ * its message when scrolled into view, then idles with occasional one-glyph
  * flickers. Static (already decoded) under prefers-reduced-motion.
  */
-export function DecoderSigil({ content, className }: DecoderSigilProps) {
-  const target = useMemo(() => fingerprintElements(content), [content]);
+export function DecoderSigil({
+  content,
+  className,
+  lineColor = "#a777ff",
+  layout = "grid",
+  glyphCount = DEFAULT_GLYPH_COUNT,
+  sequential = false,
+  idleFlicker = true,
+}: DecoderSigilProps) {
+  const target = useMemo(
+    () => fingerprintElements(content, glyphCount),
+    [content, glyphCount]
+  );
   const [glyphs, setGlyphs] = useState<Elements[]>(target);
   const [canvasSize, setCanvasSize] = useState(64);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -139,7 +166,7 @@ export function DecoderSigil({ content, className }: DecoderSigilProps) {
             anim.rank[i] < anim.locked ? elements : randomElements()
           )
         );
-        if (anim.locked >= GLYPH_COUNT) {
+        if (anim.locked >= glyphCount) {
           anim.mode = "idle";
           anim.cooldown = IDLE_GAP_TICKS;
         }
@@ -147,10 +174,11 @@ export function DecoderSigil({ content, className }: DecoderSigilProps) {
       }
 
       if (anim.mode === "idle") {
+        if (!idleFlicker) return;
         if (anim.cooldown > 0) {
           anim.cooldown -= 1;
           if (anim.cooldown === 0) {
-            anim.idleIdx = Math.floor(Math.random() * GLYPH_COUNT);
+            anim.idleIdx = Math.floor(Math.random() * glyphCount);
             anim.idleLeft = IDLE_SCRAMBLE_TICKS;
           }
           return;
@@ -178,7 +206,9 @@ export function DecoderSigil({ content, className }: DecoderSigilProps) {
         if (entry.isIntersecting) {
           if (anim.mode === "waiting") {
             anim.mode = "decode";
-            anim.rank = shuffledRanks();
+            anim.rank = sequential
+              ? sequentialRanks(glyphCount)
+              : shuffledRanks(glyphCount);
             anim.locked = 0;
             anim.tick = 0;
           }
@@ -198,12 +228,12 @@ export function DecoderSigil({ content, className }: DecoderSigilProps) {
       observer.disconnect();
       if (interval !== undefined) window.clearInterval(interval);
     };
-  }, [target]);
+  }, [target, glyphCount, sequential, idleFlicker]);
 
   return (
     <div
       ref={containerRef}
-      className={`grid grid-cols-4 ${className ?? ""}`}
+      className={`${layout === "row" ? "flex" : "grid grid-cols-4"} ${className ?? ""}`}
       aria-hidden="true"
     >
       {glyphs.map((elements, i) => (
@@ -211,7 +241,7 @@ export function DecoderSigil({ content, className }: DecoderSigilProps) {
           key={i}
           elements={elements}
           canvasSize={canvasSize}
-          lineColor="#a777ff"
+          lineColor={lineColor}
           backgroundColor="transparent"
         />
       ))}

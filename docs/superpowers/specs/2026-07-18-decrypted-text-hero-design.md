@@ -63,10 +63,17 @@ read the real heading text, regardless of animation state.
 
 ### Animation behavior
 
-- **Initial render** (SSR and first client paint): fully revealed, plain
-  text — identical to today's static heading. This avoids any CLS and keeps
-  the heading text present in the initial HTML for no-JS clients and
-  crawlers that don't execute JS.
+- **Initial render** (SSR): fully revealed, plain text — identical to
+  today's static heading. This avoids any CLS and keeps the heading text
+  present in the initial HTML for no-JS clients and crawlers that don't
+  execute JS.
+- The mount-triggered scramble (below) runs inside `useLayoutEffect`, not
+  `useEffect`. `useLayoutEffect` commits its state change synchronously
+  before the browser paints, so on a JS-enabled client the scrambled state
+  is the only thing ever visually painted — there is no flash of plain text
+  before scrambling starts. No-JS clients still get the plain SSR text
+  (neither effect ever runs for them), so the no-JS/crawler fallback is
+  unchanged.
 - **On mount** (client-only, `useEffect`): if the user has NOT set
   `prefers-reduced-motion: reduce`, immediately flip all non-space
   characters to unrevealed (scrambled) state, then animate:

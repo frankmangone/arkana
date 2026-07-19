@@ -21,15 +21,13 @@ function LoginButtonsFallback() {
 export function LoginForm({ lang, dictionary }: LoginFormProps) {
   return (
     <div className="w-full max-w-md mx-auto mb-28 px-4">
-      <div className="rounded-md border border-rule bg-surface-raised p-8">
-        <Header dictionary={dictionary} />
+      <Header dictionary={dictionary} />
 
-        <Suspense fallback={<LoginButtonsFallback />}>
-          <GoogleLogin lang={lang} />
-        </Suspense>
+      <Suspense fallback={<LoginButtonsFallback />}>
+        <GoogleLogin lang={lang} />
+      </Suspense>
 
-        <FAQNotes lang={lang} dictionary={dictionary} />
-      </div>
+      <FAQNotes lang={lang} dictionary={dictionary} />
     </div>
   );
 }
