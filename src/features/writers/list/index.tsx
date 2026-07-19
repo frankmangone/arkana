@@ -1,4 +1,5 @@
 import { Writer } from "@/lib/writers";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { EmptyState } from "@/components/empty-state";
 import { WriterCard } from "./components/writer-card";
 import type { Dictionary } from "@/lib/dictionaries";
@@ -14,10 +15,22 @@ export function WritersPage(props: WritersPageProps) {
 
   return (
     <div className="container">
-      <h1 className="text-4xl font-bold mb-8">{dictionary.writers.title}</h1>
-      <p className="text-lg mb-10 text-gray-600 dark:text-gray-300">
-        {dictionary.writers.description}
-      </p>
+      <header className="full-bleed brand-hero mb-12">
+        <div className="mx-auto max-w-6xl px-4 pb-14 pt-8 md:px-6 md:pb-20 lg:px-8">
+          <Breadcrumbs
+            lang={lang}
+            items={[{ label: dictionary.writers.title }]}
+            variant="onBrand"
+            className="mb-12"
+          />
+          <h1 className="display-title !text-[clamp(2.75rem,6vw,4.75rem)] mb-5 text-ink-on-brand-title">
+            {dictionary.writers.title}
+          </h1>
+          <p className="max-w-[60ch] text-xl text-ink-on-brand-soft">
+            {dictionary.writers.description}
+          </p>
+        </div>
+      </header>
 
       {writers.length === 0 && (
         <EmptyState

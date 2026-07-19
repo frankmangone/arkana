@@ -1,5 +1,7 @@
 import { ReadingList } from "@/lib/reading-lists";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { EmptyState } from "@/components/empty-state";
+import { getPostsFromReadingList } from "../view/fetch";
 import { ReadingListCard } from "./components/reading-list-card";
 import type { Dictionary } from "@/lib/dictionaries";
 
@@ -9,17 +11,32 @@ interface ReadingListsPageProps {
   readingLists: ReadingList[];
 }
 
-export function ReadingListsPage(props: ReadingListsPageProps) {
+export async function ReadingListsPage(props: ReadingListsPageProps) {
   const { lang, dictionary, readingLists } = props;
+
+  // First article titles per list, so cards can preview their contents
+  const previews = await Promise.all(
+    readingLists.map(async (list) => {
+      const posts = await getPostsFromReadingList({ readingList: list, lang });
+      return posts.slice(0, 4).map((post) => post.title);
+    })
+  );
 
   return (
     <div className="container">
-      <h1 className="text-4xl font-bold mb-8">
-        {dictionary.readingLists.list.title}
-      </h1>
-      <p className="text-lg mb-10 text-gray-600 dark:text-gray-300">
-        {dictionary.readingLists.list.description}
-      </p>
+      <header className="mb-12 pb-10 pt-8">
+        <Breadcrumbs
+          lang={lang}
+          items={[{ label: dictionary.readingLists.list.title }]}
+          className="mb-12"
+        />
+        <h1 className="display-title !text-[clamp(2.25rem,5vw,3.75rem)] mb-5 text-primary-750">
+          {dictionary.readingLists.list.title}
+        </h1>
+        <p className="max-w-[60ch] text-xl text-ink-muted">
+          {dictionary.readingLists.list.description}
+        </p>
+      </header>
 
       {readingLists.length === 0 && (
         <EmptyState
@@ -28,13 +45,14 @@ export function ReadingListsPage(props: ReadingListsPageProps) {
         />
       )}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {readingLists.map((list) => (
+      <div className="flex flex-col gap-8">
+        {readingLists.map((list, index) => (
           <ReadingListCard
             key={list.id}
             list={list}
             lang={lang}
             dictionary={dictionary}
+            previewTitles={previews[index]}
           />
         ))}
       </div>

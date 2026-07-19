@@ -15,6 +15,7 @@
     "scrap:medium": "ts-node --project scripts/tsconfig.json scripts/medium-scraper/index.ts",
     "post:medium": "ts-node --project scripts/post-to-medium/tsconfig.json scripts/post-to-medium/src/index.ts",
     "index:file": "ts-node --project scripts/tsconfig.json scripts/indexing/index-file.ts",
+    "index:all": "ts-node --project scripts/tsconfig.json scripts/indexing/reindex-all.ts",
     "index:search": "ts-node --project scripts/tsconfig.json scripts/indexing/search.ts"
   },
   "dependencies": {

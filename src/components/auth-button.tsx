@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { useAuth } from "@/components/providers/auth-provider";
 import {
   DropdownMenu,
@@ -28,9 +27,9 @@ export function AuthButton() {
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button
-            variant="ghost"
-            className="h-[40px] rounded-none py-2 px-4 flex cursor-pointer items-center gap-2 text-base hover:text-primary-750 dark:text-gray-300 dark:hover:text-primary-750"
+          <button
+            type="button"
+            className="eyebrow inline-flex cursor-pointer items-center gap-2 px-4 py-2 transition-colors hover:text-ink-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
             {user.avatar_url ? (
               // eslint-disable-next-line @next/next/no-img-element
@@ -40,12 +39,12 @@ export function AuthButton() {
                 className="h-6 w-6 rounded-full"
               />
             ) : (
-              <User className="h-5 w-5" />
+              <User className="h-4 w-4" />
             )}
-            <span className="hidden sm:inline text-sm truncate max-w-[120px]">
+            <span className="hidden sm:inline truncate max-w-[120px]">
               {displayName}
             </span>
-          </Button>
+          </button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-56">
           <DropdownMenuItem className="py-3 text-base" disabled>
@@ -68,15 +67,12 @@ export function AuthButton() {
   }
 
   return (
-    <Button
-      variant="ghost"
-      asChild
-      className="h-[40px] rounded-none py-2 px-4 flex cursor-pointer items-center gap-1 text-base hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-750"
+    <Link
+      href={`/${lang}/login`}
+      className="eyebrow inline-flex cursor-pointer items-center gap-1.5 px-4 py-2 transition-colors hover:text-ink-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
     >
-      <Link href={`/${lang}/login`}>
-        <User className="h-7 w-7 sm:h-6 sm:w-6" />
-        Sign in
-      </Link>
-    </Button>
+      <User className="h-4 w-4" />
+      Sign in
+    </Link>
   );
 }

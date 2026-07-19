@@ -15,9 +15,9 @@ export async function NotFoundInLanguage({ lang }: NotFoundInLanguageProps) {
 
   return (
     <div className="flex flex-col items-center justify-center py-24 px-4 text-center">
-      <h1 className="text-3xl font-bold mb-4">{title}</h1>
-      <p className="text-muted-foreground mb-8 max-w-md">{description}</p>
-      <Button asChild variant="outline" size="lg" className="rounded-none">
+      <h1 className="text-3xl font-semibold tracking-tight text-ink-heading mb-4">{title}</h1>
+      <p className="text-ink-muted mb-8 max-w-md">{description}</p>
+      <Button asChild variant="outline" size="lg">
         <Link href={`/${lang}`} className="flex items-center gap-2">
           <ArrowLeft size={16} />
           {button}

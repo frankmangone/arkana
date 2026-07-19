@@ -70,8 +70,8 @@ export function AnchoredHeading(props: AnchoredHeadingProps) {
 
   // Map heading levels directly to appropriate classes
   const headingClasses = {
-    lg: "text-3xl font-bold mt-7 mb-4",
-    sm: "text-2xl font-semibold mt-8 mb-3",
+    lg: "text-3xl font-bold tracking-tight text-ink-heading mt-10 mb-4",
+    sm: "text-2xl font-semibold tracking-tight text-ink-heading mt-8 mb-3",
   };
 
   // Other possible sizes:
@@ -93,7 +93,7 @@ export function AnchoredHeading(props: AnchoredHeadingProps) {
       className="ml-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity"
       aria-label={`Link to ${cleanText}`}
     >
-      <LinkIcon className="text-primary-700" size={22} />
+      <LinkIcon className="text-primary-800" size={18} />
     </a>,
   ]);
 }

@@ -26,6 +26,28 @@ function ssh(remoteHost, remoteCommand, input) {
   return execFileSync("ssh", [remoteHost, remoteCommand], options);
 }
 
+// Ensures the index supports tag filtering and facet search (used by the
+// backend's /api/search?tags= and /api/search/tags). Idempotent - PATCHing
+// the same values is a cheap no-op task - and Meilisearch queues tasks per
+// index, so the document write below is guaranteed to land after it.
+function ensureTagSettings(remoteHost, masterKey, indexUid) {
+  const response = JSON.parse(
+    ssh(
+      remoteHost,
+      `curl -s -X PATCH "http://localhost:7700/indexes/${indexUid}/settings" ` +
+        `-H "Authorization: Bearer ${masterKey}" -H "Content-Type: application/json" --data-binary @-`,
+      JSON.stringify({
+        filterableAttributes: ["tags"],
+        faceting: { sortFacetValuesBy: { tags: "count" } },
+      })
+    )
+  );
+
+  if (typeof response.taskUid !== "number") {
+    throw new Error(`Meilisearch settings update failed: ${JSON.stringify(response)}`);
+  }
+}
+
 // Runs on the remote host itself (curl against its own localhost:7700) so no
 // tunnel from the operator's machine is ever required - same reasoning as
 // why the DB writes above go over SSH instead of a direct DB connection.
@@ -155,6 +177,7 @@ async function main() {
 
     console.log("Indexing into Meilisearch...");
     const indexUid = `posts_${lang}`;
+    ensureTagSettings(remoteHost, meiliMasterKey, indexUid);
     await indexIntoMeilisearch(remoteHost, meiliMasterKey, indexUid, {
       id: `${lang}-${slugPath.replace(/\//g, "-")}`,
       lang,

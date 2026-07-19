@@ -13,3 +13,7 @@ export function withSiteUrl(path: string): string {
 
   return `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
 }
+
+export function resolveThumbnailUrl(thumbnail?: string): string {
+  return thumbnail ? withSiteUrl(thumbnail) : "/placeholder.svg";
+}

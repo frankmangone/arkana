@@ -1,8 +1,8 @@
-import { Button } from "../button"
+import { Button } from "../button";
 import { UseMutationResult } from "@tanstack/react-query";
 import { ToggleLikeResponse } from "@/lib/api/services/posts";
 import { UseLikeParams } from "@/lib/api";
-import LikeIcon from "./like-icon";
+import { Heart } from "lucide-react";
 
 interface LikeButtonProps {
   liked: boolean;
@@ -13,23 +13,23 @@ interface LikeButtonProps {
 
 export function LikeButton(props: LikeButtonProps) {
   const { liked, likeCount, handleLike, likeMutation } = props;
-  
+
   return (
-    <>
-        <Button
-            variant="ghost"
-            className="h-auto min-h-10 !px-4 !py-2 rounded-none cursor-pointer bg-background border border-border text-secondary-900 hover:!bg-accent hover:!border-secondary-700/50 flex items-center gap-2"
-            aria-label={liked ? "Unlike post" : "Like post"}
-            onClick={handleLike}
-            disabled={likeMutation.isPending}
-        >
-            <LikeIcon size={20} filled={liked} />
-            {likeCount > 0 && (
-                <span className="text-sm text-secondary-900">
-                {likeCount}
-                </span>
-            )}
-        </Button>
-      </>
+    <Button
+      variant="ghost"
+      className={`h-auto !px-2.5 !py-2 rounded-[4px] cursor-pointer bg-transparent hover:bg-black/10 flex items-center gap-1.5 ${
+        liked ? "text-salmon-500 hover:text-salmon-500" : "text-white/70 hover:text-white"
+      }`}
+      aria-label={liked ? "Unlike post" : "Like post"}
+      onClick={handleLike}
+      disabled={likeMutation.isPending}
+    >
+      <Heart
+        className="!size-5"
+        fill={liked ? "currentColor" : "none"}
+        strokeWidth={2}
+      />
+      {likeCount > 0 && <span className="text-sm">{likeCount}</span>}
+    </Button>
   );
 }

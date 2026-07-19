@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { getPostBySlug } from "@/features/posts/actions";
 import { ReadingListItem } from "@/lib/reading-lists";
 import { ArrowLeft } from "lucide-react";
@@ -14,34 +13,27 @@ export async function PrevButton(props: PrevButtonProps) {
   const { lang, id, prevItem } = props;
 
   if (!prevItem) {
-    return <div className="basis-[240px]" />;
+    return <div className="hidden md:block" />;
   }
 
   const post = await getPostBySlug(prevItem.slug, lang);
 
   if (!post) {
-    return <div className="basis-[280px]" />;
+    return <div className="hidden md:block" />;
   }
 
   return (
-    <Button
-      asChild
-      variant="outline"
-      size="lg"
-      className="flex h-28 md:basis-[280px] justify-between items-start gap-2 border-primary-650 dark:border-primary-650"
+    <Link
+      href={`/${lang}/reading-lists/${id}/${prevItem.id}`}
+      className="group flex h-full flex-col gap-3 rounded-md border border-rule p-5 transition-colors hover:border-primary-700"
     >
-      <Link
-        href={`/${lang}/reading-lists/${id}/${prevItem.id}`}
-        className="flex flex-col w-full justify-start gap-4 items-end py-4"
-      >
-        <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
-          <ArrowLeft size={16} className="shrink-0" />
-          <span>Previous</span>
-        </div>
-        <div className="text-primary-750 dark:text-primary-750 font-medium line-clamp-2 break-word whitespace-normal">
-          {post.metadata.title}
-        </div>
-      </Link>
-    </Button>
+      <span className="eyebrow flex items-center gap-2 text-ink-faint">
+        <ArrowLeft size={14} className="shrink-0" />
+        Previous
+      </span>
+      <span className="font-medium text-ink-heading transition-colors group-hover:text-primary-800">
+        {post.metadata.title}
+      </span>
+    </Link>
   );
 }

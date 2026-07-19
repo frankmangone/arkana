@@ -1,73 +1,56 @@
-import Link from "next/link";
 import { FeaturedPostCard } from "@/components/ui/featured-post-card";
+import { type MasonryBreakpoint } from "@/components/ui/masonry-columns";
+import { InfiniteMasonryFeed } from "@/components/ui/infinite-masonry-feed";
 import { PostPreview } from "@/lib/posts";
 import type { Dictionary } from "@/lib/dictionaries";
-import { withLocalePath } from "@/lib/site-config";
 
 interface LatestArticlesProps {
   lang: string;
+  /** Full post archive, newest first. */
+  allPosts: PostPreview[];
   dictionary: Dictionary;
-  latestPosts: PostPreview[];
 }
 
-export async function LatestArticles({
+// A 4th column only kicks in on genuinely wide monitors (2xl) — narrower than
+// that, four columns would squeeze these text-heavy cards too much.
+const HOME_GRID_BREAKPOINTS: MasonryBreakpoint[] = [
+  { minWidth: 1536, columns: 4 },
+  { minWidth: 1024, columns: 3 },
+  { minWidth: 768, columns: 2 },
+  { minWidth: 0, columns: 1 },
+];
+
+export function LatestArticles({
   lang,
+  allPosts,
   dictionary,
-  latestPosts,
 }: LatestArticlesProps) {
+  const [featured, ...rest] = allPosts;
+
   return (
-    <div className="w-full min-h-[80vh]">
-      {/* Gradient overlay for the section above */}
-      <div className="w-full h-16 md:h-30 bg-gradient-to-b from-transparent to-background/80" />
-
-      {/* Articles section with full-width background */}
-      {/*  bg-gradient-to-b from-black via-black to-[#0A0A0A] */}
-      <section className="relative w-full bg-background/80 py-8 z-5">
-        <div className="container z-10 mx-auto px-4 py-8 md:px-6 lg:px-8 max-w-8xl">
-          <div className="mb-8">
-            <h1 className="text-4xl md:text-5xl font-bold mb-2">
-              {dictionary?.home?.recentPosts?.title || "Recent blog posts"}
-            </h1>
-            <p className="text-gray-400">
-              {dictionary?.home?.recentPosts?.description ||
-                "Explore the latest insights and tutorials from our team"}
-            </p>
-          </div>
-
-          {/* Featured posts grid */}
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* Main featured post (left side) */}
-            <FeaturedPostCard
-              post={latestPosts[0]}
-              lang={lang}
-              variant="large"
-            />
-
-            {/* Secondary posts (right side) */}
-            <div className="space-y-6">
-              {[1, 2, 3].map(
-                (index) =>
-                  latestPosts[index] && (
-                    <FeaturedPostCard
-                      key={index}
-                      post={latestPosts[index]}
-                      lang={lang}
-                    />
-                  )
-              )}
-            </div>
-          </div>
-
-          <div className="text-center mt-16">
-            <Link
-              href={withLocalePath(lang, "blog")}
-              className="inline-block px-12 py-3 text-white transition-colors bg-primary-650 hover:bg-primary-750"
-            >
-              {dictionary?.blog?.viewAllPosts || "View All Articles"}
-            </Link>
-          </div>
+    <section className="pt-8 md:pt-10">
+      {/* Featured post, full width */}
+      {featured && (
+        <div className="mx-auto mb-10 max-w-6xl px-4 md:px-6 lg:px-8">
+          <p className="eyebrow mb-4 font-semibold text-ink-faint">
+            {dictionary.home.featuredPosts.title}
+          </p>
+          <FeaturedPostCard post={featured} lang={lang} variant="large" />
         </div>
-      </section>
-    </div>
+      )}
+
+      {/* Remaining posts, three masonry columns — reading order still goes
+          left-to-right, top-to-bottom, but each column's height is its own,
+          so columns fall out of phase with one another. Infinite-scrolls
+          through the rest of the archive 12 posts at a time. */}
+      <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8 2xl:max-w-[96rem]">
+        <InfiniteMasonryFeed
+          posts={rest}
+          lang={lang}
+          breakpoints={HOME_GRID_BREAKPOINTS}
+          endMessage={dictionary.common.endOfFeed}
+        />
+      </div>
+    </section>
   );
 }

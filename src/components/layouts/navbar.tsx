@@ -2,16 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { LanguageSwitcher } from "../language-switcher";
 import { getDictionary } from "@/lib/dictionaries";
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { AuthButton } from "../auth-button";
+import { MobileMenu } from "./mobile-menu";
 import { withLocalePath } from "@/lib/site-config";
 
 interface NavbarProps {
@@ -26,85 +19,62 @@ export const Navbar = async (props: NavbarProps) => {
 
   const homeUrl = withLocalePath(lang);
   const readingListsUrl = withLocalePath(lang, "reading-lists");
+  const surveyUrl = withLocalePath(lang, "survey");
 
   return (
-    <header className="relative z-10">
+    <header className="sticky top-0 z-40 border-b border-rule bg-surface-page/80 backdrop-blur-md">
       <div
         className={cn(
-          "container mx-auto px-4 md:px-6 lg:px-8 max-w-8xl flex items-center justify-between py-4",
+          "mx-auto flex h-16 max-w-6xl items-center justify-between px-4 md:px-6 lg:px-8",
           containerClassName
         )}
       >
         <Link
           href={homeUrl}
-          className="flex items-center gap-2 text-2xl text-primary-750 transition-colors"
+          className="flex items-center gap-2.5 text-xl text-primary-750 transition-opacity hover:opacity-80"
         >
           <Image
             src="/logo.svg"
             alt="Arkana Logo"
-            width={32}
-            height={32}
-            className="h-8 w-8"
+            width={28}
+            height={28}
+            className="h-7 w-7"
           />
           arkana
         </Link>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1">
           {/* Desktop navigation */}
-          <div className="hidden md:flex items-center">
+          <nav className="hidden md:flex items-center">
             <Link
               href={readingListsUrl}
-              className="px-4 py-2 inline-flex cursor-pointer items-center justify-center text-base font-medium ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:text-gray-300 dark:hover:text-primary-750"
+              className="eyebrow px-4 py-2 transition-colors hover:text-ink-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               {dict.readingLists.list.title}
             </Link>
             <Link
-              href="https://forms.gle/NLk49eNnu6jTwGMt8"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 inline-flex cursor-pointer items-center justify-center text-base font-medium ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:text-gray-300 dark:hover:text-primary-750"
+              href={surveyUrl}
+              className="eyebrow px-4 py-2 transition-colors hover:text-ink-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               {dict.blog.survey}
             </Link>
-          </div>
+          </nav>
 
           <LanguageSwitcher />
-          <AuthButton />
 
-          {/* Mobile hamburger menu */}
+          {/* On mobile the sign-in / account actions live in the hamburger */}
+          <div className="hidden md:block">
+            <AuthButton />
+          </div>
+
           <div className="md:hidden">
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="h-[50px] px-6 cursor-pointer"
-                >
-                  <Menu className="h-7 w-7" />
-                  <span className="sr-only">Toggle menu</span>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-56">
-                <DropdownMenuItem asChild>
-                  <Link
-                    href={readingListsUrl}
-                    className="w-full cursor-pointer py-3 text-base"
-                  >
-                    {dict.readingLists.list.title}
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link
-                    href="https://forms.gle/NLk49eNnu6jTwGMt8"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full cursor-pointer py-3 text-base"
-                  >
-                    {dict.blog.survey}
-                  </Link>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            <MobileMenu
+              lang={lang}
+              labels={{
+                readingLists: dict.readingLists.list.title,
+                survey: dict.blog.survey,
+              }}
+            />
           </div>
         </div>
       </div>

@@ -34,13 +34,13 @@ export function WriterCard({ writer, lang, dictionary }: WriterCardProps) {
   }
 
   return (
-    <div className="group">
+    <div className="group flex h-full flex-col overflow-hidden rounded-md border border-rule transition-colors hover:border-rule-strong">
       <Link
         href={withLocalePath(lang, `writers/${writer.slug}`)}
         className="block"
       >
         {/* Writer image with portrait styling */}
-        <div className="relative h-64 mb-4 hidden md:block">
+        <div className="relative h-56 border-b border-rule hidden md:block">
           {writer.imageUrl ? (
             <div className="relative h-full">
               {/* Background blur effect */}
@@ -53,59 +53,61 @@ export function WriterCard({ writer, lang, dictionary }: WriterCardProps) {
                   }
                   alt=""
                   fill
-                  className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                  className="object-cover object-top"
                 />
               </div>
 
               {/* Writer icon */}
-              <div className="absolute top-4 right-4 bg-black/70 p-2 rounded-full">
-                <Pencil className="h-5 w-5 text-primary-750" />
+              <div className="absolute top-3 right-3 rounded-[3px] border border-rule bg-surface-page/80 p-2 backdrop-blur-sm">
+                <Pencil className="h-4 w-4 text-primary-800" />
               </div>
             </div>
           ) : (
-            <div className="flex items-center justify-center h-full text-gray-400 bg-gray-100 dark:bg-gray-800 relative">
-              <div className="relative h-56 w-56 overflow-hidden rounded-full border-4 border-background bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-                <User className="h-20 w-20 text-gray-400" />
+            <div className="flex items-center justify-center h-full text-ink-faint relative">
+              <div className="relative h-56 w-56 overflow-hidden rounded-full border border-rule flex items-center justify-center">
+                <User className="h-20 w-20 text-ink-faint" />
               </div>
-              <div className="absolute top-4 right-4 bg-black/70 p-2 rounded-full">
-                <Pencil className="h-5 w-5 text-primary-750" />
+              <div className="absolute top-3 right-3 rounded-[3px] border border-rule bg-surface-page/80 p-2 backdrop-blur-sm">
+                <Pencil className="h-4 w-4 text-primary-800" />
               </div>
             </div>
           )}
         </div>
 
         {/* Writer info */}
-        <div className="flex items-center gap-2 mb-2 text-sm text-gray-400">
-          <User className="h-4 w-4" />
-          <span>{writer.role?.[lang] || dictionary.writers.writer}</span>
-          {writer.articleCount !== undefined && (
-            <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-primary-500/20 text-primary-750">
-              {writer.articleCount}{" "}
-              {writer.articleCount === 1
-                ? dictionary.writers.article
-                : dictionary.writers.articles}
-            </span>
-          )}
+        <div className="p-5 pb-0">
+          <div className="flex items-center gap-2 mb-2 text-sm text-ink-faint">
+            <User className="h-4 w-4" />
+            <span>{writer.role?.[lang] || dictionary.writers.writer}</span>
+            {writer.articleCount !== undefined && (
+              <span className="text-xs font-medium px-2 py-0.5 rounded-[3px] border border-rule text-primary-800">
+                {writer.articleCount}{" "}
+                {writer.articleCount === 1
+                  ? dictionary.writers.article
+                  : dictionary.writers.articles}
+              </span>
+            )}
+          </div>
+
+          <h2 className="text-xl font-semibold tracking-tight mb-2 text-ink-heading group-hover:text-primary-800 transition-colors">
+            {writer.name}
+          </h2>
+
+          <p className="text-ink-muted text-sm mb-4 line-clamp-2">
+            {writer.bio?.[lang] || ""}
+          </p>
         </div>
-
-        <h2 className="text-xl font-bold mb-2 text-primary-750 group-hover:text-primary-650 transition-colors">
-          {writer.name}
-        </h2>
-
-        <p className="text-gray-400 text-md mb-4 line-clamp-2">
-          {writer.bio?.[lang] || ""}
-        </p>
       </Link>
 
       {/* Social links */}
       {writer.social && Object.values(writer.social).some(Boolean) && (
-        <div className="flex flex-wrap gap-2 mt-2">
+        <div className="mt-auto flex flex-wrap gap-2 p-5 pt-0">
           {writer.social.twitter && (
             <a
               href={writer.social.twitter}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-xs px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-primary-500/20 hover:text-primary-500 transition-colors"
+              className="inline-flex items-center gap-1 text-xs px-3 py-1 rounded-[3px] border border-rule text-ink-muted hover:border-primary-700 hover:text-primary-800 transition-colors"
             >
               <Twitter className="h-3 w-3" />
               <span>Twitter</span>
@@ -116,7 +118,7 @@ export function WriterCard({ writer, lang, dictionary }: WriterCardProps) {
               href={writer.social.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-xs px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-primary-500/20 hover:text-primary-500 transition-colors"
+              className="inline-flex items-center gap-1 text-xs px-3 py-1 rounded-[3px] border border-rule text-ink-muted hover:border-primary-700 hover:text-primary-800 transition-colors"
             >
               <Github className="h-3 w-3" />
               <span>GitHub</span>
@@ -127,7 +129,7 @@ export function WriterCard({ writer, lang, dictionary }: WriterCardProps) {
               href={writer.social.medium}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-xs px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-primary-500/20 hover:text-primary-500 transition-colors"
+              className="inline-flex items-center gap-1 text-xs px-3 py-1 rounded-[3px] border border-rule text-ink-muted hover:border-primary-700 hover:text-primary-800 transition-colors"
             >
               <ExternalLink className="h-3 w-3" />
               <span>Medium</span>
@@ -138,7 +140,7 @@ export function WriterCard({ writer, lang, dictionary }: WriterCardProps) {
               href={writer.social.website}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-xs px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-primary-500/20 hover:text-primary-500 transition-colors"
+              className="inline-flex items-center gap-1 text-xs px-3 py-1 rounded-[3px] border border-rule text-ink-muted hover:border-primary-700 hover:text-primary-800 transition-colors"
             >
               <ExternalLink className="h-3 w-3" />
               <span>Website</span>

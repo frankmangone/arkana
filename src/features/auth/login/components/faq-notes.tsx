@@ -10,10 +10,10 @@ export function FAQNotes(props: FAQNotesProps) {
   const { lang, dictionary } = props;
 
   return (
-    <span className="text-sm text-muted-foreground block text-center mt-6">
+    <span className="text-sm text-ink-muted block text-center mt-6">
       <Link
         href={`/${lang}/faq`}
-        className="text-primary-750 hover:text-primary-650 transition-colors"
+        className="text-primary-800 hover:text-primary-900 transition-colors"
       >
         {dictionary.login.whyWallet || "Have questions? Visit our FAQ"}
       </Link>

@@ -4,9 +4,9 @@ import { getPostBySlug } from "./actions";
 import { PostHeader } from "../../components/ui/post-header";
 import { Metadata } from "next";
 import { NotFoundInLanguage } from "@/components/not-found-in-language";
-import Script from "next/script";
 import { getWriter } from "@/lib/writers";
 import { PostContent } from "@/components/ui/post-content";
+import { ReadingProgress } from "@/components/ui/reading-progress";
 import { SectionDivider } from "@/components/ui/section-divider";
 import BuyMeCoffeeWidget from "@/components/ui/buy-me-coffee";
 import { CommentSection } from "@/components/ui/comments";
@@ -56,7 +56,15 @@ export async function PostPage(props: PostPageProps) {
   const writer = getWriter(post.metadata.author);
 
   // Get the PostHeader component and await it
-  const header = await PostHeader({ post, lang, path: slug });
+  const header = await PostHeader({
+    post,
+    lang,
+    path: slug,
+    breadcrumbs: [
+      { label: dict.blog.title, href: withLocalePath(lang, "blog") },
+      { label: post.metadata.title },
+    ],
+  });
 
   // Base URL for absolute links
   const baseUrl = SITE_URL;
@@ -83,7 +91,7 @@ export async function PostPage(props: PostPageProps) {
       name: "Arkana",
       logo: {
         "@type": "ImageObject",
-        url: withSiteUrl("/images/logo.png"),
+        url: withSiteUrl("/logo.png"),
       },
     },
     url: postUrl,
@@ -95,14 +103,43 @@ export async function PostPage(props: PostPageProps) {
     inLanguage: lang,
   };
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Arkana",
+        item: `${baseUrl}${withLocalePath(lang)}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: dict.blog.title,
+        item: `${baseUrl}${withLocalePath(lang, "blog")}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: post.metadata.title,
+        item: postUrl,
+      },
+    ],
+  };
+
   return (
-    <article className="container py-8 max-w-3xl mx-auto">
-      <Script
-        id="article-schema"
+    <article className="container pb-8 max-w-3xl mx-auto">
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {header}
+      <ReadingProgress />
       <PostContent post={post} quizDictionary={dict.quiz} />
       <SectionDivider />
       {writer.walletAddress &&

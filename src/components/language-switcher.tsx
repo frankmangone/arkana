@@ -2,7 +2,6 @@
 
 import { usePathname, useRouter } from "next/navigation";
 import { languages } from "@/lib/i18n-config";
-import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -35,15 +34,15 @@ export function LanguageSwitcher() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button
-          variant="ghost"
-          className="h-[40px] rounded-none py-2 px-4 flex cursor-pointer items-center gap-1 text-base hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-750"
+        <button
+          type="button"
+          className="eyebrow inline-flex cursor-pointer items-center gap-1.5 px-4 py-2 transition-colors hover:text-ink-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >
-          <Globe className="h-7 w-7 sm:h-6 sm:w-6" />
+          <Globe className="h-4 w-4" />
           <span className="hidden sm:inline">
             {languageNames[currentLocale as keyof typeof languageNames]}
           </span>
-        </Button>
+        </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="min-w-[160px]">
         {languages.map((locale) => (
@@ -51,7 +50,7 @@ export function LanguageSwitcher() {
             key={locale}
             onClick={() => switchLanguage(locale)}
             className={`${
-              locale === currentLocale ? "bg-muted" : ""
+              locale === currentLocale ? "text-primary-800" : ""
             } cursor-pointer py-3 text-base`}
           >
             {languageNames[locale as keyof typeof languageNames]}

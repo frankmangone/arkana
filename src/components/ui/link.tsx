@@ -27,7 +27,7 @@ export function Link({
     return (
       <NextLink
         className={cn(
-          "text-primary-750 hover:text-primary-650 transition-colors",
+          "text-primary-800 underline decoration-primary-800/40 decoration-[1.5px] underline-offset-4 transition-colors hover:decoration-primary-800",
           className
         )}
         href={safeHref}
@@ -42,7 +42,7 @@ export function Link({
       target="_blank"
       rel="noopener noreferrer"
       className={cn(
-        "text-primary-750 hover:text-primary-650 transition-colors",
+        "text-primary-800 underline decoration-primary-800/40 decoration-[1.5px] underline-offset-4 transition-colors hover:decoration-primary-800",
         className
       )}
       {...props}

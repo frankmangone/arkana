@@ -26,7 +26,7 @@ export function SendButton({
     <button
       onClick={onClick}
       disabled={isPending}
-      className="px-4 py-3 bg-gradient-to-r from-[#FC7988] to-[#FB8A60] hover:bg-[#e09a6a] self-end text-white font-medium transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 w-full md:w-auto min-w-[160px]"
+      className="px-4 py-3 rounded-[4px] bg-[image:linear-gradient(135deg,var(--salmon-700),var(--orange-500))] hover:brightness-110 self-end text-[#1f0e08] font-medium transition-[filter] cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 w-full md:w-auto min-w-[160px]"
     >
       {isPending ? (
         <>

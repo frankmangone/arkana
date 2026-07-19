@@ -6,7 +6,7 @@
       "bio": "Soy un desarrollador de software y escritor apasionado por las tecnologías web, los sistemas de diseño y la creación de experiencias amigables para el usuario."
     },
     "featuredPosts": {
-      "title": "Publicaciones Destacadas",
+      "title": "Publicación Destacada",
       "viewAll": "Ver todas las publicaciones"
     },
     "recentPosts": {
@@ -23,7 +23,8 @@
       "descriptionBig": "Temas complejos, simplificados",
       "descriptionSmall": "Redescubre las matemáticas, la criptografía, la informática y más a través de artículos atrapantes.",
       "meetWriters": "Nuestros Escritores",
-      "exploreReadingLists": "Listas de Lectura"
+      "exploreReadingLists": "Listas de Lectura",
+      "findPosts": "Buscar Artículos"
     },
     "userSurvey": {
       "title": "Ayúdanos a mejorar Arkana",
@@ -40,11 +41,12 @@
   "blog": {
     "title": "Blog",
     "readingTime": "de lectura",
-    "filterByTag": "Filtrar por etiqueta",
     "allPosts": "Todas las Publicaciones",
-    "noPosts": "No se encontraron publicaciones",
-    "tryDifferentTag": "Prueba con una etiqueta diferente o ve todas las publicaciones",
-    "viewAllPosts": "Ver todas las publicaciones",
+    "searchTags": "Buscar etiquetas...",
+    "noTagsFound": "No se encontraron etiquetas",
+    "noPosts": "No se encontraron artículos",
+    "noPostsDescription": "Ningún artículo coincide con tu búsqueda. Prueba con otro término o etiqueta.",
+    "clearSearch": "Limpiar búsqueda",
     "relatedPosts": "Publicaciones Relacionadas",
     "postLiked": "¡Publicación gustada!",
     "thanksForLiking": "Gracias por dar me gusta a esta publicación",
@@ -63,7 +65,9 @@
       "title": "Artículo no disponible",
       "description": "Lo sentimos, este artículo aún no está disponible en el idioma seleccionado.",
       "button": "Volver al inicio"
-    }
+    },
+    "date": "Fecha",
+    "author": "Autor"
   },
   "readingLists": {
     "article": "artículo",
@@ -93,7 +97,6 @@
     "noWriters": "¡Ups!",
     "noWritersDescription": "No se encontraron escritores",
     "articlesBy": "Artículos de {name}",
-    "noArticles": "No se encontraron artículos para este escritor.",
     "noArticlesInLanguage": {
       "title": "No hay artículos disponibles",
       "description": "Este escritor aún no tiene artículos publicados en el idioma seleccionado.",
@@ -203,5 +206,8 @@
       "commentPosted": "¡Comentario publicado!",
       "failedToPost": "Error al publicar el comentario"
     }
+  },
+  "common": {
+    "endOfFeed": "Has llegado al final"
   }
 }

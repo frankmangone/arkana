@@ -17,25 +17,65 @@ export interface SearchResponse {
   hits: SearchHit[];
 }
 
+export interface TagHit {
+  tag: string;
+  count: number;
+}
+
+export interface TagSearchResponse {
+  query: string;
+  tags: TagHit[];
+}
+
+export interface UnifiedSearchParams {
+  /** Free-text query. Optional if one or more tags are given. */
+  query?: string;
+  /** Tags to filter by. Optional if a query is given. */
+  tags?: string[];
+  /** true: posts must carry every tag; false: any of them. */
+  matchAll?: boolean;
+  lang: string;
+  limit: number;
+  /** Number of hits to skip, for paging through results. Default 0. */
+  offset?: number;
+}
+
 /**
- * Full-text search over published posts.
- *
- * @param query - The search term
- * @param lang - Language index to search (en/es/pt)
- * @param limit - Maximum number of hits to return
+ * Unified search: a free-text query, a tag filter, or both together (the
+ * backend only requires that at least one of the two is present).
  */
-export async function searchPosts(
-  query: string,
-  lang: string,
-  limit: number
-): Promise<SearchResponse> {
-  const params = new URLSearchParams({
-    q: query,
-    lang,
-    limit: String(limit),
-  });
+export async function searchPostsUnified({
+  query,
+  tags,
+  matchAll = true,
+  lang,
+  limit,
+  offset,
+}: UnifiedSearchParams): Promise<SearchResponse> {
+  const params = new URLSearchParams({ lang, limit: String(limit) });
+  if (query) params.set("q", query);
+  if (tags && tags.length > 0) {
+    params.set("tags", tags.join(","));
+    params.set("match", matchAll ? "all" : "any");
+  }
+  if (offset) params.set("offset", String(offset));
   const response = await apiClient.get<SearchResponse>(
     `/api/search?${params.toString()}`
+  );
+  return response.data;
+}
+
+/**
+ * Tag type-ahead over the language's index. An empty query returns the
+ * most-used tags.
+ */
+export async function searchTags(
+  query: string,
+  lang: string
+): Promise<TagSearchResponse> {
+  const params = new URLSearchParams({ q: query, lang });
+  const response = await apiClient.get<TagSearchResponse>(
+    `/api/search/tags?${params.toString()}`
   );
   return response.data;
 }

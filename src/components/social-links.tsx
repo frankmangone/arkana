@@ -18,73 +18,97 @@ export function SocialLinks({ author }: SocialLinksProps) {
   return (
     <div className="flex flex-wrap gap-2 justify-center md:justify-start">
       {twitter && (
-        <Button variant="outline" size="sm" asChild>
-          <a href={twitter} target="_blank" rel="noopener noreferrer">
+        <Button variant="outline" size="icon" asChild>
+          <a
+            href={twitter}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="X"
+            title="X"
+          >
             <Image
-              height="14"
-              width="14"
-              className="h-4 w-4 mr-2"
-              alt="Twitter"
-              src="https://cdn.simpleicons.org/x/ffffff"
+              height="16"
+              width="16"
+              className="h-4 w-4"
+              alt="X"
+              src="https://cdn.simpleicons.org/x/f5f3fa"
             />
-            X
           </a>
         </Button>
       )}
 
       {github && (
-        <Button variant="outline" size="sm" asChild>
-          <a href={github} target="_blank" rel="noopener noreferrer">
+        <Button variant="outline" size="icon" asChild>
+          <a
+            href={github}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            title="GitHub"
+          >
             <Image
-              height="14"
-              width="14"
-              className="h-4 w-4 mr-2"
-              alt="Github"
-              src="https://cdn.simpleicons.org/github/ffffff"
+              height="16"
+              width="16"
+              className="h-4 w-4"
+              alt="GitHub"
+              src="https://cdn.simpleicons.org/github/f5f3fa"
             />
-            GitHub
           </a>
         </Button>
       )}
 
       {linkedin && (
-        <Button variant="outline" size="sm" asChild>
-          <a href={linkedin} target="_blank" rel="noopener noreferrer">
-            <Linkedin className="h-4 w-4 mr-2" />
-            LinkedIn
+        <Button variant="outline" size="icon" asChild>
+          <a
+            href={linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            title="LinkedIn"
+          >
+            <Linkedin className="h-4 w-4" />
           </a>
         </Button>
       )}
 
       {medium && (
-        <Button variant="outline" size="sm" asChild>
-          <a href={medium} target="_blank" rel="noopener noreferrer">
+        <Button variant="outline" size="icon" asChild>
+          <a
+            href={medium}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Medium"
+            title="Medium"
+          >
             <Image
-              height="14"
-              width="14"
-              className="h-4 w-4 mr-2"
+              height="16"
+              width="16"
+              className="h-4 w-4"
               alt="Medium"
-              src="https://cdn.simpleicons.org/medium/ffffff"
+              src="https://cdn.simpleicons.org/medium/f5f3fa"
             />
-            Medium
           </a>
         </Button>
       )}
 
       {website && (
-        <Button variant="outline" size="sm" asChild>
-          <a href={website} target="_blank" rel="noopener noreferrer">
-            <Globe className="h-4 w-4 mr-2" />
-            Website
+        <Button variant="outline" size="icon" asChild>
+          <a
+            href={website}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Website"
+            title="Website"
+          >
+            <Globe className="h-4 w-4" />
           </a>
         </Button>
       )}
 
       {email && (
-        <Button variant="outline" size="sm" asChild>
-          <a href={`mailto:${email}`}>
-            <Mail className="h-4 w-4 mr-2" />
-            Email
+        <Button variant="outline" size="icon" asChild>
+          <a href={`mailto:${email}`} aria-label="Email" title="Email">
+            <Mail className="h-4 w-4" />
           </a>
         </Button>
       )}

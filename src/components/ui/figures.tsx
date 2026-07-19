@@ -24,7 +24,7 @@ export function FigCaption({ children }: HTMLAttributes<HTMLElement>) {
   // The figcaption will be handled by ZoomableImage
   // This is a fallback for any figure not containing our ZoomableImage
   return (
-    <figcaption className="text-center text-sm text-gray-500 dark:text-gray-400 mt-2">
+    <figcaption className="text-center text-sm text-ink-faint mt-2">
       {children}
     </figcaption>
   );

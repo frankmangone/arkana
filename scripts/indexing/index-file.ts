@@ -2,7 +2,7 @@ import * as fs from "fs";
 import * as path from "path";
 import matter from "gray-matter";
 import { Command } from "commander";
-import { indexDocument } from "./utils/meili-client";
+import { ensureFilterableTags, indexDocument } from "./utils/meili-client";
 import { stripMarkdown } from "./utils/strip-markdown";
 
 const CONTENT_ROOT = path.join(process.cwd(), "src", "content");
@@ -49,6 +49,9 @@ async function run(file: string) {
   };
 
   const indexUid = `posts_${lang}`;
+
+  console.log(`Ensuring "${indexUid}" allows filtering by tags...`);
+  await ensureFilterableTags(indexUid);
 
   console.log(`Indexing "${slugPath}" into "${indexUid}"...`);
   const task = await indexDocument(indexUid, document);

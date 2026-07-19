@@ -1,79 +1,57 @@
-import Link from "next/link";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { PostPreview } from "@/lib/posts";
-import { PostCard } from "@/components/ui/post-card";
-import { Pagination } from "@/components/pagination";
-import { withLocalePath } from "@/lib/site-config";
+import { BlogGrid } from "./components/blog-grid";
 import type { Dictionary } from "@/lib/dictionaries";
 
 interface BlogPageProps {
   lang: string;
   posts: PostPreview[];
+  allPosts: PostPreview[];
   dictionary: Dictionary;
-  selectedTag?: string | null;
-  currentPage?: number;
-  totalPages?: number;
+  /** Index into `allPosts` where `posts` starts — infinite scroll continues
+   * forward from there. */
+  startIndex?: number;
 }
 
 export function BlogPage({
   lang,
   posts,
+  allPosts,
   dictionary,
-  selectedTag,
-  currentPage = 1,
-  totalPages = 1,
+  startIndex = 0,
 }: BlogPageProps) {
-  // Get all unique tags from posts
-  //   const allTags = Array.from(
-  //     new Set(posts.flatMap((post) => post.tags))
-  //   ).sort();
-
-  // Filter posts by selected tag if any
-  const filteredPosts = selectedTag
-    ? posts.filter((post) => post.tags.includes(selectedTag))
-    : posts;
-
   return (
-    <div className="container py-8">
-      <h1 className="text-4xl font-bold mb-8">{dictionary.blog.title}</h1>
+    <div className="container pb-8">
+      <header className="mb-12 pb-4 pt-8">
+        <Breadcrumbs
+          lang={lang}
+          items={[{ label: dictionary.blog.title }]}
+          className="mb-12"
+        />
+        <p className="eyebrow mb-4 font-semibold text-ink-faint">
+          {dictionary.home.recentPosts.title}
+        </p>
+        <h1 className="display-title !text-[clamp(2.25rem,5vw,3.75rem)] text-primary-750">
+          {dictionary.blog.title}
+        </h1>
+      </header>
 
-      {/* Post grid */}
-      {filteredPosts.length > 0 ? (
-        <>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredPosts.map((post) => (
-              <PostCard key={post.slug} post={post} lang={lang} />
-            ))}
-          </div>
-
-          {/* Only show pagination if we have more than one page */}
-          {totalPages > 1 && (
-            <Pagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              basePath={`/${lang}/blog`}
-            />
-          )}
-        </>
-      ) : (
-        <div className="text-center py-12">
-          <h3 className="text-xl font-semibold mb-2">
-            {dictionary.blog.noPosts}
-          </h3>
-          <p className="text-gray-600 dark:text-gray-300 mb-6">
-            {dictionary.blog.tryDifferentTag}
-          </p>
-          <Link
-            href={withLocalePath(lang, "blog")}
-            style={{
-              borderColor: "var(--primary-500)",
-              color: "var(--primary-500)",
-            }}
-            className="inline-block px-6 py-3 border-2 rounded-lg transition-colors hover:bg-primary-100"
-          >
-            {dictionary.blog.viewAllPosts}
-          </Link>
-        </div>
-      )}
+      <BlogGrid
+        lang={lang}
+        allPosts={allPosts}
+        pagePosts={posts}
+        startIndex={startIndex}
+        labels={{
+          searchPlaceholder: dictionary.search.placeholder,
+          searchTags: dictionary.blog.searchTags,
+          noTagsFound: dictionary.blog.noTagsFound,
+          searching: dictionary.search.searching,
+          noPosts: dictionary.blog.noPosts,
+          noPostsDescription: dictionary.blog.noPostsDescription,
+          clearSearch: dictionary.blog.clearSearch,
+          endOfFeed: dictionary.common.endOfFeed,
+        }}
+      />
     </div>
   );
 }

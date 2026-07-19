@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "../button"
-import CommentIcon from "./comment-icon";
+import { Button } from "../button";
+import { MessageCircle } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 interface CommentButtonProps {
@@ -18,10 +18,12 @@ export function CommentButton(props: CommentButtonProps) {
     const newSearchParams = new URLSearchParams(searchParams.toString());
     newSearchParams.set("focus", "comment");
     const queryString = newSearchParams.toString();
-    
+
     // Scroll to comments section using hash
-    router.push(`#comments${queryString ? `?${queryString}` : ""}`, { scroll: false });
-    
+    router.push(`#comments${queryString ? `?${queryString}` : ""}`, {
+      scroll: false,
+    });
+
     // Then scroll smoothly to the element
     setTimeout(() => {
       const commentsSection = document.getElementById("comments");
@@ -32,18 +34,14 @@ export function CommentButton(props: CommentButtonProps) {
   };
 
   return (
-    <Button 
-      variant="ghost" 
-      className="h-auto min-h-10 !px-4 !py-2 rounded-none cursor-pointer bg-background border border-border text-secondary-900 hover:!bg-accent hover:!border-secondary-700/50 flex items-center gap-2" 
+    <Button
+      variant="ghost"
+      className="h-auto !px-2.5 !py-2 rounded-[4px] cursor-pointer bg-transparent text-white/70 hover:bg-black/10 hover:text-white flex items-center gap-1.5"
       aria-label="Comment on post"
       onClick={handleClick}
     >
-      <CommentIcon size={20} />
-      {commentCount > 0 && (
-        <span className="text-sm text-secondary-900">
-          {commentCount}
-        </span>
-      )}
+      <MessageCircle className="!size-5" strokeWidth={2} />
+      {commentCount > 0 && <span className="text-sm">{commentCount}</span>}
     </Button>
   );
 }

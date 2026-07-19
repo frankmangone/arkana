@@ -1,5 +1,9 @@
+import Link from "next/link";
+import { Search, BookOpen } from "lucide-react";
 import type { Dictionary } from "@/lib/dictionaries";
-import { HeroSearch } from "./hero-search";
+import { GlyphRain } from "@/components/glyph-rain";
+import { DecryptedText } from "@/components/decrypted-text";
+import { withLocalePath } from "@/lib/site-config";
 
 interface IntroSectionProps {
   lang: string;
@@ -8,16 +12,39 @@ interface IntroSectionProps {
 
 export function IntroSection({ lang, dictionary }: IntroSectionProps) {
   return (
-    <section className="relative w-full min-h-[30vh] flex flex-col md:flex-row items-center md:pt-12">
-      <div className="container z-10 mx-auto px-4 md:px-6 lg:px-8 max-w-8xl">
-        <div className="z-10 flex-1 flex flex-col justify-center pt-6 md:pt-20 bg-transparent text-left w-full md:max-w-6/10 md:text-left xl:max-w-4/10">
-          <h1 className="text-4xl md:text-6xl mb-8 mr-2 text-white font-extrabold tracking-tight leading-tight">
-            {dictionary.home.intro.descriptionBig}
+    <section className="home-hero relative">
+      {/* Static glyph field spans the full hero, fading out at both edges */}
+      <div
+        className="pointer-events-none absolute inset-0 [mask-image:linear-gradient(to_right,transparent_0%,black_15%,black_85%,transparent_100%)]"
+        aria-hidden="true"
+      >
+        <GlyphRain animated={false} />
+      </div>
+
+      <div className="relative z-10 mx-auto flex min-h-[48vh] max-w-6xl items-center px-4 py-16 md:px-6 md:py-20 lg:px-8">
+        <div className="max-w-3xl flex-1">
+          <h1 className="display-title mb-8 !text-[clamp(2.75rem,6.75vw,5.25rem)] text-ink-on-brand-title">
+            <DecryptedText text={dictionary.home.intro.descriptionBig} />
           </h1>
-          <p className="text-2xl text-gray-200 mb-10 font-semibold leading-relaxed">
+          <p className="mb-8 max-w-[44ch] text-xl leading-relaxed text-ink-on-brand-soft md:text-2xl">
             {dictionary.home.intro.descriptionSmall}
           </p>
-          <HeroSearch lang={lang} dictionary={dictionary} />
+          <div className="flex flex-wrap gap-3">
+            <Link
+              href={withLocalePath(lang, "blog")}
+              className="inline-flex items-center gap-2 rounded-[4px] border border-ink-on-brand/40 px-4 py-2.5 text-sm font-medium text-ink-on-brand transition-colors hover:border-ink-on-brand/70 hover:bg-white/10"
+            >
+              <Search className="h-4 w-4" />
+              {dictionary.home.intro.findPosts}
+            </Link>
+            <Link
+              href={withLocalePath(lang, "reading-lists")}
+              className="inline-flex items-center gap-2 rounded-[4px] border border-ink-on-brand/40 px-4 py-2.5 text-sm font-medium text-ink-on-brand transition-colors hover:border-ink-on-brand/70 hover:bg-white/10"
+            >
+              <BookOpen className="h-4 w-4" />
+              {dictionary.home.intro.exploreReadingLists}
+            </Link>
+          </div>
         </div>
       </div>
     </section>

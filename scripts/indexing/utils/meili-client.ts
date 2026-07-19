@@ -16,8 +16,13 @@ function headers(key: string) {
   };
 }
 
-async function waitForTask(host: string, key: string, taskUid: number) {
-  for (let attempt = 0; attempt < 20; attempt++) {
+async function waitForTask(
+  host: string,
+  key: string,
+  taskUid: number,
+  attempts = 20
+) {
+  for (let attempt = 0; attempt < attempts; attempt++) {
     const response = await fetch(`${host}/tasks/${taskUid}`, {
       headers: headers(key),
     });
@@ -32,6 +37,35 @@ async function waitForTask(host: string, key: string, taskUid: number) {
   }
 
   throw new Error(`Task ${taskUid} did not complete in time`);
+}
+
+/**
+ * Ensures the index accepts `filter: "tags = ..."` queries and facet
+ * searches over tags (used by the backend's tag-filtered search and tag
+ * type-ahead), with facet values sorted by post count. Idempotent:
+ * PATCHing the same values is a cheap no-op task, so it's safe to run
+ * before every indexing call.
+ */
+export async function ensureFilterableTags(indexUid: string) {
+  const { host, key } = getConfig();
+
+  const response = await fetch(`${host}/indexes/${indexUid}/settings`, {
+    method: "PATCH",
+    headers: headers(key),
+    body: JSON.stringify({
+      filterableAttributes: ["tags"],
+      faceting: { sortFacetValuesBy: { tags: "count" } },
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error(
+      `Failed to update index settings: ${response.status} ${await response.text()}`
+    );
+  }
+
+  const { taskUid } = await response.json();
+  return waitForTask(host, key, taskUid);
 }
 
 export async function indexDocument(
@@ -57,6 +91,35 @@ export async function indexDocument(
 
   const { taskUid } = await response.json();
   return waitForTask(host, key, taskUid);
+}
+
+/**
+ * Indexes a batch of documents in a single request. Large batches can take
+ * a while to process, so the task wait is generous.
+ */
+export async function indexDocuments(
+  indexUid: string,
+  documents: Array<Record<string, unknown>>
+) {
+  const { host, key } = getConfig();
+
+  const response = await fetch(
+    `${host}/indexes/${indexUid}/documents?primaryKey=id`,
+    {
+      method: "POST",
+      headers: headers(key),
+      body: JSON.stringify(documents),
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error(
+      `Failed to index documents: ${response.status} ${await response.text()}`
+    );
+  }
+
+  const { taskUid } = await response.json();
+  return waitForTask(host, key, taskUid, 300);
 }
 
 export async function search(indexUid: string, query: string) {

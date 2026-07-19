@@ -12,7 +12,7 @@ interface SingleChoiceOptionProps {
 
 const styles = {
   baseOption:
-    "flex flex-1 items-center gap-2 p-3 border cursor-pointer transition-colors",
+    "flex flex-1 items-center gap-2 p-3 rounded-[4px] border cursor-pointer transition-colors",
   selectedOption: (
     isSelected: boolean,
     isCorrect: boolean,
@@ -21,10 +21,10 @@ const styles = {
     let optionClass = "border-1";
 
     if (!showFeedback) {
-      optionClass = `${optionClass} border-primary-100 hover:bg-primary-100`;
+      optionClass = `${optionClass} border-rule hover:border-rule-strong hover:bg-white/[0.03]`;
 
       if (isSelected) {
-        optionClass = `${optionClass} border-primary-100 bg-primary-100`;
+        optionClass = `${optionClass} border-primary-700 bg-primary-700/10`;
       }
     } else {
       if (isSelected && isCorrect) {
@@ -69,12 +69,12 @@ export const SingleChoiceOption: React.FC<SingleChoiceOptionProps> = (
           className="sr-only"
         />
         <div
-          className={`w-4 h-4 border-2 flex items-center justify-center transition-all ${isSelected ? "border-primary-700" : "border-primary-200"}`}
+          className={`w-4 h-4 border-2 flex items-center justify-center transition-all ${isSelected ? "border-primary-700" : "border-rule-strong"}`}
         >
           {isSelected && <div className="w-1.5 h-1.5 bg-primary-700" />}
         </div>
       </div>
-      <span className="text-gray-200 ml-4">
+      <span className="text-ink-body ml-4">
         <LatexText inline>{option.text}</LatexText>
       </span>
     </label>

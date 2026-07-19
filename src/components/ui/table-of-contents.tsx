@@ -8,6 +8,7 @@ interface TocItem {
 
 interface TableOfContentsProps {
   content: string;
+  compact?: boolean;
 }
 
 // Function to generate slug from header text (matching the one in text.tsx)
@@ -63,26 +64,24 @@ function extractHeadings(content: string): TocItem[] {
   return headings;
 }
 
-export function TableOfContents({ content }: TableOfContentsProps) {
+export function TableOfContents({ content, compact }: TableOfContentsProps) {
   const headings = extractHeadings(content);
 
   if (headings.length === 0) {
     return null;
   }
 
-  return (
-    <>
-      <nav className="mb-8">
-        <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
-          Table of Contents
-        </h2>
-        <div className="space-y-2 ml-4">
+  if (compact) {
+    return (
+      <nav>
+        <p className="eyebrow mb-4 text-primary-800">Contents</p>
+        <div className="space-y-2.5 border-l border-rule pl-4">
           {headings.map((heading) => (
             <div key={heading.id}>
               <a
                 href={`#${heading.id}`}
-                className={`block text-lg text-primary-750 hover:text-primary-650 transition-colors tracking-wide ${
-                  heading.level === 2 ? "pl-0" : "pl-6"
+                className={`block text-sm leading-snug text-ink-muted transition-colors hover:text-ink-heading ${
+                  heading.level === 2 ? "pl-0" : "pl-4"
                 }`}
               >
                 {heading.text}
@@ -91,6 +90,26 @@ export function TableOfContents({ content }: TableOfContentsProps) {
           ))}
         </div>
       </nav>
-    </>
+    );
+  }
+
+  return (
+    <nav className="mb-8 rounded-md border border-rule p-6">
+      <p className="eyebrow mb-4 text-primary-800">Contents</p>
+      <div className="space-y-2.5">
+        {headings.map((heading) => (
+          <div key={heading.id}>
+            <a
+              href={`#${heading.id}`}
+              className={`block leading-snug text-ink-muted transition-colors hover:text-ink-heading ${
+                heading.level === 2 ? "pl-0" : "pl-5"
+              }`}
+            >
+              {heading.text}
+            </a>
+          </div>
+        ))}
+      </div>
+    </nav>
   );
 }

@@ -8,11 +8,13 @@ import type { Pattern } from "../../../../components/arkana-strip";
 interface WriterArkanaStripProps {
   content: string;
   className?: string;
+  lineColor?: string;
 }
 
 export function WriterArkanaStrip({
   content,
   className,
+  lineColor = "#a777ff",
 }: WriterArkanaStripProps) {
   const [canvasSize, setCanvasSize] = useState(30);
 
@@ -95,7 +97,7 @@ export function WriterArkanaStrip({
           key={index}
           elements={pattern.elements}
           canvasSize={canvasSize}
-          lineColor="#a777ff"
+          lineColor={lineColor}
           backgroundColor="transparent"
         />
       ))}

@@ -77,7 +77,7 @@ export function CommentForm({
             ? dictionary?.comments?.form?.writeReply || "Write a reply..."
             : dictionary?.comments?.form?.writeComment || "Write a comment..."
         }
-        className={`w-full p-3 border border-border rounded-none bg-background text-white placeholder:text-primary-900/50 focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none ${
+        className={`w-full p-3 border border-rule-strong rounded-[4px] bg-transparent text-ink-body placeholder:text-ink-faint focus:outline-none focus:border-primary-700 resize-none transition-colors ${
           compact ? "text-sm min-h-[80px]" : "min-h-[120px]"
         }`}
         disabled={createComment.isPending}

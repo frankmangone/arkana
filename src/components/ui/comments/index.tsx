@@ -45,20 +45,22 @@ export function CommentSection({ path }: CommentSectionProps) {
 
   return (
     <section id="comments" className="mt-12 scroll-mt-20">
-      <div className="flex items-center gap-2 mb-6 relative">
-        <h2 className="text-2xl font-semibold">Comments</h2>
+      <div className="flex items-center gap-2 mb-6 relative border-b border-rule pb-4">
+        <h2 className="text-2xl font-semibold tracking-tight text-ink-heading">
+          Comments
+        </h2>
         <div className="relative flex items-center">
           <button
             type="button"
             onMouseEnter={() => setShowTooltip(true)}
             onMouseLeave={() => setShowTooltip(false)}
-            className="flex items-center justify-center text-secondary-600 hover:text-secondary-700 transition-colors"
+            className="flex items-center justify-center text-ink-faint hover:text-primary-800 transition-colors"
             aria-label="LaTeX help"
           >
             <Info className="w-5 h-5" />
           </button>
           {showTooltip && (
-            <div className="absolute left-0 top-6 z-10 w-64 p-3 bg-background border border-border rounded-none shadow-lg text-xs text-white">
+            <div className="absolute left-0 top-6 z-10 w-64 p-3 bg-surface-overlay border border-rule rounded-md text-xs text-ink-body">
               {latexHelpText}
             </div>
           )}
@@ -68,11 +70,11 @@ export function CommentSection({ path }: CommentSectionProps) {
       {user ? (
         <CommentForm path={path} autoFocus={shouldFocus} />
       ) : (
-        <div className="mb-8 p-4 border border-border rounded-none bg-muted/30">
-          <p className="text-secondary-600 text-sm space-y-4">
+        <div className="mb-8 p-4 border border-rule rounded-md">
+          <p className="text-ink-muted text-sm space-y-4">
             <button
               onClick={handleLoginRedirect}
-              className="text-primary hover:underline font-medium"
+              className="text-primary-800 hover:underline font-medium cursor-pointer"
             >
               Sign in
             </button>{" "}
@@ -82,7 +84,7 @@ export function CommentSection({ path }: CommentSectionProps) {
       )}
 
       {isLoading && (
-        <div className="text-secondary-500 text-sm">Loading comments...</div>
+        <div className="text-ink-muted text-sm">Loading comments...</div>
       )}
 
       {error && (
