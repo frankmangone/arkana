@@ -15,9 +15,7 @@ export async function getPostsFromReadingList(
   const { readingList, lang } = params;
 
   const postsWithNulls = await Promise.all(
-    (readingList.items as ReadingListItem[])
-      .sort((a, b) => (a.order || 0) - (b.order || 0))
-      .map(async (item) => {
+    (readingList.items as ReadingListItem[]).map(async (item) => {
         const post = (await getPostBySlug(item.slug, lang)) as Post;
 
         // Skip posts that don't exist

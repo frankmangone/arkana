@@ -1,0 +1,152 @@
+{
+  "id": "blockchain-101",
+  "coverImage": "/images/blockchain-101/transactions/doge.webp",
+  "ongoing": false,
+  "translations": {
+    "en": {
+      "title": "Blockchain 101",
+      "description": "A beginner-friendly introduction to blockchain concepts"
+    },
+    "es": {
+      "title": "Blockchain 101",
+      "description": "Una introducción amigable para principiantes a los conceptos de blockchain"
+    }
+  },
+  "modules": [
+    {
+      "id": "blockchain-101",
+      "translations": {
+        "en": {
+          "title": "Blockchain 101",
+          "description": "A beginner-friendly introduction to blockchain concepts"
+        },
+        "es": {
+          "title": "Blockchain 101",
+          "description": "Una introducción amigable para principiantes a los conceptos de blockchain"
+        }
+      },
+      "items": [
+        {
+          "id": "how-it-all-began",
+          "slug": "blockchain-101/how-it-all-began",
+          "order": 1
+        },
+        {
+          "id": "transactions",
+          "slug": "blockchain-101/transactions",
+          "order": 2
+        },
+        {
+          "id": "a-primer-on-consensus",
+          "slug": "blockchain-101/a-primer-on-consensus",
+          "order": 3
+        },
+        {
+          "id": "wrapping-up-bitcoin",
+          "slug": "blockchain-101/wrapping-up-bitcoin",
+          "order": 4
+        },
+        {
+          "id": "ethereum",
+          "slug": "blockchain-101/ethereum",
+          "order": 5
+        },
+        {
+          "id": "storage",
+          "slug": "blockchain-101/storage",
+          "order": 6
+        },
+        {
+          "id": "smart-contracts",
+          "slug": "blockchain-101/smart-contracts",
+          "order": 7
+        },
+        {
+          "id": "smart-contracts-part-2",
+          "slug": "blockchain-101/smart-contracts-part-2",
+          "order": 8
+        },
+        {
+          "id": "consensus-revisited",
+          "slug": "blockchain-101/consensus-revisited",
+          "order": 9
+        },
+        {
+          "id": "wrapping-up-ethereum",
+          "slug": "blockchain-101/wrapping-up-ethereum",
+          "order": 10
+        },
+        {
+          "id": "rollups",
+          "slug": "blockchain-101/rollups",
+          "order": 11
+        },
+        {
+          "id": "solana",
+          "slug": "blockchain-101/solana",
+          "order": 12
+        },
+        {
+          "id": "solana-programs",
+          "slug": "blockchain-101/solana-programs",
+          "order": 13
+        },
+        {
+          "id": "blockchain-safari",
+          "slug": "blockchain-101/blockchain-safari",
+          "order": 14
+        },
+        {
+          "id": "parallelizing-execution",
+          "slug": "blockchain-101/parallelizing-execution",
+          "order": 15
+        },
+        {
+          "id": "beyond-the-blockchain-part-1",
+          "slug": "blockchain-101/beyond-the-blockchain-part-1",
+          "order": 16
+        },
+        {
+          "id": "beyond-the-blockchain-part-2",
+          "slug": "blockchain-101/beyond-the-blockchain-part-2",
+          "order": 17
+        },
+        {
+          "id": "polkadot",
+          "slug": "blockchain-101/polkadot",
+          "order": 18
+        },
+        {
+          "id": "polkadot-consensus",
+          "slug": "blockchain-101/polkadot-consensus",
+          "order": 19
+        },
+        {
+          "id": "coretime",
+          "slug": "blockchain-101/coretime",
+          "order": 20
+        },
+        {
+          "id": "jam",
+          "slug": "blockchain-101/jam",
+          "order": 21
+        },
+        {
+          "id": "zk-in-blockchain",
+          "slug": "blockchain-101/zk-in-blockchain",
+          "order": 22
+        },
+        {
+          "id": "handling-data",
+          "slug": "blockchain-101/handling-data",
+          "order": 23
+        },
+        {
+          "id": "evolving-a-blockchain",
+          "slug": "blockchain-101/evolving-a-blockchain",
+          "order": 24
+        }
+      ]
+    }
+  ]
+}
