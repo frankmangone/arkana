@@ -1,4 +1,4 @@
-import { Clock } from "lucide-react";
+import { CheckCircle2, Clock } from "lucide-react";
 import { StepItem } from "./step-item";
 import type { ModuleData } from "./journey-stepper";
 
@@ -6,10 +6,17 @@ interface ModuleSectionProps {
   module: ModuleData;
   moduleNumber: number;
   moduleLabel: string;
+  readLabel: string;
+  /** Per-slug read status for the logged-in user. Undefined for guests — no progress shown. */
+  readStatuses?: Record<string, boolean>;
 }
 
 export function ModuleSection(props: ModuleSectionProps) {
-  const { module, moduleNumber, moduleLabel } = props;
+  const { module, moduleNumber, moduleLabel, readLabel, readStatuses } = props;
+
+  const readCount = readStatuses
+    ? module.steps.filter((step) => readStatuses[step.slug]).length
+    : undefined;
 
   return (
     <section className="grid gap-8 md:grid-cols-[2fr_3fr] md:gap-x-12">
@@ -22,6 +29,12 @@ export function ModuleSection(props: ModuleSectionProps) {
             <Clock className="mr-1.5 h-3.5 w-3.5" />
             {module.readingTime}
           </span>
+          {readCount !== undefined && (
+            <span className="inline-flex items-center text-xs text-ink-faint">
+              <CheckCircle2 className="mr-1.5 h-3.5 w-3.5" />
+              {readCount}/{module.steps.length} {readLabel}
+            </span>
+          )}
         </div>
         <h2 className="mt-2 text-2xl font-semibold tracking-tight text-ink-heading">
           {module.title}
@@ -38,6 +51,7 @@ export function ModuleSection(props: ModuleSectionProps) {
             order={String(step.order).padStart(2, "0")}
             title={step.title}
             url={step.url}
+            read={readStatuses?.[step.slug]}
             showConnector={index < module.steps.length - 1}
           />
         ))}

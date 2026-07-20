@@ -1,4 +1,8 @@
+"use client";
+
 import { Fragment } from "react";
+import { useAuth } from "@/components/providers/auth-provider";
+import { useReadStatuses } from "@/lib/api";
 import { ModuleSection } from "./module-section";
 
 export interface StepData {
@@ -21,9 +25,18 @@ export interface ModuleData {
 interface JourneyStepperProps {
   modules: ModuleData[];
   moduleLabel: string;
+  readLabel: string;
 }
 
-export function JourneyStepper({ modules, moduleLabel }: JourneyStepperProps) {
+export function JourneyStepper({ modules, moduleLabel, readLabel }: JourneyStepperProps) {
+  const { user } = useAuth();
+  const allSlugs = modules.flatMap((module) => module.steps.map((step) => step.slug));
+
+  const { data: readStatuses } = useReadStatuses({
+    paths: allSlugs,
+    enabled: !!user,
+  });
+
   return (
     <div className="flex flex-col">
       {modules.map((module, index) => (
@@ -33,6 +46,8 @@ export function JourneyStepper({ modules, moduleLabel }: JourneyStepperProps) {
             module={module}
             moduleNumber={index + 1}
             moduleLabel={moduleLabel}
+            readLabel={readLabel}
+            readStatuses={user ? readStatuses : undefined}
           />
         </Fragment>
       ))}

@@ -75,6 +75,7 @@
     "module": "Module",
     "moduleSingular": "module",
     "modulePlural": "modules",
+    "read": "read",
     "list": {
       "title": "Reading Lists",
       "description": "Curated collections of articles organized by topic to help guide your learning journey.",
