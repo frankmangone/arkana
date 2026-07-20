@@ -1,7 +1,13 @@
 name: Deploy to GitHub Pages
+run-name: "Deploy: ${{ inputs.deployment_name }}"
 
 on:
   workflow_dispatch:
+    inputs:
+      deployment_name:
+        description: "Name for this deployment"
+        required: true
+        type: string
 
 permissions:
   contents: read
