@@ -4,6 +4,7 @@ export interface PostInfoResponse {
   path: string;
   like_count: number;
   liked: boolean;
+  read: boolean;
 }
 
 export interface ToggleLikeResponse {
@@ -39,6 +40,40 @@ export async function getPostInfo(
 export async function toggleLike(path: string): Promise<ToggleLikeResponse> {
   const response = await apiClient.post<ToggleLikeResponse>(
     `/api/posts/${path}/like`
+  );
+  return response.data;
+}
+
+export interface ToggleReadResponse {
+  read: boolean;
+}
+
+/**
+ * Toggle read status on a post. Bearer token is sent automatically by the axios interceptor.
+ *
+ * @param path - The post path identifier
+ */
+export async function toggleRead(path: string): Promise<ToggleReadResponse> {
+  const response = await apiClient.post<ToggleReadResponse>(
+    `/api/posts/${path}/read`
+  );
+  return response.data;
+}
+
+/**
+ * Get read status for many posts in one request (GET, no side effects).
+ * Bearer token is sent automatically by the axios interceptor; the backend
+ * derives the user from it.
+ *
+ * @param paths - Post path identifiers to check
+ */
+export async function getReadStatuses(
+  paths: string[]
+): Promise<Record<string, boolean>> {
+  const params = new URLSearchParams();
+  paths.forEach((path) => params.append("paths", path));
+  const response = await apiClient.get<Record<string, boolean>>(
+    `/api/posts/reads?${params.toString()}`
   );
   return response.data;
 }
