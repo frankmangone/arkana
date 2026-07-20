@@ -67,7 +67,10 @@
       "button": "Volver al inicio"
     },
     "date": "Fecha",
-    "author": "Autor"
+    "author": "Autor",
+    "readingTimeLabel": "Tiempo de lectura",
+    "alsoOn": "También en",
+    "articleFinished": "¡Artículo terminado!"
   },
   "readingLists": {
     "article": "artículo",

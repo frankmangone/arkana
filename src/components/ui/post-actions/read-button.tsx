@@ -21,6 +21,7 @@ export function ReadButton(props: ReadButtonProps) {
         read ? "text-primary-500 hover:text-primary-500" : "text-white/70 hover:text-white"
       }`}
       aria-label={read ? "Mark post as unread" : "Mark post as read"}
+      title={read ? "Mark post as unread" : "Mark post as read"}
       onClick={handleRead}
       disabled={readMutation.isPending}
     >

@@ -59,6 +59,8 @@ export interface UseToggleReadParams {
  * Hook to toggle read status on a post. Authentication via Bearer token (auto-added by axios).
  */
 export function useToggleRead() {
+  const queryClient = useQueryClient();
+
   return useMutation<ToggleReadResponse, Error, UseToggleReadParams>({
     mutationFn: async ({ path }) => {
       return toggleRead(path);
@@ -66,6 +68,10 @@ export function useToggleRead() {
     onSuccess: (response, variables) => {
       const event = response.read ? EVENTS.POST_READ : EVENTS.POST_UNREAD;
       trackEvent(event, { path: variables.path });
+      // Partial key match: refreshes this post's info plus any mounted
+      // reading-list read-status widgets, regardless of their paths array.
+      queryClient.invalidateQueries({ queryKey: ["postInfo", variables.path] });
+      queryClient.invalidateQueries({ queryKey: ["readStatuses"] });
     },
   });
 }

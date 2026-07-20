@@ -21,6 +21,7 @@ export function LikeButton(props: LikeButtonProps) {
         liked ? "text-salmon-500 hover:text-salmon-500" : "text-white/70 hover:text-white"
       }`}
       aria-label={liked ? "Unlike post" : "Like post"}
+      title={liked ? "Unlike post" : "Like post"}
       onClick={handleLike}
       disabled={likeMutation.isPending}
     >

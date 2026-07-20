@@ -19,7 +19,7 @@ interface PostActionsProps {
   path: string;
 }
 
-export function PostActions({ className, path }: PostActionsProps) {
+export function PostActions({ className = "gap-2", path }: PostActionsProps) {
   const params = useParams();
   const router = useRouter();
   const lang = (params?.lang as string) || "en";
@@ -92,10 +92,10 @@ export function PostActions({ className, path }: PostActionsProps) {
   const commentCount = commentsData?.comments?.length || 0;
 
   return (
-    <div className={`flex items-center gap-2 ${className}`}>
+    <div className={`flex items-center ${className}`}>
       <LikeButton {...likeButtonProps} />
-      <ReadButton {...readButtonProps} />
       <CommentButton commentCount={commentCount} />
+      <ReadButton {...readButtonProps} />
     </div>
   );
 }

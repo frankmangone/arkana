@@ -67,7 +67,10 @@
       "button": "Back to home"
     },
     "date": "Date",
-    "author": "Author"
+    "author": "Author",
+    "readingTimeLabel": "Reading Time",
+    "alsoOn": "Also On",
+    "articleFinished": "Article finished!"
   },
   "readingLists": {
     "article": "article",
