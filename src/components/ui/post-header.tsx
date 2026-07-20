@@ -11,6 +11,7 @@ import { Breadcrumbs, type BreadcrumbItem } from "@/components/breadcrumbs";
 import { Tag } from "@/components/ui/tag";
 import { Link } from "@/components/ui/link";
 import { PostActions } from "@/components/ui/post-actions";
+import { StickyActionsBar } from "@/components/ui/post-actions/sticky-actions-bar";
 import { TintedThumbnail } from "@/components/ui/tinted-thumbnail";
 
 interface PostHeaderProps {
@@ -115,7 +116,10 @@ export async function PostHeader(props: PostHeaderProps) {
                 </div>
               )}
               {path && (
-                <div className="col-span-2 xl:col-span-1 xl:-ml-2.5">
+                <div
+                  data-post-actions-anchor
+                  className="col-span-2 xl:col-span-1 xl:-ml-2.5"
+                >
                   <Suspense fallback={null}>
                     <PostActions
                       path={path}
@@ -125,6 +129,12 @@ export async function PostHeader(props: PostHeaderProps) {
                 </div>
               )}
             </aside>
+
+            {path && (
+              <Suspense fallback={null}>
+                <StickyActionsBar path={path} />
+              </Suspense>
+            )}
 
             {/* Title block */}
             <div className="order-1 mx-auto w-full max-w-3xl xl:order-2 xl:col-start-2 xl:row-start-1 xl:mx-0 xl:max-w-none">

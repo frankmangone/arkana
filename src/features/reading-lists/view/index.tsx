@@ -68,12 +68,12 @@ export async function ReadingListPage(props: ReadingListPageProps) {
           ]}
           className="mb-12"
         />
-        <div className="mb-5 flex flex-wrap items-center gap-4">
+        <div className="mb-5 flex flex-wrap items-center gap-6">
           <h1 className="display-title !text-[clamp(2.25rem,5vw,3.75rem)] text-primary-750">
             {readingList.title}
           </h1>
           {readingList.ongoing && (
-            <Badge variant="outline">{dict.readingLists.ongoing}</Badge>
+            <Badge variant="outline" className="mt-2">{dict.readingLists.ongoing}</Badge>
           )}
         </div>
 
