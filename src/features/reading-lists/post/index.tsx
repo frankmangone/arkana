@@ -10,6 +10,7 @@ import BuyMeCoffeeWidget from "@/components/ui/buy-me-coffee";
 import { getDictionary } from "@/lib/dictionaries";
 import { SectionDivider } from "@/components/ui/section-divider";
 import { CommentSection } from "@/components/ui/comments";
+import { ReadTracker } from "@/components/ui/post-actions/read-tracker";
 import { SITE_URL, withLocalePath, withSiteUrl } from "@/lib/site-config";
 
 interface ReadingListPostPageProps {
@@ -101,8 +102,8 @@ export async function ReadingListPostPage(props: ReadingListPostPageProps) {
       />
       <ReadingProgress />
       <PostContent post={post} />
+      <ReadTracker path={slug} />
       <Navigation lang={lang} id={id} prevItem={prevItem} nextItem={nextItem} />
-      <SectionDivider />
       {writer.walletAddress &&
         writer.walletAddress !==
           "0x0000000000000000000000000000000000000000" && (

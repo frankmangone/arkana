@@ -5,12 +5,13 @@ import type { Post } from "@/lib/types";
 import { getWriter } from "@/lib/writers";
 import { getDictionary } from "@/lib/dictionaries";
 import { resolveThumbnailUrl } from "@/lib/site-config";
-import { ExternalLink } from "lucide-react";
+import { Clock, ExternalLink } from "lucide-react";
 import { ArkanaStrip } from "@/components/arkana-strip";
 import { Breadcrumbs, type BreadcrumbItem } from "@/components/breadcrumbs";
 import { Tag } from "@/components/ui/tag";
 import { Link } from "@/components/ui/link";
 import { PostActions } from "@/components/ui/post-actions";
+import { StickyActionsBar } from "@/components/ui/post-actions/sticky-actions-bar";
 import { TintedThumbnail } from "@/components/ui/tinted-thumbnail";
 
 interface PostHeaderProps {
@@ -39,7 +40,7 @@ export async function PostHeader(props: PostHeaderProps) {
           variant="hero"
         />
 
-        <div className="relative px-4 pb-16 pt-8 md:px-6 md:pb-24 lg:px-8">
+        <div className="relative px-4 pb-4 pt-8 md:px-6 md:pb-24 lg:px-8">
           {/* From xl, indent the breadcrumbs to the title column's left edge
               ((100% - 48rem)/2), so they sit on the same axis as the
               tags/title/body reading flow. */}
@@ -58,7 +59,7 @@ export async function PostHeader(props: PostHeaderProps) {
               The metadata rail occupies the left gutter from xl up. */}
           <div className="flex flex-col gap-10 xl:grid xl:grid-cols-[1fr_minmax(0,48rem)_1fr] xl:gap-x-10">
             {/* Metadata rail */}
-            <aside className="order-2 mx-auto flex w-full max-w-3xl flex-wrap items-start gap-x-12 gap-y-7 xl:order-1 xl:col-start-1 xl:row-start-1 xl:mx-0 xl:w-44 xl:max-w-none xl:flex-col xl:justify-self-end">
+            <aside className="order-2 mx-auto grid w-full max-w-3xl grid-cols-2 items-start gap-x-8 gap-y-7 xl:order-1 xl:col-start-1 xl:row-start-1 xl:mx-0 xl:flex xl:w-44 xl:max-w-none xl:flex-col xl:justify-self-end">
               <div>
                 <p className="eyebrow mb-1.5 font-semibold text-white/60">
                   {dict.blog.date}
@@ -90,31 +91,50 @@ export async function PostHeader(props: PostHeaderProps) {
                 </Link>
               </div>
               <div>
-                <p className="text-white/80">
+                <p className="eyebrow mb-1.5 font-semibold text-white/60">
+                  {dict.blog.readingTimeLabel}
+                </p>
+                <p className="flex items-center gap-1.5 text-white/80">
+                  <Clock className="h-3.5 w-3.5 shrink-0" />
                   {metadata.readingTime} {dict.blog.readingTime}
-                  {metadata.mediumUrl && (
-                    <>
-                      {" · "}
-                      <Link
-                        href={metadata.mediumUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-white/80 no-underline hover:underline"
-                      >
-                        Medium <ExternalLink size={14} />
-                      </Link>
-                    </>
-                  )}
                 </p>
               </div>
+
+              {metadata.mediumUrl && (
+                <div>
+                  <p className="eyebrow mb-1.5 font-semibold text-white/60">
+                    {dict.blog.alsoOn}
+                  </p>
+                  <Link
+                    href={metadata.mediumUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-white/80 no-underline hover:underline"
+                  >
+                    Medium <ExternalLink size={14} />
+                  </Link>
+                </div>
+              )}
               {path && (
-                <div className="-ml-2.5">
+                <div
+                  data-post-actions-anchor
+                  className="col-span-2 xl:col-span-1 xl:-ml-2.5"
+                >
                   <Suspense fallback={null}>
-                    <PostActions path={path} />
+                    <PostActions
+                      path={path}
+                      className="w-full justify-center gap-8 mt-4 xl:mt-0 xl:w-auto xl:justify-start xl:gap-2"
+                    />
                   </Suspense>
                 </div>
               )}
             </aside>
+
+            {path && (
+              <Suspense fallback={null}>
+                <StickyActionsBar path={path} />
+              </Suspense>
+            )}
 
             {/* Title block */}
             <div className="order-1 mx-auto w-full max-w-3xl xl:order-2 xl:col-start-2 xl:row-start-1 xl:mx-0 xl:max-w-none">

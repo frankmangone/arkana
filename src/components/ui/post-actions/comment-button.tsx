@@ -38,6 +38,7 @@ export function CommentButton(props: CommentButtonProps) {
       variant="ghost"
       className="h-auto !px-2.5 !py-2 rounded-[4px] cursor-pointer bg-transparent text-white/70 hover:bg-black/10 hover:text-white flex items-center gap-1.5"
       aria-label="Comment on post"
+      title="Comment on post"
       onClick={handleClick}
     >
       <MessageCircle className="!size-5" strokeWidth={2} />

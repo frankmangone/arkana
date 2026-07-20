@@ -2,10 +2,13 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   getPostInfo,
   toggleLike,
+  toggleRead,
+  getReadStatuses,
   getComments,
   createComment,
   PostInfoResponse,
   ToggleLikeResponse,
+  ToggleReadResponse,
   CommentsResponse,
   CommentResponse,
 } from "../services/posts";
@@ -44,6 +47,50 @@ export function useLike() {
       const event = response.liked ? EVENTS.POST_LIKED : EVENTS.POST_UNLIKED;
       trackEvent(event, { path: variables.path });
     },
+  });
+}
+
+export interface UseToggleReadParams {
+  path: string;
+  read: boolean;
+}
+
+/**
+ * Hook to toggle read status on a post. Authentication via Bearer token (auto-added by axios).
+ */
+export function useToggleRead() {
+  const queryClient = useQueryClient();
+
+  return useMutation<ToggleReadResponse, Error, UseToggleReadParams>({
+    mutationFn: async ({ path }) => {
+      return toggleRead(path);
+    },
+    onSuccess: (response, variables) => {
+      const event = response.read ? EVENTS.POST_READ : EVENTS.POST_UNREAD;
+      trackEvent(event, { path: variables.path });
+      // Partial key match: refreshes this post's info plus any mounted
+      // reading-list read-status widgets, regardless of their paths array.
+      queryClient.invalidateQueries({ queryKey: ["postInfo", variables.path] });
+      queryClient.invalidateQueries({ queryKey: ["readStatuses"] });
+    },
+  });
+}
+
+interface UseReadStatusesParams {
+  paths: string[];
+  /** Set to false for guests — skips the fetch entirely. Defaults to true. */
+  enabled?: boolean;
+}
+
+/**
+ * Hook to fetch read status for many posts in one request (e.g. an entire
+ * reading list's stepper). Requires auth — callers should pass `enabled: !!user`.
+ */
+export function useReadStatuses({ paths, enabled = true }: UseReadStatusesParams) {
+  return useQuery<Record<string, boolean>, Error>({
+    queryKey: ["readStatuses", paths],
+    queryFn: () => getReadStatuses(paths),
+    enabled: enabled && paths.length > 0,
   });
 }
 

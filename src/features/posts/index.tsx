@@ -10,6 +10,7 @@ import { ReadingProgress } from "@/components/ui/reading-progress";
 import { SectionDivider } from "@/components/ui/section-divider";
 import BuyMeCoffeeWidget from "@/components/ui/buy-me-coffee";
 import { CommentSection } from "@/components/ui/comments";
+import { ReadTracker } from "@/components/ui/post-actions/read-tracker";
 import { SITE_URL, withLocalePath, withSiteUrl } from "@/lib/site-config";
 
 interface PostPageProps {
@@ -141,7 +142,7 @@ export async function PostPage(props: PostPageProps) {
       {header}
       <ReadingProgress />
       <PostContent post={post} quizDictionary={dict.quiz} />
-      <SectionDivider />
+      <ReadTracker path={slug} />
       {writer.walletAddress &&
         writer.walletAddress !==
           "0x0000000000000000000000000000000000000000" && (

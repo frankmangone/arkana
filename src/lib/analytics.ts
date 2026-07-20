@@ -23,6 +23,8 @@ export const EVENTS = {
   COFFEE_INITIATED: "coffee_initiated",
   POST_LIKED: "post_liked",
   POST_UNLIKED: "post_unliked",
+  POST_READ: "post_read",
+  POST_UNREAD: "post_unread",
   COMMENT_CREATED: "comment_created",
   WALLET_CONNECTED: "wallet_connected",
   WALLET_DISCONNECTED: "wallet_disconnected",

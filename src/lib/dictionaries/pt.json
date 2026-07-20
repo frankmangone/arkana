@@ -67,7 +67,10 @@
       "button": "Voltar ao início"
     },
     "date": "Data",
-    "author": "Autor"
+    "author": "Autor",
+    "readingTimeLabel": "Tempo de leitura",
+    "alsoOn": "Também em",
+    "articleFinished": "Artigo terminado!"
   },
   "readingLists": {
     "article": "artigo",
@@ -75,6 +78,7 @@
     "module": "Módulo",
     "moduleSingular": "módulo",
     "modulePlural": "módulos",
+    "read": "lidos",
     "list": {
       "title": "Listas de Leitura",
       "description": "Coleções selecionadas de artigos organizados por tópico para guiar sua jornada de aprendizado.",
