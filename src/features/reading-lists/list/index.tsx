@@ -3,6 +3,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { EmptyState } from "@/components/empty-state";
 import { getPostsFromReadingList } from "../view/fetch";
 import { ReadingListCard } from "./components/reading-list-card";
+import { formatReadingTime, sumReadingTimeMinutes } from "../reading-time";
 import type { Dictionary } from "@/lib/dictionaries";
 
 interface ReadingListsPageProps {
@@ -14,11 +15,11 @@ interface ReadingListsPageProps {
 export async function ReadingListsPage(props: ReadingListsPageProps) {
   const { lang, dictionary, readingLists } = props;
 
-  // First article titles per list, so cards can preview their contents
-  const previews = await Promise.all(
+  // Total reading time per list, summed from each article's reading time
+  const totalReadingTimes = await Promise.all(
     readingLists.map(async (list) => {
       const posts = await getPostsFromReadingList({ readingList: list, lang });
-      return posts.slice(0, 4).map((post) => post.title);
+      return formatReadingTime(sumReadingTimeMinutes(posts));
     })
   );
 
@@ -45,14 +46,15 @@ export async function ReadingListsPage(props: ReadingListsPageProps) {
         />
       )}
 
-      <div className="flex flex-col gap-8">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {readingLists.map((list, index) => (
           <ReadingListCard
             key={list.id}
             list={list}
             lang={lang}
             dictionary={dictionary}
-            previewTitles={previews[index]}
+            moduleCount={list.modules.length}
+            totalReadingTime={totalReadingTimes[index]}
           />
         ))}
       </div>

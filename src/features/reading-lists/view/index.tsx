@@ -5,6 +5,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { getPostsFromReadingList } from "./fetch";
 import { withLocalePath } from "@/lib/site-config";
 import { JourneyStepper, type ModuleData } from "./components/journey-stepper";
+import { formatReadingTime, sumReadingTimeMinutes } from "../reading-time";
 
 interface ReadingListPageProps {
   lang: string;
@@ -25,11 +26,8 @@ export async function ReadingListPage(props: ReadingListPageProps) {
   let stepCount = 0;
 
   const modules: ModuleData[] = readingList.modules
-    .map((module) => ({
-      id: module.id,
-      title: module.title,
-      description: module.description,
-      steps: module.items
+    .map((module) => {
+      const moduleSteps = module.items
         .filter((item) => postsBySlug.has(item.slug))
         .map((item) => {
           stepCount += 1;
@@ -43,8 +41,20 @@ export async function ReadingListPage(props: ReadingListPageProps) {
             ),
             order: stepCount,
           };
-        }),
-    }))
+        });
+
+      const modulePosts = module.items
+        .map((item) => postsBySlug.get(item.slug))
+        .filter((post): post is NonNullable<typeof post> => post != null);
+
+      return {
+        id: module.id,
+        title: module.title,
+        description: module.description,
+        readingTime: formatReadingTime(sumReadingTimeMinutes(modulePosts)),
+        steps: moduleSteps,
+      };
+    })
     .filter((module) => module.steps.length > 0);
 
   return (

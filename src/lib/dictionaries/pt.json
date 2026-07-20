@@ -73,6 +73,8 @@
     "article": "artigo",
     "articles": "artigos",
     "module": "Módulo",
+    "moduleSingular": "módulo",
+    "modulePlural": "módulos",
     "list": {
       "title": "Listas de Leitura",
       "description": "Coleções selecionadas de artigos organizados por tópico para guiar sua jornada de aprendizado.",

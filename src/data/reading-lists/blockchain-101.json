@@ -18,11 +18,11 @@
       "translations": {
         "en": {
           "title": "Bitcoin and Fundamentals",
-          "description": "Let's start at the very beginning of the discipline"
+          "description": "Bitcoin's transaction model, UTXOs, and Proof-of-Work consensus - the building blocks of the first Blockchain, plus its key trade-offs."
         },
         "es": {
           "title": "Bitcoin y Fundamentos",
-          "description": "Empecemos por el principio de la disciplina"
+          "description": "El modelo de transacciones de Bitcoin, los UTXOs y el consenso de Proof-of-Work: los pilares de la primera Blockchain, junto con sus principales trade-offs."
         }
       },
       "items": [
@@ -53,11 +53,11 @@
       "translations": {
         "en": {
           "title": "Ethereum and EVM",
-          "description": "The first programmable blockchain"
+          "description": "Ethereum's account model, state storage, and Smart Contracts, its shift to Proof of Stake, and how Rollups scale it."
         },
         "es": {
           "title": "Ethereum y la EVM",
-          "description": "La primera blockchain programable"
+          "description": "El modelo de cuentas de Ethereum, el almacenamiento de estado y los Smart Contracts, su cambio a Proof of Stake y cómo los Rollups lo escalan."
         }
       },
       "items": [
@@ -102,12 +102,12 @@
       "id": "other-blockchains",
       "translations": {
         "en": {
-          "title": "The Broader Ecosystem",
-          "description": "A brief look into the many alternatives in the Blockchain space"
+          "title": "Beyond Bitcoin and Ethereum",
+          "description": "A tour of alternative designs - Solana, Polkadot (through JAM), Hedera, Kaspa, and more - plus cross-cutting topics like zero-knowledge proofs and data availability shaping Blockchain's future."
         },
         "es": {
-          "title": "El Ecosistema Más Amplio",
-          "description": "Un vistazo breve a las muchas alternativas en el espacio Blockchain"
+          "title": "Más Allá de Bitcoin y Ethereum",
+          "description": "Un recorrido por diseños alternativos - Solana, Polkadot (hasta JAM), Hedera, Kaspa y más - además de temas transversales como las pruebas de conocimiento cero y la disponibilidad de datos que están dando forma al futuro de la Blockchain."
         }
       },
       "items": [

@@ -18,11 +18,11 @@
       "translations": {
         "en": {
           "title": "Fundamentals",
-          "description": "Elliptic curve basics"
+          "description": "Defining elliptic curves, point addition, finite fields, projective coordinates, and the group structure that makes them useful in cryptography."
         },
         "es": {
           "title": "Fundamentos",
-          "description": "Los fundamentos de las curvas elípticas"
+          "description": "La definición de las curvas elípticas, la suma de puntos, los cuerpos finitos, las coordenadas proyectivas y la estructura de grupo que las hace útiles en criptografía."
         }
       },
       "items": [
@@ -48,11 +48,11 @@
       "translations": {
         "en": {
           "title": "Elliptic Curves And Functions",
-          "description": "We explore some important maps in elliptic curve theory"
+          "description": "Homomorphisms, isogenies, and curve twists, then divisors and the Mordell-Weil group, ending with rational points and the Birch–Swinnerton-Dyer conjecture."
         },
         "es": {
           "title": "Curvas Elípticas y Funciones",
-          "description": "Exploramos algunos mapas importantes en la teoría de curvas elípticas"
+          "description": "Homomorfismos, isogenias y twists de curvas; luego divisores y el grupo de Mordell-Weil, para terminar con los puntos racionales y la conjetura de Birch–Swinnerton-Dyer."
         }
       },
       "items": [
@@ -78,11 +78,11 @@
       "translations": {
         "en": {
           "title": "Pairings",
-          "description": "Bilinear maps realized on elliptic curves"
+          "description": "Torsion groups, the Weil and Tate pairings, Miller's algorithm for computing them, and the pairing types used in practice."
         },
         "es": {
           "title": "Emparejamientos",
-          "description": "Mapas bilineales realizados sobre curvas elípticas"
+          "description": "Grupos de torsión, los emparejamientos de Weil y Tate, el algoritmo de Miller para calcularlos y los tipos de emparejamientos usados en la práctica."
         }
       },
       "items": [
@@ -107,12 +107,12 @@
       "id": "practical-aspects",
       "translations": {
         "en": {
-          "title": "Practical Aspects",
-          "description": "A brief look into some practical aspects"
+          "title": "Curves In Practice",
+          "description": "A tour of real-world curves - secp256k1, Curve25519, Ed25519, and pairing-friendly BLS12-381 - and the alternate curve forms behind their speed and security."
         },
         "es": {
-          "title": "Aspectos Prácticos",
-          "description": "Un vistazo breve a algunos aspectos prácticos"
+          "title": "Curvas en la Práctica",
+          "description": "Un recorrido por curvas usadas en el mundo real - secp256k1, Curve25519, Ed25519 y BLS12-381 - y las formas alternativas de curva detrás de su velocidad y seguridad."
         }
       },
       "items": [

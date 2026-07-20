@@ -21,16 +21,16 @@
       "id": "asymmetric-cryptography-basics",
       "translations": {
         "en": {
-          "title": "Asymmetric Cryptography Basics",
-          "description": "The basics to understand asymmetric cryptography"
+          "title": "Cryptography Fundamentals",
+          "description": "Groups, modular arithmetic, RSA, and elliptic curves come together to build encryption and digital signatures. We also take a first look at hashing and core cryptographic protocols."
         },
         "es": {
-          "title": "Fundamentos de Criptografía Asimétrica",
-          "description": "Los conceptos básicos para entender la criptografía asimétrica"
+          "title": "Fundamentos de Criptografía",
+          "description": "Grupos, aritmética modular, RSA y curvas elípticas se combinan para construir cifrado y firmas digitales. También vemos hashing, y una primera mirada a los protocolos criptográficos fundamentales."
         },
         "pt": {
-          "title": "Fundamentos de Criptografia Assimétrica",
-          "description": "Os conceitos básicos para entender a criptografia assimétrica"
+          "title": "Fundamentos de Criptografia",
+          "description": "Grupos, aritmética modular, RSA e curvas elípticas se combinam para construir criptografia e assinaturas digitais. Também olhamos hashing e alguns protocolos criptográficos fundamentais."
         }
       },
       "items": [
@@ -70,16 +70,16 @@
       "id": "advanced-signatures",
       "translations": {
         "en": {
-          "title": "Advanced Signatures",
-          "description": "A look into a few variations of digital signatures"
+          "title": "Signatures, Sharing & Security",
+          "description": "Blind, ring, multi-, and threshold signatures, built on top of polynomial secret sharing and homomorphisms, plus a primer on evaluating cryptographic security."
         },
         "es": {
-          "title": "Firmas Avanzadas",
-          "description": "Un vistazo a algunas variaciones de las firmas digitales"
+          "title": "Firmas, Compartición de Secretos y Seguridad",
+          "description": "Firmas ciegas, de anillo, múltiples y de umbral, construidas sobre la compartición de secretos mediante polinomios y homomorfismos, junto con una introducción a la evaluación de la seguridad criptográfica."
         },
         "pt": {
-          "title": "Assinaturas Avançadas",
-          "description": "Uma olhada em algumas variações das assinaturas digitais"
+          "title": "Assinaturas, Compartilhamento de Segredos e Segurança",
+          "description": "Assinaturas cegas, em anel, múltiplas e por limiar, construídas sobre o compartilhamento de segredos por polinômios e homomorfismos, além de uma introdução à avaliação da segurança criptográfica."
         }
       },
       "items": [
@@ -115,15 +115,15 @@
       "translations": {
         "en": {
           "title": "Zero Knowledge Basics",
-          "description": "An introduction to the world of Zero Knowledge Proofs"
+          "description": "Pairings and polynomial commitments build up the arithmetic-circuit model behind zero-knowledge proofs, SNARKs, and STARKs."
         },
         "es": {
           "title": "Fundamentos de Conocimiento Cero",
-          "description": "Una introducción al mundo de las pruebas de Conocimiento Cero"
+          "description": "Los emparejamientos y los compromisos polinomiales construyen el modelo de circuitos aritméticos detrás de las pruebas de conocimiento cero, los SNARKs y los STARKs."
         },
         "pt": {
           "title": "Fundamentos de Conhecimento Zero",
-          "description": "Uma introdução ao mundo das provas de Conhecimento Zero"
+          "description": "Os pairings e os compromissos polinomiais constroem o modelo de circuitos aritméticos por trás das provas de conhecimento zero, dos SNARKs e dos STARKs."
         }
       },
       "items": [
@@ -174,15 +174,15 @@
       "translations": {
         "en": {
           "title": "Lattice-based Cryptography Basics",
-          "description": "An introduction to Lattices and modern methods based on them"
+          "description": "Rings and lattices lead to the Ring-LWE problem, powering post-quantum schemes like Kyber and Dilithium, and fully homomorphic encryption."
         },
         "es": {
           "title": "Fundamentos de Criptografía Basada en Retículos",
-          "description": "Una introducción a los retículos y los métodos modernos basados en ellos"
+          "description": "Los anillos y los retículos llevan al problema Ring-LWE, que impulsa esquemas post-cuánticos como Kyber y Dilithium, y el cifrado totalmente homomórfico."
         },
         "pt": {
           "title": "Fundamentos de Criptografia Baseada em Reticulados",
-          "description": "Uma introdução aos reticulados e aos métodos modernos baseados neles"
+          "description": "Os anéis e os reticulados levam ao problema Ring-LWE, que impulsiona esquemas pós-quânticos como Kyber e Dilithium, e a criptografia totalmente homomórfica."
         }
       },
       "items": [

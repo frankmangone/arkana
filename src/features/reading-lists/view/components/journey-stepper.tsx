@@ -14,6 +14,7 @@ export interface ModuleData {
   id: string;
   title: string;
   description: string;
+  readingTime: string;
   steps: StepData[];
 }
 

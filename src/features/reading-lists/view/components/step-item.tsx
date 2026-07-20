@@ -30,11 +30,11 @@ export function StepItem(props: StepItemProps) {
           read={read}
           className={read ? "text-primary-800" : "text-ink-faint"}
         />
-        <span className="pt-0.5 text-base text-ink-body group-hover:text-primary-800">
-          <span className="eyebrow mr-2 tabular-nums text-ink-faint">
+        <span className="flex items-baseline gap-2 pt-0.5 text-base text-ink-body group-hover:text-primary-800">
+          <span className="eyebrow shrink-0 tabular-nums text-ink-faint">
             {order}
           </span>
-          {title}
+          <span>{title}</span>
         </span>
       </Link>
     </li>

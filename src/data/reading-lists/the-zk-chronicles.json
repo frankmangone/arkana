@@ -18,11 +18,11 @@
       "translations": {
         "en": {
           "title": "Fundamentals",
-          "description": "The very foundations behind ZK"
+          "description": "Finite fields, polynomials, and the sum-check protocol - the math that every proving system in this series builds on."
         },
         "es": {
           "title": "Fundamentos",
-          "description": "Los cimientos detrás de ZK"
+          "description": "Cuerpos finitos, polinomios y el protocolo sum-check: las matemáticas sobre las que se construye cada sistema de pruebas de esta serie."
         }
       },
       "items": [
@@ -47,12 +47,12 @@
       "id": "circuits",
       "translations": {
         "en": {
-          "title": "Arithmetic Circuits",
-          "description": "Introduction to arithmetic circuits and their uses"
+          "title": "Circuits and Computation Models",
+          "description": "Arithmetic circuits, multilinear extensions, the GKR protocol, and why circuits are a universal model of computation (Cook-Levin)."
         },
         "es": {
-          "title": "Circuitos Aritméticos",
-          "description": "Introducción a los circuitos aritméticos y sus usos"
+          "title": "Circuitos y Modelos de Computación",
+          "description": "Circuitos aritméticos, extensiones multilineales, el protocolo GKR y por qué los circuitos son un modelo universal de computación (Cook-Levin)."
         }
       },
       "items": [
@@ -82,12 +82,12 @@
       "id": "further-constructions",
       "translations": {
         "en": {
-          "title": "Further Constructions",
-          "description": "We need to look at a few more important constructions and techniques before moving forward"
+          "title": "The Cryptographic Toolkit",
+          "description": "Hashing and Merkle trees, groups and elliptic curves, Pedersen commitments, sigma protocols, the FFT, and pairings - the primitives every modern proving system is built from."
         },
         "es": {
-          "title": "Más Construcciones",
-          "description": "Necesitamos ver algunas construcciones y técnicas importantes antes de continuar"
+          "title": "La Caja de Herramientas Criptográficas",
+          "description": "Hashing y árboles de Merkle, grupos y curvas elípticas, compromisos de Pedersen, protocolos sigma, la FFT y emparejamientos: las primitivas sobre las que se construye todo sistema de pruebas moderno."
         }
       },
       "items": [
@@ -128,11 +128,11 @@
       "translations": {
         "en": {
           "title": "Zero Knowledge",
-          "description": "We can now formally understand what zero knowledge truly means, formally"
+          "description": "Inner product arguments (Bulletproofs, Dory), and the formal definitions - simulators, extractors, and knowledge soundness - that make zero knowledge precise, including their security under Fiat-Shamir."
         },
         "es": {
           "title": "Conocimiento Cero",
-          "description": "Ahora podemos entender formalmente qué significa realmente el conocimiento cero"
+          "description": "Argumentos de producto interno (Bulletproofs, Dory) y las definiciones formales - simuladores, extractores y knowledge soundness - que precisan el conocimiento cero, incluyendo su seguridad bajo Fiat-Shamir."
         }
       },
       "items": [

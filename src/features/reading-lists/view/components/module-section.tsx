@@ -1,3 +1,4 @@
+import { Clock } from "lucide-react";
 import { StepItem } from "./step-item";
 import type { ModuleData } from "./journey-stepper";
 
@@ -13,9 +14,15 @@ export function ModuleSection(props: ModuleSectionProps) {
   return (
     <section className="grid gap-8 md:grid-cols-[2fr_3fr] md:gap-x-12">
       <div>
-        <span className="eyebrow text-ink-faint">
-          {moduleLabel} {String(moduleNumber).padStart(2, "0")}
-        </span>
+        <div className="flex items-center gap-6">
+          <span className="eyebrow text-ink-faint">
+            {moduleLabel} {String(moduleNumber).padStart(2, "0")}
+          </span>
+          <span className="inline-flex items-center text-xs text-ink-faint">
+            <Clock className="mr-1.5 h-3.5 w-3.5" />
+            {module.readingTime}
+          </span>
+        </div>
         <h2 className="mt-2 text-2xl font-semibold tracking-tight text-ink-heading">
           {module.title}
         </h2>
