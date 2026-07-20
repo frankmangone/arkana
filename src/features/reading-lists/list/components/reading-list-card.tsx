@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { TintedThumbnail } from "@/components/ui/tinted-thumbnail";
 import type { Dictionary } from "@/lib/dictionaries";
 import { withLocalePath, withSiteUrl } from "@/lib/site-config";
+import { ReadingProgress } from "./reading-progress";
 
 interface ReadingList {
   id: string;
@@ -84,6 +85,10 @@ export function ReadingListCard(props: ReadingListCardProps) {
               <Clock className="mr-1.5 h-3.5 w-3.5" />
               {totalReadingTime}
             </span>
+            <ReadingProgress
+              slugs={list.items.map((item) => item.slug)}
+              readLabel={dictionary.readingLists.read}
+            />
           </div>
         </div>
       </Link>
