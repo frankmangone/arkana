@@ -19,7 +19,7 @@ export function StepItem(props: StepItemProps) {
       {showConnector && (
         <span
           aria-hidden="true"
-          className="absolute left-3 top-6 h-[calc(100%-1.5rem)] w-[3px] -translate-x-1/2 bg-ink-faint"
+          className="absolute left-3 top-6 h-[calc(100%-1.5rem)] w-[3px] -translate-x-1/2 bg-rule"
         />
       )}
       <Link
@@ -28,7 +28,7 @@ export function StepItem(props: StepItemProps) {
       >
         <StepGlyph
           read={read}
-          className={read ? "text-primary-800" : "text-ink-faint"}
+          className={read ? "text-primary-700" : "text-ink-faint"}
         />
         <span className="flex items-baseline gap-2 pt-0.5 text-base text-ink-body group-hover:text-primary-800">
           <span className="eyebrow shrink-0 tabular-nums text-ink-faint">

@@ -18,7 +18,7 @@ export function ReadButton(props: ReadButtonProps) {
     <Button
       variant="ghost"
       className={`h-auto !px-2.5 !py-2 rounded-[4px] cursor-pointer bg-transparent hover:bg-black/10 flex items-center gap-1.5 ${
-        read ? "text-primary-500 hover:text-primary-500" : "text-white/70 hover:text-white"
+        read ? "text-primary-700 hover:text-primary-900" : "text-white/70 hover:text-white"
       }`}
       aria-label={read ? "Mark post as unread" : "Mark post as read"}
       title={read ? "Mark post as unread" : "Mark post as read"}

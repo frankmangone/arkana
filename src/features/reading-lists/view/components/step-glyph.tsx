@@ -15,10 +15,11 @@ export function StepGlyph({ read, className }: StepGlyphProps) {
     >
       <path
         d="M12 0 L24 12 L12 24 L0 12 Z"
-        fill={read ? "currentColor" : "none"}
+        fill="none"
         stroke="currentColor"
         strokeWidth={3}
       />
+      {read && <path d="M12 7 L17 12 L12 17 L7 12 Z" fill="currentColor" />}
     </svg>
   );
 }
