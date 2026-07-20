@@ -17,6 +17,7 @@ export function ModuleSection(props: ModuleSectionProps) {
   const readCount = readStatuses
     ? module.steps.filter((step) => readStatuses[step.slug]).length
     : undefined;
+  const allRead = readCount !== undefined && readCount === module.steps.length;
 
   return (
     <section className="grid gap-8 md:grid-cols-[2fr_3fr] md:gap-x-12">
@@ -30,7 +31,11 @@ export function ModuleSection(props: ModuleSectionProps) {
             {module.readingTime}
           </span>
           {readCount !== undefined && (
-            <span className="inline-flex items-center text-xs text-ink-faint">
+            <span
+              className={`inline-flex items-center text-xs ${
+                allRead ? "text-primary-700" : "text-ink-faint"
+              }`}
+            >
               <CheckCircle2 className="mr-1.5 h-3.5 w-3.5" />
               {readCount}/{module.steps.length} {readLabel}
             </span>
@@ -53,6 +58,7 @@ export function ModuleSection(props: ModuleSectionProps) {
             url={step.url}
             read={readStatuses?.[step.slug]}
             showConnector={index < module.steps.length - 1}
+            moduleComplete={allRead}
           />
         ))}
       </ol>

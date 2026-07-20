@@ -2,7 +2,7 @@ import { Button } from "../button";
 import { UseMutationResult } from "@tanstack/react-query";
 import { ToggleReadResponse } from "@/lib/api/services/posts";
 import { UseToggleReadParams } from "@/lib/api";
-import { Circle, CheckCircle2 } from "lucide-react";
+import { BookOpen, BookOpenCheck } from "lucide-react";
 
 interface ReadButtonProps {
   read: boolean;
@@ -12,7 +12,7 @@ interface ReadButtonProps {
 
 export function ReadButton(props: ReadButtonProps) {
   const { read, handleRead, readMutation } = props;
-  const Icon = read ? CheckCircle2 : Circle;
+  const Icon = read ? BookOpenCheck : BookOpen;
 
   return (
     <Button

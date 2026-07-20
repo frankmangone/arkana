@@ -17,9 +17,18 @@ export function StepGlyph({ read, className }: StepGlyphProps) {
         d="M12 0 L24 12 L12 24 L0 12 Z"
         fill="none"
         stroke="currentColor"
-        strokeWidth={3}
+        strokeWidth={2}
       />
-      {read && <path d="M12 7 L17 12 L12 17 L7 12 Z" fill="currentColor" />}
+      {read && (
+        <path
+          d="M8.1 12.6 L10.5 15 L15.3 10.2"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={2}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      )}
     </svg>
   );
 }

@@ -17,7 +17,7 @@ export function Navigation(props: NavigationProps) {
   }
 
   return (
-    <nav className="mt-14 grid gap-4 md:grid-cols-2">
+    <nav className="mt-14 mb-12 grid gap-4 md:grid-cols-2">
       <PrevButton lang={lang} id={id} prevItem={prevItem} />
       <NextButton lang={lang} id={id} nextItem={nextItem} />
     </nav>
