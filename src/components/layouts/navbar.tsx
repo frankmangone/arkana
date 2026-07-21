@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { AuthButton } from "../auth-button";
 import { MobileMenu } from "./mobile-menu";
 import { withLocalePath } from "@/lib/site-config";
+import { NotificationBell } from "../notification-bell";
 
 interface NavbarProps {
   lang: string;
@@ -61,6 +62,8 @@ export const Navbar = async (props: NavbarProps) => {
           </nav>
 
           <LanguageSwitcher />
+
+          <NotificationBell />
 
           {/* On mobile the sign-in / account actions live in the hamburger */}
           <div className="hidden md:block">
