@@ -140,14 +140,6 @@ export function TableOfContents({ content, compact }: TableOfContentsProps) {
   if (compact) {
     return (
       <nav>
-        {/* <div
-          style={{ position: "fixed", top: ACTIVE_SECTION_ENTER_PX, left: 0, right: 0, height: 1 }}
-          className="border-1 border-red-500 z-50"
-        />
-        <div
-          style={{ position: "fixed", top: ACTIVE_SECTION_EXIT_PX, left: 0, right: 0, height: 1 }}
-          className="border-1 border-green-500 z-50"
-        /> */}
         <p className="eyebrow mb-4 text-primary-800">Contents</p>
         <div className="space-y-2.5 border-l border-rule pl-4">
           {headings.map((heading) => (
