@@ -3,3 +3,4 @@ export * from "./useAuth";
 export * from "./useUser";
 export * from "./usePosts";
 export * from "./useSearch";
+export * from "./useNotifications";
