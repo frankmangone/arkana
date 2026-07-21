@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 import { useAuth } from "@/components/providers/auth-provider";
 import {
   useLike,
@@ -9,6 +10,7 @@ import {
   useComments,
 } from "@/lib/api/hooks/usePosts";
 import { useParams, useRouter } from "next/navigation";
+import { useDictionary } from "@/lib/hooks/use-dictionary";
 import { LikeButton } from "./like-button";
 import { ReadButton } from "./read-button";
 import { CommentButton } from "./comment-button";
@@ -25,6 +27,7 @@ export function PostActions({ className = "gap-2", path }: PostActionsProps) {
   const lang = (params?.lang as string) || "en";
 
   const { user } = useAuth();
+  const dictionary = useDictionary(lang);
   const likeMutation = useLike();
   const readMutation = useToggleRead();
 
@@ -71,8 +74,13 @@ export function PostActions({ className = "gap-2", path }: PostActionsProps) {
     try {
       const response = await readMutation.mutateAsync({ path, read });
       setRead(response.read);
+      toast.success(
+        response.read
+          ? dictionary?.blog.markedAsRead || "Marked as read"
+          : dictionary?.blog.markedAsUnread || "Marked as unread"
+      );
     } catch {
-      // Request failed
+      toast.error(dictionary?.blog.error || "Error");
     }
   };
 

@@ -8,7 +8,6 @@ import { getReadingList } from "@/lib/reading-lists";
 import { Navigation } from "./components/navigation";
 import BuyMeCoffeeWidget from "@/components/ui/buy-me-coffee";
 import { getDictionary } from "@/lib/dictionaries";
-import { SectionDivider } from "@/components/ui/section-divider";
 import { CommentSection } from "@/components/ui/comments";
 import { ReadTracker } from "@/components/ui/post-actions/read-tracker";
 import { SITE_URL, withLocalePath, withSiteUrl } from "@/lib/site-config";
@@ -114,7 +113,6 @@ export async function ReadingListPostPage(props: ReadingListPostPageProps) {
           />
         )}
 
-      <SectionDivider />
       <Suspense fallback={null}>
         <CommentSection path={slug} />
       </Suspense>

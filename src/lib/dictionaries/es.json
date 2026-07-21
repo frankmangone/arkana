@@ -52,6 +52,8 @@
     "thanksForLiking": "Gracias por dar me gusta a esta publicación",
     "postSaved": "¡Publicación guardada!",
     "addedToReadingList": "Añadida a tu lista de lectura",
+    "markedAsRead": "Marcado como leído",
+    "markedAsUnread": "Marcado como no leído",
     "error": "Error",
     "errorSavingPost": "Hubo un error al guardar esta publicación",
     "linkCopied": "¡Enlace copiado!",

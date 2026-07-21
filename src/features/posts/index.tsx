@@ -7,7 +7,6 @@ import { NotFoundInLanguage } from "@/components/not-found-in-language";
 import { getWriter } from "@/lib/writers";
 import { PostContent } from "@/components/ui/post-content";
 import { ReadingProgress } from "@/components/ui/reading-progress";
-import { SectionDivider } from "@/components/ui/section-divider";
 import BuyMeCoffeeWidget from "@/components/ui/buy-me-coffee";
 import { CommentSection } from "@/components/ui/comments";
 import { ReadTracker } from "@/components/ui/post-actions/read-tracker";
@@ -153,7 +152,6 @@ export async function PostPage(props: PostPageProps) {
           />
         )}
 
-      <SectionDivider />
       <Suspense fallback={null}>
         <CommentSection path={slug} />
       </Suspense>

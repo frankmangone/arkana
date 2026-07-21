@@ -1,6 +1,7 @@
 import { getDictionary } from "@/lib/dictionaries";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { SectionDivider } from "@/components/ui/section-divider";
+import { GlyphRain } from "@/components/glyph-rain";
 import { FAQItem } from "./components/faq-item";
 
 interface FAQPageProps {
@@ -29,8 +30,15 @@ export async function FAQPage({ lang }: FAQPageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <div className="space-y-8">
-        <div className="full-bleed brand-hero">
-          <div className="mx-auto max-w-6xl px-4 pb-14 pt-8 md:px-6 md:pb-20 lg:px-8">
+        <div className="full-bleed home-hero relative">
+          <div
+            className="pointer-events-none absolute inset-0 [mask-image:linear-gradient(to_right,transparent_0%,black_15%,black_85%,transparent_100%)]"
+            aria-hidden="true"
+          >
+            <GlyphRain animated={false} />
+          </div>
+
+          <div className="relative z-10 mx-auto max-w-6xl px-4 pb-14 pt-8 md:px-6 md:pb-20 lg:px-8">
             <Breadcrumbs
               lang={lang}
               items={[{ label: dict.faq.title }]}

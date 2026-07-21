@@ -27,7 +27,7 @@ export function FormElements({
           placeholder={DEFAULT_AMOUNT}
           step="1"
           min="1"
-          className="w-full px-4 py-3 pr-20 bg-transparent rounded-[4px] border border-rule-strong text-ink-body placeholder:text-ink-faint focus:outline-none focus:border-salmon-700 transition-colors"
+          className="w-full px-4 py-3 pr-20 bg-transparent rounded-[4px] border border-salmon-700 text-ink-body placeholder:text-ink-faint focus:outline-none focus:border-salmon-700 focus:bg-white/10 transition-colors"
         />
         <span className="absolute right-4 top-1/2 -translate-y-1/2 bg-[image:linear-gradient(135deg,var(--salmon-700),var(--orange-600))] bg-clip-text text-transparent font-medium">
           {symbol}
@@ -39,7 +39,7 @@ export function FormElements({
         <select
           value={selectedChainId}
           onChange={(e) => setSelectedChainId(Number(e.target.value))}
-          className="w-full px-4 py-3 pr-10 bg-transparent rounded-[4px] border border-rule-strong text-ink-body focus:outline-none focus:border-salmon-700 transition-colors appearance-none cursor-pointer"
+          className="w-full px-4 py-3 pr-10 bg-transparent rounded-[4px] border border-salmon-700 text-ink-body focus:outline-none focus:border-salmon-700 focus:bg-white/10 transition-colors appearance-none cursor-pointer"
         >
           {SUPPORTED_NETWORKS.map((network) => (
             <option

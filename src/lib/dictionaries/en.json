@@ -52,6 +52,8 @@
     "thanksForLiking": "Thanks for liking this post",
     "postSaved": "Post saved!",
     "addedToReadingList": "Added to your reading list",
+    "markedAsRead": "Marked as read",
+    "markedAsUnread": "Marked as unread",
     "error": "Error",
     "errorSavingPost": "There was an error saving this post",
     "linkCopied": "Link copied!",

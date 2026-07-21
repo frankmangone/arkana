@@ -11,6 +11,12 @@ import {
 import { Globe } from "lucide-react";
 import { withLocalePath } from "@/lib/site-config";
 
+const LANGUAGE_NAMES: Record<string, string> = {
+  en: "English",
+  es: "Español",
+  pt: "Português",
+};
+
 export function LanguageSwitcher() {
   const pathname = usePathname();
   const router = useRouter();
@@ -25,12 +31,6 @@ export function LanguageSwitcher() {
   // Extract current locale from pathname
   const currentLocale = pathname.split("/")[1];
 
-  const languageNames = {
-    en: "English",
-    es: "Español",
-    pt: "Português",
-  };
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -40,7 +40,7 @@ export function LanguageSwitcher() {
         >
           <Globe className="h-4 w-4" />
           <span className="hidden sm:inline">
-            {languageNames[currentLocale as keyof typeof languageNames]}
+            {LANGUAGE_NAMES[currentLocale] ?? LANGUAGE_NAMES.en}
           </span>
         </button>
       </DropdownMenuTrigger>
@@ -53,7 +53,7 @@ export function LanguageSwitcher() {
               locale === currentLocale ? "text-primary-800" : ""
             } cursor-pointer py-3 text-base`}
           >
-            {languageNames[locale as keyof typeof languageNames]}
+            {LANGUAGE_NAMES[locale]}
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>
