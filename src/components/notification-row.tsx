@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useDictionary } from "@/lib/hooks/use-dictionary";
+import { usePostTitles } from "@/lib/hooks/use-post-titles";
 import { formatTimeAgo } from "@/lib/format-time-ago";
 import { withLocalePath } from "@/lib/site-config";
 import { useMarkNotificationRead } from "@/lib/api";
@@ -14,14 +15,19 @@ interface NotificationRowProps {
   className?: string;
 }
 
-function notificationText(notification: NotificationResponse): string {
+function notificationText(
+  notification: NotificationResponse,
+  postTitle?: string
+): string {
+  const post = postTitle ? `"${postTitle}"` : "your post";
+
   switch (notification.type) {
     case "post_liked":
-      return `${notification.actor_username} liked your post`;
+      return `${notification.actor_username} liked ${post}`;
     case "comment_reply":
-      return `${notification.actor_username} replied to your comment`;
+      return `${notification.actor_username} replied to your comment on ${post}`;
     case "post_commented":
-      return `${notification.actor_username} commented on your post`;
+      return `${notification.actor_username} commented on ${post}`;
     default:
       return `${notification.actor_username} sent you a notification`;
   }
@@ -42,9 +48,13 @@ export function NotificationRow({
   className,
 }: NotificationRowProps) {
   const dictionary = useDictionary(lang);
+  const postTitles = usePostTitles(lang);
   const markRead = useMarkNotificationRead();
   const href = notificationHref(notification, lang);
   const isUnread = !notification.read_at;
+  const postTitle = notification.post_path
+    ? postTitles[notification.post_path]
+    : undefined;
 
   const handleClick = () => {
     if (isUnread) {
@@ -61,7 +71,9 @@ export function NotificationRow({
         />
       )}
       <div className={cn("min-w-0 flex-1", !isUnread && "pl-5")}>
-        <p className="text-sm text-ink-body">{notificationText(notification)}</p>
+        <p className="text-sm text-ink-body">
+          {notificationText(notification, postTitle)}
+        </p>
         <p className="mt-0.5 text-xs text-ink-faint">
           {formatTimeAgo(notification.created_at, dictionary, lang)}
         </p>
