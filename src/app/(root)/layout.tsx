@@ -8,6 +8,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { AuthProvider } from "@/components/providers/auth-provider";
 import { Web3Provider } from "@/components/providers/web3-provider";
 import { WalletProvider } from "@/components/providers/wallet-provider";
+import { Toaster } from "@/components/ui/sonner";
+import { SubscribePromptModal } from "@/components/ui/subscribe-prompt-modal";
 import Script from "next/script";
 import { SITE_URL, withSiteUrl } from "@/lib/site-config";
 
@@ -179,7 +181,11 @@ export default async function RootLayout({
         >
           <Web3Provider>
             <WalletProvider>
-              <AuthProvider>{children}</AuthProvider>
+              <AuthProvider>
+                {children}
+                <Toaster />
+                <SubscribePromptModal />
+              </AuthProvider>
             </WalletProvider>
           </Web3Provider>
         </ThemeProvider>
