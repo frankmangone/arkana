@@ -50,6 +50,16 @@ export async function subscribeAuthenticated(): Promise<SubscriptionStatusRespon
 }
 
 /**
+ * One-click unsubscribe for a logged-in user. JWT auth required.
+ */
+export async function unsubscribeAuthenticated(): Promise<SubscriptionStatusResponse> {
+  const response = await apiClient.delete<SubscriptionStatusResponse>(
+    "/api/subscriptions"
+  );
+  return response.data;
+}
+
+/**
  * Confirms a pending guest subscription from the emailed link.
  */
 export async function confirmSubscription(

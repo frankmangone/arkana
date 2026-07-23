@@ -34,4 +34,5 @@ export const EVENTS = {
   SUBSCRIBE_AUTHENTICATED: "subscribe_authenticated",
   SUBSCRIPTION_CONFIRMED: "subscription_confirmed",
   SUBSCRIPTION_UNSUBSCRIBED: "subscription_unsubscribed",
+  UNSUBSCRIBE_AUTHENTICATED: "unsubscribe_authenticated",
 } as const;

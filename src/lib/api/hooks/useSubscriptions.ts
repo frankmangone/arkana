@@ -3,6 +3,7 @@ import {
   getSubscriptionStatus,
   subscribeGuest,
   subscribeAuthenticated,
+  unsubscribeAuthenticated,
   confirmSubscription,
   unsubscribeByToken,
   SubscriptionStatusResponse,
@@ -50,6 +51,21 @@ export function useSubscribeAuthenticated() {
     mutationFn: () => subscribeAuthenticated(),
     onSuccess: () => {
       trackEvent(EVENTS.SUBSCRIBE_AUTHENTICATED);
+      queryClient.invalidateQueries({ queryKey: subscriptionKeys.all });
+    },
+  });
+}
+
+/**
+ * Invalidates the status query on success, same as useSubscribeAuthenticated.
+ */
+export function useUnsubscribeAuthenticated() {
+  const queryClient = useQueryClient();
+
+  return useMutation<SubscriptionStatusResponse, Error, void>({
+    mutationFn: () => unsubscribeAuthenticated(),
+    onSuccess: () => {
+      trackEvent(EVENTS.UNSUBSCRIBE_AUTHENTICATED);
       queryClient.invalidateQueries({ queryKey: subscriptionKeys.all });
     },
   });
