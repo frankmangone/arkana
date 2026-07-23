@@ -237,6 +237,13 @@
       "loading": "Unsubscribing...",
       "success": "You've been unsubscribed.",
       "error": "This link is invalid or expired."
+    },
+    "accountMenu": {
+      "subscribe": "Subscribe to newsletter",
+      "subscribing": "Subscribing...",
+      "unsubscribe": "Unsubscribe from newsletter",
+      "unsubscribing": "Unsubscribing...",
+      "unsubscribedToast": "You've been unsubscribed."
     }
   },
   "common": {

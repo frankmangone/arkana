@@ -237,6 +237,13 @@
       "loading": "Cancelando tu suscripción...",
       "success": "Te has dado de baja.",
       "error": "Este enlace no es válido o ha expirado."
+    },
+    "accountMenu": {
+      "subscribe": "Suscribirse al boletín",
+      "subscribing": "Suscribiendo...",
+      "unsubscribe": "Cancelar suscripción al boletín",
+      "unsubscribing": "Cancelando...",
+      "unsubscribedToast": "Has cancelado tu suscripción."
     }
   },
   "common": {

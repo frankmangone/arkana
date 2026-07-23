@@ -237,6 +237,13 @@
       "loading": "Cancelando sua inscrição...",
       "success": "Você foi removido da lista.",
       "error": "Este link é inválido ou expirou."
+    },
+    "accountMenu": {
+      "subscribe": "Assinar newsletter",
+      "subscribing": "Assinando...",
+      "unsubscribe": "Cancelar assinatura da newsletter",
+      "unsubscribing": "Cancelando...",
+      "unsubscribedToast": "Sua assinatura foi cancelada."
     }
   },
   "common": {
