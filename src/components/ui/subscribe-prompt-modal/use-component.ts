@@ -12,6 +12,10 @@ import {
 
 type View = "form" | "checkEmail";
 
+// Showing the modal the instant a page loads reads as an ambush — give the
+// visitor a few seconds to actually land on the page first.
+export const SHOW_DELAY_MS = 3000;
+
 export function useComponent() {
   const params = useParams();
   const lang = (params?.lang as string) || "en";
@@ -25,10 +29,14 @@ export function useComponent() {
   const [email, setEmail] = useState("");
 
   useEffect(() => {
-    if (isEligible) {
+    if (!isEligible) {
+      return;
+    }
+    const timer = setTimeout(() => {
       markShown();
       setOpen(true);
-    }
+    }, SHOW_DELAY_MS);
+    return () => clearTimeout(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isEligible]);
 

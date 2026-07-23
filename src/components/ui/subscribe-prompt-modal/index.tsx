@@ -1,7 +1,6 @@
 "use client";
 
 import { useComponent } from "./use-component";
-import { GlyphRain } from "@/components/glyph-rain";
 import {
   Dialog,
   DialogContent,
@@ -13,7 +12,9 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-const SUBSCRIBE_BUTTON_CLASSNAME = "bg-primary-500 hover:bg-primary-600";
+// bg-none cancels the default variant's --grad-brand background-image —
+// otherwise the gradient paints over any background-color we set here.
+const SUBSCRIBE_BUTTON_CLASSNAME = "bg-none bg-primary-500 hover:bg-primary-600";
 
 export function SubscribePromptModal() {
   const {
@@ -34,11 +35,9 @@ export function SubscribePromptModal() {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent className="overflow-hidden">
         <div
-          className="pointer-events-none absolute inset-0 opacity-50"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-b from-primary-100/40 to-transparent"
           aria-hidden="true"
-        >
-          <GlyphRain cellSize={26} />
-        </div>
+        />
 
         <div className="relative z-10 flex flex-col gap-8">
           {view === "checkEmail" ? (
