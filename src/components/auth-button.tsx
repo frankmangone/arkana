@@ -5,8 +5,10 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { SubscribeMenuItem } from "@/components/subscribe-menu-item";
 import { User } from "lucide-react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -52,6 +54,9 @@ export function AuthButton() {
               {user.email}
             </span>
           </DropdownMenuItem>
+          <DropdownMenuSeparator />
+          <SubscribeMenuItem />
+          <DropdownMenuSeparator />
           <DropdownMenuItem
             className="cursor-pointer py-3 text-base"
             onClick={() => {
