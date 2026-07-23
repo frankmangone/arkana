@@ -14,7 +14,12 @@ export async function FAQPage({ lang }: FAQPageProps) {
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: [dict.faq.wallet, dict.faq.privacy, dict.faq.security].map(
+    mainEntity: [
+      dict.faq.wallet,
+      dict.faq.privacy,
+      dict.faq.security,
+      dict.faq.guestUnsubscribe,
+    ].map(
       (entry) => ({
         "@type": "Question",
         name: entry.question,
@@ -70,6 +75,12 @@ export async function FAQPage({ lang }: FAQPageProps) {
             id="security"
             question={dict.faq.security.question}
             answer={dict.faq.security.answer}
+            defaultOpen={false}
+          />
+          <FAQItem
+            id="guest-unsubscribe"
+            question={dict.faq.guestUnsubscribe.question}
+            answer={dict.faq.guestUnsubscribe.answer}
             defaultOpen={false}
           />
         </div>

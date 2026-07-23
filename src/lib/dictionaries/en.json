@@ -183,6 +183,10 @@
     "security": {
       "question": "Is it safe to connect my wallet?",
       "answer": "Yes, connecting your wallet is safe. We use standard cryptographic signatures to verify your identity. We never request access to your funds or private keys. You'll only be asked to sign messages to prove ownership of your wallet address."
+    },
+    "guestUnsubscribe": {
+      "question": "I subscribed as a guest — how do I unsubscribe?",
+      "answer": "If you've received one of our newsletter emails, the quickest way is the unsubscribe link at the bottom of it — no account needed. Otherwise, create an account using the same email address you subscribed with, then use the Subscribe/Unsubscribe option in your account menu. You can also contact support and we'll unsubscribe you directly."
     }
   },
   "comments": {

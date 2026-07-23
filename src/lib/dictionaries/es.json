@@ -183,6 +183,10 @@
     "security": {
       "question": "¿Es seguro conectar mi billetera?",
       "answer": "Sí, conectar tu billetera es seguro. Usamos firmas criptográficas estándar para verificar tu identidad. Nunca solicitamos acceso a tus fondos o claves privadas. Solo se te pedirá que firmes mensajes para demostrar la propiedad de tu dirección de billetera."
+    },
+    "guestUnsubscribe": {
+      "question": "Me suscribí como invitado, ¿cómo cancelo mi suscripción?",
+      "answer": "Si recibiste alguno de nuestros correos del boletín, la forma más rápida es el enlace para cancelar la suscripción al final del correo, sin necesidad de una cuenta. De lo contrario, crea una cuenta con el mismo correo con el que te suscribiste y usa la opción de Suscribirse/Cancelar suscripción en el menú de tu cuenta. También puedes contactar a soporte y cancelaremos tu suscripción directamente."
     }
   },
   "comments": {
