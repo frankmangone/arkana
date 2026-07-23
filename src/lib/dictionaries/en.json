@@ -216,6 +216,29 @@
       "failedToPost": "Failed to post comment"
     }
   },
+  "subscribe": {
+    "modal": {
+      "title": "Never miss a post",
+      "description": "Get an email whenever we publish something new.",
+      "emailPlaceholder": "you@example.com",
+      "subscribe": "Subscribe",
+      "subscribing": "Subscribing...",
+      "checkEmailTitle": "Check your email",
+      "checkEmailDescription": "We've sent a confirmation link to your inbox.",
+      "subscribedToast": "You're subscribed!",
+      "errorToast": "Something went wrong. Please try again."
+    },
+    "confirm": {
+      "loading": "Confirming your subscription...",
+      "success": "You're subscribed!",
+      "error": "This link is invalid or expired."
+    },
+    "unsubscribe": {
+      "loading": "Unsubscribing...",
+      "success": "You've been unsubscribed.",
+      "error": "This link is invalid or expired."
+    }
+  },
   "common": {
     "endOfFeed": "You've reached the end"
   }
