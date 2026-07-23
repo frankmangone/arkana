@@ -1,6 +1,7 @@
 "use client";
 
 import { useComponent } from "./use-component";
+import { GlyphRain } from "@/components/glyph-rain";
 import {
   Dialog,
   DialogContent,
@@ -11,6 +12,8 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+
+const SUBSCRIBE_BUTTON_CLASSNAME = "bg-primary-500 hover:bg-primary-600";
 
 export function SubscribePromptModal() {
   const {
@@ -29,68 +32,82 @@ export function SubscribePromptModal() {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent>
-        {view === "checkEmail" ? (
-          <DialogHeader>
-            <DialogTitle>
-              {dictionary?.subscribe.modal.checkEmailTitle ||
-                "Check your email"}
-            </DialogTitle>
-            <DialogDescription>
-              {dictionary?.subscribe.modal.checkEmailDescription ||
-                "We've sent a confirmation link to your inbox."}
-            </DialogDescription>
-          </DialogHeader>
-        ) : (
-          <>
+      <DialogContent className="overflow-hidden">
+        <div
+          className="pointer-events-none absolute inset-0 opacity-50"
+          aria-hidden="true"
+        >
+          <GlyphRain cellSize={26} />
+        </div>
+
+        <div className="relative z-10 flex flex-col gap-8">
+          {view === "checkEmail" ? (
             <DialogHeader>
-              <DialogTitle>
-                {dictionary?.subscribe.modal.title || "Never miss a post"}
+              <DialogTitle className="text-2xl text-ink-heading">
+                {dictionary?.subscribe.modal.checkEmailTitle ||
+                  "Check your email"}
               </DialogTitle>
-              <DialogDescription>
-                {dictionary?.subscribe.modal.description ||
-                  "Get an email whenever we publish something new."}
+              <DialogDescription className="text-ink-body">
+                {dictionary?.subscribe.modal.checkEmailDescription ||
+                  "We've sent a confirmation link to your inbox."}
               </DialogDescription>
             </DialogHeader>
+          ) : (
+            <>
+              <DialogHeader>
+                <DialogTitle className="text-2xl text-ink-heading">
+                  {dictionary?.subscribe.modal.title || "Never miss a post"}
+                </DialogTitle>
+                <DialogDescription className="text-ink-body">
+                  {dictionary?.subscribe.modal.description ||
+                    "Subscribe to our newsletter to get an email every time we publish something new!"}
+                </DialogDescription>
+              </DialogHeader>
 
-            {isLoggedIn ? (
-              <DialogFooter>
-                <Button
-                  onClick={handleAuthenticatedSubscribe}
-                  disabled={isAuthenticatedSubmitting}
-                >
-                  {isAuthenticatedSubmitting
-                    ? dictionary?.subscribe.modal.subscribing ||
-                      "Subscribing..."
-                    : dictionary?.subscribe.modal.subscribe || "Subscribe"}
-                </Button>
-              </DialogFooter>
-            ) : (
-              <form onSubmit={handleGuestSubmit} className="space-y-4">
-                <Input
-                  type="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder={
-                    dictionary?.subscribe.modal.emailPlaceholder ||
-                    "you@example.com"
-                  }
-                  disabled={isGuestSubmitting}
-                  autoComplete="email"
-                />
+              {isLoggedIn ? (
                 <DialogFooter>
-                  <Button type="submit" disabled={isGuestSubmitting}>
-                    {isGuestSubmitting
+                  <Button
+                    onClick={handleAuthenticatedSubscribe}
+                    disabled={isAuthenticatedSubmitting}
+                    className={SUBSCRIBE_BUTTON_CLASSNAME}
+                  >
+                    {isAuthenticatedSubmitting
                       ? dictionary?.subscribe.modal.subscribing ||
                         "Subscribing..."
                       : dictionary?.subscribe.modal.subscribe || "Subscribe"}
                   </Button>
                 </DialogFooter>
-              </form>
-            )}
-          </>
-        )}
+              ) : (
+                <form onSubmit={handleGuestSubmit} className="space-y-4">
+                  <Input
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder={
+                      dictionary?.subscribe.modal.emailPlaceholder ||
+                      "you@example.com"
+                    }
+                    disabled={isGuestSubmitting}
+                    autoComplete="email"
+                  />
+                  <DialogFooter>
+                    <Button
+                      type="submit"
+                      disabled={isGuestSubmitting}
+                      className={SUBSCRIBE_BUTTON_CLASSNAME}
+                    >
+                      {isGuestSubmitting
+                        ? dictionary?.subscribe.modal.subscribing ||
+                          "Subscribing..."
+                        : dictionary?.subscribe.modal.subscribe || "Subscribe"}
+                    </Button>
+                  </DialogFooter>
+                </form>
+              )}
+            </>
+          )}
+        </div>
       </DialogContent>
     </Dialog>
   );

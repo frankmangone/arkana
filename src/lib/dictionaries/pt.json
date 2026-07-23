@@ -219,7 +219,7 @@
   "subscribe": {
     "modal": {
       "title": "Não perca nenhuma publicação",
-      "description": "Receba um e-mail sempre que publicarmos algo novo.",
+      "description": "Assine nossa newsletter para receber um e-mail sempre que publicarmos algo novo!",
       "emailPlaceholder": "seu@exemplo.com",
       "subscribe": "Assinar",
       "subscribing": "Assinando...",
