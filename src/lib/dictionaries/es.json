@@ -218,25 +218,25 @@
   },
   "subscribe": {
     "modal": {
-      "title": "Never miss a post",
-      "description": "Get an email whenever we publish something new.",
-      "emailPlaceholder": "you@example.com",
-      "subscribe": "Subscribe",
-      "subscribing": "Subscribing...",
-      "checkEmailTitle": "Check your email",
-      "checkEmailDescription": "We've sent a confirmation link to your inbox.",
-      "subscribedToast": "You're subscribed!",
-      "errorToast": "Something went wrong. Please try again."
+      "title": "No te pierdas ninguna publicación",
+      "description": "Recibe un correo cada vez que publiquemos algo nuevo.",
+      "emailPlaceholder": "tu@ejemplo.com",
+      "subscribe": "Suscribirse",
+      "subscribing": "Suscribiendo...",
+      "checkEmailTitle": "Revisa tu correo",
+      "checkEmailDescription": "Te enviamos un enlace de confirmación a tu bandeja de entrada.",
+      "subscribedToast": "¡Te has suscrito!",
+      "errorToast": "Algo salió mal. Por favor, intenta de nuevo."
     },
     "confirm": {
-      "loading": "Confirming your subscription...",
-      "success": "You're subscribed!",
-      "error": "This link is invalid or expired."
+      "loading": "Confirmando tu suscripción...",
+      "success": "¡Te has suscrito!",
+      "error": "Este enlace no es válido o ha expirado."
     },
     "unsubscribe": {
-      "loading": "Unsubscribing...",
-      "success": "You've been unsubscribed.",
-      "error": "This link is invalid or expired."
+      "loading": "Cancelando tu suscripción...",
+      "success": "Te has dado de baja.",
+      "error": "Este enlace no es válido o ha expirado."
     }
   },
   "common": {
