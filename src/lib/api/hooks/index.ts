@@ -4,3 +4,4 @@ export * from "./useUser";
 export * from "./usePosts";
 export * from "./useSearch";
 export * from "./useNotifications";
+export * from "./useSubscriptions";

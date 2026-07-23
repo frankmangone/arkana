@@ -30,4 +30,8 @@ export const EVENTS = {
   WALLET_DISCONNECTED: "wallet_disconnected",
   QUIZ_SUBMITTED: "quiz_submitted",
   NOTIFICATION_MARKED_READ: "notification_marked_read",
+  SUBSCRIBE_GUEST_SUBMITTED: "subscribe_guest_submitted",
+  SUBSCRIBE_AUTHENTICATED: "subscribe_authenticated",
+  SUBSCRIPTION_CONFIRMED: "subscription_confirmed",
+  SUBSCRIPTION_UNSUBSCRIBED: "subscription_unsubscribed",
 } as const;
