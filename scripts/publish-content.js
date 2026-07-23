@@ -2,6 +2,7 @@
 
 /* eslint-disable @typescript-eslint/no-require-imports */
 const fs = require("fs");
+const os = require("os");
 const path = require("path");
 const { execFileSync } = require("child_process");
 const { Command } = require("commander");
@@ -115,14 +116,21 @@ async function main() {
   const pathIdentifier = slugPath;
   const contentPath = `${slugPath}.md`;
 
-  // Extracted purely so post_contents.thumbnail is queryable by SQL (e.g. by
-  // the search API) without parsing frontmatter out of the raw content blob.
+  // Extracted purely so post_contents.thumbnail/title are queryable by SQL
+  // (e.g. by the search API, or the subscriptions broadcast email) without
+  // parsing frontmatter out of the raw content blob.
   const { data: frontmatter, content: body } = matter(fs.readFileSync(localFile, "utf8"));
   const thumbnail = frontmatter.thumbnail;
   if (thumbnail) {
     assertSafe(thumbnail, "thumbnail");
   }
   const thumbnailSql = thumbnail ? `'${thumbnail}'` : "NULL";
+
+  // Title isn't restricted to SAFE_PATTERN (real titles have spaces/punctuation),
+  // so it can't be safely inlined into the SQL string like thumbnail is. It's
+  // uploaded as its own temp file and pulled in via readfile(), the same
+  // injection-proof mechanism already used for the post content itself below.
+  const title = frontmatter.title;
 
   const remoteHost = process.env.REMOTE_HOST;
   const databasePath = process.env.DATABASE_PATH;
@@ -133,9 +141,18 @@ async function main() {
   if (!meiliMasterKey) throw new Error("Set MEILI_KEY (Meilisearch master key on the remote host)");
 
   const remoteTempPath = `/tmp/arkana-publish-${Date.now()}-${path.basename(localFile)}`;
+  const remoteTitleTempPath = `${remoteTempPath}.title`;
+  let localTitleFile;
 
   console.log(`Uploading ${localFile} -> ${remoteHost}:${remoteTempPath}`);
   execFileSync("scp", [localFile, `${remoteHost}:${remoteTempPath}`], { stdio: "inherit" });
+
+  if (title) {
+    localTitleFile = path.join(os.tmpdir(), `arkana-publish-title-${Date.now()}.txt`);
+    fs.writeFileSync(localTitleFile, title, "utf8");
+    console.log(`Uploading title -> ${remoteHost}:${remoteTitleTempPath}`);
+    execFileSync("scp", [localTitleFile, `${remoteHost}:${remoteTitleTempPath}`], { stdio: "inherit" });
+  }
 
   try {
     console.log("Ensuring posts row exists...");
@@ -154,10 +171,12 @@ async function main() {
     }
     console.log(`posts.id = ${postId}`);
 
+    const titleSql = title ? `readfile('${remoteTitleTempPath}')` : "NULL";
+
     console.log("Inserting post_contents row...");
     ssh(
       remoteHost,
-      `sqlite3 "${databasePath}" "INSERT INTO post_contents (post_id, lang, path, content, thumbnail, visible) VALUES (${postId}, '${lang}', '${contentPath}', readfile('${remoteTempPath}'), ${thumbnailSql}, 1) ON CONFLICT (lang, path) DO UPDATE SET post_id = excluded.post_id, content = excluded.content, thumbnail = excluded.thumbnail, visible = excluded.visible, updated_at = CURRENT_TIMESTAMP;"`
+      `sqlite3 "${databasePath}" "INSERT INTO post_contents (post_id, lang, path, content, title, thumbnail, visible) VALUES (${postId}, '${lang}', '${contentPath}', readfile('${remoteTempPath}'), ${titleSql}, ${thumbnailSql}, 1) ON CONFLICT (lang, path) DO UPDATE SET post_id = excluded.post_id, content = excluded.content, title = excluded.title, thumbnail = excluded.thumbnail, visible = excluded.visible, updated_at = CURRENT_TIMESTAMP;"`
     );
 
     const lenJson = ssh(
@@ -191,9 +210,12 @@ async function main() {
   } finally {
     console.log("Cleaning up remote temp file...");
     try {
-      ssh(remoteHost, `rm -f "${remoteTempPath}"`);
+      ssh(remoteHost, `rm -f "${remoteTempPath}" "${remoteTitleTempPath}"`);
     } catch (cleanupError) {
       console.error(`Warning: failed to remove remote temp file: ${cleanupError.message}`);
+    }
+    if (localTitleFile) {
+      fs.rmSync(localTitleFile, { force: true });
     }
   }
 }

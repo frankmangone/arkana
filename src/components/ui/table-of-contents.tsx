@@ -126,9 +126,17 @@ export function TableOfContents({ content, compact }: TableOfContentsProps) {
     window.addEventListener("scroll", scheduleUpdate, { passive: true });
     window.addEventListener("resize", recomputeOffsets, { passive: true });
 
+    // Content below the initial measurement (webfont swap, KaTeX, images)
+    // can still grow the document after mount, leaving `offsets` stale —
+    // see hash-scroll-fix.tsx for the same failure mode. Re-measure on any
+    // body size change, not just window resize.
+    const bodyResizeObserver = new ResizeObserver(recomputeOffsets);
+    bodyResizeObserver.observe(document.body);
+
     return () => {
       window.removeEventListener("scroll", scheduleUpdate);
       window.removeEventListener("resize", recomputeOffsets);
+      bodyResizeObserver.disconnect();
       if (frame) cancelAnimationFrame(frame);
     };
   }, [headings]);

@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { trackEvent, EVENTS } from "@/lib/analytics";
 import { withLocalePath } from "@/lib/site-config";
+import { SubscribeMenuItem } from "@/components/subscribe-menu-item";
 
 interface MobileMenuProps {
   lang: string;
@@ -65,6 +66,9 @@ export function MobileMenu({ lang, labels }: MobileMenuProps) {
                     {user.email}
                   </span>
                 </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <SubscribeMenuItem />
+                <DropdownMenuSeparator />
                 <DropdownMenuItem
                   className="cursor-pointer py-3 text-base"
                   onClick={() => {

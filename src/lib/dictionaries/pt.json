@@ -183,6 +183,10 @@
     "security": {
       "question": "É seguro conectar minha carteira?",
       "answer": "Sim, conectar sua carteira é seguro. Usamos assinaturas criptográficas padrão para verificar sua identidade. Nunca solicitamos acesso aos seus fundos ou chaves privadas. Você só será solicitado a assinar mensagens para provar a propriedade do seu endereço de carteira."
+    },
+    "guestUnsubscribe": {
+      "question": "Assinei como visitante, como cancelo minha inscrição?",
+      "answer": "Se você recebeu algum dos nossos e-mails da newsletter, a forma mais rápida é o link para cancelar a inscrição no final do e-mail, sem precisar de conta. Caso contrário, crie uma conta com o mesmo e-mail usado na assinatura e use a opção de Assinar/Cancelar assinatura no menu da sua conta. Você também pode contatar o suporte e cancelaremos sua assinatura diretamente."
     }
   },
   "comments": {
@@ -214,6 +218,36 @@
       "forInlineMath": "para matemática inline.",
       "commentPosted": "Comentário publicado!",
       "failedToPost": "Falha ao publicar comentário"
+    }
+  },
+  "subscribe": {
+    "modal": {
+      "title": "Não perca nenhuma publicação",
+      "description": "Assine nossa newsletter para receber um e-mail sempre que publicarmos algo novo!",
+      "emailPlaceholder": "seu@exemplo.com",
+      "subscribe": "Assinar",
+      "subscribing": "Assinando...",
+      "checkEmailTitle": "Verifique seu e-mail",
+      "checkEmailDescription": "Enviamos um link de confirmação para sua caixa de entrada.",
+      "subscribedToast": "Você está inscrito!",
+      "errorToast": "Algo deu errado. Por favor, tente novamente."
+    },
+    "confirm": {
+      "loading": "Confirmando sua inscrição...",
+      "success": "Você está inscrito!",
+      "error": "Este link é inválido ou expirou."
+    },
+    "unsubscribe": {
+      "loading": "Cancelando sua inscrição...",
+      "success": "Você foi removido da lista.",
+      "error": "Este link é inválido ou expirou."
+    },
+    "accountMenu": {
+      "subscribe": "Assinar newsletter",
+      "subscribing": "Assinando...",
+      "unsubscribe": "Cancelar assinatura da newsletter",
+      "unsubscribing": "Cancelando...",
+      "unsubscribedToast": "Sua assinatura foi cancelada."
     }
   },
   "common": {

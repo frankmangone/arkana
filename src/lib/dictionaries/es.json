@@ -183,6 +183,10 @@
     "security": {
       "question": "¿Es seguro conectar mi billetera?",
       "answer": "Sí, conectar tu billetera es seguro. Usamos firmas criptográficas estándar para verificar tu identidad. Nunca solicitamos acceso a tus fondos o claves privadas. Solo se te pedirá que firmes mensajes para demostrar la propiedad de tu dirección de billetera."
+    },
+    "guestUnsubscribe": {
+      "question": "Me suscribí como invitado, ¿cómo cancelo mi suscripción?",
+      "answer": "Si recibiste alguno de nuestros correos del boletín, la forma más rápida es el enlace para cancelar la suscripción al final del correo, sin necesidad de una cuenta. De lo contrario, crea una cuenta con el mismo correo con el que te suscribiste y usa la opción de Suscribirse/Cancelar suscripción en el menú de tu cuenta. También puedes contactar a soporte y cancelaremos tu suscripción directamente."
     }
   },
   "comments": {
@@ -214,6 +218,36 @@
       "forInlineMath": "para matemáticas en línea.",
       "commentPosted": "¡Comentario publicado!",
       "failedToPost": "Error al publicar el comentario"
+    }
+  },
+  "subscribe": {
+    "modal": {
+      "title": "No te pierdas ninguna publicación",
+      "description": "¡Suscríbete a nuestro boletín para recibir un correo cada vez que publiquemos algo nuevo!",
+      "emailPlaceholder": "tu@ejemplo.com",
+      "subscribe": "Suscribirse",
+      "subscribing": "Suscribiendo...",
+      "checkEmailTitle": "Revisa tu correo",
+      "checkEmailDescription": "Te enviamos un enlace de confirmación a tu bandeja de entrada.",
+      "subscribedToast": "¡Te has suscrito!",
+      "errorToast": "Algo salió mal. Por favor, intenta de nuevo."
+    },
+    "confirm": {
+      "loading": "Confirmando tu suscripción...",
+      "success": "¡Te has suscrito!",
+      "error": "Este enlace no es válido o ha expirado."
+    },
+    "unsubscribe": {
+      "loading": "Cancelando tu suscripción...",
+      "success": "Te has dado de baja.",
+      "error": "Este enlace no es válido o ha expirado."
+    },
+    "accountMenu": {
+      "subscribe": "Suscribirse al boletín",
+      "subscribing": "Suscribiendo...",
+      "unsubscribe": "Cancelar suscripción al boletín",
+      "unsubscribing": "Cancelando...",
+      "unsubscribedToast": "Has cancelado tu suscripción."
     }
   },
   "common": {
