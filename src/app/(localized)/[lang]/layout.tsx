@@ -6,7 +6,7 @@ import "katex/dist/katex.min.css";
 import "prismjs/themes/prism-tomorrow.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { AuthProvider } from "@/components/providers/auth-provider";
-import { Web3Provider } from "@/components/providers/web3-provider";
+import { QueryProvider } from "@/components/providers/query-provider";
 import { WalletProvider } from "@/components/providers/wallet-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { SubscribePromptModal } from "@/components/ui/subscribe-prompt-modal";
@@ -214,7 +214,7 @@ export default async function RootLayout({
           forcedTheme="dark"
           disableTransitionOnChange
         >
-          <Web3Provider>
+          <QueryProvider>
             <WalletProvider>
               <AuthProvider>
                 {children}
@@ -222,7 +222,7 @@ export default async function RootLayout({
                 <SubscribePromptModal />
               </AuthProvider>
             </WalletProvider>
-          </Web3Provider>
+          </QueryProvider>
         </ThemeProvider>
       </body>
       {process.env.NEXT_PUBLIC_DEV_MODE !== "true" && (
