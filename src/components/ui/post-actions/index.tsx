@@ -9,8 +9,10 @@ import {
   usePostInfo,
   useComments,
 } from "@/lib/api/hooks/usePosts";
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import { useDictionary } from "@/lib/hooks/use-dictionary";
+import { useRequireAuth } from "@/lib/auth/use-require-auth";
+import { PendingActionType } from "@/lib/auth/pending-action-types";
 import { LikeButton } from "./like-button";
 import { ReadButton } from "./read-button";
 import { CommentButton } from "./comment-button";
@@ -23,11 +25,11 @@ interface PostActionsProps {
 
 export function PostActions({ className = "gap-2", path }: PostActionsProps) {
   const params = useParams();
-  const router = useRouter();
   const lang = (params?.lang as string) || "en";
 
   const { user } = useAuth();
   const dictionary = useDictionary(lang);
+  const requireAuth = useRequireAuth();
   const likeMutation = useLike();
   const readMutation = useToggleRead();
 
@@ -52,7 +54,7 @@ export function PostActions({ className = "gap-2", path }: PostActionsProps) {
 
   const handleLike = async () => {
     if (!user) {
-      router.push(`/${lang}/login?redirect=${encodeURIComponent(window.location.pathname)}`);
+      requireAuth({ type: PendingActionType.Like, payload: { path } });
       return;
     }
 
@@ -67,7 +69,7 @@ export function PostActions({ className = "gap-2", path }: PostActionsProps) {
 
   const handleRead = async () => {
     if (!user) {
-      router.push(`/${lang}/login?redirect=${encodeURIComponent(window.location.pathname)}`);
+      requireAuth();
       return;
     }
 

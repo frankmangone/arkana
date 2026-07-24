@@ -4,6 +4,7 @@ import { useComments } from "@/lib/api/hooks/usePosts";
 import { CommentList } from "./comment-list";
 import { CommentForm } from "./comment-form";
 import { useAuth } from "@/components/providers/auth-provider";
+import { useRequireAuth } from "@/lib/auth/use-require-auth";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Info } from "lucide-react";
@@ -19,6 +20,7 @@ export function CommentSection({ path }: CommentSectionProps) {
   const searchParams = useSearchParams();
   const lang = (params?.lang as string) || "en";
   const { user } = useAuth();
+  const requireAuth = useRequireAuth();
   const { data, isLoading, error } = useComments({ path });
   const dictionary = useDictionary(lang);
   const [showTooltip, setShowTooltip] = useState(false);
@@ -34,9 +36,7 @@ export function CommentSection({ path }: CommentSectionProps) {
   }, [shouldFocus, user, searchParams, router]);
 
   const handleLoginRedirect = () => {
-    router.push(
-      `/${lang}/login?redirect=${encodeURIComponent(window.location.pathname)}`
-    );
+    requireAuth();
   };
 
   const latexHelpText = dictionary?.comments?.form

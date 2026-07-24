@@ -2,14 +2,17 @@
 
 import { useEffect, useState, useRef } from "react";
 import { useRouter, useParams } from "next/navigation";
+import { useQueryClient } from "@tanstack/react-query";
 import { useGoogleAuth } from "@/lib/api";
 import { extractOAuthCode } from "@/lib/auth/google-oauth";
+import { resumePendingIntent } from "@/lib/auth/pending-intent";
 import { toast } from "sonner";
 
 export function AuthCallbackClient() {
   const router = useRouter();
   const params = useParams();
   const lang = (params?.lang as string) || "en";
+  const queryClient = useQueryClient();
   const googleAuth = useGoogleAuth();
   const [, setIsProcessing] = useState(true);
   const hasProcessed = useRef(false);
@@ -46,8 +49,10 @@ export function AuthCallbackClient() {
 
         toast.success("Signed in successfully!");
 
-        // Redirect to home page
-        router.push(`/${lang}`);
+        // Redirect to the pending intent's return path (or home), replaying
+        // any pending action.
+        const targetUrl = await resumePendingIntent(queryClient, `/${lang}`);
+        router.push(targetUrl);
         router.refresh();
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {
@@ -63,7 +68,7 @@ export function AuthCallbackClient() {
     };
 
     handleAuthCallback();
-  }, [router, lang, googleAuth]);
+  }, [router, lang, googleAuth, queryClient]);
 
   return (
     <div className="flex min-h-screen items-center justify-center">

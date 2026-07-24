@@ -1,7 +1,7 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useAuth } from "@/components/providers/auth-provider";
+import { useRequireAuth } from "@/lib/auth/use-require-auth";
 import { useNotificationsInfinite } from "@/lib/api";
 import { useInfiniteScrollTrigger } from "@/hooks/use-infinite-scroll-trigger";
 import { ArkanaSpinner } from "@/components/ui/arkana-spinner";
@@ -13,8 +13,8 @@ interface NotificationsPageProps {
 }
 
 export function NotificationsPage({ lang }: NotificationsPageProps) {
-  const router = useRouter();
   const { user, loading } = useAuth();
+  const requireAuth = useRequireAuth();
 
   const { data, isLoading, hasNextPage, fetchNextPage } =
     useNotificationsInfinite(!!user);
@@ -33,11 +33,7 @@ export function NotificationsPage({ lang }: NotificationsPageProps) {
       <div className="py-16 text-center">
         <p className="text-ink-muted text-sm">
           <button
-            onClick={() =>
-              router.push(
-                `/${lang}/login?redirect=${encodeURIComponent(`/${lang}/notifications`)}`
-              )
-            }
+            onClick={() => requireAuth()}
             className="cursor-pointer font-medium text-primary-800 hover:underline"
           >
             Sign in
