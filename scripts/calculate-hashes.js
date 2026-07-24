@@ -43,8 +43,14 @@ function processMarkdownFile(filePath) {
     // Reconstruct the file with updated frontmatter
     const updatedFileContent = matter.stringify(content, data);
 
-    // Write back to file
-    fs.writeFileSync(filePath, updatedFileContent);
+    // Write to a temp file and rename into place. rename() is atomic on the
+    // same filesystem, so a concurrent reader (e.g. a build's static
+    // generation step walking this same directory through the shared
+    // content symlink) always sees either the old or new complete file,
+    // never a truncated one from an in-place write.
+    const tempPath = `${filePath}.tmp.${process.pid}`;
+    fs.writeFileSync(tempPath, updatedFileContent);
+    fs.renameSync(tempPath, filePath);
     console.log(`  ✅ Hash added: ${hash.substring(0, 8)}...`);
   } catch (error) {
     console.error(`  ❌ Error processing ${filePath}:`, error.message);
