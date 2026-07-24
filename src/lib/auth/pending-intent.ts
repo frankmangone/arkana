@@ -1,4 +1,7 @@
+import type { QueryClient } from "@tanstack/react-query";
+import { toast } from "sonner";
 import type { PendingActionType, PendingIntent } from "./pending-action-types";
+import { createPendingActionRegistry } from "./pending-action-registry";
 
 const STORAGE_KEY = "arkana_pending_intent";
 const TTL_MS = 10 * 60 * 1000;
@@ -26,4 +29,21 @@ export function consumePendingIntent(
   } catch {
     return null;
   }
+}
+
+export async function resumePendingIntent(
+  queryClient: QueryClient,
+  fallbackReturnTo: string,
+  now: number = Date.now()
+): Promise<string> {
+  const intent = consumePendingIntent(now);
+  if (intent?.action) {
+    try {
+      const registry = createPendingActionRegistry(queryClient);
+      await registry[intent.action.type](intent.action.payload);
+    } catch {
+      toast.error("Couldn't complete that action — try again.");
+    }
+  }
+  return intent?.returnTo ?? fallbackReturnTo;
 }
