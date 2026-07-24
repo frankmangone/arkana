@@ -42,10 +42,19 @@ export async function getPostsByAuthor(
           const slug = file.replace(".md", "");
           const fullSlug = baseSlug ? `${baseSlug}/${slug}` : slug;
 
-          const fileContent = await fs.readFile(filePath, "utf8");
-          const { data } = matter(fileContent);
-
-          const author = getWriter(data.author || "");
+          let data: matter.GrayMatterFile<string>["data"];
+          let author: ReturnType<typeof getWriter>;
+          try {
+            const fileContent = await fs.readFile(filePath, "utf8");
+            ({ data } = matter(fileContent));
+            author = getWriter(data.author || "");
+          } catch (error) {
+            throw new Error(
+              `Failed to process post "${fullSlug}" (${filePath}): ${
+                error instanceof Error ? error.message : String(error)
+              }`
+            );
+          }
 
           // Skip posts with visible: false
           if (data.visible === false) {
@@ -107,9 +116,19 @@ export async function getAllPosts(lang: string): Promise<PostPreview[]> {
           const slug = file.replace(".md", "");
           const fullSlug = baseSlug ? `${baseSlug}/${slug}` : slug;
 
-          const fileContent = await fs.readFile(filePath, "utf8");
-          const { data } = matter(fileContent);
-          const author = getWriter(data.author || "");
+          let data: matter.GrayMatterFile<string>["data"];
+          let author: ReturnType<typeof getWriter>;
+          try {
+            const fileContent = await fs.readFile(filePath, "utf8");
+            ({ data } = matter(fileContent));
+            author = getWriter(data.author || "");
+          } catch (error) {
+            throw new Error(
+              `Failed to process post "${fullSlug}" (${filePath}): ${
+                error instanceof Error ? error.message : String(error)
+              }`
+            );
+          }
 
           // Skip posts with visible: false
           if (data.visible === false) {
