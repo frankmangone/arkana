@@ -22,7 +22,8 @@ export function StickyActionsBar({ path }: StickyActionsBarProps) {
     if (!anchor || !body) return;
 
     const anchorObserver = new IntersectionObserver(
-      ([entry]) => setHeaderHidden(!entry.isIntersecting),
+      ([entry]) =>
+        setHeaderHidden(!entry.isIntersecting && entry.boundingClientRect.top < 0),
       { threshold: 0 }
     );
     anchorObserver.observe(anchor);
