@@ -11,11 +11,13 @@ import {
 import { SubscribeMenuItem } from "@/components/subscribe-menu-item";
 import { User } from "lucide-react";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 import { trackEvent, EVENTS } from "@/lib/analytics";
+import { setPendingIntent } from "@/lib/auth/pending-intent";
 
 export function AuthButton() {
   const params = useParams();
+  const pathname = usePathname();
   const lang = (params?.lang as string) || "en";
   const { user, loading, logout } = useAuth();
 
@@ -74,6 +76,7 @@ export function AuthButton() {
   return (
     <Link
       href={`/${lang}/login`}
+      onClick={() => setPendingIntent({ returnTo: pathname })}
       className="eyebrow inline-flex cursor-pointer items-center gap-1.5 px-4 py-2 transition-colors hover:text-ink-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
     >
       <User className="h-4 w-4" />
