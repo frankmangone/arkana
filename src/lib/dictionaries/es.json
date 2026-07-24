@@ -124,7 +124,8 @@
     "sending": "Enviando...",
     "connectWallet": "Conectar Billetera",
     "buyCoffee": "Comprar Café ({amount} {symbol})",
-    "thankYou": "✓ ¡Gracias por tu apoyo!"
+    "thankYou": "✓ ¡Gracias por tu apoyo!",
+    "errorToast": "La transacción falló. Por favor, intentá de nuevo."
   },
   "quiz": {
     "submitAnswer": "Enviar Respuesta",

@@ -6,7 +6,6 @@ import {
   TextContent,
   FormElements,
   SendButton,
-  SuccessMessage,
 } from "./components";
 
 interface TippingWidgetProps {
@@ -33,7 +32,6 @@ export default function BuyMeCoffeeWidget({
     selectedChainId,
     setSelectedChainId,
     selectedNetwork,
-    showSuccess,
     isPending,
     isWalletConnected,
     handleSendTransaction,
@@ -70,8 +68,6 @@ export default function BuyMeCoffeeWidget({
           onClick={handleSendTransaction}
         />
       </div>
-
-      {showSuccess && <SuccessMessage message={dictionary.thankYou} />}
     </div>
   );
 }

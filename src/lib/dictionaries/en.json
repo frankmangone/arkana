@@ -124,7 +124,8 @@
     "sending": "Sending...",
     "connectWallet": "Connect Wallet",
     "buyCoffee": "Buy Coffee ({amount} {symbol})",
-    "thankYou": "✓ Thank you for your support!"
+    "thankYou": "✓ Thank you for your support!",
+    "errorToast": "Transaction failed. Please try again."
   },
   "quiz": {
     "submitAnswer": "Submit Answer",

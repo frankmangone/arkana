@@ -3,7 +3,9 @@
 import { useState } from "react";
 import { parseUnits, encodeFunctionData } from "viem";
 import { useParams } from "next/navigation";
+import { toast } from "sonner";
 import { trackEvent, EVENTS } from "@/lib/analytics";
+import { useDictionary } from "@/lib/hooks/use-dictionary";
 
 interface NetworkConfig {
   id: number;
@@ -87,11 +89,11 @@ const toHexChainId = (chainId: number): string => {
 export function useComponent(walletAddress: string) {
   const params = useParams();
   const lang = (params?.lang as string) || "en";
+  const dictionary = useDictionary(lang);
 
   const [selectedChainId, setSelectedChainId] = useState(
     SUPPORTED_NETWORKS[0].id
   );
-  const [showSuccess, setShowSuccess] = useState(false);
   const [amount, setAmount] = useState(DEFAULT_AMOUNT);
   const [isPending, setIsPending] = useState(false);
   const [connectedAddress, setConnectedAddress] = useState<string | null>(null);
@@ -186,18 +188,26 @@ export function useComponent(walletAddress: string) {
           amount: Number(amount),
           chain: network.name,
         });
-        setShowSuccess(true);
-        setTimeout(() => setShowSuccess(false), 5000);
+        toast.success(
+          dictionary?.buyMeCoffee?.thankYou ||
+            "✓ Thank you for your support!"
+        );
       }
     } catch (error) {
       console.error("Transaction failed:", error);
+      const reason =
+        error && typeof error === "object" && "message" in error
+          ? String((error as { message?: unknown }).message)
+          : undefined;
+      toast.error(
+        reason ||
+          dictionary?.buyMeCoffee?.errorToast ||
+          "Transaction failed. Please try again."
+      );
     } finally {
       setIsPending(false);
     }
   };
-
-  // Suppress unused var — lang may be used for future i18n
-  void lang;
 
   return {
     amount,
@@ -205,7 +215,6 @@ export function useComponent(walletAddress: string) {
     selectedChainId,
     setSelectedChainId,
     selectedNetwork,
-    showSuccess,
     isPending,
     isWalletConnected,
     handleSendTransaction,
