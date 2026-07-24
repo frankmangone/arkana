@@ -348,6 +348,9 @@
     transparent
   );
 
+  /* Buy-me-a-coffee widget accent — magenta to coral to gold */
+  --grad-coffee: linear-gradient(135deg, #bc3f7e, #f5745b, #ffd270);
+
   /* Vivid hero field — near-solid, slightly desaturated, with a subtle
      drift on the right. Dark ink goes on top of this. */
   --grad-hero: linear-gradient(
