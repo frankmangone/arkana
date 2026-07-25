@@ -16,14 +16,14 @@ export const getPostBySlug = async (
       const [folder, fileName] = slug.split("/");
       filePath = path.join(
         process.cwd(),
-        "src/content",
+        "src/data/content",
         lang,
         folder,
         `${fileName}.md`
       );
     } else {
       // For flat files like "some-article"
-      filePath = path.join(process.cwd(), "src/content", lang, `${slug}.md`);
+      filePath = path.join(process.cwd(), "src/data/content", lang, `${slug}.md`);
     }
 
     const fileContent = await fs.readFile(filePath, "utf8");
@@ -49,7 +49,7 @@ export const getPostBySlug = async (
           if (potentialFileName) {
             const nestedPath = path.join(
               process.cwd(),
-              "src/content",
+              "src/data/content",
               lang,
               potentialFolderName,
               `${potentialFileName}.md`

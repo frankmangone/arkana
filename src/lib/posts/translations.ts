@@ -19,10 +19,10 @@ async function isVisiblePost(filePath: string): Promise<boolean> {
   }
 }
 
-// Scans src/content/<lang>/<folder>/<slug>.md and reports, per unique
+// Scans src/data/content/<lang>/<folder>/<slug>.md and reports, per unique
 // folder/slug, which languages have a visible translation.
 export async function getPostPaths(): Promise<PostPath[]> {
-  const contentPath = path.join(process.cwd(), "src", "content");
+  const contentPath = path.join(process.cwd(), "src", "data", "content");
   const found = new Map<string, Set<Locale>>();
 
   for (const lang of languages) {

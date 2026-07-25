@@ -4,9 +4,8 @@
 docs/superpowers
 
 # content
-# /src/data
-/src/data/writers
-/src/content
+/src/data
+!/src/data/reading-lists
 
 # dependencies
 **/node_modules

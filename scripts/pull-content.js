@@ -3,66 +3,58 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 const fs = require("fs");
 const path = require("path");
-const { execFileSync } = require("child_process");
+const crypto = require("crypto");
 
-const exportPath = process.argv[2];
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8082";
+const ADMIN_HMAC_SECRET = process.env.ADMIN_HMAC_SECRET;
+const PAGE_LIMIT = 100;
 
-// content is CAST to TEXT because publish-content.js inserts it via
-// readfile(), which stores a BLOB; sqlite3 -json won't emit blobs as plain
-// strings. The cast is lossless for our UTF-8 markdown.
-const EXPORT_QUERY =
-  "SELECT lang, path, CAST(content AS TEXT) AS content FROM post_contents;";
-
-function fetchRowsOverSsh() {
-  const remoteHost = process.env.REMOTE_HOST;
-  const databasePath = process.env.DATABASE_PATH;
-
-  if (!remoteHost || !databasePath) {
-    console.error(
-      "Usage:\n" +
-        "  node pull-content.js <export.json>\n" +
-        "  REMOTE_HOST=<user@host> DATABASE_PATH=</path/to/blog.db> node pull-content.js"
-    );
-    process.exit(1);
-  }
-
-  if (!/^[a-zA-Z0-9_\-./]+$/.test(databasePath)) {
-    console.error(`Invalid DATABASE_PATH: "${databasePath}"`);
-    process.exit(1);
-  }
-
-  console.log(`Exporting post_contents from ${remoteHost}:${databasePath}...`);
-  const json = execFileSync(
-    "ssh",
-    [remoteHost, `sqlite3 -json "${databasePath}" "${EXPORT_QUERY}"`],
-    { encoding: "utf8", maxBuffer: 512 * 1024 * 1024 }
-  );
-
-  // sqlite3 -json prints nothing at all for an empty result set
-  return json.trim() ? JSON.parse(json) : [];
-}
-
-let rows;
-if (exportPath) {
-  try {
-    rows = JSON.parse(fs.readFileSync(exportPath, "utf8"));
-  } catch (error) {
-    console.error(`Failed to read/parse ${exportPath}:`, error.message);
-    process.exit(1);
-  }
-} else {
-  rows = fetchRowsOverSsh();
-}
-
-if (!Array.isArray(rows)) {
-  console.error("Expected a JSON array of rows from the post_contents export");
+if (!ADMIN_HMAC_SECRET) {
+  console.error("Usage:\n  ADMIN_HMAC_SECRET=<secret> node scripts/pull-content.js");
   process.exit(1);
 }
 
-const contentRoot = path.join(__dirname, "..", "src", "content");
-fs.mkdirSync(contentRoot, { recursive: true });
+// Same scheme as the backend's adminauth middleware:
+// signature = hex(HMAC-SHA256(secret, timestamp + "." + rawBody)).
+// This is a GET request with no body, so rawBody is empty.
+function signRequest(secret) {
+  const timestamp = Math.floor(Date.now() / 1000).toString();
+  const signature = crypto
+    .createHmac("sha256", secret)
+    .update(`${timestamp}.`)
+    .digest("hex");
+  return { timestamp, signature };
+}
 
-for (const row of rows) {
+async function fetchPage(offset) {
+  const { timestamp, signature } = signRequest(ADMIN_HMAC_SECRET);
+  const url = `${API_URL}/api/admin/posts?limit=${PAGE_LIMIT}&offset=${offset}`;
+
+  const response = await fetch(url, {
+    headers: {
+      "X-Timestamp": timestamp,
+      "X-Signature": signature,
+    },
+  });
+
+  if (!response.ok) {
+    console.error(`Failed to fetch posts: HTTP ${response.status}`);
+    console.error(await response.text());
+    process.exit(1);
+  }
+
+  const body = await response.json();
+  if (!Array.isArray(body.data) || typeof body.total !== "number") {
+    console.error("Expected a data array and total count in the /api/admin/posts response");
+    process.exit(1);
+  }
+
+  return body;
+}
+
+const contentRoot = path.join(__dirname, "..", "src", "data", "content");
+
+function writeRow(row) {
   const { lang, path: relPath, content } = row;
 
   if (!lang || !relPath || typeof content !== "string") {
@@ -76,4 +68,30 @@ for (const row of rows) {
   console.log(`Wrote ${path.relative(process.cwd(), destPath)}`);
 }
 
-console.log(`Pulled ${rows.length} post(s) from the database.`);
+async function main() {
+  console.log(`Fetching posts from ${API_URL}/api/admin/posts...`);
+
+  let offset = 0;
+  let pulled = 0;
+  let total = Infinity;
+
+  while (offset < total) {
+    const page = await fetchPage(offset);
+    total = page.total;
+
+    for (const row of page.data) {
+      writeRow(row);
+      pulled++;
+    }
+
+    if (page.data.length === 0) break;
+    offset += page.data.length;
+  }
+
+  console.log(`Pulled ${pulled} post(s) from the API.`);
+}
+
+main().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});

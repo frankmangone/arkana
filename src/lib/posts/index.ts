@@ -22,7 +22,7 @@ export async function getPostsByAuthor(
   authorSlug: string,
   lang: string
 ): Promise<PostPreview[]> {
-  const contentPath = path.join(process.cwd(), "src", "content", lang);
+  const contentPath = path.join(process.cwd(), "src", "data", "content", lang);
   const allPosts: PostPreview[] = [];
 
   try {
@@ -96,7 +96,7 @@ export async function getPostsByAuthor(
 
 // Function to get all posts for a specific language
 export async function getAllPosts(lang: string): Promise<PostPreview[]> {
-  const contentPath = path.join(process.cwd(), "src", "content", lang);
+  const contentPath = path.join(process.cwd(), "src", "data", "content", lang);
   const allPosts: PostPreview[] = [];
 
   try {
