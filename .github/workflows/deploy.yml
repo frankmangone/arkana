@@ -86,6 +86,11 @@ jobs:
           node scripts/pull-content.js post_content_export.json
           rm -f ~/.ssh/deploy_key post_content_export.json
 
+      - name: Pull writers from API
+        env:
+          ADMIN_HMAC_SECRET: ${{ secrets.ADMIN_HMAC_SECRET }}
+        run: node scripts/pull-writers.js
+
       - name: Pre-calculate content hashes
         run: node scripts/calculate-hashes.js
 
