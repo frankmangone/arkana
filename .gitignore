@@ -5,6 +5,7 @@ docs/superpowers
 
 # content
 /src/data
+!/src/data/.gitkeep
 !/src/data/reading-lists
 
 # dependencies
