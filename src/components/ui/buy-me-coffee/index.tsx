@@ -40,7 +40,7 @@ export default function BuyMeCoffeeWidget({
   return (
     <div
       id="buy-me-coffee"
-      className="rounded-md p-px bg-[image:var(--grad-coffee)] lg:-mx-32"
+      className="rounded-md p-px bg-[image:var(--grad-coffee)] bg-fixed lg:-mx-32"
     >
       <div className="overflow-hidden flex md:flex-row flex-col rounded-[5px] bg-[hsl(5,50%,11%)]">
         <TokenImage />

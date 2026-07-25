@@ -18,6 +18,7 @@ import { SubscribeMenuItem } from "@/components/subscribe-menu-item";
 interface MobileMenuProps {
   lang: string;
   labels: {
+    blog: string;
     readingLists: string;
     survey: string;
   };
@@ -39,6 +40,14 @@ export function MobileMenu({ lang, labels }: MobileMenuProps) {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-56">
+        <DropdownMenuItem asChild>
+          <Link
+            href={withLocalePath(lang, "blog")}
+            className="w-full cursor-pointer py-3 text-base"
+          >
+            {labels.blog}
+          </Link>
+        </DropdownMenuItem>
         <DropdownMenuItem asChild>
           <Link
             href={withLocalePath(lang, "reading-lists")}

@@ -19,6 +19,7 @@ export const Navbar = async (props: NavbarProps) => {
   const dict = await getDictionary(lang);
 
   const homeUrl = withLocalePath(lang);
+  const blogUrl = withLocalePath(lang, "blog");
   const readingListsUrl = withLocalePath(lang, "reading-lists");
   const surveyUrl = withLocalePath(lang, "survey");
 
@@ -48,6 +49,12 @@ export const Navbar = async (props: NavbarProps) => {
           {/* Desktop navigation */}
           <nav className="hidden md:flex items-center">
             <Link
+              href={blogUrl}
+              className="eyebrow px-4 py-2 transition-colors hover:text-ink-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              {dict.blog.title}
+            </Link>
+            <Link
               href={readingListsUrl}
               className="eyebrow px-4 py-2 transition-colors hover:text-ink-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
@@ -74,6 +81,7 @@ export const Navbar = async (props: NavbarProps) => {
             <MobileMenu
               lang={lang}
               labels={{
+                blog: dict.blog.title,
                 readingLists: dict.readingLists.list.title,
                 survey: dict.blog.survey,
               }}
