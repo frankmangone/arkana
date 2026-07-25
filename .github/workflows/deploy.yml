@@ -77,6 +77,9 @@ jobs:
           ADMIN_HMAC_SECRET: ${{ secrets.ADMIN_HMAC_SECRET }}
         run: node scripts/pull-writers.js
 
+      - name: Pull tags from API
+        run: node scripts/pull-tags.js
+
       - name: Pre-calculate content hashes
         run: node scripts/calculate-hashes.js
 
