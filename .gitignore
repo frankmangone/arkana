@@ -5,6 +5,7 @@ docs/superpowers
 
 # content
 # /src/data
+/src/data/writers
 /src/content
 
 # dependencies
