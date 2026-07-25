@@ -5,7 +5,7 @@ import { Command } from "commander";
 import { ensureFilterableTags, indexDocument } from "./utils/meili-client";
 import { stripMarkdown } from "./utils/strip-markdown";
 
-const CONTENT_ROOT = path.join(process.cwd(), "src", "content");
+const CONTENT_ROOT = path.join(process.cwd(), "src", "data", "content");
 
 function parseFilePath(filePath: string) {
   const absolute = path.resolve(filePath);
@@ -13,7 +13,7 @@ function parseFilePath(filePath: string) {
 
   if (rel.startsWith("..") || rel === "") {
     throw new Error(
-      `File must be under src/content/<lang>/... (got: ${filePath})`
+      `File must be under src/data/content/<lang>/... (got: ${filePath})`
     );
   }
 
@@ -63,7 +63,7 @@ const program = new Command();
 program
   .name("index-file")
   .description(
-    "Index a single markdown file (src/content/<lang>/...) into its per-language Meilisearch index"
+    "Index a single markdown file (src/data/content/<lang>/...) into its per-language Meilisearch index"
   )
   .requiredOption("-f, --file <filePath>", "Path to the markdown file to index")
   .action((options: ProgramOptions) =>

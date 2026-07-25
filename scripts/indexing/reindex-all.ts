@@ -4,13 +4,13 @@ import matter from "gray-matter";
 import { ensureFilterableTags, indexDocuments } from "./utils/meili-client";
 import { stripMarkdown } from "./utils/strip-markdown";
 
-// Bulk re-index: walks every src/content/<lang>/**/*.md, applies index
+// Bulk re-index: walks every src/data/content/<lang>/**/*.md, applies index
 // settings (filterable tags + count-sorted facets), and indexes each
 // language's posts in one batch.
 //
 //   MEILI_HOST=<host> MEILI_KEY=<key> pnpm run index:all
 
-const CONTENT_ROOT = path.join(process.cwd(), "src", "content");
+const CONTENT_ROOT = path.join(process.cwd(), "src", "data", "content");
 
 function walk(dir: string): string[] {
   return fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {

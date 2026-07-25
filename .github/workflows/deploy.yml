@@ -67,7 +67,7 @@ jobs:
       - name: Install dependencies without frozen lockfile
         run: pnpm install --no-frozen-lockfile
 
-      - name: Pull content from DB
+      - name: Pull content from API
         env:
           ADMIN_HMAC_SECRET: ${{ secrets.ADMIN_HMAC_SECRET }}
         run: node scripts/pull-content.js

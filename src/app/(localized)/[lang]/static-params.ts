@@ -2,7 +2,7 @@ import fs from "fs/promises";
 import path from "path";
 
 export async function generateStaticParams() {
-  const contentPath = path.join(process.cwd(), "src", "content");
+  const contentPath = path.join(process.cwd(), "src", "data", "content");
 
   try {
     const languages = await fs.readdir(contentPath);

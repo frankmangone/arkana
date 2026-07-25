@@ -81,7 +81,7 @@ function countMarkdownFiles(dir) {
 }
 
 // Start processing from content directory
-const contentDir = path.join(process.cwd(), "src", "content");
+const contentDir = path.join(process.cwd(), "src", "data", "content");
 
 console.log("🔍 Starting content hash calculation");
 console.log(

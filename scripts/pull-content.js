@@ -52,7 +52,7 @@ async function fetchPage(offset) {
   return body;
 }
 
-const contentRoot = path.join(__dirname, "..", "src", "content");
+const contentRoot = path.join(__dirname, "..", "src", "data", "content");
 
 function writeRow(row) {
   const { lang, path: relPath, content } = row;
