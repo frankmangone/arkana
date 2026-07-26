@@ -25,7 +25,7 @@ async function main() {
 
   const destPath = path.join(__dirname, "..", "src", "data", "tags.json");
   fs.mkdirSync(path.dirname(destPath), { recursive: true });
-  fs.writeFileSync(destPath, JSON.stringify(body.data, null, 2) + "\n");
+  fs.writeFileSync(destPath, JSON.stringify({ tags: body.data }, null, 2) + "\n");
 
   console.log(`Wrote ${path.relative(process.cwd(), destPath)} (${body.data.length} tags).`);
 }

@@ -6,7 +6,7 @@ interface TagEntry {
 }
 
 const tags: Record<string, Record<string, string>> = Object.fromEntries(
-  (tagsData as TagEntry[]).map((t) => [t.slug, t.translations])
+  (tagsData.tags as TagEntry[]).map((t) => [t.slug, t.translations])
 );
 
 export type TagKey = string;
