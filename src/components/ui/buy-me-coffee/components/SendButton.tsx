@@ -3,12 +3,10 @@ import { DEFAULT_AMOUNT } from "../use-component";
 
 interface SendButtonProps {
   isPending: boolean;
-  isWalletConnected: boolean;
   amount: string;
   symbol?: string;
   dictionary: {
     sending: string;
-    connectWallet: string;
     buyCoffee: string;
   };
   onClick: () => void;
@@ -16,7 +14,6 @@ interface SendButtonProps {
 
 export function SendButton({
   isPending,
-  isWalletConnected,
   amount,
   symbol,
   dictionary,
@@ -33,8 +30,6 @@ export function SendButton({
           <Loader2 className="w-5 h-5 animate-spin" />
           {dictionary.sending}
         </>
-      ) : !isWalletConnected ? (
-        dictionary.connectWallet
       ) : (
         <>
           <Coffee className="w-5 h-5" />

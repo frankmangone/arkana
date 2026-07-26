@@ -6,6 +6,7 @@ import { useParams } from "next/navigation";
 import { toast } from "sonner";
 import { trackEvent, EVENTS } from "@/lib/analytics";
 import { useDictionary } from "@/lib/hooks/use-dictionary";
+import { isMobile, openMetaMaskApp } from "@/lib/wallet/utils/mobile";
 
 interface NetworkConfig {
   id: number;
@@ -98,8 +99,6 @@ export function useComponent(walletAddress: string) {
   const [isPending, setIsPending] = useState(false);
   const [connectedAddress, setConnectedAddress] = useState<string | null>(null);
 
-  const isWalletConnected = !!connectedAddress;
-
   const selectedNetwork = SUPPORTED_NETWORKS.find(
     (n) => n.id === selectedChainId
   );
@@ -107,6 +106,11 @@ export function useComponent(walletAddress: string) {
   const handleSendTransaction = async () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const ethereum = (window as any).ethereum;
+
+    if (isMobile() && !ethereum?.isMetaMask) {
+      openMetaMaskApp();
+      return;
+    }
 
     if (!ethereum) {
       window.open("https://metamask.io/download/", "_blank");
@@ -216,7 +220,6 @@ export function useComponent(walletAddress: string) {
     setSelectedChainId,
     selectedNetwork,
     isPending,
-    isWalletConnected,
     handleSendTransaction,
   };
 }

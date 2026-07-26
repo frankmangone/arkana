@@ -122,7 +122,6 @@
     "title": "Did you find this content useful?",
     "description": "Support {authorName} by sending a coffee. All proceeds go directly to the author.",
     "sending": "Sending...",
-    "connectWallet": "Connect Wallet",
     "buyCoffee": "Buy Coffee ({amount} {symbol})",
     "thankYou": "✓ Thank you for your support!",
     "errorToast": "Transaction failed. Please try again."
