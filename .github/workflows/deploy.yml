@@ -77,6 +77,11 @@ jobs:
           ADMIN_HMAC_SECRET: ${{ secrets.ADMIN_HMAC_SECRET }}
         run: node scripts/pull-writers.js
 
+      - name: Pull reading lists from API
+        env:
+          ADMIN_HMAC_SECRET: ${{ secrets.ADMIN_HMAC_SECRET }}
+        run: node scripts/pull-reading-lists.js
+
       - name: Pull tags from API
         run: node scripts/pull-tags.js
 
