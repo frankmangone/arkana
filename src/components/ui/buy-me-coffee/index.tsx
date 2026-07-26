@@ -15,7 +15,6 @@ interface TippingWidgetProps {
     title: string;
     description: string;
     sending: string;
-    connectWallet: string;
     buyCoffee: string;
     thankYou: string;
   };
@@ -33,7 +32,6 @@ export default function BuyMeCoffeeWidget({
     setSelectedChainId,
     selectedNetwork,
     isPending,
-    isWalletConnected,
     handleSendTransaction,
   } = useComponent(walletAddress);
 
@@ -62,7 +60,6 @@ export default function BuyMeCoffeeWidget({
 
           <SendButton
             isPending={isPending}
-            isWalletConnected={isWalletConnected}
             amount={amount}
             symbol={selectedNetwork?.symbol}
             dictionary={dictionary}
