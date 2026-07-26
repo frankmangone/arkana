@@ -38,7 +38,7 @@ export default function BuyMeCoffeeWidget({
   return (
     <div
       id="buy-me-coffee"
-      className="rounded-md p-px bg-[image:var(--grad-coffee)] bg-fixed lg:-mx-32"
+      className="rounded-md p-px [--ring-grad:linear-gradient(to_right,#bc3f7e,#f5745b,#ffd270)] md:[--ring-grad:linear-gradient(to_bottom,#bc3f7e,#f5745b,#ffd270)] bg-[image:var(--ring-grad)] shadow-[0_4px_40px_-8px_rgba(245,116,91,0.25)] lg:-mx-32"
     >
       <div className="overflow-hidden flex md:flex-row flex-col rounded-[5px] bg-[hsl(5,50%,11%)]">
         <div className="relative z-10 aspect-[3/1] w-full pointer-events-none md:aspect-auto md:w-72">
