@@ -135,6 +135,27 @@
     "multipleChoice": "Multiple Choice",
     "singleChoice": "Single Choice"
   },
+  "quizzes": {
+    "checkAnswer": "Check answer",
+    "tryAgain": "Try again",
+    "reset": "Reset",
+    "correct": "Correct",
+    "incorrect": "Not quite — the correct answer is marked",
+    "difficulty": {
+      "1": "Easy",
+      "2": "Medium",
+      "3": "Hard"
+    },
+    "types": {
+      "choice": "Choice",
+      "matching": "Matching",
+      "range": "Estimate",
+      "sequencing": "Sequence",
+      "scenario": "Scenario",
+      "spot_the_flaw": "Spot the flaw",
+      "this_vs_that": "This vs that"
+    }
+  },
   "auth": {
     "login": {
       "title": "Sign In",

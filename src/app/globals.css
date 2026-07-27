@@ -412,7 +412,10 @@
   --secondary-950: hsl(277, 96%, 91%);
   --secondary-1000: hsl(278, 92%, 95%);
 
-  /* "Correct" colors */
+  /* "Correct" colors — used by the blog's .callout-tip. Left as originally
+     designed; quiz correct/incorrect states use --aquamarine/--salmon
+     instead (see their own definitions below), matching the color
+     vocabulary the existing inline post-quiz widget already established. */
   --emerald-50: hsl(142, 58%, 16%);
   --emerald-100: hsl(142, 58%, 20%);
   --emerald-150: hsl(142, 58%, 24%);

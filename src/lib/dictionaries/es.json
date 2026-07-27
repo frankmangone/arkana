@@ -135,6 +135,27 @@
     "multipleChoice": "Opción Múltiple",
     "singleChoice": "Opción Única"
   },
+  "quizzes": {
+    "checkAnswer": "Comprobar respuesta",
+    "tryAgain": "Intentar de nuevo",
+    "reset": "Reiniciar",
+    "correct": "Correcto",
+    "incorrect": "No exactamente — la respuesta correcta está marcada",
+    "difficulty": {
+      "1": "Fácil",
+      "2": "Media",
+      "3": "Difícil"
+    },
+    "types": {
+      "choice": "Opción",
+      "matching": "Relacionar",
+      "range": "Estimación",
+      "sequencing": "Secuencia",
+      "scenario": "Escenario",
+      "spot_the_flaw": "Encuentra el error",
+      "this_vs_that": "Esto vs aquello"
+    }
+  },
   "auth": {
     "login": {
       "title": "Iniciar Sesión",
