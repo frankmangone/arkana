@@ -44,6 +44,7 @@
     "allPosts": "Todas las Publicaciones",
     "searchTags": "Buscar etiquetas...",
     "noTagsFound": "No se encontraron etiquetas",
+    "moreTags": "+{count} más",
     "noPosts": "No se encontraron artículos",
     "noPostsDescription": "Ningún artículo coincide con tu búsqueda. Prueba con otro término o etiqueta.",
     "clearSearch": "Limpiar búsqueda",

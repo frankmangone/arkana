@@ -44,6 +44,7 @@
     "allPosts": "Todas as Postagens",
     "searchTags": "Buscar tags...",
     "noTagsFound": "Nenhuma tag encontrada",
+    "moreTags": "+{count} mais",
     "noPosts": "Nenhum artigo encontrado",
     "noPostsDescription": "Nenhum artigo corresponde à sua busca. Tente outro termo ou tag.",
     "clearSearch": "Limpar busca",

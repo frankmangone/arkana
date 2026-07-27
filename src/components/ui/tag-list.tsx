@@ -3,6 +3,7 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import { Tag } from "@/components/ui/tag";
 import { Badge } from "@/components/ui/badge";
+import { useDictionary } from "@/lib/hooks/use-dictionary";
 
 interface TagListProps {
   tags: string[];
@@ -17,6 +18,7 @@ interface TagListProps {
  * on container resize since a breakpoint switch changes how much fits.
  */
 export function TagList({ tags, lang, maxLines = 2 }: TagListProps) {
+  const dictionary = useDictionary(lang);
   const containerRef = useRef<HTMLDivElement>(null);
   const [visibleCount, setVisibleCount] = useState(tags.length);
 
@@ -60,7 +62,14 @@ export function TagList({ tags, lang, maxLines = 2 }: TagListProps) {
       {shown.map((tag) => (
         <Tag key={tag} tag={tag} lang={lang} />
       ))}
-      {hiddenCount > 0 && <Badge variant="default">+{hiddenCount} more</Badge>}
+      {hiddenCount > 0 && (
+        <Badge variant="default">
+          {(dictionary?.blog.moreTags || "+{count} more").replace(
+            "{count}",
+            String(hiddenCount)
+          )}
+        </Badge>
+      )}
     </div>
   );
 }

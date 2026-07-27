@@ -44,6 +44,7 @@
     "allPosts": "All Posts",
     "searchTags": "Search tags...",
     "noTagsFound": "No matching tags",
+    "moreTags": "+{count} more",
     "noPosts": "No articles found",
     "noPostsDescription": "No articles matched your search. Try a different term or tag.",
     "clearSearch": "Clear search",

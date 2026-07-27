@@ -15,6 +15,7 @@ export async function generateMetadata({
     return {
       title: "Post Not Found",
       description: "The requested post could not be found.",
+      robots: { index: false, follow: false },
     };
   }
 
