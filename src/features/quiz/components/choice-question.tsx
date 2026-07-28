@@ -1,16 +1,18 @@
 "use client";
 
 import { useState } from "react";
+import { Check, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import type {
   AnswerStatus,
-  ChoiceQuestion,
+  MultiChoiceQuestion,
   QuizzesDictionary,
+  SingleChoiceQuestion,
 } from "@/features/quiz/types";
 
 interface ChoiceQuestionProps {
-  question: ChoiceQuestion;
+  question: SingleChoiceQuestion | MultiChoiceQuestion;
   dictionary: QuizzesDictionary;
   onStatusChange?: (status: AnswerStatus) => void;
 }
@@ -27,6 +29,7 @@ export function ChoiceQuestionRenderer({
   dictionary,
   onStatusChange,
 }: ChoiceQuestionProps) {
+  const allowMultiple = question.type === "multi_choice";
   const [selected, setSelected] = useState<string[]>([]);
   const [revealed, setRevealed] = useState(false);
 
@@ -35,7 +38,7 @@ export function ChoiceQuestionRenderer({
   const toggleOption = (optionId: string) => {
     if (revealed) return;
 
-    if (question.allowMultiple) {
+    if (allowMultiple) {
       setSelected((prev) =>
         prev.includes(optionId)
           ? prev.filter((id) => id !== optionId)
@@ -85,32 +88,48 @@ export function ChoiceQuestionRenderer({
                   revealed &&
                     !isSelected &&
                     isCorrectOption &&
-                    "border-aquamarine-100 bg-aquamarine-100 text-ink-heading",
+                    "border-dashed border-aquamarine-400 text-ink-heading",
                   revealed &&
                     isSelected &&
                     !isCorrectOption &&
                     "border-salmon bg-salmon-50"
                 )}
               >
+                {/* "What did I pick?" — stays violet, unchanged by grading,
+                    so your actual choice is never overwritten by the
+                    verdict. Shape carries the other distinction: a circle
+                    (radio) reads as "pick one," a diamond (checkbox) reads
+                    as "pick any number" — no need to spell either out in
+                    the prompt copy. */}
                 <span
                   aria-hidden="true"
                   className={cn(
-                    "size-2 shrink-0 rotate-45 border transition-colors",
-                    !isSelected && "border-rule-strong bg-transparent",
-                    isSelected &&
-                      !revealed &&
-                      "border-primary-700 bg-primary-700/80",
-                    revealed &&
-                      isSelected &&
-                      isCorrectOption &&
-                      "border-aquamarine bg-aquamarine/80",
-                    revealed &&
-                      isSelected &&
-                      !isCorrectOption &&
-                      "border-salmon bg-salmon/80"
+                    "size-2 shrink-0 border transition-colors",
+                    allowMultiple ? "rotate-45" : "rounded-full",
+                    isSelected
+                      ? "border-primary-700 bg-primary-700/80"
+                      : "border-rule-strong bg-transparent"
                   )}
                 />
-                {option.label}
+                <span className="flex-1">{option.label}</span>
+                {/* "Was it right?" — a separate icon channel, not just
+                    color, so the verdict reads without relying on hue. */}
+                {revealed && isCorrectOption && (
+                  <span
+                    aria-hidden="true"
+                    className="flex size-5 shrink-0 items-center justify-center rounded-full bg-aquamarine-400"
+                  >
+                    <Check className="size-3.5 text-white" strokeWidth={3} />
+                  </span>
+                )}
+                {revealed && isSelected && !isCorrectOption && (
+                  <span
+                    aria-hidden="true"
+                    className="flex size-5 shrink-0 items-center justify-center rounded-full bg-salmon-600"
+                  >
+                    <X className="size-3.5 text-white" strokeWidth={3} />
+                  </span>
+                )}
               </button>
             </li>
           );

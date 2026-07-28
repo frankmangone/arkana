@@ -4,26 +4,36 @@ import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import type { AnswerStatus } from "@/features/quiz/types";
 
-// The rail keeps the staggered diamond lattice of the buy-me-coffee
+// The rail/band keeps the staggered diamond lattice of the buy-me-coffee
 // GlyphMosaic (36px tile: sigils at each tile's center and corners, lying
 // on diagonal lines), but every tile is a real Arkana glyph drawn from the
 // same element vocabulary as arkana-pattern.tsx (17×17 grid coordinates,
 // scaled to the tile). Grading decodes each sigil in place — only which
-// segments are lit changes, never where the sigil sits.
+// segments are lit changes, never where the sigil sits. Same pattern as
+// the coffee widget's mobile/desktop split too: a full-width band on top
+// for mobile, a narrow rail on the side for desktop.
 const TILE = 36;
 const STEP = TILE / 2; // lattice pitch
-const RAIL_WIDTH = 96; // w-24
-const MAX_HEIGHT = 1080; // generous; container clips the overflow
 const CELL = TILE / 16; // arkana-pattern grid cell, scaled to the tile
 const STROKE = 1.8;
 
-const POSITIONS: Array<[number, number]> = [];
-for (let row = 0; row * STEP <= MAX_HEIGHT; row++) {
-  for (let col = 0; col * STEP <= RAIL_WIDTH; col++) {
-    if ((row + col) % 2 === 0) POSITIONS.push([col * STEP, row * STEP]);
+const RAIL_WIDTH = 96; // w-24
+const RAIL_HEIGHT = 1080; // generous; container clips the overflow
+const BAND_WIDTH = 480; // generous virtual canvas; "slice" covers any card width
+const BAND_HEIGHT = 64; // h-16
+
+function buildPositions(width: number, height: number): Array<[number, number]> {
+  const positions: Array<[number, number]> = [];
+  for (let row = 0; row * STEP <= height; row++) {
+    for (let col = 0; col * STEP <= width; col++) {
+      if ((row + col) % 2 === 0) positions.push([col * STEP, row * STEP]);
+    }
   }
+  return positions;
 }
-const SIGIL_COUNT = POSITIONS.length;
+
+const RAIL_POSITIONS = buildPositions(RAIL_WIDTH, RAIL_HEIGHT);
+const BAND_POSITIONS = buildPositions(BAND_WIDTH, BAND_HEIGHT);
 
 // Grid-unit segment endpoints from arkana-pattern.tsx, center at (8,8).
 const seg = (x1: number, y1: number, x2: number, y2: number) =>
@@ -108,19 +118,26 @@ function Sigil({ x, y, bits }: { x: number; y: number; bits: number }) {
 
 interface GlyphRailProps {
   status: AnswerStatus;
+  /** "rail" (default): narrow band hugging the right edge, desktop-only.
+   * "band": full-width strip across the top, mobile-only — same idea as
+   * the buy-me-coffee widget's mobile/desktop mosaic split. */
+  layout?: "rail" | "band";
 }
 
 /**
- * The quiz marker: the house glyph lattice hugging the card's right edge,
- * fading inward. On grading, every sigil stays exactly where it is and
- * decodes in place — a fast decoder-sigil-style scramble locking into
- * outline + rays + center (correct, aquamarine) or outline + inner X
- * (incorrect, salmon). Colors match the correct/incorrect vocabulary the
- * existing inline post-quiz widget already uses.
+ * The quiz marker: the house glyph lattice, fading inward. On grading,
+ * every sigil stays exactly where it is and decodes in place — a fast
+ * decoder-sigil-style scramble locking into outline + rays + center
+ * (correct, aquamarine) or outline + inner X (incorrect, salmon). Colors
+ * match the correct/incorrect vocabulary the existing inline post-quiz
+ * widget already uses.
  */
-export function GlyphRail({ status }: GlyphRailProps) {
+export function GlyphRail({ status, layout = "rail" }: GlyphRailProps) {
+  const positions = layout === "band" ? BAND_POSITIONS : RAIL_POSITIONS;
+  const sigilCount = positions.length;
+
   const [glyphs, setGlyphs] = useState<number[]>(() =>
-    Array(SIGIL_COUNT).fill(GLYPH_IDLE)
+    Array(sigilCount).fill(GLYPH_IDLE)
   );
   const prevStatus = useRef<AnswerStatus>("idle");
 
@@ -136,33 +153,42 @@ export function GlyphRail({ status }: GlyphRailProps) {
           : GLYPH_IDLE;
 
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setGlyphs(Array(SIGIL_COUNT).fill(target));
+      setGlyphs(Array(sigilCount).fill(target));
       return;
     }
 
-    const rank = shuffledRanks(SIGIL_COUNT);
-    const lockPerTick = Math.ceil(SIGIL_COUNT / DECODE_TICKS);
+    const rank = shuffledRanks(sigilCount);
+    const lockPerTick = Math.ceil(sigilCount / DECODE_TICKS);
     let locked = 0;
 
     const interval = window.setInterval(() => {
-      locked = Math.min(SIGIL_COUNT, locked + lockPerTick);
+      locked = Math.min(sigilCount, locked + lockPerTick);
       setGlyphs(
-        Array.from({ length: SIGIL_COUNT }, (_, i) =>
+        Array.from({ length: sigilCount }, (_, i) =>
           rank[i] < locked ? target : randomGlyph()
         )
       );
-      if (locked >= SIGIL_COUNT) window.clearInterval(interval);
+      if (locked >= sigilCount) window.clearInterval(interval);
     }, TICK_MS);
 
     return () => window.clearInterval(interval);
-  }, [status]);
+  }, [status, sigilCount]);
+
+  const isBand = layout === "band";
 
   return (
     <div
       aria-hidden="true"
       className={cn(
-        "pointer-events-none absolute inset-y-0 right-0 hidden w-24 overflow-hidden md:block",
+        "pointer-events-none overflow-hidden",
         "transition-[color,opacity] duration-500 ease-out motion-reduce:transition-none",
+        isBand
+          // -mt-6 cancels Card's own py-6 so the band sits flush against
+          // the card's top edge instead of floating in the padding gap —
+          // the rail doesn't need this since inset-y-0 on an absolutely
+          // positioned element is measured from the padding edge already.
+          ? "-mt-6 block h-16 w-full rounded-t-md md:hidden"
+          : "absolute inset-y-0 right-0 hidden w-24 md:block",
         status === "correct"
           ? "text-aquamarine-500 opacity-55"
           : status === "incorrect"
@@ -170,21 +196,36 @@ export function GlyphRail({ status }: GlyphRailProps) {
             : "text-primary-700 opacity-30"
       )}
       style={{
-        maskImage: "linear-gradient(to left, black 45%, transparent 100%)",
-        WebkitMaskImage:
-          "linear-gradient(to left, black 45%, transparent 100%)",
+        maskImage: isBand
+          ? "linear-gradient(to bottom, black 45%, transparent 100%)"
+          : "linear-gradient(to left, black 45%, transparent 100%)",
+        WebkitMaskImage: isBand
+          ? "linear-gradient(to bottom, black 45%, transparent 100%)"
+          : "linear-gradient(to left, black 45%, transparent 100%)",
       }}
     >
-      <svg
-        width={RAIL_WIDTH}
-        height={MAX_HEIGHT}
-        viewBox={`0 0 ${RAIL_WIDTH} ${MAX_HEIGHT}`}
-        className="block"
-      >
-        {POSITIONS.map(([x, y], i) => (
-          <Sigil key={i} x={x} y={y} bits={glyphs[i]} />
-        ))}
-      </svg>
+      {isBand ? (
+        <svg
+          viewBox={`0 0 ${BAND_WIDTH} ${BAND_HEIGHT}`}
+          preserveAspectRatio="xMinYMin slice"
+          className="block h-full w-full"
+        >
+          {positions.map(([x, y], i) => (
+            <Sigil key={i} x={x} y={y} bits={glyphs[i]} />
+          ))}
+        </svg>
+      ) : (
+        <svg
+          width={RAIL_WIDTH}
+          height={RAIL_HEIGHT}
+          viewBox={`0 0 ${RAIL_WIDTH} ${RAIL_HEIGHT}`}
+          className="block"
+        >
+          {positions.map(([x, y], i) => (
+            <Sigil key={i} x={x} y={y} bits={glyphs[i]} />
+          ))}
+        </svg>
+      )}
     </div>
   );
 }

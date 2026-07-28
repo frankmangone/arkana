@@ -147,7 +147,8 @@
       "3": "Difícil"
     },
     "types": {
-      "choice": "Escolha",
+      "single_choice": "Escolha Única",
+      "multi_choice": "Múltipla Escolha",
       "matching": "Relacionar",
       "range": "Estimativa",
       "sequencing": "Sequência",

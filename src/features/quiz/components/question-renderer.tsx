@@ -24,7 +24,8 @@ export function QuestionRenderer({
   onStatusChange,
 }: QuestionRendererProps) {
   switch (question.type) {
-    case "choice":
+    case "single_choice":
+    case "multi_choice":
       return (
         <ChoiceQuestionRenderer
           question={question}

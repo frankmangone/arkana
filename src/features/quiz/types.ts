@@ -19,11 +19,20 @@ export interface ChoiceOption {
   label: string;
 }
 
-export interface ChoiceQuestion extends QuestionBase {
-  type: "choice";
-  allowMultiple: boolean;
+interface ChoiceQuestionBase extends QuestionBase {
   options: ChoiceOption[];
   correctOptionIds: string[];
+}
+
+// Split into two literal types rather than one "choice" + an allowMultiple
+// flag — the picker's own type is what has to signal "pick one" vs "pick
+// any number", not a sentence in the prompt copy.
+export interface SingleChoiceQuestion extends ChoiceQuestionBase {
+  type: "single_choice";
+}
+
+export interface MultiChoiceQuestion extends ChoiceQuestionBase {
+  type: "multi_choice";
 }
 
 export interface MatchingPair {
@@ -88,7 +97,8 @@ export interface ThisVsThatQuestion extends QuestionBase {
 }
 
 export type Question =
-  | ChoiceQuestion
+  | SingleChoiceQuestion
+  | MultiChoiceQuestion
   | MatchingQuestion
   | RangeQuestion
   | SequencingQuestion

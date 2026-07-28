@@ -147,7 +147,8 @@
       "3": "Hard"
     },
     "types": {
-      "choice": "Choice",
+      "single_choice": "Single Choice",
+      "multi_choice": "Multiple Choice",
       "matching": "Matching",
       "range": "Estimate",
       "sequencing": "Sequence",
