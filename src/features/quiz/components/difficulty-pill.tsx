@@ -2,24 +2,30 @@ import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import type { QuestionDifficulty } from "@/features/quiz/types";
 
-/** Color-coded within the house palette: aquamarine → violet → magenta. */
-const TIER_CLASSES: Record<QuestionDifficulty, string> = {
-  1: "border-aquamarine-450/60 text-aquamarine-600",
-  2: "border-primary-700/60 text-primary-800",
-  3: "border-secondary-700/60 text-secondary-800",
-};
-
 interface DifficultyPillProps {
   difficulty: QuestionDifficulty;
   /** Localized tier label, e.g. "Easy". */
   label: string;
+  className?: string;
 }
 
-export function DifficultyPill({ difficulty, label }: DifficultyPillProps) {
+export function DifficultyPill({
+  difficulty,
+  label,
+  className,
+}: DifficultyPillProps) {
   return (
     <Badge
-      variant="outline"
-      className={cn("shrink-0", TIER_CLASSES[difficulty])}
+      className={cn(
+        // Soft halo in the same fill color, pushing the mosaic pattern
+        // behind it out of the way so the chip doesn't read as embedded
+        // in the pattern.
+        "border-primary-700/60 bg-surface-overlay text-primary-700 shadow-[0_0_14px_6px_var(--background)]",
+        className
+      )}
+      // Tier still drives the label text — just no longer a distinct color
+      // per tier, so the pill reads as one consistent "difficulty" chip.
+      data-difficulty={difficulty}
     >
       {label}
     </Badge>

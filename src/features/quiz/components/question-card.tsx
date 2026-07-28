@@ -3,12 +3,10 @@
 import { useState } from "react";
 import {
   Circle,
-  Compass,
   Link2,
   ListChecks,
   ListOrdered,
   Scale,
-  SearchX,
   SlidersHorizontal,
   type LucideIcon,
 } from "lucide-react";
@@ -24,12 +22,12 @@ import type {
 } from "@/features/quiz/types";
 
 // Same soft-glow formula the buy-me-coffee widget uses for its accent
-// shadow (0 4px 40px -8px, ~25% alpha), just swapped to the aquamarine/
-// salmon pair the quiz already grades with instead of coffee's coral.
+// shadow (0 4px 40px -8px, ~25% alpha). Correct is teal-600, incorrect is
+// magenta-600 — each its own lane, distinct from primary/secondary's violet.
 const STATUS_SHADOW: Record<AnswerStatus, string> = {
   idle: "",
-  correct: "shadow-[0_4px_40px_-8px_hsla(165,65%,60%,0.35)]",
-  incorrect: "shadow-[0_4px_40px_-8px_hsla(5,85%,70%,0.35)]",
+  correct: "shadow-[0_4px_40px_-8px_hsla(195,92%,60%,0.35)]",
+  incorrect: "shadow-[0_4px_40px_-8px_hsla(312,92%,60%,0.35)]",
 };
 
 const TYPE_ICONS: Record<Question["type"], LucideIcon> = {
@@ -38,8 +36,6 @@ const TYPE_ICONS: Record<Question["type"], LucideIcon> = {
   matching: Link2,
   range: SlidersHorizontal,
   sequencing: ListOrdered,
-  scenario: Compass,
-  spot_the_flaw: SearchX,
   this_vs_that: Scale,
 };
 
@@ -55,30 +51,29 @@ export function QuestionCard({ question, dictionary }: QuestionCardProps) {
   return (
     <Card
       className={cn(
-        "relative overflow-hidden transition-[box-shadow,border-color] duration-500 ease-out",
-        status === "correct" && "border-aquamarine",
-        status === "incorrect" && "border-salmon",
+        "relative gap-4 overflow-hidden transition-[box-shadow,border-color] duration-500 ease-out",
+        status === "correct" && "border-teal",
+        status === "incorrect" && "border-magenta",
         STATUS_SHADOW[status]
       )}
     >
       <GlyphRail status={status} layout="band" />
       <GlyphRail status={status} layout="rail" />
+      <DifficultyPill
+        difficulty={question.difficulty}
+        label={dictionary.difficulty[`${question.difficulty}`]}
+        className="absolute top-6 right-6 z-10"
+      />
       <CardHeader className="md:pr-24">
-        <div className="flex items-center justify-between gap-4">
-          <span className="eyebrow inline-flex items-center gap-2">
-            <TypeIcon className="size-3.5" aria-hidden="true" />
-            {dictionary.types[question.type]}
-          </span>
-          <DifficultyPill
-            difficulty={question.difficulty}
-            label={dictionary.difficulty[`${question.difficulty}`]}
-          />
-        </div>
-        <CardTitle className="text-lg leading-snug text-ink-heading">
+        <span className="eyebrow inline-flex items-center gap-2">
+          <TypeIcon className="size-3.5" aria-hidden="true" />
+          {dictionary.types[question.type]}
+        </span>
+        <CardTitle className="pr-20 text-lg leading-snug text-ink-heading">
           {question.prompt}
         </CardTitle>
       </CardHeader>
-      <CardContent className="pt-2 md:pr-24">
+      <CardContent className="pt-0 md:pr-24">
         <QuestionRenderer
           question={question}
           dictionary={dictionary}

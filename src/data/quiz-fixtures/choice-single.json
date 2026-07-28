@@ -1,0 +1,14 @@
+{
+  "id": "fixture-choice-single",
+  "type": "single_choice",
+  "prompt": "Which of the following best describes a one-way function?",
+  "difficulty": 1,
+  "options": [
+    { "id": "a", "label": "Easy to compute in one direction, hard to invert" },
+    { "id": "b", "label": "A function with no inverse at all" },
+    { "id": "c", "label": "A function that always returns the same output" },
+    { "id": "d", "label": "A symmetric encryption cipher" }
+  ],
+  "correctOptionIds": ["a"],
+  "explanation": "A one-way function must still have an inverse in principle — \"no inverse at all\" would make it uninvertible even for the person who created it, which breaks schemes like public-key encryption that rely on the owner being able to reverse it with a secret key."
+}

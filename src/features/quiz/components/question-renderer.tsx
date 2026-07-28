@@ -1,6 +1,10 @@
 "use client";
 
 import { ChoiceQuestionRenderer } from "@/features/quiz/components/choice-question";
+import { MatchingQuestionRenderer } from "@/features/quiz/components/matching-question";
+import { RangeQuestionRenderer } from "@/features/quiz/components/range-question";
+import { SequencingQuestionRenderer } from "@/features/quiz/components/sequencing-question";
+import { ThisVsThatQuestionRenderer } from "@/features/quiz/components/this-vs-that-question";
 import type {
   AnswerStatus,
   Question,
@@ -13,11 +17,7 @@ interface QuestionRendererProps {
   onStatusChange?: (status: AnswerStatus) => void;
 }
 
-/**
- * Dispatches to the renderer for `question.type`. Types without a component
- * yet fall through to a placeholder so the sandbox can list every fixture
- * from day one, even before its renderer exists.
- */
+/** Dispatches to the renderer for `question.type`. */
 export function QuestionRenderer({
   question,
   dictionary,
@@ -33,11 +33,37 @@ export function QuestionRenderer({
           onStatusChange={onStatusChange}
         />
       );
-    default:
+    case "sequencing":
       return (
-        <p className="text-sm text-ink-faint italic">
-          No renderer built yet for type &quot;{question.type}&quot;.
-        </p>
+        <SequencingQuestionRenderer
+          question={question}
+          dictionary={dictionary}
+          onStatusChange={onStatusChange}
+        />
+      );
+    case "range":
+      return (
+        <RangeQuestionRenderer
+          question={question}
+          dictionary={dictionary}
+          onStatusChange={onStatusChange}
+        />
+      );
+    case "matching":
+      return (
+        <MatchingQuestionRenderer
+          question={question}
+          dictionary={dictionary}
+          onStatusChange={onStatusChange}
+        />
+      );
+    case "this_vs_that":
+      return (
+        <ThisVsThatQuestionRenderer
+          question={question}
+          dictionary={dictionary}
+          onStatusChange={onStatusChange}
+        />
       );
   }
 }

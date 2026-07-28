@@ -1,0 +1,14 @@
+{
+  "id": "fixture-choice-multi",
+  "type": "multi_choice",
+  "prompt": "Which of these are properties a cryptographic hash function should have?",
+  "difficulty": 2,
+  "options": [
+    { "id": "a", "label": "Collision resistance" },
+    { "id": "b", "label": "Reversibility" },
+    { "id": "c", "label": "Preimage resistance" },
+    { "id": "d", "label": "Deterministic output" }
+  ],
+  "correctOptionIds": ["a", "c", "d"],
+  "explanation": "Reversibility is the one property missing here — a cryptographic hash function must be a one-way function, so recovering the input from its hash should be computationally infeasible."
+}

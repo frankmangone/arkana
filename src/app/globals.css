@@ -155,6 +155,50 @@
   --color-aquamarine-950: var(--aquamarine-950);
   --color-aquamarine-1000: var(--aquamarine-1000);
 
+  --color-teal: var(--teal-600);
+  --color-teal-50: var(--teal-50);
+  --color-teal-100: var(--teal-100);
+  --color-teal-150: var(--teal-150);
+  --color-teal-200: var(--teal-200);
+  --color-teal-250: var(--teal-250);
+  --color-teal-300: var(--teal-300);
+  --color-teal-350: var(--teal-350);
+  --color-teal-400: var(--teal-400);
+  --color-teal-450: var(--teal-450);
+  --color-teal-500: var(--teal-500);
+  --color-teal-550: var(--teal-550);
+  --color-teal-600: var(--teal-600);
+  --color-teal-650: var(--teal-650);
+  --color-teal-700: var(--teal-700);
+  --color-teal-750: var(--teal-750);
+  --color-teal-800: var(--teal-800);
+  --color-teal-850: var(--teal-850);
+  --color-teal-900: var(--teal-900);
+  --color-teal-950: var(--teal-950);
+  --color-teal-1000: var(--teal-1000);
+
+  --color-magenta: var(--magenta-600);
+  --color-magenta-50: var(--magenta-50);
+  --color-magenta-100: var(--magenta-100);
+  --color-magenta-150: var(--magenta-150);
+  --color-magenta-200: var(--magenta-200);
+  --color-magenta-250: var(--magenta-250);
+  --color-magenta-300: var(--magenta-300);
+  --color-magenta-350: var(--magenta-350);
+  --color-magenta-400: var(--magenta-400);
+  --color-magenta-450: var(--magenta-450);
+  --color-magenta-500: var(--magenta-500);
+  --color-magenta-550: var(--magenta-550);
+  --color-magenta-600: var(--magenta-600);
+  --color-magenta-650: var(--magenta-650);
+  --color-magenta-700: var(--magenta-700);
+  --color-magenta-750: var(--magenta-750);
+  --color-magenta-800: var(--magenta-800);
+  --color-magenta-850: var(--magenta-850);
+  --color-magenta-900: var(--magenta-900);
+  --color-magenta-950: var(--magenta-950);
+  --color-magenta-1000: var(--magenta-1000);
+
   --color-salmon: var(--salmon-750);
   --color-salmon-50: var(--salmon-50);
   --color-salmon-100: var(--salmon-100);
@@ -458,7 +502,59 @@
   --aquamarine-950: hsl(165, 65%, 88%);
   --aquamarine-1000: hsl(165, 65%, 92%);
 
-  /* "Incorrect" colors */
+  /* Correct/incorrect pair for the new quiz feature (src/features/quiz),
+     its own lane distinct from aquamarine/salmon so the two quiz widgets'
+     grading signals don't blur together. Both mirror the same construction
+     (16%→92% lightness ramp, saturation jump at -450) as every other scale
+     here. -600 is the flat alias for each. */
+  --teal-50: hsl(195, 82%, 16%);
+  --teal-100: hsl(195, 82%, 20%);
+  --teal-150: hsl(195, 82%, 24%);
+  --teal-200: hsl(195, 82%, 28%);
+  --teal-250: hsl(195, 82%, 32%);
+  --teal-300: hsl(195, 82%, 36%);
+  --teal-350: hsl(195, 82%, 40%);
+  --teal-400: hsl(195, 82%, 44%);
+  --teal-450: hsl(195, 92%, 48%);
+  --teal-500: hsl(195, 92%, 52%);
+  --teal-550: hsl(195, 92%, 56%);
+  --teal-600: hsl(195, 92%, 60%);
+  --teal-650: hsl(195, 92%, 64%);
+  --teal-700: hsl(195, 92%, 68%);
+  --teal-750: hsl(195, 92%, 72%);
+  --teal-800: hsl(195, 92%, 76%);
+  --teal-850: hsl(195, 92%, 80%);
+  --teal-900: hsl(195, 92%, 84%);
+  --teal-950: hsl(195, 92%, 88%);
+  --teal-1000: hsl(195, 92%, 92%);
+
+  /* Incorrect counterpart to teal above — a magenta pulled far enough
+     around the wheel from primary/secondary (hue 260/276) to read as its
+     own alarm signal, not just another violet accent. Close to the hue the
+     buy-me-coffee gradient opens on (~330), so it isn't a foreign color to
+     the brand, just an unclaimed lane within it. */
+  --magenta-50: hsl(312, 82%, 16%);
+  --magenta-100: hsl(312, 82%, 20%);
+  --magenta-150: hsl(312, 82%, 24%);
+  --magenta-200: hsl(312, 82%, 28%);
+  --magenta-250: hsl(312, 82%, 32%);
+  --magenta-300: hsl(312, 82%, 36%);
+  --magenta-350: hsl(312, 82%, 40%);
+  --magenta-400: hsl(312, 82%, 44%);
+  --magenta-450: hsl(312, 92%, 48%);
+  --magenta-500: hsl(312, 92%, 52%);
+  --magenta-550: hsl(312, 92%, 56%);
+  --magenta-600: hsl(312, 92%, 60%);
+  --magenta-650: hsl(312, 92%, 64%);
+  --magenta-700: hsl(312, 92%, 68%);
+  --magenta-750: hsl(312, 92%, 72%);
+  --magenta-800: hsl(312, 92%, 76%);
+  --magenta-850: hsl(312, 92%, 80%);
+  --magenta-900: hsl(312, 92%, 84%);
+  --magenta-950: hsl(312, 92%, 88%);
+  --magenta-1000: hsl(312, 92%, 92%);
+
+  /* "Incorrect" colors (old inline post-quiz widget's salmon) */
   --salmon-50: hsl(5, 70%, 15%);
   --salmon-100: hsl(5, 71%, 18%);
   --salmon-150: hsl(5, 71%, 22%);

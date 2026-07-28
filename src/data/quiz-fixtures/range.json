@@ -1,0 +1,29 @@
+{
+  "id": "fixture-range",
+  "type": "range",
+  "prompt": "Estimate the typical key sizes below.",
+  "difficulty": 2,
+  "ranges": [
+    {
+      "id": "rsa",
+      "label": "RSA-2048 key size",
+      "min": 0,
+      "max": 4096,
+      "step": 128,
+      "unit": "bits",
+      "correctValue": 2048,
+      "tolerance": 0
+    },
+    {
+      "id": "aes",
+      "label": "AES-256 key size",
+      "min": 0,
+      "max": 512,
+      "step": 32,
+      "unit": "bits",
+      "correctValue": 256,
+      "tolerance": 0
+    }
+  ],
+  "explanation": "RSA needs a much larger key than AES for comparable security because its strength relies on the difficulty of factoring large numbers, not raw brute-force search over the key space — that mathematical structure can be attacked more efficiently than brute force, so it needs far more bits to reach the same security margin."
+}

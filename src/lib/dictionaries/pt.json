@@ -140,7 +140,16 @@
     "tryAgain": "Tentar novamente",
     "reset": "Reiniciar",
     "correct": "Correto",
-    "incorrect": "Não exatamente — a resposta correta está marcada",
+    "incorrect": "Não exatamente!",
+    "correctValue": "Resposta correta: {value}",
+    "both": "Ambos",
+    "neither": "Nenhum",
+    "matchingHint": "Toque em um termo e depois na sua correspondência.",
+    "singleChoiceHint": "Escolha uma resposta.",
+    "multiChoiceHint": "Escolha todas as que se aplicam.",
+    "sequencingHint": "Arraste para reordenar, ou use as setas.",
+    "rangeHint": "Arraste o controle até sua estimativa.",
+    "thisVsThatHint": "Escolha uma opção para cada afirmação.",
     "difficulty": {
       "1": "Fácil",
       "2": "Média",
@@ -152,8 +161,6 @@
       "matching": "Relacionar",
       "range": "Estimativa",
       "sequencing": "Sequência",
-      "scenario": "Cenário",
-      "spot_the_flaw": "Encontre o erro",
       "this_vs_that": "Isto vs aquilo"
     }
   },

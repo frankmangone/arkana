@@ -128,9 +128,9 @@ interface GlyphRailProps {
  * The quiz marker: the house glyph lattice, fading inward. On grading,
  * every sigil stays exactly where it is and decodes in place — a fast
  * decoder-sigil-style scramble locking into outline + rays + center
- * (correct, aquamarine) or outline + inner X (incorrect, salmon). Colors
- * match the correct/incorrect vocabulary the existing inline post-quiz
- * widget already uses.
+ * (correct, teal) or outline + inner X (incorrect, magenta) — the new
+ * quiz feature's own grading pair, distinct from the old inline post-quiz
+ * widget's aquamarine/salmon.
  */
 export function GlyphRail({ status, layout = "rail" }: GlyphRailProps) {
   const positions = layout === "band" ? BAND_POSITIONS : RAIL_POSITIONS;
@@ -190,9 +190,9 @@ export function GlyphRail({ status, layout = "rail" }: GlyphRailProps) {
           ? "-mt-6 block h-16 w-full rounded-t-md md:hidden"
           : "absolute inset-y-0 right-0 hidden w-24 md:block",
         status === "correct"
-          ? "text-aquamarine-500 opacity-55"
+          ? "text-teal opacity-55"
           : status === "incorrect"
-            ? "text-salmon-700 opacity-45"
+            ? "text-magenta opacity-45"
             : "text-primary-700 opacity-30"
       )}
       style={{

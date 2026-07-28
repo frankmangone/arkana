@@ -1,15 +1,14 @@
 import fs from "fs";
 import path from "path";
-import { notFound } from "next/navigation";
 import { QuestionCard } from "@/features/quiz/components/question-card";
 import { getDictionary } from "@/lib/dictionaries";
 import type { Question } from "@/features/quiz/types";
 
 /**
- * Fixtures live in the gitignored src/data/quiz-fixtures — read at runtime,
- * never statically imported, so a missing directory (any checkout other than
- * a machine that authored fixtures locally) can't break the build. This code
- * path is only reached once NEXT_PUBLIC_DEV_MODE has already gated it below.
+ * Fixtures live in src/data/quiz-fixtures — read at build time (this is a
+ * static export, so there's no live server reading these per-request), never
+ * statically imported. The try/catch is just a defensive fallback; the
+ * directory is committed, so it should always be present.
  */
 function loadFixtures(): Question[] {
   const fixturesDir = path.join(process.cwd(), "src", "data", "quiz-fixtures");
@@ -34,10 +33,6 @@ function loadFixtures(): Question[] {
 }
 
 export default async function QuizSandboxPage() {
-  if (process.env.NEXT_PUBLIC_DEV_MODE !== "true") {
-    return notFound();
-  }
-
   const questions = loadFixtures();
   const dictionary = await getDictionary("en");
 
@@ -48,9 +43,8 @@ export default async function QuizSandboxPage() {
         Quiz components
       </h1>
       <p className="mt-2 text-sm text-ink-muted">
-        Dev-only — gated by <code>NEXT_PUBLIC_DEV_MODE</code>, never shipped in
-        a real build. Renders every fixture from{" "}
-        <code>src/data/quiz-fixtures</code>.
+        Unlisted — not linked from anywhere in the site, but part of the real
+        build. Renders every fixture from <code>src/data/quiz-fixtures</code>.
       </p>
 
       {questions.length === 0 ? (

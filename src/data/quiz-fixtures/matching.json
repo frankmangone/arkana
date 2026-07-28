@@ -1,0 +1,12 @@
+{
+  "id": "fixture-matching",
+  "type": "matching",
+  "prompt": "Match each term to its definition.",
+  "difficulty": 2,
+  "pairs": [
+    { "id": "p1", "left": "Nonce", "right": "A number used only once in a cryptographic communication" },
+    { "id": "p2", "left": "Salt", "right": "Random data added to input before hashing" },
+    { "id": "p3", "left": "Digital signature", "right": "Proof of authenticity generated with a private key" }
+  ],
+  "explanation": "A nonce and a salt are easy to mix up since both add randomness before a cryptographic operation, but a nonce is about preventing replay in a communication, while a salt specifically defeats precomputed hash attacks like rainbow tables."
+}

@@ -12,6 +12,8 @@ interface QuestionBase {
   id: string;
   prompt: string;
   difficulty: QuestionDifficulty;
+  /** Shown on incorrect reveal — explains why the marked answer is correct. */
+  explanation?: string;
 }
 
 export interface ChoiceOption {
@@ -46,14 +48,22 @@ export interface MatchingQuestion extends QuestionBase {
   pairs: MatchingPair[];
 }
 
-export interface RangeQuestion extends QuestionBase {
-  type: "range";
+export interface RangeItem {
+  id: string;
+  /** What this particular slider is estimating, e.g. "RSA-2048 key size". */
+  label: string;
   min: number;
   max: number;
   step: number;
   unit?: string;
   correctValue: number;
   tolerance: number;
+}
+
+export interface RangeQuestion extends QuestionBase {
+  type: "range";
+  /** One or more independent estimates graded together as a single question. */
+  ranges: RangeItem[];
 }
 
 export interface SequencingStep {
@@ -65,20 +75,6 @@ export interface SequencingQuestion extends QuestionBase {
   type: "sequencing";
   /** Steps in correct order; components are responsible for shuffling at render time. */
   steps: SequencingStep[];
-}
-
-export interface ScenarioQuestion extends QuestionBase {
-  type: "scenario";
-  scenario: string;
-  options: ChoiceOption[];
-  correctOptionIds: string[];
-}
-
-export interface SpotTheFlawQuestion extends QuestionBase {
-  type: "spot_the_flaw";
-  passage: string;
-  options: ChoiceOption[];
-  correctOptionIds: string[];
 }
 
 export type ComparisonAnswer = "a" | "b" | "both" | "neither";
@@ -102,6 +98,4 @@ export type Question =
   | MatchingQuestion
   | RangeQuestion
   | SequencingQuestion
-  | ScenarioQuestion
-  | SpotTheFlawQuestion
   | ThisVsThatQuestion;

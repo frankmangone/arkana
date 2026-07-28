@@ -1,0 +1,13 @@
+{
+  "id": "fixture-sequencing",
+  "type": "sequencing",
+  "prompt": "Order the steps of a basic Diffie-Hellman key exchange.",
+  "difficulty": 3,
+  "steps": [
+    { "id": "s1", "label": "Both parties agree on a public prime and base" },
+    { "id": "s2", "label": "Each party generates a private secret" },
+    { "id": "s3", "label": "Each party computes and exchanges a public value" },
+    { "id": "s4", "label": "Each party combines the other's public value with their own secret to derive the shared key" }
+  ],
+  "explanation": "The public values can't be computed until each side has generated its own private secret, and the shared key can't be derived until those public values have actually been exchanged — each step depends on the one before it."
+}

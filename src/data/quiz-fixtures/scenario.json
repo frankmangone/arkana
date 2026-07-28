@@ -1,0 +1,14 @@
+{
+  "id": "fixture-scenario",
+  "type": "single_choice",
+  "prompt": "You are designing a login system and need to store user passwords. An engineer suggests encrypting them with a symmetric cipher so they can be decrypted later if needed. What should you do?",
+  "difficulty": 3,
+  "options": [
+    { "id": "a", "label": "Agree, since encryption can always be reversed if needed for support" },
+    { "id": "b", "label": "Hash the passwords with a salted, slow hash function instead, since they never need to be recovered" },
+    { "id": "c", "label": "Store them in plaintext for simplicity" },
+    { "id": "d", "label": "Use a faster unsalted hash for performance" }
+  ],
+  "correctOptionIds": ["b"],
+  "explanation": "Passwords should never be recoverable, even by the system storing them — a slow, salted hash lets you verify a login attempt without ever needing to decrypt anything, which limits the damage if the database ever leaks."
+}
