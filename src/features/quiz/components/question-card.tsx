@@ -44,6 +44,15 @@ const TYPE_ICONS: Record<Question["type"], LucideIcon> = {
   fill_blank: PencilLine,
 };
 
+const STYLES = {
+  wrapper: (status: AnswerStatus) => cn(
+    "relative gap-4 overflow-hidden transition-[box-shadow,border-color] duration-500 ease-out",
+    status === "correct" && "border-teal-400",
+    status === "incorrect" && "border-magenta-400",
+    STATUS_SHADOW[status]
+  ),
+}
+
 interface QuestionCardProps {
   question: Question;
   dictionary: QuizzesDictionary;
@@ -54,22 +63,14 @@ export function QuestionCard({ question, dictionary }: QuestionCardProps) {
   const TypeIcon = TYPE_ICONS[question.type];
 
   return (
-    <Card
-      className={cn(
-        "relative gap-4 overflow-hidden transition-[box-shadow,border-color] duration-500 ease-out",
-        status === "correct" && "border-teal-400",
-        status === "incorrect" && "border-magenta-400",
-        STATUS_SHADOW[status]
-      )}
-    >
+    <Card className={STYLES.wrapper(status)}>
       <GlyphRail status={status} layout="band" />
-      <GlyphRail status={status} layout="rail" />
       <DifficultyPill
         difficulty={question.difficulty}
         label={dictionary.difficulty[`${question.difficulty}`]}
         className="absolute top-6 right-6 z-10"
       />
-      <CardHeader className="md:pr-24">
+      <CardHeader>
         <span className="eyebrow inline-flex items-center gap-2">
           <TypeIcon className="size-3.5" aria-hidden="true" />
           {dictionary.types[question.type]}
@@ -78,7 +79,7 @@ export function QuestionCard({ question, dictionary }: QuestionCardProps) {
           <LatexText inline>{question.prompt}</LatexText>
         </CardTitle>
       </CardHeader>
-      <CardContent className="pt-0 md:pr-24">
+      <CardContent className="pt-0">
         <QuestionRenderer
           question={question}
           dictionary={dictionary}

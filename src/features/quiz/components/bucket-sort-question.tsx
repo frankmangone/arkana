@@ -195,7 +195,7 @@ export function BucketSortQuestionRenderer({
               <span className="text-sm font-semibold text-ink-heading">
                 <LatexText inline>{bucket.label}</LatexText>
               </span>
-              <ul className="flex list-none flex-col gap-2 !p-0">
+              <ul className="flex list-none flex-wrap flex-row md:flex-col gap-2 !p-0">
                 {bucketItems.map((item) => {
                   const isCorrect = item.correctBucketId === bucket.id;
 
@@ -223,7 +223,7 @@ export function BucketSortQuestionRenderer({
                         className={chipClassName(
                           item.id,
                           cn(
-                            "flex w-full items-center gap-2",
+                            "flex items-center gap-1.5",
                             revealed &&
                               isCorrect &&
                               "border-teal bg-teal/10 text-ink-heading",
@@ -231,17 +231,13 @@ export function BucketSortQuestionRenderer({
                           )
                         )}
                       >
-                        <span className="flex-1">
-                          <LatexText inline>{item.label}</LatexText>
-                        </span>
-                        <span className="flex size-4 shrink-0 items-center justify-center">
-                          {revealed &&
-                            (isCorrect ? (
-                              <Check className="size-4" strokeWidth={3} aria-hidden="true" />
-                            ) : (
-                              <X className="size-4" strokeWidth={3} aria-hidden="true" />
-                            ))}
-                        </span>
+                        <LatexText inline>{item.label}</LatexText>
+                        {revealed &&
+                          (isCorrect ? (
+                            <Check className="size-3.5 shrink-0" strokeWidth={3} aria-hidden="true" />
+                          ) : (
+                            <X className="size-3.5 shrink-0" strokeWidth={3} aria-hidden="true" />
+                          ))}
                       </button>
                     </motion.li>
                   );

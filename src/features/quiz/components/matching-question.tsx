@@ -249,7 +249,7 @@ export function MatchingQuestionRenderer({
                 >
                   {/* Absolutely positioned so it doesn't eat into the row's
                       own flex layout or shift the label when it appears. */}
-                  <span className="absolute top-1.5 left-2 text-xs font-semibold text-primary-700">
+                  <span className="absolute top-1.5 left-2 text-xs font-semibold text-white">
                     {assignedRightId && letterFor(matchOrder.indexOf(pair.id))}
                   </span>
                   <span className="flex-1 pl-4">
@@ -321,7 +321,7 @@ export function MatchingQuestionRenderer({
                       "border-magenta bg-magenta/10"
                   )}
                 >
-                  <span className="absolute top-1.5 left-2 text-xs font-semibold text-primary-700">
+                  <span className="absolute top-1.5 left-2 text-xs font-semibold text-white">
                     {isMatched && letterFor(matchOrder.indexOf(matchedLeftId))}
                   </span>
                   <span className="flex-1 pl-4">

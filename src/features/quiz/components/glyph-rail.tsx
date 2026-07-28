@@ -187,7 +187,7 @@ export function GlyphRail({ status, layout = "rail" }: GlyphRailProps) {
           // the card's top edge instead of floating in the padding gap —
           // the rail doesn't need this since inset-y-0 on an absolutely
           // positioned element is measured from the padding edge already.
-          ? "-mt-6 block h-16 w-full rounded-t-md md:hidden"
+          ? "-mt-6 block h-16 w-full rounded-t-md"
           : "absolute inset-y-0 right-0 hidden w-24 md:block",
         status === "correct"
           ? "text-teal opacity-55"

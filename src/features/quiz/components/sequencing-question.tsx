@@ -109,10 +109,8 @@ export function SequencingQuestionRenderer({
                   )}
                   aria-hidden="true"
                 />
-                <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-primary-700/15 text-xs font-semibold text-ink-heading">
-                  {index + 1}
-                </span>
-                <span className="flex-1">
+                <span className="flex flex-1 items-baseline gap-1.5">
+                  <span className="font-semibold text-ink-heading">{index + 1}.</span>
                   <LatexText inline>{step.label}</LatexText>
                 </span>
                 {!revealed && (

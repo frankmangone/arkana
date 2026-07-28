@@ -51,7 +51,7 @@ export function RangeQuestionRenderer({
   };
 
   return (
-    <div className="flex flex-col gap-6 md:pr-6">
+    <div className="flex flex-col gap-6">
       <p className="text-xs text-ink-faint italic">{dictionary.rangeHint}</p>
       {question.ranges.map((range) => {
         const value = values[range.id];
