@@ -150,6 +150,8 @@
     "sequencingHint": "Arraste para reordenar, ou use as setas.",
     "rangeHint": "Arraste o controle até sua estimativa.",
     "thisVsThatHint": "Escolha uma opção para cada afirmação.",
+    "bucketSortHint": "Toque em um item e depois em um grupo para classificá-lo.",
+    "fillBlankHint": "Toque em uma palavra para preencher a próxima lacuna, ou toque em uma lacuna preenchida para limpá-la.",
     "difficulty": {
       "1": "Fácil",
       "2": "Média",
@@ -161,7 +163,9 @@
       "matching": "Relacionar",
       "range": "Estimativa",
       "sequencing": "Sequência",
-      "this_vs_that": "Isto vs aquilo"
+      "this_vs_that": "Isto vs aquilo",
+      "bucket_sort": "Classificar",
+      "fill_blank": "Complete a Lacuna"
     }
   },
   "auth": {

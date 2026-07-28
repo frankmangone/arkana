@@ -1,0 +1,14 @@
+{
+  "id": "fixture-fill-blank",
+  "type": "fill_blank",
+  "prompt": "Fill in the blanks to complete the description of symmetric encryption.",
+  "difficulty": 1,
+  "template": "Alice wants to send Bob a love letter that no eavesdropper can read. She scrambles the {{blank1}} into unreadable {{blank2}} using a shared secret {{blank3}}. Only Bob, holding the same secret, can reverse the process and recover her words.",
+  "blanks": [
+    { "id": "blank1", "correctWord": "plaintext" },
+    { "id": "blank2", "correctWord": "ciphertext" },
+    { "id": "blank3", "correctWord": "key" }
+  ],
+  "wordBank": ["ciphertext", "hash", "key", "plaintext", "salt", "signature"],
+  "explanation": "Plaintext is the original message, the key is the shared secret used to transform it, and ciphertext is the scrambled result an eavesdropper can't read without that same key."
+}

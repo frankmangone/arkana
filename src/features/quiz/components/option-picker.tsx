@@ -151,21 +151,21 @@ export function OptionPicker({
           );
         })}
       </ul>
-      <div className="flex items-center gap-4">
-        <Button
-          type="button"
-          size="sm"
-          className="bg-none bg-primary-700 text-ink-on-brand hover:bg-primary-800"
-          disabled={!revealed && selected.length === 0}
-          onClick={toggleRevealed}
-        >
-          {revealed
-            ? correct
-              ? dictionary.reset
-              : dictionary.tryAgain
-            : dictionary.checkAnswer}
-        </Button>
-        {revealed && (
+      <Button
+        type="button"
+        size="sm"
+        className="self-start bg-none bg-primary-700 text-ink-on-brand hover:bg-primary-800"
+        disabled={!revealed && selected.length === 0}
+        onClick={toggleRevealed}
+      >
+        {revealed
+          ? correct
+            ? dictionary.reset
+            : dictionary.tryAgain
+          : dictionary.checkAnswer}
+      </Button>
+      {revealed && (
+        <div className="flex flex-col gap-2 border-t border-rule pt-4">
           <span
             className={cn(
               "text-xs font-medium",
@@ -174,12 +174,12 @@ export function OptionPicker({
           >
             {correct ? dictionary.correct : dictionary.incorrect}
           </span>
-        )}
-      </div>
-      {revealed && !correct && explanation && (
-        <p className="text-sm text-ink-body">
-          <LatexText inline>{explanation}</LatexText>
-        </p>
+          {!correct && explanation && (
+            <p className="text-sm text-ink-body">
+              <LatexText inline>{explanation}</LatexText>
+            </p>
+          )}
+        </div>
       )}
     </div>
   );

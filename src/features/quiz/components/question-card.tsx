@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 import {
+  Boxes,
   Circle,
   Link2,
   ListChecks,
   ListOrdered,
+  PencilLine,
   Scale,
   SlidersHorizontal,
   type LucideIcon,
@@ -38,6 +40,8 @@ const TYPE_ICONS: Record<Question["type"], LucideIcon> = {
   range: SlidersHorizontal,
   sequencing: ListOrdered,
   this_vs_that: Scale,
+  bucket_sort: Boxes,
+  fill_blank: PencilLine,
 };
 
 interface QuestionCardProps {

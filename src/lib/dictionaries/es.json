@@ -150,6 +150,8 @@
     "sequencingHint": "Arrastra para reordenar, o usa las flechas.",
     "rangeHint": "Arrastra el control para tu estimación.",
     "thisVsThatHint": "Elige una opción para cada afirmación.",
+    "bucketSortHint": "Toca un elemento y luego un grupo para clasificarlo.",
+    "fillBlankHint": "Toca una palabra para completar el siguiente espacio, o toca un espacio completado para borrarlo.",
     "difficulty": {
       "1": "Fácil",
       "2": "Media",
@@ -161,7 +163,9 @@
       "matching": "Relacionar",
       "range": "Estimación",
       "sequencing": "Secuencia",
-      "this_vs_that": "Esto vs aquello"
+      "this_vs_that": "Esto vs aquello",
+      "bucket_sort": "Clasificar",
+      "fill_blank": "Completar el Espacio"
     }
   },
   "auth": {

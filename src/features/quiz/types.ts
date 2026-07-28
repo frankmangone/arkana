@@ -92,10 +92,45 @@ export interface ThisVsThatQuestion extends QuestionBase {
   correctAnswers: Record<string, ComparisonAnswer>;
 }
 
+export interface BucketDefinition {
+  id: string;
+  label: string;
+}
+
+export interface BucketItem {
+  id: string;
+  label: string;
+  correctBucketId: string;
+}
+
+export interface BucketSortQuestion extends QuestionBase {
+  type: "bucket_sort";
+  /** Exactly two — the sort is always a binary split. */
+  buckets: [BucketDefinition, BucketDefinition];
+  items: BucketItem[];
+}
+
+export interface FillBlank {
+  id: string;
+  correctWord: string;
+}
+
+export interface FillBlankQuestion extends QuestionBase {
+  type: "fill_blank";
+  /** Prompt text with `{{blankId}}` placeholders, one per entry in `blanks`. */
+  template: string;
+  blanks: FillBlank[];
+  /** Word bank shown beneath the sentence — every blank's correct word plus a
+   * few distractors, pre-shuffled by whoever authors the fixture. */
+  wordBank: string[];
+}
+
 export type Question =
   | SingleChoiceQuestion
   | MultiChoiceQuestion
   | MatchingQuestion
   | RangeQuestion
   | SequencingQuestion
-  | ThisVsThatQuestion;
+  | ThisVsThatQuestion
+  | BucketSortQuestion
+  | FillBlankQuestion;

@@ -31,7 +31,7 @@ interface LineSegment {
 }
 
 function letterFor(index: number) {
-  return String.fromCharCode(65 + index);
+  return `${String.fromCharCode(65 + index)}.`;
 }
 
 export function MatchingQuestionRenderer({
@@ -225,7 +225,7 @@ export function MatchingQuestionRenderer({
                   disabled={revealed}
                   onClick={() => selectItem("left", pair.id)}
                   className={cn(
-                    "flex min-h-16 w-full items-center gap-2.5 rounded-md border border-rule bg-surface-raised px-3 py-2.5 text-left text-sm text-ink-body transition-colors outline-none",
+                    "relative flex min-h-16 w-full items-center gap-2.5 rounded-md border border-rule bg-surface-raised px-3 py-2.5 text-left text-sm text-ink-body transition-colors outline-none",
                     "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
                     revealed
                       ? "cursor-default"
@@ -247,12 +247,12 @@ export function MatchingQuestionRenderer({
                       "border-magenta bg-magenta/10"
                   )}
                 >
-                  {/* Reserved before matching too — showing the badge only
-                      once assigned would shrink the label and shift it. */}
-                  <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-primary-700/15 text-xs font-semibold text-ink-heading">
+                  {/* Absolutely positioned so it doesn't eat into the row's
+                      own flex layout or shift the label when it appears. */}
+                  <span className="absolute top-1.5 left-2 text-xs font-semibold text-primary-700">
                     {assignedRightId && letterFor(matchOrder.indexOf(pair.id))}
                   </span>
-                  <span className="flex-1">
+                  <span className="flex-1 pl-4">
                     <LatexText inline>{pair.left}</LatexText>
                   </span>
                   {/* Reserved even before reveal — rendering this icon only
@@ -297,7 +297,7 @@ export function MatchingQuestionRenderer({
                   disabled={revealed}
                   onClick={() => selectItem("right", rightPair.id)}
                   className={cn(
-                    "flex min-h-16 w-full items-center gap-2.5 rounded-md border border-rule bg-surface-raised px-3 py-2.5 text-left text-sm text-ink-body transition-colors outline-none",
+                    "relative flex min-h-16 w-full items-center gap-2.5 rounded-md border border-rule bg-surface-raised px-3 py-2.5 text-left text-sm text-ink-body transition-colors outline-none",
                     "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
                     revealed
                       ? "cursor-default"
@@ -321,10 +321,10 @@ export function MatchingQuestionRenderer({
                       "border-magenta bg-magenta/10"
                   )}
                 >
-                  <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-primary-700/15 text-xs font-semibold text-ink-heading">
+                  <span className="absolute top-1.5 left-2 text-xs font-semibold text-primary-700">
                     {isMatched && letterFor(matchOrder.indexOf(matchedLeftId))}
                   </span>
-                  <span className="flex-1">
+                  <span className="flex-1 pl-4">
                     <LatexText inline>{rightPair.right}</LatexText>
                   </span>
                   <span className="flex size-4 shrink-0 items-center justify-center">
@@ -342,21 +342,21 @@ export function MatchingQuestionRenderer({
           })}
         </ul>
       </div>
-      <div className="flex items-center gap-4">
-        <Button
-          type="button"
-          size="sm"
-          className="bg-none bg-primary-700 text-ink-on-brand hover:bg-primary-800"
-          disabled={!revealed && !allAnswered}
-          onClick={toggleRevealed}
-        >
-          {revealed
-            ? correct
-              ? dictionary.reset
-              : dictionary.tryAgain
-            : dictionary.checkAnswer}
-        </Button>
-        {revealed && (
+      <Button
+        type="button"
+        size="sm"
+        className="self-start bg-none bg-primary-700 text-ink-on-brand hover:bg-primary-800"
+        disabled={!revealed && !allAnswered}
+        onClick={toggleRevealed}
+      >
+        {revealed
+          ? correct
+            ? dictionary.reset
+            : dictionary.tryAgain
+          : dictionary.checkAnswer}
+      </Button>
+      {revealed && (
+        <div className="flex flex-col gap-2 border-t border-rule pt-4">
           <span
             className={cn(
               "text-xs font-medium",
@@ -365,12 +365,12 @@ export function MatchingQuestionRenderer({
           >
             {correct ? dictionary.correct : dictionary.incorrect}
           </span>
-        )}
-      </div>
-      {revealed && !correct && question.explanation && (
-        <p className="text-sm text-ink-body">
-          <LatexText inline>{question.explanation}</LatexText>
-        </p>
+          {!correct && question.explanation && (
+            <p className="text-sm text-ink-body">
+              <LatexText inline>{question.explanation}</LatexText>
+            </p>
+          )}
+        </div>
       )}
     </div>
   );

@@ -150,6 +150,8 @@
     "sequencingHint": "Drag to reorder, or use the arrows.",
     "rangeHint": "Drag the slider to your estimate.",
     "thisVsThatHint": "Choose one option for each statement.",
+    "bucketSortHint": "Tap an item, then tap a bucket to sort it.",
+    "fillBlankHint": "Tap a word to fill the next blank, or tap a filled blank to clear it.",
     "difficulty": {
       "1": "Easy",
       "2": "Medium",
@@ -161,7 +163,9 @@
       "matching": "Matching",
       "range": "Estimate",
       "sequencing": "Sequence",
-      "this_vs_that": "This vs that"
+      "this_vs_that": "This vs that",
+      "bucket_sort": "Sort",
+      "fill_blank": "Fill in the Blank"
     }
   },
   "auth": {
