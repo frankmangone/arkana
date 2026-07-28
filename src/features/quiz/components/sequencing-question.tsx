@@ -2,7 +2,9 @@
 
 import { useState } from "react";
 import { Check, ChevronDown, ChevronUp, GripVertical, X } from "lucide-react";
+import { motion } from "motion/react";
 import { Button } from "@/components/ui/button";
+import { LatexText } from "@/components/ui/latex-text";
 import { shuffled } from "@/features/quiz/lib/shuffle";
 import { cn } from "@/lib/utils";
 import type {
@@ -78,15 +80,17 @@ export function SequencingQuestionRenderer({
           const isCorrectPosition = correctOrder[index] === id;
 
           return (
-            <li
+            <motion.li
               key={id}
+              layout
+              transition={{ type: "spring", stiffness: 700, damping: 40 }}
               className="!m-0 before:!content-none"
-              draggable={!revealed}
-              onDragStart={() => setDraggedId(id)}
-              onDragOver={(event) => event.preventDefault()}
-              onDrop={() => handleDrop(index)}
             >
               <div
+                draggable={!revealed}
+                onDragStart={() => setDraggedId(id)}
+                onDragOver={(event) => event.preventDefault()}
+                onDrop={() => handleDrop(index)}
                 className={cn(
                   "flex items-center gap-3 rounded-md border border-rule bg-surface-raised px-3 py-2.5 text-sm text-ink-body transition-colors",
                   !revealed && "cursor-grab active:cursor-grabbing",
@@ -100,7 +104,7 @@ export function SequencingQuestionRenderer({
               >
                 <GripVertical
                   className={cn(
-                    "size-4 shrink-0 text-ink-faint",
+                    "hidden size-4 shrink-0 text-ink-faint md:block",
                     revealed && "opacity-40"
                   )}
                   aria-hidden="true"
@@ -108,26 +112,28 @@ export function SequencingQuestionRenderer({
                 <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-primary-700/15 text-xs font-semibold text-ink-heading">
                   {index + 1}
                 </span>
-                <span className="flex-1">{step.label}</span>
+                <span className="flex-1">
+                  <LatexText inline>{step.label}</LatexText>
+                </span>
                 {!revealed && (
-                  <div className="flex shrink-0 flex-col">
+                  <div className="flex shrink-0 flex-row gap-1 md:-my-2 md:flex-col md:gap-0">
                     <button
                       type="button"
                       aria-label="Move up"
                       disabled={index === 0}
                       onClick={() => moveStep(index, -1)}
-                      className="cursor-pointer text-ink-faint outline-none transition-colors hover:text-ink-heading focus-visible:text-ink-heading disabled:pointer-events-none disabled:cursor-default disabled:opacity-30"
+                      className="cursor-pointer rounded p-2.5 text-ink-faint outline-none transition-colors hover:bg-surface-overlay hover:text-ink-heading focus-visible:text-ink-heading active:bg-surface-overlay disabled:pointer-events-none disabled:cursor-default disabled:opacity-30 md:p-2"
                     >
-                      <ChevronUp className="size-4" aria-hidden="true" />
+                      <ChevronUp className="size-5 md:size-4" aria-hidden="true" />
                     </button>
                     <button
                       type="button"
                       aria-label="Move down"
                       disabled={index === order.length - 1}
                       onClick={() => moveStep(index, 1)}
-                      className="cursor-pointer text-ink-faint outline-none transition-colors hover:text-ink-heading focus-visible:text-ink-heading disabled:pointer-events-none disabled:cursor-default disabled:opacity-30"
+                      className="cursor-pointer rounded p-2.5 text-ink-faint outline-none transition-colors hover:bg-surface-overlay hover:text-ink-heading focus-visible:text-ink-heading active:bg-surface-overlay disabled:pointer-events-none disabled:cursor-default disabled:opacity-30 md:p-2"
                     >
-                      <ChevronDown className="size-4" aria-hidden="true" />
+                      <ChevronDown className="size-5 md:size-4" aria-hidden="true" />
                     </button>
                   </div>
                 )}
@@ -138,7 +144,7 @@ export function SequencingQuestionRenderer({
                   <X className="size-4 shrink-0" strokeWidth={3} aria-hidden="true" />
                 )}
               </div>
-            </li>
+            </motion.li>
           );
         })}
       </ol>
@@ -167,7 +173,9 @@ export function SequencingQuestionRenderer({
         )}
       </div>
       {revealed && !correct && question.explanation && (
-        <p className="text-sm text-ink-body">{question.explanation}</p>
+        <p className="text-sm text-ink-body">
+          <LatexText inline>{question.explanation}</LatexText>
+        </p>
       )}
     </div>
   );

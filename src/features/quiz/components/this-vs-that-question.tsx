@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Check, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { LatexText } from "@/components/ui/latex-text";
 import { cn } from "@/lib/utils";
 import type {
   AnswerStatus,
@@ -69,7 +70,9 @@ export function ThisVsThatQuestionRenderer({
               key={statement.id}
               className="!m-0 flex flex-col gap-2 py-4 first:pt-0 last:pb-0 before:!content-none"
             >
-              <p className="text-sm text-ink-body">{statement.label}</p>
+              <p className="text-sm text-ink-body">
+                <LatexText inline>{statement.label}</LatexText>
+              </p>
               <div className="flex flex-wrap gap-2">
                 {OPTIONS.map((option) => {
                   const isSelected = selected === option;
@@ -92,7 +95,9 @@ export function ThisVsThatQuestionRenderer({
                         "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
                         revealed
                           ? "cursor-default"
-                          : "cursor-pointer hover:border-rule-strong hover:text-ink-heading",
+                          : isSelected
+                            ? "cursor-pointer"
+                            : "cursor-pointer hover:border-rule-strong hover:text-ink-heading",
                         !revealed &&
                           isSelected &&
                           "border-primary-700 bg-primary-700/10 text-ink-heading",
@@ -116,7 +121,7 @@ export function ThisVsThatQuestionRenderer({
                       {revealed && isSelected && !isCorrectOption && (
                         <X className="size-3" strokeWidth={3} aria-hidden="true" />
                       )}
-                      {optionLabel(option)}
+                      <LatexText inline>{optionLabel(option)}</LatexText>
                     </button>
                   );
                 })}
@@ -151,7 +156,9 @@ export function ThisVsThatQuestionRenderer({
         )}
       </div>
       {revealed && !correct && question.explanation && (
-        <p className="text-sm text-ink-body">{question.explanation}</p>
+        <p className="text-sm text-ink-body">
+          <LatexText inline>{question.explanation}</LatexText>
+        </p>
       )}
     </div>
   );

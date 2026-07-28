@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Check, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { LatexText } from "@/components/ui/latex-text";
 import { cn } from "@/lib/utils";
 import type {
   AnswerStatus,
@@ -85,7 +86,9 @@ export function OptionPicker({
                   "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
                   revealed
                     ? "cursor-default"
-                    : "cursor-pointer hover:border-rule-strong hover:text-ink-heading",
+                    : isSelected
+                      ? "cursor-pointer"
+                      : "cursor-pointer hover:border-rule-strong hover:text-ink-heading",
                   !revealed &&
                     isSelected &&
                     "border-primary-700 bg-primary-700/10 text-ink-heading",
@@ -123,7 +126,9 @@ export function OptionPicker({
                       : "border-rule-strong bg-transparent"
                   )}
                 />
-                <span className="flex-1">{option.label}</span>
+                <span className="flex-1">
+                  <LatexText inline>{option.label}</LatexText>
+                </span>
                 {/* "Was it right?" — a separate icon channel, not just
                     color, so the verdict reads without relying on hue. Bare
                     glyph (no enclosing badge), matching this-vs-that. */}
@@ -172,7 +177,9 @@ export function OptionPicker({
         )}
       </div>
       {revealed && !correct && explanation && (
-        <p className="text-sm text-ink-body">{explanation}</p>
+        <p className="text-sm text-ink-body">
+          <LatexText inline>{explanation}</LatexText>
+        </p>
       )}
     </div>
   );

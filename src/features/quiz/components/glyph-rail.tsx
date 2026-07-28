@@ -197,11 +197,11 @@ export function GlyphRail({ status, layout = "rail" }: GlyphRailProps) {
       )}
       style={{
         maskImage: isBand
-          ? "linear-gradient(to bottom, black 45%, transparent 100%)"
-          : "linear-gradient(to left, black 45%, transparent 100%)",
+          ? "linear-gradient(to bottom, black 0%, transparent 100%)"
+          : "linear-gradient(to left, black 0%, transparent 100%)",
         WebkitMaskImage: isBand
-          ? "linear-gradient(to bottom, black 45%, transparent 100%)"
-          : "linear-gradient(to left, black 45%, transparent 100%)",
+          ? "linear-gradient(to bottom, black 0%, transparent 100%)"
+          : "linear-gradient(to left, black 0%, transparent 100%)",
       }}
     >
       {isBand ? (

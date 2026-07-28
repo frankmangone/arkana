@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { Check, X } from "lucide-react";
 import { motion } from "motion/react";
 import { Button } from "@/components/ui/button";
+import { LatexText } from "@/components/ui/latex-text";
 import { shuffled } from "@/features/quiz/lib/shuffle";
 import { cn } from "@/lib/utils";
 import type {
@@ -45,7 +46,9 @@ export function MatchingQuestionRenderer({
   // top of both columns in this order, landing on the same row, so the
   // connecting line stays short instead of cutting diagonally across rows.
   const [matchOrder, setMatchOrder] = useState<string[]>([]);
-  const [activeLeftId, setActiveLeftId] = useState<string | null>(null);
+  const [active, setActive] = useState<{ id: string; side: "left" | "right" } | null>(
+    null
+  );
   const [revealed, setRevealed] = useState(false);
   const [lines, setLines] = useState<LineSegment[]>([]);
 
@@ -55,7 +58,6 @@ export function MatchingQuestionRenderer({
 
   const leftPairById = new Map(question.pairs.map((pair) => [pair.id, pair]));
   const rightPairById = new Map(rightOrder.map((pair) => [pair.id, pair]));
-  const leftIndex = new Map(question.pairs.map((pair, i) => [pair.id, i]));
 
   const allAnswered = question.pairs.every((pair) => assignments[pair.id]);
   const correct = question.pairs.every(
@@ -78,16 +80,26 @@ export function MatchingQuestionRenderer({
     ),
   ];
 
-  const selectLeft = (leftId: string) => {
+  // Either column can start a selection. Clicking the same column just
+  // changes (or clears) the active pick; clicking the other column commits
+  // a match against whatever's currently active, then resets to neutral.
+  const selectItem = (side: "left" | "right", id: string) => {
     if (revealed) return;
-    setActiveLeftId((prev) => (prev === leftId ? null : leftId));
-  };
 
-  const selectRight = (rightId: string) => {
-    if (revealed || !activeLeftId) return;
-    const leftId = activeLeftId;
+    if (!active) {
+      setActive({ id, side });
+      return;
+    }
+
+    if (active.side === side) {
+      setActive(active.id === id ? null : { id, side });
+      return;
+    }
+
+    const leftId = side === "left" ? id : active.id;
+    const rightId = side === "left" ? active.id : id;
     const prevOwner = Object.keys(assignments).find(
-      (id) => assignments[id] === rightId
+      (ownerId) => assignments[ownerId] === rightId
     );
 
     setAssignments((prev) => {
@@ -97,10 +109,10 @@ export function MatchingQuestionRenderer({
       return next;
     });
     setMatchOrder((prev) => [
-      ...prev.filter((id) => id !== leftId && id !== prevOwner),
+      ...prev.filter((existingId) => existingId !== leftId && existingId !== prevOwner),
       leftId,
     ]);
-    setActiveLeftId(null);
+    setActive(null);
   };
 
   const toggleRevealed = () => {
@@ -109,7 +121,7 @@ export function MatchingQuestionRenderer({
     if (!next) {
       setAssignments({});
       setMatchOrder([]);
-      setActiveLeftId(null);
+      setActive(null);
     }
     onStatusChange?.(next ? (correct ? "correct" : "incorrect") : "idle");
   };
@@ -166,7 +178,7 @@ export function MatchingQuestionRenderer({
       <p className="text-xs text-ink-faint italic">{dictionary.matchingHint}</p>
       <div
         ref={containerRef}
-        className="relative grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-3"
+        className="relative grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-8"
       >
         <svg
           aria-hidden="true"
@@ -193,7 +205,7 @@ export function MatchingQuestionRenderer({
         </svg>
         <ul className="flex list-none flex-col gap-2 !p-0">
           {leftRenderOrder.map((pair) => {
-            const isActive = activeLeftId === pair.id;
+            const isActive = active?.side === "left" && active.id === pair.id;
             const assignedRightId = assignments[pair.id];
             const isMatchCorrect = assignedRightId === pair.id;
 
@@ -211,13 +223,15 @@ export function MatchingQuestionRenderer({
                   type="button"
                   aria-pressed={isActive}
                   disabled={revealed}
-                  onClick={() => selectLeft(pair.id)}
+                  onClick={() => selectItem("left", pair.id)}
                   className={cn(
                     "flex min-h-16 w-full items-center gap-2.5 rounded-md border border-rule bg-surface-raised px-3 py-2.5 text-left text-sm text-ink-body transition-colors outline-none",
                     "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
                     revealed
                       ? "cursor-default"
-                      : "cursor-pointer hover:border-rule-strong hover:text-ink-heading",
+                      : isActive || assignedRightId
+                        ? "cursor-pointer"
+                        : "cursor-pointer hover:border-rule-strong hover:text-ink-heading",
                     !revealed &&
                       isActive &&
                       "border-primary-700 bg-primary-700/10 text-ink-heading",
@@ -233,18 +247,25 @@ export function MatchingQuestionRenderer({
                       "border-magenta bg-magenta/10"
                   )}
                 >
-                  {assignedRightId && (
-                    <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-primary-700/15 text-xs font-semibold text-ink-heading">
-                      {letterFor(leftIndex.get(pair.id) ?? 0)}
-                    </span>
-                  )}
-                  <span className="flex-1">{pair.left}</span>
-                  {revealed && isMatchCorrect && (
-                    <Check className="size-4 shrink-0" strokeWidth={3} aria-hidden="true" />
-                  )}
-                  {revealed && !isMatchCorrect && (
-                    <X className="size-4 shrink-0" strokeWidth={3} aria-hidden="true" />
-                  )}
+                  {/* Reserved before matching too — showing the badge only
+                      once assigned would shrink the label and shift it. */}
+                  <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-primary-700/15 text-xs font-semibold text-ink-heading">
+                    {assignedRightId && letterFor(matchOrder.indexOf(pair.id))}
+                  </span>
+                  <span className="flex-1">
+                    <LatexText inline>{pair.left}</LatexText>
+                  </span>
+                  {/* Reserved even before reveal — rendering this icon only
+                      once revealed shrinks the label's flex-1 space and
+                      shifts the layout right when the check/X pops in. */}
+                  <span className="flex size-4 shrink-0 items-center justify-center">
+                    {revealed &&
+                      (isMatchCorrect ? (
+                        <Check className="size-4" strokeWidth={3} aria-hidden="true" />
+                      ) : (
+                        <X className="size-4" strokeWidth={3} aria-hidden="true" />
+                      ))}
+                  </span>
                 </button>
               </motion.li>
             );
@@ -252,6 +273,8 @@ export function MatchingQuestionRenderer({
         </ul>
         <ul className="flex list-none flex-col gap-2 !p-0">
           {rightRenderOrder.map((rightPair) => {
+            const isActive =
+              active?.side === "right" && active.id === rightPair.id;
             const matchedLeftId = Object.keys(assignments).find(
               (leftId) => assignments[leftId] === rightPair.id
             );
@@ -270,17 +293,24 @@ export function MatchingQuestionRenderer({
                     rightRefs.current[rightPair.id] = el;
                   }}
                   type="button"
+                  aria-pressed={isActive}
                   disabled={revealed}
-                  onClick={() => selectRight(rightPair.id)}
+                  onClick={() => selectItem("right", rightPair.id)}
                   className={cn(
                     "flex min-h-16 w-full items-center gap-2.5 rounded-md border border-rule bg-surface-raised px-3 py-2.5 text-left text-sm text-ink-body transition-colors outline-none",
                     "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
                     revealed
                       ? "cursor-default"
-                      : "cursor-pointer hover:border-rule-strong hover:text-ink-heading",
+                      : isActive || isMatched
+                        ? "cursor-pointer"
+                        : "cursor-pointer hover:border-rule-strong hover:text-ink-heading",
                     !revealed &&
+                      !isActive &&
                       isMatched &&
                       "border-primary-700/40 text-ink-heading",
+                    !revealed &&
+                      isActive &&
+                      "border-primary-700 bg-primary-700/10 text-ink-heading",
                     revealed &&
                       isMatched &&
                       isMatchCorrect &&
@@ -291,18 +321,21 @@ export function MatchingQuestionRenderer({
                       "border-magenta bg-magenta/10"
                   )}
                 >
-                  {isMatched && (
-                    <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-primary-700/15 text-xs font-semibold text-ink-heading">
-                      {letterFor(leftIndex.get(matchedLeftId) ?? 0)}
-                    </span>
-                  )}
-                  <span className="flex-1">{rightPair.right}</span>
-                  {revealed && isMatched && isMatchCorrect && (
-                    <Check className="size-4 shrink-0" strokeWidth={3} aria-hidden="true" />
-                  )}
-                  {revealed && isMatched && !isMatchCorrect && (
-                    <X className="size-4 shrink-0" strokeWidth={3} aria-hidden="true" />
-                  )}
+                  <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-primary-700/15 text-xs font-semibold text-ink-heading">
+                    {isMatched && letterFor(matchOrder.indexOf(matchedLeftId))}
+                  </span>
+                  <span className="flex-1">
+                    <LatexText inline>{rightPair.right}</LatexText>
+                  </span>
+                  <span className="flex size-4 shrink-0 items-center justify-center">
+                    {revealed &&
+                      isMatched &&
+                      (isMatchCorrect ? (
+                        <Check className="size-4" strokeWidth={3} aria-hidden="true" />
+                      ) : (
+                        <X className="size-4" strokeWidth={3} aria-hidden="true" />
+                      ))}
+                  </span>
                 </button>
               </motion.li>
             );
@@ -335,7 +368,9 @@ export function MatchingQuestionRenderer({
         )}
       </div>
       {revealed && !correct && question.explanation && (
-        <p className="text-sm text-ink-body">{question.explanation}</p>
+        <p className="text-sm text-ink-body">
+          <LatexText inline>{question.explanation}</LatexText>
+        </p>
       )}
     </div>
   );

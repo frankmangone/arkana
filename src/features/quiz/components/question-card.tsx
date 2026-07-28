@@ -11,6 +11,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { LatexText } from "@/components/ui/latex-text";
 import { DifficultyPill } from "@/features/quiz/components/difficulty-pill";
 import { GlyphRail } from "@/features/quiz/components/glyph-rail";
 import { QuestionRenderer } from "@/features/quiz/components/question-renderer";
@@ -52,8 +53,8 @@ export function QuestionCard({ question, dictionary }: QuestionCardProps) {
     <Card
       className={cn(
         "relative gap-4 overflow-hidden transition-[box-shadow,border-color] duration-500 ease-out",
-        status === "correct" && "border-teal",
-        status === "incorrect" && "border-magenta",
+        status === "correct" && "border-teal-400",
+        status === "incorrect" && "border-magenta-400",
         STATUS_SHADOW[status]
       )}
     >
@@ -70,7 +71,7 @@ export function QuestionCard({ question, dictionary }: QuestionCardProps) {
           {dictionary.types[question.type]}
         </span>
         <CardTitle className="pr-20 text-lg leading-snug text-ink-heading">
-          {question.prompt}
+          <LatexText inline>{question.prompt}</LatexText>
         </CardTitle>
       </CardHeader>
       <CardContent className="pt-0 md:pr-24">

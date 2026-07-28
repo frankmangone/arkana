@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { LatexText } from "@/components/ui/latex-text";
 import { Slider } from "@/components/ui/slider";
 import { cn } from "@/lib/utils";
 import type {
@@ -60,7 +61,9 @@ export function RangeQuestionRenderer({
         return (
           <div key={range.id} className="flex flex-col gap-2">
             <div className="flex items-center justify-between gap-4 text-sm">
-              <span className="text-ink-body">{range.label}</span>
+              <span className="text-ink-body">
+                <LatexText inline>{range.label}</LatexText>
+              </span>
               <span
                 className={cn(
                   "font-mono text-sm font-medium text-ink-heading",
@@ -127,7 +130,9 @@ export function RangeQuestionRenderer({
         )}
       </div>
       {revealed && !correct && question.explanation && (
-        <p className="text-sm text-ink-body">{question.explanation}</p>
+        <p className="text-sm text-ink-body">
+          <LatexText inline>{question.explanation}</LatexText>
+        </p>
       )}
     </div>
   );
