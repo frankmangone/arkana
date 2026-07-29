@@ -23,12 +23,12 @@ function loadFixtures(): Question[] {
   }
 
   return files
-    .map(
-      (file) =>
-        JSON.parse(
-          fs.readFileSync(path.join(fixturesDir, file), "utf-8")
-        ) as Question
-    )
+    .flatMap((file) => {
+      const parsed = JSON.parse(
+        fs.readFileSync(path.join(fixturesDir, file), "utf-8")
+      ) as Question | Question[];
+      return Array.isArray(parsed) ? parsed : [parsed];
+    })
     .sort((a, b) => a.type.localeCompare(b.type));
 }
 
