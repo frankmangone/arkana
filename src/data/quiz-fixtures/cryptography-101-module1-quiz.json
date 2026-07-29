@@ -103,7 +103,7 @@
     "type": "fill_blank",
     "prompt": "Fill in the blanks to complete the description of the RSA key setup.",
     "difficulty": 2,
-    "template": "RSA relies on the difficulty of factoring a large number n into its {{blank1}} p and q. To build a key pair, we pick a number e that must be {{blank2}} with φ(n); this e becomes the {{blank3}} key. We then compute d such that e·d mod φ(n) = 1; this d becomes the {{blank4}} key, since recovering it requires knowing φ(n), which in turn requires factoring n.",
+    "template": "RSA relies on the difficulty of factoring a large number $n$ into its {{blank1}} $p$ and $q$. To build a key pair, we pick a number $e$ that must be {{blank2}} with $\\phi(n)$; this $e$ becomes the {{blank3}} key. We then compute $d$ such that $e \\cdot d \\bmod \\phi(n) = 1$; this $d$ becomes the {{blank4}} key, since recovering it requires knowing $\\phi(n)$, which in turn requires factoring $n$.",
     "blanks": [
       { "id": "blank1", "correctWord": "prime factors" },
       { "id": "blank2", "correctWord": "coprime" },

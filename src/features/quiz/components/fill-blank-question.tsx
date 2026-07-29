@@ -166,7 +166,12 @@ export function FillBlankQuestionRenderer({
 
       <p className={styles.template}>
         {parts.map((part, i) => {
-          if (part.kind === "text") return <span key={i}>{part.value}</span>;
+          if (part.kind === "text")
+            return (
+              <LatexText key={i} unwrap>
+                {part.value}
+              </LatexText>
+            );
 
           const blank = question.blanks.find((b) => b.id === part.id);
           if (!blank) return null;
