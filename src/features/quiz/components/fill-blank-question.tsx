@@ -3,23 +3,50 @@
 import { useState } from "react";
 import { Check, X } from "lucide-react";
 import { motion } from "motion/react";
-import { Button } from "@/components/ui/button";
 import { LatexText } from "@/components/ui/latex-text";
+import {
+  EMPTY_ANSWER_REPORT,
+  useQuestionAnswer,
+} from "@/features/quiz/lib/answer-context";
 import { cn } from "@/lib/utils";
-import type {
-  AnswerStatus,
-  FillBlankQuestion,
-  QuizzesDictionary,
-} from "@/features/quiz/types";
+import type { FillBlankQuestion, QuizzesDictionary } from "@/features/quiz/types";
 
 interface FillBlankQuestionProps {
   question: FillBlankQuestion;
   dictionary: QuizzesDictionary;
-  onStatusChange?: (status: AnswerStatus) => void;
 }
 
 const SPRING = { type: "spring" as const, stiffness: 700, damping: 40 };
 const BLANK_TOKEN = /\{\{(\w+)\}\}/g;
+
+const styles = {
+  wrapper: "flex flex-col gap-4",
+  hint: "text-xs text-ink-faint italic",
+  template: "text-sm leading-relaxed text-ink-body pt-4",
+  blank: (word: string | undefined, revealed: boolean, isCorrect: boolean, isDragOver: boolean) => cn(
+    "mx-1 inline-flex min-w-[4.5rem] items-center justify-center gap-1 rounded border px-2 py-0.5 align-baseline text-sm font-medium outline-none transition-colors",
+    "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
+    word === undefined && "border-dashed border-rule-strong text-ink-faint",
+    word !== undefined &&
+      !revealed &&
+      "cursor-grab border-primary-700 bg-primary-700/10 text-ink-heading hover:border-primary-800 active:cursor-grabbing",
+    revealed && isCorrect && "border-teal bg-teal/10 text-ink-heading",
+    revealed &&
+      word !== undefined &&
+      !isCorrect &&
+      "border-magenta bg-magenta/10",
+    isDragOver && "border-primary-700 bg-primary-700/10"
+  ),
+  wordBankList: "flex list-none flex-wrap gap-2 !p-0",
+  wordBankItem: "!m-0 before:!content-none",
+  wordBankChip: (revealed: boolean, isUsed: boolean) => cn(
+    "rounded-md border border-rule bg-surface-raised px-3 py-1.5 text-sm text-ink-body transition-colors outline-none",
+    "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
+    isUsed
+      ? "cursor-default opacity-30"
+      : "cursor-grab hover:border-rule-strong hover:text-ink-heading active:cursor-grabbing"
+  ),
+};
 
 type TemplatePart = { kind: "text"; value: string } | { kind: "blank"; id: string };
 
@@ -51,24 +78,33 @@ function parseTemplate(template: string): TemplatePart[] {
 export function FillBlankQuestionRenderer({
   question,
   dictionary,
-  onStatusChange,
 }: FillBlankQuestionProps) {
+  const { revealed, reportAnswer } = useQuestionAnswer();
   // blankId -> index into question.wordBank
   const [filled, setFilled] = useState<Record<string, number>>({});
   const [draggedFrom, setDraggedFrom] = useState<DragSource | null>(null);
   const [dragOverBlankId, setDragOverBlankId] = useState<string | null>(null);
-  const [revealed, setRevealed] = useState(false);
 
   const parts = parseTemplate(question.template);
   const usedIndices = new Set(Object.values(filled));
 
-  const allFilled = question.blanks.every((blank) => filled[blank.id] !== undefined);
-  const correct = question.blanks.every((blank) => {
-    const wordIndex = filled[blank.id];
-    return (
-      wordIndex !== undefined && question.wordBank[wordIndex] === blank.correctWord
-    );
-  });
+  const applyFilled = (next: Record<string, number>) => {
+    setFilled(next);
+    reportAnswer({
+      canSubmit: question.blanks.every((blank) => next[blank.id] !== undefined),
+      correct: question.blanks.every((blank) => {
+        const wordIndex = next[blank.id];
+        return (
+          wordIndex !== undefined &&
+          question.wordBank[wordIndex] === blank.correctWord
+        );
+      }),
+      onRetry: () => {
+        setFilled({});
+        reportAnswer(EMPTY_ANSWER_REPORT);
+      },
+    });
+  };
 
   const placeWord = (
     blankId: string,
@@ -76,11 +112,9 @@ export function FillBlankQuestionRenderer({
     sourceBlankId: string | null
   ) => {
     if (revealed) return;
-    setFilled((prev) => {
-      const next = { ...prev, [blankId]: wordIndex };
-      if (sourceBlankId && sourceBlankId !== blankId) delete next[sourceBlankId];
-      return next;
-    });
+    const next = { ...filled, [blankId]: wordIndex };
+    if (sourceBlankId && sourceBlankId !== blankId) delete next[sourceBlankId];
+    applyFilled(next);
   };
 
   // Word bank chips fill whichever blank comes first in reading order —
@@ -94,11 +128,9 @@ export function FillBlankQuestionRenderer({
 
   const clearBlank = (blankId: string) => {
     if (revealed || filled[blankId] === undefined) return;
-    setFilled((prev) => {
-      const next = { ...prev };
-      delete next[blankId];
-      return next;
-    });
+    const next = { ...filled };
+    delete next[blankId];
+    applyFilled(next);
   };
 
   // Dragging targets a specific blank directly, so — unlike tap, which
@@ -128,18 +160,11 @@ export function FillBlankQuestionRenderer({
     setDragOverBlankId(null);
   };
 
-  const toggleRevealed = () => {
-    const next = !revealed;
-    setRevealed(next);
-    if (!next) setFilled({});
-    onStatusChange?.(next ? (correct ? "correct" : "incorrect") : "idle");
-  };
-
   return (
-    <div className="flex flex-col gap-4">
-      <p className="text-xs text-ink-faint italic">{dictionary.fillBlankHint}</p>
+    <div className={styles.wrapper}>
+      <p className={styles.hint}>{dictionary.fillBlankHint}</p>
 
-      <p className="text-sm leading-relaxed text-ink-body">
+      <p className={styles.template}>
         {parts.map((part, i) => {
           if (part.kind === "text") return <span key={i}>{part.value}</span>;
 
@@ -167,22 +192,9 @@ export function FillBlankQuestionRenderer({
               onDragLeave={() => handleDragLeaveBlank(blank.id)}
               onDrop={(event) => handleDropOnBlank(event, blank.id)}
               onClick={() => clearBlank(blank.id)}
-              className={cn(
-                "mx-1 inline-flex min-w-[4.5rem] items-center justify-center gap-1 rounded border px-2 py-0.5 align-baseline text-sm font-medium outline-none transition-colors",
-                "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
-                word === undefined && "border-dashed border-rule-strong text-ink-faint",
-                word !== undefined &&
-                  !revealed &&
-                  "cursor-grab border-primary-700 bg-primary-700/10 text-ink-heading hover:border-primary-800 active:cursor-grabbing",
-                revealed && isCorrect && "border-teal bg-teal/10 text-ink-heading",
-                revealed &&
-                  word !== undefined &&
-                  !isCorrect &&
-                  "border-magenta bg-magenta/10",
-                isDragOver && "border-primary-700 bg-primary-700/10"
-              )}
+              className={styles.blank(word, revealed, isCorrect, isDragOver)}
             >
-              {word !== undefined ? <LatexText inline>{word}</LatexText> : "···"}
+              {word !== undefined ? <LatexText inline>{word}</LatexText> : "-----"}
               {revealed &&
                 word !== undefined &&
                 (isCorrect ? (
@@ -195,7 +207,7 @@ export function FillBlankQuestionRenderer({
         })}
       </p>
 
-      <ul className="flex list-none flex-wrap gap-2 !p-0">
+      <ul className={styles.wordBankList}>
         {question.wordBank.map((word, index) => {
           const isUsed = usedIndices.has(index);
 
@@ -204,7 +216,7 @@ export function FillBlankQuestionRenderer({
               key={index}
               layout
               transition={SPRING}
-              className="!m-0 before:!content-none"
+              className={styles.wordBankItem}
             >
               <button
                 type="button"
@@ -216,13 +228,7 @@ export function FillBlankQuestionRenderer({
                 }}
                 onDragEnd={handleDragEnd}
                 onClick={() => fillNextBlank(index)}
-                className={cn(
-                  "rounded-md border border-rule bg-surface-raised px-3 py-1.5 text-sm text-ink-body transition-colors outline-none",
-                  "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
-                  isUsed
-                    ? "cursor-default opacity-30"
-                    : "cursor-grab hover:border-rule-strong hover:text-ink-heading active:cursor-grabbing"
-                )}
+                className={styles.wordBankChip(revealed, isUsed)}
               >
                 <LatexText inline>{word}</LatexText>
               </button>
@@ -230,37 +236,6 @@ export function FillBlankQuestionRenderer({
           );
         })}
       </ul>
-
-      <Button
-        type="button"
-        size="sm"
-        className="self-start bg-none bg-primary-700 text-ink-on-brand hover:bg-primary-800"
-        disabled={!revealed && !allFilled}
-        onClick={toggleRevealed}
-      >
-        {revealed
-          ? correct
-            ? dictionary.reset
-            : dictionary.tryAgain
-          : dictionary.checkAnswer}
-      </Button>
-      {revealed && (
-        <div className="flex flex-col gap-2 border-t border-rule pt-4">
-          <span
-            className={cn(
-              "text-xs font-medium",
-              correct ? "text-teal" : "text-magenta"
-            )}
-          >
-            {correct ? dictionary.correct : dictionary.incorrect}
-          </span>
-          {!correct && question.explanation && (
-            <p className="text-sm text-ink-body">
-              <LatexText inline>{question.explanation}</LatexText>
-            </p>
-          )}
-        </div>
-      )}
     </div>
   );
 }

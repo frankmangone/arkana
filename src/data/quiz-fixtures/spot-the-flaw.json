@@ -1,10 +1,10 @@
 {
   "id": "fixture-spot-the-flaw",
   "type": "single_choice",
-  "prompt": "Since our hash function produces a 256-bit output, and 256 bits gives us 2^256 possible values, we can safely reuse the same salt for every user's password to save storage space. What's wrong with this reasoning?",
+  "prompt": "Since our hash function produces a 256-bit output, and 256 bits gives us $2^{256}$ possible values, we can safely reuse the same salt for every user's password to save storage space. What's wrong with this reasoning?",
   "difficulty": 3,
   "options": [
-    { "id": "a", "label": "The output size claim of 2^256 is mathematically incorrect" },
+    { "id": "a", "label": "The output size claim of $2^{256}$ is mathematically incorrect" },
     { "id": "b", "label": "Reusing the same salt across users defeats the purpose of salting, allowing precomputed rainbow tables across the whole user base" },
     { "id": "c", "label": "256-bit hashes are too slow for password storage" },
     { "id": "d", "label": "Salts should always be derived from the password itself" }

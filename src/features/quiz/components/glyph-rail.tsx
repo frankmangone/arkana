@@ -96,6 +96,35 @@ function shuffledRanks(count: number): number[] {
   return rank;
 }
 
+const styles = {
+  container: (isBand: boolean, status: AnswerStatus) => cn(
+    "pointer-events-none overflow-hidden",
+    "transition-[color,opacity] duration-500 ease-out motion-reduce:transition-none",
+    isBand
+      // -mt-6 cancels Card's own py-6 so the band sits flush against
+      // the card's top edge instead of floating in the padding gap —
+      // the rail doesn't need this since inset-y-0 on an absolutely
+      // positioned element is measured from the padding edge already.
+      ? "-mt-6 block h-16 w-full rounded-t-md"
+      : "absolute inset-y-0 right-0 hidden w-24 md:block",
+    status === "correct"
+      ? "text-teal opacity-55"
+      : status === "incorrect"
+        ? "text-magenta opacity-45"
+        : "text-primary-700 opacity-30"
+  ),
+  containerMask: (isBand: boolean) => ({
+    maskImage: isBand
+      ? "linear-gradient(to bottom, black 0%, transparent 100%)"
+      : "linear-gradient(to left, black 0%, transparent 100%)",
+    WebkitMaskImage: isBand
+      ? "linear-gradient(to bottom, black 0%, transparent 100%)"
+      : "linear-gradient(to left, black 0%, transparent 100%)",
+  }),
+  svg: "block h-full w-full",
+  svgRail: "block",
+};
+
 function Sigil({ x, y, bits }: { x: number; y: number; bits: number }) {
   const strokes = SEGMENT_PATHS.filter((_, bit) => bits & (1 << bit));
 
@@ -179,36 +208,14 @@ export function GlyphRail({ status, layout = "rail" }: GlyphRailProps) {
   return (
     <div
       aria-hidden="true"
-      className={cn(
-        "pointer-events-none overflow-hidden",
-        "transition-[color,opacity] duration-500 ease-out motion-reduce:transition-none",
-        isBand
-          // -mt-6 cancels Card's own py-6 so the band sits flush against
-          // the card's top edge instead of floating in the padding gap —
-          // the rail doesn't need this since inset-y-0 on an absolutely
-          // positioned element is measured from the padding edge already.
-          ? "-mt-6 block h-16 w-full rounded-t-md"
-          : "absolute inset-y-0 right-0 hidden w-24 md:block",
-        status === "correct"
-          ? "text-teal opacity-55"
-          : status === "incorrect"
-            ? "text-magenta opacity-45"
-            : "text-primary-700 opacity-30"
-      )}
-      style={{
-        maskImage: isBand
-          ? "linear-gradient(to bottom, black 0%, transparent 100%)"
-          : "linear-gradient(to left, black 0%, transparent 100%)",
-        WebkitMaskImage: isBand
-          ? "linear-gradient(to bottom, black 0%, transparent 100%)"
-          : "linear-gradient(to left, black 0%, transparent 100%)",
-      }}
+      className={styles.container(isBand, status)}
+      style={styles.containerMask(isBand)}
     >
       {isBand ? (
         <svg
           viewBox={`0 0 ${BAND_WIDTH} ${BAND_HEIGHT}`}
           preserveAspectRatio="xMinYMin slice"
-          className="block h-full w-full"
+          className={styles.svg}
         >
           {positions.map(([x, y], i) => (
             <Sigil key={i} x={x} y={y} bits={glyphs[i]} />
@@ -219,7 +226,7 @@ export function GlyphRail({ status, layout = "rail" }: GlyphRailProps) {
           width={RAIL_WIDTH}
           height={RAIL_HEIGHT}
           viewBox={`0 0 ${RAIL_WIDTH} ${RAIL_HEIGHT}`}
-          className="block"
+          className={styles.svgRail}
         >
           {positions.map(([x, y], i) => (
             <Sigil key={i} x={x} y={y} bits={glyphs[i]} />

@@ -77,21 +77,6 @@ export interface SequencingQuestion extends QuestionBase {
   steps: SequencingStep[];
 }
 
-export type ComparisonAnswer = "a" | "b" | "both" | "neither";
-
-export interface ComparisonStatement {
-  id: string;
-  label: string;
-}
-
-export interface ThisVsThatQuestion extends QuestionBase {
-  type: "this_vs_that";
-  subjectA: string;
-  subjectB: string;
-  statements: ComparisonStatement[];
-  correctAnswers: Record<string, ComparisonAnswer>;
-}
-
 export interface BucketDefinition {
   id: string;
   label: string;
@@ -131,6 +116,5 @@ export type Question =
   | MatchingQuestion
   | RangeQuestion
   | SequencingQuestion
-  | ThisVsThatQuestion
   | BucketSortQuestion
   | FillBlankQuestion;

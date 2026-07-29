@@ -142,14 +142,11 @@
     "correct": "Correct",
     "incorrect": "Not quite!",
     "correctValue": "Correct answer: {value}",
-    "both": "Both",
-    "neither": "Neither",
     "matchingHint": "Tap a term, then tap its match.",
     "singleChoiceHint": "Choose one answer.",
     "multiChoiceHint": "Choose all that apply.",
     "sequencingHint": "Drag to reorder, or use the arrows.",
     "rangeHint": "Drag the slider to your estimate.",
-    "thisVsThatHint": "Choose one option for each statement.",
     "bucketSortHint": "Tap an item, then tap a bucket to sort it.",
     "fillBlankHint": "Tap a word to fill the next blank, or tap a filled blank to clear it.",
     "difficulty": {
@@ -163,7 +160,6 @@
       "matching": "Matching",
       "range": "Estimate",
       "sequencing": "Sequence",
-      "this_vs_that": "This vs that",
       "bucket_sort": "Sort",
       "fill_blank": "Fill in the Blank"
     }

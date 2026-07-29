@@ -3,12 +3,14 @@
 import { useEffect, useRef, useState } from "react";
 import { Check, X } from "lucide-react";
 import { motion } from "motion/react";
-import { Button } from "@/components/ui/button";
 import { LatexText } from "@/components/ui/latex-text";
+import {
+  EMPTY_ANSWER_REPORT,
+  useQuestionAnswer,
+} from "@/features/quiz/lib/answer-context";
 import { shuffled } from "@/features/quiz/lib/shuffle";
 import { cn } from "@/lib/utils";
 import type {
-  AnswerStatus,
   MatchingPair,
   MatchingQuestion,
   QuizzesDictionary,
@@ -17,7 +19,6 @@ import type {
 interface MatchingQuestionProps {
   question: MatchingQuestion;
   dictionary: QuizzesDictionary;
-  onStatusChange?: (status: AnswerStatus) => void;
 }
 
 interface LineSegment {
@@ -34,11 +35,60 @@ function letterFor(index: number) {
   return `${String.fromCharCode(65 + index)}.`;
 }
 
+const SPRING = { type: "spring" as const, stiffness: 700, damping: 40 };
+
+const styles = {
+  wrapper: "flex flex-col gap-4",
+  hint: "text-xs text-ink-faint italic",
+  grid: "relative grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-8",
+  svg: "pointer-events-none absolute inset-0 hidden h-full w-full md:block",
+  line: (correct: boolean | null) => cn(
+    "transition-colors",
+    correct === null && "text-primary-700/50",
+    correct === true && "text-teal",
+    correct === false && "text-magenta"
+  ),
+  column: "flex list-none flex-col gap-2 !p-0",
+  columnItem: "!m-0 before:!content-none",
+  item: (revealed: boolean, isActive: boolean, isMatched: boolean, isMatchCorrect: boolean) => cn(
+    "relative flex min-h-16 w-full items-center gap-2.5 rounded-md border border-rule bg-surface-raised px-3 py-2.5 text-left text-sm text-ink-body transition-colors outline-none",
+    "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
+    revealed
+      ? "cursor-default"
+      : isActive || isMatched
+        ? "cursor-pointer"
+        : "cursor-pointer hover:border-rule-strong hover:text-ink-heading",
+    !revealed &&
+      isActive &&
+      "border-primary-700 bg-primary-700/10 text-ink-heading",
+    !revealed &&
+      !isActive &&
+      isMatched &&
+      "border-primary-700/40 text-ink-heading",
+    revealed &&
+      isMatched &&
+      isMatchCorrect &&
+      "border-teal bg-teal/10 text-ink-heading",
+    revealed &&
+      isMatched &&
+      !isMatchCorrect &&
+      "border-magenta bg-magenta/10"
+  ),
+  // Absolutely positioned so it doesn't eat into the row's own flex layout
+  // or shift the label when it appears.
+  itemLetter: "eyebrow absolute top-1.5 left-2 text-xs",
+  itemLabel: "flex-1 pl-4",
+  // Reserved even before reveal — rendering this icon only once revealed
+  // shrinks the label's flex-1 space and shifts the layout right when the
+  // check/X pops in.
+  itemIconSlot: "flex size-4 shrink-0 items-center justify-center",
+};
+
 export function MatchingQuestionRenderer({
   question,
   dictionary,
-  onStatusChange,
 }: MatchingQuestionProps) {
+  const { revealed, reportAnswer } = useQuestionAnswer();
   const [rightOrder] = useState(() => shuffled(question.pairs));
   // leftPairId -> rightPairId it's currently matched with
   const [assignments, setAssignments] = useState<Record<string, string>>({});
@@ -49,7 +99,6 @@ export function MatchingQuestionRenderer({
   const [active, setActive] = useState<{ id: string; side: "left" | "right" } | null>(
     null
   );
-  const [revealed, setRevealed] = useState(false);
   const [lines, setLines] = useState<LineSegment[]>([]);
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -58,11 +107,6 @@ export function MatchingQuestionRenderer({
 
   const leftPairById = new Map(question.pairs.map((pair) => [pair.id, pair]));
   const rightPairById = new Map(rightOrder.map((pair) => [pair.id, pair]));
-
-  const allAnswered = question.pairs.every((pair) => assignments[pair.id]);
-  const correct = question.pairs.every(
-    (pair) => assignments[pair.id] === pair.id
-  );
 
   const isMatchingPair = (pair: MatchingPair | undefined): pair is MatchingPair =>
     pair !== undefined;
@@ -102,28 +146,28 @@ export function MatchingQuestionRenderer({
       (ownerId) => assignments[ownerId] === rightId
     );
 
-    setAssignments((prev) => {
-      const next = { ...prev };
-      if (prevOwner) delete next[prevOwner];
-      next[leftId] = rightId;
-      return next;
-    });
+    const nextAssignments = { ...assignments };
+    if (prevOwner) delete nextAssignments[prevOwner];
+    nextAssignments[leftId] = rightId;
+
+    setAssignments(nextAssignments);
     setMatchOrder((prev) => [
       ...prev.filter((existingId) => existingId !== leftId && existingId !== prevOwner),
       leftId,
     ]);
     setActive(null);
-  };
-
-  const toggleRevealed = () => {
-    const next = !revealed;
-    setRevealed(next);
-    if (!next) {
-      setAssignments({});
-      setMatchOrder([]);
-      setActive(null);
-    }
-    onStatusChange?.(next ? (correct ? "correct" : "incorrect") : "idle");
+    reportAnswer({
+      canSubmit: question.pairs.every((pair) => nextAssignments[pair.id]),
+      correct: question.pairs.every(
+        (pair) => nextAssignments[pair.id] === pair.id
+      ),
+      onRetry: () => {
+        setAssignments({});
+        setMatchOrder([]);
+        setActive(null);
+        reportAnswer(EMPTY_ANSWER_REPORT);
+      },
+    });
   };
 
   useEffect(() => {
@@ -174,16 +218,10 @@ export function MatchingQuestionRenderer({
   }, [assignments, revealed]);
 
   return (
-    <div className="flex flex-col gap-4">
-      <p className="text-xs text-ink-faint italic">{dictionary.matchingHint}</p>
-      <div
-        ref={containerRef}
-        className="relative grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-8"
-      >
-        <svg
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 hidden h-full w-full md:block"
-        >
+    <div className={styles.wrapper}>
+      <p className={styles.hint}>{dictionary.matchingHint}</p>
+      <div ref={containerRef} className={styles.grid}>
+        <svg aria-hidden="true" className={styles.svg}>
           {lines.map((line) => (
             <line
               key={line.leftId}
@@ -194,16 +232,11 @@ export function MatchingQuestionRenderer({
               strokeWidth={2}
               strokeLinecap="round"
               stroke="currentColor"
-              className={cn(
-                "transition-colors",
-                line.correct === null && "text-primary-700/50",
-                line.correct === true && "text-teal",
-                line.correct === false && "text-magenta"
-              )}
+              className={styles.line(line.correct)}
             />
           ))}
         </svg>
-        <ul className="flex list-none flex-col gap-2 !p-0">
+        <ul className={styles.column}>
           {leftRenderOrder.map((pair) => {
             const isActive = active?.side === "left" && active.id === pair.id;
             const assignedRightId = assignments[pair.id];
@@ -213,8 +246,8 @@ export function MatchingQuestionRenderer({
               <motion.li
                 key={pair.id}
                 layout
-                transition={{ type: "spring", stiffness: 700, damping: 40 }}
-                className="!m-0 before:!content-none"
+                transition={SPRING}
+                className={styles.columnItem}
               >
                 <button
                   ref={(el) => {
@@ -224,41 +257,20 @@ export function MatchingQuestionRenderer({
                   aria-pressed={isActive}
                   disabled={revealed}
                   onClick={() => selectItem("left", pair.id)}
-                  className={cn(
-                    "relative flex min-h-16 w-full items-center gap-2.5 rounded-md border border-rule bg-surface-raised px-3 py-2.5 text-left text-sm text-ink-body transition-colors outline-none",
-                    "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
-                    revealed
-                      ? "cursor-default"
-                      : isActive || assignedRightId
-                        ? "cursor-pointer"
-                        : "cursor-pointer hover:border-rule-strong hover:text-ink-heading",
-                    !revealed &&
-                      isActive &&
-                      "border-primary-700 bg-primary-700/10 text-ink-heading",
-                    !revealed &&
-                      !isActive &&
-                      assignedRightId &&
-                      "border-primary-700/40 text-ink-heading",
-                    revealed &&
-                      isMatchCorrect &&
-                      "border-teal bg-teal/10 text-ink-heading",
-                    revealed &&
-                      !isMatchCorrect &&
-                      "border-magenta bg-magenta/10"
+                  className={styles.item(
+                    revealed,
+                    isActive,
+                    Boolean(assignedRightId),
+                    isMatchCorrect
                   )}
                 >
-                  {/* Absolutely positioned so it doesn't eat into the row's
-                      own flex layout or shift the label when it appears. */}
-                  <span className="absolute top-1.5 left-2 text-xs font-semibold text-white">
+                  <span className={styles.itemLetter}>
                     {assignedRightId && letterFor(matchOrder.indexOf(pair.id))}
                   </span>
-                  <span className="flex-1 pl-4">
+                  <span className={styles.itemLabel}>
                     <LatexText inline>{pair.left}</LatexText>
                   </span>
-                  {/* Reserved even before reveal — rendering this icon only
-                      once revealed shrinks the label's flex-1 space and
-                      shifts the layout right when the check/X pops in. */}
-                  <span className="flex size-4 shrink-0 items-center justify-center">
+                  <span className={styles.itemIconSlot}>
                     {revealed &&
                       (isMatchCorrect ? (
                         <Check className="size-4" strokeWidth={3} aria-hidden="true" />
@@ -271,7 +283,7 @@ export function MatchingQuestionRenderer({
             );
           })}
         </ul>
-        <ul className="flex list-none flex-col gap-2 !p-0">
+        <ul className={styles.column}>
           {rightRenderOrder.map((rightPair) => {
             const isActive =
               active?.side === "right" && active.id === rightPair.id;
@@ -285,8 +297,8 @@ export function MatchingQuestionRenderer({
               <motion.li
                 key={rightPair.id}
                 layout
-                transition={{ type: "spring", stiffness: 700, damping: 40 }}
-                className="!m-0 before:!content-none"
+                transition={SPRING}
+                className={styles.columnItem}
               >
                 <button
                   ref={(el) => {
@@ -296,38 +308,15 @@ export function MatchingQuestionRenderer({
                   aria-pressed={isActive}
                   disabled={revealed}
                   onClick={() => selectItem("right", rightPair.id)}
-                  className={cn(
-                    "relative flex min-h-16 w-full items-center gap-2.5 rounded-md border border-rule bg-surface-raised px-3 py-2.5 text-left text-sm text-ink-body transition-colors outline-none",
-                    "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
-                    revealed
-                      ? "cursor-default"
-                      : isActive || isMatched
-                        ? "cursor-pointer"
-                        : "cursor-pointer hover:border-rule-strong hover:text-ink-heading",
-                    !revealed &&
-                      !isActive &&
-                      isMatched &&
-                      "border-primary-700/40 text-ink-heading",
-                    !revealed &&
-                      isActive &&
-                      "border-primary-700 bg-primary-700/10 text-ink-heading",
-                    revealed &&
-                      isMatched &&
-                      isMatchCorrect &&
-                      "border-teal bg-teal/10 text-ink-heading",
-                    revealed &&
-                      isMatched &&
-                      !isMatchCorrect &&
-                      "border-magenta bg-magenta/10"
-                  )}
+                  className={styles.item(revealed, isActive, isMatched, isMatchCorrect)}
                 >
-                  <span className="absolute top-1.5 left-2 text-xs font-semibold text-white">
+                  <span className={styles.itemLetter}>
                     {isMatched && letterFor(matchOrder.indexOf(matchedLeftId))}
                   </span>
-                  <span className="flex-1 pl-4">
+                  <span className={styles.itemLabel}>
                     <LatexText inline>{rightPair.right}</LatexText>
                   </span>
-                  <span className="flex size-4 shrink-0 items-center justify-center">
+                  <span className={styles.itemIconSlot}>
                     {revealed &&
                       isMatched &&
                       (isMatchCorrect ? (
@@ -342,36 +331,6 @@ export function MatchingQuestionRenderer({
           })}
         </ul>
       </div>
-      <Button
-        type="button"
-        size="sm"
-        className="self-start bg-none bg-primary-700 text-ink-on-brand hover:bg-primary-800"
-        disabled={!revealed && !allAnswered}
-        onClick={toggleRevealed}
-      >
-        {revealed
-          ? correct
-            ? dictionary.reset
-            : dictionary.tryAgain
-          : dictionary.checkAnswer}
-      </Button>
-      {revealed && (
-        <div className="flex flex-col gap-2 border-t border-rule pt-4">
-          <span
-            className={cn(
-              "text-xs font-medium",
-              correct ? "text-teal" : "text-magenta"
-            )}
-          >
-            {correct ? dictionary.correct : dictionary.incorrect}
-          </span>
-          {!correct && question.explanation && (
-            <p className="text-sm text-ink-body">
-              <LatexText inline>{question.explanation}</LatexText>
-            </p>
-          )}
-        </div>
-      )}
     </div>
   );
 }

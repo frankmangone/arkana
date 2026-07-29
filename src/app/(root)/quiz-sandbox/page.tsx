@@ -32,6 +32,9 @@ function loadFixtures(): Question[] {
     .sort((a, b) => a.type.localeCompare(b.type));
 }
 
+// Flip to false to preview the no-retry mode a real graded attempt would use.
+const ALLOW_RETRY = false;
+
 export default async function QuizSandboxPage() {
   const questions = loadFixtures();
   const dictionary = await getDictionary("en");
@@ -58,6 +61,7 @@ export default async function QuizSandboxPage() {
               key={question.id}
               question={question}
               dictionary={dictionary.quizzes}
+              allowRetry={ALLOW_RETRY}
             />
           ))}
         </div>
