@@ -77,8 +77,8 @@ export function CommentForm({
             ? dictionary?.comments?.form?.writeReply || "Write a reply..."
             : dictionary?.comments?.form?.writeComment || "Write a comment..."
         }
-        className={`w-full p-3 border border-rule-strong rounded-[4px] bg-transparent text-ink-body placeholder:text-ink-faint focus:outline-none focus:border-primary-700 resize-none transition-colors ${
-          compact ? "text-sm min-h-[80px]" : "min-h-[120px]"
+        className={`w-full p-3 border border-rule-strong rounded-[4px] bg-surface-raised text-ink-body placeholder:text-ink-faint focus:outline-none focus:border-primary-700 focus:ring-2 focus:ring-primary-700/25 resize-y field-sizing-content max-h-[50vh] transition-[border-color,box-shadow] ${
+          compact ? "text-sm min-h-[80px]" : "text-sm min-h-[120px]"
         }`}
         disabled={createComment.isPending}
       />
@@ -90,7 +90,7 @@ export function CommentForm({
               ? "text-salmon-850"
               : charactersRemaining < 200
               ? "text-bronze-850"
-              : "text-sky-850"
+              : "text-ink-faint"
           }`}
         >
           {charactersRemaining}{" "}
@@ -101,7 +101,9 @@ export function CommentForm({
         <Button
           type="submit"
           disabled={isEmpty || isOverLimit || createComment.isPending}
-          className={compact ? "text-sm text-white px-3 py-1" : "text-white"}
+          className={`bg-none bg-primary-500 hover:bg-primary-550 ${
+            compact ? "text-sm text-white px-3 py-1" : "text-white"
+          }`}
         >
           {createComment.isPending
             ? dictionary?.comments?.form?.posting || "Posting..."

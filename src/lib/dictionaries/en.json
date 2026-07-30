@@ -223,6 +223,8 @@
     "noComments": "No comments yet. Be the first to comment!",
     "cancel": "Cancel",
     "reply": "Reply",
+    "collapse": "Collapse comment",
+    "expand": "Expand comment",
     "time": {
       "justNow": "just now",
       "ago": "ago",
@@ -246,6 +248,7 @@
       "postComment": "Post Comment",
       "supportsLatex": "Supports LaTeX: use",
       "forInlineMath": "for inline math.",
+      "supportsMarkdown": "Markdown works too: [text](url) for links, **bold**, _italics_, `code`.",
       "commentPosted": "Comment posted!",
       "failedToPost": "Failed to post comment"
     }

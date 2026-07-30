@@ -223,6 +223,8 @@
     "noComments": "Ainda não há comentários. Seja o primeiro a comentar!",
     "cancel": "Cancelar",
     "reply": "Responder",
+    "collapse": "Recolher comentário",
+    "expand": "Expandir comentário",
     "time": {
       "justNow": "agora mesmo",
       "ago": "atrás",
@@ -245,6 +247,7 @@
       "reply": "Responder",
       "postComment": "Publicar Comentário",
       "supportsLatex": "Suporta LaTeX: use",
+      "supportsMarkdown": "Também suporta Markdown: [texto](url) para links, **negrito**, _itálico_, `código`.",
       "forInlineMath": "para matemática inline.",
       "commentPosted": "Comentário publicado!",
       "failedToPost": "Falha ao publicar comentário"

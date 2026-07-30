@@ -43,12 +43,21 @@ export function CommentSection({ path }: CommentSectionProps) {
     ? `${dictionary.comments.form.supportsLatex} $...$ ${dictionary.comments.form.forInlineMath}`
     : "Supports LaTeX: use $...$ for inline math.";
 
+  const markdownHelpText =
+    dictionary?.comments?.form?.supportsMarkdown ||
+    "Markdown works too: [text](url) for links, **bold**, _italics_, `code`.";
+
   return (
     <section id="comments" className="mt-12 scroll-mt-20">
       <div className="flex items-center gap-2 mb-6 relative border-b border-rule pb-4">
         <h2 className="text-2xl font-semibold tracking-tight text-ink-heading">
           Comments
         </h2>
+        {data && data.comments.length > 0 && (
+          <span className="rounded-full border border-rule px-2 py-0.5 text-xs text-ink-muted">
+            {data.comments.length}
+          </span>
+        )}
         <div className="relative flex items-center">
           <button
             type="button"
@@ -60,8 +69,9 @@ export function CommentSection({ path }: CommentSectionProps) {
             <Info className="w-5 h-5" />
           </button>
           {showTooltip && (
-            <div className="absolute left-0 top-6 z-10 w-64 p-3 bg-surface-overlay border border-rule rounded-md text-xs text-ink-body">
-              {latexHelpText}
+            <div className="absolute left-0 top-6 z-10 w-64 p-3 bg-surface-overlay border border-rule rounded-md shadow-lg text-xs text-ink-body space-y-1.5">
+              <p className="text-xs leading-normal">{latexHelpText}</p>
+              <p className="text-xs leading-normal">{markdownHelpText}</p>
             </div>
           )}
         </div>
@@ -70,8 +80,8 @@ export function CommentSection({ path }: CommentSectionProps) {
       {user ? (
         <CommentForm path={path} autoFocus={shouldFocus} />
       ) : (
-        <div className="mb-8 p-4 border border-rule rounded-md">
-          <p className="text-ink-muted text-sm space-y-4">
+        <div className="mb-8 p-4 border border-rule rounded-lg bg-surface-raised">
+          <p className="text-ink-muted text-sm">
             <button
               onClick={handleLoginRedirect}
               className="text-primary-800 hover:underline font-medium cursor-pointer"
