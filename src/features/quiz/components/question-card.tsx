@@ -55,10 +55,10 @@ const styles = {
   ),
   difficultyPill: "absolute top-6 right-6 z-10",
   questionType: "eyebrow inline-flex items-center gap-2",
-  questionPrompt: "pr-20 text-lg leading-snug text-ink-heading",
+  questionPrompt: "pr-0 sm:pr-20 text-lg leading-snug text-ink-heading",
   contentWrapper: "flex flex-col gap-4 pt-0",
-  actionsRow: "flex items-center justify-between gap-4",
-  actionLayout: "w-48 max-w-full",
+  actionsRow: "flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4",
+  actionLayout: "w-full sm:w-48 max-w-full",
   // The default action look when no variant override is given - solid
   // primary, overriding the Button default's gradient.
   actionSolid: "bg-none bg-primary-700 text-ink-on-brand hover:bg-primary-800",
