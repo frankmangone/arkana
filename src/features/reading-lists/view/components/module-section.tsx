@@ -48,7 +48,7 @@ export function ModuleSection(props: ModuleSectionProps) {
   };
 
   return (
-    <section className="grid gap-8 md:grid-cols-[2fr_3fr] md:gap-x-12">
+    <section className="grid gap-2 md:grid-cols-[2fr_3fr] md:gap-x-12">
       <div>
         <div className="flex items-center gap-6">
           <span className="eyebrow text-ink-faint">
@@ -76,7 +76,7 @@ export function ModuleSection(props: ModuleSectionProps) {
           {module.description}
         </p>
         {quizAvailable && (
-          <TakeQuizButton className="mt-8" label={takeQuizLabel} onClick={handleTakeQuiz} />
+          <TakeQuizButton className="mx-auto mt-8" label={takeQuizLabel} onClick={handleTakeQuiz} />
         )}
       </div>
 

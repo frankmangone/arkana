@@ -10,7 +10,8 @@ const styles = {
   // hover/focus "lights it up" — border and lattice brighten together in the
   // primary lane.
   button: cn(
-    "group relative inline-flex w-fit cursor-pointer overflow-hidden rounded-md border border-rule bg-surface-raised",
+    // flex (not inline-flex) so mx-auto can center the fit-width button.
+    "group relative flex w-fit cursor-pointer overflow-hidden rounded-md border border-rule bg-surface-raised",
     "transition-[border-color,box-shadow,transform] duration-300 ease-out",
     "hover:border-primary-600 focus-visible:border-primary-600 outline-none",
     // Same soft-glow formula as the graded question card, in the primary lane.
