@@ -5,9 +5,12 @@ import { Check, ChevronDown, ChevronUp, GripVertical, X } from "lucide-react";
 import { motion } from "motion/react";
 import { LatexText } from "@/components/ui/latex-text";
 import { useQuestionAnswer } from "@/features/quiz/lib/answer-context";
-import { shuffled } from "@/features/quiz/lib/shuffle";
 import { cn } from "@/lib/utils";
-import type { QuizzesDictionary, SequencingQuestion } from "@/features/quiz/types";
+import type {
+  QuizzesDictionary,
+  SequencingAnswerKey,
+  SequencingQuestion,
+} from "@/features/quiz/types";
 
 interface SequencingQuestionProps {
   question: SequencingQuestion;
@@ -19,14 +22,14 @@ const styles = {
   hint: "text-xs text-ink-faint italic",
   list: "flex list-none flex-col gap-2 !p-0",
   listItem: "!m-0 before:!content-none",
-  row: (revealed: boolean, isCorrectPosition: boolean) => cn(
-    "flex items-center gap-3 rounded-md border border-rule bg-surface-raised px-3 py-2.5 text-sm text-ink-body transition-colors",
+  row: (revealed: boolean, isCorrectPosition: boolean | null) => cn(
+    "flex items-center gap-3 rounded-md border border-rule bg-surface-raised px-3 py-2.5 text-[15px] leading-snug text-ink-body transition-colors",
     !revealed && "cursor-grab active:cursor-grabbing",
     revealed &&
       isCorrectPosition &&
       "border-teal bg-teal/10 text-ink-heading",
     revealed &&
-      !isCorrectPosition &&
+      isCorrectPosition === false &&
       "border-magenta bg-magenta/10"
   ),
   grip: (revealed: boolean) => cn(
@@ -35,7 +38,14 @@ const styles = {
   ),
   label: "flex flex-1 items-baseline gap-1.5",
   index: "font-semibold text-ink-heading",
-  reorderControls: "flex shrink-0 flex-row gap-1 md:-my-2 md:flex-col md:gap-0",
+  // The controls stay mounted (but invisible) after reveal so the row keeps
+  // the exact same footprint — the check/X then centers over their space.
+  trailing: "relative flex shrink-0 items-center",
+  reorderControls: (revealed: boolean) => cn(
+    "flex shrink-0 flex-row gap-1 md:-my-2 md:flex-col md:gap-0",
+    revealed && "invisible"
+  ),
+  revealIcon: "absolute inset-0 flex items-center justify-center",
   reorderButton: "cursor-pointer rounded p-2.5 text-ink-faint outline-none transition-colors hover:bg-surface-overlay hover:text-ink-heading focus-visible:text-ink-heading active:bg-surface-overlay disabled:pointer-events-none disabled:cursor-default disabled:opacity-30 md:p-2",
 };
 
@@ -43,27 +53,23 @@ export function SequencingQuestionRenderer({
   question,
   dictionary,
 }: SequencingQuestionProps) {
-  const { revealed, reportAnswer } = useQuestionAnswer();
-  const correctOrder = question.steps.map((step) => step.id);
-
-  const [order, setOrder] = useState<string[]>(() => {
-    if (correctOrder.length < 2) return correctOrder;
-    // Never start solved — the card seeds this type as "not correct yet".
-    let arrangement = shuffled(correctOrder);
-    while (arrangement.join() === correctOrder.join()) {
-      arrangement = shuffled(correctOrder);
-    }
-    return arrangement;
-  });
+  const { revealed, correct, correctReveal, reportResponse } = useQuestionAnswer();
+  const [order, setOrder] = useState<string[]>(() => question.steps.map((step) => step.id));
   const [draggedId, setDraggedId] = useState<string | null>(null);
 
   const stepsById = new Map(question.steps.map((step) => [step.id, step]));
 
+  // On a correct submission the backend never sends the answer key back -
+  // the user's own order already equals it.
+  const correctOrder = correct
+    ? order
+    : (correctReveal as SequencingAnswerKey | undefined)?.correctOrder;
+
   const applyOrder = (next: string[]) => {
     setOrder(next);
-    reportAnswer({
+    reportResponse({
+      response: { order: next },
       canSubmit: true,
-      correct: next.join() === correctOrder.join(),
     });
   };
 
@@ -94,7 +100,7 @@ export function SequencingQuestionRenderer({
         {order.map((id, index) => {
           const step = stepsById.get(id);
           if (!step) return null;
-          const isCorrectPosition = correctOrder[index] === id;
+          const isCorrectPosition = correctOrder ? correctOrder[index] === id : null;
 
           return (
             <motion.li
@@ -118,12 +124,12 @@ export function SequencingQuestionRenderer({
                   <span className={styles.index}>{index + 1}.</span>
                   <LatexText inline>{step.label}</LatexText>
                 </span>
-                {!revealed && (
-                  <div className={styles.reorderControls}>
+                <div className={styles.trailing}>
+                  <div className={styles.reorderControls(revealed)}>
                     <button
                       type="button"
                       aria-label="Move up"
-                      disabled={index === 0}
+                      disabled={revealed || index === 0}
                       onClick={() => moveStep(index, -1)}
                       className={styles.reorderButton}
                     >
@@ -132,20 +138,23 @@ export function SequencingQuestionRenderer({
                     <button
                       type="button"
                       aria-label="Move down"
-                      disabled={index === order.length - 1}
+                      disabled={revealed || index === order.length - 1}
                       onClick={() => moveStep(index, 1)}
                       className={styles.reorderButton}
                     >
                       <ChevronDown className="size-5 md:size-4" aria-hidden="true" />
                     </button>
                   </div>
-                )}
-                {revealed && isCorrectPosition && (
-                  <Check className="size-4 shrink-0" strokeWidth={3} aria-hidden="true" />
-                )}
-                {revealed && !isCorrectPosition && (
-                  <X className="size-4 shrink-0" strokeWidth={3} aria-hidden="true" />
-                )}
+                  {revealed && isCorrectPosition !== null && (
+                    <span className={styles.revealIcon} aria-hidden="true">
+                      {isCorrectPosition ? (
+                        <Check className="size-4" strokeWidth={3} />
+                      ) : (
+                        <X className="size-4" strokeWidth={3} />
+                      )}
+                    </span>
+                  )}
+                </div>
               </div>
             </motion.li>
           );

@@ -16,13 +16,13 @@ import { Input } from "@/components/ui/input";
 import ArkanaPattern from "@/components/arkana-pattern";
 import type { Pattern } from "@/components/arkana-strip";
 
-// bg-none cancels the default variant's --grad-brand background-image —
+// bg-none cancels the default variant's --grad-brand background-image -
 // otherwise the gradient paints over any background-color we set here.
 const SUBSCRIBE_BUTTON_CLASSNAME = "bg-none bg-primary-500 hover:bg-primary-600";
 
 const GLYPH_ROW_COUNT = 3;
 const GLYPH_SIZE = 48;
-// primary-700 (see globals.css) — canvas color isn't resolved through the
+// primary-700 (see globals.css) - canvas color isn't resolved through the
 // CSS cascade, so var() won't work here; this must track that token by hand.
 const GLYPH_COLOR = "hsl(260, 80%, 68%)";
 
@@ -75,7 +75,7 @@ export function SubscribePromptModal() {
     handleAuthenticatedSubscribe,
   } = useComponent();
 
-  // Fixed for the life of the modal — regenerating on every re-render would
+  // Fixed for the life of the modal - regenerating on every re-render would
   // make the row flicker while the guest email input is being typed into.
   const glyphs = useMemo(
     () => Array.from({ length: GLYPH_ROW_COUNT }, randomElements),

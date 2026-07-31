@@ -10,7 +10,7 @@ interface StickyActionsBarProps {
 /**
  * Mobile-only floating action row. Appears once the header's own actions
  * scroll out of view, and hides again once the article body has been
- * scrolled past — so it never lingers over the comments/footer.
+ * scrolled past - so it never lingers over the comments/footer.
  */
 export function StickyActionsBar({ path }: StickyActionsBarProps) {
   const [headerHidden, setHeaderHidden] = useState(false);

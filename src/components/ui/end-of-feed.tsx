@@ -2,7 +2,7 @@ import ArkanaPattern from "@/components/arkana-pattern";
 import type { Pattern } from "@/components/arkana-strip";
 
 // A simple cross (both diagonals, no filled diamond) with the left/right
-// arm stubs — minimal and static, for any "nothing more here" state.
+// arm stubs - minimal and static, for any "nothing more here" state.
 export const MUTED_CROSS_GLYPH: Pattern["elements"] = {
   left: true,
   right: true,

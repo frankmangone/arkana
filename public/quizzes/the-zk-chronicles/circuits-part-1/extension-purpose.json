@@ -25,7 +25,7 @@
         "isCorrect": false
       }
     ],
-    "feedback": "In sum-check, the verifier picks random challenges $r_1, r_2$, etc. from the field. We need to evaluate $g(r_1, x_2, ...)$ where $r_1$ might be 5, 7, or any field element — not just 0 or 1!"
+    "feedback": "In sum-check, the verifier picks random challenges $r_1, r_2$, etc. from the field. We need to evaluate $g(r_1, x_2, ...)$ where $r_1$ might be 5, 7, or any field element - not just 0 or 1!"
   },
   "es": {
     "question": "¿Por qué necesitamos extender las compuertas booleanas para trabajar sobre campos finitos para el protocolo sum-check?",
@@ -51,6 +51,6 @@
         "isCorrect": false
       }
     ],
-    "feedback": "En sum-check, el verificador elige desafíos aleatorios $r_1, r_2$, etc. del campo. Necesitamos evaluar $g(r_1, x_2, ...)$ donde $r_1$ podría ser 5, 7, o cualquier elemento del campo — ¡no solo 0 o 1!"
+    "feedback": "En sum-check, el verificador elige desafíos aleatorios $r_1, r_2$, etc. del campo. Necesitamos evaluar $g(r_1, x_2, ...)$ donde $r_1$ podría ser 5, 7, o cualquier elemento del campo - ¡no solo 0 o 1!"
   }
 }

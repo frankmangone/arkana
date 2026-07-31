@@ -72,7 +72,7 @@ function drawGlyph(
     }
   });
 
-  // Central diamond / diagonals — bits 14 and 15
+  // Central diamond / diagonals - bits 14 and 15
   const d1 = bits & (1 << 14);
   const d2 = bits & (1 << 15);
   if (d1 && d2) {
@@ -100,7 +100,7 @@ function drawGlyph(
 }
 
 /**
- * GlyphRain — a matrix-style rain of Arkana glyphs on a canvas.
+ * GlyphRain - a matrix-style rain of Arkana glyphs on a canvas.
  * Falls back to a static field when the user prefers reduced motion.
  */
 export function GlyphRain({
@@ -153,7 +153,7 @@ export function GlyphRain({
 
     // Each column fades independently: brightest glyph at the top, fading
     // out over a random streak length so columns run out at different
-    // points. Color stays fixed (color/headColor) — only opacity varies,
+    // points. Color stays fixed (color/headColor) - only opacity varies,
     // via a per-column intensity multiplier (some columns read washed-out
     // from their very first glyph) and a "sustain" plateau before the
     // fade-out begins (some columns hold brightness longer).

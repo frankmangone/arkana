@@ -8,7 +8,7 @@ interface TintedThumbnailProps {
   imageClassName?: string;
   // "hero" fades to black at the bottom for text legibility; "card" is a
   // top-to-bottom vignette (barely there at top, a stronger duotone at the
-  // bottom) that clears entirely on hover — render inside a `group` ancestor.
+  // bottom) that clears entirely on hover - render inside a `group` ancestor.
   variant?: "hero" | "card";
 }
 

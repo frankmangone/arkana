@@ -55,7 +55,7 @@ export function processContent(content: string): string {
       .replace(/(\$\$[\s\S]*?\$\$|\\\[[\s\S]*?\\\]|\$[^$\n]*?\$)/g, (match) => {
         // Replace em dashes and hyphens that act as minus signs with proper LaTeX minus
         return match
-          .replace(/—/g, "-") // First normalize em dashes to regular hyphens
+          .replace(/-/g, "-") // First normalize em dashes to regular hyphens
           .replace(/(\s)-(\s)/g, "$1{-}$2") // Replace spaced hyphens with proper LaTeX minus
           .replace(/(\(|\[|^)-/g, "$1{-}") // Replace hyphens at start of expressions
           .replace(/-(\)|]|$)/g, "{-}$1"); // Replace hyphens at end of expressions

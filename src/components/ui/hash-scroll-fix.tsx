@@ -8,7 +8,7 @@ const SETTLE_MS = 2500;
 /**
  * The browser jumps to the URL hash before images and KaTeX above the
  * target have loaded, so the target drifts down as content gains height.
- * Re-align on every document resize until layout settles — or until the
+ * Re-align on every document resize until layout settles - or until the
  * reader scrolls on their own.
  */
 export function HashScrollFix() {

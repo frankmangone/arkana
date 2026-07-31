@@ -6,7 +6,7 @@
     "options": [
       {
         "id": "opt1",
-        "text": "Agreement on the boolean hypercube — the MLE must match the original function at all points in $\\{0,1\\}^v$",
+        "text": "Agreement on the boolean hypercube - the MLE must match the original function at all points in $\\{0,1\\}^v$",
         "isCorrect": true
       },
       {
@@ -21,7 +21,7 @@
       },
       {
         "id": "opt4",
-        "text": "Extension beyond the hypercube — the MLE must be evaluable at any point in the finite field",
+        "text": "Extension beyond the hypercube - the MLE must be evaluable at any point in the finite field",
         "isCorrect": true
       }
     ],
@@ -32,7 +32,7 @@
     "options": [
       {
         "id": "opt1",
-        "text": "Acuerdo en el hipercubo booleano — la MLE debe coincidir con la función original en todos los puntos de $\\{0,1\\}^v$",
+        "text": "Acuerdo en el hipercubo booleano - la MLE debe coincidir con la función original en todos los puntos de $\\{0,1\\}^v$",
         "isCorrect": true
       },
       {
@@ -47,7 +47,7 @@
       },
       {
         "id": "opt4",
-        "text": "Extensión más allá del hipercubo — la MLE debe ser evaluable en cualquier punto del campo finito",
+        "text": "Extensión más allá del hipercubo - la MLE debe ser evaluable en cualquier punto del campo finito",
         "isCorrect": true
       }
     ],

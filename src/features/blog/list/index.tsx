@@ -8,7 +8,7 @@ interface BlogPageProps {
   posts: PostPreview[];
   allPosts: PostPreview[];
   dictionary: Dictionary;
-  /** Index into `allPosts` where `posts` starts — infinite scroll continues
+  /** Index into `allPosts` where `posts` starts - infinite scroll continues
    * forward from there. */
   startIndex?: number;
 }

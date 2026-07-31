@@ -11,7 +11,7 @@ interface LatestArticlesProps {
   dictionary: Dictionary;
 }
 
-// A 4th column only kicks in on genuinely wide monitors (2xl) — narrower than
+// A 4th column only kicks in on genuinely wide monitors (2xl) - narrower than
 // that, four columns would squeeze these text-heavy cards too much.
 const HOME_GRID_BREAKPOINTS: MasonryBreakpoint[] = [
   { minWidth: 1536, columns: 4 },
@@ -39,7 +39,7 @@ export function LatestArticles({
         </div>
       )}
 
-      {/* Remaining posts, three masonry columns — reading order still goes
+      {/* Remaining posts, three masonry columns - reading order still goes
           left-to-right, top-to-bottom, but each column's height is its own,
           so columns fall out of phase with one another. Infinite-scrolls
           through the rest of the archive 12 posts at a time. */}

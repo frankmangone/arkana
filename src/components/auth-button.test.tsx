@@ -17,7 +17,7 @@ import { AuthButton } from "./auth-button";
 
 const STORAGE_KEY = "arkana_pending_intent";
 
-describe("AuthButton — logged out", () => {
+describe("AuthButton - logged out", () => {
   beforeEach(() => {
     sessionStorage.clear();
     mockUseParams.mockReturnValue({ lang: "en" });

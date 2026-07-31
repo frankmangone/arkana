@@ -82,6 +82,7 @@
     "moduleSingular": "módulo",
     "modulePlural": "módulos",
     "read": "leídos",
+    "takeQuiz": "Realizar una evaluación rápida",
     "list": {
       "title": "Listas de Lectura",
       "description": "Colecciones seleccionadas de artículos organizados por tema para guiar tu aprendizaje.",
@@ -162,6 +163,21 @@
       "sequencing": "Secuencia",
       "bucket_sort": "Clasificar",
       "fill_blank": "Completar el Espacio"
+    },
+    "attempt": {
+      "starting": "Preparando tu evaluación...",
+      "loading": "Cargando pregunta...",
+      "questionProgress": "Pregunta {current} de {total}",
+      "continue": "Continuar",
+      "skip": "Saltar",
+      "error": "Algo salió mal al cargar la evaluación. Por favor, intenta de nuevo.",
+      "results": {
+        "title": "¡Evaluación completa!",
+        "score": "Tu puntaje: {score}%",
+        "passed": "¡Buen trabajo, aprobaste!",
+        "failed": "Esta vez no llegaste al puntaje necesario - puedes repasar el material e intentarlo de nuevo más tarde.",
+        "backToReadingList": "Volver a la lista de lectura"
+      }
     }
   },
   "auth": {

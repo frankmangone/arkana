@@ -22,7 +22,7 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: "Arkana | Cryptography, Blockchain & Mathematics Learning",
   description:
-    "Learn cryptography, blockchain technology, and mathematics with clear, beginner-friendly tutorials — zero-knowledge proofs, elliptic curves, smart contracts, and more.",
+    "Learn cryptography, blockchain technology, and mathematics with clear, beginner-friendly tutorials - zero-knowledge proofs, elliptic curves, smart contracts, and more.",
   authors: [{ name: "Frank Mangone" }, { name: "Gonzalo Bustos" }],
   creator: "Frank Mangone",
   publisher: "Arkana",

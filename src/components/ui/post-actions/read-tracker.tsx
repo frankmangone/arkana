@@ -14,7 +14,7 @@ interface ReadTrackerProps {
 /**
  * Sentinel placed right after the article body. Once it scrolls into view
  * (fires once per mount) it shows a completion animation for everyone,
- * guest or logged in, and — only when logged in and not already read —
+ * guest or logged in, and - only when logged in and not already read -
  * silently marks the post as read in the background.
  */
 export function ReadTracker({ path }: ReadTrackerProps) {

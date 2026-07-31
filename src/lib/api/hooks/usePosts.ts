@@ -78,13 +78,13 @@ export function useToggleRead() {
 
 interface UseReadStatusesParams {
   paths: string[];
-  /** Set to false for guests — skips the fetch entirely. Defaults to true. */
+  /** Set to false for guests - skips the fetch entirely. Defaults to true. */
   enabled?: boolean;
 }
 
 /**
  * Hook to fetch read status for many posts in one request (e.g. an entire
- * reading list's stepper). Requires auth — callers should pass `enabled: !!user`.
+ * reading list's stepper). Requires auth - callers should pass `enabled: !!user`.
  */
 export function useReadStatuses({ paths, enabled = true }: UseReadStatusesParams) {
   return useQuery<Record<string, boolean>, Error>({

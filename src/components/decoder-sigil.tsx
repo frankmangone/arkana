@@ -7,7 +7,7 @@ import type { Pattern } from "@/components/arkana-strip";
 
 type Elements = Pattern["elements"];
 
-const DEFAULT_GLYPH_COUNT = 16; // 4×4 grid — 16 glyphs × 16 bits = the full SHA-256
+const DEFAULT_GLYPH_COUNT = 16; // 4×4 grid - 16 glyphs × 16 bits = the full SHA-256
 const TICK_MS = 90;
 const LOCK_EVERY_TICKS = 2; // one glyph locks onto the fingerprint every 2 ticks
 const IDLE_GAP_TICKS = 26; // pause between idle flickers (~2.3s)
@@ -73,7 +73,7 @@ function shuffledRanks(glyphCount: number): number[] {
   return rank;
 }
 
-/** rank[i] = i — glyphs lock in order, left to right / first to last. */
+/** rank[i] = i - glyphs lock in order, left to right / first to last. */
 function sequentialRanks(glyphCount: number): number[] {
   return Array.from({ length: glyphCount }, (_, i) => i);
 }
@@ -98,10 +98,10 @@ interface DecoderSigilProps {
   /** Number of glyphs. Defaults to 16 (a full 4×4 grid). */
   glyphCount?: number;
   /** When true, glyphs lock left-to-right in order instead of a shuffled
-   * order — reads as the fingerprint "building itself" one glyph at a time. */
+   * order - reads as the fingerprint "building itself" one glyph at a time. */
   sequential?: boolean;
   /** When false, skip the occasional single-glyph re-scramble after the
-   * initial decode completes — stays fully locked. Defaults to true. */
+   * initial decode completes - stays fully locked. Defaults to true. */
   idleFlicker?: boolean;
 }
 

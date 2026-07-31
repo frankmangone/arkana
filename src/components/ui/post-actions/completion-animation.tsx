@@ -4,7 +4,7 @@ interface CompletionAnimationProps {
 
 /**
  * Celebratory sigil shown once a reader scrolls to the end of an article.
- * Rotated-square + tick pops in first, then the rays burst outward — see
+ * Rotated-square + tick pops in first, then the rays burst outward - see
  * the sigil-pop/sigil-rays/sigil-check/sigil-text keyframes in globals.css.
  * Flanked by the same hairline rules as SectionDivider, since it replaces
  * the divider that used to sit right after the article body.

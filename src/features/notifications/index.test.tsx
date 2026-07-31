@@ -30,7 +30,7 @@ vi.mock("@/hooks/use-infinite-scroll-trigger", () => ({
 
 import { NotificationsPage } from "./index";
 
-describe("NotificationsPage — logged out", () => {
+describe("NotificationsPage - logged out", () => {
   beforeEach(() => {
     mockUseAuth.mockReturnValue({ user: null, loading: false });
     mockRequireAuth.mockReset();

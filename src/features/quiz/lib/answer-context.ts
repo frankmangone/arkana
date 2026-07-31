@@ -1,28 +1,34 @@
 "use client";
 
 import { createContext, useContext } from "react";
+import type { AnswerKey, QuestionResponse } from "@/features/quiz/types";
 
-export interface AnswerReport {
+export interface ResponseReport {
+  response: QuestionResponse;
   /** Whether the card's check-answer button should be enabled. */
   canSubmit: boolean;
-  correct: boolean;
-  /**
-   * Extra cleanup when the user un-reveals to retry (e.g. clear placements).
-   * A renderer that clears state here must also push a fresh report so the
-   * card's grading doesn't go stale against the cleared state.
-   */
-  onRetry?: () => void;
 }
 
 /** What a renderer reports before the user has interacted at all. */
-export const EMPTY_ANSWER_REPORT: AnswerReport = {
+export const EMPTY_RESPONSE_REPORT: ResponseReport = {
+  response: {} as QuestionResponse,
   canSubmit: false,
-  correct: false,
 };
 
 interface QuestionAnswerContextValue {
   revealed: boolean;
-  reportAnswer: (report: AnswerReport) => void;
+  /**
+   * Set once revealed. When true, renderers should treat the user's own
+   * last-reported response as ground truth for "correct" styling - the real
+   * backend never sends the answer key back on a correct submission, so
+   * there's nothing else to read it from, and nothing else is needed: an
+   * exact-match grading rule means "correct" already implies the user's
+   * picks equal the answer key.
+   */
+  correct?: boolean;
+  /** Only ever set when revealed && !correct - "what was actually right." */
+  correctReveal?: AnswerKey;
+  reportResponse: (report: ResponseReport) => void;
 }
 
 const QuestionAnswerContext = createContext<QuestionAnswerContextValue | null>(

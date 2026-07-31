@@ -34,7 +34,7 @@ describe("pending-intent storage", () => {
     });
   });
 
-  it("clears the key on read — a second consume returns null", () => {
+  it("clears the key on read - a second consume returns null", () => {
     setPendingIntent({ returnTo: "/en" }, NOW);
     consumePendingIntent(NOW);
     expect(consumePendingIntent(NOW)).toBeNull();

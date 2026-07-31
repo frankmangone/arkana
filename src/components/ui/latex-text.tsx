@@ -17,7 +17,7 @@ interface LatexTextProps {
    * Skip the paragraph wrapper entirely, rendering just the parsed content.
    * Needed when this text is one fragment among sibling elements sharing a
    * single inline flow (e.g. fill-blank template text running alongside
-   * blank buttons) — a wrapping span or p would break onto its own line.
+   * blank buttons) - a wrapping span or p would break onto its own line.
    * @default false
    */
   unwrap?: boolean;

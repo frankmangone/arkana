@@ -82,6 +82,7 @@
     "moduleSingular": "módulo",
     "modulePlural": "módulos",
     "read": "lidos",
+    "takeQuiz": "Fazer uma avaliação rápida",
     "list": {
       "title": "Listas de Leitura",
       "description": "Coleções selecionadas de artigos organizados por tópico para guiar sua jornada de aprendizado.",
@@ -162,6 +163,21 @@
       "sequencing": "Sequência",
       "bucket_sort": "Classificar",
       "fill_blank": "Complete a Lacuna"
+    },
+    "attempt": {
+      "starting": "Preparando seu quiz...",
+      "loading": "Carregando pergunta...",
+      "questionProgress": "Pergunta {current} de {total}",
+      "continue": "Continuar",
+      "skip": "Pular",
+      "error": "Algo deu errado ao carregar o quiz. Por favor, tente novamente.",
+      "results": {
+        "title": "Quiz concluído!",
+        "score": "Sua pontuação: {score}%",
+        "passed": "Bom trabalho - você passou!",
+        "failed": "Não foi dessa vez - você pode revisar o material e tentar novamente mais tarde.",
+        "backToReadingList": "Voltar para a lista de leitura"
+      }
     }
   },
   "auth": {

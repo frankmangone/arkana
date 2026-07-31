@@ -5,3 +5,4 @@ export * from "./usePosts";
 export * from "./useSearch";
 export * from "./useNotifications";
 export * from "./useSubscriptions";
+export * from "./useQuiz";

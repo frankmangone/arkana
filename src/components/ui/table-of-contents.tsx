@@ -17,7 +17,7 @@ interface TableOfContentsProps {
 // vs. when it releases that state (scrolling back up). Keeping the release
 // line further down than the activation line gives a dead zone in between,
 // so a heading that only grazes one line while reversing direction never
-// touches the other — closing the gap where the highlight could get stuck.
+// touches the other - closing the gap where the highlight could get stuck.
 const ACTIVE_SECTION_ENTER_PX = 160;
 const ACTIVE_SECTION_EXIT_PX = 220;
 
@@ -127,7 +127,7 @@ export function TableOfContents({ content, compact }: TableOfContentsProps) {
     window.addEventListener("resize", recomputeOffsets, { passive: true });
 
     // Content below the initial measurement (webfont swap, KaTeX, images)
-    // can still grow the document after mount, leaving `offsets` stale —
+    // can still grow the document after mount, leaving `offsets` stale -
     // see hash-scroll-fix.tsx for the same failure mode. Re-measure on any
     // body size change, not just window resize.
     const bodyResizeObserver = new ResizeObserver(recomputeOffsets);

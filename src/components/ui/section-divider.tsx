@@ -1,6 +1,6 @@
 import ArkanaPattern from "@/components/arkana-pattern";
 
-// A fixed, symmetric glyph — the divider mark stays identical everywhere
+// A fixed, symmetric glyph - the divider mark stays identical everywhere
 const DIVIDER_GLYPH = {
   left: true,
   right: true,

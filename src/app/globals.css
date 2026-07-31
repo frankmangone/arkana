@@ -358,7 +358,7 @@
   --background: hsl(260, 30%, 8%);
   --foreground: oklch(0.985 0 0);
 
-  /* Dark-editorial semantic layer — purple-tinted, not black */
+  /* Dark-editorial semantic layer - purple-tinted, not black */
   --surface-page: hsl(260, 30%, 8%);
   --surface-raised: hsl(260, 28%, 12%);
   --surface-overlay: hsl(260, 26%, 17%);
@@ -392,10 +392,10 @@
     transparent
   );
 
-  /* Buy-me-a-coffee widget accent — magenta to coral to gold */
+  /* Buy-me-a-coffee widget accent - magenta to coral to gold */
   --grad-coffee: linear-gradient(135deg, #bc3f7e, #f5745b, #ffd270);
 
-  /* Vivid hero field — near-solid, slightly desaturated, with a subtle
+  /* Vivid hero field - near-solid, slightly desaturated, with a subtle
      drift on the right. Dark ink goes on top of this. */
   --grad-hero: linear-gradient(
     105deg,
@@ -456,7 +456,7 @@
   --secondary-950: hsl(277, 96%, 91%);
   --secondary-1000: hsl(278, 92%, 95%);
 
-  /* "Correct" colors — used by the blog's .callout-tip. Left as originally
+  /* "Correct" colors - used by the blog's .callout-tip. Left as originally
      designed; quiz correct/incorrect states use --aquamarine/--salmon
      instead (see their own definitions below), matching the color
      vocabulary the existing inline post-quiz widget already established. */
@@ -528,7 +528,7 @@
   --teal-950: hsl(195, 92%, 88%);
   --teal-1000: hsl(195, 92%, 92%);
 
-  /* Incorrect counterpart to teal above — a magenta pulled far enough
+  /* Incorrect counterpart to teal above - a magenta pulled far enough
      around the wheel from primary/secondary (hue 260/276) to read as its
      own alarm signal, not just another violet accent. Close to the hue the
      buy-me-coffee gradient opens on (~330), so it isn't a foreign color to
@@ -710,7 +710,7 @@
   }
 }
 
-/* Editorial type utilities — components layer so utilities can override */
+/* Editorial type utilities - components layer so utilities can override */
 @layer components {
   .eyebrow {
     font-size: 0.6875rem;
@@ -735,12 +735,12 @@
     border-radius: calc(var(--radius) + 4px);
   }
 
-  /* Vivid full-color hero field — pair with text-ink-on-brand */
+  /* Vivid full-color hero field - pair with text-ink-on-brand */
   .brand-hero {
     background-image: var(--grad-hero);
   }
 
-  /* Dark GlyphRain-backed hero — scoped override, does not touch
+  /* Dark GlyphRain-backed hero - scoped override, does not touch
      brand-hero or its other consumers (FAQ/auth). Used by home and
      writer profile pages. */
   .home-hero {
@@ -762,7 +762,7 @@
     margin-left: -50vw;
   }
 
-  /* Vivid gradient text accent — use sparingly */
+  /* Vivid gradient text accent - use sparingly */
   .grad-text {
     background-image: linear-gradient(
       100deg,
@@ -880,7 +880,7 @@ blockquote cite {
   opacity: 0.8;
 }
 
-/* Callout styles for GitHub-style callouts — hues via the brand ramps */
+/* Callout styles for GitHub-style callouts - hues via the brand ramps */
 .callout-note {
   border-left: 2px solid var(--sky-500);
   background-color: color-mix(in srgb, var(--sky-500) 10%, transparent);

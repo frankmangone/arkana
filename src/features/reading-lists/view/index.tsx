@@ -83,9 +83,12 @@ export async function ReadingListPage(props: ReadingListPageProps) {
       </header>
 
       <JourneyStepper
+        lang={lang}
+        listSlug={readingList.id}
         modules={modules}
         moduleLabel={dict.readingLists.module}
         readLabel={dict.readingLists.read}
+        takeQuizLabel={dict.readingLists.takeQuiz}
       />
     </div>
   );

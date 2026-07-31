@@ -136,7 +136,7 @@ export function BlogGrid(props: BlogGridProps) {
   );
 
   // Three sources, in order: the shipped corpus (no query/tags), search hits
-  // mapped back to build-time previews, and — if the API is unreachable —
+  // mapped back to build-time previews, and - if the API is unreachable -
   // filtering the shipped corpus locally so search still works offline.
   let shownPosts: PostPreview[];
   if (!filtering) {

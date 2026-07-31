@@ -2,7 +2,7 @@
 
 `scripts/generate-social-image.js` builds a share-card PNG for a blog post: a
 dense field of Arkana glyphs up top, and the post's title (plus an optional
-link) on a dark panel below. It's a local CLI tool — nothing here is wired
+link) on a dark panel below. It's a local CLI tool - nothing here is wired
 into the build or the deploy pipeline.
 
 ## Usage
@@ -14,7 +14,7 @@ node scripts/generate-social-image.js <path-to-content-md-file> [--format=og|sto
 `<path-to-content-md-file>` is a path into the sibling `arkana-content` repo's
 `content/{lang}/{folder}/{slug}.md` structure. The script reads `title` from
 that file's frontmatter and derives `lang`/`folder`/`slug` from the path
-itself — it doesn't need any of those passed separately.
+itself - it doesn't need any of those passed separately.
 
 ### Example
 
@@ -30,10 +30,10 @@ Wrote downloads/social/cryptography-101-where-to-start-en.png
 
 ## Flags
 
-- `--format=og` (default) — 1200×630, the standard Open Graph / Twitter card
+- `--format=og` (default) - 1200×630, the standard Open Graph / Twitter card
   size.
-- `--format=story` — 1080×1920, for Instagram/Facebook Stories.
-- `--url` — includes the post's canonical URL
+- `--format=story` - 1080×1920, for Instagram/Facebook Stories.
+- `--url` - includes the post's canonical URL
   (`https://arkana.blog/{lang}/blog/{folder}/{slug}/`) at the bottom of the
   card. Omitted by default, since most of the time you'll add the link
   natively on the platform instead (a clickable link sticker on Stories, plain
@@ -57,27 +57,27 @@ as `<folder>-<slug>-<lang>[-story][-link].png`. For example:
 ## How it's built
 
 - **Glyph field**: a server-side re-implementation of `glyph-rain.tsx`'s
-  static frame — the same 16-segment Arkana glyph, randomly generated fresh
+  static frame - the same 16-segment Arkana glyph, randomly generated fresh
   on every run (no seed, so re-running the same post gives a different but
   same-style field each time). It's rendered as a standalone SVG (no canvas
   needed outside a browser) and tiles edge-to-edge with no gaps between
   glyphs, inset from the card's edges by a per-format margin.
 - **Rendering**: the card is built as a [satori](https://github.com/vercel/satori)
-  flexbox element tree — satori handles the title's text wrapping — then
+  flexbox element tree - satori handles the title's text wrapping - then
   rasterized to PNG with `@resvg/resvg-js`.
 - **Font**: Space Grotesk (the site's font) is fetched fresh from Google Fonts
   on every run, since neither this repo nor `arkana-content` vendors font
   files. This means **the script needs network access** to run.
 - **Per-format tuning**: `FORMATS` in the script holds each format's
   dimensions, glyph size/margin, and type sizes. These aren't scaled from one
-  format to the other by a fixed ratio — each was tuned against its own
+  format to the other by a fixed ratio - each was tuned against its own
   canvas and reviewed visually, since e.g. what wraps a title nicely at
   1200px wide doesn't at 1080px.
 
 ## Adding a new format
 
 Add an entry to the `FORMATS` object in `scripts/generate-social-image.js`
-with the new `width`/`height` and its own tuned type sizes — then generate a
+with the new `width`/`height` and its own tuned type sizes - then generate a
 few real posts (a short title and the longest one you can find) and look at
 the output before committing to the numbers. Font sizes and glyph
 `cellSize` genuinely don't scale linearly between formats; treat any new

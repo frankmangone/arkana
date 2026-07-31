@@ -4,14 +4,12 @@ import { useEffect, useRef, useState } from "react";
 import { Check, X } from "lucide-react";
 import { motion } from "motion/react";
 import { LatexText } from "@/components/ui/latex-text";
-import {
-  EMPTY_ANSWER_REPORT,
-  useQuestionAnswer,
-} from "@/features/quiz/lib/answer-context";
+import { useQuestionAnswer } from "@/features/quiz/lib/answer-context";
 import { shuffled } from "@/features/quiz/lib/shuffle";
 import { cn } from "@/lib/utils";
 import type {
-  MatchingPair,
+  AssignmentsAnswerKey,
+  MatchingItem,
   MatchingQuestion,
   QuizzesDictionary,
 } from "@/features/quiz/types";
@@ -27,7 +25,7 @@ interface LineSegment {
   y1: number;
   x2: number;
   y2: number;
-  /** null while unrevealed — line is neutral until graded. */
+  /** null while unrevealed - line is neutral until graded. */
   correct: boolean | null;
 }
 
@@ -51,7 +49,7 @@ const styles = {
   column: "flex list-none flex-col gap-2 !p-0",
   columnItem: "!m-0 before:!content-none",
   item: (revealed: boolean, isActive: boolean, isMatched: boolean, isMatchCorrect: boolean) => cn(
-    "relative flex min-h-16 w-full items-center gap-2.5 rounded-md border border-rule bg-surface-raised px-3 py-2.5 text-left text-sm text-ink-body transition-colors outline-none",
+    "relative flex min-h-16 w-full items-center gap-2.5 rounded-md border border-rule bg-surface-raised px-3 py-2.5 text-left text-[15px] leading-snug text-ink-body transition-colors outline-none",
     "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
     revealed
       ? "cursor-default"
@@ -74,13 +72,8 @@ const styles = {
       !isMatchCorrect &&
       "border-magenta bg-magenta/10"
   ),
-  // Absolutely positioned so it doesn't eat into the row's own flex layout
-  // or shift the label when it appears.
   itemLetter: "eyebrow absolute top-1.5 left-2 text-xs",
   itemLabel: "flex-1 pl-4",
-  // Reserved even before reveal — rendering this icon only once revealed
-  // shrinks the label's flex-1 space and shifts the layout right when the
-  // check/X pops in.
   itemIconSlot: "flex size-4 shrink-0 items-center justify-center",
 };
 
@@ -88,11 +81,11 @@ export function MatchingQuestionRenderer({
   question,
   dictionary,
 }: MatchingQuestionProps) {
-  const { revealed, reportAnswer } = useQuestionAnswer();
-  const [rightOrder] = useState(() => shuffled(question.pairs));
-  // leftPairId -> rightPairId it's currently matched with
+  const { revealed, correct, correctReveal, reportResponse } = useQuestionAnswer();
+  const [rightOrder] = useState(() => shuffled(question.right));
+  // leftId -> rightId it's currently matched with
   const [assignments, setAssignments] = useState<Record<string, string>>({});
-  // leftPairIds in the order they were matched — matched pairs hoist to the
+  // leftIds in the order they were matched - matched pairs hoist to the
   // top of both columns in this order, landing on the same row, so the
   // connecting line stays short instead of cutting diagonally across rows.
   const [matchOrder, setMatchOrder] = useState<string[]>([]);
@@ -105,22 +98,28 @@ export function MatchingQuestionRenderer({
   const leftRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const rightRefs = useRef<Record<string, HTMLButtonElement | null>>({});
 
-  const leftPairById = new Map(question.pairs.map((pair) => [pair.id, pair]));
-  const rightPairById = new Map(rightOrder.map((pair) => [pair.id, pair]));
+  // On a correct submission the backend never sends the answer key back -
+  // the user's own assignments already equal it.
+  const correctAssignments = correct
+    ? assignments
+    : (correctReveal as AssignmentsAnswerKey | undefined)?.correctAssignments ?? {};
 
-  const isMatchingPair = (pair: MatchingPair | undefined): pair is MatchingPair =>
-    pair !== undefined;
+  const leftPairById = new Map(question.left.map((item) => [item.id, item]));
+  const rightPairById = new Map(rightOrder.map((item) => [item.id, item]));
+
+  const isMatchingItem = (item: MatchingItem | undefined): item is MatchingItem =>
+    item !== undefined;
 
   const leftRenderOrder = [
-    ...matchOrder.map((id) => leftPairById.get(id)).filter(isMatchingPair),
-    ...question.pairs.filter((pair) => !matchOrder.includes(pair.id)),
+    ...matchOrder.map((id) => leftPairById.get(id)).filter(isMatchingItem),
+    ...question.left.filter((item) => !matchOrder.includes(item.id)),
   ];
   const rightRenderOrder = [
     ...matchOrder
       .map((id) => rightPairById.get(assignments[id]))
-      .filter(isMatchingPair),
+      .filter(isMatchingItem),
     ...rightOrder.filter(
-      (pair) => !matchOrder.some((id) => assignments[id] === pair.id)
+      (item) => !matchOrder.some((id) => assignments[id] === item.id)
     ),
   ];
 
@@ -156,17 +155,9 @@ export function MatchingQuestionRenderer({
       leftId,
     ]);
     setActive(null);
-    reportAnswer({
-      canSubmit: question.pairs.every((pair) => nextAssignments[pair.id]),
-      correct: question.pairs.every(
-        (pair) => nextAssignments[pair.id] === pair.id
-      ),
-      onRetry: () => {
-        setAssignments({});
-        setMatchOrder([]);
-        setActive(null);
-        reportAnswer(EMPTY_ANSWER_REPORT);
-      },
+    reportResponse({
+      response: { assignments: nextAssignments },
+      canSubmit: question.left.every((item) => nextAssignments[item.id]),
     });
   };
 
@@ -192,14 +183,14 @@ export function MatchingQuestionRenderer({
               y1: leftRect.top + leftRect.height / 2 - containerRect.top,
               x2: rightRect.left - containerRect.left,
               y2: rightRect.top + rightRect.height / 2 - containerRect.top,
-              correct: revealed ? leftId === rightId : null,
+              correct: revealed ? correctAssignments[leftId] === rightId : null,
             },
           ];
         })
       );
     };
 
-    // Reordering animates over the spring transition below — poll for that
+    // Reordering animates over the spring transition below - poll for that
     // window so the line tracks the boxes mid-flight instead of jumping
     // straight to their end position.
     const start = performance.now();
@@ -215,6 +206,7 @@ export function MatchingQuestionRenderer({
       cancelAnimationFrame(frame);
       observer.disconnect();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [assignments, revealed]);
 
   return (
@@ -237,26 +229,26 @@ export function MatchingQuestionRenderer({
           ))}
         </svg>
         <ul className={styles.column}>
-          {leftRenderOrder.map((pair) => {
-            const isActive = active?.side === "left" && active.id === pair.id;
-            const assignedRightId = assignments[pair.id];
-            const isMatchCorrect = assignedRightId === pair.id;
+          {leftRenderOrder.map((item) => {
+            const isActive = active?.side === "left" && active.id === item.id;
+            const assignedRightId = assignments[item.id];
+            const isMatchCorrect = assignedRightId === correctAssignments[item.id];
 
             return (
               <motion.li
-                key={pair.id}
+                key={item.id}
                 layout
                 transition={SPRING}
                 className={styles.columnItem}
               >
                 <button
                   ref={(el) => {
-                    leftRefs.current[pair.id] = el;
+                    leftRefs.current[item.id] = el;
                   }}
                   type="button"
                   aria-pressed={isActive}
                   disabled={revealed}
-                  onClick={() => selectItem("left", pair.id)}
+                  onClick={() => selectItem("left", item.id)}
                   className={styles.item(
                     revealed,
                     isActive,
@@ -265,10 +257,10 @@ export function MatchingQuestionRenderer({
                   )}
                 >
                   <span className={styles.itemLetter}>
-                    {assignedRightId && letterFor(matchOrder.indexOf(pair.id))}
+                    {assignedRightId && letterFor(matchOrder.indexOf(item.id))}
                   </span>
                   <span className={styles.itemLabel}>
-                    <LatexText inline>{pair.left}</LatexText>
+                    <LatexText inline>{item.label}</LatexText>
                   </span>
                   <span className={styles.itemIconSlot}>
                     {revealed &&
@@ -284,37 +276,38 @@ export function MatchingQuestionRenderer({
           })}
         </ul>
         <ul className={styles.column}>
-          {rightRenderOrder.map((rightPair) => {
+          {rightRenderOrder.map((rightItem) => {
             const isActive =
-              active?.side === "right" && active.id === rightPair.id;
+              active?.side === "right" && active.id === rightItem.id;
             const matchedLeftId = Object.keys(assignments).find(
-              (leftId) => assignments[leftId] === rightPair.id
+              (leftId) => assignments[leftId] === rightItem.id
             );
             const isMatched = matchedLeftId !== undefined;
-            const isMatchCorrect = matchedLeftId === rightPair.id;
+            const isMatchCorrect =
+              matchedLeftId !== undefined && correctAssignments[matchedLeftId] === rightItem.id;
 
             return (
               <motion.li
-                key={rightPair.id}
+                key={rightItem.id}
                 layout
                 transition={SPRING}
                 className={styles.columnItem}
               >
                 <button
                   ref={(el) => {
-                    rightRefs.current[rightPair.id] = el;
+                    rightRefs.current[rightItem.id] = el;
                   }}
                   type="button"
                   aria-pressed={isActive}
                   disabled={revealed}
-                  onClick={() => selectItem("right", rightPair.id)}
+                  onClick={() => selectItem("right", rightItem.id)}
                   className={styles.item(revealed, isActive, isMatched, isMatchCorrect)}
                 >
                   <span className={styles.itemLetter}>
-                    {isMatched && letterFor(matchOrder.indexOf(matchedLeftId))}
+                    {isMatched && matchedLeftId && letterFor(matchOrder.indexOf(matchedLeftId))}
                   </span>
                   <span className={styles.itemLabel}>
-                    <LatexText inline>{rightPair.right}</LatexText>
+                    <LatexText inline>{rightItem.label}</LatexText>
                   </span>
                   <span className={styles.itemIconSlot}>
                     {revealed &&

@@ -22,7 +22,6 @@ export function ChoiceQuestionRenderer({
     <OptionPicker
       hint={allowMultiple ? dictionary.multiChoiceHint : dictionary.singleChoiceHint}
       options={question.options}
-      correctOptionIds={question.correctOptionIds}
       allowMultiple={allowMultiple}
     />
   );

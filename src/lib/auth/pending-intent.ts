@@ -42,7 +42,7 @@ export async function resumePendingIntent(
       const registry = createPendingActionRegistry(queryClient);
       await registry[intent.action.type](intent.action.payload);
     } catch {
-      toast.error("Couldn't complete that action — try again.");
+      toast.error("Couldn't complete that action - try again.");
     }
   }
   return intent?.returnTo ?? fallbackReturnTo;

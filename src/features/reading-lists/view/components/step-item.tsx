@@ -9,7 +9,7 @@ interface StepItemProps {
   read?: boolean;
   /** Draws the vertical connector down to the next step. False for a module's last step. */
   showConnector: boolean;
-  /** True once every step in the module is read — tints the connector primary. */
+  /** True once every step in the module is read - tints the connector primary. */
   moduleComplete?: boolean;
 }
 

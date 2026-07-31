@@ -66,7 +66,7 @@ interface MasonryColumnsProps {
 /**
  * Splits items round-robin across columns (item 1 → col 1, item 2 → col 2,
  * ... item N+1 → col 1 again) so reading order matches a regular grid, but
- * each column is its own independent flex stack — a card's real height
+ * each column is its own independent flex stack - a card's real height
  * carries into where the next card in that column starts, producing a
  * masonry-style stagger instead of grid's forced-equal row heights.
  *
@@ -75,7 +75,7 @@ interface MasonryColumnsProps {
  * up short gets a quiet decorative glyph so it doesn't trail off blank.
  *
  * Takes pre-rendered elements (not a render function) so a Server Component
- * can build the items and pass them straight through — functions can't cross
+ * can build the items and pass them straight through - functions can't cross
  * the server/client boundary as props, but React elements can.
  */
 export function MasonryColumns({

@@ -28,7 +28,7 @@ const TILE_MASK = `url("data:image/svg+xml,${encodeURIComponent(TILE_SVG)}")`;
 /**
  * Flat, staggered mosaic of diamond cells, drawn as a CSS mask over a
  * gradient using the same stops as the widget's --grad-coffee (globals.css)
- * so the pattern matches the card border and button — but running
+ * so the pattern matches the card border and button - but running
  * top-to-bottom on desktop and left-to-right on mobile. A second mask layer
  * fades the pattern out toward the bottom on mobile and toward the right on
  * desktop.

@@ -1,7 +1,7 @@
 import { DecryptedText } from "@/components/decrypted-text";
 
 // Flattens children to a plain string only if they contain no rich markup
-// (LaTeX, bold, etc.) — those need their own elements rendered as-is, so
+// (LaTeX, bold, etc.) - those need their own elements rendered as-is, so
 // only plain-text big quotes get the decrypt effect.
 function flattenIfPlainText(node: React.ReactNode): string | null {
   if (typeof node === "string") return node;

@@ -20,7 +20,7 @@ export function SurveyPage({ dictionary }: SurveyPageProps) {
 
       <section className="relative z-10 mx-auto flex max-w-3xl flex-col items-center gap-8 px-4 py-16 text-center md:py-24">
         {/* Sequential row: glyphs lock left-to-right, "building" the
-            fingerprint one at a time — fits the survey's building-Arkana
+            fingerprint one at a time - fits the survey's building-Arkana
             theme, unlike the shuffled 4x4 grid used elsewhere. */}
         <DecoderSigil
           content={dictionary.home.userSurvey.title}

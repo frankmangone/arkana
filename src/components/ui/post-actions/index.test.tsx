@@ -35,7 +35,7 @@ vi.mock("@/lib/hooks/use-dictionary", () => ({
 import { PostActions } from "./index";
 import { PendingActionType } from "@/lib/auth/pending-action-types";
 
-describe("PostActions — logged out", () => {
+describe("PostActions - logged out", () => {
   beforeEach(() => {
     mockUseParams.mockReturnValue({ lang: "en" });
     mockUseRouter.mockReturnValue({ push: vi.fn() });

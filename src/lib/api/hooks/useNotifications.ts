@@ -27,7 +27,7 @@ export const notificationKeys = {
 
 /**
  * Unread notification count. Fetched once per mount (default React Query
- * behavior) — no polling.
+ * behavior) - no polling.
  */
 export function useUnreadCount(enabled: boolean) {
   return useQuery<UnreadCountResponse, Error>({
@@ -50,7 +50,7 @@ export function useNotificationsList(enabled: boolean) {
 }
 
 /**
- * The full /notifications page — offset-paginated, same shape as
+ * The full /notifications page - offset-paginated, same shape as
  * useUnifiedSearch (see src/lib/api/hooks/useSearch.ts).
  */
 export function useNotificationsInfinite(enabled: boolean) {

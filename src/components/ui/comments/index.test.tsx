@@ -30,7 +30,7 @@ vi.mock("@/lib/hooks/use-dictionary", () => ({
 
 import { CommentSection } from "./index";
 
-describe("CommentSection — logged out", () => {
+describe("CommentSection - logged out", () => {
   beforeEach(() => {
     mockUseParams.mockReturnValue({ lang: "en" });
     mockUseRouter.mockReturnValue({ push: vi.fn(), replace: vi.fn() });

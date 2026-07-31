@@ -4,7 +4,7 @@ Translate the file `$ARGUMENTS` to Spanish.
 
 - Add slugs to headings in format `{#heading-slug}` beside the heading. Slug must always be in English (slugified English heading), NOT translated. Example: translating "## Consensus" → "## Consenso" uses `{#consensus}`, NOT `{#consenso}`.
 - Remove the medium link in the translated version.
-- Do not translate tags in the heading — keep them as-is (they are internationalized).
+- Do not translate tags in the heading - keep them as-is (they are internationalized).
 - Internal links: keep same, only change `/en` prefix to `/es`.
 - External links: do NOT translate; keep as-is.
 - The initial quote for articles in a series must be consistent with other articles in the same series. Check `src/lib/reading-lists/es.ts` to find if this article belongs to a series, and if so, use the same quote as the other articles.

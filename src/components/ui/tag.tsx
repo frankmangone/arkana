@@ -13,7 +13,7 @@ export function Tag(props: TagProps) {
   const { tag, lang } = props;
 
   // Button (not a link): tags render inside post-card <Link>s, where a
-  // nested <a> would be invalid HTML. Full navigation on purpose — this
+  // nested <a> would be invalid HTML. Full navigation on purpose - this
   // takes the user to the blog search page, pre-filtered by this tag.
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();

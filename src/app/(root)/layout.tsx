@@ -19,11 +19,11 @@ const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
 });
 
-// Root layout for "/" only (English, no locale prefix) — a sibling root to
+// Root layout for "/" only (English, no locale prefix) - a sibling root to
 // (localized)/[lang]/layout.tsx via route groups, so Next.js lets each
 // declare its own <html>. Keep this in sync with that file: both must stay
 // structurally equivalent (fonts, providers, dark-theme bootstrap, schema,
-// and this static metadata export — icons/robots/authors are layout-level
+// and this static metadata export - icons/robots/authors are layout-level
 // here, not covered by the page's own generateMetadata).
 export const metadata: Metadata = {
   authors: [{ name: "Frank Mangone" }, { name: "Gonzalo Bustos" }],

@@ -40,7 +40,7 @@ interface UseUnifiedSearchParams {
 
 /**
  * Posts matching a free-text query, a tag filter, or both, paged 12 at a
- * time via offset. Disabled when neither query nor tags is set — the caller
+ * time via offset. Disabled when neither query nor tags is set - the caller
  * renders its static post list instead.
  */
 export function useUnifiedSearch({ query, tags, lang }: UseUnifiedSearchParams) {

@@ -1,7 +1,7 @@
 import ArkanaPattern from "@/components/arkana-pattern";
 import type { Pattern } from "@/components/arkana-strip";
 
-// Central diamond plus all four diagonal rays, no outer sides — reads
+// Central diamond plus all four diagonal rays, no outer sides - reads
 // cleanly as a glyph even while spinning.
 const SPINNER_GLYPH: Pattern["elements"] = {
   left: true,

@@ -20,7 +20,7 @@ export const subscriptionKeys = {
 
 /**
  * Server-truth subscription status for the current user. Pass
- * `enabled: false` while logged out — there's no session to check status
+ * `enabled: false` while logged out - there's no session to check status
  * against, and the endpoint requires auth.
  */
 export function useSubscriptionStatus(enabled: boolean) {

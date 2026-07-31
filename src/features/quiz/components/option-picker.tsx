@@ -3,25 +3,15 @@
 import { useState } from "react";
 import { Check, X } from "lucide-react";
 import { LatexText } from "@/components/ui/latex-text";
-import {
-  EMPTY_ANSWER_REPORT,
-  useQuestionAnswer,
-} from "@/features/quiz/lib/answer-context";
+import { useQuestionAnswer } from "@/features/quiz/lib/answer-context";
+import { shuffled } from "@/features/quiz/lib/shuffle";
 import { cn } from "@/lib/utils";
-import type { ChoiceOption } from "@/features/quiz/types";
+import type { ChoiceAnswerKey, ChoiceOption } from "@/features/quiz/types";
 
 interface OptionPickerProps {
   hint?: string;
   options: ChoiceOption[];
-  correctOptionIds: string[];
   allowMultiple: boolean;
-}
-
-function isCorrectSelection(selected: string[], correctIds: string[]) {
-  return (
-    selected.length === correctIds.length &&
-    correctIds.every((id) => selected.includes(id))
-  );
 }
 
 const styles = {
@@ -30,7 +20,7 @@ const styles = {
   list: "flex list-none flex-wrap gap-2 !p-0",
   listItem: "!m-0 basis-full before:!content-none md:basis-[calc(50%-0.25rem)]",
   option: (revealed: boolean, isSelected: boolean, isCorrectOption: boolean) => cn(
-    "flex h-full w-full items-center gap-3 rounded-md border border-rule bg-surface-raised px-4 py-2.5 text-left text-sm text-ink-body transition-colors outline-none",
+    "flex h-full w-full items-center gap-3 rounded-md border border-rule bg-surface-raised px-4 py-2.5 text-left text-[15px] leading-snug text-ink-body transition-colors outline-none",
     "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
     revealed
       ? "cursor-default"
@@ -40,10 +30,6 @@ const styles = {
     !revealed &&
       isSelected &&
       "border-primary-700 bg-primary-700/10 text-ink-heading",
-    // Grading colors sit closer to the house palette than the
-    // old widget's aquamarine/salmon: teal for correct,
-    // magenta for incorrect — both their own lane, distinct
-    // from primary/secondary's violet.
     revealed &&
       isSelected &&
       isCorrectOption &&
@@ -57,10 +43,6 @@ const styles = {
       !isCorrectOption &&
       "border-magenta bg-magenta/10"
   ),
-  // "What did I pick?" — stays violet, unchanged by grading, so your actual
-  // choice is never overwritten by the verdict. Shape carries the other
-  // distinction: a circle (radio) reads as "pick one," a diamond (checkbox)
-  // reads as "pick any number" — no need to spell either out in the prompt copy.
   marker: (allowMultiple: boolean, isSelected: boolean) => cn(
     "size-2 shrink-0 border transition-colors",
     allowMultiple ? "rotate-45" : "rounded-full",
@@ -69,17 +51,27 @@ const styles = {
       : "border-rule-strong bg-transparent"
   ),
   optionLabel: "flex-1",
+  // Always rendered so the reveal check/X doesn't reflow the label text.
+  iconSlot: "flex size-4 shrink-0 items-center justify-center",
 };
 
-/** Shared option-picking/grading core behind single- and multi-choice questions. */
+/** Shared option-picking core behind single- and multi-choice questions. */
 export function OptionPicker({
   hint,
   options,
-  correctOptionIds,
   allowMultiple,
 }: OptionPickerProps) {
-  const { revealed, reportAnswer } = useQuestionAnswer();
+  const { revealed, correct, correctReveal, reportResponse } = useQuestionAnswer();
+  // Shuffled once per mount (i.e. per question) so options don't always
+  // appear in the same order the content was authored in.
+  const [order] = useState(() => shuffled(options));
   const [selected, setSelected] = useState<string[]>([]);
+
+  // On a correct submission the backend never sends the answer key back -
+  // there's nothing to leak, since the user's own picks already equal it.
+  const correctOptionIds = correct
+    ? selected
+    : (correctReveal as ChoiceAnswerKey | undefined)?.correctOptionIds ?? [];
 
   const toggleOption = (optionId: string) => {
     if (revealed) return;
@@ -90,13 +82,9 @@ export function OptionPicker({
         : [...selected, optionId]
       : [optionId];
     setSelected(next);
-    reportAnswer({
+    reportResponse({
+      response: { selectedOptionIds: next },
       canSubmit: next.length > 0,
-      correct: isCorrectSelection(next, correctOptionIds),
-      onRetry: () => {
-        setSelected([]);
-        reportAnswer(EMPTY_ANSWER_REPORT);
-      },
     });
   };
 
@@ -104,7 +92,7 @@ export function OptionPicker({
     <div className={styles.wrapper}>
       {hint && <p className={styles.hint}>{hint}</p>}
       <ul className={styles.list}>
-        {options.map((option) => {
+        {order.map((option) => {
           const isSelected = selected.includes(option.id);
           const isCorrectOption = correctOptionIds.includes(option.id);
 
@@ -123,23 +111,14 @@ export function OptionPicker({
                 <span className={styles.optionLabel}>
                   <LatexText inline>{option.label}</LatexText>
                 </span>
-                {/* "Was it right?" — a separate icon channel, not just
-                    color, so the verdict reads without relying on hue. Bare
-                    glyph (no enclosing badge), matching this-vs-that. */}
-                {revealed && isCorrectOption && (
-                  <Check
-                    className="size-4 shrink-0"
-                    strokeWidth={3}
-                    aria-hidden="true"
-                  />
-                )}
-                {revealed && isSelected && !isCorrectOption && (
-                  <X
-                    className="size-4 shrink-0"
-                    strokeWidth={3}
-                    aria-hidden="true"
-                  />
-                )}
+                <span className={styles.iconSlot} aria-hidden="true">
+                  {revealed && isCorrectOption && (
+                    <Check className="size-4" strokeWidth={3} />
+                  )}
+                  {revealed && isSelected && !isCorrectOption && (
+                    <X className="size-4" strokeWidth={3} />
+                  )}
+                </span>
               </button>
             </li>
           );

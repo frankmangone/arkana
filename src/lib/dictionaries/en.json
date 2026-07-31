@@ -82,6 +82,7 @@
     "moduleSingular": "module",
     "modulePlural": "modules",
     "read": "read",
+    "takeQuiz": "Take a quick test",
     "list": {
       "title": "Reading Lists",
       "description": "Curated collections of articles organized by topic to help guide your learning journey.",
@@ -162,6 +163,21 @@
       "sequencing": "Sequence",
       "bucket_sort": "Sort",
       "fill_blank": "Fill in the Blank"
+    },
+    "attempt": {
+      "starting": "Preparing your quiz...",
+      "loading": "Loading question...",
+      "questionProgress": "Question {current} of {total}",
+      "continue": "Continue",
+      "skip": "Skip",
+      "error": "Something went wrong loading the quiz. Please try again.",
+      "results": {
+        "title": "Quiz complete!",
+        "score": "Your score: {score}%",
+        "passed": "Nice work - you passed!",
+        "failed": "Not quite a pass this time - you can review the material and try again later.",
+        "backToReadingList": "Back to reading list"
+      }
     }
   },
   "auth": {
@@ -215,8 +231,8 @@
       "answer": "Yes, connecting your wallet is safe. We use standard cryptographic signatures to verify your identity. We never request access to your funds or private keys. You'll only be asked to sign messages to prove ownership of your wallet address."
     },
     "guestUnsubscribe": {
-      "question": "I subscribed as a guest — how do I unsubscribe?",
-      "answer": "If you've received one of our newsletter emails, the quickest way is the unsubscribe link at the bottom of it — no account needed. Otherwise, create an account using the same email address you subscribed with, then use the Subscribe/Unsubscribe option in your account menu. You can also contact support and we'll unsubscribe you directly."
+      "question": "I subscribed as a guest - how do I unsubscribe?",
+      "answer": "If you've received one of our newsletter emails, the quickest way is the unsubscribe link at the bottom of it - no account needed. Otherwise, create an account using the same email address you subscribed with, then use the Subscribe/Unsubscribe option in your account menu. You can also contact support and we'll unsubscribe you directly."
     }
   },
   "comments": {

@@ -23,12 +23,22 @@ export interface ModuleData {
 }
 
 interface JourneyStepperProps {
+  lang: string;
+  listSlug: string;
   modules: ModuleData[];
   moduleLabel: string;
   readLabel: string;
+  takeQuizLabel: string;
 }
 
-export function JourneyStepper({ modules, moduleLabel, readLabel }: JourneyStepperProps) {
+export function JourneyStepper({
+  lang,
+  listSlug,
+  modules,
+  moduleLabel,
+  readLabel,
+  takeQuizLabel,
+}: JourneyStepperProps) {
   const { user } = useAuth();
   const allSlugs = modules.flatMap((module) => module.steps.map((step) => step.slug));
 
@@ -43,10 +53,13 @@ export function JourneyStepper({ modules, moduleLabel, readLabel }: JourneyStepp
         <Fragment key={module.id}>
           {index > 0 && <hr className="my-14 border-t border-rule" />}
           <ModuleSection
+            lang={lang}
+            listSlug={listSlug}
             module={module}
             moduleNumber={index + 1}
             moduleLabel={moduleLabel}
             readLabel={readLabel}
+            takeQuizLabel={takeQuizLabel}
             readStatuses={user ? readStatuses : undefined}
           />
         </Fragment>

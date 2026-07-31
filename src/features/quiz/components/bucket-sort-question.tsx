@@ -4,13 +4,14 @@ import { useState } from "react";
 import { Check, X } from "lucide-react";
 import { motion } from "motion/react";
 import { LatexText } from "@/components/ui/latex-text";
-import {
-  EMPTY_ANSWER_REPORT,
-  useQuestionAnswer,
-} from "@/features/quiz/lib/answer-context";
+import { useQuestionAnswer } from "@/features/quiz/lib/answer-context";
 import { shuffled } from "@/features/quiz/lib/shuffle";
 import { cn } from "@/lib/utils";
-import type { BucketSortQuestion, QuizzesDictionary } from "@/features/quiz/types";
+import type {
+  AssignmentsAnswerKey,
+  BucketSortQuestion,
+  QuizzesDictionary,
+} from "@/features/quiz/types";
 
 interface BucketSortQuestionProps {
   question: BucketSortQuestion;
@@ -18,7 +19,7 @@ interface BucketSortQuestionProps {
 }
 
 const SPRING = { type: "spring" as const, stiffness: 700, damping: 40 };
-// Sentinel drop-target id for the unsorted pool — distinct from any real
+// Sentinel drop-target id for the unsorted pool - distinct from any real
 // bucket id (which always comes from the fixture's own `buckets` list).
 const POOL = "pool";
 
@@ -32,7 +33,7 @@ const styles = {
   poolList: "flex list-none flex-wrap gap-2 !p-0 !m-0",
   chipItem: "!m-0 before:!content-none",
   chip: (revealed: boolean, isActive: boolean, extra?: string) => cn(
-    "rounded-md border border-rule bg-surface-raised px-3 py-1.5 text-left text-sm text-ink-body transition-colors outline-none",
+    "rounded-md border border-rule bg-surface-raised px-3 py-1.5 text-left text-[15px] leading-snug text-ink-body transition-colors outline-none",
     "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
     revealed
       ? "cursor-default"
@@ -66,13 +67,19 @@ export function BucketSortQuestionRenderer({
   question,
   dictionary,
 }: BucketSortQuestionProps) {
-  const { revealed, reportAnswer } = useQuestionAnswer();
+  const { revealed, correct, correctReveal, reportResponse } = useQuestionAnswer();
   const [order] = useState(() => shuffled(question.items));
   // itemId -> bucketId; absent means still in the unsorted pool.
   const [assignments, setAssignments] = useState<Record<string, string>>({});
   const [activeItemId, setActiveItemId] = useState<string | null>(null);
   const [draggedItemId, setDraggedItemId] = useState<string | null>(null);
   const [dragOverTarget, setDragOverTarget] = useState<string | null>(null);
+
+  // On a correct submission the backend never sends the answer key back -
+  // the user's own assignments already equal it.
+  const correctAssignments = correct
+    ? assignments
+    : (correctReveal as AssignmentsAnswerKey | undefined)?.correctAssignments ?? {};
 
   const placeItem = (itemId: string, bucketId: string | null) => {
     if (revealed) return;
@@ -81,16 +88,9 @@ export function BucketSortQuestionRenderer({
     else delete next[itemId];
 
     setAssignments(next);
-    reportAnswer({
+    reportResponse({
+      response: { assignments: next },
       canSubmit: question.items.every((item) => next[item.id]),
-      correct: question.items.every(
-        (item) => next[item.id] === item.correctBucketId
-      ),
-      onRetry: () => {
-        setAssignments({});
-        setActiveItemId(null);
-        reportAnswer(EMPTY_ANSWER_REPORT);
-      },
     });
   };
 
@@ -99,7 +99,7 @@ export function BucketSortQuestionRenderer({
     setActiveItemId((prev) => (prev === itemId ? null : itemId));
   };
 
-  // Click path: item first, then wherever it goes — bucket containers (and
+  // Click path: item first, then wherever it goes - bucket containers (and
   // the pool) are all valid targets for whichever item is currently active.
   const dropInto = (bucketId: string | null) => {
     if (revealed || !activeItemId) return;
@@ -205,7 +205,7 @@ export function BucketSortQuestionRenderer({
               </span>
               <ul className={styles.bucketList}>
                 {bucketItems.map((item) => {
-                  const isCorrect = item.correctBucketId === bucket.id;
+                  const isCorrect = correctAssignments[item.id] === bucket.id;
 
                   return (
                     <motion.li
@@ -235,12 +235,17 @@ export function BucketSortQuestionRenderer({
                         )}
                       >
                         <LatexText inline>{item.label}</LatexText>
-                        {revealed &&
-                          (isCorrect ? (
-                            <Check className="size-3.5 shrink-0" strokeWidth={3} aria-hidden="true" />
-                          ) : (
-                            <X className="size-3.5 shrink-0" strokeWidth={3} aria-hidden="true" />
-                          ))}
+                        <span
+                          className="flex size-3.5 shrink-0 items-center justify-center"
+                          aria-hidden="true"
+                        >
+                          {revealed &&
+                            (isCorrect ? (
+                              <Check className="size-3.5" strokeWidth={3} />
+                            ) : (
+                              <X className="size-3.5" strokeWidth={3} />
+                            ))}
+                        </span>
                       </button>
                     </motion.li>
                   );

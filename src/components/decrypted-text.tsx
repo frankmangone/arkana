@@ -52,7 +52,7 @@ interface DecryptedTextProps {
   className?: string;
   /** "mount" (default): scrambles immediately on mount, matching the hero's
    * entrance effect. "visible": stays plainly rendered until scrolled into
-   * view, then decrypts once (never replays) — for content further down a
+   * view, then decrypts once (never replays) - for content further down a
    * page, like blockquotes. */
   triggerOn?: "mount" | "visible";
   /** Glyph stroke width. Defaults to the hero's tuning. */
@@ -61,7 +61,7 @@ interface DecryptedTextProps {
    * hero's tuning. */
   tickMs?: number;
   /** Delay between each successive character becoming eligible to lock in,
-   * in ms — the main knob for overall speed. Defaults to the hero's tuning. */
+   * in ms - the main knob for overall speed. Defaults to the hero's tuning. */
   revealStaggerMs?: number;
   /** Minimum scramble time before the first character can lock in, in ms.
    * Defaults to the hero's tuning. */
@@ -74,7 +74,7 @@ interface CharGroup {
 }
 
 // Groups characters into runs of whitespace and non-whitespace so each word
-// can be wrapped as a single unbreakable unit — otherwise each character's
+// can be wrapped as a single unbreakable unit - otherwise each character's
 // own inline-block span is an independent break opportunity and the browser
 // can wrap a line in the middle of a word.
 function groupCharacters(characters: string[]): CharGroup[] {
@@ -114,7 +114,7 @@ export function DecryptedText({
   // hidden canvas measures real text width (using the hero's own computed
   // font) so unrevealed runs can be replaced by an estimated *count* of
   // fixed-size glyphs spanning roughly the same width as the text they
-  // stand in for — never a per-character, variously-sized glyph. This also
+  // stand in for - never a per-character, variously-sized glyph. This also
   // runs as a layout effect (before paint) so measurements are ready before
   // the first scrambled frame ever paints.
   useLayoutEffect(() => {
@@ -169,10 +169,10 @@ export function DecryptedText({
 
   // Mount trigger: scrambles immediately on mount. Skipped entirely under
   // prefers-reduced-motion (stays fully revealed). useLayoutEffect (not
-  // useEffect) so the scramble commits before the browser paints — avoids
+  // useEffect) so the scramble commits before the browser paints - avoids
   // a flash of plain text on first paint. The animated span also starts
   // CSS-hidden (opacity-0, see render) so there's no flash even if
-  // hydration itself is slow — this effect is what turns it visible again,
+  // hydration itself is slow - this effect is what turns it visible again,
   // right as it either scrambles or (reduced motion) reveals, so the very
   // first visible paint is always the correct one.
   useLayoutEffect(() => {
@@ -188,7 +188,7 @@ export function DecryptedText({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [characters, triggerOn, tickMs, revealStaggerMs, startDelayMs]);
 
-  // Visible trigger: stays plainly rendered (no CSS hide needed — it's
+  // Visible trigger: stays plainly rendered (no CSS hide needed - it's
   // already correct, readable text) until scrolled into view, then
   // decrypts once. The observer disconnects after the first trigger, so it
   // never replays.
@@ -236,12 +236,12 @@ export function DecryptedText({
       <span className="sr-only">{text}</span>
       {/*
         For the "mount" trigger: hidden by default (pure CSS, present from
-        the very first paint — no JS needed) so a JS-enabled client never
+        the very first paint - no JS needed) so a JS-enabled client never
         flashes plain text before the mount effect above scrambles it. The
         noscript override below restores visibility for clients that never
-        run JS at all. The "visible" trigger has nothing to hide — it's
+        run JS at all. The "visible" trigger has nothing to hide - it's
         already showing correct, readable text until it decrypts once on
-        scroll — so it skips this entirely.
+        scroll - so it skips this entirely.
       */}
       <span
         ref={glyphsRef}

@@ -27,7 +27,7 @@ export async function getSubscriptionStatus(): Promise<SubscriptionStatusRespons
 }
 
 /**
- * Guest signup — always resolves with status "pending" regardless of what
+ * Guest signup - always resolves with status "pending" regardless of what
  * happened internally, so it never discloses whether an email is registered.
  */
 export async function subscribeGuest(

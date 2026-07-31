@@ -26,7 +26,7 @@ export function DifficultyPill({
   return (
     <Badge
       className={styles.badge(className)}
-      // Tier still drives the label text — just no longer a distinct color
+      // Tier still drives the label text - just no longer a distinct color
       // per tier, so the pill reads as one consistent "difficulty" chip.
       data-difficulty={difficulty}
     >

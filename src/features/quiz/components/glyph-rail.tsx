@@ -8,7 +8,7 @@ import type { AnswerStatus } from "@/features/quiz/types";
 // GlyphMosaic (36px tile: sigils at each tile's center and corners, lying
 // on diagonal lines), but every tile is a real Arkana glyph drawn from the
 // same element vocabulary as arkana-pattern.tsx (17×17 grid coordinates,
-// scaled to the tile). Grading decodes each sigil in place — only which
+// scaled to the tile). Grading decodes each sigil in place - only which
 // segments are lit changes, never where the sigil sits. Same pattern as
 // the coffee widget's mobile/desktop split too: a full-width band on top
 // for mobile, a narrow rail on the side for desktop.
@@ -19,7 +19,10 @@ const STROKE = 1.8;
 
 const RAIL_WIDTH = 96; // w-24
 const RAIL_HEIGHT = 1080; // generous; container clips the overflow
-const BAND_WIDTH = 480; // generous virtual canvas; "slice" covers any card width
+// Drawn at natural 1:1 size like the rail (no viewBox scaling - glyphs keep
+// the same pixel size at any card width); generous so the container just
+// clips whatever exceeds the card.
+const BAND_WIDTH = 1920;
 const BAND_HEIGHT = 64; // h-16
 
 function buildPositions(width: number, height: number): Array<[number, number]> {
@@ -67,9 +70,9 @@ const RAYS = (1 << 8) | (1 << 9) | (1 << 10) | (1 << 11);
 // Center rhombus: (8,7) (7,8) (8,9) (9,8) in grid units, filled.
 const DOT_PATH = `M0,${-CELL} L${-CELL},0 L0,${CELL} L${CELL},0 Z`;
 
-// Idle: outline + center rhombus — the mosaic tile as it always looks.
+// Idle: outline + center rhombus - the mosaic tile as it always looks.
 // Both graded states add the outward diagonal rays, so sigils connecting
-// into the lattice reads as "answered" — the center then tells you how:
+// into the lattice reads as "answered" - the center then tells you how:
 // rhombus for correct, X for incorrect.
 const GLYPH_IDLE = SIDES | BIT_DOT;
 const GLYPH_CORRECT = SIDES | BIT_DOT | RAYS;
@@ -102,7 +105,7 @@ const styles = {
     "transition-[color,opacity] duration-500 ease-out motion-reduce:transition-none",
     isBand
       // -mt-6 cancels Card's own py-6 so the band sits flush against
-      // the card's top edge instead of floating in the padding gap —
+      // the card's top edge instead of floating in the padding gap -
       // the rail doesn't need this since inset-y-0 on an absolutely
       // positioned element is measured from the padding edge already.
       ? "-mt-6 block h-16 w-full rounded-t-md"
@@ -121,8 +124,7 @@ const styles = {
       ? "linear-gradient(to bottom, black 0%, transparent 100%)"
       : "linear-gradient(to left, black 0%, transparent 100%)",
   }),
-  svg: "block h-full w-full",
-  svgRail: "block",
+  svg: "block",
 };
 
 function Sigil({ x, y, bits }: { x: number; y: number; bits: number }) {
@@ -148,20 +150,26 @@ function Sigil({ x, y, bits }: { x: number; y: number; bits: number }) {
 interface GlyphRailProps {
   status: AnswerStatus;
   /** "rail" (default): narrow band hugging the right edge, desktop-only.
-   * "band": full-width strip across the top, mobile-only — same idea as
+   * "band": full-width strip across the top, mobile-only - same idea as
    * the buy-me-coffee widget's mobile/desktop mosaic split. */
   layout?: "rail" | "band";
+  /** Merged onto the container — lets a host reposition the lattice or
+   * re-tint it (e.g. group-hover brightening in TakeQuizButton). */
+  className?: string;
+  /** Increment to replay the decode scramble toward the current status
+   * without changing it — a pure flourish (e.g. on hover). */
+  pulse?: number;
 }
 
 /**
  * The quiz marker: the house glyph lattice, fading inward. On grading,
- * every sigil stays exactly where it is and decodes in place — a fast
+ * every sigil stays exactly where it is and decodes in place - a fast
  * decoder-sigil-style scramble locking into outline + rays + center
- * (correct, teal) or outline + inner X (incorrect, magenta) — the new
+ * (correct, teal) or outline + inner X (incorrect, magenta) - the new
  * quiz feature's own grading pair, distinct from the old inline post-quiz
  * widget's aquamarine/salmon.
  */
-export function GlyphRail({ status, layout = "rail" }: GlyphRailProps) {
+export function GlyphRail({ status, layout = "rail", className, pulse = 0 }: GlyphRailProps) {
   const positions = layout === "band" ? BAND_POSITIONS : RAIL_POSITIONS;
   const sigilCount = positions.length;
 
@@ -169,10 +177,12 @@ export function GlyphRail({ status, layout = "rail" }: GlyphRailProps) {
     Array(sigilCount).fill(GLYPH_IDLE)
   );
   const prevStatus = useRef<AnswerStatus>("idle");
+  const prevPulse = useRef(pulse);
 
   useEffect(() => {
-    if (status === prevStatus.current) return;
+    if (status === prevStatus.current && pulse === prevPulse.current) return;
     prevStatus.current = status;
+    prevPulse.current = pulse;
 
     const target =
       status === "correct"
@@ -201,38 +211,25 @@ export function GlyphRail({ status, layout = "rail" }: GlyphRailProps) {
     }, TICK_MS);
 
     return () => window.clearInterval(interval);
-  }, [status, sigilCount]);
+  }, [status, pulse, sigilCount]);
 
   const isBand = layout === "band";
 
   return (
     <div
       aria-hidden="true"
-      className={styles.container(isBand, status)}
+      className={cn(styles.container(isBand, status), className)}
       style={styles.containerMask(isBand)}
     >
-      {isBand ? (
-        <svg
-          viewBox={`0 0 ${BAND_WIDTH} ${BAND_HEIGHT}`}
-          preserveAspectRatio="xMinYMin slice"
-          className={styles.svg}
-        >
-          {positions.map(([x, y], i) => (
-            <Sigil key={i} x={x} y={y} bits={glyphs[i]} />
-          ))}
-        </svg>
-      ) : (
-        <svg
-          width={RAIL_WIDTH}
-          height={RAIL_HEIGHT}
-          viewBox={`0 0 ${RAIL_WIDTH} ${RAIL_HEIGHT}`}
-          className={styles.svgRail}
-        >
-          {positions.map(([x, y], i) => (
-            <Sigil key={i} x={x} y={y} bits={glyphs[i]} />
-          ))}
-        </svg>
-      )}
+      <svg
+        width={isBand ? BAND_WIDTH : RAIL_WIDTH}
+        height={isBand ? BAND_HEIGHT : RAIL_HEIGHT}
+        className={styles.svg}
+      >
+        {positions.map(([x, y], i) => (
+          <Sigil key={i} x={x} y={y} bits={glyphs[i]} />
+        ))}
+      </svg>
     </div>
   );
 }

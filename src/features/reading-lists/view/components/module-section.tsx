@@ -1,23 +1,51 @@
+import { useRouter } from "next/navigation";
 import { CheckCircle2, Clock } from "lucide-react";
+import { useAuth } from "@/components/providers/auth-provider";
+import { useQuizAvailability } from "@/lib/api";
+import { useRequireAuth } from "@/lib/auth/use-require-auth";
+import { withLocalePath } from "@/lib/site-config";
+import { TakeQuizButton } from "@/features/quiz/components/take-quiz-button";
 import { StepItem } from "./step-item";
 import type { ModuleData } from "./journey-stepper";
 
 interface ModuleSectionProps {
+  lang: string;
+  listSlug: string;
   module: ModuleData;
   moduleNumber: number;
   moduleLabel: string;
   readLabel: string;
-  /** Per-slug read status for the logged-in user. Undefined for guests — no progress shown. */
+  takeQuizLabel: string;
+  /** Per-slug read status for the logged-in user. Undefined for guests - no progress shown. */
   readStatuses?: Record<string, boolean>;
 }
 
 export function ModuleSection(props: ModuleSectionProps) {
-  const { module, moduleNumber, moduleLabel, readLabel, readStatuses } = props;
+  const { lang, listSlug, module, moduleNumber, moduleLabel, readLabel, takeQuizLabel, readStatuses } = props;
 
   const readCount = readStatuses
     ? module.steps.filter((step) => readStatuses[step.slug]).length
     : undefined;
   const allRead = readCount !== undefined && readCount === module.steps.length;
+
+  const { data: quizAvailability } = useQuizAvailability({
+    listSlug,
+    moduleSlug: module.id,
+  });
+  const quizAvailable = !!quizAvailability?.available && quizAvailability.languages.includes(lang);
+
+  const { user } = useAuth();
+  const requireAuth = useRequireAuth();
+  const router = useRouter();
+  const quizUrl = withLocalePath(lang, `reading-lists/${listSlug}/quiz/${module.id}`);
+
+  const handleTakeQuiz = () => {
+    if (!user) {
+      requireAuth();
+      return;
+    }
+    router.push(quizUrl);
+  };
 
   return (
     <section className="grid gap-8 md:grid-cols-[2fr_3fr] md:gap-x-12">
@@ -47,21 +75,26 @@ export function ModuleSection(props: ModuleSectionProps) {
         <p className="mt-1 max-w-[65ch] text-base text-ink-muted">
           {module.description}
         </p>
+        {quizAvailable && (
+          <TakeQuizButton className="mt-8" label={takeQuizLabel} onClick={handleTakeQuiz} />
+        )}
       </div>
 
-      <ol className="!m-0 flex list-none flex-col !p-0 !pt-8">
-        {module.steps.map((step, index) => (
-          <StepItem
-            key={step.id}
-            order={String(step.order).padStart(2, "0")}
-            title={step.title}
-            url={step.url}
-            read={readStatuses?.[step.slug]}
-            showConnector={index < module.steps.length - 1}
-            moduleComplete={allRead}
-          />
-        ))}
-      </ol>
+      <div>
+        <ol className="!m-0 flex list-none flex-col !p-0 !pt-8">
+          {module.steps.map((step, index) => (
+            <StepItem
+              key={step.id}
+              order={String(step.order).padStart(2, "0")}
+              title={step.title}
+              url={step.url}
+              read={readStatuses?.[step.slug]}
+              showConnector={index < module.steps.length - 1}
+              moduleComplete={allRead}
+            />
+          ))}
+        </ol>
+      </div>
     </section>
   );
 }
