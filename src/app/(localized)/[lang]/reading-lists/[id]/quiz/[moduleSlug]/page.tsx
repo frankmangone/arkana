@@ -4,7 +4,8 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { getReadingList } from "@/lib/reading-lists";
 import { getDictionary } from "@/lib/dictionaries";
 import { withLocalePath } from "@/lib/site-config";
-import { QuizAttemptView } from "@/features/quiz/attempt/quiz-attempt-view";
+import { getPostsFromReadingList } from "@/features/reading-lists/view/fetch";
+import { QuizAttemptView, type ReviewTarget } from "@/features/quiz/attempt/quiz-attempt-view";
 
 export { generateStaticParams } from "./static-params";
 
@@ -35,6 +36,24 @@ export default async function Page({ params }: QuizAttemptPageProps) {
   const dict = await getDictionary(lang);
   const backUrl = withLocalePath(lang, `reading-lists/${id}`);
 
+  // slug → article link, across every module in the list (a question's
+  // reinforcement posts aren't guaranteed to sit in the current module).
+  // Answer responses carry post paths in exactly this slug format.
+  const posts = await getPostsFromReadingList({ readingList, lang });
+  const postTitles = new Map(posts.map((post) => [post.slug, post.title]));
+  const reviewTargets: Record<string, ReviewTarget> = {};
+  for (const listModule of readingList.modules) {
+    for (const item of listModule.items) {
+      const title = postTitles.get(item.slug);
+      if (title) {
+        reviewTargets[item.slug] = {
+          title,
+          url: withLocalePath(lang, `reading-lists/${id}/${item.id}`),
+        };
+      }
+    }
+  }
+
   return (
     <MainLayout lang={lang}>
       <div className="container mx-auto max-w-4xl px-6 py-16">
@@ -53,6 +72,7 @@ export default async function Page({ params }: QuizAttemptPageProps) {
           moduleSlug={moduleSlug}
           backUrl={backUrl}
           dictionary={dict.quizzes}
+          reviewTargets={reviewTargets}
         />
       </div>
     </MainLayout>

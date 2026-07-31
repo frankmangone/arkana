@@ -11,6 +11,7 @@ import {
 import {
   startAttempt,
   toQuestion,
+  type CompleteAttemptResponse,
   type StartAttemptResponse,
 } from "@/lib/api/services/quiz";
 import { QuestionCard } from "@/features/quiz/components/question-card";
@@ -18,12 +19,20 @@ import { QuizProgressBar } from "./quiz-progress-bar";
 import { QuizResults } from "./quiz-results";
 import type { QuestionResponse, QuizzesDictionary } from "@/features/quiz/types";
 
+export interface ReviewTarget {
+  title: string;
+  url: string;
+}
+
 interface QuizAttemptViewProps {
   lang: string;
   listSlug: string;
   moduleSlug: string;
   backUrl: string;
   dictionary: QuizzesDictionary;
+  /** Post path → article link, used to turn each missed question's
+   * reinforcement posts into review pointers on the results card. */
+  reviewTargets: Record<string, ReviewTarget>;
 }
 
 export function QuizAttemptView({
@@ -32,6 +41,7 @@ export function QuizAttemptView({
   moduleSlug,
   backUrl,
   dictionary,
+  reviewTargets,
 }: QuizAttemptViewProps) {
   const completeAttempt = useCompleteAttempt();
   const submitAnswer = useSubmitAnswer();
@@ -42,7 +52,7 @@ export function QuizAttemptView({
   const startRef = useRef<Promise<StartAttemptResponse> | null>(null);
 
   const [answered, setAnswered] = useState(false);
-  const [results, setResults] = useState<{ score: number; passed: boolean } | null>(null);
+  const [results, setResults] = useState<CompleteAttemptResponse | null>(null);
   const completingRef = useRef(false);
 
   // Starting an attempt is a POST with side effects, so it must run exactly
@@ -103,6 +113,9 @@ export function QuizAttemptView({
         passed={results.passed}
         backUrl={backUrl}
         dictionary={dictionary}
+        reviewLinks={results.reviewPostPaths
+          .map((path) => reviewTargets[path])
+          .filter((target): target is ReviewTarget => target !== undefined)}
       />
     );
   }

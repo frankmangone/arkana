@@ -62,6 +62,9 @@ export interface AnswerApiResponse {
 export interface CompleteAttemptResponse {
   score: number;
   passed: boolean;
+  /** Reinforcement posts aggregated over every missed (wrong or skipped)
+   * answer, in the order they were missed. Empty on a perfect run. */
+  reviewPostPaths: string[];
 }
 
 /** Flattens a QuestionDTO's separate `type`/`prompt`/`difficulty`/`content`

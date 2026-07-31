@@ -176,6 +176,7 @@
         "score": "Sua pontuação: {score}%",
         "passed": "Bom trabalho - você passou!",
         "failed": "Não foi dessa vez - você pode revisar o material e tentar novamente mais tarde.",
+        "review": "Revise o que você errou:",
         "backToReadingList": "Voltar para a lista de leitura"
       }
     }

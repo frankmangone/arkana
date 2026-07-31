@@ -176,6 +176,7 @@
         "score": "Tu puntaje: {score}%",
         "passed": "¡Buen trabajo, aprobaste!",
         "failed": "Esta vez no llegaste al puntaje necesario - puedes repasar el material e intentarlo de nuevo más tarde.",
+        "review": "Repasa lo que fallaste:",
         "backToReadingList": "Volver a la lista de lectura"
       }
     }

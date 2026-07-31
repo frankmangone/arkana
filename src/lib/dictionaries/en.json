@@ -176,6 +176,7 @@
         "score": "Your score: {score}%",
         "passed": "Nice work - you passed!",
         "failed": "Not quite a pass this time - you can review the material and try again later.",
+        "review": "Brush up on what you missed:",
         "backToReadingList": "Back to reading list"
       }
     }

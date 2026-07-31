@@ -82,6 +82,7 @@ describe("QuizAttemptView", () => {
             moduleSlug="asymmetric-cryptography-basics"
             backUrl="/en/reading-lists/cryptography-101"
             dictionary={dictionary}
+            reviewTargets={{}}
           />
         </QueryClientProvider>
       </StrictMode>

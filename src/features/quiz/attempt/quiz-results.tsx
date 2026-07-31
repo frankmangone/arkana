@@ -22,6 +22,12 @@ const styles = {
   score: (passed: boolean) =>
     cn("text-lg font-medium", passed ? "text-teal" : "text-magenta"),
   message: "max-w-[48ch] text-sm text-ink-body",
+  review: "mt-2 flex flex-col items-center gap-2",
+  reviewHeading: "eyebrow text-ink-muted",
+  reviewList: "!m-0 flex list-none flex-col items-center gap-1.5 !p-0",
+  reviewItem: "!m-0 before:!content-none",
+  reviewLink:
+    "text-sm text-primary-700 underline-offset-4 transition-colors hover:text-primary-600 hover:underline",
   // The question card actions' solid look.
   button: "mt-4 w-fit bg-none bg-primary-700 text-ink-on-brand hover:bg-primary-800",
 };
@@ -31,9 +37,17 @@ interface QuizResultsProps {
   passed: boolean;
   backUrl: string;
   dictionary: QuizzesDictionary;
+  /** Articles behind the questions the user missed — empty on a perfect run. */
+  reviewLinks?: Array<{ title: string; url: string }>;
 }
 
-export function QuizResults({ score, passed, backUrl, dictionary }: QuizResultsProps) {
+export function QuizResults({
+  score,
+  passed,
+  backUrl,
+  dictionary,
+  reviewLinks = [],
+}: QuizResultsProps) {
   const results = dictionary.attempt.results;
 
   return (
@@ -45,6 +59,20 @@ export function QuizResults({ score, passed, backUrl, dictionary }: QuizResultsP
           {results.score.replace("{score}", String(score))}
         </p>
         <p className={styles.message}>{passed ? results.passed : results.failed}</p>
+        {reviewLinks.length > 0 && (
+          <div className={styles.review}>
+            <span className={styles.reviewHeading}>{results.review}</span>
+            <ul className={styles.reviewList}>
+              {reviewLinks.map((link) => (
+                <li key={link.url} className={styles.reviewItem}>
+                  <Link href={link.url} className={styles.reviewLink}>
+                    {link.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
         <Button asChild size="lg" className={styles.button}>
           <Link href={backUrl}>{results.backToReadingList}</Link>
         </Button>
