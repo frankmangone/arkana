@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { GlyphRail } from "@/features/quiz/components/glyph-rail";
@@ -22,12 +23,14 @@ const styles = {
   score: (passed: boolean) =>
     cn("text-lg font-medium", passed ? "text-teal" : "text-magenta"),
   message: "max-w-[48ch] text-sm text-ink-body",
-  review: "mt-2 flex flex-col items-center gap-2",
+  review:
+    "mt-2 flex w-full max-w-md flex-col items-center gap-3 rounded-md border border-rule bg-surface-raised px-6 py-4",
   reviewHeading: "eyebrow text-ink-muted",
   reviewList: "!m-0 flex list-none flex-col items-center gap-1.5 !p-0",
   reviewItem: "!m-0 before:!content-none",
   reviewLink:
-    "text-sm text-primary-700 underline-offset-4 transition-colors hover:text-primary-600 hover:underline",
+    "inline-flex items-center gap-1.5 text-sm text-primary-700 underline-offset-4 transition-colors hover:text-primary-600 hover:underline",
+  reviewLinkIcon: "size-3.5 shrink-0",
   // The question card actions' solid look.
   button: "mt-4 w-fit bg-none bg-primary-700 text-ink-on-brand hover:bg-primary-800",
 };
@@ -65,8 +68,14 @@ export function QuizResults({
             <ul className={styles.reviewList}>
               {reviewLinks.map((link) => (
                 <li key={link.url} className={styles.reviewItem}>
-                  <Link href={link.url} className={styles.reviewLink}>
+                  <Link
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.reviewLink}
+                  >
                     {link.title}
+                    <ExternalLink className={styles.reviewLinkIcon} aria-hidden="true" />
                   </Link>
                 </li>
               ))}
