@@ -13,22 +13,15 @@ interface RangeQuestionProps {
   dictionary: QuizzesDictionary;
 }
 
-function snapToStep(value: number, min: number, step: number) {
-  return min + Math.round((value - min) / step) * step;
-}
-
 function initialRangeValues(question: RangeQuestion): Record<string, number> {
   return Object.fromEntries(
-    question.ranges.map((range) => [
-      range.id,
-      snapToStep((range.min + range.max) / 2, range.min, range.step),
-    ])
+    question.ranges.map((range) => [range.id, range.min])
   );
 }
 
 /**
  * The card's seed for this type - the sliders already have a valid
- * (midpoint) value from mount, so "check answer" should be enabled
+ * (range-start) value from mount, so "check answer" should be enabled
  * immediately rather than waiting for a first interaction.
  */
 export function initialRangeReport(question: RangeQuestion): ResponseReport {
