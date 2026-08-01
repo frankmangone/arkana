@@ -102,6 +102,15 @@ export function QuizAttemptView({
     await next.refetch();
   };
 
+  // Scroll back to the top on every new question - especially important on
+  // mobile, where the previous question's card can leave the viewport
+  // scrolled deep into the page.
+  const currentQuestionId = next.data?.question?.uuid;
+  useEffect(() => {
+    if (!currentQuestionId) return;
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [currentQuestionId]);
+
   if (startFailed || next.isError || completeAttempt.isError || skipQuestion.isError) {
     return <p className="text-sm text-magenta">{dictionary.attempt.error}</p>;
   }

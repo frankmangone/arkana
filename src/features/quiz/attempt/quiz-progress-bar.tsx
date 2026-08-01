@@ -6,7 +6,7 @@ interface QuizProgressBarProps {
 }
 
 export function QuizProgressBar({ position, total, label }: QuizProgressBarProps) {
-  const percent = total > 0 ? Math.min(100, (position / total) * 100) : 0;
+  const percent = total > 0 ? Math.min(100, ((position + 1) / total) * 100) : 0;
 
   return (
     <div className="flex flex-col gap-2">
