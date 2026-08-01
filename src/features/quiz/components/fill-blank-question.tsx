@@ -19,9 +19,11 @@ const BLANK_TOKEN = /\{\{(\w+)\}\}/g;
 const styles = {
   wrapper: "flex flex-col gap-4",
   hint: "text-xs text-ink-faint italic",
-  template: "text-[15px] leading-relaxed text-ink-body pt-4",
+  // leading-loose (vs. the pills' own leading-snug below) keeps wrapped
+  // lines far enough apart that pills on consecutive lines don't touch.
+  template: "text-[15px] leading-loose text-ink-body pt-4",
   blank: (word: string | undefined, revealed: boolean, isCorrect: boolean, isDragOver: boolean) => cn(
-    "mx-1 inline-flex min-w-[4.5rem] items-center justify-center gap-1 rounded border px-2 py-0.5 align-baseline text-[15px] font-medium outline-none transition-colors",
+    "mx-1 inline-flex min-w-[4.5rem] items-center justify-center gap-1 rounded border px-2 py-0.5 align-baseline text-[15px] leading-snug font-medium outline-none transition-colors",
     "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
     word === undefined && "border-dashed border-rule-strong text-ink-faint",
     word !== undefined &&
