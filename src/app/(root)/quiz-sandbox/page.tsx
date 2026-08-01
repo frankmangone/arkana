@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { getDictionary } from "@/lib/dictionaries";
+import { parseArkanaContentFile } from "./arkana-content";
 import { SandboxList, type QuestionFixture } from "./sandbox-list";
 
 /**
@@ -8,6 +9,11 @@ import { SandboxList, type QuestionFixture } from "./sandbox-list";
  * static export, so there's no live server reading these per-request), never
  * statically imported. The try/catch is just a defensive fallback; the
  * directory is committed, so it should always be present.
+ *
+ * Each file is expected in arkana-content's authoring format (the
+ * `{ "questions": [...] }` envelope from arkana-content/questions/**\/*.json)
+ * - drop a copy of any such file straight into src/data/quiz-fixtures and it
+ * picks up correctly, no conversion needed.
  */
 function loadFixtures(): QuestionFixture[] {
   const fixturesDir = path.join(process.cwd(), "src", "data", "quiz-fixtures");
@@ -23,10 +29,13 @@ function loadFixtures(): QuestionFixture[] {
 
   return files
     .flatMap((file) => {
-      const parsed = JSON.parse(
-        fs.readFileSync(path.join(fixturesDir, file), "utf-8")
-      ) as QuestionFixture | QuestionFixture[];
-      return Array.isArray(parsed) ? parsed : [parsed];
+      const parsed = JSON.parse(fs.readFileSync(path.join(fixturesDir, file), "utf-8"));
+      const fixtures = parseArkanaContentFile(parsed);
+      if (!fixtures) {
+        console.warn(`quiz-sandbox: skipping ${file}, not an arkana-content questions file`);
+        return [];
+      }
+      return fixtures;
     })
     .sort((a, b) => a.type.localeCompare(b.type));
 }
