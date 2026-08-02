@@ -24,20 +24,21 @@ export function ModuleSection(props: ModuleSectionProps) {
   const { lang, listSlug, module, moduleNumber, moduleLabel, readLabel, takeQuizLabel, readStatuses } = props;
 
   const readCount = readStatuses
-    ? module.steps.filter((step) => readStatuses[step.slug]).length
+    ? module.steps.filter((step) => readStatuses[step.postPath]).length
     : undefined;
   const allRead = readCount !== undefined && readCount === module.steps.length;
+  const isRead = (index: number) => !!readStatuses?.[module.steps[index].postPath];
 
   const { data: quizAvailability } = useQuizAvailability({
     listSlug,
-    moduleSlug: module.id,
+    moduleSlug: module.slug,
   });
   const quizAvailable = !!quizAvailability?.available && quizAvailability.languages.includes(lang);
 
   const { user } = useAuth();
   const requireAuth = useRequireAuth();
   const router = useRouter();
-  const quizUrl = withLocalePath(lang, `reading-lists/${listSlug}/quiz/${module.id}`);
+  const quizUrl = withLocalePath(lang, `reading-lists/${listSlug}/quiz/${module.slug}`);
 
   const handleTakeQuiz = () => {
     if (!user) {
@@ -84,13 +85,13 @@ export function ModuleSection(props: ModuleSectionProps) {
         <ol className="!m-0 flex list-none flex-col !p-0 !pt-8">
           {module.steps.map((step, index) => (
             <StepItem
-              key={step.id}
+              key={step.slug}
               order={String(step.order).padStart(2, "0")}
               title={step.title}
               url={step.url}
-              read={readStatuses?.[step.slug]}
+              read={readStatuses?.[step.postPath]}
               showConnector={index < module.steps.length - 1}
-              moduleComplete={allRead}
+              nextRead={isRead(index + 1)}
             />
           ))}
         </ol>

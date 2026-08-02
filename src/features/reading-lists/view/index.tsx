@@ -28,27 +28,27 @@ export async function ReadingListPage(props: ReadingListPageProps) {
   const modules: ModuleData[] = readingList.modules
     .map((module) => {
       const moduleSteps = module.items
-        .filter((item) => postsBySlug.has(item.slug))
+        .filter((item) => postsBySlug.has(item.postPath))
         .map((item) => {
           stepCount += 1;
           return {
-            id: item.id,
             slug: item.slug,
-            title: postsBySlug.get(item.slug)!.title,
+            postPath: item.postPath,
+            title: postsBySlug.get(item.postPath)!.title,
             url: withLocalePath(
               lang,
-              `reading-lists/${readingList.id}/${item.id}`
+              `reading-lists/${readingList.slug}/${item.slug}`
             ),
             order: stepCount,
           };
         });
 
       const modulePosts = module.items
-        .map((item) => postsBySlug.get(item.slug))
+        .map((item) => postsBySlug.get(item.postPath))
         .filter((post): post is NonNullable<typeof post> => post != null);
 
       return {
-        id: module.id,
+        slug: module.slug,
         title: module.title,
         description: module.description,
         readingTime: formatReadingTime(sumReadingTimeMinutes(modulePosts)),
@@ -84,7 +84,7 @@ export async function ReadingListPage(props: ReadingListPageProps) {
 
       <JourneyStepper
         lang={lang}
-        listSlug={readingList.id}
+        listSlug={readingList.slug}
         modules={modules}
         moduleLabel={dict.readingLists.module}
         readLabel={dict.readingLists.read}

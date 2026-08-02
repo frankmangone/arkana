@@ -8,7 +8,7 @@ import { withLocalePath, withSiteUrl } from "@/lib/site-config";
 import { ReadingProgress } from "./reading-progress";
 
 interface ReadingList {
-  id: string;
+  slug: string;
   title: string;
   description?: string;
   coverImage?: string;
@@ -31,7 +31,7 @@ export function ReadingListCard(props: ReadingListCardProps) {
   return (
     <div className="group flex h-full flex-col overflow-hidden rounded-md border border-rule transition-colors hover:border-rule-strong">
       <Link
-        href={withLocalePath(lang, `reading-lists/${list.id}`)}
+        href={withLocalePath(lang, `reading-lists/${list.slug}`)}
         className="flex h-full flex-col"
       >
         <div className="relative hidden h-48 shrink-0 overflow-hidden border-b border-rule md:block">
@@ -86,7 +86,7 @@ export function ReadingListCard(props: ReadingListCardProps) {
               {totalReadingTime}
             </span>
             <ReadingProgress
-              slugs={list.items.map((item) => item.slug)}
+              slugs={list.items.map((item) => item.postPath)}
               readLabel={dictionary.readingLists.read}
             />
           </div>

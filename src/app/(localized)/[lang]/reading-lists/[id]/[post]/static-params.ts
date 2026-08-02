@@ -17,8 +17,8 @@ export async function generateStaticParams(): Promise<PageParams[]> {
       for (const item of readingList.items) {
         params.push({
           lang,
-          id: readingList.id,
-          post: item.id,
+          id: readingList.slug,
+          post: item.slug,
         });
       }
     }

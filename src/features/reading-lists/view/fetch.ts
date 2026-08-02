@@ -16,7 +16,7 @@ export async function getPostsFromReadingList(
 
   const postsWithNulls = await Promise.all(
     (readingList.items as ReadingListItem[]).map(async (item) => {
-        const post = (await getPostBySlug(item.slug, lang)) as Post;
+        const post = (await getPostBySlug(item.postPath, lang)) as Post;
 
         // Skip posts that don't exist
         if (!post) {
@@ -26,7 +26,7 @@ export async function getPostsFromReadingList(
         const author = await getWriter(post.metadata.author);
 
         return {
-          slug: item.slug,
+          slug: item.postPath,
           description: post.metadata.description ?? "",
           title: post.metadata.title,
           date: post.metadata.date,

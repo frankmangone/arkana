@@ -9,12 +9,12 @@ interface StepItemProps {
   read?: boolean;
   /** Draws the vertical connector down to the next step. False for a module's last step. */
   showConnector: boolean;
-  /** True once every step in the module is read - tints the connector primary. */
-  moduleComplete?: boolean;
+  /** True once the next step is also read - tints the connector primary. */
+  nextRead?: boolean;
 }
 
 export function StepItem(props: StepItemProps) {
-  const { order, title, url, read, showConnector, moduleComplete } = props;
+  const { order, title, url, read, showConnector, nextRead } = props;
 
   return (
     <li className="!m-0 relative pb-8 last:pb-0 before:!content-none">
@@ -22,7 +22,7 @@ export function StepItem(props: StepItemProps) {
         <span
           aria-hidden="true"
           className={`absolute left-3 top-6 h-[calc(100%-1.5rem)] w-[2px] -translate-x-1/2 ${
-            moduleComplete ? "bg-primary-700" : "bg-rule"
+            read && nextRead ? "bg-primary-700" : "bg-rule"
           }`}
         />
       )}
@@ -32,7 +32,7 @@ export function StepItem(props: StepItemProps) {
       >
         <StepGlyph
           read={read}
-          className={read ? "text-primary-700" : "text-ink-faint"}
+          className={`group-hover:text-primary-800 ${read ? "text-primary-700" : "text-ink-faint"}`}
         />
         <span className="flex items-baseline gap-2 pt-0.5 text-base text-ink-body group-hover:text-primary-800">
           <span className="eyebrow shrink-0 tabular-nums text-ink-faint">

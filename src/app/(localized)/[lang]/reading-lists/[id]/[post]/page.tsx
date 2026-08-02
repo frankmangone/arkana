@@ -29,7 +29,7 @@ export default async function Page({ params }: ReadingListPostPageProps) {
     );
   }
 
-  const slug = postFromReadingList.slug;
+  const slug = postFromReadingList.postPath;
   const post = await getPostBySlug(slug, lang);
 
   if (!post) {

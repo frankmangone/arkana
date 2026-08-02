@@ -49,7 +49,7 @@ export async function ReadingListsPage(props: ReadingListsPageProps) {
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {readingLists.map((list, index) => (
           <ReadingListCard
-            key={list.id}
+            key={list.slug}
             list={list}
             lang={lang}
             dictionary={dictionary}

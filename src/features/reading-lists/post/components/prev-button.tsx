@@ -16,7 +16,7 @@ export async function PrevButton(props: PrevButtonProps) {
     return <div className="hidden md:block" />;
   }
 
-  const post = await getPostBySlug(prevItem.slug, lang);
+  const post = await getPostBySlug(prevItem.postPath, lang);
 
   if (!post) {
     return <div className="hidden md:block" />;
@@ -24,7 +24,7 @@ export async function PrevButton(props: PrevButtonProps) {
 
   return (
     <Link
-      href={`/${lang}/reading-lists/${id}/${prevItem.id}`}
+      href={`/${lang}/reading-lists/${id}/${prevItem.slug}`}
       className="group flex h-full flex-col gap-3 rounded-md border border-rule p-5 transition-colors hover:border-primary-700"
     >
       <span className="eyebrow flex items-center gap-2 text-ink-faint">

@@ -25,22 +25,22 @@ function signRequest(secret) {
   return { timestamp, signature };
 }
 
-// Converts one backend ReadingListResponse (snake_case, "slug" at every
-// level) into today's on-disk reading-list shape ("id" at the list/module
-// level, the item's post reference back under "slug") - see
-// src/lib/reading-lists/data.ts's RawReadingList/RawModule/RawItem types,
-// which this must match exactly since that file is not changing.
+// Converts one backend ReadingListResponse (snake_case) into the on-disk
+// reading-list shape (camelCase, "slug" at every level - see
+// src/lib/reading-lists/data.ts's RawReadingList/RawModule/RawItem types).
+// Identifiers are not renamed: the backend's slug is the sole identifier
+// end to end, matching arkana-content's own authoring format exactly.
 function toReadingListJson(raw) {
   const readingList = {
-    id: raw.slug,
+    slug: raw.slug,
     ongoing: raw.ongoing,
     translations: raw.translations,
     modules: raw.modules.map((module) => ({
-      id: module.slug,
+      slug: module.slug,
       translations: module.translations,
       items: module.items.map((item) => ({
-        id: item.slug,
-        slug: item.post_path,
+        slug: item.slug,
+        postPath: item.post_path,
         order: item.order,
       })),
     })),

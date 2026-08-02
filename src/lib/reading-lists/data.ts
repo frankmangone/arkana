@@ -8,19 +8,19 @@ interface RawTranslation {
 }
 
 interface RawItem {
-  id: string;
   slug: string;
+  postPath: string;
   order?: number;
 }
 
 interface RawModule {
-  id: string;
+  slug: string;
   translations: Record<string, RawTranslation>;
   items: RawItem[];
 }
 
 interface RawReadingList {
-  id: string;
+  slug: string;
   coverImage?: string;
   ongoing?: boolean;
   translations: Record<string, RawTranslation>;
@@ -56,10 +56,10 @@ function resolveModule(
   const items: ReadingListItem[] = raw.items
     .slice()
     .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
-    .map((item) => ({ id: item.id, slug: item.slug, order: item.order }));
+    .map((item) => ({ slug: item.slug, postPath: item.postPath, order: item.order }));
 
   return {
-    id: raw.id,
+    slug: raw.slug,
     title: translation.title,
     description: translation.description,
     items,
@@ -84,7 +84,7 @@ function resolveReadingList(
   }
 
   return {
-    id: raw.id,
+    slug: raw.slug,
     title: translation.title,
     description: translation.description,
     coverImage: raw.coverImage,

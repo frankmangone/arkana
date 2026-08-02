@@ -6,8 +6,8 @@ import { useReadStatuses } from "@/lib/api";
 import { ModuleSection } from "./module-section";
 
 export interface StepData {
-  id: string;
   slug: string;
+  postPath: string;
   title: string;
   url: string;
   /** Position across the whole journey, not just within this module. */
@@ -15,7 +15,7 @@ export interface StepData {
 }
 
 export interface ModuleData {
-  id: string;
+  slug: string;
   title: string;
   description: string;
   readingTime: string;
@@ -40,7 +40,7 @@ export function JourneyStepper({
   takeQuizLabel,
 }: JourneyStepperProps) {
   const { user } = useAuth();
-  const allSlugs = modules.flatMap((module) => module.steps.map((step) => step.slug));
+  const allSlugs = modules.flatMap((module) => module.steps.map((step) => step.postPath));
 
   const { data: readStatuses } = useReadStatuses({
     paths: allSlugs,
@@ -50,7 +50,7 @@ export function JourneyStepper({
   return (
     <div className="flex flex-col">
       {modules.map((module, index) => (
-        <Fragment key={module.id}>
+        <Fragment key={module.slug}>
           {index > 0 && <hr className="my-14 border-t border-rule" />}
           <ModuleSection
             lang={lang}

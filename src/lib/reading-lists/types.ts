@@ -1,19 +1,19 @@
 export interface ReadingListItem {
-  id: string;
   slug: string;
+  postPath: string;
   order?: number;
   description?: string;
 }
 
 export interface ReadingListModule {
-  id: string;
+  slug: string;
   title: string;
   description: string;
   items: ReadingListItem[];
 }
 
 export interface ReadingList {
-  id: string;
+  slug: string;
   title: string;
   description: string;
   modules: ReadingListModule[];

@@ -68,7 +68,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Reading lists (ids can differ per language - no alternates)
   for (const lang of languages) {
     for (const list of readingLists[lang] ?? []) {
-      entries.push({ url: url(lang, `reading-lists/${list.id}`) });
+      entries.push({ url: url(lang, `reading-lists/${list.slug}`) });
     }
   }
 

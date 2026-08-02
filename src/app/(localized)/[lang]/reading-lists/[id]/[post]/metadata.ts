@@ -23,7 +23,7 @@ export async function generateMetadata({
     };
   }
 
-  const post = await getPostBySlug(postFromReadingList.slug, lang);
+  const post = await getPostBySlug(postFromReadingList.postPath, lang);
 
   if (!post) {
     return {
@@ -34,7 +34,7 @@ export async function generateMetadata({
   }
 
   const image = post.metadata.thumbnail || "/images/arkana-default-og.png";
-  const [folder, fileSlug] = postFromReadingList.slug.split("/");
+  const [folder, fileSlug] = postFromReadingList.postPath.split("/");
   const availableLanguages = await getAvailablePostLanguages(folder, fileSlug);
 
   return generateBaseMetadata({
@@ -50,7 +50,7 @@ export async function generateMetadata({
     authors: [post.metadata.author],
     tags: post.metadata.tags,
     keywords: post.metadata.tags,
-    canonicalPath: `blog/${postFromReadingList.slug}`,
+    canonicalPath: `blog/${postFromReadingList.postPath}`,
     availableLanguages,
   });
 }

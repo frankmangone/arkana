@@ -8,7 +8,7 @@ import { ReadingList } from "./types";
 export const getReadingListFactory =
   (readingLists: ReadingList[]) =>
   (id: string): ReadingList | undefined => {
-    return readingLists.find((list) => list.id === id);
+    return readingLists.find((list) => list.slug === id);
   };
 
 /**
@@ -30,6 +30,6 @@ export const getReadingListsForPostFactory =
   (readingLists: ReadingList[]) =>
   (slug: string): ReadingList[] => {
     return readingLists.filter((list) =>
-      list.items.some((item) => item.slug === slug)
+      list.items.some((item) => item.postPath === slug)
     );
   };

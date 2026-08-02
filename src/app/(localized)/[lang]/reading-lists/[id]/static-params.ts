@@ -12,7 +12,7 @@ export async function generateStaticParams() {
       // Only generate paths for reading lists that exist in this language
       for (const list of localizedReadingLists) {
         paths.push({
-          id: list.id,
+          id: list.slug,
           lang,
         });
       }

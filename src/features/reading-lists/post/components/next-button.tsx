@@ -16,7 +16,7 @@ export async function NextButton(props: NextButtonProps) {
     return <div className="hidden md:block" />;
   }
 
-  const post = await getPostBySlug(nextItem.slug, lang);
+  const post = await getPostBySlug(nextItem.postPath, lang);
 
   if (!post) {
     return <div className="hidden md:block" />;
@@ -24,7 +24,7 @@ export async function NextButton(props: NextButtonProps) {
 
   return (
     <Link
-      href={`/${lang}/reading-lists/${id}/${nextItem.id}`}
+      href={`/${lang}/reading-lists/${id}/${nextItem.slug}`}
       className="group flex h-full flex-col items-end gap-3 rounded-md border border-rule p-5 text-right transition-colors hover:border-primary-700"
     >
       <span className="eyebrow flex items-center gap-2 text-ink-faint">

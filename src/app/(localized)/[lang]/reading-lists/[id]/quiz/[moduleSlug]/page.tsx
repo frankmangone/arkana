@@ -23,7 +23,7 @@ export default async function Page({ params }: QuizAttemptPageProps) {
   const { lang, id, moduleSlug } = await params;
 
   const readingList = getReadingList({ lang, id });
-  const readingListModule = readingList?.modules.find((m) => m.id === moduleSlug);
+  const readingListModule = readingList?.modules.find((m) => m.slug === moduleSlug);
 
   if (!readingList || !readingListModule) {
     return (
@@ -44,11 +44,11 @@ export default async function Page({ params }: QuizAttemptPageProps) {
   const reviewTargets: Record<string, ReviewTarget> = {};
   for (const listModule of readingList.modules) {
     for (const item of listModule.items) {
-      const title = postTitles.get(item.slug);
+      const title = postTitles.get(item.postPath);
       if (title) {
-        reviewTargets[item.slug] = {
+        reviewTargets[item.postPath] = {
           title,
-          url: withLocalePath(lang, `reading-lists/${id}/${item.id}`),
+          url: withLocalePath(lang, `reading-lists/${id}/${item.slug}`),
         };
       }
     }

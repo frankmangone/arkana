@@ -21,7 +21,7 @@ export function getReadingList(
   const langReadingLists = readingLists[lang];
   if (!langReadingLists) return null;
 
-  const readingList = langReadingLists.find((list) => list.id === id);
+  const readingList = langReadingLists.find((list) => list.slug === id);
 
   if (!readingList) return null;
 
@@ -43,7 +43,7 @@ export function getPostFromReadingList(
 
   if (!readingList) return null;
 
-  const post = readingList.items.find((item) => item.id === postId);
+  const post = readingList.items.find((item) => item.slug === postId);
 
   if (!post) return null;
 

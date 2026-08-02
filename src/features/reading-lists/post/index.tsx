@@ -35,7 +35,7 @@ export async function ReadingListPostPage(props: ReadingListPostPageProps) {
   // Get reading list data for navigation
   const readingList = getReadingList({ lang, id });
   const currentIndex =
-    readingList?.items.findIndex((item) => item.slug === slug) ?? -1;
+    readingList?.items.findIndex((item) => item.postPath === slug) ?? -1;
   const prevItem =
     currentIndex > 0 ? readingList?.items[currentIndex - 1] : null;
   const nextItem =
