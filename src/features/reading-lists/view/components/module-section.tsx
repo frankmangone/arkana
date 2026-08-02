@@ -27,7 +27,7 @@ export function ModuleSection(props: ModuleSectionProps) {
     ? module.steps.filter((step) => readStatuses[step.postPath]).length
     : undefined;
   const allRead = readCount !== undefined && readCount === module.steps.length;
-  const isRead = (index: number) => !!readStatuses?.[module.steps[index].postPath];
+  const isRead = (index: number) => !!readStatuses?.[module.steps[index]?.postPath];
 
   const { data: quizAvailability } = useQuizAvailability({
     listSlug,
