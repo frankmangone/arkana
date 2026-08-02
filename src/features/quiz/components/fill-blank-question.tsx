@@ -5,6 +5,7 @@ import { Check, X } from "lucide-react";
 import { motion } from "motion/react";
 import { LatexText } from "@/components/ui/latex-text";
 import { useQuestionAnswer } from "@/features/quiz/lib/answer-context";
+import { shuffled } from "@/features/quiz/lib/shuffle";
 import { cn } from "@/lib/utils";
 import type { FillBlankAnswerKey, FillBlankQuestion, QuizzesDictionary } from "@/features/quiz/types";
 
@@ -86,7 +87,11 @@ export function FillBlankQuestionRenderer({
   dictionary,
 }: FillBlankQuestionProps) {
   const { revealed, correct, correctReveal, reportResponse } = useQuestionAnswer();
-  // blankId -> index into question.wordBank
+  // Shuffled once per mount so the word bank doesn't start in the authored
+  // order (e.g. correct answers always first) - grading compares words, not
+  // positions, so shuffling here is purely presentational.
+  const [wordBank] = useState(() => shuffled(question.wordBank));
+  // blankId -> index into wordBank
   const [filled, setFilled] = useState<Record<string, number>>({});
   const [draggedFrom, setDraggedFrom] = useState<DragSource | null>(null);
   const [dragOverBlankId, setDragOverBlankId] = useState<string | null>(null);
@@ -106,7 +111,7 @@ export function FillBlankQuestionRenderer({
     reportResponse({
       response: {
         filled: Object.fromEntries(
-          Object.entries(next).map(([blankId, wordIndex]) => [blankId, question.wordBank[wordIndex]])
+          Object.entries(next).map(([blankId, wordIndex]) => [blankId, wordBank[wordIndex]])
         ),
       },
       canSubmit: ids.every((id) => next[id] !== undefined),
@@ -181,7 +186,7 @@ export function FillBlankQuestionRenderer({
             );
 
           const wordIndex = filled[part.id];
-          const word = wordIndex !== undefined ? question.wordBank[wordIndex] : undefined;
+          const word = wordIndex !== undefined ? wordBank[wordIndex] : undefined;
           const isCorrect = correct === true || (word !== undefined && correctWords?.[part.id] === word);
           const isDragOver = dragOverBlankId === part.id;
 
@@ -229,7 +234,7 @@ export function FillBlankQuestionRenderer({
       </p>
 
       <ul className={styles.wordBankList}>
-        {question.wordBank.map((word, index) => {
+        {wordBank.map((word, index) => {
           const isUsed = usedIndices.has(index);
 
           return (

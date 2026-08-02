@@ -5,6 +5,7 @@ import { Check, ChevronDown, ChevronUp, GripVertical, X } from "lucide-react";
 import { motion } from "motion/react";
 import { LatexText } from "@/components/ui/latex-text";
 import { useQuestionAnswer } from "@/features/quiz/lib/answer-context";
+import { shuffled } from "@/features/quiz/lib/shuffle";
 import { cn } from "@/lib/utils";
 import type {
   QuizzesDictionary,
@@ -54,7 +55,10 @@ export function SequencingQuestionRenderer({
   dictionary,
 }: SequencingQuestionProps) {
   const { revealed, correct, correctReveal, reportResponse } = useQuestionAnswer();
-  const [order, setOrder] = useState<string[]>(() => question.steps.map((step) => step.id));
+  // Shuffled once per mount so steps don't start in the authored (often
+  // solved) order - the backend grades by comparing ids, not by trusting
+  // this initial order, so shuffling here is purely presentational.
+  const [order, setOrder] = useState<string[]>(() => shuffled(question.steps.map((step) => step.id)));
   const [draggedId, setDraggedId] = useState<string | null>(null);
 
   const stepsById = new Map(question.steps.map((step) => [step.id, step]));

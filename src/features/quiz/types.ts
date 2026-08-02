@@ -73,9 +73,9 @@ export interface SequencingStep {
 
 export interface SequencingQuestion extends QuestionBase {
   type: "sequencing";
-  /** Delivered in a fixed, already non-solved order - never the correct
-   * order, and never shuffled client-side (the server/fixture already took
-   * care of that). */
+  /** Delivered in authored order, which may be the solved order - the
+   * backend stores/serves content verbatim with no reordering, so the
+   * renderer shuffles this client-side before display. */
   steps: SequencingStep[];
 }
 
@@ -102,7 +102,9 @@ export interface FillBlankQuestion extends QuestionBase {
    * from this template, not listed separately. */
   template: string;
   /** Word bank shown beneath the sentence - every blank's correct word plus a
-   * few distractors, pre-shuffled by whoever authors the content. */
+   * few distractors, in authored order. The backend stores/serves this
+   * verbatim with no reordering, so the renderer shuffles it client-side
+   * before display. */
   wordBank: string[];
 }
 
