@@ -7,7 +7,6 @@ docs/superpowers
 # content
 /src/data/*
 !/src/data/.gitkeep
-!/src/data/quiz-fixtures
 
 # dependencies
 **/node_modules
