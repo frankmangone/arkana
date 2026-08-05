@@ -1,5 +1,6 @@
 export const PendingActionType = {
   Like: "like",
+  MarkAsRead: "mark_as_read",
 } as const;
 
 export type PendingActionType =
@@ -7,6 +8,7 @@ export type PendingActionType =
 
 export type PendingActionPayloadMap = {
   [PendingActionType.Like]: { path: string };
+  [PendingActionType.MarkAsRead]: { path: string };
 };
 
 export type PendingAction<T extends PendingActionType = PendingActionType> = {

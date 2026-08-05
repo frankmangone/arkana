@@ -38,6 +38,11 @@ async function run(file: string) {
   const { lang, slugPath } = parseFilePath(filePath);
   const { data, content } = matter(fs.readFileSync(filePath, "utf8"));
 
+  if (data.visible === false) {
+    console.log(`Skipping "${slugPath}": marked visible: false`);
+    return;
+  }
+
   const document = {
     id: `${lang}-${slugPath.replace(/\//g, "-")}`,
     lang,

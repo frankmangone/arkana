@@ -61,9 +61,12 @@ describe("PostActions - logged out", () => {
     });
   });
 
-  it("requires auth with no action when the read toggle is clicked while logged out", () => {
+  it("requires auth with a mark-as-read action when the read toggle is clicked while logged out", () => {
     renderPostActions();
     fireEvent.click(screen.getByLabelText("Mark post as read"));
-    expect(mockRequireAuth).toHaveBeenCalledWith();
+    expect(mockRequireAuth).toHaveBeenCalledWith({
+      type: PendingActionType.MarkAsRead,
+      payload: { path: "blog/my-post" },
+    });
   });
 });

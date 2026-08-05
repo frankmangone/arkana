@@ -39,6 +39,8 @@ export interface UseLikeParams {
  * Hook to toggle like on a post. Authentication via Bearer token (auto-added by axios).
  */
 export function useLike() {
+  const queryClient = useQueryClient();
+
   return useMutation<ToggleLikeResponse, Error, UseLikeParams>({
     mutationFn: async ({ path }) => {
       return toggleLike(path);
@@ -46,6 +48,7 @@ export function useLike() {
     onSuccess: (response, variables) => {
       const event = response.liked ? EVENTS.POST_LIKED : EVENTS.POST_UNLIKED;
       trackEvent(event, { path: variables.path });
+      queryClient.invalidateQueries({ queryKey: ["postInfo", variables.path] });
     },
   });
 }

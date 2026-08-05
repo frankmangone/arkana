@@ -29,11 +29,6 @@ export const getPostBySlug = async (
     const fileContent = await fs.readFile(filePath, "utf8");
     const { data, content: markdownContent } = matter(fileContent);
 
-    // Return null if the post is marked as not visible
-    if (data.visible === false) {
-      return null;
-    }
-
     return { content: markdownContent, metadata: data as PostMetadata };
   } catch (error) {
     // Try alternative path format if the first attempt fails
@@ -57,11 +52,6 @@ export const getPostBySlug = async (
 
             const fileContent = await fs.readFile(nestedPath, "utf8");
             const { data, content: markdownContent } = matter(fileContent);
-
-            // Return null if the post is marked as not visible
-            if (data.visible === false) {
-              return null;
-            }
 
             return { content: markdownContent, metadata: data as PostMetadata };
           }

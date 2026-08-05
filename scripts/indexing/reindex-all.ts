@@ -29,14 +29,26 @@ async function run() {
   for (const lang of langs) {
     const langRoot = path.join(CONTENT_ROOT, lang);
     const documents: Array<Record<string, unknown>> = [];
-    const skipped: string[] = [];
+    const skipped: Array<{ file: string; reason: string }> = [];
 
     for (const filePath of walk(langRoot)) {
       const { data, content } = matter(fs.readFileSync(filePath, "utf8"));
 
       // Non-post markdown (READMEs and the like) has no title frontmatter
       if (!data.title) {
-        skipped.push(path.relative(CONTENT_ROOT, filePath));
+        skipped.push({
+          file: path.relative(CONTENT_ROOT, filePath),
+          reason: "no title frontmatter",
+        });
+        continue;
+      }
+
+      // Hidden posts (visible: false) are excluded from search
+      if (data.visible === false) {
+        skipped.push({
+          file: path.relative(CONTENT_ROOT, filePath),
+          reason: "visible: false",
+        });
         continue;
       }
 
@@ -59,8 +71,8 @@ async function run() {
 
     const indexUid = `posts_${lang}`;
     console.log(`\n${indexUid}: ${documents.length} posts found`);
-    for (const file of skipped) {
-      console.log(`  skipped (no title frontmatter): ${file}`);
+    for (const { file, reason } of skipped) {
+      console.log(`  skipped (${reason}): ${file}`);
     }
     if (documents.length === 0) continue;
 

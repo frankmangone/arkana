@@ -69,7 +69,7 @@ export function PostActions({ className = "gap-2", path }: PostActionsProps) {
 
   const handleRead = async () => {
     if (!user) {
-      requireAuth();
+      requireAuth({ type: PendingActionType.MarkAsRead, payload: { path } });
       return;
     }
 

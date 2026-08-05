@@ -20,8 +20,13 @@ async function isVisiblePost(filePath: string): Promise<boolean> {
 }
 
 // Scans src/data/content/<lang>/<folder>/<slug>.md and reports, per unique
-// folder/slug, which languages have a visible translation.
-export async function getPostPaths(): Promise<PostPath[]> {
+// folder/slug, which languages have a translation. Hidden (visible: false)
+// posts are excluded by default since callers use this for public listings
+// (sitemap, language switcher); static-params.ts opts into includeHidden so
+// hidden posts still get a statically built page.
+export async function getPostPaths(
+  includeHidden = false
+): Promise<PostPath[]> {
   const contentPath = path.join(process.cwd(), "src", "data", "content");
   const found = new Map<string, Set<Locale>>();
 
@@ -42,7 +47,11 @@ export async function getPostPaths(): Promise<PostPath[]> {
       const files = await fs.readdir(folderPath);
       for (const file of files) {
         if (!file.endsWith(".md")) continue;
-        if (!(await isVisiblePost(path.join(folderPath, file)))) continue;
+        if (
+          !includeHidden &&
+          !(await isVisiblePost(path.join(folderPath, file)))
+        )
+          continue;
 
         const key = `${folder}/${file.replace(/\.md$/, "")}`;
         const langs = found.get(key) ?? new Set<Locale>();
@@ -66,7 +75,7 @@ export async function getAvailablePostLanguages(
   folder: string,
   slug: string
 ): Promise<Locale[]> {
-  const posts = await getPostPaths();
+  const posts = await getPostPaths(true);
   const match = posts.find(
     (post) => post.folder === folder && post.slug === slug
   );
