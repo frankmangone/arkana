@@ -28,7 +28,7 @@ export function TintedThumbnail(props: TintedThumbnailProps) {
         className={`object-cover contrast-110 ${
           isHero
             ? "grayscale"
-            : "grayscale-[60%] transition-[filter] duration-300 group-hover:grayscale-0"
+            : "grayscale-[20%] transition-[filter] duration-300 group-hover:grayscale-0"
         } ${imageClassName ?? ""}`}
       />
       {isHero ? (
