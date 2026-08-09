@@ -29,6 +29,7 @@ export const EVENTS = {
   WALLET_CONNECTED: "wallet_connected",
   WALLET_DISCONNECTED: "wallet_disconnected",
   QUIZ_SUBMITTED: "quiz_submitted",
+  QUESTION_FLAGGED: "question_flagged",
   NOTIFICATION_MARKED_READ: "notification_marked_read",
   SUBSCRIBE_GUEST_SUBMITTED: "subscribe_guest_submitted",
   SUBSCRIBE_AUTHENTICATED: "subscribe_authenticated",

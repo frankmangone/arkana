@@ -179,6 +179,23 @@
         "review": "Revise o que você errou:",
         "backToReadingList": "Voltar para a lista de leitura"
       }
+    },
+    "report": {
+      "trigger": "Reportar um problema com esta pergunta",
+      "modalTitle": "Reportar um problema",
+      "modalDescription": "Conte-nos o que está errado e vamos verificar.",
+      "reasons": {
+        "wrong": "A resposta parece errada",
+        "unclear": "Redação confusa",
+        "tooEasy": "Muito fácil",
+        "tooHard": "Muito difícil"
+      },
+      "placeholder": "Descreva o problema...",
+      "submit": "Enviar relatório",
+      "sending": "Enviando...",
+      "cancel": "Cancelar",
+      "success": "Obrigado pelo feedback!",
+      "error": "Falha ao enviar o relatório. Por favor, tente novamente."
     }
   },
   "auth": {

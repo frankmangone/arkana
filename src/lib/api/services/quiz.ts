@@ -140,3 +140,26 @@ export async function completeAttempt(attemptId: string): Promise<CompleteAttemp
   );
   return response.data;
 }
+
+// ============ Question flags ============
+
+export interface QuestionFlagResponse {
+  id: number;
+  question_id: number;
+  user_id: number;
+  reason: string;
+  created_at: string;
+}
+
+/** Report an issue with a question. Resubmitting overwrites the caller's
+ * own prior flag on the same question rather than creating a duplicate. */
+export async function flagQuestion(
+  questionUuid: string,
+  reason: string
+): Promise<QuestionFlagResponse> {
+  const response = await apiClient.post<QuestionFlagResponse>(
+    `/api/questions/${questionUuid}/flags`,
+    { reason }
+  );
+  return response.data;
+}

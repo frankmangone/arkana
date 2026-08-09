@@ -15,6 +15,7 @@ import {
   type StartAttemptResponse,
 } from "@/lib/api/services/quiz";
 import { QuestionCard } from "@/features/quiz/components/question-card";
+import { ReportQuestionButton } from "@/features/quiz/components/report-question-button";
 import { QuizProgressBar } from "./quiz-progress-bar";
 import { QuizResults } from "./quiz-results";
 import type { QuestionResponse, QuizzesDictionary } from "@/features/quiz/types";
@@ -190,6 +191,8 @@ export function QuizAttemptView({
           };
         }}
       />
+
+      <ReportQuestionButton questionUuid={question.uuid} dictionary={dictionary} />
     </div>
   );
 }

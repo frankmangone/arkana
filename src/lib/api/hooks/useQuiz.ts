@@ -4,9 +4,11 @@ import {
   AnswerApiResponse,
   CompleteAttemptResponse,
   completeAttempt,
+  flagQuestion,
   getQuizAvailability,
   getNextQuestion,
   NextQuestionResponse,
+  QuestionFlagResponse,
   QuizAvailabilityResponse,
   skipQuestion,
   submitAnswer,
@@ -83,5 +85,17 @@ export function useSkipQuestion() {
 export function useCompleteAttempt() {
   return useMutation<CompleteAttemptResponse, Error, string>({
     mutationFn: (attemptId) => completeAttempt(attemptId),
+  });
+}
+
+export interface UseFlagQuestionParams {
+  questionUuid: string;
+  reason: string;
+}
+
+/** Hook to report an issue with a question. */
+export function useFlagQuestion() {
+  return useMutation<QuestionFlagResponse, Error, UseFlagQuestionParams>({
+    mutationFn: ({ questionUuid, reason }) => flagQuestion(questionUuid, reason),
   });
 }
