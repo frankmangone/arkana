@@ -28,6 +28,10 @@ const styles = {
   reasonChips: "flex flex-wrap gap-2",
   textarea:
     "w-full min-h-[100px] resize-y field-sizing-content max-h-[50vh] rounded-[4px] border border-rule-strong bg-surface-raised p-3 text-sm text-ink-body placeholder:text-ink-faint transition-[border-color,box-shadow] focus:outline-none focus:border-primary-700 focus:ring-2 focus:ring-primary-700/25",
+  // Same solid-primary override question-card.tsx uses for its own action
+  // buttons (styles.actionSolid there) - overrides the Button default's
+  // gradient background.
+  submitButton: "bg-none bg-primary-700 text-ink-on-brand hover:bg-primary-800",
 };
 
 export function ReportQuestionButton({ questionUuid, dictionary }: ReportQuestionButtonProps) {
@@ -119,6 +123,7 @@ export function ReportQuestionButton({ questionUuid, dictionary }: ReportQuestio
               </Button>
               <Button
                 type="submit"
+                className={styles.submitButton}
                 disabled={!reason.trim() || reason.length > MAX_REASON_LENGTH || flagQuestion.isPending}
               >
                 {flagQuestion.isPending ? strings.sending : strings.submit}
