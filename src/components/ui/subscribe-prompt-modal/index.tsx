@@ -91,7 +91,7 @@ export function SubscribePromptModal() {
         />
 
         <div className="relative z-10 flex flex-col items-center gap-8">
-          <div className="flex flex-row justify-center gap-3" aria-hidden="true">
+          <div className="flex flex-row justify-center" aria-hidden="true">
             {glyphs.map((elements, i) => (
               <ArkanaPattern
                 key={i}
