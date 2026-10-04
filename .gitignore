@@ -8,6 +8,9 @@ docs/superpowers
 /src/data/*
 !/src/data/.gitkeep
 
+# article images synced from arkana-content (see scripts/sync-images.sh)
+/public/images/cryptography-101/where-to-start/
+
 # dependencies
 **/node_modules
 /.pnp

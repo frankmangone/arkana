@@ -83,6 +83,21 @@ jobs:
       - name: Pull tags from API
         run: node scripts/pull-tags.js
 
+      - name: Sync images from the VPS
+        env:
+          VULTR_HOST: ${{ secrets.VULTR_HOST }}
+          VULTR_USER: ${{ secrets.VULTR_USER }}
+          VULTR_SSH_KEY: ${{ secrets.VULTR_SSH_KEY }}
+          VPS_KNOWN_HOSTS: ${{ secrets.VPS_KNOWN_HOSTS }}
+        run: |
+          set -euo pipefail
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$VULTR_SSH_KEY" > ~/.ssh/vps_images
+          chmod 600 ~/.ssh/vps_images
+          printf '%s\n' "$VPS_KNOWN_HOSTS" > ~/.ssh/known_hosts_vps
+          export RSYNC_RSH="ssh -i $HOME/.ssh/vps_images -o IdentitiesOnly=yes -o UserKnownHostsFile=$HOME/.ssh/known_hosts_vps -o StrictHostKeyChecking=yes"
+          bash scripts/sync-images.sh "${VULTR_USER}@${VULTR_HOST}:/opt/images/"
+
       - name: Pre-calculate content hashes
         run: node scripts/calculate-hashes.js
 
