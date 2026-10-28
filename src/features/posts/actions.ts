@@ -1,6 +1,6 @@
 import { promises as fs } from "fs";
 import path from "path";
-import matter from "gray-matter";
+import { parseFrontmatter } from "@/lib/posts/frontmatter";
 import type { Post, PostMetadata } from "@/lib/types";
 
 export const getPostBySlug = async (
@@ -27,7 +27,7 @@ export const getPostBySlug = async (
     }
 
     const fileContent = await fs.readFile(filePath, "utf8");
-    const { data, content: markdownContent } = matter(fileContent);
+    const { data, content: markdownContent } = parseFrontmatter(fileContent);
 
     return { content: markdownContent, metadata: data as PostMetadata };
   } catch (error) {
@@ -51,7 +51,7 @@ export const getPostBySlug = async (
             );
 
             const fileContent = await fs.readFile(nestedPath, "utf8");
-            const { data, content: markdownContent } = matter(fileContent);
+            const { data, content: markdownContent } = parseFrontmatter(fileContent);
 
             return { content: markdownContent, metadata: data as PostMetadata };
           }

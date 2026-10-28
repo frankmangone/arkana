@@ -34,6 +34,12 @@ function processMarkdownFile(filePath) {
     // Parse frontmatter and content
     const { data, content } = matter(fileContent);
 
+    // An unquoted `date: 2024-03-18` is parsed by YAML as a Date; normalize it
+    // to a plain string so it is written back quoted and read as a string.
+    if (data.date instanceof Date) {
+      data.date = data.date.toISOString().slice(0, 10);
+    }
+
     // Calculate hash from content
     const hash = crypto.createHash("sha256").update(content).digest("hex");
 

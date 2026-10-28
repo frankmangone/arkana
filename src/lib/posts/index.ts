@@ -1,6 +1,6 @@
 import fs from "fs/promises";
 import path from "path";
-import matter from "gray-matter";
+import { parseFrontmatter } from "./frontmatter";
 import { getWriter } from "../writers";
 
 export interface PostPreview {
@@ -42,11 +42,11 @@ export async function getPostsByAuthor(
           const slug = file.replace(".md", "");
           const fullSlug = baseSlug ? `${baseSlug}/${slug}` : slug;
 
-          let data: matter.GrayMatterFile<string>["data"];
+          let data: ReturnType<typeof parseFrontmatter>["data"];
           let author: ReturnType<typeof getWriter>;
           try {
             const fileContent = await fs.readFile(filePath, "utf8");
-            ({ data } = matter(fileContent));
+            ({ data } = parseFrontmatter(fileContent));
             author = getWriter(data.author || "");
           } catch (error) {
             throw new Error(
@@ -116,11 +116,11 @@ export async function getAllPosts(lang: string): Promise<PostPreview[]> {
           const slug = file.replace(".md", "");
           const fullSlug = baseSlug ? `${baseSlug}/${slug}` : slug;
 
-          let data: matter.GrayMatterFile<string>["data"];
+          let data: ReturnType<typeof parseFrontmatter>["data"];
           let author: ReturnType<typeof getWriter>;
           try {
             const fileContent = await fs.readFile(filePath, "utf8");
-            ({ data } = matter(fileContent));
+            ({ data } = parseFrontmatter(fileContent));
             author = getWriter(data.author || "");
           } catch (error) {
             throw new Error(
