@@ -2,6 +2,7 @@ import fs from "fs/promises";
 import path from "path";
 import matter from "gray-matter";
 import { languages, type Locale } from "@/lib/i18n-config";
+import { hiddenPostKey } from "./hidden-links";
 
 export interface PostPath {
   folder: string;
@@ -69,6 +70,37 @@ export async function getPostPaths(
       languages: languages.filter((lang) => langs.has(lang)),
     };
   });
+}
+
+// Keys (see hiddenPostKey) of every visible: false post, per language. Used
+// to keep links from visible posts from exposing draft URLs.
+export async function getHiddenPostKeys(): Promise<Set<string>> {
+  const contentPath = path.join(process.cwd(), "src", "data", "content");
+  const hidden = new Set<string>();
+
+  for (const lang of languages) {
+    const langPath = path.join(contentPath, lang);
+    let folders: string[];
+    try {
+      folders = await fs.readdir(langPath);
+    } catch {
+      continue;
+    }
+
+    for (const folder of folders) {
+      const folderPath = path.join(langPath, folder);
+      const stat = await fs.stat(folderPath);
+      if (!stat.isDirectory()) continue;
+
+      for (const file of await fs.readdir(folderPath)) {
+        if (!file.endsWith(".md")) continue;
+        if (await isVisiblePost(path.join(folderPath, file))) continue;
+        hidden.add(hiddenPostKey(lang, folder, file.replace(/\.md$/, "")));
+      }
+    }
+  }
+
+  return hidden;
 }
 
 export async function getAvailablePostLanguages(

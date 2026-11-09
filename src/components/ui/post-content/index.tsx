@@ -21,6 +21,8 @@ import { Paragraph } from "@/components/ui/paragraph";
 import { SectionDivider } from "@/components/ui/section-divider";
 import { TableOfContents } from "@/components/ui/table-of-contents";
 import { HashScrollFix } from "@/components/ui/hash-scroll-fix";
+import { isHiddenPostHref } from "@/lib/posts/hidden-links";
+import { getHiddenPostKeys } from "@/lib/posts/translations";
 
 import { QuizDictionary } from "@/components/ui/quiz/types";
 
@@ -29,8 +31,15 @@ interface PostContentProps {
   quizDictionary?: QuizDictionary;
 }
 
-export function PostContent({ post, quizDictionary }: PostContentProps) {
+export async function PostContent({ post, quizDictionary }: PostContentProps) {
   const processedContent = processContent(post.content);
+  // Links from a visible post to a visible: false post render as plain text,
+  // so drafts are only reachable by someone who already has their URL. A
+  // hidden post keeps its links to other drafts working, for previewing.
+  const hiddenPostKeys =
+    post.metadata.visible === false
+      ? new Set<string>()
+      : await getHiddenPostKeys();
 
   return (
     <div
@@ -64,7 +73,12 @@ export function PostContent({ post, quizDictionary }: PostContentProps) {
           // h5: createHeadingComponent(5),
           // h6: createHeadingComponent(6),
           p: Paragraph,
-          a: Link,
+          a: (props: any) =>
+            isHiddenPostHref(props.href, hiddenPostKeys) ? (
+              <>{props.children}</>
+            ) : (
+              <Link {...props} />
+            ),
           hr: SectionDivider,
 
           // Lists
