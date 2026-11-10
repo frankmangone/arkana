@@ -1,11 +1,14 @@
 import { HTMLAttributes } from "react";
 import QuizComponent from "./quiz";
 import { VideoEmbed } from "./video-embed";
+import { EmbedFrame } from "./embed/embed-frame";
 import { QuizDictionary } from "./quiz/types";
 
 interface DivSwitchProps extends HTMLAttributes<HTMLDivElement> {
   "data-src"?: string;
   "data-lang"?: string;
+  "data-title"?: string;
+  "data-height"?: string;
   quizDictionary?: QuizDictionary;
 }
 
@@ -23,6 +26,8 @@ export function DivSwitch({
   className,
   "data-src": dataSrc,
   "data-lang": dataLang,
+  "data-title": dataTitle,
+  "data-height": dataHeight,
   quizDictionary,
   ...props
 }: DivSwitchProps) {
@@ -45,6 +50,11 @@ export function DivSwitch({
   // Handle video-embed divs
   if (className?.includes("video-embed")) {
     return <VideoEmbed src={dataSrc || undefined} />;
+  }
+
+  // Handle embed-frame divs (sandboxed interactive embeds)
+  if (className?.includes("embed-frame")) {
+    return <EmbedFrame src={dataSrc} title={dataTitle} height={dataHeight} />;
   }
 
   // Default div handling

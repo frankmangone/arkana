@@ -26,6 +26,19 @@ export function processContent(content: string): string {
       .replace(/<video-embed\s+src="([^"]+)"\s*\/>/g, (_, src) => {
         return `<div class="video-embed" data-src="${src}"></div>`;
       })
+      // <embed-frame src="/embeds/foo/" height="420" title="Foo" /> becomes a
+      // div carrying its attributes, picked up by DivSwitch.
+      .replace(/<embed-frame\s+([^>]*?)\/?>/g, (_, attributes: string) => {
+        const attr = (name: string) =>
+          attributes.match(new RegExp(`(?:^|\\s)${name}="([^"]*)"`))?.[1] ?? "";
+        const escape = (value: string) =>
+          value
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;");
+        return `<div class="embed-frame" data-src="${escape(attr("src"))}" data-height="${escape(attr("height"))}" data-title="${escape(attr("title"))}"></div>`;
+      })
       // This regex looks for ASCII tables and converts them to GFM tables
       .replace(/\+-+\+[\s\S]*?\+-+\+/g, (match) => {
         // Extract rows from the ASCII table

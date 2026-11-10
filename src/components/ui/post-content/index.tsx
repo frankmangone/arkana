@@ -8,6 +8,8 @@ import rehypePrism from "rehype-prism-plus";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 import { processContent } from "./process-content";
+import { remarkPlayground } from "./remark-playground";
+import { CodeBlock } from "./code-block";
 import "katex/dist/katex.min.css";
 import { ZoomableImage } from "@/components/ui/zoomable-image";
 import { DivSwitch } from "@/components/ui/div-switch";
@@ -58,7 +60,7 @@ export async function PostContent({ post, quizDictionary }: PostContentProps) {
       </div>
       <SectionDivider />
       <ReactMarkdown
-        remarkPlugins={[remarkMath, remarkGfm]}
+        remarkPlugins={[remarkMath, remarkGfm, remarkPlayground]}
         rehypePlugins={[
           rehypeRaw,
           [rehypeKatex, { strict: false }],
@@ -90,6 +92,9 @@ export async function PostContent({ post, quizDictionary }: PostContentProps) {
           img: ZoomableImage,
           figure: Figure,
           figcaption: FigCaption,
+
+          // Code blocks, with runnable Python playgrounds
+          pre: CodeBlock,
 
           // Blockquotes with callout support
           blockquote: Blockquote,
