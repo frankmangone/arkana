@@ -15,6 +15,7 @@ export interface PublicPost {
   folder: string;
   slug: string;
   metadata: PostMetadata;
+  authorName: string;
   url: string;
   markdownUrl: string;
 }
@@ -37,6 +38,7 @@ export async function getPublicPosts(lang?: Locale): Promise<PublicPost[]> {
         folder,
         slug,
         metadata: post.metadata,
+        authorName: getWriter(post.metadata.author ?? "").name,
         url: postUrl(postLang, folder, slug),
         markdownUrl: postMarkdownUrl(postLang, folder, slug),
       });

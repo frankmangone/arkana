@@ -193,6 +193,12 @@ export default async function RootLayout({
           title="Arkana RSS"
           href={`/${lang}/rss.xml`}
         />
+        <link
+          rel="alternate"
+          type="application/json"
+          title="Arkana articles"
+          href={`/${lang}/posts.json`}
+        />
       </head>
       <body className={`${spaceGrotesk.className} ${spaceGrotesk.variable}`}>
         <script

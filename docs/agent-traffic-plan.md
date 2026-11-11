@@ -6,9 +6,8 @@ generated at build time (route handlers with `generateStaticParams`, like
 and one function lists the public posts; markdown files, `llms.txt`, the JSON
 index and JSON-LD all read from them so they can't drift apart.
 
-Status: **Phases 0 and 1 done** (verified with a full static export: one
-`index.md` per visible post, none for hidden posts, 187 files / 3.9 MB). The
-rest is not started.
+Status: **Phases 0 to 4 and 6 done** (5 dropped, MCP skipped), each verified with
+a full static export. Only phase 7, the post-build check script, is left.
 
 ## Phase 0: Shared foundation (`src/lib/agent-content/`)
 
@@ -36,48 +35,58 @@ rest is not started.
 - Verify: Next emits `index.md` with `trailingSlash: true`; host serves it as
   `text/markdown` or `text/plain`.
 
-## Phase 2: `llms.txt`
+## Phase 2: `llms.txt` (done)
 
-- `/llms.txt`: what Arkana is, then each series with its articles and one-line
-  descriptions, linking to the `.md` versions. English first, es/pt sections.
-- `/{lang}/llms-full.txt`: every article for that language (per language
-  because the combined file could be several MB). `llms.txt` links to it.
+- `/llms.txt` only: what Arkana is, then each series with its articles as links
+  to their `.md` versions plus the one-line description. An article's
+  translations (es, pt) follow it on the same line. About 28 KB for the whole
+  site.
+- No `llms-full.txt`: the full English text is about 2 MB (~500k tokens), more
+  than an agent can load, and it isn't part of the `llms.txt` proposal. Maybe
+  later: per-series bundles, only if the logs show agents want them.
+- Series display names live in `lib/agent-content/series.ts` (the code only had
+  folder slugs); unlisted folders fall back to the title-cased slug.
 
-## Phase 3: Article JSON-LD and breadcrumbs
+## Phase 3: Article JSON-LD (done)
 
-- `BlogPosting` on post pages (`features/posts` and the reading-list post
-  page): `headline`, `description`, `datePublished`, `inLanguage`, `keywords`,
-  `author` (Person, linked to the writer page), `publisher` (existing
-  Organization), `isPartOf` (series), and `abstract` = the key-concepts deck as
-  plain text (the modal is client-only, so this is the only way crawlers see it).
-- `BreadcrumbList`: Home, Blog, Series, Article.
-- Helper in `lib/json-ld.ts`. Verify the series display name source.
+- `BlogPosting` and `BreadcrumbList` already existed on post pages, with a
+  duplicate `BlogPosting` on reading-list post pages. Both now use one builder,
+  `lib/json-ld.ts`, which adds: `abstract` (the key-concepts deck as plain text,
+  since the modal is client-only), `isPartOf` (the series), `timeRequired`
+  (from `readingTime`) and `encoding` (the markdown version).
+- Not done: `dateModified` (waits for the `updated` field, phase 5) and a series
+  level in the breadcrumb (series have no page to link to).
 
-## Phase 4: `robots.ts`
+## Phase 4: `robots.ts` (done)
 
-- Named rules for GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, Claude-User,
-  PerplexityBot, Google-Extended, CCBot. Default: allow all (documents intent,
-  changes nothing). One array, so blocking training crawlers later is one line.
+- Named groups for retrieval agents (OAI-SearchBot, ChatGPT-User,
+  Claude-SearchBot, Claude-User, PerplexityBot, Perplexity-User) and training
+  crawlers (GPTBot, ClaudeBot, Google-Extended, Applebot-Extended, CCBot).
+  All allowed today; to opt one out, move it to `disallowed`.
 
-## Phase 5: Self-describing pages
+## Phase 5: Self-describing pages (dropped)
 
-- Heading IDs: `AnchoredHeading` already slugifies (and supports `{#custom-id}`);
-  check the IDs are stable and that the TOC uses the same ones.
-- Optional `updated` frontmatter field, shown near the date and used as
-  `dateModified`. Set manually (not auto-set from `contentHash`).
-- No new visible "what you'll learn" block; `description` and the key-concepts
-  deck already cover it.
+- Heading IDs are stable: `AnchoredHeading` slugifies the heading text (or uses
+  `{#custom-id}`), and none of the 1,760 `##`/`###` headings in the content has
+  a duplicate ID within its article.
+- The optional `updated` frontmatter field (for `dateModified`) is not needed:
+  `date` is enough. Add it later if old articles start getting substantial
+  revisions.
 
-## Phase 6: JSON index and MCP
+## Phase 6: JSON index (done) and MCP (skipped)
 
-- `/{lang}/posts.json` (`slug`, `title`, `description`, `tags`, `series`,
-  `date`, `author`, `readingTime`, `url`, `markdownUrl`) and a small
-  `/api/index.json` listing the languages. Generated from `getPublicPosts()`.
-- Read `scripts/extract-search-data` and `search/` first: may be reusable.
-- MCP server: a stdio npm package (`arkana-mcp`, new folder in this repo) that
-  fetches `posts.json` and the `.md` files from arkana.blog and exposes
-  `list_series`, `search_articles`, `get_article`. Keyword search only. Needs no
-  hosting (`npx arkana-mcp`). A remote endpoint can come later.
+- `/{lang}/posts.json`: `lang`, `count`, `series` (slug, name, article count)
+  and `posts` (`slug`, `title`, `description`, `series`, `seriesName`, `date`,
+  `author`, `tags`, `readingTime`, `url`, `markdownUrl`, `translations`).
+  `/api/index.json` lists the languages with counts and points at `llms.txt`,
+  the sitemap and the RSS feed. Both come from `getPublicPosts()`; pages link
+  to `posts.json` with `<link rel="alternate" type="application/json">`, and
+  `llms.txt` mentions both.
+- MCP package: skipped for now. It would be a stdio npm package (`arkana-mcp`)
+  that fetches `posts.json` and the `.md` files, exposing `list_series`,
+  `search_articles` and `get_article`. It only reads public files, so it can be
+  built later without changing anything here. Worth it if agent traffic shows
+  up in the logs.
 
 ## Phase 7: Verification and measurement
 

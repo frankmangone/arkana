@@ -11,7 +11,8 @@ import BuyMeCoffeeWidget from "@/components/ui/buy-me-coffee";
 import { CommentSection } from "@/components/ui/comments";
 import { ReadTracker } from "@/components/ui/post-actions/read-tracker";
 import { KeyConceptsRecap } from "@/components/ui/post-content/key-concepts-recap";
-import { SITE_URL, withLocalePath, withSiteUrl } from "@/lib/site-config";
+import { SITE_URL, withLocalePath } from "@/lib/site-config";
+import { buildBlogPostingJsonLd } from "@/lib/json-ld";
 
 interface PostPageProps {
   lang: string;
@@ -70,39 +71,9 @@ export async function PostPage(props: PostPageProps) {
   // Base URL for absolute links
   const baseUrl = SITE_URL;
   const postUrl = `${baseUrl}${withLocalePath(lang, `blog/${slug}`)}`;
-  const imageUrl = post.metadata.thumbnail
-    ? withSiteUrl(post.metadata.thumbnail)
-    : withSiteUrl("/images/arkana-default-og.png");
 
-  // Create structured data for the article
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: post.metadata.title,
-    description: post.metadata.description,
-    image: imageUrl,
-    datePublished: post.metadata.date,
-    author: {
-      "@type": "Person",
-      name: writer.name,
-      url: `${baseUrl}${withLocalePath(lang, `writers/${writer.slug}`)}`,
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "Arkana",
-      logo: {
-        "@type": "ImageObject",
-        url: withSiteUrl("/logo.png"),
-      },
-    },
-    url: postUrl,
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": postUrl,
-    },
-    keywords: post.metadata.tags.join(", "),
-    inLanguage: lang,
-  };
+  // Structured data for the article
+  const jsonLd = buildBlogPostingJsonLd({ post, lang, slug, writer });
 
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
