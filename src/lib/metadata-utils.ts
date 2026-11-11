@@ -24,6 +24,7 @@ interface BaseMetadataOptions {
   keywords?: string[];
   availableLanguages?: string[]; // languages this page exists in; defaults to all
   canonicalPath?: string; // canonical target when this URL is a duplicate (defaults to path)
+  markdownUrl?: string; // absolute URL of a markdown version of this page, advertised to agents
 }
 
 export function generateBaseMetadata({
@@ -41,6 +42,7 @@ export function generateBaseMetadata({
   keywords,
   availableLanguages,
   canonicalPath,
+  markdownUrl,
 }: BaseMetadataOptions): Metadata {
   const effectivePath = canonicalPath ?? path;
   const fullPath = effectivePath ? `/${lang}/${effectivePath}` : `/${lang}`;
@@ -69,6 +71,7 @@ export function generateBaseMetadata({
     alternates: {
       canonical: canonicalUrl,
       languages: languageAlternates,
+      ...(markdownUrl && { types: { "text/markdown": markdownUrl } }),
     },
     openGraph: {
       title: ogTitle || title,

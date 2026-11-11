@@ -3,6 +3,7 @@ import { PageProps } from "./page";
 import { getPostBySlug } from "@/features/posts/actions";
 import { generateBaseMetadata } from "@/lib/metadata-utils";
 import { getAvailablePostLanguages } from "@/lib/posts/translations";
+import { postMarkdownUrl } from "@/lib/agent-content/urls";
 
 export async function generateMetadata({
   params,
@@ -36,5 +37,6 @@ export async function generateMetadata({
     tags: post.metadata.tags,
     keywords: post.metadata.tags,
     availableLanguages,
+    markdownUrl: postMarkdownUrl(lang, folder, slug),
   });
 }
