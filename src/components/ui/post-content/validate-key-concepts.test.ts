@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 import {
+  MAX_CARD_CHARS,
   assertKeyConceptsLast,
+  cardTextLength,
   splitKeyConcepts,
 } from "./validate-key-concepts";
 
@@ -234,5 +236,65 @@ describe("splitKeyConcepts", () => {
 
   it("leaves an unindented deck exactly as written", () => {
     expect(splitKeyConcepts(`Intro.\n\n${deck}`).deck).toBe(deck);
+  });
+});
+
+const deckWith = (body: string) =>
+  `<div class="key-concepts">\n\t<div class="concept">\n\t\t#### One\n\t\t${body}\n\t</div>\n</div>`;
+
+describe("cardTextLength", () => {
+  it("doesn't count the title or the formatting", () => {
+    expect(cardTextLength("#### A long title here\nSome **bold** text.")).toBe(
+      "Some bold text.".length
+    );
+  });
+
+  it("counts a link's text, not its address", () => {
+    expect(cardTextLength("#### T\nSee [this](https://example.com/x).")).toBe(
+      "See this.".length
+    );
+  });
+
+  it("counts each display equation as a fixed amount", () => {
+    const short = cardTextLength("#### T\nBefore:\n$$\na = b\n$$\nAfter.");
+    const long = cardTextLength(
+      "#### T\nBefore:\n$$\na = b + c + d + e + f + g + h + i + j\n$$\nAfter."
+    );
+    expect(short).toBe(long);
+    expect(short).toBeGreaterThan("Before: After.".length);
+  });
+});
+
+describe("card length limit", () => {
+  it("accepts a card right at the limit", () => {
+    const body = "a".repeat(MAX_CARD_CHARS);
+    expect(() => splitKeyConcepts(deckWith(body))).not.toThrow();
+  });
+
+  it("rejects a card over the limit, naming the post and the card", () => {
+    const body = "a".repeat(MAX_CARD_CHARS + 1);
+    expect(() => splitKeyConcepts(deckWith(body), "My Post")).toThrow(
+      /"My Post"[\s\S]*"One"/
+    );
+  });
+
+  it("reports every card that's too long, not just the first", () => {
+    const long = "a".repeat(MAX_CARD_CHARS + 1);
+    const card = (title: string, body: string) =>
+      `\t<div class="concept">\n\t\t#### ${title}\n\t\t${body}\n\t</div>`;
+    const written = `<div class="key-concepts">\n${[
+      card("First", long),
+      card("Fine", "Short."),
+      card("Third", long),
+    ].join("\n")}\n</div>`;
+    expect(() => splitKeyConcepts(written)).toThrow(
+      /"First"[\s\S]*"Third"/
+    );
+    expect(() => splitKeyConcepts(written)).not.toThrow(/"Fine"/);
+  });
+
+  it("rejects a card whose equations push it over the limit", () => {
+    const body = "a".repeat(MAX_CARD_CHARS - 50) + "\n\t\t$$\n\t\tx\n\t\t$$";
+    expect(() => splitKeyConcepts(deckWith(body))).toThrow(/at most/);
   });
 });

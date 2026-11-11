@@ -23,14 +23,18 @@ export function StickyActionsBar({ path }: StickyActionsBarProps) {
 
     const anchorObserver = new IntersectionObserver(
       ([entry]) =>
-        setHeaderHidden(!entry.isIntersecting && entry.boundingClientRect.top < 0),
+        setHeaderHidden(
+          !entry.isIntersecting && entry.boundingClientRect.top < 0
+        ),
       { threshold: 0 }
     );
     anchorObserver.observe(anchor);
 
     const bodyObserver = new IntersectionObserver(
       ([entry]) =>
-        setPastContent(!entry.isIntersecting && entry.boundingClientRect.top < 0),
+        setPastContent(
+          !entry.isIntersecting && entry.boundingClientRect.top < 0
+        ),
       { threshold: 0 }
     );
     bodyObserver.observe(body);

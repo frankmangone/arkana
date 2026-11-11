@@ -10,7 +10,7 @@ import { ReadingProgress } from "@/components/ui/reading-progress";
 import BuyMeCoffeeWidget from "@/components/ui/buy-me-coffee";
 import { CommentSection } from "@/components/ui/comments";
 import { ReadTracker } from "@/components/ui/post-actions/read-tracker";
-import { KeyConceptsRecap } from "@/components/ui/post-content/key-concepts-recap";
+import { keyConceptsRecapLabel } from "@/components/ui/post-content/key-concepts-recap";
 import { SITE_URL, withLocalePath } from "@/lib/site-config";
 import { buildBlogPostingJsonLd } from "@/lib/json-ld";
 
@@ -117,8 +117,10 @@ export async function PostPage(props: PostPageProps) {
         quizDictionary={dict.quiz}
         tldrLabel={dict.keyConcepts.tldr}
       />
-      <ReadTracker path={slug} />
-      <KeyConceptsRecap post={post} dictionary={dict.keyConcepts} />
+      <ReadTracker
+        path={slug}
+        recapLabel={keyConceptsRecapLabel(post, dict.keyConcepts.recap)}
+      />
       {writer.walletAddress &&
         writer.walletAddress !==
           "0x0000000000000000000000000000000000000000" && (

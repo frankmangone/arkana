@@ -1,5 +1,8 @@
+import { extractCards } from "@/lib/agent-content/key-concepts-markdown";
+
 // A key-concepts deck is a recap, so it must be the very last block of a post:
 // at most one per post, and nothing but whitespace after its closing </div>.
+// Its cards must also be short, so they fit on a phone screen without scrolling.
 
 const OPENING_TAG =
   /<div\b[^>]*\bclass\s*=\s*["'][^"']*\bkey-concepts\b[^"']*["'][^>]*>/g;
@@ -54,6 +57,46 @@ export function assertKeyConceptsLast(content: string, postTitle = "post") {
       `the deck must be the last block of the post, but this follows it: "${trailing.slice(0, 60)}${trailing.length > 60 ? "…" : ""}"`
     );
   }
+}
+
+/**
+ * The most text a card's body may hold, in characters. Counted in characters
+ * rather than words because languages differ (Spanish runs longer than English).
+ * Raise it if cards turn out to have room to spare.
+ */
+export const MAX_CARD_CHARS = 450;
+
+// A display equation takes up room on a card, but its source isn't a fair
+// measure of it, so each one counts as this many characters.
+const DISPLAY_MATH_CHARS = 100;
+
+/** How much room a card's body takes up: its title doesn't count. */
+export function cardTextLength(card: string): number {
+  const display = card.match(/\$\$[\s\S]*?\$\$/g)?.length ?? 0;
+  const text = card
+    .replace(/\$\$[\s\S]*?\$\$/g, " ")
+    .replace(/^#{1,6}[ \t]+.*$/m, "")
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1")
+    .replace(/(\*\*|__|\*|`)/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+  return text.length + display * DISPLAY_MATH_CHARS;
+}
+
+export function assertCardsFit(deck: string, postTitle = "post") {
+  // Every offender is reported at once, so they can all be fixed in one go.
+  const tooLong = extractCards(deck).flatMap((card) => {
+    const length = cardTextLength(card);
+    if (length <= MAX_CARD_CHARS) return [];
+    const title =
+      card.match(/^#{1,6}[ \t]+(.*)$/m)?.[1]?.trim() ?? card.slice(0, 30);
+    return [`  - "${title}": ${length} characters`];
+  });
+  if (tooLong.length === 0) return;
+
+  throw new Error(
+    `Key concepts in "${postTitle}": a card can hold at most ${MAX_CARD_CHARS} characters, so trim these, or split them into more cards:\n${tooLong.join("\n")}`
+  );
 }
 
 const TAB_WIDTH = 4;
@@ -148,7 +191,8 @@ function dedentDeck(deck: string): string {
  * Splits a post into its article text and its key-concepts deck (null if it has
  * none). The deck is shown in a modal from the hero, not inline, so the two
  * are rendered separately. Throws if the deck isn't the last block, which also
- * guarantees everything from its opening tag onwards is the deck.
+ * guarantees everything from its opening tag onwards is the deck. Also throws
+ * if a card is too long to read comfortably on a phone.
  */
 export function splitKeyConcepts(
   content: string,
@@ -160,8 +204,7 @@ export function splitKeyConcepts(
   if (!opening || opening.index === undefined) {
     return { body: content, deck: null };
   }
-  return {
-    body: content.slice(0, opening.index).trimEnd(),
-    deck: dedentDeck(content.slice(opening.index).trim()),
-  };
+  const deck = dedentDeck(content.slice(opening.index).trim());
+  assertCardsFit(deck, postTitle);
+  return { body: content.slice(0, opening.index).trimEnd(), deck };
 }

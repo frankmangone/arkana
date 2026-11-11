@@ -27,7 +27,8 @@ const cards = ["Alpha", "Beta", "Gamma"].map((name) => (
   </div>
 ));
 
-// Every card is rendered; only the front one is exposed (not aria-hidden).
+// The deck is rendered three times over, so it can loop; only the front card
+// is exposed (not aria-hidden).
 const frontHeading = (container: HTMLElement) =>
   container.querySelector('[data-front="true"] h4')?.textContent;
 
@@ -89,7 +90,8 @@ describe("KeyConcepts", () => {
       <KeyConcepts cards={cards} dictionary={dictionary} />
     );
     const behind = container.querySelectorAll('[aria-hidden="true"][inert]');
-    expect(behind).toHaveLength(2);
+    // 3 cards in 3 copies, all but the front one.
+    expect(behind).toHaveLength(8);
   });
 
   it("hides the controls for a single card", () => {

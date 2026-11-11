@@ -5,7 +5,7 @@ const hasClass = (attributes: string, name: string) => {
 };
 
 /** The markdown inside each `<div class="concept">` of a key-concepts deck. */
-function extractCards(deck: string): string[] {
+export function extractCards(deck: string): string[] {
   const cards: string[] = [];
   let depth = 0; // 1 = inside the deck, 2 = inside a card
   let cardStart = -1;

@@ -15,7 +15,7 @@ const CommentIcon: React.FC<CommentIconProps> = ({
 }) => {
   // Determine color class based on filled state if not explicitly provided
   const colorClass = color ?? "text-secondary-800";
-  
+
   // If size is provided, use it; otherwise, make it fill the container
   const sizeClass = size ? "" : "w-full h-full";
 
@@ -39,26 +39,26 @@ const CommentIcon: React.FC<CommentIconProps> = ({
       className={`${colorClass} ${sizeClass} ${className}`}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      style={size ? { width: `${size}px`, height: `${size}px`, flexShrink: 0 } : undefined}
+      style={
+        size
+          ? { width: `${size}px`, height: `${size}px`, flexShrink: 0 }
+          : undefined
+      }
     >
-          {contourLines.map((line, index) => (
-            <line
-              key={`contour-${index}`}
-              x1={line.from[0]}
-              y1={line.from[1]}
-              x2={line.to[0]}
-              y2={line.to[1]}
-              stroke="currentColor"
-              strokeWidth={0.3}
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          ))}
-          <path
-            d={filledCenterPath}
-            fill="currentColor"
-            stroke="none"
-          />
+      {contourLines.map((line, index) => (
+        <line
+          key={`contour-${index}`}
+          x1={line.from[0]}
+          y1={line.from[1]}
+          x2={line.to[0]}
+          y2={line.to[1]}
+          stroke="currentColor"
+          strokeWidth={0.3}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      ))}
+      <path d={filledCenterPath} fill="currentColor" stroke="none" />
     </svg>
   );
 };

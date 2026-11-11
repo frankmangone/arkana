@@ -6,9 +6,16 @@ import { useAuth } from "@/components/providers/auth-provider";
 import { usePostInfo, useToggleRead } from "@/lib/api/hooks/usePosts";
 import { useDictionary } from "@/lib/hooks/use-dictionary";
 import { CompletionAnimation } from "./completion-animation";
+import { FinishedRecap } from "./finished-recap";
 
 interface ReadTrackerProps {
   path: string;
+  /**
+   * Passed when the article has key concepts: the label of the button that
+   * offers them. The completion mark and the button then come as one unit,
+   * instead of stacking.
+   */
+  recapLabel?: string;
 }
 
 /**
@@ -17,7 +24,7 @@ interface ReadTrackerProps {
  * guest or logged in, and - only when logged in and not already read -
  * silently marks the post as read in the background.
  */
-export function ReadTracker({ path }: ReadTrackerProps) {
+export function ReadTracker({ path, recapLabel }: ReadTrackerProps) {
   const sentinelRef = useRef<HTMLDivElement>(null);
   const firedRef = useRef(false);
   const [completed, setCompleted] = useState(false);
@@ -53,12 +60,18 @@ export function ReadTracker({ path }: ReadTrackerProps) {
     return () => observer.disconnect();
   }, [user, postInfo, path, readMutation]);
 
+  const label = dictionary?.blog.articleFinished || "Article finished!";
+
   return (
     <div ref={sentinelRef}>
-      {completed && (
-        <CompletionAnimation
-          label={dictionary?.blog.articleFinished || "Article finished!"}
+      {recapLabel ? (
+        <FinishedRecap
+          label={label}
+          recapLabel={recapLabel}
+          completed={completed}
         />
+      ) : (
+        completed && <CompletionAnimation label={label} />
       )}
     </div>
   );

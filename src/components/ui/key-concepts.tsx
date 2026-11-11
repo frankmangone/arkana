@@ -37,14 +37,17 @@ const SWIPE_DISTANCE = 56; // px dragged before a release counts as a swipe
 const SWIPE_VELOCITY = 450; // px/s: a quick flick counts too
 
 // Card size and spacing, as fractions of the carousel's width. The cards are
-// narrower than the carousel so the neighbours peek in at the sides.
+// narrower than the carousel so the neighbours peek in at the sides. On a wide
+// screen they fade out towards the edges; on a small one the carousel spans the
+// screen, so the cards are wider (the text has room) and there's no fade.
 const CARD_WIDTH = 0.8;
-const CARD_WIDTH_NARROW = 0.88; // on small screens, so the text has room
+const CARD_WIDTH_NARROW = 0.9;
 const NARROW_BELOW = 480; // px
 const GAP = 0.03;
 
 // Fades the carousel out towards both edges, so the neighbouring cards melt
-// away instead of being cut off by a hard edge.
+// away instead of being cut off by a hard edge. Not used on a small screen,
+// where the card fills the width and there's nothing to fade.
 const EDGE_FADE =
   "linear-gradient(to right, transparent, #000 9%, #000 91%, transparent)";
 
@@ -63,17 +66,29 @@ const transitionFor = (reduceMotion: boolean | null) =>
  * A deck of "key concept" cards, as a carousel: the current card is centred
  * with its neighbours fading out at either side. Drag or swipe it, click a
  * neighbour, use the arrows or dots, or press the arrow keys when the deck has
- * focus. It wraps around at the ends.
+ * focus. It loops endlessly: after the last card comes the first, sliding on
+ * in the same direction.
+ *
+ * That's done with three identical copies of the deck in a row, starting on
+ * the middle one. Moving past either end just slides on into the next copy,
+ * and once the track settles there, it jumps back to the same card in the
+ * middle copy, which nobody can tell apart.
  */
 export function KeyConcepts({ title, cards, dictionary }: KeyConceptsProps) {
-  const [index, setIndex] = useState(0);
+  const total = cards.length;
+  // With a single card there's nothing to loop through, so no copies.
+  const copies = total > 1 ? 3 : 1;
+  // Where the carousel is in the row of copies; the middle copy to begin with.
+  const [slot, setSlot] = useState(total > 1 ? total : 0);
   const [width, setWidth] = useState(0);
   const viewportRef = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
   const reduceMotion = useReducedMotion();
 
-  const total = cards.length;
-  const cardWidth = width < NARROW_BELOW ? CARD_WIDTH_NARROW : CARD_WIDTH;
+  // Which card of the deck that is.
+  const index = total > 0 ? mod(slot, total) : 0;
+  const narrow = width < NARROW_BELOW;
+  const cardWidth = narrow ? CARD_WIDTH_NARROW : CARD_WIDTH;
 
   // Track the carousel's width.
   useLayoutEffect(() => {
@@ -88,31 +103,45 @@ export function KeyConcepts({ title, cards, dictionary }: KeyConceptsProps) {
   }, []);
 
   // When the width is first known, or changes, place the track without animating.
-  const indexRef = useRef(index);
-  indexRef.current = index;
+  const slotRef = useRef(slot);
+  slotRef.current = slot;
   useLayoutEffect(() => {
-    if (width) x.set(positionFor(width, cardWidth, indexRef.current));
+    if (width) x.set(positionFor(width, cardWidth, slotRef.current));
   }, [width, cardWidth, x]);
 
   // When the card changes, slide the track to it.
-  const previousIndex = useRef(index);
+  const previousSlot = useRef(slot);
   useEffect(() => {
-    if (previousIndex.current === index) return;
-    previousIndex.current = index;
-    if (width) {
-      animate(
-        x,
-        positionFor(width, cardWidth, index),
-        transitionFor(reduceMotion)
-      );
-    }
-  }, [index, width, cardWidth, x, reduceMotion]);
+    if (previousSlot.current === slot) return;
+    previousSlot.current = slot;
+    if (!width) return;
+    animate(x, positionFor(width, cardWidth, slot), {
+      ...transitionFor(reduceMotion),
+      onComplete: () => {
+        // Settled on an outer copy: jump to the same card in the middle one.
+        const shift = slot < total ? total : slot >= 2 * total ? -total : 0;
+        if (shift === 0) return;
+        previousSlot.current = slot + shift;
+        x.set(positionFor(width, cardWidth, slot + shift));
+        setSlot(slot + shift);
+      },
+    });
+  }, [slot, width, cardWidth, x, reduceMotion, total]);
 
   if (total === 0) return null;
 
-  const goTo = (target: number) => setIndex(mod(target, total));
-  const next = () => goTo(index + 1);
-  const previous = () => goTo(index - 1);
+  // Moves by `delta` cards, never past the ends of the row of copies.
+  const move = (delta: number) => {
+    const target = slot + delta;
+    if (target >= 0 && target < copies * total) setSlot(target);
+  };
+  const next = () => move(1);
+  const previous = () => move(-1);
+  // Goes to a card of the deck, the shorter way round.
+  const goTo = (target: number) => {
+    const delta = mod(target - index, total);
+    move(delta > total / 2 ? delta - total : delta);
+  };
 
   const onKeyDown = (event: KeyboardEvent<HTMLElement>) => {
     // Let arrow keys inside nested controls (e.g. the dot buttons) behave normally.
@@ -153,7 +182,11 @@ export function KeyConcepts({ title, cards, dictionary }: KeyConceptsProps) {
       <div
         ref={viewportRef}
         className="overflow-hidden"
-        style={{ maskImage: EDGE_FADE, WebkitMaskImage: EDGE_FADE }}
+        style={
+          narrow
+            ? undefined
+            : { maskImage: EDGE_FADE, WebkitMaskImage: EDGE_FADE }
+        }
       >
         <motion.div
           style={{ x }}
@@ -175,25 +208,25 @@ export function KeyConcepts({ title, cards, dictionary }: KeyConceptsProps) {
               // Not far enough: settle back on the current card.
               animate(
                 x,
-                positionFor(width, cardWidth, index),
+                positionFor(width, cardWidth, slot),
                 transitionFor(reduceMotion)
               );
             }
           }}
           className="flex w-full touch-pan-y select-none"
         >
-          {cards.map((card, i) => (
+          {Array.from({ length: copies * total }, (_, s) => (
             <DeckCard
-              key={i}
-              active={i === index}
-              position={i + 1}
+              key={s}
+              active={s === slot}
+              position={mod(s, total) + 1}
               total={total}
               widthPercent={cardWidth * 100}
               gapPercent={GAP * 100}
               // Clicking the current card moves on; a neighbour comes forward.
-              onSelect={() => (i === index ? next() : goTo(i))}
+              onSelect={() => (s === slot ? next() : move(s - slot))}
             >
-              {card}
+              {cards[mod(s, total)]}
             </DeckCard>
           ))}
         </motion.div>
@@ -261,6 +294,8 @@ function DeckCard({
       role="group"
       aria-roledescription="slide"
       aria-label={`${position} / ${total}`}
+      // The copies of the deck would otherwise be read out three times over.
+      aria-hidden={active ? undefined : true}
       data-front={active}
       style={{ width: `${widthPercent}%`, marginRight: `${gapPercent}%` }}
       // onTap only fires for a press that wasn't a drag, so swiping never also

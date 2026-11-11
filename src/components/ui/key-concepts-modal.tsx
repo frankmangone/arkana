@@ -74,7 +74,9 @@ export function KeyConceptsModal({
         // below its content's minimum width. The cards add up to more than a
         // phone screen, which pushed everything off-centre. minmax(0, 1fr)
         // pins the column to the dialog's width.
-        className="grid-cols-[minmax(0,1fr)] border-0 bg-transparent p-0 shadow-none sm:max-w-2xl"
+        // On a phone it spans the whole screen, with no gutter, so the cards
+        // slide in from the screen's edge instead of being cut short of it.
+        className="max-w-full grid-cols-[minmax(0,1fr)] border-0 bg-transparent p-0 shadow-none sm:max-w-2xl"
       >
         {/* The deck has its own visible heading; these are for screen readers. */}
         <DialogTitle className="sr-only">{label}</DialogTitle>
@@ -126,6 +128,9 @@ export function KeyConceptsTrigger({
       asChild
       className={cn(
         "cursor-pointer gap-2 border-ink-faint px-4 py-2.5 text-xs text-ink-body hover:border-primary-700 hover:text-primary-800 [&>svg]:size-4",
+        // At the end of the article it's a question, and reads better as a
+        // sentence than shouted in capitals.
+        variant === "recap" && "text-sm normal-case tracking-normal",
         className
       )}
     >

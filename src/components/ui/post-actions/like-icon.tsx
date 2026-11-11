@@ -16,8 +16,9 @@ const LikeIcon: React.FC<LikeIconProps> = ({
   className = "",
 }) => {
   // Determine color class based on filled state if not explicitly provided
-  const colorClass = color ?? (filled ? "text-secondary-750" : "text-secondary-800");
-  
+  const colorClass =
+    color ?? (filled ? "text-secondary-750" : "text-secondary-800");
+
   // If size is provided, use it; otherwise, make it fill the container
   const sizeClass = size ? "" : "w-full h-full";
 
@@ -49,15 +50,15 @@ const LikeIcon: React.FC<LikeIconProps> = ({
       className={`${colorClass} ${sizeClass} ${className}`}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      style={size ? { width: `${size}px`, height: `${size}px`, flexShrink: 0 } : undefined}
+      style={
+        size
+          ? { width: `${size}px`, height: `${size}px`, flexShrink: 0 }
+          : undefined
+      }
     >
       {filled && filledPath ? (
         // Filled version: use a closed path
-        <path
-          d={filledPath}
-          fill="currentColor"
-          stroke="none"
-        />
+        <path d={filledPath} fill="currentColor" stroke="none" />
       ) : (
         // Non-filled version: draw lines
         <>
