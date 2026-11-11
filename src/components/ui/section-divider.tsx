@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import ArkanaPattern from "@/components/arkana-pattern";
 
 // A fixed, symmetric glyph - the divider mark stays identical everywhere
@@ -25,25 +26,29 @@ const DIVIDER_GLYPH = {
 /**
  * SectionDivider component
  *
- * A centered Arkana glyph flanked by hairline rules.
+ * A centered Arkana glyph flanked by hairline rules. Pass `children` to put
+ * something else in the middle instead (e.g. a button), keeping the rules.
  *
  * @returns {JSX.Element} The SectionDivider component
  */
-export function SectionDivider() {
+export function SectionDivider({ children }: { children?: ReactNode }) {
   return (
     <div
-      className="my-12 flex items-center justify-center gap-6"
-      aria-hidden="true"
+      className="my-12 flex items-center justify-center gap-4 sm:gap-6"
+      // Only the glyph is decorative; anything passed in must stay reachable.
+      aria-hidden={children ? undefined : "true"}
     >
       <span className="h-px w-full max-w-24 bg-rule" />
-      <ArkanaPattern
-        elements={DIVIDER_GLYPH}
-        canvasSize={24}
-        lineWidth={1.5}
-        lineColor="#a777ff"
-        backgroundColor="transparent"
-        className="opacity-70"
-      />
+      {children ?? (
+        <ArkanaPattern
+          elements={DIVIDER_GLYPH}
+          canvasSize={24}
+          lineWidth={1.5}
+          lineColor="#a777ff"
+          backgroundColor="transparent"
+          className="opacity-70"
+        />
+      )}
       <span className="h-px w-full max-w-24 bg-rule" />
     </div>
   );

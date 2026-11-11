@@ -10,6 +10,7 @@ import { ReadingProgress } from "@/components/ui/reading-progress";
 import BuyMeCoffeeWidget from "@/components/ui/buy-me-coffee";
 import { CommentSection } from "@/components/ui/comments";
 import { ReadTracker } from "@/components/ui/post-actions/read-tracker";
+import { KeyConceptsRecap } from "@/components/ui/post-content/key-concepts-recap";
 import { SITE_URL, withLocalePath, withSiteUrl } from "@/lib/site-config";
 
 interface PostPageProps {
@@ -140,8 +141,13 @@ export async function PostPage(props: PostPageProps) {
       />
       {header}
       <ReadingProgress />
-      <PostContent post={post} quizDictionary={dict.quiz} />
+      <PostContent
+        post={post}
+        quizDictionary={dict.quiz}
+        tldrLabel={dict.keyConcepts.tldr}
+      />
       <ReadTracker path={slug} />
+      <KeyConceptsRecap post={post} dictionary={dict.keyConcepts} />
       {writer.walletAddress &&
         writer.walletAddress !==
           "0x0000000000000000000000000000000000000000" && (

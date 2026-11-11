@@ -10,6 +10,7 @@ import BuyMeCoffeeWidget from "@/components/ui/buy-me-coffee";
 import { getDictionary } from "@/lib/dictionaries";
 import { CommentSection } from "@/components/ui/comments";
 import { ReadTracker } from "@/components/ui/post-actions/read-tracker";
+import { KeyConceptsRecap } from "@/components/ui/post-content/key-concepts-recap";
 import { SITE_URL, withLocalePath, withSiteUrl } from "@/lib/site-config";
 
 interface ReadingListPostPageProps {
@@ -100,8 +101,9 @@ export async function ReadingListPostPage(props: ReadingListPostPageProps) {
         ]}
       />
       <ReadingProgress />
-      <PostContent post={post} />
+      <PostContent post={post} tldrLabel={dict.keyConcepts.tldr} />
       <ReadTracker path={slug} />
+      <KeyConceptsRecap post={post} dictionary={dict.keyConcepts} />
       <Navigation lang={lang} id={id} prevItem={prevItem} nextItem={nextItem} />
       {writer.walletAddress &&
         writer.walletAddress !==

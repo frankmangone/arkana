@@ -13,6 +13,12 @@ import { Link } from "@/components/ui/link";
 import { PostActions } from "@/components/ui/post-actions";
 import { StickyActionsBar } from "@/components/ui/post-actions/sticky-actions-bar";
 import { TintedThumbnail } from "@/components/ui/tinted-thumbnail";
+import { KeyConceptsModal } from "@/components/ui/key-concepts-modal";
+import {
+  PostMarkdown,
+  resolveHiddenPostKeys,
+} from "@/components/ui/post-content/post-markdown";
+import { splitKeyConcepts } from "@/components/ui/post-content/validate-key-concepts";
 
 interface PostHeaderProps {
   post: Post;
@@ -27,6 +33,10 @@ export async function PostHeader(props: PostHeaderProps) {
   const dict = await getDictionary(lang);
   const writer = getWriter(metadata.author);
   const thumbnailSrc = resolveThumbnailUrl(metadata.thumbnail);
+  // The key-concepts deck lives at the end of the post's markdown but is shown
+  // in a modal opened from the hero's metadata rail.
+  const { deck } = splitKeyConcepts(post.content, metadata.title);
+  const hiddenPostKeys = deck ? await resolveHiddenPostKeys(post) : null;
 
   return (
     <header className="mb-10">
@@ -164,6 +174,20 @@ export async function PostHeader(props: PostHeaderProps) {
           </div>
         </div>
       </div>
+      {deck && hiddenPostKeys && (
+        <KeyConceptsModal
+          label={dict.keyConcepts.title}
+          closeLabel={dict.keyConcepts.close}
+          deck={
+            <PostMarkdown
+              content={deck}
+              hiddenPostKeys={hiddenPostKeys}
+              quizDictionary={dict.quiz}
+              keyConceptsDictionary={dict.keyConcepts}
+            />
+          }
+        />
+      )}
     </header>
   );
 }

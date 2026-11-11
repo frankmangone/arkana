@@ -136,6 +136,17 @@
     "multipleChoice": "Multiple Choice",
     "singleChoice": "Single Choice"
   },
+  "keyConcepts": {
+    "title": "Key concepts",
+    "close": "Close",
+    "tldr": "Too long, didn't read",
+    "recapTitle": "Want a quick refresher?",
+    "recapText": "The key ideas of this article, in a few cards you can flip through.",
+    "previous": "Previous concept",
+    "next": "Next concept",
+    "goTo": "Go to concept {n}",
+    "position": "{current} of {total}"
+  },
   "quizzes": {
     "checkAnswer": "Check answer",
     "tryAgain": "Try again",

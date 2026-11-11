@@ -136,6 +136,17 @@
     "multipleChoice": "Múltipla Escolha",
     "singleChoice": "Escolha Única"
   },
+  "keyConcepts": {
+    "title": "Conceitos-chave",
+    "close": "Fechar",
+    "tldr": "Muito longo, não li",
+    "recapTitle": "Quer uma revisão rápida?",
+    "recapText": "As ideias-chave deste artigo, em alguns cartões para ir passando.",
+    "previous": "Conceito anterior",
+    "next": "Próximo conceito",
+    "goTo": "Ir para o conceito {n}",
+    "position": "{current} de {total}"
+  },
   "quizzes": {
     "checkAnswer": "Verificar resposta",
     "tryAgain": "Tentar novamente",

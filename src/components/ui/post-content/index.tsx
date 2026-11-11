@@ -1,47 +1,33 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Post } from "@/lib/types";
 import React from "react";
-import ReactMarkdown from "react-markdown";
-import remarkMath from "remark-math";
-import rehypeKatex from "rehype-katex";
-import rehypePrism from "rehype-prism-plus";
-import rehypeRaw from "rehype-raw";
-import remarkGfm from "remark-gfm";
-import { processContent } from "./process-content";
-import { remarkPlayground } from "./remark-playground";
-import { CodeBlock } from "./code-block";
-import "katex/dist/katex.min.css";
-import { ZoomableImage } from "@/components/ui/zoomable-image";
-import { DivSwitch } from "@/components/ui/div-switch";
-import { Figure, FigCaption } from "@/components/ui/figures";
-import { AnchoredHeading } from "@/components/ui/anchored-heading";
-import { BigQuote } from "@/components/ui/big-quote";
-import { Blockquote } from "@/components/ui/blockquote";
-import { Link } from "@/components/ui/link";
-import { UnorderedList, OrderedList, ListElement } from "@/components/ui/lists";
-import { Paragraph } from "@/components/ui/paragraph";
+import { PostMarkdown, resolveHiddenPostKeys } from "./post-markdown";
+import { splitKeyConcepts } from "./validate-key-concepts";
 import { SectionDivider } from "@/components/ui/section-divider";
 import { TableOfContents } from "@/components/ui/table-of-contents";
 import { HashScrollFix } from "@/components/ui/hash-scroll-fix";
-import { isHiddenPostHref } from "@/lib/posts/hidden-links";
-import { getHiddenPostKeys } from "@/lib/posts/translations";
+import { KeyConceptsTrigger } from "@/components/ui/key-concepts-modal";
 
 import { QuizDictionary } from "@/components/ui/quiz/types";
 
 interface PostContentProps {
   post: Post;
   quizDictionary?: QuizDictionary;
+  /** Text (translated) of the button at the top that opens the key-concepts deck. */
+  tldrLabel?: string;
 }
 
-export async function PostContent({ post, quizDictionary }: PostContentProps) {
-  const processedContent = processContent(post.content);
-  // Links from a visible post to a visible: false post render as plain text,
-  // so drafts are only reachable by someone who already has their URL. A
-  // hidden post keeps its links to other drafts working, for previewing.
-  const hiddenPostKeys =
-    post.metadata.visible === false
-      ? new Set<string>()
-      : await getHiddenPostKeys();
+export async function PostContent({
+  post,
+  quizDictionary,
+  tldrLabel,
+}: PostContentProps) {
+  // The key-concepts deck is shown in a modal (see PostHeader), so only the
+  // article text is rendered here, plus the button that opens it. Throws,
+  // failing the build, if the deck isn't the last block of the post.
+  const { body, deck } = splitKeyConcepts(post.content, post.metadata?.title);
+  const hiddenPostKeys = await resolveHiddenPostKeys(post);
+  // The button's label, if this post has a deck to open.
+  const tldr = deck && tldrLabel ? tldrLabel : null;
 
   return (
     <div
@@ -52,72 +38,25 @@ export async function PostContent({ post, quizDictionary }: PostContentProps) {
       {/* Sticky contents rail in the right margin on wide screens */}
       <div className="hidden xl:block absolute left-full top-0 bottom-0 ml-10 w-52">
         <div className="sticky top-24">
-          <TableOfContents content={post.content} compact />
+          <TableOfContents content={body} compact />
         </div>
       </div>
+      {/* With a key-concepts deck, the first separator holds the button that
+          opens it, and comes before the contents box on small screens. */}
+      {tldr && (
+        <SectionDivider>
+          <KeyConceptsTrigger label={tldr} />
+        </SectionDivider>
+      )}
       <div className="xl:hidden">
-        <TableOfContents content={post.content} />
+        <TableOfContents content={body} />
       </div>
-      <SectionDivider />
-      <ReactMarkdown
-        remarkPlugins={[remarkMath, remarkGfm, remarkPlayground]}
-        rehypePlugins={[
-          rehypeRaw,
-          [rehypeKatex, { strict: false }],
-          [rehypePrism, { showLineNumbers: true }],
-        ]}
-        components={{
-          // Text components
-          // h1: createHeadingComponent(1),
-          h2: (props: any) => <AnchoredHeading size="lg" {...props} />,
-          h3: (props: any) => <AnchoredHeading size="sm" {...props} />,
-          // h4: createHeadingComponent(4),
-          // h5: createHeadingComponent(5),
-          // h6: createHeadingComponent(6),
-          p: Paragraph,
-          a: (props: any) =>
-            isHiddenPostHref(props.href, hiddenPostKeys) ? (
-              <>{props.children}</>
-            ) : (
-              <Link {...props} />
-            ),
-          hr: SectionDivider,
-
-          // Lists
-          ul: UnorderedList,
-          ol: OrderedList,
-          li: ListElement,
-
-          // Images
-          img: ZoomableImage,
-          figure: Figure,
-          figcaption: FigCaption,
-
-          // Code blocks, with runnable Python playgrounds
-          pre: CodeBlock,
-
-          // Blockquotes with callout support
-          blockquote: Blockquote,
-
-          // Big quote component with LaTeX support
-          // @ts-expect-error - BigQuote is a custom component
-          "big-quote": BigQuote,
-
-          // Custom div handler - selection layer for special div types
-          div: (props: any) => (
-            <DivSwitch {...props} quizDictionary={quizDictionary} />
-          ),
-
-          // Add wrapper for tables to ensure proper overflow handling
-          table: (props) => (
-            <div className="table-container">
-              <table {...props} />
-            </div>
-          ),
-        }}
-      >
-        {processedContent}
-      </ReactMarkdown>
+      {!tldr && <SectionDivider />}
+      <PostMarkdown
+        content={body}
+        hiddenPostKeys={hiddenPostKeys}
+        quizDictionary={quizDictionary}
+      />
     </div>
   );
 }
