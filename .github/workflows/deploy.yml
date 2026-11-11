@@ -112,6 +112,11 @@ jobs:
       - name: Build with Next.js
         run: pnpm build
 
+      # Fails the deploy if the markdown/llms.txt/JSON outputs for agents are
+      # broken, or if a hidden (visible: false) article leaked into them.
+      - name: Check agent-facing outputs
+        run: pnpm agent:check
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

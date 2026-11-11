@@ -14,6 +14,7 @@
     "calculate-hashes": "node scripts/calculate-hashes.js",
     "images:sync": "bash scripts/sync-images.sh",
     "images:check": "node scripts/check-image-refs.js",
+    "agent:check": "node scripts/check-agent-outputs.js",
     "prebuild": "npm run calculate-hashes",
     "scrap:medium": "ts-node --project scripts/tsconfig.json scripts/medium-scraper/index.ts",
     "post:medium": "ts-node --project scripts/post-to-medium/tsconfig.json scripts/post-to-medium/src/index.ts",

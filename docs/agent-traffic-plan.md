@@ -6,8 +6,8 @@ generated at build time (route handlers with `generateStaticParams`, like
 and one function lists the public posts; markdown files, `llms.txt`, the JSON
 index and JSON-LD all read from them so they can't drift apart.
 
-Status: **Phases 0 to 4 and 6 done** (5 dropped, MCP skipped), each verified with
-a full static export. Only phase 7, the post-build check script, is left.
+Status: **All phases done** (5 dropped, MCP skipped), each verified with a full
+static export, and `pnpm agent:check` now repeats those checks.
 
 ## Phase 0: Shared foundation (`src/lib/agent-content/`)
 
@@ -88,15 +88,23 @@ a full static export. Only phase 7, the post-build check script, is left.
   built later without changing anything here. Worth it if agent traffic shows
   up in the logs.
 
-## Phase 7: Verification and measurement
+## Phase 7: Verification (done)
 
-- Post-build script asserting the expected files exist in `out/` (`llms.txt`,
-  one `.md` per visible post, `posts.json`) and that hidden posts have no `.md`,
-  no index entry and no `llms.txt` mention.
-- Manual: curl a few URLs, validate the JSON-LD, diff one `.md` against its
-  article.
-- Traffic: agents don't run the JS analytics; use host/CDN logs. `.md` and
-  `llms.txt` hits are clean agent signal.
+- `pnpm agent:check` (`scripts/check-agent-outputs.js`, tests in
+  `scripts/check-agent-outputs.test.js`) checks a finished `next build` in
+  `out/` against `src/data/content`: every visible article has a clean
+  `index.md`, a `posts.json` entry, an `llms.txt` line and an HTML page that
+  advertises the markdown; no hidden article has a `.md` or appears in
+  `posts.json`, `llms.txt`, the sitemap or the RSS feed; `api/index.json`,
+  `llms.txt` and `robots.txt` exist and agree. Exits non-zero with a list of
+  problems.
+- Run it after `next build` only: `out/` is also the dev server's cache
+  directory, so after `next dev` it reports the files as missing.
+- It runs in `.github/workflows/deploy.yml` right after the build, so a failing
+  check stops the deploy before the artifact is uploaded.
+- Still manual: that the host serves `.md` as `text/markdown` or `text/plain`,
+  and agent traffic (agents don't run the JS analytics; use host/CDN logs, where
+  `.md` and `llms.txt` hits are clean agent signal).
 
 ## Decisions taken (defaults)
 
