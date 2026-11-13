@@ -1,4 +1,5 @@
 import matter from "gray-matter";
+import { estimateReadingTime } from "./reading-time";
 
 // YAML parses an unquoted `date: 2024-03-18` into a JS Date (UTC midnight),
 // while `date: '2024-03-18'` stays a string. Everything downstream (formatDate,
@@ -10,6 +11,9 @@ export function parseFrontmatter(fileContent: string) {
   if (parsed.data.date instanceof Date) {
     parsed.data.date = parsed.data.date.toISOString().slice(0, 10);
   }
+
+  // Always derived from the body; any `readingTime` in the frontmatter is ignored.
+  parsed.data.readingTime = estimateReadingTime(parsed.content);
 
   return parsed;
 }
